@@ -21,6 +21,7 @@ static class GenerateTestsCommand {
         IgnoreWarnings,
         LoopUnroll,
         SequenceLengthLimit,
+        TestCount,
         BoogieOptionBag.SolverLog,
         BoogieOptionBag.SolverOption,
         BoogieOptionBag.SolverOptionHelp,
@@ -40,13 +41,15 @@ static class GenerateTestsCommand {
   private enum Mode {
     Path,
     Block,
-    InlinedBlock
+    InlinedBlock,
+    Spec
   }
 
   private static readonly Argument<Mode> modeArgument = new("mode", @"
 Block - Generate tests targeting block-coverage.
 InlinedBlock - Generate tests targeting block coverage after inlining (call-graph sensitive block coverage).
-Path - Generate tests targeting path-coverage.");
+Path - Generate tests targeting path-coverage.
+Spec - Generate specification-based tests (i.e. assume the specification is correct).");
 
   public static Command Create() {
     var result = new Command("generate-tests", "(Experimental) Generate Dafny tests that ensure block or path coverage of a particular Dafny program.");
@@ -62,6 +65,7 @@ Path - Generate tests targeting path-coverage.");
         Mode.Path => TestGenerationOptions.Modes.Path,
         Mode.Block => TestGenerationOptions.Modes.Block,
         Mode.InlinedBlock => TestGenerationOptions.Modes.InlinedBlock,
+        Mode.Spec => TestGenerationOptions.Modes.Spec,
         _ => throw new ArgumentOutOfRangeException()
       };
       PostProcess(options, mode);
@@ -129,6 +133,10 @@ Path - Generate tests targeting path-coverage.");
 
   public static readonly Option<uint> SequenceLengthLimit = new("--length-limit",
     "Add an axiom that sets the length of all sequences to be no greater than <n>. 0 (default) indicates no limit.");
+  
+  public static readonly Option<uint> TestCount = new("--test-count", () => 1,
+    "Number of tests to generate per method on Spec mode. 1 (default) generates a single test per method." +
+    "This option will be ignored for modes other than Spec.");
 
   public static readonly Option<int> LoopUnroll = new("--loop-unroll", () => -1,
     "Higher values can improve accuracy of the analysis at the cost of taking longer to run.");
@@ -155,6 +163,9 @@ Path - Generate tests targeting path-coverage.");
     DafnyOptions.RegisterLegacyBinding(SequenceLengthLimit, (options, value) => {
       options.TestGenOptions.SeqLengthLimit = value;
     });
+    DafnyOptions.RegisterLegacyBinding(TestCount, (options, value) => {
+      options.TestGenOptions.TestCount = value;
+    });
     DafnyOptions.RegisterLegacyBinding(PrintBpl, (options, value) => {
       options.TestGenOptions.PrintBpl = value;
     });
@@ -167,6 +178,7 @@ Path - Generate tests targeting path-coverage.");
 
     OptionRegistry.RegisterOption(LoopUnroll, OptionScope.Cli);
     OptionRegistry.RegisterOption(SequenceLengthLimit, OptionScope.Cli);
+    OptionRegistry.RegisterOption(TestCount, OptionScope.Cli);
     OptionRegistry.RegisterOption(PrintBpl, OptionScope.Cli);
     OptionRegistry.RegisterOption(ExpectedCoverageReport, OptionScope.Cli);
     OptionRegistry.RegisterOption(ForcePrune, OptionScope.Cli);

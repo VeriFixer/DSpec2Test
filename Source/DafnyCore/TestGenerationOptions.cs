@@ -10,9 +10,10 @@ namespace Microsoft.Dafny {
     public bool WarnDeadCode = false;
 
     public bool IgnoreWarnings = false;
-    public enum Modes { None, Block, InlinedBlock, Path };
+    public enum Modes { None, Block, InlinedBlock, Path, Spec };
     public Modes Mode = Modes.None;
     public uint SeqLengthLimit = 0;
+    public uint TestCount = 1;
     [CanBeNull] public string PrintBpl = null;
     public bool ForcePrune = false;
     public string CoverageReport = null;

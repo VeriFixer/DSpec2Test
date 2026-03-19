@@ -198,5 +198,80 @@ namespace DafnyTestGeneration {
       }
       return allInlinedDeclarations;
     }
+    
+    /// <summary>
+    /// Creates a list of expressions separated by ORs
+    /// </summary>
+    public static List<Expression> FlattenOrs(Expression expr) {
+      var list = new List<Expression>();
+
+      if (expr is BinaryExpr binExpr && binExpr.Op == BinaryExpr.Opcode.Or) {
+        list.AddRange(FlattenOrs(binExpr.E0));
+        list.AddRange(FlattenOrs(binExpr.E1));
+      } else {
+        list.Add(expr);
+      }
+
+      return list;
+    }
+    
+    /// <summary>
+    /// Negates inequalities
+    /// </summary>
+    public static Expression NegateInequality(Expression expr) {
+      if (expr is BinaryExpr binExpr) {
+        BinaryExpr.Opcode invertedOp = binExpr.Op switch {
+          BinaryExpr.Opcode.Gt => BinaryExpr.Opcode.Le,
+          BinaryExpr.Opcode.Lt => BinaryExpr.Opcode.Ge,
+          BinaryExpr.Opcode.Ge => BinaryExpr.Opcode.Lt,
+          BinaryExpr.Opcode.Le => BinaryExpr.Opcode.Gt,
+          BinaryExpr.Opcode.Eq => BinaryExpr.Opcode.Neq,
+          BinaryExpr.Opcode.Neq => BinaryExpr.Opcode.Eq,
+          _ => binExpr.Op
+        };
+
+        if (invertedOp != binExpr.Op) {
+          return new BinaryExpr(binExpr.StartToken, invertedOp, binExpr.E0, binExpr.E1);
+        }
+      }
+      return new UnaryOpExpr(expr.StartToken, UnaryOpExpr.Opcode.Not, expr);
+    }
+    
+    /// <summary>
+    /// Chains AND expressions together
+    /// </summary>
+    public static Expression BuildAndChain(List<Expression> expressions, Token tok) {
+      switch (expressions.Count) {
+        case 0:
+          return null;
+        case 1:
+          return expressions[0];
+        default:
+          Expression result = expressions[0];
+          for (int i = 1; i < expressions.Count; i++) {
+            result = new BinaryExpr(tok, BinaryExpr.Opcode.And, result, expressions[i]);
+          }
+          return result;
+      }
+    }
+    
+    /// <summary>
+    /// Negates requires statements composed of ORs
+    /// </summary>
+    public static AttributedExpression NegateOrs(AttributedExpression expr) {
+      var disjuncts = FlattenOrs(expr.E);
+      
+      if (disjuncts.Count < 2) { return expr; }
+      
+      var negatedConditions = new List<Expression>();
+      foreach (var e in disjuncts) {
+        negatedConditions.Add(NegateInequality(e));
+      }
+      
+      Expression andChain = BuildAndChain(negatedConditions, expr.E.StartToken);
+      var transformedExpr = new UnaryOpExpr(expr.E.StartToken, UnaryOpExpr.Opcode.Not, andChain);
+      
+      return new AttributedExpression(transformedExpr, expr.Attributes);
+    }
   }
 }

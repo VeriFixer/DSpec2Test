@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Microsoft.Dafny;
 using Program = Microsoft.Dafny.Program;
 
@@ -115,7 +116,9 @@ namespace DafnyTestGeneration {
       ProgramModifier programModifier =
         options.TestGenOptions.Mode == TestGenerationOptions.Modes.Path
           ? new PathBasedModifier(cache)
-          : new BlockBasedModifier(cache);
+          : options.TestGenOptions.Mode == TestGenerationOptions.Modes.Spec
+            ? new SpecBasedModifier(cache)
+            : new BlockBasedModifier(cache);
       return programModifier.GetModifications(boogieProgram, dafnyInfo);
     }
 
@@ -194,21 +197,58 @@ namespace DafnyTestGeneration {
       var options = program.Options;
       options.PrintMode = PrintModes.Everything;
       // Generate tests based on counterexamples produced from modifications
+      
+      bool isSpecMode = options.TestGenOptions.Mode == TestGenerationOptions.Modes.Spec;
 
-      cache ??= new Modifications(options);
-      foreach (var modification in GetModifications(cache, program, out var dafnyInfo)) {
+      if (isSpecMode) {
+        uint testCount = 1; // TODO Change To: options.TestGenOptions.TestCount;
+        List<TestMethod> testMethods = new List<TestMethod>();
+        
+        program = await PrepareProgram(program);
 
-        var log = await modification.GetCounterExampleLog(cache);
-        if (log == null) {
-          continue;
+        for (int i = 0; i < testCount; i++) {
+          testMethods.Clear();
+          
+          Modifications currentCache = (i == 0)
+            ? (cache ?? new Modifications(options))
+            : new Modifications(program.Options);
+          
+          foreach (var modification in GetModifications(currentCache, program, out var dafnyInfo)) {
+
+            var log = await modification.GetCounterExampleLog(currentCache);
+            if (log == null) {
+              continue;
+            }
+
+            var testMethod = await modification.GetTestMethod(currentCache, dafnyInfo);
+            if (testMethod == null) {
+              continue;
+            }
+
+            yield return testMethod;
+            testMethods.Add(testMethod);
+          }
+          if (i < testCount - 1) {
+            //TODO Change To: program = await UpdateProgram(program, testMethods);
+          }
         }
 
-        var testMethod = await modification.GetTestMethod(cache, dafnyInfo);
-        if (testMethod == null) {
-          continue;
-        }
+      } else {
+        cache ??= new Modifications(options);
+        foreach (var modification in GetModifications(cache, program, out var dafnyInfo)) {
 
-        yield return testMethod;
+          var log = await modification.GetCounterExampleLog(cache);
+          if (log == null) {
+            continue;
+          }
+
+          var testMethod = await modification.GetTestMethod(cache, dafnyInfo);
+          if (testMethod == null) {
+            continue;
+          }
+
+          yield return testMethod;
+        }
       }
     }
 
@@ -269,6 +309,34 @@ namespace DafnyTestGeneration {
           "proven reachable (do you have a false assumption in the program?)");
         SetNonZeroExitCode = true;
       }
+    }
+    
+    /// <summary>
+    /// Prepares the input program for the Spec test generation mode, by negating `requires` statements
+    /// composed by ORs (e.g. transforming "requires x > 10 || x < -10" into "requires !(x <= 10 && x >= -10)").
+    /// It also deletes the implementation of the methods that will be tested, as this information is not useful
+    /// for specification-based test generation.
+    /// </summary>
+    private static async Task<Program> PrepareProgram(Program program) {
+      foreach (var entryPoint in Utils.AllMemberDeclarationsWithAttribute(program.DefaultModule,
+                 TestGenerationOptions.TestEntryAttribute)) {
+
+        if (entryPoint is Method method) {
+          for (int i = 0; i < method.Req.Count; i++) {
+            method.Req[i] = Utils.NegateOrs(method.Req[i]); 
+          }
+
+          if (method.Body != null) {
+            method.SetBody(new BlockStmt(method.Body.StartToken, new List<Statement>()));
+          }
+        } else if (entryPoint is Function function) {
+          for (int i = 0; i < function.Req.Count; i++) {
+            function.Req[i] = Utils.NegateOrs(function.Req[i]);
+          }
+          function.Body = null;
+        }
+      }
+      return program;
     }
   }
 }
