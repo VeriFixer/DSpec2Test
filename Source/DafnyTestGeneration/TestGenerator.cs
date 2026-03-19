@@ -16,6 +16,7 @@ namespace DafnyTestGeneration {
   public static class TestGenerator {
 
     public static bool SetNonZeroExitCode = false;
+    private static readonly Random Rnd = new Random();
 
     /// <summary>
     /// This method returns each capturedState that is unreachable, one by one,
@@ -201,7 +202,7 @@ namespace DafnyTestGeneration {
       bool isSpecMode = options.TestGenOptions.Mode == TestGenerationOptions.Modes.Spec;
 
       if (isSpecMode) {
-        uint testCount = 1; // TODO Change To: options.TestGenOptions.TestCount;
+        uint testCount = options.TestGenOptions.TestCount;
         List<TestMethod> testMethods = new List<TestMethod>();
         
         program = await PrepareProgram(program);
@@ -229,7 +230,7 @@ namespace DafnyTestGeneration {
             testMethods.Add(testMethod);
           }
           if (i < testCount - 1) {
-            //TODO Change To: program = await UpdateProgram(program, testMethods);
+            program = await UpdateProgram(program, testMethods);
           }
         }
 
@@ -337,6 +338,86 @@ namespace DafnyTestGeneration {
         }
       }
       return program;
+    }
+    
+    /// <summary>
+    /// Updates the program for the Spec test generation mode, given the input parameters previously generated
+    /// for each testMethod.
+    /// </summary>
+    private static async Task<Program> UpdateProgram(Program program, List<TestMethod> testMethods) {
+      foreach (var testMethod in testMethods) {
+        foreach (var entryPoint in Utils.AllMemberDeclarationsWithAttribute(program.DefaultModule,
+                 TestGenerationOptions.TestEntryAttribute)) {
+
+          var shortName = testMethod.MethodName.Contains('.')
+            ? testMethod.MethodName.Substring(testMethod.MethodName.LastIndexOf('.') + 1)
+            : testMethod.MethodName;
+
+          if (entryPoint.Name != shortName) {
+            continue;
+          }
+
+          List<Formal> argFormals;
+
+          switch (entryPoint) {
+            case Method methodDecl:
+              argFormals = methodDecl.Ins.ToList();
+              break;
+            case Function functionDecl:
+              argFormals = functionDecl.Ins.ToList();
+              break;
+            default: return program;
+          }
+
+          var token = entryPoint.StartToken;
+          Expression combinedAndExpr = null;
+          BinaryExpr equalityExpr = null;
+          var exprLength = argFormals.Count;
+
+          foreach (var formal in argFormals) {
+            if (testMethod.ArgExpressions.TryGetValue(formal.Name, out var argExpr)) {
+              var identifier = new IdentifierExpr(token, formal.Name);
+              equalityExpr = new BinaryExpr(token, BinaryExpr.Opcode.Neq, identifier, argExpr);
+
+              var random = Rnd.Next(0, 2);
+
+              if (exprLength == 1 || random == 0) {
+                if (combinedAndExpr == null) {
+                  combinedAndExpr = equalityExpr;
+                } else {
+                  combinedAndExpr = new BinaryExpr(token, BinaryExpr.Opcode.And, combinedAndExpr, equalityExpr);
+                }
+              } else {
+                exprLength--;
+              }
+            }
+          }
+
+          if (combinedAndExpr != null) {
+            var newRequires = new AttributedExpression(combinedAndExpr, null, null);
+
+            if (entryPoint is Method method) {
+              method.Req.Add(newRequires);
+            } else if (entryPoint is Function function) {
+              function.Req.Add(newRequires);
+            }
+          }
+        }
+      }
+
+      await using var stringWriter = new StringWriter();
+      var printer = new Printer(stringWriter, program.Options);
+      printer.PrintProgram(program, true);
+      string code = stringWriter.ToString();
+
+      Program freshProgram = await Utils.Parse(
+        new BatchErrorReporter(program.Options),
+        code,
+        false,
+        new Uri(program.FullName)
+      );
+
+      return freshProgram;
     }
   }
 }

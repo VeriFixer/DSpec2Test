@@ -11,6 +11,7 @@ using Microsoft.Dafny;
 using MapType = Microsoft.Dafny.MapType;
 using Token = Microsoft.Dafny.Token;
 using Type = Microsoft.Dafny.Type;
+using IdentifierExpr =  Microsoft.Dafny.IdentifierExpr;
 
 namespace DafnyTestGeneration {
 
@@ -32,6 +33,8 @@ namespace DafnyTestGeneration {
     public readonly string MethodName;
     // values of the arguments to be passed to the method call
     public readonly List<string> ArgValues;
+    // expressions of the arguments to be passed to the method call
+    public readonly Dictionary<string, Expression> ArgExpressions;
     // number of type arguments for the method (all will be set to defaultType)
     public readonly int NOfTypeArgs;
     // default type to replace any type variable with
@@ -61,10 +64,11 @@ namespace DafnyTestGeneration {
       NOfTypeArgs = dafnyInfo.GetTypeArgs(MethodName).Count;
       constraintContext = new Dictionary<PartialValue, Expression>();
       foreach (var partialValue in dafnyModel.States.First().KnownVariableNames.Keys) {
-        constraintContext[partialValue] = new Microsoft.Dafny.IdentifierExpr(Token.NoToken, dafnyModel.States.First().KnownVariableNames[partialValue].First());
+        constraintContext[partialValue] = new IdentifierExpr(Token.NoToken, dafnyModel.States.First().KnownVariableNames[partialValue].First());
         constraintContext[partialValue].Type = partialValue.Type;
       }
       ArgValues = ExtractInputs(dafnyModel.States.First(), argumentNames, typeNames);
+      ArgExpressions = ExtractExpressions(dafnyModel.States.First(), argumentNames, typeNames);
     }
 
     public bool IsValid => errorMessages.Count == 0;
@@ -724,5 +728,161 @@ namespace DafnyTestGeneration {
       otherLines.RemoveAt(0);
       return string.Join("", lines) == string.Join("", otherLines);
     }
+    
+    
+    
+    /// <summary>
+    /// Extracts the AST Expressions for the arguments passed to the method.
+    /// </summary>
+    private Dictionary<string, Expression> ExtractExpressions(PartialState state, IReadOnlyList<string> printOutput, IReadOnlyList<string> types) {
+      var result = new Dictionary<string, Expression>();
+      var vars = state.ExpandedVariableSet();
+      
+      var parameterIndex = DafnyInfo.IsStatic(MethodName) ? -1 : -2;
+      var formals = DafnyInfo.GetFormals(MethodName);
+
+      for (var i = 0; i < printOutput.Count; i++) {
+        if (types[i] == "Ty") {
+          continue;
+        }
+        parameterIndex++;
+        
+        Type type;
+        string paramName;
+        
+        if (parameterIndex >= 0) {
+          paramName = formals[parameterIndex].Name;
+          type = Utils.UseFullName(
+            DafnyInfo.GetFormalsTypes(MethodName)[parameterIndex]);
+          type = Utils.CopyWithReplacements(type,
+            DafnyInfo.GetTypeArgsWithParents(MethodName).ConvertAll(arg => arg.ToString()),
+            Enumerable.Repeat(defaultType, DafnyInfo.GetTypeArgsWithParents(MethodName).Count).ToList());
+          type = DafnyModelTypeUtils.ReplaceType(type,
+            _ => true,
+            t => DafnyInfo.GetSupersetType(t) != null && t.Name.StartsWith("_System") ?
+              new UserDefinedType(t.Origin, t.Name[8..], t.TypeArgs) :
+              new UserDefinedType(t.Origin, t.Name, t.TypeArgs));
+        } else {
+          paramName = "this";
+          type = null;
+        }
+        if (printOutput[i] == "") {
+          getDefaultValueParams = [];
+          result[paramName] = new IdentifierExpr(Token.NoToken, GetDefaultValue(type, type));
+          continue;
+        }
+
+        if (!printOutput[i].StartsWith("T@")) {
+          string baseValue;
+          if (Regex.IsMatch(printOutput[i], "^[0-9]+bv[0-9]+$")) {
+            var baseIndex = printOutput[i].IndexOf('b');
+            baseValue = $"({printOutput[i][..baseIndex]} as {printOutput[i][baseIndex..]})";
+          } else {
+            baseValue = printOutput[i];
+          }
+          result[paramName] = new IdentifierExpr(Token.NoToken, GetPrimitiveAsType(baseValue, type, type));
+          continue;
+        }
+
+        foreach (var variable in vars) {
+          if ((variable.Element as Model.Uninterpreted)?.Name != printOutput[i]) {
+            continue;
+          }
+          result[paramName] = ExtractExpression(variable, type);
+          break;
+        }
+      }
+      return result;
+    }
+
+    /// <summary>
+    /// Recursively constructs a Dafny AST Expression from a PartialValue.
+    /// </summary>
+    private Expression ExtractExpression(PartialValue variable, Type/*?*/ asType) {
+      if (variable == null) {
+        return new IdentifierExpr(Token.NoToken, asType != null ? GetDefaultValue(asType) : "null");
+      }
+
+      if (asType != null) {
+        asType = DafnyModelTypeUtils.ReplaceType(asType,
+          type => DafnyInfo.GetSupersetType(type) != null && 
+                  type.Name.StartsWith("_System"),
+          type => new UserDefinedType(type.Origin, type.Name[8..], type.TypeArgs));
+      }
+
+      if (mockedVarId.ContainsKey(variable)) {
+        return new IdentifierExpr(Token.NoToken, mockedVarId[variable]);
+      }
+
+      var variableType = DafnyModelTypeUtils.GetInDafnyFormat(
+        DafnyModelTypeUtils.ReplaceTypeVariables(variable.Type, defaultType));
+      variableType = DafnyModelTypeUtils.ReplaceType(variableType,
+        type => DafnyInfo.GetSupersetType(type) != null && 
+                type.Name.StartsWith("_System"),
+        type => new UserDefinedType(type.Origin, type.Name[8..], type.TypeArgs));
+      if (variableType.ToString() == defaultType.ToString() &&
+          variableType.ToString() != variable.Type.ToString()) {
+        return new IdentifierExpr(Token.NoToken, GetADefaultTypeValue(variable));
+      }
+
+      switch (variableType) {
+        case IntType:
+        case RealType:
+        case BoolType:
+        case CharType:
+        case BitvectorType:
+          return new IdentifierExpr(Token.NoToken, GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType));
+        
+        case SeqType seqType:
+          var asBasicSeqType = GetBasicType(asType, type => type is SeqType) as SeqType;
+          if (variable?.Cardinality() == -1) {
+            if (seqType.Arg is CharType) {
+              return new StringLiteralExpr(Token.NoToken, "", false);
+            }
+            return new SeqDisplayExpr(Token.NoToken, new List<Expression>());
+          }
+
+          var seqElements = new List<Expression>();
+          for (var i = 0; i < variable?.Cardinality(); i++) {
+            var element = variable?[i];
+            if (element == null) {
+              getDefaultValueParams = [];
+              seqElements.Add(new IdentifierExpr(Token.NoToken, GetDefaultValue(seqType.Arg, asBasicSeqType?.TypeArgs?.FirstOrDefault((Type/*?*/)null))));
+              continue;
+            }
+            seqElements.Add(ExtractExpression(element, asBasicSeqType?.TypeArgs?.FirstOrDefault((Type/*?*/)null)));
+          }
+
+          if (seqType.Arg is CharType || asBasicSeqType?.TypeArgs?.FirstOrDefault((Type/*?*/)null) is CharType) {
+             return new IdentifierExpr(Token.NoToken, ExtractVariable(variable, asType));
+          }
+          return new SeqDisplayExpr(Token.NoToken, seqElements);
+
+        case SetType:
+          var asBasicSetType = GetBasicType(asType, type => type is SetType) as SetType;
+          var setElements = new List<Expression>();
+          foreach (var element in variable.SetElements()) {
+            setElements.Add(ExtractExpression(element, asBasicSetType?.TypeArgs?.FirstOrDefault((Type/*?*/)null)));
+          }
+          return new SetDisplayExpr(Token.NoToken, true, setElements);
+
+        case MapType:
+          var asBasicMapType = GetBasicType(asType, type => type is MapType) as MapType;
+          var mapItems = new List<MapDisplayEntry>();
+          foreach (var mapping in variable?.Mappings()) {
+            var asTypeTypeArgs = asBasicMapType?.TypeArgs?.Count == 2 ? asBasicMapType.TypeArgs : null;
+            mapItems.Add(new MapDisplayEntry(
+              ExtractExpression(mapping.Key, asTypeTypeArgs?[0]),
+              ExtractExpression(mapping.Value, asTypeTypeArgs?[1])
+            ));
+          }
+          return new MapDisplayExpr(Token.NoToken, true, mapItems);
+        default:
+          var varName = ExtractVariable(variable, asType);
+          return new IdentifierExpr(Token.NoToken, varName);
+      }
+    }
+    
+    
   }
 }

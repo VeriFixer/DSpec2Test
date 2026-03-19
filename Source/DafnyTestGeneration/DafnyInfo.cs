@@ -326,6 +326,20 @@ namespace DafnyTestGeneration {
         .OrderBy(constructor => constructor.Ins.Count)
         .FirstOrDefault((Constructor/*?*/)null);
     }
+    
+    public IList<Formal> GetFormals(string callable) {
+      if (methods.ContainsKey(callable)) {
+        return methods[callable].Ins;
+      }
+      if (functions.ContainsKey(callable)) {
+        return functions[callable].Ins;
+      }
+
+      Options.ErrorWriter.WriteLine($"*** Error: Test Generation failed to identify callable {callable}");
+
+      SetNonZeroExitCode = true;
+      return new List<Formal>();
+    }
 
     /// <summary>
     /// Fills in the Dafny Info data by traversing the AST
