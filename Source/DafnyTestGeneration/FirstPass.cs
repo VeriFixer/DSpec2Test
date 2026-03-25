@@ -53,7 +53,6 @@ public class FirstPass {
       return false;
     }
     typesConsidered = [];
-    CheckIsWrappedInAModule(program);
     CheckHasTestEntry(program);
     CheckInlinedDeclarationsAreReachable(program);
     CheckInlineAttributes(program);
@@ -185,20 +184,6 @@ public class FirstPass {
       result = false;
     }
     return result;
-  }
-
-  /// <summary>
-  /// Return true iff the program has no elements that are not wrapped in a module
-  /// (so all elements can be imported provided the export sets allow it)
-  /// </summary>
-  private bool CheckIsWrappedInAModule(Program program) {
-    if (program.DefaultModuleDef.Children.OfType<ClassLikeDecl>().Any() || program.DefaultModuleDef.Children.OfType<DefaultClassDecl>().Any(decl => decl.Children.Any())) {
-      diagnostics.Add(new DafnyDiagnostic(MessageSource.TestGeneration, NoExternalModuleError, program.Origin.ReportingRange,
-        ["Program is not wrapped in a module. Put your code inside \"module M {}\" or equivalent"],
-        ErrorLevel.Error, new List<DafnyRelatedInformation>()));
-      return false;
-    }
-    return true;
   }
 
   /// <summary>

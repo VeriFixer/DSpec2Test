@@ -54,6 +54,9 @@ namespace DafnyTestGeneration {
         .OfType<LiteralModuleDecl>()
         .Select(declaration =>
           declaration.DefaultExport.VisibilityScope).ToList() ?? [];
+      if (scopes.Count == 0) {
+        scopes.Add(program.DefaultModuleDef.VisibilityScope);
+      }
       var visitor = new DafnyInfoExtractor(this);
       visitor.Visit(program);
     }

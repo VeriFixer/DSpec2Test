@@ -267,6 +267,7 @@ namespace DafnyTestGeneration {
       SetNonZeroExitCode = firstPass.NonZeroExitCode;
       var program = await Utils.Parse(new BatchErrorReporter(options), code, false, uri);
       var rawName = Regex.Replace(uri?.AbsolutePath ?? "", "[^a-zA-Z0-9_]", "");
+      var isWrappedInAModule  = CheckIsWrappedInAModule(program);
 
       string EscapeDafnyStringLiteral(string str) {
         return $"\"{str.Replace(@"\", @"\\")}\"";
@@ -276,7 +277,9 @@ namespace DafnyTestGeneration {
         yield return $"include {EscapeDafnyStringLiteral(uri.AbsolutePath)}";
       }
 
-      yield return $"module {rawName}UnitTests {{";
+      if (isWrappedInAModule) {
+        yield return $"module {rawName}UnitTests {{";
+      }
 
       var cache = new Modifications(options);
       var methodsGenerated = 0;
@@ -300,7 +303,9 @@ namespace DafnyTestGeneration {
       }
 
       yield return TestMethod.EmitSynthesizeMethods(dafnyInfo, cache);
-      yield return "}";
+      if (isWrappedInAModule) {
+        yield return "}";
+      }
 
       PopulateCoverageReport(report, program, cache);
 
@@ -310,6 +315,17 @@ namespace DafnyTestGeneration {
           "proven reachable (do you have a false assumption in the program?)");
         SetNonZeroExitCode = true;
       }
+    }
+    
+    /// <summary>
+    /// Return true iff the program has no elements that are not wrapped in a module
+    /// (so all elements can be imported provided the export sets allow it)
+    /// </summary>
+    private static bool CheckIsWrappedInAModule(Program program) {
+      if (program.DefaultModuleDef.Children.OfType<ClassLikeDecl>().Any() || program.DefaultModuleDef.Children.OfType<DefaultClassDecl>().Any(decl => decl.Children.Any())) {
+        return false;
+      }
+      return true;
     }
     
     /// <summary>
