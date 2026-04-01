@@ -409,14 +409,18 @@ namespace DafnyTestGeneration {
               }
             }
           }
-
+          
           if (combinedAndExpr != null) {
-            var newRequires = new AttributedExpression(combinedAndExpr, null, null);
+            var assumeStmt = new AssumeStmt(token, combinedAndExpr, null);
 
             if (entryPoint is Method method) {
-              method.Req.Add(newRequires);
+              if (method.Body != null) {
+                method.Body.Body.Insert(0, assumeStmt);
+              } else {
+                method.SetBody(new BlockStmt(token, new List<Statement> { assumeStmt }));
+              }
             } else if (entryPoint is Function function) {
-              function.Req.Add(newRequires);
+              function.Body = new StmtExpr(token, assumeStmt, function.Body);
             }
           }
         }
