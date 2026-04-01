@@ -53,7 +53,7 @@ public class FirstPass {
       return false;
     }
     typesConsidered = [];
-    CheckHasTestEntry(program);
+    CheckHasTestEntryOrFailedVerification(program);
     CheckInlinedDeclarationsAreReachable(program);
     CheckInlineAttributes(program);
     CheckInputTypesAreSupported(program);
@@ -307,10 +307,10 @@ public class FirstPass {
   /// <summary>
   /// Return true if the program has at least one method/function annotated with {:testEntry}
   /// </summary>
-  private bool CheckHasTestEntry(Program program) {
-    if (!Utils.ProgramHasAttribute(program, TestGenerationOptions.TestEntryAttribute)) {
+  private bool CheckHasTestEntryOrFailedVerification(Program program) {
+    if (!Utils.ProgramHasAttribute(program, TestGenerationOptions.TestEntryAttribute) && program.Options.TestGenOptions.FailedVerification.Count == 0) {
       diagnostics.Add(new DafnyDiagnostic(MessageSource.TestGeneration, NoTestEntryError, program.Origin.ReportingRange,
-        [$"Cannot find a method or function annotated with {{:{TestGenerationOptions.TestEntryAttribute}}}"],
+        [$"Cannot find a method or function annotated with {{:{TestGenerationOptions.TestEntryAttribute}}}, or whose verification fails"],
         ErrorLevel.Error, new List<DafnyRelatedInformation>()));
       return false;
     }

@@ -199,6 +199,37 @@ namespace DafnyTestGeneration {
       return allInlinedDeclarations;
     }
     
+    public static IEnumerable<MemberDecl> AllMemberDeclarations(TopLevelDecl decl) {
+      HashSet<MemberDecl> allInlinedDeclarations = [];
+      if (decl is LiteralModuleDecl moduleDecl) {
+        foreach (var child in moduleDecl.ModuleDef.Children.OfType<TopLevelDecl>()) {
+          allInlinedDeclarations.UnionWith(AllMemberDeclarations(child));
+        }
+      }
+      if (decl is TopLevelDeclWithMembers withMembers) {
+        foreach (var memberDecl in withMembers.Members) {
+          allInlinedDeclarations.Add(memberDecl);
+        }
+      }
+      return allInlinedDeclarations;
+    }
+
+    public static async Task<Program> GetFreshProgram(Program program) {
+      await using var stringWriter = new StringWriter();
+      var printer = new Printer(stringWriter, program.Options);
+      printer.PrintProgram(program, true);
+      string code = stringWriter.ToString();
+
+      Program freshProgram = await Utils.Parse(
+        new BatchErrorReporter(program.Options),
+        code,
+        false,
+        new Uri(program.FullName)
+      );
+      
+      return freshProgram;
+    }
+    
     /// <summary>
     /// Creates a list of expressions separated by ORs
     /// </summary>

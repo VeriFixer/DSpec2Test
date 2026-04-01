@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using Bpl = Microsoft.Boogie;
 
@@ -18,5 +19,7 @@ namespace Microsoft.Dafny {
     public bool ForcePrune = false;
     public string CoverageReport = null;
     public const uint DefaultTimeLimit = 20;
+
+    public HashSet<String> FailedVerification = [];
   }
 }

@@ -266,6 +266,7 @@ namespace DafnyTestGeneration {
       }
       SetNonZeroExitCode = firstPass.NonZeroExitCode;
       var program = await Utils.Parse(new BatchErrorReporter(options), code, false, uri);
+      program = await AddTestEntryAttribute(program);
       var rawName = Regex.Replace(uri?.AbsolutePath ?? "", "[^a-zA-Z0-9_]", "");
       var isWrappedInAModule  = CheckIsWrappedInAModule(program);
 
@@ -420,20 +421,27 @@ namespace DafnyTestGeneration {
           }
         }
       }
+      return await Utils.GetFreshProgram(program);
+    }
 
-      await using var stringWriter = new StringWriter();
-      var printer = new Printer(stringWriter, program.Options);
-      printer.PrintProgram(program, true);
-      string code = stringWriter.ToString();
-
-      Program freshProgram = await Utils.Parse(
-        new BatchErrorReporter(program.Options),
-        code,
-        false,
-        new Uri(program.FullName)
-      );
-
-      return freshProgram;
+    private async static Task<Program> AddTestEntryAttribute(Program program) {
+      var failedMembers = program.Options.TestGenOptions.FailedVerification;
+      
+      foreach (var member in Utils.AllMemberDeclarations(program.DefaultModule)) {
+        bool isFailedMember = failedMembers.Any(f => 
+          f == member.Name || f.EndsWith("." + member.Name));
+        
+        if (member is Method or Function) {
+          if (isFailedMember && !member.HasUserAttribute(TestGenerationOptions.TestEntryAttribute, out _)) {
+            member.Attributes = new Attributes(
+              TestGenerationOptions.TestEntryAttribute,
+              new List<Expression>(),
+              member.Attributes
+            );
+          }
+        }
+      }
+      return await Utils.GetFreshProgram(program);
     }
   }
 }

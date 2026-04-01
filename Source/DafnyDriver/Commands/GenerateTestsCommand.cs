@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DafnyCore;
 using DafnyTestGeneration;
 using Microsoft.Boogie;
+using DafnyDriver.Commands;
 
 // Copyright by the contributors to the Dafny Project
 // SPDX-License-Identifier: MIT
@@ -90,6 +91,8 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
       return ExitValue.PREPROCESSING_ERROR;
     }
 
+    options.TestGenOptions.FailedVerification = await GetUnverified(options);
+
     var dafnyFileNames = DafnyFile.FileNames(dafnyFiles);
 
     var uri = new Uri(dafnyFileNames[0]);
@@ -111,6 +114,49 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
       exitValue = ExitValue.DAFNY_ERROR;
     }
     return exitValue;
+  }
+  
+  public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
+    HashSet<String> unverified = [];
+    
+    if (options.Get(CommonOptionBag.VerificationCoverageReport) != null) {
+      options.TrackVerificationCoverage = true;
+    }
+
+    var compilation = CliCompilation.Create(options);
+    compilation.Start();
+
+    var resolution = await compilation.Resolution;
+
+    if (resolution != null) {
+      var tcs = new TaskCompletionSource<bool>();
+      var verification = compilation.VerifyAllLazily().ToObservable();
+
+      verification.Subscribe(
+        onNext: result => {
+          bool verified = true;
+          
+          foreach (var taskResult in result.Results) {
+            var outcome = taskResult.Result.Outcome;
+            if (outcome != SolverOutcome.Valid && outcome != SolverOutcome.Bounded) {
+              verified = false;
+              break;
+            }
+          }
+
+          if (!verified) {
+            unverified.Add(result.CanVerify.FullDafnyName);
+          }
+          
+        },
+        onError: ex => tcs.SetException(ex),
+        onCompleted: () => tcs.SetResult(true)
+        );
+      
+      await tcs.Task; 
+    }
+
+    return unverified;
   }
 
   internal static void PostProcess(DafnyOptions dafnyOptions, TestGenerationOptions.Modes mode) {
