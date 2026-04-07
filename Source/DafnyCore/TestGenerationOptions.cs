@@ -11,6 +11,7 @@ namespace Microsoft.Dafny {
     public bool WarnDeadCode = false;
 
     public bool IgnoreWarnings = false;
+    public bool PassingFailing = false;
     public enum Modes { None, Block, InlinedBlock, Path, Spec };
     public Modes Mode = Modes.None;
     public uint SeqLengthLimit = 0;

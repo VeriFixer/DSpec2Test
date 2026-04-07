@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.CommandLine;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using DafnyCore;
 using DafnyTestGeneration;
@@ -20,6 +21,7 @@ static class GenerateTestsCommand {
     get {
       return new Option[] {
         IgnoreWarnings,
+        PassingFailing,
         LoopUnroll,
         SequenceLengthLimit,
         TestCount,
@@ -103,8 +105,31 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
         await options.OutputWriter.Status(line);
       }
     } else {
+      var header = new StringBuilder();
+      var passingTests = new List<String>();
+      var failingTests = new List<String>();
+      
       await foreach (var line in TestGenerator.GetTestClassForProgram(source, uri, options, coverageReport)) {
-        await options.OutputWriter.Status(line);
+        if (options.TestGenOptions.PassingFailing) {
+          if (line.StartsWith("include")) {
+            header.AppendLine(line + "\n");
+          } else if (line.Trim().StartsWith("method")) {
+            bool success = await RunSingleTest(header.ToString(), line, options);
+            if (success) {
+              passingTests.Add(line);
+            } else {
+              failingTests.Add(line);
+            }
+          }
+        } else {
+          await options.OutputWriter.Status(line);
+        }
+      }
+
+      if (options.TestGenOptions.PassingFailing) {
+        foreach (var line in TestGenerator.GetPassingFailingTests(header, passingTests, failingTests)) {
+          await options.OutputWriter.Status(line);
+        }
       }
     }
     if (options.TestGenOptions.CoverageReport != null) {
@@ -115,6 +140,56 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
     }
     return exitValue;
   }
+  
+
+private static async Task<bool> RunSingleTest(string header, string method, DafnyOptions baseOptions) {
+    var fullCode = header + method;
+    var tempFile = Path.GetTempFileName() + ".dfy";
+    await File.WriteAllTextAsync(tempFile, fullCode);
+
+    var consoleCapture = new StringWriter();
+    var originalOut = Console.Out;
+    var originalError = Console.Error;
+
+    try {
+        Console.SetOut(consoleCapture);
+        Console.SetError(consoleCapture);
+
+        var testOptions = new DafnyOptions(baseOptions) {
+          ErrorWriter = consoleCapture
+        };
+
+        ((CommandLineOptions)testOptions).OutputWriter = consoleCapture;
+        
+        testOptions.Verbose = false;
+        testOptions.Compile = true;
+        testOptions.RunAfterCompile = true;
+        testOptions.DafnyVerify = false; 
+        testOptions.ForceCompile = true; 
+        testOptions.Set(RunAllTestsMainMethod.IncludeTestRunner, true);
+        testOptions.MainMethod = RunAllTestsMainMethod.SyntheticTestMainName;
+        testOptions.CliRootSourceUris.Add(new Uri(Path.GetFullPath(tempFile)));
+        
+        await SynchronousCliCompilation.Run(testOptions);
+        
+        var output = consoleCapture.ToString();
+        
+        bool passed = !output.Contains("FAILED") && 
+                      !output.Contains("expectation violation") && 
+                      !output.Contains("Error:");
+                      
+        return passed;
+    }
+    finally {
+        Console.SetOut(originalOut);
+        Console.SetError(originalError);
+        
+        if (File.Exists(tempFile)) {
+            File.Delete(tempFile);
+        }
+    }
+}
+  
   
   public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     HashSet<String> unverified = [];
@@ -176,6 +251,9 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
 
   public static readonly Option<bool> IgnoreWarnings = new("--ignore-warnings",
     "Ignore warnings when generating tests.");
+  
+  public static readonly Option<bool> PassingFailing = new("--passing-failing",
+    "Split generated tests into passing and failing.");
 
   public static readonly Option<uint> SequenceLengthLimit = new("--length-limit",
     "Add an axiom that sets the length of all sequences to be no greater than <n>. 0 (default) indicates no limit.");
@@ -203,6 +281,9 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
     DafnyOptions.RegisterLegacyBinding(IgnoreWarnings, (options, value) => {
       options.TestGenOptions.IgnoreWarnings = value;
     });
+    DafnyOptions.RegisterLegacyBinding(PassingFailing, (options, value) => {
+      options.TestGenOptions.PassingFailing = value;
+    });
     DafnyOptions.RegisterLegacyBinding(LoopUnroll, (options, value) => {
       options.LoopUnrollCount = value;
     });
@@ -229,5 +310,6 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
     OptionRegistry.RegisterOption(ExpectedCoverageReport, OptionScope.Cli);
     OptionRegistry.RegisterOption(ForcePrune, OptionScope.Cli);
     OptionRegistry.RegisterOption(IgnoreWarnings, OptionScope.Cli);
+    OptionRegistry.RegisterOption(PassingFailing, OptionScope.Cli);
   }
 }

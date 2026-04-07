@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.Dafny;
@@ -17,6 +18,8 @@ namespace DafnyTestGeneration {
 
     public static bool SetNonZeroExitCode = false;
     private static readonly Random Rnd = new Random();
+    private const string PassingMethodName = "Passing";
+    private const string FailingMethodName = "Failing";
 
     /// <summary>
     /// This method returns each capturedState that is unreachable, one by one,
@@ -316,6 +319,36 @@ namespace DafnyTestGeneration {
           "proven reachable (do you have a false assumption in the program?)");
         SetNonZeroExitCode = true;
       }
+    }
+    
+    public static IEnumerable<string> GetPassingFailingTests(StringBuilder header, List<String> passingTests, List<String> failingTests) {
+      yield return header.ToString();
+      yield return $"method {PassingMethodName}() {{";
+
+      foreach (var test in passingTests) {
+        int firstBrace = test.IndexOf('{');
+        int startIndex = test.IndexOf('{', firstBrace + 1);
+        int endIndex = test.LastIndexOf('}');
+    
+        yield return test.Substring(startIndex, endIndex - startIndex + 1).Trim() + "\n";
+      }
+  
+      yield return "}\n\n" +
+                   $"method {FailingMethodName}() {{";
+  
+      foreach (var test in failingTests) {
+        int firstBrace = test.IndexOf('{');
+        int startIndex = test.IndexOf('{', firstBrace + 1);
+        int endIndex = test.LastIndexOf('}');
+    
+        yield return test.Substring(startIndex, endIndex - startIndex + 1).Trim() + "\n";
+      }
+  
+      yield return "}\n\n" +
+                   "method Main()\n{" +
+                   $"\n  {PassingMethodName}();" +
+                   $"\n  {FailingMethodName}();" +
+                   "\n}";
     }
     
     /// <summary>
