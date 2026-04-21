@@ -17,7 +17,6 @@ namespace DafnyTestGeneration {
   public static class TestGenerator {
 
     public static bool SetNonZeroExitCode = false;
-    private static readonly Random Rnd = new Random();
     private const string PassingMethodName = "Passing";
     private const string FailingMethodName = "Failing";
 
@@ -90,7 +89,7 @@ namespace DafnyTestGeneration {
     /// <summary>
     /// Dafny to Boogie translator discards any methods/functions that do not have any verification goals
     /// By adding a trivial assertions in all {:testEntry}-annotated methods and function we ensure that
-    /// they are not discarded during translation and we can still generate tests for them.
+    /// they are not discarded during translation, and we can still generate tests for them.
     /// </summary>
     private static void AddVerificationGoalsToEntryPoints(Program program) {
       foreach (var entryPoint in Utils.AllMemberDeclarationsWithAttribute(program.DefaultModule,
@@ -208,8 +207,8 @@ namespace DafnyTestGeneration {
         uint testCount = options.TestGenOptions.TestCount;
         List<TestMethod> testMethods = new List<TestMethod>();
         
-        program = await PrepareProgram(program);
-
+        PrepareProgram(program);
+        
         for (int i = 0; i < testCount; i++) {
           testMethods.Clear();
           
@@ -321,6 +320,10 @@ namespace DafnyTestGeneration {
       }
     }
     
+    /// <summary>
+    /// Return a new Dafny file (list of lines) with tests for the given input Dafny file,
+    /// split into passing and failing tests.
+    /// </summary>
     public static IEnumerable<string> GetPassingFailingTests(StringBuilder header, List<String> passingTests, List<String> failingTests) {
       yield return header.ToString();
       yield return $"method {PassingMethodName}() {{";
@@ -363,38 +366,30 @@ namespace DafnyTestGeneration {
     }
     
     /// <summary>
-    /// Prepares the input program for the Spec test generation mode, by negating `requires` statements
-    /// composed by ORs (e.g. transforming "requires x > 10 || x < -10" into "requires !(x <= 10 && x >= -10)").
-    /// It also deletes the implementation of the methods that will be tested, as this information is not useful
-    /// for specification-based test generation.
-    /// </summary>
-    private static async Task<Program> PrepareProgram(Program program) {
-      foreach (var entryPoint in Utils.AllMemberDeclarationsWithAttribute(program.DefaultModule,
-                 TestGenerationOptions.TestEntryAttribute)) {
-
-        if (entryPoint is Method method) {
-          for (int i = 0; i < method.Req.Count; i++) {
-            method.Req[i] = Utils.NegateOrs(method.Req[i]); 
-          }
-
-          if (method.Body != null) {
-            method.SetBody(new BlockStmt(method.Body.StartToken, new List<Statement>()));
-          }
-        } else if (entryPoint is Function function) {
-          for (int i = 0; i < function.Req.Count; i++) {
-            function.Req[i] = Utils.NegateOrs(function.Req[i]);
-          }
-          function.Body = null;
-        }
-      }
-      return program;
-    }
-    
-    /// <summary>
     /// Updates the program for the Spec test generation mode, given the input parameters previously generated
     /// for each testMethod.
     /// </summary>
     private static async Task<Program> UpdateProgram(Program program, List<TestMethod> testMethods) {
+      
+      // Delete method duplicates of functions
+      foreach (var module in program.Modules()) {
+        foreach (var decl in module.TopLevelDecls.OfType<TopLevelDeclWithMembers>()) {
+      
+          var functionNames = new HashSet<string>();
+
+          foreach (var func in decl.Members.OfType<Function>()) {
+            functionNames.Add(func.Name);
+            func.ByMethodBody = null;
+            func.ByMethodDecl = null;
+            func.ByMethodTok = null;
+          }
+          
+          decl.Members.RemoveAll(member => 
+            member is Method method && functionNames.Contains(method.Name)
+          );
+        }
+      }
+      
       foreach (var testMethod in testMethods) {
         foreach (var entryPoint in Utils.AllMemberDeclarationsWithAttribute(program.DefaultModule,
                  TestGenerationOptions.TestEntryAttribute)) {
@@ -418,50 +413,35 @@ namespace DafnyTestGeneration {
               break;
             default: return program;
           }
-
-          var token = entryPoint.StartToken;
-          Expression combinedAndExpr = null;
-          BinaryExpr equalityExpr = null;
-          var exprLength = argFormals.Count;
-
+          
+          
           foreach (var formal in argFormals) {
             if (testMethod.ArgExpressions.TryGetValue(formal.Name, out var argExpr)) {
-              var identifier = new IdentifierExpr(token, formal.Name);
-              equalityExpr = new BinaryExpr(token, BinaryExpr.Opcode.Neq, identifier, argExpr);
-
-              var random = Rnd.Next(0, 2);
-
-              if (exprLength == 1 || random == 0) {
-                if (combinedAndExpr == null) {
-                  combinedAndExpr = equalityExpr;
+              var nameSegment = new NameSegment(new Token(), formal.Name, null);
+              var equalityExpr = new BinaryExpr(new Token(), BinaryExpr.Opcode.Neq, nameSegment, argExpr);
+              var axiomAttr = new Attributes(Attributes.AxiomAttributeName, [], null);
+              var assumeStmt = new AssumeStmt(new Token(), equalityExpr, axiomAttr);
+              if (entryPoint is Method method) {
+                if (method.Body != null) {
+                  method.Body.Body.Insert(0, assumeStmt);
                 } else {
-                  combinedAndExpr = new BinaryExpr(token, BinaryExpr.Opcode.And, combinedAndExpr, equalityExpr);
+                  method.SetBody(new BlockStmt(new Token(), [assumeStmt]));
                 }
-              } else {
-                exprLength--;
+              } else if (entryPoint is Function function) {
+                function.Body = new StmtExpr(new Token(), assumeStmt, function.Body);
               }
             }
           }
-          
-          if (combinedAndExpr != null) {
-            var assumeStmt = new AssumeStmt(token, combinedAndExpr, null);
-
-            if (entryPoint is Method method) {
-              if (method.Body != null) {
-                method.Body.Body.Insert(0, assumeStmt);
-              } else {
-                method.SetBody(new BlockStmt(token, new List<Statement> { assumeStmt }));
-              }
-            } else if (entryPoint is Function function) {
-              function.Body = new StmtExpr(token, assumeStmt, function.Body);
-            }
-          }
+          break;
         }
       }
       return await Utils.GetFreshProgram(program);
     }
 
-    private async static Task<Program> AddTestEntryAttribute(Program program) {
+    /// <summary>
+    /// Adds {:testEntry} attribute to methods and functions that are known to have failed the verification step.
+    /// </summary>
+    private static async Task<Program> AddTestEntryAttribute(Program program) {
       var failedMembers = program.Options.TestGenOptions.FailedVerification;
       
       foreach (var member in Utils.AllMemberDeclarations(program.DefaultModule)) {
@@ -472,13 +452,27 @@ namespace DafnyTestGeneration {
           if (isFailedMember && !member.HasUserAttribute(TestGenerationOptions.TestEntryAttribute, out _)) {
             member.Attributes = new Attributes(
               TestGenerationOptions.TestEntryAttribute,
-              new List<Expression>(),
+              [],
               member.Attributes
             );
           }
         }
       }
       return await Utils.GetFreshProgram(program);
+    }
+    
+    /// <summary>
+    /// Deletes the implementation of the methods that will be tested, as this information is not useful
+    /// for specification-based test generation, and can be conflicting with the following steps.
+    /// </summary>
+    private static void PrepareProgram(Program program) {
+      foreach (var entryPoint in Utils.AllMemberDeclarationsWithAttribute(program.DefaultModule,
+                 TestGenerationOptions.TestEntryAttribute)) {
+
+        if (entryPoint is Method { Body: not null } method) {
+          method.SetBody(new BlockStmt(method.Body.Origin, []));
+        }
+      }
     }
   }
 }

@@ -12,6 +12,7 @@ using MapType = Microsoft.Dafny.MapType;
 using Token = Microsoft.Dafny.Token;
 using Type = Microsoft.Dafny.Type;
 using IdentifierExpr =  Microsoft.Dafny.IdentifierExpr;
+using LiteralExpr = Microsoft.Dafny.LiteralExpr;
 
 namespace DafnyTestGeneration {
 
@@ -768,7 +769,7 @@ namespace DafnyTestGeneration {
         }
         if (printOutput[i] == "") {
           getDefaultValueParams = [];
-          result[paramName] = new IdentifierExpr(Token.NoToken, GetDefaultValue(type, type));
+          result[paramName] = new IdentifierExpr(new Token(), GetDefaultValue(type, type));
           continue;
         }
 
@@ -780,7 +781,9 @@ namespace DafnyTestGeneration {
           } else {
             baseValue = printOutput[i];
           }
-          result[paramName] = new IdentifierExpr(Token.NoToken, GetPrimitiveAsType(baseValue, type, type));
+
+          Expression parsedValue = GetParsedValue(GetPrimitiveAsType(baseValue, type, type), type);
+          result[paramName] = parsedValue;
           continue;
         }
 
@@ -800,7 +803,7 @@ namespace DafnyTestGeneration {
     /// </summary>
     private Expression ExtractExpression(PartialValue variable, Type/*?*/ asType) {
       if (variable == null) {
-        return new IdentifierExpr(Token.NoToken, asType != null ? GetDefaultValue(asType) : "null");
+        return new IdentifierExpr(new Token(), asType != null ? GetDefaultValue(asType) : "null");
       }
 
       if (asType != null) {
@@ -811,7 +814,7 @@ namespace DafnyTestGeneration {
       }
 
       if (mockedVarId.ContainsKey(variable)) {
-        return new IdentifierExpr(Token.NoToken, mockedVarId[variable]);
+        return new IdentifierExpr(new Token(), mockedVarId[variable]);
       }
 
       var variableType = DafnyModelTypeUtils.GetInDafnyFormat(
@@ -822,24 +825,30 @@ namespace DafnyTestGeneration {
         type => new UserDefinedType(type.Origin, type.Name[8..], type.TypeArgs));
       if (variableType.ToString() == defaultType.ToString() &&
           variableType.ToString() != variable.Type.ToString()) {
-        return new IdentifierExpr(Token.NoToken, GetADefaultTypeValue(variable));
+        return new IdentifierExpr(new Token(), GetADefaultTypeValue(variable));
       }
 
       switch (variableType) {
         case IntType:
-        case RealType:
-        case BoolType:
-        case CharType:
+        case BigOrdinalType:
         case BitvectorType:
-          return new IdentifierExpr(Token.NoToken, GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType));
+          return new LiteralExpr(new Token(), System.Numerics.BigInteger.Parse(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
+        case RealType:
+          return new LiteralExpr(new Token(), Microsoft.BaseTypes.BigDec.FromString(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType))); 
+        case BoolType:
+          return new LiteralExpr(new Token(), bool.Parse(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
+        
+        case CharType:
+          var varLit = StripString(variable.PrimitiveLiteral);
+          return new StringLiteralExpr(new Token(), GetPrimitiveAsType(varLit, variableType, asType) , true);
         
         case SeqType seqType:
           var asBasicSeqType = GetBasicType(asType, type => type is SeqType) as SeqType;
           if (variable?.Cardinality() == -1) {
             if (seqType.Arg is CharType) {
-              return new StringLiteralExpr(Token.NoToken, "", false);
+              return new StringLiteralExpr(new Token(), "", true);
             }
-            return new SeqDisplayExpr(Token.NoToken, new List<Expression>());
+            return new SeqDisplayExpr(new Token(), new List<Expression>());
           }
 
           var seqElements = new List<Expression>();
@@ -847,16 +856,17 @@ namespace DafnyTestGeneration {
             var element = variable?[i];
             if (element == null) {
               getDefaultValueParams = [];
-              seqElements.Add(new IdentifierExpr(Token.NoToken, GetDefaultValue(seqType.Arg, asBasicSeqType?.TypeArgs?.FirstOrDefault((Type/*?*/)null))));
+              seqElements.Add(new IdentifierExpr(new Token(), GetDefaultValue(seqType.Arg, asBasicSeqType?.TypeArgs?.FirstOrDefault((Type/*?*/)null))));
               continue;
             }
             seqElements.Add(ExtractExpression(element, asBasicSeqType?.TypeArgs?.FirstOrDefault((Type/*?*/)null)));
           }
 
           if (seqType.Arg is CharType || asBasicSeqType?.TypeArgs?.FirstOrDefault((Type/*?*/)null) is CharType) {
-             return new IdentifierExpr(Token.NoToken, ExtractVariable(variable, asType));
+            var charVar = StripString(ExtractVariable(variable, asType));
+            return new StringLiteralExpr(new Token(), charVar, true);
           }
-          return new SeqDisplayExpr(Token.NoToken, seqElements);
+          return new SeqDisplayExpr(new Token(), seqElements);
 
         case SetType:
           var asBasicSetType = GetBasicType(asType, type => type is SetType) as SetType;
@@ -864,7 +874,7 @@ namespace DafnyTestGeneration {
           foreach (var element in variable.SetElements()) {
             setElements.Add(ExtractExpression(element, asBasicSetType?.TypeArgs?.FirstOrDefault((Type/*?*/)null)));
           }
-          return new SetDisplayExpr(Token.NoToken, true, setElements);
+          return new SetDisplayExpr(new Token(), true, setElements);
 
         case MapType:
           var asBasicMapType = GetBasicType(asType, type => type is MapType) as MapType;
@@ -876,13 +886,43 @@ namespace DafnyTestGeneration {
               ExtractExpression(mapping.Value, asTypeTypeArgs?[1])
             ));
           }
-          return new MapDisplayExpr(Token.NoToken, true, mapItems);
+          return new MapDisplayExpr(new Token(), true, mapItems);
         default:
           var varName = ExtractVariable(variable, asType);
-          return new IdentifierExpr(Token.NoToken, varName);
+          return new IdentifierExpr(new Token(), varName);
       }
     }
-    
+
+    /// <summary>
+    /// Strips string off of double quotes.
+    /// </summary>
+    private static string StripString(string str) {
+      var returnString = str;
+      if ((returnString.StartsWith("'") && returnString.EndsWith("'")) || (returnString.StartsWith('"') && returnString.EndsWith('"')) ) {
+        returnString = returnString.Substring(1, returnString.Length - 2);
+      }
+      return returnString;
+    }
+
+    /// <summary>
+    /// Returns the corresponding expression, based on the value's type.
+    /// </summary>
+    private static Expression GetParsedValue(string value, Type type) {
+      if (type.IsBoolType) {
+        return new LiteralExpr(new Token(), bool.Parse(value));
+      }
+      if (type.IsIntegerType || type.IsBigOrdinalType || type.IsBitVectorType) {
+        return new LiteralExpr(new Token(), System.Numerics.BigInteger.Parse(value));
+      }
+      if (type.IsRealType) {
+        return new LiteralExpr(new Token(), Microsoft.BaseTypes.BigDec.FromString(value)); 
+      }
+      if (type.IsStringType) {
+        return new StringLiteralExpr(new Token(), StripString(value), true);
+      }
+
+      return new IdentifierExpr(new Token(), value);
+    }
     
   }
 }

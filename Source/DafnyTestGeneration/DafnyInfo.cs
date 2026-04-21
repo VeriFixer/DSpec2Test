@@ -556,6 +556,12 @@ namespace DafnyTestGeneration {
               }
               return base.CloneExpr(expr);
             }
+          case QuantifierExpr quantifierExpr: {
+            if (quantifierExpr.Bounds == null || quantifierExpr.Bounds.Count == 0) {
+              isValidExpression = false;
+            }
+            return base.CloneExpr(expr);
+          }
           case OldExpr or UnchangedExpr or FreshExpr or LetExpr or
             LetOrFailExpr or ComprehensionExpr or WildcardExpr or StmtExpr:
             isValidExpression = false;
