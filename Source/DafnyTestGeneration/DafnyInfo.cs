@@ -550,9 +550,13 @@ namespace DafnyTestGeneration {
                 return base.CloneExpr(expr);
               }
               if (memberSelectExpr.Obj is StaticReceiverExpr staticReceiverExpr) {
-                return new IdentifierExpr(expr.Origin,
-                  ((staticReceiverExpr.Type) as UserDefinedType).ResolvedClass
-                  .FullDafnyName + "." + memberSelectExpr.MemberName);
+                var moduleName = ((staticReceiverExpr.Type) as UserDefinedType).ResolvedClass.FullDafnyName;
+                if (moduleName.Equals("")) {
+                  return new IdentifierExpr(expr.Origin, memberSelectExpr.MemberName);
+                } else {
+                  return new IdentifierExpr(expr.Origin,
+                    moduleName + "." + memberSelectExpr.MemberName);
+                }
               }
               return base.CloneExpr(expr);
             }
