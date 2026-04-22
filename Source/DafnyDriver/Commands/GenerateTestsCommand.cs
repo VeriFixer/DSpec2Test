@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.CommandLine;
 using System.IO;
@@ -9,6 +10,8 @@ using DafnyCore;
 using DafnyTestGeneration;
 using Microsoft.Boogie;
 using DafnyDriver.Commands;
+using System.Diagnostics;
+using System.Reflection;
 
 // Copyright by the contributors to the Dafny Project
 // SPDX-License-Identifier: MIT
@@ -106,28 +109,34 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
       }
     } else {
       var header = new StringBuilder();
-      var passingTests = new List<String>();
-      var failingTests = new List<String>();
-      
+      var testMethods = new List<string>();
+
       await foreach (var line in TestGenerator.GetTestClassForProgram(source, uri, options, coverageReport)) {
         if (options.TestGenOptions.PassingFailing) {
           if (line.StartsWith("include")) {
             header.AppendLine(line + "\n");
           } else if (line.Trim().StartsWith("method")) {
-            bool success = await RunSingleTest(header.ToString(), line, options);
-            if (success) {
-              passingTests.Add(line);
-            } else {
-              failingTests.Add(line);
-            }
+            testMethods.Add(line);
           }
         } else {
           await options.OutputWriter.Status(line);
         }
       }
 
-      if (options.TestGenOptions.PassingFailing) {
-        foreach (var line in TestGenerator.GetPassingFailingTests(header, passingTests, failingTests)) {
+      if (options.TestGenOptions.PassingFailing && testMethods.Count > 0) {
+        var passingTests = new ConcurrentBag<string>();
+        var failingTests = new ConcurrentBag<string>();
+        
+        await Parallel.ForEachAsync(testMethods, async (method, _) => {
+          bool success = await RunSingleTest(header.ToString(), method);
+          if (success) {
+            passingTests.Add(method);
+          } else {
+            failingTests.Add(method);
+          }
+        });
+
+        foreach (var line in TestGenerator.GetPassingFailingTests(header, passingTests.ToList(), failingTests.ToList())) {
           await options.OutputWriter.Status(line);
         }
       }
@@ -142,57 +151,62 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
   }
   
 
-private static async Task<bool> RunSingleTest(string header, string method, DafnyOptions baseOptions) {
+  private static async Task<bool> RunSingleTest(string header, string method) {
     var fullCode = header + method;
     var tempFile = Path.GetTempFileName() + ".dfy";
     await File.WriteAllTextAsync(tempFile, fullCode);
 
-    var consoleCapture = new StringWriter();
-    var originalOut = Console.Out;
-    var originalError = Console.Error;
-
     try {
-        Console.SetOut(consoleCapture);
-        Console.SetError(consoleCapture);
+      string fileName = Environment.ProcessPath ?? "dafny";
+      string arguments;
+      string entryAssembly = Assembly.GetEntryAssembly()?.Location;
 
-        var testOptions = new DafnyOptions(baseOptions) {
-          ErrorWriter = consoleCapture
-        };
+      if (Path.GetFileNameWithoutExtension(fileName).Equals("dotnet", StringComparison.OrdinalIgnoreCase) &&
+          !string.IsNullOrEmpty(entryAssembly)) {
+        arguments = $"\"{entryAssembly}\" test --no-verify \"{tempFile}\"";
+      } else {
+        arguments = $"test --no-verify \"{tempFile}\"";
+      }
 
-        ((CommandLineOptions)testOptions).OutputWriter = consoleCapture;
-        
-        testOptions.Verbose = false;
-        testOptions.Compile = true;
-        testOptions.RunAfterCompile = true;
-        testOptions.DafnyVerify = false; 
-        testOptions.ForceCompile = true; 
-        testOptions.Set(RunAllTestsMainMethod.IncludeTestRunner, true);
-        testOptions.MainMethod = RunAllTestsMainMethod.SyntheticTestMainName;
-        testOptions.CliRootSourceUris.Add(new Uri(Path.GetFullPath(tempFile)));
-        
-        await SynchronousCliCompilation.Run(testOptions);
-        
-        var output = consoleCapture.ToString();
-        
-        bool passed = !output.Contains("FAILED") && 
-                      !output.Contains("expectation violation") && 
-                      !output.Contains("Error:");
-                      
-        return passed;
+      var process = new Process {
+        StartInfo = new ProcessStartInfo {
+          FileName = fileName,
+          Arguments = arguments,
+          RedirectStandardOutput = true,
+          RedirectStandardError = true,
+          UseShellExecute = false,
+          CreateNoWindow = true
+        }
+      };
+
+      process.Start();
+
+      var outputTask = process.StandardOutput.ReadToEndAsync();
+      var errorTask = process.StandardError.ReadToEndAsync();
+
+      await process.WaitForExitAsync();
+
+      var output = await outputTask;
+      var error = await errorTask;
+      var fullOutput = output + "\n" + error;
+      
+      return process.ExitCode == 0 &&
+             !fullOutput.Contains("FAILED") &&
+             !fullOutput.Contains("expectation violation") &&
+             !fullOutput.Contains("Error");
     }
     finally {
-        Console.SetOut(originalOut);
-        Console.SetError(originalError);
-        
-        if (File.Exists(tempFile)) {
-            File.Delete(tempFile);
-        }
+      if (File.Exists(tempFile)) {
+        File.Delete(tempFile);
+      }
     }
-}
-  
-  
-  public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
+  }
+
+
+
+public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     HashSet<String> unverified = [];
+    object unverifiedLock = new object();
     
     if (options.Get(CommonOptionBag.VerificationCoverageReport) != null) {
       options.TrackVerificationCoverage = true;
@@ -220,7 +234,9 @@ private static async Task<bool> RunSingleTest(string header, string method, Dafn
           }
 
           if (!verified) {
-            unverified.Add(result.CanVerify.FullDafnyName);
+            lock (unverifiedLock) {
+              unverified.Add(result.CanVerify.FullDafnyName);
+            }
           }
           
         },
