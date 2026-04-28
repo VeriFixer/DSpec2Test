@@ -12,6 +12,7 @@ using Microsoft.Boogie;
 using DafnyDriver.Commands;
 using System.Diagnostics;
 using System.Reflection;
+using System.Globalization;
 
 // Copyright by the contributors to the Dafny Project
 // SPDX-License-Identifier: MIT
@@ -65,6 +66,9 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
     foreach (var option in Options) {
       result.AddOption(option);
     }
+    
+    CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+    CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
     DafnyNewCli.SetHandlerUsingDafnyOptionsContinuation(result, async (options, context) => {
       var mode = context.ParseResult.GetValueForArgument(modeArgument) switch {
