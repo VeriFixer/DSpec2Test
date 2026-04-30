@@ -932,6 +932,7 @@ namespace DafnyTestGeneration {
             if (mapKey == null || mapValue == null) {
               return null;
             }
+
             mapItems.Add(new MapDisplayEntry(
               ExtractExpression(mapping.Key, asTypeTypeArgs?[0]),
               ExtractExpression(mapping.Value, asTypeTypeArgs?[1])
@@ -952,63 +953,7 @@ namespace DafnyTestGeneration {
           }
 
           return new DatatypeValue(new Token(), tupleType.Name, ctorName, tupleElements);
-        
-        /*
-        case ArrowType arrowType:
-          var asBasicArrowType = GetBasicType(asType, type => type is ArrowType) as ArrowType;
-          return new IdentifierExpr(new Token(), GetFunctionOfType(asBasicArrowType ?? arrowType));
-
-        case UserDefinedType unknown when unknown.Name == DafnyModel.UnknownType.Name:
-          if (asType != null) {
-            return new IdentifierExpr(new Token(), GetDefaultValue(asType, asType));
-          }
-          break;
-
-        case UserDefinedType userDefinedType:
-          var basicType = GetBasicType(asType ?? userDefinedType,
-            type => type == null || type is not UserDefinedType definedType ||
-                    DafnyInfo.Datatypes.ContainsKey(definedType.Name)) as UserDefinedType;
-                    
-          if (basicType == null || !DafnyInfo.Datatypes.ContainsKey(basicType.Name)) {
-            return new IdentifierExpr(new Token(), GetClassTypeInstance(userDefinedType, asType, variable));
-          }
-
-          if (variable.DatatypeConstructorName() == "") {
-            getDefaultValueParams = [];
-            return new IdentifierExpr(new Token(), GetDefaultValue(userDefinedType, asType));
-          }
-          
-          var ctor = DafnyInfo.Datatypes[basicType.Name].Ctors.FirstOrDefault(c => c.Name == variable.DatatypeConstructorName(), null);
-          if (ctor == null) {
-            errorMessages.Add($"// Failed: Cannot find constructor {variable.DatatypeConstructorName()} for datatype {basicType}");
-            return new IdentifierExpr(new Token(), basicType.ToString());
-          }
-          
-          var fields = new List<ActualBinding>();
-          for (int i = 0; i < ctor.Destructors.Count; i++) {
-            var fieldName = ctor.Destructors[i].Name;
-            if (!variable.Fields().ContainsKey(fieldName)) {
-              fieldName = $"[{i}]";
-            }
-
-            if (!variable.Fields().ContainsKey(fieldName)) {
-              return new IdentifierExpr(new Token(), basicType.ToString());
-            }
-
-            var destructorType = Utils.CopyWithReplacements(
-              Utils.UseFullName(ctor.Destructors[i].Type),
-              ctor.EnclosingDatatype?.TypeArgs.ConvertAll(arg => arg.Name), basicType.TypeArgs);
-
-            var extractedExpr = ExtractExpression(variable.Fields()[fieldName], destructorType);
-            if (extractedExpr == null) {
-              return null;
-            }
-            fields.Add(new ActualBinding(null, extractedExpr));
-          }
-
-          return new DatatypeValue(new Token(), basicType.Name, variable.DatatypeConstructorName(), fields);*/
-        }
-
+      }
       return null;
     }
 

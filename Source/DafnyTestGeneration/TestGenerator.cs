@@ -19,6 +19,8 @@ namespace DafnyTestGeneration {
     public static bool SetNonZeroExitCode = false;
     private const string PassingMethodName = "Passing";
     private const string FailingMethodName = "Failing";
+    private static List<string> ignoreNames = [];
+    private static List<string> lengthNames = [];
 
     /// <summary>
     /// This method returns each capturedState that is unreachable, one by one,
@@ -416,9 +418,18 @@ namespace DafnyTestGeneration {
           
           
           foreach (var formal in argFormals) {
-            if (testMethod.ArgExpressions.TryGetValue(formal.Name, out var argExpr)) {
+            if (!ignoreNames.Contains(formal.Name) && testMethod.ArgExpressions.TryGetValue(formal.Name, out var argExpr) && argExpr != null) {
               var nameSegment = new NameSegment(new Token(), formal.Name, null);
-              var equalityExpr = new BinaryExpr(new Token(), BinaryExpr.Opcode.Neq, nameSegment, argExpr);
+              
+              BinaryExpr equalityExpr;
+              if (lengthNames.Contains(formal.Name)) {
+                var cardinality = new UnaryOpExpr(new Token(), UnaryOpExpr.Opcode.Cardinality, nameSegment);
+                var literalExpr = new LiteralExpr(new Token(), argExpr.Children.Count());
+                equalityExpr = new BinaryExpr(new Token(), BinaryExpr.Opcode.Neq, cardinality, literalExpr);
+              } else {
+                equalityExpr = new BinaryExpr(new Token(), BinaryExpr.Opcode.Neq, nameSegment, argExpr);
+              }
+
               var axiomAttr = new Attributes(Attributes.AxiomAttributeName, [], null);
               var assumeStmt = new AssumeStmt(new Token(), equalityExpr, axiomAttr);
               if (entryPoint is Method method) {
@@ -471,6 +482,38 @@ namespace DafnyTestGeneration {
 
         if (entryPoint is Method { Body: not null } method) {
           method.SetBody(new BlockStmt(method.Body.Origin, []));
+
+          foreach (var formal in method.Ins) {
+            switch (formal.Type) {
+              case UserDefinedType tupleType when tupleType.Name.StartsWith("_tuple#"):
+                var tupleArgs = tupleType.TypeArgs;
+                if (tupleArgs.Any(arg => arg is UserDefinedType)) {
+                  ignoreNames.Add(formal.Name);
+                }
+                break;
+              case UserDefinedType:
+                ignoreNames.Add(formal.Name);
+                break;
+              case SeqType seqType:
+                var seqArg = seqType.Arg;
+                if (seqArg is UserDefinedType) {
+                  lengthNames.Add(formal.Name);
+                }
+                break;
+              case SetType setType:
+                var setArg = setType.Arg;
+                if (setArg is UserDefinedType) {
+                  lengthNames.Add(formal.Name);
+                }
+                break;
+              case MapType mapType:
+                var mapArg = mapType.Arg;
+                if (mapArg is UserDefinedType) {
+                  lengthNames.Add(formal.Name);
+                }
+                break;
+            }
+          }
         }
       }
     }
