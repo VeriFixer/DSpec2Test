@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using JetBrains.Annotations;
 using Microsoft.Boogie;
 using Microsoft.Dafny;
 using MapType = Microsoft.Dafny.MapType;
@@ -36,6 +37,8 @@ namespace DafnyTestGeneration {
     public readonly List<string> ArgValues;
     // expressions of the arguments to be passed to the method call
     public readonly Dictionary<string, Expression> ArgExpressions;
+    // expressions of the return values of the method call
+    public readonly Dictionary<string, Expression> OutExpressions;
     // number of type arguments for the method (all will be set to defaultType)
     public readonly int NOfTypeArgs;
     // default type to replace any type variable with
@@ -64,18 +67,34 @@ namespace DafnyTestGeneration {
       argumentNames.RemoveAt(0);
       NOfTypeArgs = dafnyInfo.GetTypeArgs(MethodName).Count;
       constraintContext = new Dictionary<PartialValue, Expression>();
-      foreach (var partialValue in dafnyModel.States.First().KnownVariableNames.Keys) {
-        constraintContext[partialValue] = new IdentifierExpr(Token.NoToken, dafnyModel.States.First().KnownVariableNames[partialValue].First());
-        constraintContext[partialValue].Type = partialValue.Type;
+      
+      var firstState = dafnyModel.States.First();
+      var formalNames = DafnyInfo.GetReturnFormals(MethodName).Select(f => f.Name).ToArray();
+      List<String> outputValues = [], outputTypes = [];
+
+      foreach (var kvn in firstState.KnownVariableNames) {
+        var key = kvn.Key;
+        var value = kvn.Value;
+        
+        constraintContext[key] = new IdentifierExpr(Token.NoToken, firstState.KnownVariableNames[key].First());
+        constraintContext[key].Type = key.Type;
+        
+        if (formalNames.Any(name => value.Contains(name))) {
+          outputValues.Add(key.Element.ToString().Trim('(', ')').Replace(" ", ""));
+          outputTypes.Add(key.Type.ToString());
+        }
       }
-      ArgValues = ExtractInputs(dafnyModel.States.First(), argumentNames, typeNames);
-      ArgExpressions = ExtractExpressions(dafnyModel.States.First(), argumentNames, typeNames);
+      
+      ArgValues = ExtractInputs(firstState, argumentNames, typeNames);
+      ArgExpressions = ExtractExpressions(firstState, argumentNames, typeNames, DafnyInfo.GetFormals(MethodName));
+      OutExpressions = ExtractExpressions(firstState, outputValues, outputTypes, DafnyInfo.GetReturnFormals(MethodName));
     }
 
     public bool IsValid => errorMessages.Count == 0;
 
     /// <summary>
-    /// Add a tuple to the ValueCreation list with a given type and value.
+    /// Add a tuple to the
+    /// list with a given type and value.
     /// The name of the variable assigned to the value is chosen so that it is
     /// unique and begins with the name of the type. Return that name.
     /// </summary>
@@ -332,7 +351,7 @@ namespace DafnyTestGeneration {
           }
           return AddValue(asType ?? variableType, $"map[{string.Join(", ", mappingStrings)}]");
         case UserDefinedType tupleType when tupleType.Name.StartsWith("_tuple#"):
-          return AddValue(asType ?? variableType, "(" +
+          return AddValue( tupleType, "(" +
             string.Join(",", variable.UnnamedDestructors()
               .Select(v => ExtractVariable(v, null))) + ")");
         case ArrowType arrowType:
@@ -637,8 +656,11 @@ namespace DafnyTestGeneration {
       }
 
       var returnParNames = new List<string>();
-      for (var i = 0; i < DafnyInfo.GetReturnTypes(MethodName).Count; i++) {
+      var returnFormals = DafnyInfo.GetReturnFormals(MethodName);
+      Dictionary<String, String> returnDict = new Dictionary<string, string>();
+      for (var i = 0; i < returnFormals.Count; i++) {
         returnParNames.Add("r" + i);
+        returnDict["r" + i] = returnFormals[i].Name;
       }
 
       lines.Add($"method {{:test}} Test{id}() {{");
@@ -651,11 +673,14 @@ namespace DafnyTestGeneration {
         ArgValues.RemoveAt(0);
       }
 
-      lines.AddRange(DafnyInfo.GetRequires(ArgValues,
-        MethodName,
-        receiver).Select(e =>
-        "expect " + Printer.ExprToString(DafnyInfo.Options, e) +
-        ", \"If this check fails at runtime, the test does not meet the preconditions\";"));
+      if (!DafnyInfo.Options.TestGenOptions.Simplify) {
+        lines.AddRange(DafnyInfo.GetRequires(ArgValues,
+          MethodName,
+          receiver).Select(e =>
+          "expect " + Printer.ExprToString(DafnyInfo.Options, e) +
+          ", \"If this check fails at runtime, the test does not meet the preconditions\";"));
+      }
+
       if (!DafnyInfo.IsStatic(MethodName)) {
         ArgValues.Insert(0, receiver);
       }
@@ -685,15 +710,22 @@ namespace DafnyTestGeneration {
         ArgValues.RemoveAt(0);
       }
 
-
-      lines.AddRange(DafnyInfo.GetEnsures(ArgValues,
-        returnParNames,
-        MethodName,
-        receiver).Select(e => "expect " + Printer.ExprToString(DafnyInfo.Options, e) + ";"));
+      if (DafnyInfo.Options.TestGenOptions.Simplify && returnParNames.Count != 0 && returnParNames.Count == OutExpressions.Count) {
+        foreach (var outVar in returnParNames) {
+          var returnLine = "expect " + outVar + " == " + Printer.ExprToString(DafnyInfo.Options, OutExpressions[returnDict[outVar]]) + ";";
+          lines.Add(returnLine);
+        }
+      } else {
+        lines.AddRange(DafnyInfo.GetEnsures(ArgValues,
+          returnParNames,
+          MethodName,
+          receiver).Select(e => "expect " + Printer.ExprToString(DafnyInfo.Options, e) + ";")); 
+      }
 
       if (!DafnyInfo.IsStatic(MethodName)) {
         ArgValues.Insert(0, receiver);
       }
+      
       lines.Add("}");
 
       return lines;
@@ -735,12 +767,11 @@ namespace DafnyTestGeneration {
     /// <summary>
     /// Extracts the AST Expressions for the arguments passed to the method.
     /// </summary>
-    private Dictionary<string, Expression> ExtractExpressions(PartialState state, IReadOnlyList<string> printOutput, IReadOnlyList<string> types) {
+    private Dictionary<string, Expression> ExtractExpressions(PartialState state, IReadOnlyList<string> printOutput, IReadOnlyList<string> types, IList<Microsoft.Dafny.Formal> formals) {
       var result = new Dictionary<string, Expression>();
       var vars = state.ExpandedVariableSet();
       
       var parameterIndex = DafnyInfo.IsStatic(MethodName) ? -1 : -2;
-      var formals = DafnyInfo.GetFormals(MethodName);
 
       for (var i = 0; i < printOutput.Count; i++) {
         if (types[i] == "Ty") {
@@ -791,7 +822,10 @@ namespace DafnyTestGeneration {
           if ((variable.Element as Model.Uninterpreted)?.Name != printOutput[i]) {
             continue;
           }
-          result[paramName] = ExtractExpression(variable, type);
+          var expression = ExtractExpression(variable, type);
+          if (expression != null) {
+            result[paramName] = ExtractExpression(variable, type);
+          }
           break;
         }
       }
@@ -801,9 +835,13 @@ namespace DafnyTestGeneration {
     /// <summary>
     /// Recursively constructs a Dafny AST Expression from a PartialValue.
     /// </summary>
+    [CanBeNull]
     private Expression ExtractExpression(PartialValue variable, Type/*?*/ asType) {
       if (variable == null) {
-        return new IdentifierExpr(new Token(), asType != null ? GetDefaultValue(asType) : "null");
+        if (asType == null) {
+          return null;
+        } 
+        return new IdentifierExpr(new Token(), GetDefaultValue(asType));
       }
 
       if (asType != null) {
@@ -832,22 +870,26 @@ namespace DafnyTestGeneration {
         case IntType:
         case BigOrdinalType:
         case BitvectorType:
-          return new LiteralExpr(new Token(), System.Numerics.BigInteger.Parse(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
+          return new LiteralExpr(new Token(),
+            System.Numerics.BigInteger.Parse(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
         case RealType:
-          return new LiteralExpr(new Token(), Microsoft.BaseTypes.BigDec.FromString(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType))); 
+          return new LiteralExpr(new Token(),
+            Microsoft.BaseTypes.BigDec.FromString(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
         case BoolType:
-          return new LiteralExpr(new Token(), bool.Parse(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
-        
+          return new LiteralExpr(new Token(),
+            bool.Parse(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
+
         case CharType:
           var varLit = StripString(variable.PrimitiveLiteral);
-          return new StringLiteralExpr(new Token(), GetPrimitiveAsType(varLit, variableType, asType) , true);
-        
+          return new StringLiteralExpr(new Token(), GetPrimitiveAsType(varLit, variableType, asType), false);
+
         case SeqType seqType:
           var asBasicSeqType = GetBasicType(asType, type => type is SeqType) as SeqType;
           if (variable?.Cardinality() == -1) {
             if (seqType.Arg is CharType) {
-              return new StringLiteralExpr(new Token(), "", true);
+              return new StringLiteralExpr(new Token(), "", false);
             }
+
             return new SeqDisplayExpr(new Token(), new List<Expression>());
           }
 
@@ -856,24 +898,28 @@ namespace DafnyTestGeneration {
             var element = variable?[i];
             if (element == null) {
               getDefaultValueParams = [];
-              seqElements.Add(new IdentifierExpr(new Token(), GetDefaultValue(seqType.Arg, asBasicSeqType?.TypeArgs?.FirstOrDefault((Type/*?*/)null))));
+              seqElements.Add(new IdentifierExpr(new Token(),
+                GetDefaultValue(seqType.Arg, asBasicSeqType?.TypeArgs?.FirstOrDefault((Type /*?*/)null))));
               continue;
             }
-            seqElements.Add(ExtractExpression(element, asBasicSeqType?.TypeArgs?.FirstOrDefault((Type/*?*/)null)));
+
+            seqElements.Add(ExtractExpression(element, asBasicSeqType?.TypeArgs?.FirstOrDefault((Type /*?*/)null)));
           }
 
-          if (seqType.Arg is CharType || asBasicSeqType?.TypeArgs?.FirstOrDefault((Type/*?*/)null) is CharType) {
+          if (seqType.Arg is CharType || asBasicSeqType?.TypeArgs?.FirstOrDefault((Type /*?*/)null) is CharType) {
             var charVar = StripString(ExtractVariable(variable, asType));
-            return new StringLiteralExpr(new Token(), charVar, true);
+            return new StringLiteralExpr(new Token(), charVar, false);
           }
+
           return new SeqDisplayExpr(new Token(), seqElements);
 
         case SetType:
           var asBasicSetType = GetBasicType(asType, type => type is SetType) as SetType;
           var setElements = new List<Expression>();
           foreach (var element in variable.SetElements()) {
-            setElements.Add(ExtractExpression(element, asBasicSetType?.TypeArgs?.FirstOrDefault((Type/*?*/)null)));
+            setElements.Add(ExtractExpression(element, asBasicSetType?.TypeArgs?.FirstOrDefault((Type /*?*/)null)));
           }
+
           return new SetDisplayExpr(new Token(), true, setElements);
 
         case MapType:
@@ -881,16 +927,89 @@ namespace DafnyTestGeneration {
           var mapItems = new List<MapDisplayEntry>();
           foreach (var mapping in variable?.Mappings()) {
             var asTypeTypeArgs = asBasicMapType?.TypeArgs?.Count == 2 ? asBasicMapType.TypeArgs : null;
+            var mapKey = ExtractExpression(mapping.Key, asTypeTypeArgs?[0]);
+            var mapValue = ExtractExpression(mapping.Value, asTypeTypeArgs?[1]);
+            if (mapKey == null || mapValue == null) {
+              return null;
+            }
             mapItems.Add(new MapDisplayEntry(
               ExtractExpression(mapping.Key, asTypeTypeArgs?[0]),
               ExtractExpression(mapping.Value, asTypeTypeArgs?[1])
             ));
           }
+
           return new MapDisplayExpr(new Token(), true, mapItems);
-        default:
-          var varName = ExtractVariable(variable, asType);
-          return new IdentifierExpr(new Token(), varName);
-      }
+
+
+        case UserDefinedType tupleType when tupleType.Name.StartsWith("_tuple#"):
+          var tupleElements = variable.UnnamedDestructors()
+            .Select(v => new ActualBinding(null, ExtractExpression(v, null)))
+            .ToList();
+
+          var ctorName = variable.DatatypeConstructorName();
+          if (string.IsNullOrEmpty(ctorName)) {
+            ctorName = $"_#Make{tupleElements.Count}";
+          }
+
+          return new DatatypeValue(new Token(), tupleType.Name, ctorName, tupleElements);
+        
+        /*
+        case ArrowType arrowType:
+          var asBasicArrowType = GetBasicType(asType, type => type is ArrowType) as ArrowType;
+          return new IdentifierExpr(new Token(), GetFunctionOfType(asBasicArrowType ?? arrowType));
+
+        case UserDefinedType unknown when unknown.Name == DafnyModel.UnknownType.Name:
+          if (asType != null) {
+            return new IdentifierExpr(new Token(), GetDefaultValue(asType, asType));
+          }
+          break;
+
+        case UserDefinedType userDefinedType:
+          var basicType = GetBasicType(asType ?? userDefinedType,
+            type => type == null || type is not UserDefinedType definedType ||
+                    DafnyInfo.Datatypes.ContainsKey(definedType.Name)) as UserDefinedType;
+                    
+          if (basicType == null || !DafnyInfo.Datatypes.ContainsKey(basicType.Name)) {
+            return new IdentifierExpr(new Token(), GetClassTypeInstance(userDefinedType, asType, variable));
+          }
+
+          if (variable.DatatypeConstructorName() == "") {
+            getDefaultValueParams = [];
+            return new IdentifierExpr(new Token(), GetDefaultValue(userDefinedType, asType));
+          }
+          
+          var ctor = DafnyInfo.Datatypes[basicType.Name].Ctors.FirstOrDefault(c => c.Name == variable.DatatypeConstructorName(), null);
+          if (ctor == null) {
+            errorMessages.Add($"// Failed: Cannot find constructor {variable.DatatypeConstructorName()} for datatype {basicType}");
+            return new IdentifierExpr(new Token(), basicType.ToString());
+          }
+          
+          var fields = new List<ActualBinding>();
+          for (int i = 0; i < ctor.Destructors.Count; i++) {
+            var fieldName = ctor.Destructors[i].Name;
+            if (!variable.Fields().ContainsKey(fieldName)) {
+              fieldName = $"[{i}]";
+            }
+
+            if (!variable.Fields().ContainsKey(fieldName)) {
+              return new IdentifierExpr(new Token(), basicType.ToString());
+            }
+
+            var destructorType = Utils.CopyWithReplacements(
+              Utils.UseFullName(ctor.Destructors[i].Type),
+              ctor.EnclosingDatatype?.TypeArgs.ConvertAll(arg => arg.Name), basicType.TypeArgs);
+
+            var extractedExpr = ExtractExpression(variable.Fields()[fieldName], destructorType);
+            if (extractedExpr == null) {
+              return null;
+            }
+            fields.Add(new ActualBinding(null, extractedExpr));
+          }
+
+          return new DatatypeValue(new Token(), basicType.Name, variable.DatatypeConstructorName(), fields);*/
+        }
+
+      return null;
     }
 
     /// <summary>
@@ -918,7 +1037,7 @@ namespace DafnyTestGeneration {
         return new LiteralExpr(new Token(), Microsoft.BaseTypes.BigDec.FromString(value)); 
       }
       if (type.IsStringType) {
-        return new StringLiteralExpr(new Token(), StripString(value), true);
+        return new StringLiteralExpr(new Token(), StripString(value), false);
       }
 
       return new IdentifierExpr(new Token(), value);

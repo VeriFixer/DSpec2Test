@@ -10,6 +10,7 @@ namespace Microsoft.Dafny {
     public const string TestEntryAttribute = "testEntry";
     public bool WarnDeadCode = false;
 
+    public bool Simplify = false;
     public bool IgnoreWarnings = false;
     public bool PassingFailing = false;
     public enum Modes { None, Block, InlinedBlock, Path, Spec };

@@ -343,6 +343,20 @@ namespace DafnyTestGeneration {
       SetNonZeroExitCode = true;
       return new List<Formal>();
     }
+    
+    public IList<Formal> GetReturnFormals(string callable) {
+      if (methods.ContainsKey(callable)) {
+        return methods[callable].Outs;
+      }
+      if (functions.ContainsKey(callable)) {
+        return [functions[callable].Result];
+      }
+
+      Options.ErrorWriter.WriteLine($"*** Error: Test Generation failed to identify callable {callable}");
+
+      SetNonZeroExitCode = true;
+      return new List<Formal>();
+    }
 
     /// <summary>
     /// Fills in the Dafny Info data by traversing the AST

@@ -23,7 +23,8 @@ namespace Microsoft.Dafny;
 static class GenerateTestsCommand {
   public static IEnumerable<Option> Options {
     get {
-      return new Option[] {
+      return new Option[] { 
+        Simplify,
         IgnoreWarnings,
         PassingFailing,
         LoopUnroll,
@@ -268,6 +269,11 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     dafnyOptions.Set(Snippets.ShowSnippets, false);
     dafnyOptions.TestGenOptions.Mode = mode;
   }
+  
+  public static readonly Option<bool> Simplify = new("--simplify",
+    "Simplifies test output by including only input and output values." +
+    "In other words, removes 'expect' statements related to pre and post condition, whenever possible." +
+    "Only works on methods, not functions.");
 
   public static readonly Option<bool> IgnoreWarnings = new("--ignore-warnings",
     "Ignore warnings when generating tests.");
@@ -298,6 +304,9 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
   public static readonly Option<bool> ForcePrune = new("--force-prune",
     "Enable axiom pruning that Dafny uses to speed up verification. This may negatively affect the quality of tests.");
   static GenerateTestsCommand() {
+    DafnyOptions.RegisterLegacyBinding(Simplify, (options, value) => {
+      options.TestGenOptions.Simplify = value;
+    });
     DafnyOptions.RegisterLegacyBinding(IgnoreWarnings, (options, value) => {
       options.TestGenOptions.IgnoreWarnings = value;
     });
@@ -330,6 +339,7 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     OptionRegistry.RegisterOption(ExpectedCoverageReport, OptionScope.Cli);
     OptionRegistry.RegisterOption(ForcePrune, OptionScope.Cli);
     OptionRegistry.RegisterOption(IgnoreWarnings, OptionScope.Cli);
+    OptionRegistry.RegisterOption(Simplify, OptionScope.Cli);
     OptionRegistry.RegisterOption(PassingFailing, OptionScope.Cli);
   }
 }
