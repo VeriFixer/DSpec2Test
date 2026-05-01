@@ -29,12 +29,58 @@ namespace DafnyTestGeneration {
       }
       return result;
     }
+    
+    /// <summary>
+    /// Calculates the safe DNF combination of a List of Expr
+    /// </summary>
+    public static List<List<Expr>> CalculateSafeCombinations(List<Expr> exprs) {
+      var result = new List<List<Expr>>{ new() };
+
+      foreach (var expr in exprs) {
+        var exprDnf = ExprToDnf(expr);
+        var tmpDnfExprs = new List<List<Expr>>();
+        var combinations = new List<List<Expr>>();
+        var previousNegations = new List<Expr>();
+
+        for (int i = 0; i < exprDnf.Count; i++) {
+          var combination = new List<Expr>();
+          var currentBranch = exprDnf[i];
+          
+          combination.AddRange(previousNegations);
+          combination.AddRange(currentBranch);
+          
+          if (!FindContradiction(combination)) {
+            combinations.Add(combination);
+          }
+          
+          if (currentBranch.Count == 1) {
+            previousNegations.Add(Negate(currentBranch[0]));
+          } else if (currentBranch.Count > 1) {
+            var conjoined = ConjoinExprs(currentBranch);
+            previousNegations.Add(Negate(conjoined));
+          }
+        }
+
+        foreach (var existingCombination in result) {
+          foreach (var comb in combinations) {
+            var merged = new List<Expr>(existingCombination);
+            merged.AddRange(comb);
+
+            if (!FindContradiction(merged)) {
+              tmpDnfExprs.Add(merged);
+            }
+          }
+        }
+        result = tmpDnfExprs;
+      }
+      
+      return result;
+    }
 
     /// <summary>
-    /// Cross-product with incremental pruning: merged clauses are checked for syntactic
-    /// contradictions and discarded immediately, without calling Z3.
+    /// Calculates the full DNF combination of a List of Expr
     /// </summary>
-    public static List<List<Expr>> CalculateCombinations(List<Expr> exprs) {
+    public static List<List<Expr>> CalculateAllCombinations(List<Expr> exprs) {
       var result = new List<List<Expr>>{ new() };
 
       foreach (var expr in exprs) {

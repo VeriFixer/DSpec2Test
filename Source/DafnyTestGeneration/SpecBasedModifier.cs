@@ -77,9 +77,13 @@ namespace DafnyTestGeneration {
         .Where(e => IsUserSpec(e.Condition))
         .Select(e => Substituter.Apply(subst, e.Condition))
         .ToList();
-      
-      var reqDnfCombs = DnfEngine.CalculateCombinations(reqClauses);
-      var ensDnfCombs = DnfEngine.CalculateCombinations(ensClauses);
+
+      var reqDnfCombs = DafnyInfo.Options.TestGenOptions.Fdnf
+        ? DnfEngine.CalculateAllCombinations(reqClauses)
+        : DnfEngine.CalculateSafeCombinations(reqClauses);
+      var ensDnfCombs = DafnyInfo.Options.TestGenOptions.Fdnf
+        ? DnfEngine.CalculateAllCombinations(ensClauses)
+        : DnfEngine.CalculateSafeCombinations(ensClauses);
       
       int specTestIndex = 0;
       

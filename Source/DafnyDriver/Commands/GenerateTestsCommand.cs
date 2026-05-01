@@ -24,6 +24,8 @@ static class GenerateTestsCommand {
   public static IEnumerable<Option> Options {
     get {
       return new Option[] { 
+        Fdnf, 
+        Bva,
         Simplify,
         IgnoreWarnings,
         PassingFailing,
@@ -274,6 +276,16 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     "Simplifies test output by including only input and output values." +
     "In other words, removes 'expect' statements related to pre and post condition, whenever possible." +
     "Only works on methods, not functions.");
+  
+  public static readonly Option<bool> Fdnf = new("--fdnf",
+    "Only for the Spec mode. It calculates the full DNF, instead of the safe DNF (default)." +
+    "Produces all 2^N − 1 non-empty subsets of branch satisfaction. For A || B: branches A ∧ B, A ∧ !B, !A ∧ B." +
+    "Generates more clauses (more test scenarios) but drops the short-circuit-safety guarantee: tests may evaluate " +
+    "guarded subexpressions where the guard is false, potentially causing runtime errors" +
+    "(out-of-bounds, division by zero) before the spec violation is reported.");
+  
+  public static readonly Option<bool> Bva = new("--bva",
+    "Only for the Spec mode. Generates tests based on Boundary Value Analysis. ");
 
   public static readonly Option<bool> IgnoreWarnings = new("--ignore-warnings",
     "Ignore warnings when generating tests.");
@@ -306,6 +318,12 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
   static GenerateTestsCommand() {
     DafnyOptions.RegisterLegacyBinding(Simplify, (options, value) => {
       options.TestGenOptions.Simplify = value;
+    });
+    DafnyOptions.RegisterLegacyBinding(Fdnf, (options, value) => {
+      options.TestGenOptions.Fdnf = value;
+    });
+    DafnyOptions.RegisterLegacyBinding(Bva, (options, value) => {
+      options.TestGenOptions.Bva = value;
     });
     DafnyOptions.RegisterLegacyBinding(IgnoreWarnings, (options, value) => {
       options.TestGenOptions.IgnoreWarnings = value;
@@ -340,6 +358,8 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     OptionRegistry.RegisterOption(ForcePrune, OptionScope.Cli);
     OptionRegistry.RegisterOption(IgnoreWarnings, OptionScope.Cli);
     OptionRegistry.RegisterOption(Simplify, OptionScope.Cli);
+    OptionRegistry.RegisterOption(Fdnf, OptionScope.Cli);
+    OptionRegistry.RegisterOption(Bva, OptionScope.Cli);
     OptionRegistry.RegisterOption(PassingFailing, OptionScope.Cli);
   }
 }

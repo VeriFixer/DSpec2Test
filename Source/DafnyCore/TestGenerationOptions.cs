@@ -10,6 +10,8 @@ namespace Microsoft.Dafny {
     public const string TestEntryAttribute = "testEntry";
     public bool WarnDeadCode = false;
 
+    public bool Fdnf = false;
+    public bool Bva = false;
     public bool Simplify = false;
     public bool IgnoreWarnings = false;
     public bool PassingFailing = false;
