@@ -117,21 +117,33 @@ def run_pipeline(dataset_path: Path, *, clean_cache: bool, sequential: bool, out
 
     generator = SpecTestGenerator()
     test_map: dict[str, Path] = {}  # original_stem -> test_file
+    test_gen_cmd_map: dict[str, str] = {}  # original_stem -> command used
 
-    for orig in originals:
+    def _generate_test_task(orig: Path) -> tuple[str, Path | None, str | None, str]:
         test_file = tests_dir / f"{orig.stem}.test.dfy"
-        if sequential:
-            print(f"[run_evaluation] Generating tests for {orig.name}...")
-
         result = generator.generate_tests(orig, test_file)
         if result.success and result.test_file:
-            test_map[orig.stem] = result.test_file
+            return (orig.stem, result.test_file, None, result.command)
+        return (orig.stem, None, result.error_message, result.command)
+
+    parallel = not sequential
+    gen_results: list[tuple[str, Path | None, str | None, str]] = run_parallel_or_seq(
+        originals,
+        _generate_test_task,
+        "Test generation",
+        parallel=parallel,
+    )
+
+    for stem, test_file, error_msg, gen_cmd in gen_results:
+        test_gen_cmd_map[stem] = gen_cmd
+        if test_file:
+            test_map[stem] = test_file
             if sequential:
-                print(f"[run_evaluation]   OK: {result.test_file.name}")
+                print(f"[run_evaluation]   OK: {test_file.name}")
         else:
-            logger.warning("Test generation failed for %s: %s", orig.name, result.error_message)
+            logger.warning("Test generation failed for %s: %s", f"{stem}.dfy", error_msg)
             if sequential:
-                print(f"[run_evaluation]   FAILED: {result.error_message}")
+                print(f"[run_evaluation]   FAILED: {error_msg}")
 
     if not test_map:
         logger.error("Test generation failed for all programs — aborting.")
@@ -185,6 +197,11 @@ def run_pipeline(dataset_path: Path, *, clean_cache: bool, sequential: bool, out
                 f"[run_evaluation]   {r.mutant_name}: {r.status.value} "
                 f"({r.execution_time:.1f}s)"
             )
+
+    # Attach test generation command to each result
+    for r in results:
+        orig_stem = _derive_original_stem(r.mutant_name)
+        r.test_gen_command = test_gen_cmd_map.get(orig_stem, "")
 
     # --- Step 3: Compute metrics ---
     metrics = compute_kill_rate(results)

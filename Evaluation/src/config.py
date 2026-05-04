@@ -51,7 +51,7 @@ DAFNY_BINARY: Path = BASE_PATH.parent / "Binaries" / "Dafny"
 SPECTEST_DAFNY_BINARY: Path = Path(
     os.environ.get(
         "MT_SPECTEST_BINARY",
-        str(BASE_PATH / "external" / "tests_gen" / "spec-test-generator" / "Binaries" / "Dafny"),
+        str(BASE_PATH.parent / "Binaries" / "Dafny"),
     )
 )
 

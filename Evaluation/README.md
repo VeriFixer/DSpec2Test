@@ -38,13 +38,15 @@ Two decoupled scripts:
 ### Generate a Dataset
 
 ```bash
-python -m src.runners.generate_dataset --n-mutants 50 --output-dir dataset/data/my_run
+python -m src.runners.generate_dataset --n-programs 50 --n-mutants-per-program 3 --output-dir dataset/data/my_run
 ```
 
 Options:
-- `--n-mutants N` — number of mutants (default 100)
+- `--n-programs N` — number of programs to sample from DafnyBench (default 100)
+- `--n-mutants-per-program M` — mutants to generate per program (default 1)
 - `--output-dir DIR` — where to write the dataset
 - `--sequential` — disable parallelism, print per-file debug info
+- `--seed S` — RNG seed for reproducible sampling (default 0)
 
 ### Run Evaluation
 
@@ -104,8 +106,9 @@ class MyGenerator(TestGenerator):
 
 The contract:
 - **Input**: a verified `.dfy` file
-- **Output**: a new `.dfy` file that can be run with `dafny run --no-verify`
-- If the test file detects a mutation (non-zero exit), the mutant is **killed**
+- **Output**: a new `.dfy` file containing the original source + test methods appended at the bottom
+- Kill checking builds a combined file: mutant source + test methods, saved in `kill_tests/` for debugging
+- If the combined file fails (non-zero exit from `dafny run --no-verify`), the mutant is **killed**
 - If it passes (zero exit), the mutant **survived**
 
 ### 2. Write tests for your generator

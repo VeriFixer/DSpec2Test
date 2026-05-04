@@ -40,10 +40,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         description="Generate a mutant dataset from DafnyBench."
     )
     parser.add_argument(
-        "--n-mutants",
+        "--n-programs",
         type=int,
         default=SAMPLE_COUNT,
-        help=f"Number of mutants to generate (default: {SAMPLE_COUNT})",
+        help=f"Number of programs to sample from DafnyBench (default: {SAMPLE_COUNT})",
+    )
+    parser.add_argument(
+        "--n-mutants-per-program",
+        type=int,
+        default=1,
+        help="Number of mutants to generate per program (default: 1)",
     )
     parser.add_argument(
         "--output-dir",
@@ -63,10 +69,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=DEFAULT_SEED,
         help=f"RNG seed for reproducible sampling (default: {DEFAULT_SEED})",
     )
-    return parser.parse_args(argv)
+    args = parser.parse_args(argv)
+    return args
 
 
-def run_pipeline(n_mutants: int, output_dir: Path, sequential: bool, seed: int = DEFAULT_SEED) -> int:
+def run_pipeline(n_programs: int, n_mutants_per_program: int, output_dir: Path,
+                 sequential: bool, seed: int = DEFAULT_SEED) -> int:
     """Execute the dataset generation pipeline.
 
     Returns 0 on success, 1 on critical failure.
@@ -76,10 +84,10 @@ def run_pipeline(n_mutants: int, output_dir: Path, sequential: bool, seed: int =
 
     # --- Step 1: Sample programs ---
     if sequential:
-        print(f"[generate_dataset] Sampling {n_mutants} programs from DafnyBench (seed={seed})...")
-    logger.info("Sampling %d programs from %s (seed=%d)", n_mutants, DAFNYBENCH_DIR, seed)
+        print(f"[generate_dataset] Sampling {n_programs} programs from DafnyBench (seed={seed})...")
+    logger.info("Sampling %d programs from %s (seed=%d)", n_programs, DAFNYBENCH_DIR, seed)
 
-    sampled = sample_programs(DAFNYBENCH_DIR, n_mutants, seed=seed)
+    sampled = sample_programs(DAFNYBENCH_DIR, n_programs, seed=seed)
     if not sampled:
         logger.error("No programs sampled — aborting.")
         return 1
@@ -111,59 +119,61 @@ def run_pipeline(n_mutants: int, output_dir: Path, sequential: bool, seed: int =
     killed_dir.mkdir(parents=True, exist_ok=True)
 
     # --- Step 4: Mutate and verify mutants (parallel or sequential) ---
-    def _mutate_and_check(orig_file: Path) -> tuple[Path, Path | None]:
-        """Apply mutation and verify mutant fails. Returns (orig, mutant_path|None)."""
+    def _mutate_and_check(orig_file: Path) -> tuple[Path, list[Path]]:
+        """Apply mutation(s) and verify mutants fail. Returns (orig, [valid_mutant_paths])."""
         stem = orig_file.stem
         mutant_work_dir = output_dir / "_tmp_mutants" / stem
-        mutant_path = apply_mutation(orig_file, mutant_work_dir)
+        mutant_paths = apply_mutation(orig_file, mutant_work_dir, max_mutants=n_mutants_per_program)
 
-        if mutant_path is None:
+        if not mutant_paths:
             logger.warning("Mutation failed for %s", orig_file.name)
-            return (orig_file, None)
+            return (orig_file, [])
 
-        # Verify mutant FAILS (confirms it's actually buggy)
-        if verify_program(mutant_path):
-            logger.info("Mutant still verifies for %s — not a real bug", orig_file.name)
-            return (orig_file, None)
+        # Filter: keep only mutants that FAIL verification (actually buggy)
+        valid = []
+        for mp in mutant_paths:
+            if not verify_program(mp):
+                valid.append(mp)
+            else:
+                logger.info("Mutant still verifies for %s — not a real bug", mp.name)
 
-        return (orig_file, mutant_path)
+        return (orig_file, valid)
 
     from src.mt_eval.execution.parallel_executor import run_parallel_or_seq
 
-    mutation_results: list[tuple[Path, Path | None]] = run_parallel_or_seq(
+    mutation_results: list[tuple[Path, list[Path]]] = run_parallel_or_seq(
         verified, _mutate_and_check, "Mutating & checking", parallel=parallel
     )
 
     # --- Step 5: Collect valid mutants ---
     valid_count = 0
     skip_count = 0
-    mutation_failed = 0
-    still_verifies = 0
     generated_paths: list[Path] = []
 
-    for orig_file, mutant_path in mutation_results:
-        if mutant_path is None:
+    for orig_file, mutant_paths in mutation_results:
+        if not mutant_paths:
             skip_count += 1
             if sequential:
                 print(f"[generate_dataset]   Skipped {orig_file.name}")
             continue
 
         if sequential:
-            print(f"[generate_dataset]   Mutant confirmed buggy for {orig_file.name}")
+            print(f"[generate_dataset]   {len(mutant_paths)} mutant(s) confirmed buggy for {orig_file.name}")
 
         # Copy original
         shutil.copy2(orig_file, original_dir / orig_file.name)
 
-        # Copy mutant
-        mutant_dest = killed_dir / mutant_path.name
-        shutil.copy2(mutant_path, mutant_dest)
+        # Copy mutants
+        for mutant_path in mutant_paths:
+            mutant_dest = killed_dir / mutant_path.name
+            shutil.copy2(mutant_path, mutant_dest)
 
-        # Generate diff
-        diff_path = killed_dir / (mutant_path.stem + ".txt")
-        generate_diff(orig_file, mutant_path, diff_path)
+            # Generate diff
+            diff_path = killed_dir / (mutant_path.stem + ".txt")
+            generate_diff(orig_file, mutant_path, diff_path)
 
-        generated_paths.append(mutant_dest)
-        valid_count += 1
+            generated_paths.append(mutant_dest)
+            valid_count += 1
 
     # --- Step 6: Cleanup temp dir ---
     tmp_mutants = output_dir / "_tmp_mutants"
@@ -251,7 +261,8 @@ def main(argv: list[str] | None = None) -> None:
     output_dir = Path(args.output_dir) if args.output_dir else Path("dataset_output")
 
     exit_code = run_pipeline(
-        n_mutants=args.n_mutants,
+        n_programs=args.n_programs,
+        n_mutants_per_program=args.n_mutants_per_program,
         output_dir=output_dir,
         sequential=args.sequential,
         seed=args.seed,

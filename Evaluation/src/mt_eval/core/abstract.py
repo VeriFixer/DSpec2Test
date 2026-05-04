@@ -12,6 +12,7 @@ class TestGenResult:
     success: bool
     test_file: Path | None
     error_message: str = ""
+    command: str = ""
 
 
 class TestGenerator(ABC):

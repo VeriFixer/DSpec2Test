@@ -147,9 +147,13 @@ class TestRunPipeline:
         )
         mock_gen_cls.return_value = mock_gen
 
+        # Test gen returns all failures
+        mock_par.return_value = [("prog", None, "timeout", "dafny generate-tests Spec prog.dfy --test-count 1")]
+
         result = run_pipeline(ds, clean_cache=False, sequential=False, output_dir=tmp_path)
         assert result == 1
-        mock_par.assert_not_called()
+        # run_parallel_or_seq called once for test generation, but not for kill checking
+        mock_par.assert_called_once()
 
     @patch("src.runners.run_evaluation.run_parallel_or_seq")
     @patch("src.runners.run_evaluation.SpecTestGenerator")
@@ -167,6 +171,11 @@ class TestRunPipeline:
             success=True, test_file=test_file
         )
         mock_gen_cls.return_value = mock_gen
+
+        # Test gen returns success tuple; kill check never reached
+        mock_par.side_effect = [
+            [("a", test_file, None, "dafny generate-tests Spec a.dfy --test-count 1")],
+        ]
 
         result = run_pipeline(ds, clean_cache=False, sequential=False, output_dir=tmp_path)
         assert result == 1
@@ -196,7 +205,11 @@ class TestRunPipeline:
             status=MutantStatus.KILLED,
             execution_time=1.5,
         )
-        mock_par.return_value = [killed_result]
+        # First call: test generation returns tuples; second call: kill check returns MutantResults
+        mock_par.side_effect = [
+            [("prog", test_file, None, "dafny generate-tests Spec prog.dfy --test-count 1")],
+            [killed_result],
+        ]
 
         result = run_pipeline(ds, clean_cache=False, sequential=False, output_dir=tmp_path)
         assert result == 0
@@ -228,7 +241,10 @@ class TestRunPipeline:
             status=MutantStatus.KILLED,
             execution_time=2.0,
         )
-        mock_par.return_value = [killed_result]
+        mock_par.side_effect = [
+            [("prog", test_file, None, "dafny generate-tests Spec prog.dfy --test-count 1")],
+            [killed_result],
+        ]
 
         run_pipeline(ds, clean_cache=False, sequential=True, output_dir=tmp_path)
 
@@ -285,15 +301,18 @@ class TestRunPipeline:
         mock_gen.generate_tests.side_effect = gen_side_effect
         mock_gen_cls.return_value = mock_gen
 
-        mock_par.return_value = [
-            MutantResult("a__1-2_X.dfy", "a.dfy", MutantStatus.KILLED, 1.0)
+        mock_par.side_effect = [
+            [("a", test_a, None, "dafny generate-tests Spec a.dfy --test-count 1"),
+             ("b", None, "fail", "dafny generate-tests Spec b.dfy --test-count 1")],
+            [MutantResult("a__1-2_X.dfy", "a.dfy", MutantStatus.KILLED, 1.0)],
         ]
 
         result = run_pipeline(ds, clean_cache=False, sequential=False, output_dir=tmp_path)
         assert result == 0
 
         # Only 1 task submitted (a's mutant), b's mutant skipped
-        call_args = mock_par.call_args
+        # Second call to run_parallel_or_seq is the kill check
+        call_args = mock_par.call_args_list[1]
         items = list(call_args[0][0])
         assert len(items) == 1
 
@@ -318,6 +337,11 @@ class TestRunPipeline:
         mock_gen.name = "SpecTestGenerator"
         mock_gen.generate_tests.return_value = TestGenResult(success=True, test_file=test_file)
         mock_gen_cls.return_value = mock_gen
+
+        # Test gen returns success; kill check never reached (no .dfy mutants)
+        mock_par.side_effect = [
+            [("prog", test_file, None, "dafny generate-tests Spec prog.dfy --test-count 1")],
+        ]
 
         result = run_pipeline(ds, clean_cache=False, sequential=False, output_dir=tmp_path)
         assert result == 1

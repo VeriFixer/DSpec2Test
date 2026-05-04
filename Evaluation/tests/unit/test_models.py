@@ -48,6 +48,8 @@ class TestMutantResult:
             "original_name": "o.dfy",
             "status": "survived",
             "execution_time": 3.14,
+            "test_gen_command": "",
+            "kill_check_command": "",
         }
 
     def test_from_dict(self):

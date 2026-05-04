@@ -23,12 +23,16 @@ class MutantResult:
         original_name: Filename of the original .dfy file.
         status: Outcome of test execution.
         execution_time: Wall-clock seconds for test execution.
+        test_gen_command: Command used to generate the test file.
+        kill_check_command: Command used to check if mutant was killed.
     """
 
     mutant_name: str
     original_name: str
     status: MutantStatus
     execution_time: float  # seconds
+    test_gen_command: str = ""
+    kill_check_command: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         """Serialize to a JSON-compatible dict."""
@@ -37,6 +41,8 @@ class MutantResult:
             "original_name": self.original_name,
             "status": self.status.value,
             "execution_time": self.execution_time,
+            "test_gen_command": self.test_gen_command,
+            "kill_check_command": self.kill_check_command,
         }
 
     @classmethod
@@ -47,4 +53,6 @@ class MutantResult:
             original_name=data["original_name"],
             status=MutantStatus(data["status"]),
             execution_time=float(data["execution_time"]),
+            test_gen_command=data.get("test_gen_command", ""),
+            kill_check_command=data.get("kill_check_command", ""),
         )

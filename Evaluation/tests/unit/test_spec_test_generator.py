@@ -40,7 +40,7 @@ class TestGenerateTestsSuccess:
         dafny_file = tmp_path / "input.dfy"
         dafny_file.write_text("// source")
 
-        mock_run.return_value = MagicMock(returncode=0, stderr="")
+        mock_run.return_value = MagicMock(returncode=0, stderr="", stdout="// generated tests\n")
 
         gen = SpecTestGenerator(dafny_binary=Path("/usr/bin/dafny"))
         result = gen.generate_tests(dafny_file, output_file)
@@ -48,6 +48,7 @@ class TestGenerateTestsSuccess:
         assert result.success is True
         assert result.test_file == output_file
         assert result.error_message == ""
+        assert result.command != ""
 
     @patch("src.mt_eval.generators.spec_test_generator.subprocess.run")
     def test_success_but_no_output_file(self, mock_run, tmp_path):
@@ -55,7 +56,7 @@ class TestGenerateTestsSuccess:
         dafny_file = tmp_path / "input.dfy"
         dafny_file.write_text("// source")
 
-        mock_run.return_value = MagicMock(returncode=0, stderr="")
+        mock_run.return_value = MagicMock(returncode=0, stderr="", stdout="")
 
         gen = SpecTestGenerator(dafny_binary=Path("/usr/bin/dafny"))
         result = gen.generate_tests(dafny_file, output_file)
@@ -115,7 +116,7 @@ class TestSubprocessCommand:
         output_file = tmp_path / "out.dfy"
         output_file.write_text("// tests")
 
-        mock_run.return_value = MagicMock(returncode=0, stderr="")
+        mock_run.return_value = MagicMock(returncode=0, stderr="", stdout="// tests\n")
 
         binary = Path("/opt/dafny/dafny")
         gen = SpecTestGenerator(dafny_binary=binary)
@@ -126,9 +127,10 @@ class TestSubprocessCommand:
         assert cmd == [
             str(binary),
             "generate-tests",
-            str(dafny_file),
-            "--output",
-            str(output_file),
+            "Spec",
+            str(dafny_file.resolve()),
+            "--test-count",
+            "1",
         ]
 
     @patch("src.mt_eval.generators.spec_test_generator.subprocess.run")

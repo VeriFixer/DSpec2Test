@@ -37,14 +37,14 @@ class TestApplyMutation:
 
         result = apply_mutation(Path("/some/prog.dfy"), out_dir)
 
-        assert result is not None
-        assert result.suffix == ".dfy"
-        assert result.parent == out_dir
-        assert result.read_text() == "mutant code"
+        assert len(result) == 1
+        assert result[0].suffix == ".dfy"
+        assert result[0].parent == out_dir
+        assert result[0].read_text() == "mutant code"
 
     @patch("src.mt_eval.core.mutation.tempfile.TemporaryDirectory")
     @patch("src.mt_eval.core.mutation.subprocess.run")
-    def test_returns_none_on_scan_failure(self, mock_run, mock_tmpdir, tmp_path):
+    def test_returns_empty_on_scan_failure(self, mock_run, mock_tmpdir, tmp_path):
         """Scan pass fails (timeout)."""
         work_dir = tmp_path / "work"
         work_dir.mkdir()
@@ -55,11 +55,11 @@ class TestApplyMutation:
         out_dir = tmp_path / "mutants"
 
         result = apply_mutation(Path("prog.dfy"), out_dir)
-        assert result is None
+        assert result == []
 
     @patch("src.mt_eval.core.mutation.tempfile.TemporaryDirectory")
     @patch("src.mt_eval.core.mutation.subprocess.run")
-    def test_returns_none_on_os_error(self, mock_run, mock_tmpdir, tmp_path):
+    def test_returns_empty_on_os_error(self, mock_run, mock_tmpdir, tmp_path):
         """Dafny binary not found."""
         work_dir = tmp_path / "work"
         work_dir.mkdir()
@@ -70,11 +70,11 @@ class TestApplyMutation:
         out_dir = tmp_path / "mutants"
 
         result = apply_mutation(Path("prog.dfy"), out_dir)
-        assert result is None
+        assert result == []
 
     @patch("src.mt_eval.core.mutation.tempfile.TemporaryDirectory")
     @patch("src.mt_eval.core.mutation.subprocess.run")
-    def test_returns_none_when_no_targets(self, mock_run, mock_tmpdir, tmp_path):
+    def test_returns_empty_when_no_targets(self, mock_run, mock_tmpdir, tmp_path):
         """Scan succeeds but targets.csv is empty."""
         work_dir = tmp_path / "work"
         work_dir.mkdir()
@@ -87,11 +87,11 @@ class TestApplyMutation:
         out_dir = tmp_path / "mutants"
 
         result = apply_mutation(Path("prog.dfy"), out_dir)
-        assert result is None
+        assert result == []
 
     @patch("src.mt_eval.core.mutation.tempfile.TemporaryDirectory")
     @patch("src.mt_eval.core.mutation.subprocess.run")
-    def test_returns_none_when_no_mutants_produced(self, mock_run, mock_tmpdir, tmp_path):
+    def test_returns_empty_when_no_mutants_produced(self, mock_run, mock_tmpdir, tmp_path):
         """Mutation pass runs but produces no .dfy files."""
         work_dir = tmp_path / "work"
         work_dir.mkdir()
@@ -112,7 +112,7 @@ class TestApplyMutation:
         out_dir = tmp_path / "mutants"
 
         result = apply_mutation(Path("prog.dfy"), out_dir)
-        assert result is None
+        assert result == []
 
     @patch("src.mt_eval.core.mutation.tempfile.TemporaryDirectory")
     @patch("src.mt_eval.core.mutation.subprocess.run")

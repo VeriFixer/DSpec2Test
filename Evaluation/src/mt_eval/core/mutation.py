@@ -5,7 +5,7 @@ MutDafny is a Dafny compiler plugin. It works in two passes:
 2. Mutate: For each target, `dafny verify <file> --plugin mutdafny.dll,"mut <pos> <op> [arg]"`
    → produces mutant .dfy files in the working directory.
 
-apply_mutation: runs MutDafny on a Dafny file, returns first mutant path or None.
+apply_mutation: runs MutDafny on a Dafny file, returns list of mutant paths.
 generate_diff: produces unified diff between original and mutant files.
 """
 
@@ -55,21 +55,23 @@ def _run_dafny_plugin(dafny_file: Path, plugin_arg: str, cwd: Path,
         return None
 
 
-def apply_mutation(original_file: Path, output_dir: Path) -> Path | None:
-    """Invoke MutDafny on original_file, return first mutant path or None on failure.
+def apply_mutation(original_file: Path, output_dir: Path, max_mutants: int = 1) -> list[Path]:
+    """Invoke MutDafny on original_file, return up to max_mutants mutant paths.
 
     Uses the two-pass approach:
     1. Scan for mutation targets → targets.csv
-    2. Apply first available mutation → mutant .dfy file
+    2. Apply mutations → mutant .dfy files
 
     Args:
         original_file: Path to the original .dfy source file.
         output_dir: Directory where mutant files will be collected.
+        max_mutants: Maximum number of mutants to generate per file.
 
     Returns:
-        Path to first mutant file, or None on failure.
+        List of paths to mutant files (may be empty on failure).
     """
     output_dir.mkdir(parents=True, exist_ok=True)
+    collected: list[Path] = []
 
     # Use a temp working directory for MutDafny's intermediate files
     with tempfile.TemporaryDirectory() as work_dir:
@@ -78,12 +80,12 @@ def apply_mutation(original_file: Path, output_dir: Path) -> Path | None:
         # Pass 1: Scan for mutation targets
         result = _run_dafny_plugin(original_file, "scan", cwd=work_path)
         if result is None:
-            return None
+            return []
 
         targets_file = work_path / "targets.csv"
         if not targets_file.exists():
             logger.warning("MutDafny scan produced no targets.csv for %s", original_file)
-            return None
+            return []
 
         # Parse targets.csv
         targets = []
@@ -95,10 +97,13 @@ def apply_mutation(original_file: Path, output_dir: Path) -> Path | None:
 
         if not targets:
             logger.warning("MutDafny produced empty targets for %s", original_file)
-            return None
+            return []
 
-        # Pass 2: Apply first mutation that produces a valid mutant
+        # Pass 2: Apply mutations until we have max_mutants
         for target in targets:
+            if len(collected) >= max_mutants:
+                break
+
             pos = target[0].strip()
             op = target[1].strip() if len(target) > 1 else ""
             arg = target[2].strip() if len(target) > 2 else ""
@@ -114,23 +119,26 @@ def apply_mutation(original_file: Path, output_dir: Path) -> Path | None:
 
             # MutDafny writes .dfy files in the working directory
             mutant_files = sorted(work_path.glob("*.dfy"))
-            if mutant_files:
-                # Move first mutant to output_dir
-                first_mutant = mutant_files[0]
-                dest = output_dir / first_mutant.name
-                dest.write_text(first_mutant.read_text())
-                # Clean up generated files for next iteration
-                for mf in mutant_files:
-                    mf.unlink()
-                return dest
+            for mf in mutant_files:
+                if len(collected) >= max_mutants:
+                    break
+                dest = output_dir / mf.name
+                dest.write_text(mf.read_text())
+                collected.append(dest)
+
+            # Clean up generated files for next iteration
+            for mf in work_path.glob("*.dfy"):
+                mf.unlink()
 
             # Clean up any elapsed-time.csv
             elapsed = work_path / "elapsed-time.csv"
             if elapsed.exists():
                 elapsed.unlink()
 
-    logger.warning("MutDafny produced no mutants for %s", original_file)
-    return None
+    if not collected:
+        logger.warning("MutDafny produced no mutants for %s", original_file)
+
+    return collected
 
 
 def generate_diff(original: Path, mutant: Path, output_path: Path) -> Path:

@@ -13,13 +13,18 @@ class TestParseArgs:
 
     def test_defaults(self):
         args = parse_args([])
-        assert args.n_mutants == 100
+        assert args.n_programs == 100
+        assert args.n_mutants_per_program == 1
         assert args.output_dir is None
         assert args.sequential is False
 
-    def test_n_mutants(self):
-        args = parse_args(["--n-mutants", "50"])
-        assert args.n_mutants == 50
+    def test_n_programs(self):
+        args = parse_args(["--n-programs", "50"])
+        assert args.n_programs == 50
+
+    def test_n_mutants_per_program(self):
+        args = parse_args(["--n-mutants-per-program", "3"])
+        assert args.n_mutants_per_program == 3
 
     def test_output_dir(self):
         args = parse_args(["--output-dir", "/tmp/out"])
@@ -30,8 +35,10 @@ class TestParseArgs:
         assert args.sequential is True
 
     def test_all_flags(self):
-        args = parse_args(["--n-mutants", "10", "--output-dir", "out", "--sequential"])
-        assert args.n_mutants == 10
+        args = parse_args(["--n-programs", "10", "--n-mutants-per-program", "2",
+                           "--output-dir", "out", "--sequential"])
+        assert args.n_programs == 10
+        assert args.n_mutants_per_program == 2
         assert args.output_dir == "out"
         assert args.sequential is True
 
@@ -43,7 +50,7 @@ class TestRunPipeline:
     def test_returns_1_when_no_samples(self, mock_sample, tmp_path):
         """Empty sample → critical failure."""
         mock_sample.return_value = []
-        result = run_pipeline(10, tmp_path / "out", sequential=False)
+        result = run_pipeline(10, 1, tmp_path / "out", sequential=False)
         assert result == 1
 
     @patch("src.runners.generate_dataset.filter_verified")
@@ -52,7 +59,7 @@ class TestRunPipeline:
         """All fail verification → critical failure."""
         mock_sample.return_value = [Path("a.dfy")]
         mock_filter.return_value = ([], 0, 1)
-        result = run_pipeline(10, tmp_path / "out", sequential=False)
+        result = run_pipeline(10, 1, tmp_path / "out", sequential=False)
         assert result == 1
 
     @patch("src.runners.generate_dataset.generate_diff")
@@ -74,12 +81,12 @@ class TestRunPipeline:
 
         mock_sample.return_value = [orig]
         mock_filter.return_value = ([orig], 1, 0)
-        mock_mutate.return_value = mutant
+        mock_mutate.return_value = [mutant]
         mock_verify_prog.return_value = False  # mutant fails verification = good
         mock_diff.return_value = Path("diff.txt")
 
         out_dir = tmp_path / "out"
-        result = run_pipeline(1, out_dir, sequential=False)
+        result = run_pipeline(1, 1, out_dir, sequential=False)
 
         assert result == 0
         assert (out_dir / "original").exists()
@@ -99,9 +106,9 @@ class TestRunPipeline:
 
         mock_sample.return_value = [orig]
         mock_filter.return_value = ([orig], 1, 0)
-        mock_mutate.return_value = None  # mutation fails
+        mock_mutate.return_value = []  # mutation fails
 
-        result = run_pipeline(1, tmp_path / "out", sequential=False)
+        result = run_pipeline(1, 1, tmp_path / "out", sequential=False)
         assert result == 1  # no valid mutants
 
     @patch("src.runners.generate_dataset.verify_program")
@@ -121,10 +128,10 @@ class TestRunPipeline:
 
         mock_sample.return_value = [orig]
         mock_filter.return_value = ([orig], 1, 0)
-        mock_mutate.return_value = mutant
+        mock_mutate.return_value = [mutant]
         mock_verify_prog.return_value = True  # mutant still verifies = bad
 
-        result = run_pipeline(1, tmp_path / "out", sequential=False)
+        result = run_pipeline(1, 1, tmp_path / "out", sequential=False)
         assert result == 1  # no valid mutants
 
     @patch("src.runners.generate_dataset.generate_diff")
@@ -146,12 +153,12 @@ class TestRunPipeline:
 
         mock_sample.return_value = [orig]
         mock_filter.return_value = ([orig], 1, 0)
-        mock_mutate.return_value = mutant
+        mock_mutate.return_value = [mutant]
         mock_verify_prog.return_value = False
         mock_diff.return_value = Path("diff.txt")
 
         out_dir = tmp_path / "out"
-        run_pipeline(1, out_dir, sequential=True)
+        run_pipeline(1, 1, out_dir, sequential=True)
 
         captured = capsys.readouterr()
         assert "[generate_dataset]" in captured.out
@@ -177,12 +184,12 @@ class TestRunPipeline:
 
         mock_sample.return_value = [orig]
         mock_filter.return_value = ([orig], 1, 0)
-        mock_mutate.return_value = mutant
+        mock_mutate.return_value = [mutant]
         mock_verify_prog.return_value = False
         mock_diff.return_value = Path("diff.txt")
 
         out_dir = tmp_path / "out"
-        run_pipeline(1, out_dir, sequential=False)
+        run_pipeline(1, 1, out_dir, sequential=False)
 
         assert (out_dir / "original").is_dir()
         assert (out_dir / "killed").is_dir()
@@ -206,12 +213,12 @@ class TestRunPipeline:
 
         mock_sample.return_value = [orig]
         mock_filter.return_value = ([orig], 1, 0)
-        mock_mutate.return_value = mutant
+        mock_mutate.return_value = [mutant]
         mock_verify_prog.return_value = False
         mock_diff.return_value = Path("diff.txt")
 
         out_dir = tmp_path / "out"
-        run_pipeline(1, out_dir, sequential=False)
+        run_pipeline(1, 1, out_dir, sequential=False)
 
         assert (out_dir / "original" / "prog.dfy").read_text() == "// original content"
         assert (out_dir / "killed" / "prog__1-2_CBE.dfy").read_text() == "// mutant content"
@@ -235,12 +242,12 @@ class TestRunPipeline:
 
         mock_sample.return_value = [orig]
         mock_filter.return_value = ([orig], 1, 0)
-        mock_mutate.return_value = mutant
+        mock_mutate.return_value = [mutant]
         mock_verify_prog.return_value = False
         mock_diff.return_value = Path("diff.txt")
 
         out_dir = tmp_path / "out"
-        run_pipeline(1, out_dir, sequential=False)
+        run_pipeline(1, 1, out_dir, sequential=False)
 
         assert not (out_dir / "_tmp_mutants").exists()
 
@@ -253,18 +260,18 @@ class TestMain:
         """main() parses args and calls run_pipeline."""
         mock_pipeline.return_value = 0
         with pytest.raises(SystemExit) as exc_info:
-            main(["--n-mutants", "5", "--output-dir", "/tmp/test"])
+            main(["--n-programs", "5", "--output-dir", "/tmp/test"])
         assert exc_info.value.code == 0
         mock_pipeline.assert_called_once()
         call_kwargs = mock_pipeline.call_args
-        assert call_kwargs[1]["n_mutants"] == 5
+        assert call_kwargs[1]["n_programs"] == 5
 
     @patch("src.runners.generate_dataset.run_pipeline")
     def test_main_exits_nonzero_on_failure(self, mock_pipeline):
         """main() exits non-zero when pipeline fails."""
         mock_pipeline.return_value = 1
         with pytest.raises(SystemExit) as exc_info:
-            main(["--n-mutants", "5"])
+            main(["--n-programs", "5"])
         assert exc_info.value.code == 1
 
     @patch("src.runners.generate_dataset.run_pipeline")
