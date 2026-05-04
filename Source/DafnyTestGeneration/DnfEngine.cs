@@ -55,7 +55,7 @@ namespace DafnyTestGeneration {
           combination.AddRange(previousNegations);
           combination.AddRange(currentBranch);
           
-          if (!FindContradiction(combination)) {
+          if (!FindContradiction(combination, out _)) {
             combinations.Add(combination);
           }
           
@@ -72,7 +72,7 @@ namespace DafnyTestGeneration {
             var merged = new List<Expr>(existingCombination);
             merged.AddRange(comb);
 
-            if (!FindContradiction(merged)) {
+            if (!FindContradiction(merged, out _)) {
               tmpDnfExprs.Add(merged);
             }
           }
@@ -118,7 +118,7 @@ namespace DafnyTestGeneration {
             }
           }
 
-          if (FindContradiction(combination)) {
+          if (FindContradiction(combination, out _)) {
             knownUnsatMasks.Add(mask);
             continue;
           }
@@ -130,7 +130,7 @@ namespace DafnyTestGeneration {
             var merged = new List<Expr>(existingCombination);
             merged.AddRange(comb);
 
-            if (!FindContradiction(merged)) {
+            if (!FindContradiction(merged, out _)) {
               tmpDnfExprs.Add(merged);
             }
           }
@@ -144,8 +144,9 @@ namespace DafnyTestGeneration {
     /// <summary>
     /// Calculates the BVA for each inParam
     /// </summary>
-    public static List<Expr> CalculateBva(List<Variable> inParams) {
+    public static List<Expr> CalculateBva(List<Variable> inParams, (Dictionary<string, double>, Dictionary<string, double>, Dictionary<string, Range>) constraints) {
       var result = new List<Expr>();
+      var (equalities, inequalities, ranges) = constraints;
 
       foreach (var variable in inParams) {
         var type = variable.TypedIdent.Type;
@@ -155,16 +156,59 @@ namespace DafnyTestGeneration {
           result.Add(CreateEqExpr(idExpr, Expr.False));
         }
         else if (type.IsInt) {
-          var numberNeg50Expr = new LiteralExpr(new Token(), Microsoft.BaseTypes.BigNum.FromInt(-50));
-          numberNeg50Expr.Type = Type.Int;
-          var number50Expr = new LiteralExpr(new Token(), Microsoft.BaseTypes.BigNum.FromInt(50));
-          number50Expr.Type = Type.Int;
-          var number0Expr = new LiteralExpr(new Token(), Microsoft.BaseTypes.BigNum.FromInt(0));
-          number0Expr.Type = Type.Int;
-          result.Add(CreateEqExpr(idExpr, numberNeg50Expr));
-          result.Add(CreateEqExpr(idExpr, number50Expr));
-          result.Add(CreateEqExpr(idExpr, number0Expr));
-        } 
+          if (equalities.ContainsKey(variable.Name)) {
+            continue;
+          }
+
+          if (ranges.TryGetValue(variable.Name,  out var range)) {
+            if (range.IncludeLower) {
+              var lowerLimitExpr = new LiteralExpr(new Token(), BigNum.FromInt((int)range.LowerLimit)) {
+                Type = Type.Int
+              };
+              result.Add(CreateEqExpr(idExpr, lowerLimitExpr));
+            } else {
+              var lowerLimitExpr = new LiteralExpr(new Token(), BigNum.FromInt((int)range.LowerLimit + 1)) {
+                Type = Type.Int
+              };
+              result.Add(CreateEqExpr(idExpr, lowerLimitExpr));
+            }
+
+            if (range.IncludeUpper) {
+              var upperLimitExpr = new LiteralExpr(new Token(), BigNum.FromInt((int)range.UpperLimit)) {
+                Type = Type.Int
+              };
+              result.Add(CreateEqExpr(idExpr, upperLimitExpr));
+            } else {
+              var upperLimitExpr = new LiteralExpr(new Token(), BigNum.FromInt((int)range.UpperLimit - 1)) {
+                Type = Type.Int
+              };
+              result.Add(CreateEqExpr(idExpr, upperLimitExpr));
+            }
+            
+          } else {
+            var lowerLimitExpr = new LiteralExpr(new Token(), BigNum.FromInt(int.MinValue)) {
+              Type = Type.Int
+            };
+            var upperLimitExpr = new LiteralExpr(new Token(), BigNum.FromInt(int.MaxValue)) {
+              Type = Type.Int
+            };
+
+            result.Add(CreateEqExpr(idExpr, lowerLimitExpr));
+            result.Add(CreateEqExpr(idExpr, upperLimitExpr));
+          }
+
+          if (inequalities.TryGetValue(variable.Name,  out var inequality)) {
+            if (!inequality.Equals(0)) {
+              var number0Expr = new LiteralExpr(new Token(), BigNum.FromInt(0));
+              number0Expr.Type = Type.Int;
+              result.Add(CreateEqExpr(idExpr, number0Expr));
+            }
+          } else {
+            var number0Expr = new LiteralExpr(new Token(), BigNum.FromInt(0));
+            number0Expr.Type = Type.Int;
+            result.Add(CreateEqExpr(idExpr, number0Expr));
+          }
+        }
       }
       
       return result;
@@ -305,12 +349,14 @@ namespace DafnyTestGeneration {
     ///   2. Inequality contradictions: e.g., x lt 0 and x gt 0, or x == 0 and x != 0
     /// Returns true if a contradiction is found, and false otherwise.
     /// </summary>
-    public static bool FindContradiction(List<Expr> combination) {
+    public static bool FindContradiction(List<Expr> combination, out (Dictionary<string, double>, Dictionary<string, double>, Dictionary<string, Range>) constraints ) {
       var equalities = new Dictionary<string, double>();
       var inequalities = new Dictionary<string, double>();
-      var ranges = new Dictionary<string, List<double>>();
+      var ranges = new Dictionary<string, Range>();
       var positiveBooleans = new HashSet<string>();
       var negativeBooleans = new HashSet<string>();
+
+      constraints = (equalities,  inequalities, ranges);
 
       foreach (var expr in combination) {
         if (IsInequality(expr, out string? inVarName, out BinaryOperator.Opcode? op, out double? inValue)) {
@@ -331,9 +377,9 @@ namespace DafnyTestGeneration {
                 return true;
               } 
             }
-            if (ranges.TryGetValue(inVarName, out List<double>? rangeExistingValue)) {
+            if (ranges.TryGetValue(inVarName, out Range? rangeExistingValue)) {
               // E.g.: x >= 0 && x <= 0 && x == 1
-              if (rangeExistingValue[1].Equals(rangeExistingValue[2]) &&  !rangeExistingValue[1].Equals(inValue)) {
+              if (!rangeExistingValue.IncludesValue(inValue)) {
                 return true;
               } 
             }
@@ -348,9 +394,9 @@ namespace DafnyTestGeneration {
                 return true;
               } 
             }
-            if (ranges.TryGetValue(inVarName, out List<double>? rangeExistingValue)) {
+            if (ranges.TryGetValue(inVarName, out Range? rangeExistingValue)) {
               // E.g.: x >= 0 && x <= 0 && x != 0
-              if (rangeExistingValue[1].Equals(rangeExistingValue[2]) &&  rangeExistingValue[1].Equals(inValue)) {
+              if (rangeExistingValue.HoldsSingleValue(out var singleValue) &&  singleValue.Equals(inValue)) {
                 return true;
               } 
             }
@@ -360,58 +406,68 @@ namespace DafnyTestGeneration {
 
           if (double.TryParse(inValue.ToString(), out double doubleValue)) {
             if (!ranges.ContainsKey(inVarName)) {
-              // [0] -> include ranges[1] (i.e., ge if 1, gt if 0)
-              // [1] -> minimum value
-              // [2] -> maximum value
-              // [3] -> include ranges[2] (i.e., le if 1, lt if 0)
-              ranges[inVarName] = [1, double.NegativeInfinity, double.PositiveInfinity, 1];
+              ranges[inVarName] = new Range();
             }
           
             var bounds = ranges[inVarName];
             switch (op) {
               case BinaryOperator.Opcode.Gt: 
-                bounds[0] = 0;
-                bounds[1] = Math.Max(bounds[1], doubleValue);
+                if (doubleValue > bounds.LowerLimit) {
+                  bounds.LowerLimit = doubleValue;
+                  bounds.IncludeLower = false;
+                }
+
+                if (doubleValue.Equals(bounds.LowerLimit)) {
+                  bounds.IncludeLower = false;
+                }
                 break;
               case BinaryOperator.Opcode.Ge:
-                bounds[0] = 1;
-                bounds[1] = Math.Max(bounds[1], doubleValue);
+                if (doubleValue > bounds.LowerLimit) {
+                  bounds.LowerLimit = doubleValue;
+                  bounds.IncludeLower = true;
+                }
                 break;
               case BinaryOperator.Opcode.Lt: 
-                bounds[2] = Math.Min(bounds[2], doubleValue);
-                bounds[3] = 0;
+                if (doubleValue < bounds.UpperLimit) {
+                  bounds.UpperLimit = doubleValue;
+                  bounds.IncludeUpper = false;
+                }
+
+                if (doubleValue.Equals(bounds.UpperLimit)) {
+                  bounds.IncludeUpper = false;
+                }
                 break;
               case BinaryOperator.Opcode.Le:
-                bounds[2] = Math.Min(bounds[2], doubleValue);
-                bounds[3] = 1;
+                if (doubleValue < bounds.UpperLimit) {
+                  bounds.UpperLimit = doubleValue;
+                  bounds.IncludeUpper = true;
+                }
                 break;
             }
 
-            if (bounds[1] > bounds[2]) {
+            if (bounds.IsImpossible()) {
               return true;
             }
 
-            if (bounds[1].Equals(bounds[2])) {
-              var eqValue = bounds[1];
-              if (bounds[0].Equals(0) || bounds[3].Equals(0)) {
-                // E.g.: x > 0 && x <= 0
-                return true;
-              }
-              
+            if (bounds.HoldsSingleValue(out var singleValue)) {
               if (inequalities.TryGetValue(inVarName, out double ineqExistingValue)) {
                 // E.g.: x >= 0 && x <= 0 && x != 0
-                if (eqValue.Equals(ineqExistingValue)) {
+                if (singleValue.Equals(ineqExistingValue)) {
                   return true;
-                } 
+                }
               }
+
               if (equalities.TryGetValue(inVarName, out double eqExistingValue)) {
-                // E.g.: x >= 0 && x <= 0 && x == 5
-                if (!eqValue.Equals(eqExistingValue)) {
-                  return true;
-                } 
+                  // E.g.: x >= 0 && x <= 0 && x == 5
+                  if (!singleValue.Equals(eqExistingValue)) {
+                    return true;
+                  } 
               }
-              
-              equalities[inVarName] = eqValue;
+
+              if (singleValue != null) {
+                equalities[inVarName] = (double)singleValue;
+              }
+
             }
           }
         }
@@ -658,5 +714,55 @@ namespace DafnyTestGeneration {
         }
       }
     }
+  }
+
+  public class Range(
+    bool includeLower = true,
+    double lowerLimit = Double.NegativeInfinity,
+    double upperLimit = Double.PositiveInfinity,
+    bool includeUpper = true) {
+    public bool IncludeLower = includeLower;
+    public double LowerLimit = lowerLimit;
+    public double UpperLimit = upperLimit;
+    public bool IncludeUpper = includeUpper;
+
+    public Range() : this(true, Double.NegativeInfinity, Double.PositiveInfinity, true) {
+    }
+
+    public bool IsImpossible() {
+      if (UpperLimit < LowerLimit) {
+        return true;
+      }
+      if (LowerLimit.Equals(UpperLimit) && (!IncludeUpper || !IncludeLower)) {
+        return true;
+      }
+      return false;
+    }
+    
+    public bool HoldsSingleValue(out double? value) {
+      if (LowerLimit.Equals(UpperLimit) && IncludeLower && IncludeUpper) {
+        value = LowerLimit;
+        return true;
+      }
+      value = null;
+      return false;
+    }
+
+    public bool IncludesValue(double? value) {
+      if (value == null) {
+        return false;
+      }
+      if (value > LowerLimit && value < UpperLimit) {
+        return true;
+      }
+      if (value.Equals(LowerLimit) && IncludeLower) {
+        return true;
+      }
+      if (value.Equals(UpperLimit) && IncludeUpper) {
+        return true;
+      }
+      return false;
+    }
+    
   }
 }

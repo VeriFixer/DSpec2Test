@@ -88,9 +88,6 @@ namespace DafnyTestGeneration {
       var ensDnfCombs = DafnyInfo.Options.TestGenOptions.Fdnf
         ? DnfEngine.CalculateAllCombinations(ensClauses)
         : DnfEngine.CalculateSafeCombinations(ensClauses);
-      var bvaCombs = DafnyInfo.Options.TestGenOptions.Bva
-        ? DnfEngine.CalculateBva(implementation.InParams)
-        : [];
 
       int specTestIndex = 0;
 
@@ -99,18 +96,22 @@ namespace DafnyTestGeneration {
           var baseComb = new List<Expr>(preComb);
           baseComb.AddRange(postComb);
 
-          if (DnfEngine.FindContradiction(baseComb)) {
+          if (DnfEngine.FindContradiction(baseComb, out var constraints)) {
             continue;
           }
           
           var testCombs = new List<List<Expr>>();
 
-          if (bvaCombs.Count > 0) {
-            foreach (var bva in bvaCombs) {
-              var currentBvaComb = new List<Expr>(baseComb) { bva };
-              if (!DnfEngine.FindContradiction(currentBvaComb)) {
+          if (DafnyInfo.Options.TestGenOptions.Bva) {
+            var bvaCombs = DnfEngine.CalculateBva(implementation.InParams, constraints);
+
+            if (bvaCombs.Count > 0) {
+              foreach (var bva in bvaCombs) {
+                var currentBvaComb = new List<Expr>(baseComb) { bva };
                 testCombs.Add(currentBvaComb);
               }
+            } else {
+              testCombs.Add(baseComb);
             }
           } else {
             testCombs.Add(baseComb);
