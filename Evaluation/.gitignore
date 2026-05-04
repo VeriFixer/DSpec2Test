@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Dataset run data (generated, large)
+dataset/data/
+
+# Hypothesis test cache
+.hypothesis/
+
+# Temp/artifacts
+tmp/
+results/
+
+# Editor swap files
+*.swp
+
+# Marker file (local only)
+.repo_mutation_testing_marker

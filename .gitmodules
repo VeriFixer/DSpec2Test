@@ -1,0 +1,7 @@
+
+[submodule "Evaluation/external/bench/dafnybench"]
+	path = Evaluation/external/bench/dafnybench
+	url = git@github.com:sun-wendy/DafnyBench.git
+[submodule "Evaluation/external/mutation/mutdafny"]
+	path = Evaluation/external/mutation/mutdafny
+	url = git@github.com:MutDafny/mutdafny.git
