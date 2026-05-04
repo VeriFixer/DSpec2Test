@@ -414,41 +414,77 @@ namespace DafnyTestGeneration {
       }
 
       if (innerExpr is NAryExpr { Fun: BinaryOperator binOp } nary) {
-        var a = nary.Args[0];
-        var b = nary.Args[1];
         op = GetLogicalOperator(binOp.Op, isNegated);
         if (op == null) {
           return false;
         }
+        
+        var a = nary.Args[0];
+        var b = nary.Args[1];
 
-        if (a is IdentifierExpr idExA) {
-          varName = idExA.Name;
-          if (b is NAryExpr naryB) {
-            value = UnpackNAry(naryB);
-          }
-          else if (b is LiteralExpr litB) {
-            var stringVal = litB.Val.ToString();
-            if (double.TryParse(stringVal, out double doubleVal)) {
-              value = doubleVal;
-            }
-          }
-        }
-        else if (b is IdentifierExpr idExB) {
-          varName = idExB.Name;
-          if (a is NAryExpr naryA) {
-            value = UnpackNAry(naryA);
-          }
-          else if (a is LiteralExpr litA) {
-            var stringVal = litA.Val.ToString();
-            if (double.TryParse(stringVal, out double doubleVal)) {
-              value = doubleVal;
-            }
-          }
-          op = GetLogicalOperator(binOp.Op, isNegated, flipSides: true);
+        if (TryExtractVariable(a, out string nameA) && TryExtractValue(b, out double valB)) {
+          varName = nameA;
+          value = valB;
+          return true;
         }
         
-        return varName != null && op != null && value != null;
+        // Case 2: Value on the Left, Variable on the Right (e.g., 5 > x  or  0 == |s|)
+        if (TryExtractVariable(b, out string nameB) && TryExtractValue(a, out double valA)) {
+          varName = nameB;
+          value = valA;
+          op = GetLogicalOperator(binOp.Op, isNegated, flipSides: true);
+          return true;
+        }
       }
+      return false;
+    }
+    
+    /// <summary>
+    /// Checks if an expression is a variable or a collection cardinality (e.g., |s|)
+    /// </summary>
+    private static bool TryExtractVariable(Expr expr, out string varName) {
+      varName = "";
+      
+      if (expr is IdentifierExpr id) {
+        varName = id.Name;
+        return true;
+      }
+      
+      if (expr is NAryExpr { Fun: FunctionCall fn } nary) {
+        string fnName = fn.Func.Name;
+        
+        // Matches Seq#Length, Set#Card, Map#Card, MultiSet#Card
+        if (fnName.EndsWith("#Length") || fnName.EndsWith("#Card")) {
+          if (nary.Args.Count > 0 && nary.Args[0] is IdentifierExpr cardId) {
+            varName = "|" + cardId.Name + "|";
+            return true;
+          }
+        }
+      }
+      
+      return false;
+    }
+
+    /// <summary>
+    /// Safely unpacks a numeric value from either a Literal or an NAry expression
+    /// </summary>
+    private static bool TryExtractValue(Expr expr, out double value) {
+      value = 0;
+
+      if (expr is NAryExpr nary) {
+        var unpacked = UnpackNAry(nary);
+        if (unpacked.HasValue) {
+          value = unpacked.Value;
+          return true;
+        }
+      } 
+      else if (expr is LiteralExpr lit) {
+        if (double.TryParse(lit.Val.ToString(), out double val)) {
+          value = val;
+          return true;
+        }
+      }
+
       return false;
     }
 
