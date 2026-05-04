@@ -1,8 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.BaseTypes;
 using Microsoft.Boogie;
+using ExistsExpr = Microsoft.Boogie.ExistsExpr;
 using Expr = Microsoft.Boogie.Expr;
+using ForallExpr = Microsoft.Boogie.ForallExpr;
+using IdentifierExpr = Microsoft.Boogie.IdentifierExpr;
+using LiteralExpr = Microsoft.Boogie.LiteralExpr;
+using Type = Microsoft.Boogie.Type;
 
 namespace DafnyTestGeneration {
 
@@ -133,6 +139,41 @@ namespace DafnyTestGeneration {
       }
       
       return result;
+    }
+    
+    /// <summary>
+    /// Calculates the BVA for each inParam
+    /// </summary>
+    public static List<Expr> CalculateBva(List<Variable> inParams) {
+      var result = new List<Expr>();
+
+      foreach (var variable in inParams) {
+        var type = variable.TypedIdent.Type;
+        if (type.IsBool) {
+          var idExpr = new IdentifierExpr(new Token(), variable.Name, type);
+          var trueExpr = new LiteralExpr(new Token(), true);
+          var falseExpr = new LiteralExpr(new Token(), false);
+          result.Add(CreateEqExpr(idExpr, trueExpr));
+          result.Add(CreateEqExpr(idExpr, falseExpr));
+        }
+        else if (type.IsInt) {
+          var idExpr = new IdentifierExpr(new Token(), variable.Name, type);
+          var number100Expr = new LiteralExpr(new Token(), Microsoft.BaseTypes.BigNum.FromInt(50));
+          var number0Expr = new LiteralExpr(new Token(), Microsoft.BaseTypes.BigNum.FromInt(0));
+          result.Add(CreateEqExpr(idExpr, number100Expr));
+          result.Add(CreateEqExpr(idExpr, number0Expr));
+        } 
+      }
+      
+      return result;
+    }
+    
+    private static Expr CreateEqExpr(Expr left, Expr right) {
+      return new NAryExpr(
+        Token.NoToken, 
+        new BinaryOperator(Token.NoToken, BinaryOperator.Opcode.Eq), 
+        new List<Expr> { left, right }
+      );
     }
 
     /// <summary>
@@ -529,6 +570,86 @@ namespace DafnyTestGeneration {
         return true;
       }
       return false;
+    }
+    
+    public static void FixTypes(Expr expr) {
+      if (expr == null) {
+        return;
+      }
+
+      if (expr is LiteralExpr { Type: null } lit) {
+        lit.Type = lit.Val switch {
+          BigNum => Type.Int,
+          bool => Type.Bool,
+          BigDec => Type.Real,
+          BvType bvConst => Type.GetBvType(bvConst.Bits),
+          _ => lit.Type
+        };
+      }
+      
+      else if (expr is QuantifierExpr quant) {
+        FixTypes(quant.Body);
+        quant.Type ??= Type.Bool;
+      }
+      
+      else if (expr is OldExpr oldExpr) {
+        FixTypes(oldExpr.Expr);
+        oldExpr.Type ??= oldExpr.Expr.Type;
+      }
+
+      else if (expr is NAryExpr nary) {
+        foreach (var arg in nary.Args) {
+          FixTypes(arg); 
+        }
+
+        if (nary.Type == null) {
+          switch (nary.Fun)
+          {
+            case BinaryOperator binOp:
+              switch (binOp.Op) {
+                case BinaryOperator.Opcode.Eq:
+                case BinaryOperator.Opcode.Neq:
+                case BinaryOperator.Opcode.Lt:
+                case BinaryOperator.Opcode.Le:
+                case BinaryOperator.Opcode.Gt:
+                case BinaryOperator.Opcode.Ge:
+                case BinaryOperator.Opcode.And:
+                case BinaryOperator.Opcode.Or:
+                case BinaryOperator.Opcode.Imp:
+                case BinaryOperator.Opcode.Iff:
+                  nary.Type = Type.Bool;
+                  break;
+                case BinaryOperator.Opcode.Add:
+                case BinaryOperator.Opcode.Sub:
+                case BinaryOperator.Opcode.Mul:
+                case BinaryOperator.Opcode.Div:
+                case BinaryOperator.Opcode.Mod:
+                case BinaryOperator.Opcode.RealDiv:
+                case BinaryOperator.Opcode.FloatDiv:
+                case BinaryOperator.Opcode.Pow:
+                default:
+                  nary.Type = nary.Args[0].Type ?? Type.Int; 
+                  break;
+              }
+
+              break;
+            case UnaryOperator unOp:
+              nary.Type = unOp.Op == UnaryOperator.Opcode.Not 
+                ? Type.Bool 
+                : (nary.Args[0].Type ?? Type.Int);
+              break;
+            case FunctionCall funcCall:
+              nary.Type = funcCall.Func.OutParams[0].TypedIdent.Type;
+              break;
+            case MapSelect when nary.Args[0].Type is MapType mapType:
+              nary.Type = mapType.Result;
+              break;
+            case MapStore:
+              nary.Type = nary.Args[0].Type;
+              break;
+          }
+        }
+      }
     }
   }
 }
