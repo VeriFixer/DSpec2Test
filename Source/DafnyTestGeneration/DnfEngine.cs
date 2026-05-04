@@ -149,18 +149,20 @@ namespace DafnyTestGeneration {
 
       foreach (var variable in inParams) {
         var type = variable.TypedIdent.Type;
+        var idExpr = new IdentifierExpr(Token.NoToken, variable);
         if (type.IsBool) {
-          var idExpr = new IdentifierExpr(new Token(), variable.Name, type);
-          var trueExpr = new LiteralExpr(new Token(), true);
-          var falseExpr = new LiteralExpr(new Token(), false);
-          result.Add(CreateEqExpr(idExpr, trueExpr));
-          result.Add(CreateEqExpr(idExpr, falseExpr));
+          result.Add(CreateEqExpr(idExpr, Expr.True));
+          result.Add(CreateEqExpr(idExpr, Expr.False));
         }
         else if (type.IsInt) {
-          var idExpr = new IdentifierExpr(new Token(), variable.Name, type);
-          var number100Expr = new LiteralExpr(new Token(), Microsoft.BaseTypes.BigNum.FromInt(50));
+          var numberNeg50Expr = new LiteralExpr(new Token(), Microsoft.BaseTypes.BigNum.FromInt(-50));
+          numberNeg50Expr.Type = Type.Int;
+          var number50Expr = new LiteralExpr(new Token(), Microsoft.BaseTypes.BigNum.FromInt(50));
+          number50Expr.Type = Type.Int;
           var number0Expr = new LiteralExpr(new Token(), Microsoft.BaseTypes.BigNum.FromInt(0));
-          result.Add(CreateEqExpr(idExpr, number100Expr));
+          number0Expr.Type = Type.Int;
+          result.Add(CreateEqExpr(idExpr, numberNeg50Expr));
+          result.Add(CreateEqExpr(idExpr, number50Expr));
           result.Add(CreateEqExpr(idExpr, number0Expr));
         } 
       }
@@ -169,11 +171,13 @@ namespace DafnyTestGeneration {
     }
     
     private static Expr CreateEqExpr(Expr left, Expr right) {
-      return new NAryExpr(
+      var naryExpr = new NAryExpr(
         Token.NoToken, 
         new BinaryOperator(Token.NoToken, BinaryOperator.Opcode.Eq), 
         new List<Expr> { left, right }
       );
+      naryExpr.Type = Type.Bool;
+      return naryExpr;
     }
 
     /// <summary>
@@ -572,6 +576,9 @@ namespace DafnyTestGeneration {
       return false;
     }
     
+    /// <summary>
+    /// Fixes Expr's types, because sometimes they end up being Null, which crashes the pipeline.
+    /// </summary>
     public static void FixTypes(Expr expr) {
       if (expr == null) {
         return;

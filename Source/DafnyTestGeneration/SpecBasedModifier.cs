@@ -96,44 +96,56 @@ namespace DafnyTestGeneration {
 
       foreach (var preComb in reqDnfCombs) {
         foreach (var postComb in ensDnfCombs) {
-          // foreach (var bva in bvaCombs){
+          var baseComb = new List<Expr>(preComb);
+          baseComb.AddRange(postComb);
 
-          var fullComb = new List<Expr>(preComb);
-          fullComb.AddRange(postComb);
-          // fullComb.Add(bva);
-
-          if (DnfEngine.FindContradiction(fullComb)) {
+          if (DnfEngine.FindContradiction(baseComb)) {
             continue;
           }
+          
+          var testCombs = new List<List<Expr>>();
 
-          string uniqueStateId = $"SpecComb_{baseMethodName}_{specTestIndex}";
-          var captureStateAttr = new QKeyValue(new Token(), $"captureState_{baseMethodName}_{specTestIndex}",
-            new List<object> { uniqueStateId });
-          var captureAssumeCmd = new AssumeCmd(new Token(), Expr.True, captureStateAttr);
+          if (bvaCombs.Count > 0) {
+            foreach (var bva in bvaCombs) {
+              var currentBvaComb = new List<Expr>(baseComb) { bva };
+              if (!DnfEngine.FindContradiction(currentBvaComb)) {
+                testCombs.Add(currentBvaComb);
+              }
+            }
+          } else {
+            testCombs.Add(baseComb);
+          }
 
-          var andExpr = DnfEngine.ConjoinExprs(fullComb);
+          foreach (var finalComb in testCombs) {
+            string uniqueStateId = $"SpecComb_{baseMethodName}_{specTestIndex}";
+            var captureStateAttr = new QKeyValue(new Token(), $"captureState_{baseMethodName}_{specTestIndex}",
+              new List<object> { uniqueStateId });
+            var captureAssumeCmd = new AssumeCmd(new Token(), Expr.True, captureStateAttr);
 
-          DnfEngine.FixTypes(andExpr);
+            var andExpr = DnfEngine.ConjoinExprs(finalComb);
 
-          entryBlock.Cmds.Add(captureAssumeCmd);
-          entryBlock.Cmds.Add(new AssumeCmd(new Token(), andExpr));
-          entryBlock.Cmds.Add(new AssertCmd(new Token(), Expr.False));
+            DnfEngine.FixTypes(andExpr);
 
-          var targetStates = Utils.AllBlockIds(entryBlock, DafnyInfo.Options)
-            .Where(id => id != null && id.Contains(uniqueStateId))
-            .ToHashSet();
+            entryBlock.Cmds.Add(captureAssumeCmd);
+            entryBlock.Cmds.Add(new AssumeCmd(new Token(), andExpr));
+            entryBlock.Cmds.Add(new AssertCmd(new Token(), Expr.False));
 
-          var record = modifications.GetProgramModification(program, implementation,
-            targetStates,
-            testEntryNames, $"{baseMethodName}_{specTestIndex++} (spec)");
+            var targetStates = Utils.AllBlockIds(entryBlock, DafnyInfo.Options)
+              .Where(id => id != null && id.Contains(uniqueStateId))
+              .ToHashSet();
 
-          yield return record;
+            var record = modifications.GetProgramModification(program, implementation,
+              targetStates,
+              testEntryNames, $"{baseMethodName}_{specTestIndex++} (spec)");
 
-          var index = entryBlock.Cmds.FindIndex(cmd =>
-            cmd is AssumeCmd assumeCmd && assumeCmd.Attributes! is QKeyValue keyValue &&
-            keyValue.Key.Equals(captureStateAttr.Key));
-          if (index != -1) {
-            entryBlock.Cmds.RemoveRange(index, 3);
+            yield return record;
+
+            var index = entryBlock.Cmds.FindIndex(cmd =>
+              cmd is AssumeCmd assumeCmd && assumeCmd.Attributes! is QKeyValue keyValue &&
+              keyValue.Key.Equals(captureStateAttr.Key));
+            if (index != -1) {
+              entryBlock.Cmds.RemoveRange(index, 3);
+            }
           }
         }
       }

@@ -206,7 +206,7 @@ namespace DafnyTestGeneration {
       bool isSpecMode = options.TestGenOptions.Mode == TestGenerationOptions.Modes.Spec;
 
       if (isSpecMode) {
-        uint testCount = options.TestGenOptions.TestCount;
+        uint testCount = options.TestGenOptions.Bva? 1 : options.TestGenOptions.TestCount;
         List<TestMethod> testMethods = new List<TestMethod>();
         
         PrepareProgram(program);
