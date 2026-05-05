@@ -101,21 +101,19 @@ namespace DafnyTestGeneration {
           }
           
           var testCombs = new List<List<Expr>>();
+          
+          testCombs.Add(baseComb);
 
           if (DafnyInfo.Options.TestGenOptions.Bva) {
             var bvaCombs = DnfEngine.CalculateBva(implementation.InParams, constraints, program);
-
+            
             if (bvaCombs.Count > 0) {
               foreach (var bva in bvaCombs) {
                 var currentBvaComb = new List<Expr>(baseComb) { bva };
                 testCombs.Add(currentBvaComb);
               }
-            } else {
-              testCombs.Add(baseComb);
             }
-          } else {
-            testCombs.Add(baseComb);
-          }
+          } 
 
           foreach (var finalComb in testCombs) {
             string uniqueStateId = $"SpecComb_{baseMethodName}_{specTestIndex}";

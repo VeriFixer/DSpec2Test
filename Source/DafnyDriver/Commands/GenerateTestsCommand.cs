@@ -74,7 +74,6 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
       var mode = commandResult.GetValueForArgument(modeArgument);
       var hasFdnf = commandResult.FindResultFor(Fdnf) is not null;
       var hasBva = commandResult.FindResultFor(Bva) is not null;
-      var hasTestCount = commandResult.FindResultFor(TestCount) is not null;
       var hasSimplify = commandResult.FindResultFor(Simplify) is not null;
       
       if (mode != Mode.Spec) {
@@ -94,6 +93,8 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
             $"*** Error: The following options can only be used when the mode is 'Spec': {string.Join(", ", invalidFlags)}";
         }
       } else {
+        var testCountResult = commandResult.FindResultFor(TestCount);
+        var hasTestCount = testCountResult is not null && !testCountResult.IsImplicit;
         if (hasBva && hasTestCount) {
           commandResult.ErrorMessage = "*** Error: --bva and --test-count cannot be used simultaneously";
         }
