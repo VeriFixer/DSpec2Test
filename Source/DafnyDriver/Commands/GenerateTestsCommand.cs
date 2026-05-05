@@ -70,6 +70,35 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
       result.AddOption(option);
     }
     
+    result.AddValidator(commandResult => {
+      var mode = commandResult.GetValueForArgument(modeArgument);
+      var hasFdnf = commandResult.FindResultFor(Fdnf) is not null;
+      var hasBva = commandResult.FindResultFor(Bva) is not null;
+      var hasTestCount = commandResult.FindResultFor(TestCount) is not null;
+      
+      if (mode != Mode.Spec) {
+        var invalidFlags = new List<string>();
+        if (hasFdnf) {
+          invalidFlags.Add("--fdnf");
+        }
+        if (hasBva) {
+          invalidFlags.Add("--bva");
+        }
+        if (hasTestCount) {
+          invalidFlags.Add("--test-count");
+        }
+
+        if (invalidFlags.Count > 0) {
+          commandResult.ErrorMessage =
+            $"*** Error: The following options can only be used when the mode is 'Spec': {string.Join(", ", invalidFlags)}";
+        }
+      } else {
+        if (hasBva && hasTestCount) {
+          commandResult.ErrorMessage = "*** Error: --bva and --test-count cannot be used simultaneously";
+        }
+      }
+    });
+    
     CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
     CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
@@ -285,8 +314,12 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     "(out-of-bounds, division by zero) before the spec violation is reported.");
   
   public static readonly Option<bool> Bva = new("--bva",
-    "Only for the Spec mode. Generates tests based on Boundary Value Analysis. ");
+    "Only for the Spec mode. Generates tests based on Boundary Value Analysis. Cannot be used simultaneously with --test-count.");
 
+  public static readonly Option<uint> TestCount = new("--test-count", () => 1,
+    "Only for the Spec mode. Number of tests to generate per method on Spec mode. 1 (default) generates a single test per method." +
+    "Cannot be used simultaneously with --bva.");
+  
   public static readonly Option<bool> IgnoreWarnings = new("--ignore-warnings",
     "Ignore warnings when generating tests.");
   
@@ -295,10 +328,6 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
 
   public static readonly Option<uint> SequenceLengthLimit = new("--length-limit",
     "Add an axiom that sets the length of all sequences to be no greater than <n>. 0 (default) indicates no limit.");
-  
-  public static readonly Option<uint> TestCount = new("--test-count", () => 1,
-    "Number of tests to generate per method on Spec mode. 1 (default) generates a single test per method." +
-    "This option will be ignored for modes other than Spec.");
 
   public static readonly Option<int> LoopUnroll = new("--loop-unroll", () => -1,
     "Higher values can improve accuracy of the analysis at the cost of taking longer to run.");
@@ -325,6 +354,9 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     DafnyOptions.RegisterLegacyBinding(Bva, (options, value) => {
       options.TestGenOptions.Bva = value;
     });
+    DafnyOptions.RegisterLegacyBinding(TestCount, (options, value) => {
+      options.TestGenOptions.TestCount = value;
+    });
     DafnyOptions.RegisterLegacyBinding(IgnoreWarnings, (options, value) => {
       options.TestGenOptions.IgnoreWarnings = value;
     });
@@ -336,9 +368,6 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     });
     DafnyOptions.RegisterLegacyBinding(SequenceLengthLimit, (options, value) => {
       options.TestGenOptions.SeqLengthLimit = value;
-    });
-    DafnyOptions.RegisterLegacyBinding(TestCount, (options, value) => {
-      options.TestGenOptions.TestCount = value;
     });
     DafnyOptions.RegisterLegacyBinding(PrintBpl, (options, value) => {
       options.TestGenOptions.PrintBpl = value;
