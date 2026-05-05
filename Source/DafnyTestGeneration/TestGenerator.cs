@@ -203,56 +203,37 @@ namespace DafnyTestGeneration {
       options.PrintMode = PrintModes.Everything;
       // Generate tests based on counterexamples produced from modifications
       
-      bool isSpecMode = options.TestGenOptions.Mode == TestGenerationOptions.Modes.Spec;
+      uint testCount = options.TestGenOptions.Bva? 1 : options.TestGenOptions.TestCount;
+      List<TestMethod> testMethods = new List<TestMethod>();
 
-      if (isSpecMode) {
-        uint testCount = options.TestGenOptions.Bva? 1 : options.TestGenOptions.TestCount;
-        List<TestMethod> testMethods = new List<TestMethod>();
-        
+      if (options.TestGenOptions.Mode == TestGenerationOptions.Modes.Spec) {
         PrepareProgram(program);
+      }
+
+      for (int i = 0; i < testCount; i++) {
+        testMethods.Clear();
         
-        for (int i = 0; i < testCount; i++) {
-          testMethods.Clear();
-          
-          Modifications currentCache = (i == 0)
-            ? (cache ?? new Modifications(options))
-            : new Modifications(program.Options);
-          
-          foreach (var modification in GetModifications(currentCache, program, out var dafnyInfo)) {
+        Modifications currentCache = (i == 0)
+          ? (cache ?? new Modifications(options))
+          : new Modifications(program.Options);
+        
+        foreach (var modification in GetModifications(currentCache, program, out var dafnyInfo)) {
 
-            var log = await modification.GetCounterExampleLog(currentCache);
-            if (log == null) {
-              continue;
-            }
-
-            var testMethod = await modification.GetTestMethod(currentCache, dafnyInfo);
-            if (testMethod == null) {
-              continue;
-            }
-
-            yield return testMethod;
-            testMethods.Add(testMethod);
-          }
-          if (i < testCount - 1) {
-            program = await UpdateProgram(program, testMethods);
-          }
-        }
-
-      } else {
-        cache ??= new Modifications(options);
-        foreach (var modification in GetModifications(cache, program, out var dafnyInfo)) {
-
-          var log = await modification.GetCounterExampleLog(cache);
+          var log = await modification.GetCounterExampleLog(currentCache);
           if (log == null) {
             continue;
           }
 
-          var testMethod = await modification.GetTestMethod(cache, dafnyInfo);
+          var testMethod = await modification.GetTestMethod(currentCache, dafnyInfo);
           if (testMethod == null) {
             continue;
           }
 
           yield return testMethod;
+          testMethods.Add(testMethod);
+        }
+        if (i < testCount - 1) {
+          program = await UpdateProgram(program, testMethods);
         }
       }
     }
