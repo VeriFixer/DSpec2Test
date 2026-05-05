@@ -18,7 +18,10 @@ def generator(tmp_path):
 
 class TestSpecTestGeneratorInit:
     def test_name(self, generator):
-        assert generator.name == "SpecTestGenerator"
+        assert generator.name == "DafnyTestGenerator_Spec"
+
+    def test_mode(self, generator):
+        assert generator.mode == "Spec"
 
     def test_custom_binary(self, tmp_path):
         binary = tmp_path / "my_dafny"
@@ -29,11 +32,11 @@ class TestSpecTestGeneratorInit:
         from src import config
 
         gen = SpecTestGenerator()
-        assert gen.dafny_binary == config.DAFNY_BINARY
+        assert gen.dafny_binary == config.SPECTEST_DAFNY_BINARY
 
 
 class TestGenerateTestsSuccess:
-    @patch("src.mt_eval.generators.spec_test_generator.subprocess.run")
+    @patch("src.mt_eval.generators.dafny_test_generator.subprocess.run")
     def test_success_returns_result(self, mock_run, tmp_path):
         output_file = tmp_path / "out.dfy"
         output_file.write_text("// tests")
@@ -50,7 +53,7 @@ class TestGenerateTestsSuccess:
         assert result.error_message == ""
         assert result.command != ""
 
-    @patch("src.mt_eval.generators.spec_test_generator.subprocess.run")
+    @patch("src.mt_eval.generators.dafny_test_generator.subprocess.run")
     def test_success_but_no_output_file(self, mock_run, tmp_path):
         output_file = tmp_path / "out.dfy"  # does not exist
         dafny_file = tmp_path / "input.dfy"
@@ -66,7 +69,7 @@ class TestGenerateTestsSuccess:
 
 
 class TestGenerateTestsFailure:
-    @patch("src.mt_eval.generators.spec_test_generator.subprocess.run")
+    @patch("src.mt_eval.generators.dafny_test_generator.subprocess.run")
     def test_nonzero_exit(self, mock_run, tmp_path):
         dafny_file = tmp_path / "input.dfy"
         output_file = tmp_path / "out.dfy"
@@ -80,7 +83,7 @@ class TestGenerateTestsFailure:
         assert result.test_file is None
         assert "some error" in result.error_message
 
-    @patch("src.mt_eval.generators.spec_test_generator.subprocess.run")
+    @patch("src.mt_eval.generators.dafny_test_generator.subprocess.run")
     def test_timeout(self, mock_run, tmp_path):
         dafny_file = tmp_path / "input.dfy"
         output_file = tmp_path / "out.dfy"
@@ -94,7 +97,7 @@ class TestGenerateTestsFailure:
         assert result.test_file is None
         assert result.error_message == "timeout"
 
-    @patch("src.mt_eval.generators.spec_test_generator.subprocess.run")
+    @patch("src.mt_eval.generators.dafny_test_generator.subprocess.run")
     def test_other_exception(self, mock_run, tmp_path):
         dafny_file = tmp_path / "input.dfy"
         output_file = tmp_path / "out.dfy"
@@ -110,7 +113,7 @@ class TestGenerateTestsFailure:
 
 
 class TestSubprocessCommand:
-    @patch("src.mt_eval.generators.spec_test_generator.subprocess.run")
+    @patch("src.mt_eval.generators.dafny_test_generator.subprocess.run")
     def test_correct_command(self, mock_run, tmp_path):
         dafny_file = tmp_path / "input.dfy"
         output_file = tmp_path / "out.dfy"
@@ -136,7 +139,7 @@ class TestSubprocessCommand:
             "--ignore-warnings",
         ]
 
-    @patch("src.mt_eval.generators.spec_test_generator.subprocess.run")
+    @patch("src.mt_eval.generators.dafny_test_generator.subprocess.run")
     def test_uses_testgen_timeout(self, mock_run, tmp_path):
         from src import config
 

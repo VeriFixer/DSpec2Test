@@ -9,20 +9,22 @@ Usage:
 import argparse
 import json
 import logging
+import shutil
 import sys
 from pathlib import Path
 
 from src.config import (
     SELECTED_PROGRAMS_DIR,
     SELECTED_PROGRAMS_MUTANTS_DIR,
-    SELECTED_PROGRAMS_MUTANTS_WITH_TESTS_DIR,
 )
 from src.mt_eval.core.models import MutantResult, MutantStatus
 from src.mt_eval.execution.kill_checker import KillChecker
 from src.mt_eval.execution.parallel_executor import run_parallel_or_seq
 from src.mt_eval.execution.safety_check import run_safety_check
-from src.mt_eval.generators.spec_test_generator import SpecTestGenerator
+from src.mt_eval.generators import STRATEGY_REGISTRY, resolve_strategies
 from src.mt_eval.metrics.pipeline_stats import PipelineStats
+from src.mt_eval.paths import get_strategy_combined_dir, get_strategy_results_path
+from src.mt_eval.reporting.comparison import print_comparison_table, write_comparison_json
 
 logger = logging.getLogger(__name__)
 
@@ -44,13 +46,30 @@ def _map_mutants(mutants_dir: Path) -> dict[str, list[Path]]:
 
 
 def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
-                 verbose: bool = False, max_display: int | None = None) -> int:
+                 verbose: bool = False, max_display: int | None = None,
+                 strategies=None, clean_cache: bool = False) -> int:
     """Execute the evaluation pipeline.
 
     Returns 0 on success, 1 on critical failure.
     """
     if output_dir is None:
         output_dir = Path("results")
+
+    if clean_cache:
+        from src.config import BASE_PATH as _base
+        for mode in STRATEGY_REGISTRY:
+            # Delete per-strategy combined dir
+            combined = _base / "dataset" / f"selected_programs_mutants_with_tests_{mode}"
+            if combined.exists():
+                shutil.rmtree(combined)
+            # Delete per-strategy results file
+            results_path = output_dir / f"results_{STRATEGY_REGISTRY[mode]().name}.json"
+            if results_path.exists():
+                results_path.unlink()
+        # Delete comparison.json
+        comparison_path = output_dir / "comparison.json"
+        if comparison_path.exists():
+            comparison_path.unlink()
 
     # --- Step 1: Read originals ---
     originals = sorted(SELECTED_PROGRAMS_DIR.glob("*.dfy"))
@@ -68,10 +87,21 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
           f"{sum(len(v) for v in mutant_map.values())} mutants")
 
     # --- Step 3: For each strategy ---
-    strategies = [SpecTestGenerator()]
+    if strategies is None:
+        strategies = resolve_strategies(list(STRATEGY_REGISTRY.keys()))
+
+    all_strategy_results: dict[str, dict] = {}
 
     for strategy in strategies:
         print(f"\n[run_evaluation] Strategy: {strategy.name}")
+
+        # Cache hit: skip if per-strategy results file already exists
+        results_path = get_strategy_results_path(strategy.name, output_dir)
+        if results_path.exists():
+            print(f"[run_evaluation] Cache hit for {strategy.name}, loading from {results_path}")
+            cached_data = json.loads(results_path.read_text())
+            all_strategy_results[strategy.name] = cached_data
+            continue
 
         # Track stats
         not_supported_programs = 0
@@ -145,8 +175,9 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 kill_tasks.append((test_file, mutant))
 
         if kill_tasks:
+            strategy_combined_dir = get_strategy_combined_dir(strategy.mode)
             checker = KillChecker(
-                output_dir=SELECTED_PROGRAMS_MUTANTS_WITH_TESTS_DIR,
+                output_dir=strategy_combined_dir,
                 originals_dir=SELECTED_PROGRAMS_DIR,
             )
 
@@ -210,7 +241,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                     for line in stderr_lines[1:]:
                         print(f"            {line}")
             print(f"\n{'─'*60}")
-            
+
         # 3e. Print summary
         print(f"\n{'='*60}")
         print(f"  Strategy: {strategy.name}")
@@ -236,7 +267,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
 
         # 3f. Write JSON
         output_dir.mkdir(parents=True, exist_ok=True)
-        results_file = output_dir / "results.json"
+        results_file = get_strategy_results_path(strategy.name, output_dir)
         output_data = {
             "strategy": strategy.name,
             "stats": stats.to_dict(),
@@ -245,8 +276,13 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
         }
         results_file.write_text(json.dumps(output_data, indent=2) + "\n")
         print(f"[run_evaluation] Results written to {results_file}")
+        all_strategy_results[strategy.name] = output_data
 
-
+    # --- Step 4: Comparison summary ---
+    print_comparison_table(all_strategy_results)
+    comparison_path = output_dir / "comparison.json"
+    write_comparison_json(all_strategy_results, comparison_path)
+    print(f"[run_evaluation] Comparison written to {comparison_path}")
 
     return 0
 
@@ -280,6 +316,18 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=None,
         help="Max number of mutant results to display in verbose mode (default: all)",
     )
+    parser.add_argument(
+        "--strategies",
+        type=str,
+        default="all",
+        help="Comma-separated strategy mode names to run, or 'all' (default: all)",
+    )
+    parser.add_argument(
+        "--clean-cache",
+        action="store_true",
+        default=False,
+        help="Delete cached per-strategy results and combined dirs before running",
+    )
     return parser.parse_args(argv)
 
 
@@ -287,11 +335,26 @@ def main(argv: list[str] | None = None) -> None:
     """Entry point."""
     args = parse_args(argv)
     out = Path(args.output_dir) if args.output_dir else None
+
+    # Resolve strategies
+    if args.strategies == "all":
+        strategy_names = list(STRATEGY_REGISTRY.keys())
+    else:
+        strategy_names = [s.strip() for s in args.strategies.split(",")]
+
+    try:
+        resolved = resolve_strategies(strategy_names)
+    except ValueError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
+
     exit_code = run_pipeline(
         sequential=args.sequential,
         output_dir=out,
         verbose=args.verbose,
         max_display=args.max_display,
+        strategies=resolved,
+        clean_cache=args.clean_cache,
     )
     sys.exit(exit_code)
 

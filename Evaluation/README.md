@@ -50,7 +50,7 @@ This reads `.dfy` files from `dataset/selected_programs/`, generates mutants, fi
 ### Run Evaluation
 
 ```bash
-python -m src.runners.run_evaluation [--sequential] [--output-dir DIR] [--verbose] [--max-display N]
+python -m src.runners.run_evaluation [--sequential] [--output-dir DIR] [--verbose] [--max-display N] [--strategies STRATEGIES] [--clean-cache]
 ```
 
 Options:
@@ -58,10 +58,36 @@ Options:
 - `--output-dir DIR` — where to write results JSON (default: `results/`)
 - `--verbose` — print per-mutant details after summary (test gen command, kill check output)
 - `--max-display N` — limit verbose output to N mutants (default: all)
+- `--strategies STRATEGIES` — comma-separated strategy modes to run, or `"all"` (default: `all`). Available: `Spec`, `Block`
+- `--clean-cache` — delete cached per-strategy results and combined dirs before running
 
 No positional arguments — reads originals from `dataset/selected_programs/` and mutants from `dataset/selected_programs_mutants/` automatically.
 
-Combined test files (mutant + tests) are kept at `dataset/selected_programs_mutants_with_tests/` for manual inspection and re-running.
+#### Multi-Strategy Support
+
+The pipeline supports multiple test-generation strategies (Spec, Block) running in a single invocation. Each strategy writes to isolated output directories:
+
+- Combined test files: `dataset/selected_programs_mutants_with_tests_{Mode}/`
+- Per-strategy results: `results/results_{strategy_name}.json`
+- Comparison summary: `results/comparison.json`
+
+**Caching**: If a per-strategy results file already exists, that strategy is skipped and results loaded from disk. Use `--clean-cache` to force re-execution.
+
+Examples:
+
+```bash
+# Run all strategies (Spec + Block)
+python -m src.runners.run_evaluation --sequential
+
+# Run only Block strategy
+python -m src.runners.run_evaluation --strategies=Block
+
+# Run both, clearing previous results first
+python -m src.runners.run_evaluation --clean-cache
+
+# Run Spec only, custom output dir
+python -m src.runners.run_evaluation --strategies=Spec --output-dir my_results/
+```
 
 ### Output
 
@@ -109,11 +135,11 @@ With `--verbose`:
 ────────────────────────────────────────────────────────────────
 ```
 
-JSON output (`results/results.json`):
+JSON output (`results/results_DafnyTestGenerator_Spec.json`):
 
 ```json
 {
-  "strategy": "SpecTestGenerator",
+  "strategy": "DafnyTestGenerator_Spec",
   "stats": {
     "total_programs": 20,
     "not_supported_programs": 2,
@@ -132,9 +158,46 @@ JSON output (`results/results.json`):
 }
 ```
 
+Comparison output (`results/comparison.json`):
+
+```json
+{
+  "strategies": {
+    "DafnyTestGenerator_Spec": { "kill_rate": 0.8025, "killed": 130, ... },
+    "DafnyTestGenerator_Block": { "kill_rate": 0.65, "killed": 105, ... }
+  },
+  "best_kill_rate": "DafnyTestGenerator_Spec"
+}
+```
+
 ## Adding a New Test Generation Strategy
 
-The pipeline uses an abstract `TestGenerator` interface. To add a new strategy:
+The pipeline uses a `DafnyTestGenerator` base class for Dafny-based strategies, and an abstract `TestGenerator` interface for custom generators.
+
+### Adding a Dafny mode strategy
+
+If your strategy is a new `dafny generate-tests` mode, just create a thin subclass:
+
+```python
+# src/mt_eval/generators/my_mode_generator.py
+from src.mt_eval.generators.dafny_test_generator import DafnyTestGenerator
+
+class MyModeGenerator(DafnyTestGenerator):
+    def __init__(self, **kwargs):
+        super().__init__(mode="MyMode", **kwargs)
+```
+
+Then register it in `src/mt_eval/generators/__init__.py`:
+
+```python
+from src.mt_eval.generators.my_mode_generator import MyModeGenerator
+
+STRATEGY_REGISTRY["MyMode"] = MyModeGenerator
+```
+
+Now `--strategies=MyMode` works automatically.
+
+### Adding a non-Dafny strategy
 
 ### 1. Create a new generator
 
@@ -199,23 +262,21 @@ Run tests:
 python -m pytest tests/ -v
 ```
 
-### 3. Wire it into the evaluation runner
+### 3. Register and wire it
 
-Edit `src/runners/run_evaluation.py` — replace `SpecTestGenerator()` with your generator,
-or add a CLI flag to select the strategy:
+Add to `src/mt_eval/generators/__init__.py`:
 
 ```python
 from src.mt_eval.generators.my_generator import MyGenerator
-generator = MyGenerator()
+
+STRATEGY_REGISTRY["MyGen"] = MyGenerator
 ```
 
 ### 4. Run evaluation with your strategy
 
 ```bash
-python -m src.runners.run_evaluation --sequential
+python -m src.runners.run_evaluation --strategies=MyGen --sequential
 ```
-
-The `--sequential` flag is useful for debugging — it prints per-mutant results to stdout.
 
 ## Repository Layout
 
@@ -235,20 +296,28 @@ Evaluation/
 │   │   │   ├── kill_checker.py       # dafny run --no-verify (kill check)
 │   │   │   └── safety_check.py      # dafny run --no-verify (safety check on original)
 │   │   ├── generators/
-│   │   │   └── spec_test_generator.py  # SpecTestGenerator (default)
+│   │   │   ├── __init__.py            # Strategy registry + resolve_strategies()
+│   │   │   ├── dafny_test_generator.py  # DafnyTestGenerator base class
+│   │   │   ├── spec_test_generator.py   # SpecTestGenerator (mode="Spec")
+│   │   │   └── block_test_generator.py  # BlockTestGenerator (mode="Block")
 │   │   ├── metrics/
 │   │   │   └── pipeline_stats.py  # PipelineStats dataclass
+│   │   ├── paths.py               # Per-strategy path derivation utilities
 │   │   └── reporting/
-│   │       └── summary.py         # Stdout table + JSON output
+│   │       ├── summary.py         # Stdout table + JSON output
+│   │       └── comparison.py      # Multi-strategy comparison table + JSON
 │   └── runners/
 │       ├── generate_mutants.py    # Mutant generation CLI
 │       └── run_evaluation.py      # Evaluation CLI
 ├── dataset/
 │   ├── selected_programs/              # Fixed 20 input programs
 │   ├── selected_programs_mutants/      # Generated killed mutants (output of generate_mutants)
-│   └── selected_programs_mutants_with_tests/  # Combined files (mutant + tests, output of run_evaluation)
+│   ├── selected_programs_mutants_with_tests_Spec/   # Combined files for Spec strategy
+│   └── selected_programs_mutants_with_tests_Block/  # Combined files for Block strategy
 ├── results/
-│   └── results.json               # Final statistics + per-mutant results
+│   ├── results_DafnyTestGenerator_Spec.json   # Per-strategy results
+│   ├── results_DafnyTestGenerator_Block.json  # Per-strategy results
+│   └── comparison.json            # Cross-strategy comparison
 ├── tests/
 │   ├── unit/                      # Unit + property tests
 │   └── integration/               # End-to-end tests

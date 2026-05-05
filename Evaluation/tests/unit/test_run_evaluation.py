@@ -100,7 +100,7 @@ class TestSafetyCheckGating:
 
         # Mock SpecTestGenerator to always succeed
         mock_gen_instance = MagicMock()
-        mock_gen_instance.name = "SpecTestGenerator"
+        mock_gen_instance.name = "DafnyTestGenerator_Spec"
 
         def mock_generate_tests(dfy_file: Path, output_file: Path) -> TestGenResult:
             output_file.parent.mkdir(parents=True, exist_ok=True)
@@ -185,7 +185,7 @@ class TestSafetyCheckGating:
             )
 
         mock_gen_instance = MagicMock()
-        mock_gen_instance.name = "SpecTestGenerator"
+        mock_gen_instance.name = "DafnyTestGenerator_Spec"
 
         def mock_generate_tests(dfy_file: Path, output_file: Path) -> TestGenResult:
             output_file.parent.mkdir(parents=True, exist_ok=True)
