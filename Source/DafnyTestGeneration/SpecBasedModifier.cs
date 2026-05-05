@@ -103,7 +103,7 @@ namespace DafnyTestGeneration {
           var testCombs = new List<List<Expr>>();
 
           if (DafnyInfo.Options.TestGenOptions.Bva) {
-            var bvaCombs = DnfEngine.CalculateBva(implementation.InParams, constraints);
+            var bvaCombs = DnfEngine.CalculateBva(implementation.InParams, constraints, program);
 
             if (bvaCombs.Count > 0) {
               foreach (var bva in bvaCombs) {

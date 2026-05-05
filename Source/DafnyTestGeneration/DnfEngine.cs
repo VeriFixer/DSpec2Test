@@ -144,12 +144,12 @@ namespace DafnyTestGeneration {
     /// <summary>
     /// Calculates Boundary Value Analysis (BVA) for each input parameter based on extracted constraints.
     /// </summary>
-    public static List<Expr> CalculateBva(List<Variable> inParams, Dictionary<string, VariableConstraint> constraints) {
+    public static List<Expr> CalculateBva(List<Variable> inParams, Dictionary<string, VariableConstraint> constraints, Program program) {
       var result = new List<Expr>();
 
       foreach (var variable in inParams) {
         var type = variable.TypedIdent.Type;
-        var idExpr = new IdentifierExpr(Token.NoToken, variable);
+        var idExpr = new IdentifierExpr(new Token(), variable);
         
         if (type.IsBool) {
           result.Add(CreateEqExpr(idExpr, Expr.True));
@@ -192,6 +192,41 @@ namespace DafnyTestGeneration {
           } else if (!constraint.Exclusions.Contains(fallbackUpper)){
             result.Add(CreateEqExpr(idExpr, CreateNumericLiteral(fallbackUpper, type)));
           }
+        } else if (type.IsSeq || type.IsString || type.IsMap || type.IsCtor) {
+          var cardinalityName = "|" + variable.Name + "|";
+          
+          constraints.TryGetValue(cardinalityName, out var constraint);
+          constraint ??= new VariableConstraint();
+
+          if (constraint.ExactValue.HasValue) {
+            continue;
+          }
+          
+          var bounds = constraint.Bounds;
+          var exclusions = constraint.Exclusions;
+          
+          Expr cardExpr = CreateCardinalityExpr(variable, program);
+          
+          // Length == 0
+          if (bounds.IncludesValue(0) && !exclusions.Contains(0)) {
+            result.Add(CreateEqExpr(cardExpr, CreateNumericLiteral(0, Type.Int)));
+          }
+
+          // Length == 1
+          if (bounds.IncludesValue(1) && !exclusions.Contains(1)) {
+            result.Add(CreateEqExpr(cardExpr, CreateNumericLiteral(1, Type.Int)));
+          }
+
+          // Length > 1
+          if (bounds.UpperLimit > 1) {
+            var gtExpr = new NAryExpr(
+              new Token(), 
+              new BinaryOperator(new Token(), BinaryOperator.Opcode.Gt), 
+              new List<Expr> { cardExpr, CreateNumericLiteral(1, Type.Int) }
+            ) { Type = Type.Bool };
+            
+            result.Add(gtExpr);
+          }
         }
       }
       
@@ -203,12 +238,47 @@ namespace DafnyTestGeneration {
     /// </summary>
     private static Expr CreateEqExpr(Expr left, Expr right) {
       var naryExpr = new NAryExpr(
-        Token.NoToken, 
-        new BinaryOperator(Token.NoToken, BinaryOperator.Opcode.Eq), 
+        new Token(), 
+        new BinaryOperator(new Token(), BinaryOperator.Opcode.Eq), 
         new List<Expr> { left, right }
       );
       naryExpr.Type = Type.Bool;
       return naryExpr;
+    }
+    
+    /// <summary>
+    /// Creates the Boogie AST expression representing the cardinality of a collection.
+    /// Maps to Seq#Length, Map#Card, or Set#Card
+    /// </summary>
+    private static Expr CreateCardinalityExpr(Variable variable, Program program) {
+      var type = variable.TypedIdent.Type;
+      var idExpr = new IdentifierExpr(new Token(), variable);
+      string funcName = "Seq#Length";
+
+      if (type.ToString().Contains("Map")) {
+        funcName = "Map#Card";
+      } else if (type.ToString().Contains("Set")) { 
+        funcName = "Set#Card";
+      }
+      
+      var realFunc = program.TopLevelDeclarations
+        .OfType<Function>()
+        .FirstOrDefault(f => f.Name == funcName);
+      
+      if (realFunc == null) {
+        realFunc = new Function(
+          Token.NoToken, 
+          funcName, 
+          new List<TypeVariable>(), 
+          new List<Variable> { new Formal(Token.NoToken, new TypedIdent(Token.NoToken, "coll", type), true) }, 
+          new Formal(Token.NoToken, new TypedIdent(Token.NoToken, "len", Type.Int), false)
+        );
+      }
+
+      var funcCall = new FunctionCall(realFunc);
+      return new NAryExpr(Token.NoToken, funcCall, new List<Expr> { idExpr }) {
+        Type = Type.Int
+      };
     }
     
     /// <summary>
@@ -217,14 +287,14 @@ namespace DafnyTestGeneration {
     private static LiteralExpr CreateNumericLiteral(double value, Type type) {
       if (type.IsBv) {
         int bvVal = Math.Max(0, (int)value);
-        return new LiteralExpr(Token.NoToken, BigNum.FromInt(bvVal)) { Type = type };
+        return new LiteralExpr(new Token(), BigNum.FromInt(bvVal)) { Type = type };
       }
       if (type.IsReal || type.IsFloat) {
         string strVal = value.ToString("0.0#######", System.Globalization.CultureInfo.InvariantCulture);
-        return new LiteralExpr(Token.NoToken, BigDec.FromString(strVal)) { Type = type };
+        return new LiteralExpr(new Token(), BigDec.FromString(strVal)) { Type = type };
       }
   
-      return new LiteralExpr(Token.NoToken, BigNum.FromInt((int)value)) { Type = type };
+      return new LiteralExpr(new Token(), BigNum.FromInt((int)value)) { Type = type };
     }
 
     /// <summary>
@@ -428,7 +498,6 @@ namespace DafnyTestGeneration {
           return true;
         }
         
-        // Case 2: Value on the Left, Variable on the Right (e.g., 5 > x  or  0 == |s|)
         if (TryExtractVariable(b, out string nameB) && TryExtractValue(a, out double valA)) {
           varName = nameB;
           value = valA;
@@ -453,7 +522,6 @@ namespace DafnyTestGeneration {
       if (expr is NAryExpr { Fun: FunctionCall fn } nary) {
         string fnName = fn.Func.Name;
         
-        // Matches Seq#Length, Set#Card, Map#Card, MultiSet#Card
         if (fnName.EndsWith("#Length") || fnName.EndsWith("#Card")) {
           if (nary.Args.Count > 0 && nary.Args[0] is IdentifierExpr cardId) {
             varName = "|" + cardId.Name + "|";
