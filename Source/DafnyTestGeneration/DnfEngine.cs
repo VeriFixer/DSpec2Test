@@ -149,6 +149,7 @@ namespace DafnyTestGeneration {
 
       foreach (var variable in inParams) {
         var type = variable.TypedIdent.Type;
+        var stringType = type.ToString();
         var idExpr = new IdentifierExpr(new Token(), variable);
         
         if (type.IsBool) {
@@ -192,7 +193,7 @@ namespace DafnyTestGeneration {
           } else if (!constraint.Exclusions.Contains(fallbackUpper)){
             result.Add(CreateEqExpr(idExpr, CreateNumericLiteral(fallbackUpper, type)));
           }
-        } else if (type.IsSeq || type.IsString || type.IsMap || type.IsCtor) {
+        } else if (type.IsSeq || type.IsString || type.IsMap || stringType.Equals("Seq") || stringType.Equals("Map") || stringType.Equals("Set")) {
           var cardinalityName = "|" + variable.Name + "|";
           
           constraints.TryGetValue(cardinalityName, out var constraint);
@@ -205,7 +206,10 @@ namespace DafnyTestGeneration {
           var bounds = constraint.Bounds;
           var exclusions = constraint.Exclusions;
           
-          Expr cardExpr = CreateCardinalityExpr(variable, program);
+          Expr? cardExpr = CreateCardinalityExpr(variable, program);
+          if (cardExpr == null) {
+            continue;
+          }
           
           // Length == 0
           if (bounds.IncludesValue(0) && !exclusions.Contains(0)) {
@@ -250,15 +254,20 @@ namespace DafnyTestGeneration {
     /// Creates the Boogie AST expression representing the cardinality of a collection.
     /// Maps to Seq#Length, Map#Card, or Set#Card
     /// </summary>
-    private static Expr CreateCardinalityExpr(Variable variable, Program program) {
+    private static Expr? CreateCardinalityExpr(Variable variable, Program program) {
       var type = variable.TypedIdent.Type;
+      var stringType = type.ToString();
       var idExpr = new IdentifierExpr(new Token(), variable);
-      string funcName = "Seq#Length";
+      string funcName = "";
 
-      if (type.ToString().Contains("Map")) {
+      if (stringType.Equals("Seq")) {
+        funcName = "Seq#Length";
+      } else if (stringType.Equals("Map")) {
         funcName = "Map#Card";
-      } else if (type.ToString().Contains("Set")) { 
+      } else if (stringType.Equals("Set")) { 
         funcName = "Set#Card";
+      } else {
+        return null;
       }
       
       var realFunc = program.TopLevelDeclarations
