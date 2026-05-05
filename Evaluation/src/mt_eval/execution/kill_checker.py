@@ -1,7 +1,9 @@
 """KillChecker — runs a test file against a mutant via dafny run --no-verify."""
 
 import re
+import shutil
 import subprocess
+import tempfile
 import time
 from pathlib import Path
 
@@ -48,9 +50,16 @@ def _extract_test_methods(test_file: Path, original_file: Path) -> str:
 class KillChecker:
     """Runs a test suite against a mutant and determines kill status."""
 
-    def __init__(self, timeout: int = config.EXECUTION_TIMEOUT) -> None:
+    def __init__(
+        self,
+        timeout: int = config.EXECUTION_TIMEOUT,
+        output_dir: Path | None = None,
+        originals_dir: Path | None = None,
+    ) -> None:
         self.timeout = timeout
         self.dafny_binary = config.DAFNY_BINARY
+        self.output_dir = output_dir
+        self.originals_dir = originals_dir
 
     def check_kill(self, test_file: Path, mutant_file: Path) -> MutantResult:
         """Build combined file (mutant + tests) and run via 'dafny run --no-verify'.
@@ -68,15 +77,22 @@ class KillChecker:
         mutant_name = mutant_file.name
         original_name = _derive_original_name(mutant_name)
 
-        # Derive original file path from test_file's sibling original/ dir
-        dataset_dir = test_file.parent.parent  # tests/ -> dataset dir
-        original_file = dataset_dir / "original" / original_name
+        # Derive original file path
+        if self.originals_dir is not None:
+            original_file = self.originals_dir / original_name
+        else:
+            dataset_dir = test_file.parent.parent  # tests/ -> dataset dir
+            original_file = dataset_dir / "original" / original_name
 
         # Extract test methods from the test file
         test_methods = _extract_test_methods(test_file, original_file)
 
         # Build combined file: mutant content + test methods
-        kill_tests_dir = dataset_dir / "kill_tests"
+        if self.output_dir is not None:
+            kill_tests_dir = self.output_dir
+        else:
+            fallback_dir = test_file.parent.parent  # tests/ -> dataset dir
+            kill_tests_dir = fallback_dir / "kill_tests"
         kill_tests_dir.mkdir(parents=True, exist_ok=True)
 
         mutant_content = mutant_file.read_text().rstrip()
@@ -85,16 +101,27 @@ class KillChecker:
         combined_file = kill_tests_dir / f"{mutant_file.stem}.test.dfy"
         combined_file.write_text(combined)
 
-        cmd = [str(self.dafny_binary), "run", "--no-verify", str(combined_file)]
+        # Run dafny in a per-mutant temp dir to isolate compilation artifacts
+        work_dir = tempfile.mkdtemp(prefix=f"kill_{mutant_file.stem}_")
+        work_dfy = Path(work_dir) / combined_file.name
+        work_dfy.write_text(combined)
+
+        cmd = [str(self.dafny_binary), "test", "--no-verify", "--allow-warnings", str(work_dfy)]
+        # For reporting, show the persistent path (not the temp one)
+        report_cmd = [str(self.dafny_binary), "test", "--no-verify", "--allow-warnings", str(combined_file)]
         start = time.monotonic()
 
         try:
             result = subprocess.run(
                 cmd,
                 capture_output=True,
+                text=True,
                 timeout=self.timeout,
+                cwd=work_dir,
             )
             elapsed = time.monotonic() - start
+            stdout = result.stdout or ""
+            stderr = result.stderr or ""
 
             if result.returncode != 0:
                 status = MutantStatus.KILLED
@@ -103,16 +130,25 @@ class KillChecker:
 
         except subprocess.TimeoutExpired:
             elapsed = time.monotonic() - start
+            stdout = ""
+            stderr = "TIMEOUT"
             status = MutantStatus.TIMEOUT
 
-        except Exception:
+        except Exception as e:
             elapsed = time.monotonic() - start
+            stdout = ""
+            stderr = str(e)
             status = MutantStatus.ERROR
+
+        finally:
+            shutil.rmtree(work_dir, ignore_errors=True)
 
         return MutantResult(
             mutant_name=mutant_name,
             original_name=original_name,
             status=status,
             execution_time=elapsed,
-            kill_check_command=" ".join(cmd),
+            kill_check_command=" ".join(report_cmd),
+            stdout=stdout.strip(),
+            stderr=stderr.strip(),
         )

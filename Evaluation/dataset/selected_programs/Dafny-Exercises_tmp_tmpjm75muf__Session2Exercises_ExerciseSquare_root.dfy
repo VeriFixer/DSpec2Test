@@ -1,4 +1,4 @@
-method mroot1(n:int) returns (r:int) //Cost O(root n)
+method {:testEntry} mroot1(n:int) returns (r:int) //Cost O(root n)
 requires n>=0
 ensures r>=0 && r*r <= n <(r+1)*(r+1)
 {
@@ -14,7 +14,7 @@ ensures r>=0 && r*r <= n <(r+1)*(r+1)
 }
 
 
-method mroot2(n:int) returns (r:int) //Cost O(n)
+method {:testEntry} mroot2(n:int) returns (r:int) //Cost O(n)
 requires n>=0
 ensures r>=0 && r*r <= n <(r+1)*(r+1)
 {
@@ -30,7 +30,7 @@ ensures r>=0 && r*r <= n <(r+1)*(r+1)
 
 }
 
-method mroot3(n:int) returns (r:int) //Cost O(log n)
+method {:testEntry} mroot3(n:int) returns (r:int) //Cost O(log n)
 requires n>=0
 ensures r>=0 && r*r <= n <(r+1)*(r+1)
 {   var y:int;

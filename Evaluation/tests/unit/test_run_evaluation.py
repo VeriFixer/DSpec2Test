@@ -1,401 +1,228 @@
-"""Unit tests for src.runners.run_evaluation module."""
+"""Property-based tests for run_evaluation pipeline — safety check gating logic.
 
+Property 4: Safety check failure skips all associated mutants.
+For any program that fails the safety check, none of its mutants SHALL be
+subjected to kill checking, and all its mutants SHALL be counted as not-supported.
+
+**Validates: Requirements 4.2, 4.3, 4.4**
+"""
+
+import json
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
-import pytest
+from hypothesis import given, settings, assume
+from hypothesis import strategies as st
 
-from src.runners.run_evaluation import parse_args, run_pipeline, main, _validate_dataset, _derive_original_stem
 from src.mt_eval.core.abstract import TestGenResult
 from src.mt_eval.core.models import MutantResult, MutantStatus
+from src.runners.run_evaluation import run_pipeline
 
 
-# ---------------------------------------------------------------------------
-# parse_args
-# ---------------------------------------------------------------------------
+# --- Strategies ---
 
-class TestParseArgs:
-    def test_positional_dataset_path(self):
-        args = parse_args(["/data/my_dataset"])
-        assert args.dataset_path == "/data/my_dataset"
-
-    def test_defaults(self):
-        args = parse_args(["ds"])
-        assert args.clean_cache is False
-        assert args.sequential is False
-        assert args.output_dir is None
-
-    def test_clean_cache(self):
-        args = parse_args(["ds", "--clean-cache"])
-        assert args.clean_cache is True
-
-    def test_sequential(self):
-        args = parse_args(["ds", "--sequential"])
-        assert args.sequential is True
-
-    def test_output_dir(self):
-        args = parse_args(["ds", "--output-dir", "/tmp/out"])
-        assert args.output_dir == "/tmp/out"
-
-    def test_all_flags(self):
-        args = parse_args(["ds", "--clean-cache", "--sequential", "--output-dir", "out"])
-        assert args.clean_cache is True
-        assert args.sequential is True
-        assert args.output_dir == "out"
-
-    def test_missing_dataset_path_exits(self):
-        with pytest.raises(SystemExit):
-            parse_args([])
+# Generate a list of program entries: (stem, safety_pass, n_mutants)
+program_entry = st.tuples(
+    st.from_regex(r"[a-z]{2,8}", fullmatch=True),  # stem
+    st.booleans(),  # safety check pass/fail
+    st.integers(min_value=1, max_value=5),  # number of mutants
+)
 
 
-# ---------------------------------------------------------------------------
-# _validate_dataset
-# ---------------------------------------------------------------------------
-
-class TestValidateDataset:
-    def test_valid_dataset(self, tmp_path):
-        (tmp_path / "original").mkdir()
-        (tmp_path / "killed").mkdir()
-        assert _validate_dataset(tmp_path) is True
-
-    def test_missing_original(self, tmp_path):
-        (tmp_path / "killed").mkdir()
-        assert _validate_dataset(tmp_path) is False
-
-    def test_missing_killed(self, tmp_path):
-        (tmp_path / "original").mkdir()
-        assert _validate_dataset(tmp_path) is False
-
-    def test_both_missing(self, tmp_path):
-        assert _validate_dataset(tmp_path) is False
+@st.composite
+def program_set(draw):
+    """Generate a set of programs with unique stems, safety outcomes, and mutant counts."""
+    entries = draw(st.lists(program_entry, min_size=1, max_size=10))
+    # Deduplicate stems
+    seen = set()
+    unique = []
+    for stem, safe, n_mut in entries:
+        if stem not in seen:
+            seen.add(stem)
+            unique.append((stem, safe, n_mut))
+    assume(len(unique) >= 1)
+    # Ensure at least one program fails safety (to test the property meaningfully)
+    # But also allow all-pass scenarios to verify no false positives
+    return unique
 
 
-# ---------------------------------------------------------------------------
-# _derive_original_stem
-# ---------------------------------------------------------------------------
+def _setup_filesystem(tmp_path, programs):
+    """Create .dfy files and mutant files in tmp dirs matching pipeline expectations."""
+    programs_dir = tmp_path / "selected_programs"
+    mutants_dir = tmp_path / "selected_programs_mutants"
+    mutants_with_tests_dir = tmp_path / "selected_programs_mutants_with_tests"
+    programs_dir.mkdir(parents=True)
+    mutants_dir.mkdir(parents=True)
+    mutants_with_tests_dir.mkdir(parents=True)
 
-class TestDeriveOriginalStem:
-    def test_standard_mutant_name(self):
-        assert _derive_original_stem("abs__161-188_CBE.dfy") == "abs"
+    for stem, _safe, n_mutants in programs:
+        # Create original .dfy
+        (programs_dir / f"{stem}.dfy").write_text(f"// {stem}")
+        # Create mutant .dfy files
+        for i in range(n_mutants):
+            (mutants_dir / f"{stem}__{i}-{i+1}_CBE.dfy").write_text(f"// mutant {i}")
 
-    def test_no_double_underscore(self):
-        assert _derive_original_stem("simple.dfy") == "simple"
-
-    def test_complex_stem(self):
-        assert _derive_original_stem("my_prog__10-20_XYZ.dfy") == "my_prog"
-
-
-# ---------------------------------------------------------------------------
-# run_pipeline
-# ---------------------------------------------------------------------------
-
-def _make_dataset(tmp_path, originals=None, mutants=None):
-    """Helper: create dataset dir with original/ and killed/ containing .dfy files."""
-    ds = tmp_path / "dataset"
-    orig_dir = ds / "original"
-    kill_dir = ds / "killed"
-    orig_dir.mkdir(parents=True)
-    kill_dir.mkdir(parents=True)
-
-    originals = originals or ["prog.dfy"]
-    mutants = mutants or ["prog__1-2_CBE.dfy"]
-
-    for name in originals:
-        (orig_dir / name).write_text(f"// {name}")
-    for name in mutants:
-        (kill_dir / name).write_text(f"// {name}")
-
-    return ds
+    return programs_dir, mutants_dir, mutants_with_tests_dir
 
 
-class TestRunPipeline:
-    def test_nonexistent_dataset_returns_1(self, tmp_path):
-        result = run_pipeline(
-            tmp_path / "nope",
-            clean_cache=False, sequential=False, output_dir=tmp_path,
-        )
-        assert result == 1
+class TestSafetyCheckGating:
+    """Property 4: Safety check failure skips all associated mutants."""
 
-    def test_missing_subdirs_returns_1(self, tmp_path):
-        tmp_path.mkdir(exist_ok=True)
-        result = run_pipeline(
-            tmp_path,
-            clean_cache=False, sequential=False, output_dir=tmp_path,
-        )
-        assert result == 1
+    @given(programs=program_set())
+    @settings(max_examples=100)
+    def test_failed_safety_check_skips_kill_check(self, programs, tmp_path_factory):
+        """Mutants of programs that fail safety check are NEVER passed to check_kill.
 
-    @patch("src.runners.run_evaluation.SpecTestGenerator")
-    def test_no_originals_returns_1(self, mock_gen_cls, tmp_path):
-        """Empty original/ dir → failure."""
-        ds = tmp_path / "ds"
-        (ds / "original").mkdir(parents=True)
-        (ds / "killed").mkdir(parents=True)
-
-        result = run_pipeline(ds, clean_cache=False, sequential=False, output_dir=tmp_path)
-        assert result == 1
-
-    @patch("src.runners.run_evaluation.run_parallel_or_seq")
-    @patch("src.runners.run_evaluation.SpecTestGenerator")
-    def test_all_test_gen_fails_returns_1(self, mock_gen_cls, mock_par, tmp_path):
-        """All test generation fails → critical failure."""
-        ds = _make_dataset(tmp_path)
-
-        mock_gen = MagicMock()
-        mock_gen.name = "SpecTestGenerator"
-        mock_gen.generate_tests.return_value = TestGenResult(
-            success=False, test_file=None, error_message="timeout"
-        )
-        mock_gen_cls.return_value = mock_gen
-
-        # Test gen returns all failures
-        mock_par.return_value = [("prog", None, "timeout", "dafny generate-tests Spec prog.dfy --test-count 1")]
-
-        result = run_pipeline(ds, clean_cache=False, sequential=False, output_dir=tmp_path)
-        assert result == 1
-        # run_parallel_or_seq called once for test generation, but not for kill checking
-        mock_par.assert_called_once()
-
-    @patch("src.runners.run_evaluation.run_parallel_or_seq")
-    @patch("src.runners.run_evaluation.SpecTestGenerator")
-    def test_no_matching_mutants_returns_1(self, mock_gen_cls, mock_par, tmp_path):
-        """Tests generated but no mutant matches → failure."""
-        ds = _make_dataset(tmp_path, originals=["a.dfy"], mutants=["b__1-2_X.dfy"])
-
-        test_file = ds / "tests" / "a.test.dfy"
-        test_file.parent.mkdir(parents=True, exist_ok=True)
-        test_file.write_text("// test")
-
-        mock_gen = MagicMock()
-        mock_gen.name = "SpecTestGenerator"
-        mock_gen.generate_tests.return_value = TestGenResult(
-            success=True, test_file=test_file
-        )
-        mock_gen_cls.return_value = mock_gen
-
-        # Test gen returns success tuple; kill check never reached
-        mock_par.side_effect = [
-            [("a", test_file, None, "dafny generate-tests Spec a.dfy --test-count 1")],
-        ]
-
-        result = run_pipeline(ds, clean_cache=False, sequential=False, output_dir=tmp_path)
-        assert result == 1
-
-    @patch("src.runners.run_evaluation.write_json_results")
-    @patch("src.runners.run_evaluation.print_summary")
-    @patch("src.runners.run_evaluation.run_parallel_or_seq")
-    @patch("src.runners.run_evaluation.SpecTestGenerator")
-    def test_success_pipeline(self, mock_gen_cls, mock_par, mock_print, mock_write, tmp_path):
-        """Full success: test gen → kill check → metrics → report."""
-        ds = _make_dataset(tmp_path)
-
-        test_file = ds / "tests" / "prog.test.dfy"
-        test_file.parent.mkdir(parents=True, exist_ok=True)
-        test_file.write_text("// test")
-
-        mock_gen = MagicMock()
-        mock_gen.name = "SpecTestGenerator"
-        mock_gen.generate_tests.return_value = TestGenResult(
-            success=True, test_file=test_file
-        )
-        mock_gen_cls.return_value = mock_gen
-
-        killed_result = MutantResult(
-            mutant_name="prog__1-2_CBE.dfy",
-            original_name="prog.dfy",
-            status=MutantStatus.KILLED,
-            execution_time=1.5,
-        )
-        # First call: test generation returns tuples; second call: kill check returns MutantResults
-        mock_par.side_effect = [
-            [("prog", test_file, None, "dafny generate-tests Spec prog.dfy --test-count 1")],
-            [killed_result],
-        ]
-
-        result = run_pipeline(ds, clean_cache=False, sequential=False, output_dir=tmp_path)
-        assert result == 0
-        mock_print.assert_called_once()
-        mock_write.assert_called_once()
-
-    @patch("src.runners.run_evaluation.write_json_results")
-    @patch("src.runners.run_evaluation.print_summary")
-    @patch("src.runners.run_evaluation.run_parallel_or_seq")
-    @patch("src.runners.run_evaluation.SpecTestGenerator")
-    def test_sequential_prints_debug(self, mock_gen_cls, mock_par, mock_print, mock_write, tmp_path, capsys):
-        """Sequential mode prints per-mutant debug info."""
-        ds = _make_dataset(tmp_path)
-
-        test_file = ds / "tests" / "prog.test.dfy"
-        test_file.parent.mkdir(parents=True, exist_ok=True)
-        test_file.write_text("// test")
-
-        mock_gen = MagicMock()
-        mock_gen.name = "SpecTestGenerator"
-        mock_gen.generate_tests.return_value = TestGenResult(
-            success=True, test_file=test_file
-        )
-        mock_gen_cls.return_value = mock_gen
-
-        killed_result = MutantResult(
-            mutant_name="prog__1-2_CBE.dfy",
-            original_name="prog.dfy",
-            status=MutantStatus.KILLED,
-            execution_time=2.0,
-        )
-        mock_par.side_effect = [
-            [("prog", test_file, None, "dafny generate-tests Spec prog.dfy --test-count 1")],
-            [killed_result],
-        ]
-
-        run_pipeline(ds, clean_cache=False, sequential=True, output_dir=tmp_path)
-
-        captured = capsys.readouterr()
-        assert "[run_evaluation]" in captured.out
-        assert "prog__1-2_CBE.dfy" in captured.out
-        assert "killed" in captured.out
-
-    @patch("src.runners.run_evaluation.SpecTestGenerator")
-    def test_clean_cache_removes_tests_dir(self, mock_gen_cls, tmp_path):
-        """--clean-cache removes tests/ subdir."""
-        ds = _make_dataset(tmp_path)
-        tests_dir = ds / "tests"
-        tests_dir.mkdir()
-        (tests_dir / "old.test.dfy").write_text("// old")
-
-        mock_gen = MagicMock()
-        mock_gen.name = "SpecTestGenerator"
-        mock_gen.generate_tests.return_value = TestGenResult(
-            success=False, test_file=None, error_message="fail"
-        )
-        mock_gen_cls.return_value = mock_gen
-
-        # Will return 1 (all test gen fails) but cache should be cleaned
-        run_pipeline(ds, clean_cache=True, sequential=False, output_dir=tmp_path)
-
-        # Old file should be gone (dir recreated empty)
-        assert not (tests_dir / "old.test.dfy").exists()
-
-    @patch("src.runners.run_evaluation.write_json_results")
-    @patch("src.runners.run_evaluation.print_summary")
-    @patch("src.runners.run_evaluation.run_parallel_or_seq")
-    @patch("src.runners.run_evaluation.SpecTestGenerator")
-    def test_skips_mutants_without_tests(self, mock_gen_cls, mock_par, mock_print, mock_write, tmp_path):
-        """Mutants whose original has no test are skipped."""
-        ds = _make_dataset(
-            tmp_path,
-            originals=["a.dfy", "b.dfy"],
-            mutants=["a__1-2_X.dfy", "b__3-4_Y.dfy"],
+        **Validates: Requirements 4.2, 4.3, 4.4**
+        """
+        tmp_path = tmp_path_factory.mktemp("eval")
+        programs_dir, mutants_dir, mutants_with_tests_dir = _setup_filesystem(
+            tmp_path, programs
         )
 
-        test_a = ds / "tests" / "a.test.dfy"
-        test_a.parent.mkdir(parents=True, exist_ok=True)
-        test_a.write_text("// test a")
+        # Build safety map: stem -> bool
+        safety_map = {stem: safe for stem, safe, _ in programs}
 
-        mock_gen = MagicMock()
-        mock_gen.name = "SpecTestGenerator"
+        # Track which mutants get kill-checked
+        kill_checked_mutants: list[str] = []
 
-        def gen_side_effect(dfy_file, output_file):
-            if dfy_file.stem == "a":
-                return TestGenResult(success=True, test_file=test_a)
-            return TestGenResult(success=False, test_file=None, error_message="fail")
+        def mock_safety_check(original: Path, test_file: Path, **kwargs) -> bool:
+            return safety_map[original.stem]
 
-        mock_gen.generate_tests.side_effect = gen_side_effect
-        mock_gen_cls.return_value = mock_gen
+        def mock_check_kill(test_file: Path, mutant_file: Path) -> MutantResult:
+            kill_checked_mutants.append(mutant_file.name)
+            return MutantResult(
+                mutant_name=mutant_file.name,
+                original_name=f"{mutant_file.stem.split('__')[0]}.dfy",
+                status=MutantStatus.KILLED,
+                execution_time=0.1,
+            )
 
-        mock_par.side_effect = [
-            [("a", test_a, None, "dafny generate-tests Spec a.dfy --test-count 1"),
-             ("b", None, "fail", "dafny generate-tests Spec b.dfy --test-count 1")],
-            [MutantResult("a__1-2_X.dfy", "a.dfy", MutantStatus.KILLED, 1.0)],
-        ]
+        # Mock SpecTestGenerator to always succeed
+        mock_gen_instance = MagicMock()
+        mock_gen_instance.name = "SpecTestGenerator"
 
-        result = run_pipeline(ds, clean_cache=False, sequential=False, output_dir=tmp_path)
-        assert result == 0
+        def mock_generate_tests(dfy_file: Path, output_file: Path) -> TestGenResult:
+            output_file.parent.mkdir(parents=True, exist_ok=True)
+            output_file.write_text(f"// tests for {dfy_file.stem}")
+            return TestGenResult(success=True, test_file=output_file)
 
-        # Only 1 task submitted (a's mutant), b's mutant skipped
-        # Second call to run_parallel_or_seq is the kill check
-        call_args = mock_par.call_args_list[1]
-        items = list(call_args[0][0])
-        assert len(items) == 1
+        mock_gen_instance.generate_tests.side_effect = mock_generate_tests
 
-    @patch("src.runners.run_evaluation.write_json_results")
-    @patch("src.runners.run_evaluation.print_summary")
-    @patch("src.runners.run_evaluation.run_parallel_or_seq")
-    @patch("src.runners.run_evaluation.SpecTestGenerator")
-    def test_no_mutant_dfy_files_returns_1(self, mock_gen_cls, mock_par, mock_print, mock_write, tmp_path):
-        """killed/ has no .dfy files → failure."""
-        ds = tmp_path / "ds"
-        (ds / "original").mkdir(parents=True)
-        (ds / "killed").mkdir(parents=True)
-        (ds / "original" / "prog.dfy").write_text("// orig")
-        # killed/ has only a .txt diff, no .dfy
-        (ds / "killed" / "prog__1-2_X.txt").write_text("diff")
+        # Patch config paths and dependencies
+        with (
+            patch("src.runners.run_evaluation.SELECTED_PROGRAMS_DIR", programs_dir),
+            patch("src.runners.run_evaluation.SELECTED_PROGRAMS_MUTANTS_DIR", mutants_dir),
+            patch(
+                "src.runners.run_evaluation.SELECTED_PROGRAMS_MUTANTS_WITH_TESTS_DIR",
+                mutants_with_tests_dir,
+            ),
+            patch("src.runners.run_evaluation.run_safety_check", side_effect=mock_safety_check),
+            patch("src.runners.run_evaluation.SpecTestGenerator", return_value=mock_gen_instance),
+            patch("src.runners.run_evaluation.KillChecker") as mock_checker_cls,
+        ):
+            mock_checker = MagicMock()
+            mock_checker.check_kill.side_effect = mock_check_kill
+            mock_checker_cls.return_value = mock_checker
 
-        test_file = ds / "tests" / "prog.test.dfy"
-        test_file.parent.mkdir(parents=True, exist_ok=True)
-        test_file.write_text("// test")
+            output_dir = tmp_path / "results"
+            run_pipeline(sequential=True, output_dir=output_dir)
 
-        mock_gen = MagicMock()
-        mock_gen.name = "SpecTestGenerator"
-        mock_gen.generate_tests.return_value = TestGenResult(success=True, test_file=test_file)
-        mock_gen_cls.return_value = mock_gen
+        # --- Assert Property 4 ---
+        # Identify stems that failed safety
+        failed_stems = {stem for stem, safe, _ in programs if not safe}
 
-        # Test gen returns success; kill check never reached (no .dfy mutants)
-        mock_par.side_effect = [
-            [("prog", test_file, None, "dafny generate-tests Spec prog.dfy --test-count 1")],
-        ]
+        # 1) No mutant of a failed program was kill-checked
+        for mutant_name in kill_checked_mutants:
+            mutant_stem = mutant_name.split("__")[0]
+            assert mutant_stem not in failed_stems, (
+                f"Mutant '{mutant_name}' was kill-checked but its program "
+                f"'{mutant_stem}' failed safety check"
+            )
 
-        result = run_pipeline(ds, clean_cache=False, sequential=False, output_dir=tmp_path)
-        assert result == 1
+        # 2) All mutants of failed programs are counted as not_supported in output
+        results_file = output_dir / "results.json"
+        if results_file.exists():
+            data = json.loads(results_file.read_text())
+            stats = data["stats"]
 
+            # Count expected not-supported mutants
+            expected_not_supported = sum(
+                n_mut for stem, safe, n_mut in programs if not safe
+            )
+            assert stats["not_supported_mutants"] >= expected_not_supported, (
+                f"Expected at least {expected_not_supported} not_supported_mutants, "
+                f"got {stats['not_supported_mutants']}"
+            )
 
-# ---------------------------------------------------------------------------
-# main
-# ---------------------------------------------------------------------------
+    @given(programs=program_set())
+    @settings(max_examples=100)
+    def test_passed_safety_check_allows_kill_check(self, programs, tmp_path_factory):
+        """Mutants of programs that PASS safety check ARE subjected to kill checking.
 
-class TestMain:
-    @patch("src.runners.run_evaluation.run_pipeline")
-    def test_main_calls_pipeline(self, mock_pipeline):
-        mock_pipeline.return_value = 0
-        with pytest.raises(SystemExit) as exc_info:
-            main(["/data/ds"])
-        assert exc_info.value.code == 0
-        mock_pipeline.assert_called_once()
+        Complementary check: ensures we don't accidentally skip everything.
 
-    @patch("src.runners.run_evaluation.run_pipeline")
-    def test_main_exits_nonzero_on_failure(self, mock_pipeline):
-        mock_pipeline.return_value = 1
-        with pytest.raises(SystemExit) as exc_info:
-            main(["/data/ds"])
-        assert exc_info.value.code == 1
+        **Validates: Requirements 4.2, 4.3, 4.4**
+        """
+        tmp_path = tmp_path_factory.mktemp("eval")
+        programs_dir, mutants_dir, mutants_with_tests_dir = _setup_filesystem(
+            tmp_path, programs
+        )
 
-    @patch("src.runners.run_evaluation.run_pipeline")
-    def test_main_output_dir_default_is_dataset_path(self, mock_pipeline):
-        """Default output_dir = dataset_path."""
-        mock_pipeline.return_value = 0
-        with pytest.raises(SystemExit):
-            main(["/data/ds"])
-        call_kwargs = mock_pipeline.call_args[1]
-        assert call_kwargs["output_dir"] == Path("/data/ds")
+        safety_map = {stem: safe for stem, safe, _ in programs}
+        kill_checked_mutants: list[str] = []
 
-    @patch("src.runners.run_evaluation.run_pipeline")
-    def test_main_output_dir_override(self, mock_pipeline):
-        mock_pipeline.return_value = 0
-        with pytest.raises(SystemExit):
-            main(["/data/ds", "--output-dir", "/tmp/out"])
-        call_kwargs = mock_pipeline.call_args[1]
-        assert call_kwargs["output_dir"] == Path("/tmp/out")
+        def mock_safety_check(original: Path, test_file: Path, **kwargs) -> bool:
+            return safety_map[original.stem]
 
-    @patch("src.runners.run_evaluation.run_pipeline")
-    def test_main_clean_cache_flag(self, mock_pipeline):
-        mock_pipeline.return_value = 0
-        with pytest.raises(SystemExit):
-            main(["/data/ds", "--clean-cache"])
-        call_kwargs = mock_pipeline.call_args[1]
-        assert call_kwargs["clean_cache"] is True
+        def mock_check_kill(test_file: Path, mutant_file: Path) -> MutantResult:
+            kill_checked_mutants.append(mutant_file.name)
+            return MutantResult(
+                mutant_name=mutant_file.name,
+                original_name=f"{mutant_file.stem.split('__')[0]}.dfy",
+                status=MutantStatus.KILLED,
+                execution_time=0.1,
+            )
 
-    @patch("src.runners.run_evaluation.run_pipeline")
-    def test_main_sequential_flag(self, mock_pipeline):
-        mock_pipeline.return_value = 0
-        with pytest.raises(SystemExit):
-            main(["/data/ds", "--sequential"])
-        call_kwargs = mock_pipeline.call_args[1]
-        assert call_kwargs["sequential"] is True
+        mock_gen_instance = MagicMock()
+        mock_gen_instance.name = "SpecTestGenerator"
+
+        def mock_generate_tests(dfy_file: Path, output_file: Path) -> TestGenResult:
+            output_file.parent.mkdir(parents=True, exist_ok=True)
+            output_file.write_text(f"// tests for {dfy_file.stem}")
+            return TestGenResult(success=True, test_file=output_file)
+
+        mock_gen_instance.generate_tests.side_effect = mock_generate_tests
+
+        with (
+            patch("src.runners.run_evaluation.SELECTED_PROGRAMS_DIR", programs_dir),
+            patch("src.runners.run_evaluation.SELECTED_PROGRAMS_MUTANTS_DIR", mutants_dir),
+            patch(
+                "src.runners.run_evaluation.SELECTED_PROGRAMS_MUTANTS_WITH_TESTS_DIR",
+                mutants_with_tests_dir,
+            ),
+            patch("src.runners.run_evaluation.run_safety_check", side_effect=mock_safety_check),
+            patch("src.runners.run_evaluation.SpecTestGenerator", return_value=mock_gen_instance),
+            patch("src.runners.run_evaluation.KillChecker") as mock_checker_cls,
+        ):
+            mock_checker = MagicMock()
+            mock_checker.check_kill.side_effect = mock_check_kill
+            mock_checker_cls.return_value = mock_checker
+
+            output_dir = tmp_path / "results"
+            run_pipeline(sequential=True, output_dir=output_dir)
+
+        # Identify stems that passed safety
+        passed_stems = {stem for stem, safe, _ in programs if safe}
+
+        # All mutants of passed programs should have been kill-checked
+        expected_checked = set()
+        for stem, safe, n_mut in programs:
+            if safe:
+                for i in range(n_mut):
+                    expected_checked.add(f"{stem}__{i}-{i+1}_CBE.dfy")
+
+        actual_checked = set(kill_checked_mutants)
+        assert expected_checked == actual_checked, (
+            f"Expected kill-checked: {expected_checked}, got: {actual_checked}"
+        )

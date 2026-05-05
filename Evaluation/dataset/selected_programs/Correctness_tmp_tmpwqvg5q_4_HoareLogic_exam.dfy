@@ -14,7 +14,7 @@ lemma r3(a: nat, b: nat)
 lemma r4 (a: nat, b: nat)
     ensures b > 0 ==> gcd(a, b) == gcd(b, a % b)
 
-method GCD1(a: int, b: int) returns (r: int)
+method {:testEntry} GCD1(a: int, b: int) returns (r: int)
     requires a > 0 && b > 0
     ensures gcd(a,b) == r
     decreases b
@@ -40,7 +40,7 @@ method GCD1(a: int, b: int) returns (r: int)
     assert gcd(a,b) == r;
 }
 
-method GCD2(a: int, b: int) returns (r: int)
+method {:testEntry} GCD2(a: int, b: int) returns (r: int)
     requires a > 0 && b >= 0
     decreases b
     ensures gcd(a,b) == r

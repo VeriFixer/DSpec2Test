@@ -232,37 +232,37 @@ class TestApplyMutationIntegration:
     """Test the apply_mutation Python function end-to-end."""
 
     def test_apply_mutation_returns_path(self, tmp_path):
-        """apply_mutation returns a valid Path to a .dfy mutant."""
+        """apply_mutation returns a list with valid Path(s) to .dfy mutant(s)."""
         out_dir = tmp_path / "mutants"
         result = apply_mutation(SAMPLE_FILE, out_dir)
 
-        if result is None:
+        if not result:
             pytest.skip("MutDafny produced no mutants for this file (may be expected)")
 
-        assert result.exists()
-        assert result.suffix == ".dfy"
-        assert result.parent == out_dir
+        assert result[0].exists()
+        assert result[0].suffix == ".dfy"
+        assert result[0].parent == out_dir
 
     def test_apply_mutation_mutant_content_differs(self, tmp_path):
         """Mutant file content differs from original."""
         out_dir = tmp_path / "mutants"
         result = apply_mutation(SAMPLE_FILE, out_dir)
 
-        if result is None:
+        if not result:
             pytest.skip("No mutant produced")
 
-        assert result.read_text() != SAMPLE_FILE.read_text()
+        assert result[0].read_text() != SAMPLE_FILE.read_text()
 
     def test_generate_diff_on_real_mutant(self, tmp_path):
         """generate_diff produces non-empty diff for real mutant."""
         out_dir = tmp_path / "mutants"
-        mutant = apply_mutation(SAMPLE_FILE, out_dir)
+        mutants = apply_mutation(SAMPLE_FILE, out_dir)
 
-        if mutant is None:
+        if not mutants:
             pytest.skip("No mutant produced")
 
         diff_path = tmp_path / "diff.patch"
-        generate_diff(SAMPLE_FILE, mutant, diff_path)
+        generate_diff(SAMPLE_FILE, mutants[0], diff_path)
 
         assert diff_path.exists()
         content = diff_path.read_text()

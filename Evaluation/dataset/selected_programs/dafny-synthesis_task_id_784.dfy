@@ -23,7 +23,7 @@ predicate IsFirstOdd(oddIndex: int, lst: seq<int>)
 }
 
 
-method FirstEvenOddIndices(lst : seq<int>) returns (evenIndex: int, oddIndex : int)
+method {:testEntry} FirstEvenOddIndices(lst : seq<int>) returns (evenIndex: int, oddIndex : int)
     requires |lst| >= 2
     requires exists i :: 0 <= i < |lst| && IsEven(lst[i])
     requires exists i :: 0 <= i < |lst| && IsOdd(lst[i])
@@ -56,7 +56,7 @@ method FirstEvenOddIndices(lst : seq<int>) returns (evenIndex: int, oddIndex : i
     }
 }
 
-method ProductEvenOdd(lst: seq<int>) returns (product : int)
+method {:testEntry}  ProductEvenOdd(lst: seq<int>) returns (product : int)
     requires |lst| >= 2
     requires exists i :: 0 <= i < |lst| && IsEven(lst[i])
     requires exists i :: 0 <= i < |lst| && IsOdd(lst[i])

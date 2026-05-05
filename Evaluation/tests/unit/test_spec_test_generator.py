@@ -40,7 +40,7 @@ class TestGenerateTestsSuccess:
         dafny_file = tmp_path / "input.dfy"
         dafny_file.write_text("// source")
 
-        mock_run.return_value = MagicMock(returncode=0, stderr="", stdout="// generated tests\n")
+        mock_run.return_value = MagicMock(returncode=0, stderr="", stdout="method {:test} T() {}\n")
 
         gen = SpecTestGenerator(dafny_binary=Path("/usr/bin/dafny"))
         result = gen.generate_tests(dafny_file, output_file)
@@ -116,7 +116,7 @@ class TestSubprocessCommand:
         output_file = tmp_path / "out.dfy"
         output_file.write_text("// tests")
 
-        mock_run.return_value = MagicMock(returncode=0, stderr="", stdout="// tests\n")
+        mock_run.return_value = MagicMock(returncode=0, stderr="", stdout="method {:test} T() {}\n")
 
         binary = Path("/opt/dafny/dafny")
         gen = SpecTestGenerator(dafny_binary=binary)
@@ -131,6 +131,9 @@ class TestSubprocessCommand:
             str(dafny_file.resolve()),
             "--test-count",
             "1",
+            "--length-limit",
+            "50",
+            "--ignore-warnings",
         ]
 
     @patch("src.mt_eval.generators.spec_test_generator.subprocess.run")

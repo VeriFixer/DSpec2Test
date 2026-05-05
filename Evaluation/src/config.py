@@ -43,6 +43,9 @@ DATASET_ROOT: Path = BASE_PATH / "dataset" / "data"
 EXTERNAL_ROOT: Path = BASE_PATH / "external"
 TMP_ROOT: Path = BASE_PATH / "tmp"
 ARTIFACTS_ROOT: Path = TMP_ROOT / "run_artifacts"
+SELECTED_PROGRAMS_DIR: Path = BASE_PATH / "dataset" / "selected_programs"
+SELECTED_PROGRAMS_MUTANTS_DIR: Path = BASE_PATH / "dataset" / "selected_programs_mutants"
+SELECTED_PROGRAMS_MUTANTS_WITH_TESTS_DIR: Path = BASE_PATH / "dataset" / "selected_programs_mutants_with_tests"
 
 # === Dafny Binary ===
 DAFNY_BINARY: Path = BASE_PATH.parent / "Binaries" / "Dafny"

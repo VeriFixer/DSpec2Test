@@ -33,10 +33,12 @@ class MutantResult:
     execution_time: float  # seconds
     test_gen_command: str = ""
     kill_check_command: str = ""
+    stdout: str = ""
+    stderr: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         """Serialize to a JSON-compatible dict."""
-        return {
+        d = {
             "mutant_name": self.mutant_name,
             "original_name": self.original_name,
             "status": self.status.value,
@@ -44,6 +46,11 @@ class MutantResult:
             "test_gen_command": self.test_gen_command,
             "kill_check_command": self.kill_check_command,
         }
+        if self.stdout:
+            d["stdout"] = self.stdout
+        if self.stderr:
+            d["stderr"] = self.stderr
+        return d
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "MutantResult":

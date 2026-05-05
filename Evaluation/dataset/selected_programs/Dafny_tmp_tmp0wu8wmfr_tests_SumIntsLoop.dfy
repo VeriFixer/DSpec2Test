@@ -8,7 +8,7 @@ function sumInts( n: int ): int
 }
 
 
-method SumIntsLoop( n: int ) returns ( s: int )
+method {:testEntry} SumIntsLoop( n: int ) returns ( s: int )
     requires n >= 0;
     ensures s == sumInts(n)
     ensures s == n*(n+1)/2;
@@ -25,12 +25,4 @@ method SumIntsLoop( n: int ) returns ( s: int )
         s := s+k;
     }
 }
-
-method Main()
-{
-    var x := SumIntsLoop(100);
-    print x;
-
-}
-
 

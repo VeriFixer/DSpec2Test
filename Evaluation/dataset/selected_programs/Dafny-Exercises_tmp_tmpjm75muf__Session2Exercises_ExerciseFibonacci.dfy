@@ -6,7 +6,7 @@ decreases n
                   fib(n - 1) + fib(n - 2)
 }
 
-method fibonacci1(n:nat) returns (f:nat)
+method {:testEntry} fibonacci1(n:nat) returns (f:nat)
 ensures f==fib(n)
 {
    var i := 0;
@@ -22,7 +22,7 @@ ensures f==fib(n)
    }
 }
 
-method fibonacci2(n:nat) returns (f:nat)
+method {:testEntry} fibonacci2(n:nat) returns (f:nat)
 ensures f==fib(n)
 {
 if (n==0) {f:=0;}
@@ -42,7 +42,7 @@ else{
 
 }
 
-method fibonacci3(n:nat) returns (f:nat)
+method {:testEntry} fibonacci3(n:nat) returns (f:nat)
 ensures f==fib(n)
 {
 

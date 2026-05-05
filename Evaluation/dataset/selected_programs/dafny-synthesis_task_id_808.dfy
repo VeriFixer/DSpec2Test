@@ -1,4 +1,4 @@
-method ContainsK(s: seq<int>, k: int) returns (result: bool)
+method {:testEntry} ContainsK(s: seq<int>, k: int) returns (result: bool)
     ensures result <==> k in s
 {
     result := false;
