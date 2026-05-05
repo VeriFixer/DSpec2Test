@@ -75,6 +75,7 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
       var hasFdnf = commandResult.FindResultFor(Fdnf) is not null;
       var hasBva = commandResult.FindResultFor(Bva) is not null;
       var hasTestCount = commandResult.FindResultFor(TestCount) is not null;
+      var hasSimplify = commandResult.FindResultFor(Simplify) is not null;
       
       if (mode != Mode.Spec) {
         var invalidFlags = new List<string>();
@@ -84,8 +85,8 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
         if (hasBva) {
           invalidFlags.Add("--bva");
         }
-        if (hasTestCount) {
-          invalidFlags.Add("--test-count");
+        if (hasSimplify) {
+          invalidFlags.Add("--simplify");
         }
 
         if (invalidFlags.Count > 0) {
@@ -302,9 +303,8 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
   }
   
   public static readonly Option<bool> Simplify = new("--simplify",
-    "Simplifies test output by including only input and output values." +
-    "In other words, removes 'expect' statements related to pre and post condition, whenever possible." +
-    "Only works on methods, not functions.");
+    "Only for methods on Spec mode. Simplifies test output by including only input and output values." +
+    "In other words, removes 'expect' statements related to pre and post condition, whenever possible.");
   
   public static readonly Option<bool> Fdnf = new("--fdnf",
     "Only for the Spec mode. It calculates the full DNF, instead of the safe DNF (default)." +
@@ -317,7 +317,7 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     "Only for the Spec mode. Generates tests based on Boundary Value Analysis. Cannot be used simultaneously with --test-count.");
 
   public static readonly Option<uint> TestCount = new("--test-count", () => 1,
-    "Only for the Spec mode. Number of tests to generate per method on Spec mode. 1 (default) generates a single test per method." +
+    "Number of tests to generate per method on Spec mode. 1 (default) generates a single test per method." +
     "Cannot be used simultaneously with --bva.");
   
   public static readonly Option<bool> IgnoreWarnings = new("--ignore-warnings",
