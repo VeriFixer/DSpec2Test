@@ -99,7 +99,7 @@ namespace DafnyTestGeneration {
     /// unique and begins with the name of the type. Return that name.
     /// </summary>
     private string AddValue(Type type, string value) {
-      var name = Regex.Replace(type.ToString().Split(".").Last().Split(" ")[0], "[^a-zA-Z]", "");
+      var name = type.IsArrowType ? "arrow" : Regex.Replace(type.ToString().Split(".").Last().Split(" ")[0], "[^a-zA-Z]", "");
       if (name == "") {
         name = "v";
       }
@@ -356,7 +356,8 @@ namespace DafnyTestGeneration {
               .Select(v => ExtractVariable(v, null))) + ")");
         case ArrowType arrowType:
           var asBasicArrowType = GetBasicType(asType, type => type is ArrowType) as ArrowType;
-          return GetFunctionOfType(asBasicArrowType ?? arrowType);
+          var functionOfType = GetFunctionOfType(asBasicArrowType ?? arrowType);
+          return AddValue(asBasicArrowType, functionOfType);
         case UserDefinedType unknown when unknown.Name == DafnyModel.UnknownType.Name:
           if (asType != null) {
             return GetDefaultValue(asType, asType);
