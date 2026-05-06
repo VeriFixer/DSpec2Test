@@ -69,8 +69,10 @@ namespace DafnyTestGeneration {
       constraintContext = new Dictionary<PartialValue, Expression>();
       
       var firstState = dafnyModel.States.First();
-      var formalNames = DafnyInfo.GetReturnFormals(MethodName).Select(f => f.Name).ToArray();
-      List<String> outputValues = [], outputTypes = [];
+      var formalNames = DafnyInfo.GetReturnFormals(MethodName).Select(f => f.Name).ToList();
+      
+      List<string> outputValues = Enumerable.Repeat("", formalNames.Count).ToList();
+      List<string> outputTypes = Enumerable.Repeat("", formalNames.Count).ToList();
 
       foreach (var kvn in firstState.KnownVariableNames) {
         var key = kvn.Key;
@@ -79,15 +81,16 @@ namespace DafnyTestGeneration {
         constraintContext[key] = new IdentifierExpr(Token.NoToken, firstState.KnownVariableNames[key].First());
         constraintContext[key].Type = key.Type;
         
-        if (formalNames.Any(name => value.Contains(name))) {
-          outputValues.Add(key.Element.ToString().Trim('(', ')').Replace(" ", ""));
-          outputTypes.Add(key.Type.ToString());
+        for (int i = 0; i < formalNames.Count; i++) {
+          if (value.Contains(formalNames[i])) {
+            outputValues[i] = key.Element.ToString().Trim('(', ')').Replace(" ", "");
+            outputTypes[i] = key.Type.ToString();
+          }
         }
       }
-      
       ArgValues = ExtractInputs(firstState, argumentNames, typeNames);
-      ArgExpressions = ExtractExpressions(firstState, argumentNames, typeNames, DafnyInfo.GetFormals(MethodName));
-      OutExpressions = ExtractExpressions(firstState, outputValues, outputTypes, DafnyInfo.GetReturnFormals(MethodName));
+      ArgExpressions = ExtractExpressions(firstState, argumentNames, typeNames);
+      OutExpressions = ExtractExpressions(firstState, outputValues, outputTypes, true);
     }
 
     public bool IsValid => errorMessages.Count == 0;
@@ -768,11 +771,15 @@ namespace DafnyTestGeneration {
     /// <summary>
     /// Extracts the AST Expressions for the arguments passed to the method.
     /// </summary>
-    private Dictionary<string, Expression> ExtractExpressions(PartialState state, IReadOnlyList<string> printOutput, IReadOnlyList<string> types, IList<Microsoft.Dafny.Formal> formals) {
+    private Dictionary<string, Expression> ExtractExpressions(PartialState state, IReadOnlyList<string> printOutput, IReadOnlyList<string> types, bool isReturn = false) {
       var result = new Dictionary<string, Expression>();
       var vars = state.ExpandedVariableSet();
       
       var parameterIndex = DafnyInfo.IsStatic(MethodName) ? -1 : -2;
+
+      var formals = isReturn
+        ? DafnyInfo.GetReturnFormals(MethodName)
+        : DafnyInfo.GetFormals(MethodName);
 
       for (var i = 0; i < printOutput.Count; i++) {
         if (types[i] == "Ty") {
@@ -785,8 +792,11 @@ namespace DafnyTestGeneration {
         
         if (parameterIndex >= 0) {
           paramName = formals[parameterIndex].Name;
+          var formalTypes = isReturn
+            ? DafnyInfo.GetReturnTypes(MethodName)
+            : DafnyInfo.GetFormalsTypes(MethodName);
           type = Utils.UseFullName(
-            DafnyInfo.GetFormalsTypes(MethodName)[parameterIndex]);
+            formalTypes[parameterIndex]);
           type = Utils.CopyWithReplacements(type,
             DafnyInfo.GetTypeArgsWithParents(MethodName).ConvertAll(arg => arg.ToString()),
             Enumerable.Repeat(defaultType, DafnyInfo.GetTypeArgsWithParents(MethodName).Count).ToList());
