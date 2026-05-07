@@ -144,10 +144,10 @@ namespace DafnyTestGeneration {
     /// <summary>
     /// Calculates Boundary Value Analysis (BVA) for each input parameter based on extracted constraints.
     /// </summary>
-    public static List<Expr> CalculateBva(List<Variable> inParams, Dictionary<string, VariableConstraint> constraints, Program program) {
+    public static List<Expr> CalculateBva(List<Variable> variables, Dictionary<string, VariableConstraint> constraints, Program program) {
       var result = new List<Expr>();
 
-      foreach (var variable in inParams) {
+      foreach (var variable in variables) {
         var type = variable.TypedIdent.Type;
         var stringType = type.ToString();
         var idExpr = new IdentifierExpr(new Token(), variable);

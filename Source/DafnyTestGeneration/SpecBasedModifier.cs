@@ -105,13 +105,12 @@ namespace DafnyTestGeneration {
           testCombs.Add(baseComb);
 
           if (DafnyInfo.Options.TestGenOptions.Bva) {
-            var bvaCombs = DnfEngine.CalculateBva(implementation.InParams, constraints, program);
+            List<Variable> allParams = [..implementation.InParams, ..implementation.OutParams];
+            var bvaCombs = DnfEngine.CalculateBva(allParams, constraints, program);
             
-            if (bvaCombs.Count > 0) {
-              foreach (var bva in bvaCombs) {
-                var currentBvaComb = new List<Expr>(baseComb) { bva };
-                testCombs.Add(currentBvaComb);
-              }
+            foreach (var bva in bvaCombs) {
+              var currentBvaComb = new List<Expr>(baseComb) { bva };
+              testCombs.Add(currentBvaComb);
             }
           } 
 
