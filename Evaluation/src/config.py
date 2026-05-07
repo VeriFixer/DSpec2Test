@@ -66,7 +66,7 @@ MUTDAFNY_DAFNY_BINARY: Path = MUTDAFNY_DIR / "dafny" / "Binaries" / "Dafny"
 
 # === Configurable Parameters (with env var overrides) ===
 SAMPLE_COUNT: int = int(os.environ.get("MT_SAMPLE_COUNT", "100"))
-VERIFY_TIMEOUT: int = int(os.environ.get("MT_VERIFY_TIMEOUT", "300"))
-TESTGEN_TIMEOUT: int = int(os.environ.get("MT_TESTGEN_TIMEOUT", "300"))
+VERIFY_TIMEOUT: int = int(os.environ.get("MT_VERIFY_TIMEOUT", "1500"))
+TESTGEN_TIMEOUT: int = int(os.environ.get("MT_TESTGEN_TIMEOUT", "1500"))
 EXECUTION_TIMEOUT: int = int(os.environ.get("MT_EXECUTION_TIMEOUT", "300"))
 MAX_JOBS: int = max(1, int(os.environ.get("MT_MAX_JOBS", str(max(cpu_count() - 1, 1)))))

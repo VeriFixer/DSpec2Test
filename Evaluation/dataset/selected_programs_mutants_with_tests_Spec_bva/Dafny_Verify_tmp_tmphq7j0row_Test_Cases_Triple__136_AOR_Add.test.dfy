@@ -19,3 +19,8 @@ expect -2147483648 % 2 == 0, "If this check fails at runtime, the test does not 
 var r0 := TripleConditions(-2147483648);
 expect r0 == 3 * -2147483648;
 }
+method {:test} Test2() {
+expect 15438 % 2 == 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := TripleConditions(15438);
+expect r0 == 3 * 15438;
+}

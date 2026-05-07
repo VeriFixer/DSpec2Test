@@ -10,14 +10,16 @@ Usage:
 import argparse
 import logging
 import sys
+import time
 from pathlib import Path
 
+from src.logging_config import get_logger
 from src.config import SELECTED_PROGRAMS_DIR, SELECTED_PROGRAMS_MUTANTS_DIR
 from src.mt_eval.core.mutation import apply_mutation
 from src.mt_eval.core.verification import verify_program, type_checks_program
 from src.mt_eval.execution.parallel_executor import run_parallel_or_seq
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 def collect_programs(programs_dir: Path) -> list[Path]:
@@ -42,11 +44,26 @@ def _process_program(
     stem = program.stem
     prog_output_dir = output_dir / stem
 
+    start = time.monotonic()
+
     # Generate mutants via MutDafny
     mutants = apply_mutation(program, prog_output_dir, max_mutants=max_mutants)
 
+    mutation_time = time.monotonic() - start
+
     # Filter: keep only mutants that FAIL verification (real bugs) And pass type checking
+    filter_start = time.monotonic()
     valid_mutants = [m for m in mutants if (type_checks_program(m) and (not verify_program(m)))]
+    filter_time = time.monotonic() - filter_start
+
+    total_time = time.monotonic() - start
+
+    logger.info(
+        "[generate_mutants] %s — %.1fs total (mutation=%.1fs, filter=%.1fs) "
+        "| %d generated, %d valid",
+        program.name, total_time, mutation_time, filter_time,
+        len(mutants), len(valid_mutants),
+    )
 
     if not valid_mutants:
         logger.warning("No valid mutants produced for %s", program.name)

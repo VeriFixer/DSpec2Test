@@ -14,6 +14,7 @@ import difflib
 import logging
 import subprocess
 import tempfile
+import time
 from pathlib import Path
 
 from src.config import MUTDAFNY_PLUGIN, MUTDAFNY_DIR, MUTDAFNY_DAFNY_BINARY
@@ -40,6 +41,7 @@ def _run_dafny_plugin(dafny_file: Path, plugin_arg: str, cwd: Path,
         f"--plugin:{MUTDAFNY_PLUGIN},{plugin_arg}",
     ]
 
+    start = time.monotonic()
     try:
         result = subprocess.run(
             cmd,
@@ -48,10 +50,14 @@ def _run_dafny_plugin(dafny_file: Path, plugin_arg: str, cwd: Path,
             timeout=timeout,
             cwd=str(cwd),
         )
+        elapsed = time.monotonic() - start
+        logger.info("[mutdafny] %s arg=%s — %.1fs (rc=%d)",
+                    dafny_file.name, plugin_arg, elapsed, result.returncode)
         return result
     except (subprocess.TimeoutExpired, OSError) as exc:
-        logger.warning("Dafny plugin call failed for %s (arg=%s): %s",
-                       dafny_file, plugin_arg, exc)
+        elapsed = time.monotonic() - start
+        logger.warning("Dafny plugin call failed for %s (arg=%s): %s [%.1fs]",
+                       dafny_file, plugin_arg, exc, elapsed)
         return None
 
 

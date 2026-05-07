@@ -114,6 +114,7 @@ def test_verification_filter_keeps_only_failing_mutants(outcomes):
     output_dir = Path("/tmp/output")
 
     with patch("src.runners.generate_mutants.apply_mutation", return_value=mutant_paths), \
+         patch("src.runners.generate_mutants.type_checks_program", return_value=True), \
          patch("src.runners.generate_mutants.verify_program", side_effect=lambda m: verify_results[m]):
         stem, valid_mutants = _process_program(program, output_dir, max_mutants=10)
 

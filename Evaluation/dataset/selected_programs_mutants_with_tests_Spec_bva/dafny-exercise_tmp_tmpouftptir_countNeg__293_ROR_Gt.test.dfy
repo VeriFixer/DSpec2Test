@@ -45,3 +45,8 @@ var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 var r0 := CountNeg(seqint0);
 expect r0 == verifyNeg(seqint0, |seqint0|);
 }
+method {:test} Test5() {
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2438, -1];
+var r0 := CountNeg(seqint0);
+expect r0 == verifyNeg(seqint0, |seqint0|);
+}

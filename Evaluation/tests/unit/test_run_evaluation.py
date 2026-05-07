@@ -16,6 +16,7 @@ from hypothesis import strategies as st
 
 from src.mt_eval.core.abstract import TestGenResult
 from src.mt_eval.core.models import MutantResult, MutantStatus
+from src.mt_eval.execution.safety_check import SafetyCheckResult
 from src.runners.run_evaluation import run_pipeline
 
 
@@ -65,6 +66,13 @@ def _setup_filesystem(tmp_path, programs):
     return programs_dir, mutants_dir, mutants_with_tests_dir
 
 
+def _make_mock_strategy(mock_gen_instance):
+    """Create a mock strategy registry entry that returns mock_gen_instance."""
+    mock_cls = MagicMock(return_value=mock_gen_instance)
+    mock_cls.MODE = "Spec"
+    return mock_cls
+
+
 class TestSafetyCheckGating:
     """Property 4: Safety check failure skips all associated mutants."""
 
@@ -86,8 +94,8 @@ class TestSafetyCheckGating:
         # Track which mutants get kill-checked
         kill_checked_mutants: list[str] = []
 
-        def mock_safety_check(original: Path, test_file: Path, **kwargs) -> bool:
-            return safety_map[original.stem]
+        def mock_safety_check(original: Path, test_file: Path, **kwargs):
+            return SafetyCheckResult(passed=safety_map[original.stem])
 
         def mock_check_kill(test_file: Path, mutant_file: Path) -> MutantResult:
             kill_checked_mutants.append(mutant_file.name)
@@ -98,9 +106,10 @@ class TestSafetyCheckGating:
                 execution_time=0.1,
             )
 
-        # Mock SpecTestGenerator to always succeed
+        # Mock strategy that always succeeds at test generation
         mock_gen_instance = MagicMock()
         mock_gen_instance.name = "DafnyTestGenerator_Spec"
+        mock_gen_instance.mode = "Spec"
 
         def mock_generate_tests(dfy_file: Path, output_file: Path) -> TestGenResult:
             output_file.parent.mkdir(parents=True, exist_ok=True)
@@ -114,11 +123,11 @@ class TestSafetyCheckGating:
             patch("src.runners.run_evaluation.SELECTED_PROGRAMS_DIR", programs_dir),
             patch("src.runners.run_evaluation.SELECTED_PROGRAMS_MUTANTS_DIR", mutants_dir),
             patch(
-                "src.runners.run_evaluation.SELECTED_PROGRAMS_MUTANTS_WITH_TESTS_DIR",
-                mutants_with_tests_dir,
+                "src.runners.run_evaluation.get_strategy_combined_dir",
+                return_value=mutants_with_tests_dir,
             ),
             patch("src.runners.run_evaluation.run_safety_check", side_effect=mock_safety_check),
-            patch("src.runners.run_evaluation.SpecTestGenerator", return_value=mock_gen_instance),
+            patch("src.runners.run_evaluation.resolve_strategies", return_value=[mock_gen_instance]),
             patch("src.runners.run_evaluation.KillChecker") as mock_checker_cls,
         ):
             mock_checker = MagicMock()
@@ -141,9 +150,10 @@ class TestSafetyCheckGating:
             )
 
         # 2) All mutants of failed programs are counted as not_supported in output
-        results_file = output_dir / "results.json"
-        if results_file.exists():
-            data = json.loads(results_file.read_text())
+        # Find the per-strategy results file
+        results_files = list(output_dir.glob("results_*.json"))
+        if results_files:
+            data = json.loads(results_files[0].read_text())
             stats = data["stats"]
 
             # Count expected not-supported mutants
@@ -172,8 +182,8 @@ class TestSafetyCheckGating:
         safety_map = {stem: safe for stem, safe, _ in programs}
         kill_checked_mutants: list[str] = []
 
-        def mock_safety_check(original: Path, test_file: Path, **kwargs) -> bool:
-            return safety_map[original.stem]
+        def mock_safety_check(original: Path, test_file: Path, **kwargs):
+            return SafetyCheckResult(passed=safety_map[original.stem])
 
         def mock_check_kill(test_file: Path, mutant_file: Path) -> MutantResult:
             kill_checked_mutants.append(mutant_file.name)
@@ -186,6 +196,7 @@ class TestSafetyCheckGating:
 
         mock_gen_instance = MagicMock()
         mock_gen_instance.name = "DafnyTestGenerator_Spec"
+        mock_gen_instance.mode = "Spec"
 
         def mock_generate_tests(dfy_file: Path, output_file: Path) -> TestGenResult:
             output_file.parent.mkdir(parents=True, exist_ok=True)
@@ -198,11 +209,11 @@ class TestSafetyCheckGating:
             patch("src.runners.run_evaluation.SELECTED_PROGRAMS_DIR", programs_dir),
             patch("src.runners.run_evaluation.SELECTED_PROGRAMS_MUTANTS_DIR", mutants_dir),
             patch(
-                "src.runners.run_evaluation.SELECTED_PROGRAMS_MUTANTS_WITH_TESTS_DIR",
-                mutants_with_tests_dir,
+                "src.runners.run_evaluation.get_strategy_combined_dir",
+                return_value=mutants_with_tests_dir,
             ),
             patch("src.runners.run_evaluation.run_safety_check", side_effect=mock_safety_check),
-            patch("src.runners.run_evaluation.SpecTestGenerator", return_value=mock_gen_instance),
+            patch("src.runners.run_evaluation.resolve_strategies", return_value=[mock_gen_instance]),
             patch("src.runners.run_evaluation.KillChecker") as mock_checker_cls,
         ):
             mock_checker = MagicMock()

@@ -13,6 +13,7 @@ class TestGenResult:
     test_file: Path | None
     error_message: str = ""
     command: str = ""
+    execution_time: float = 0.0  # seconds
 
 
 class TestGenerator(ABC):

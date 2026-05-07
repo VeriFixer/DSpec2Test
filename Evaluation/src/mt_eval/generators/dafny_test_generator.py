@@ -1,6 +1,7 @@
 """DafnyTestGenerator — shared base class for Dafny generate-tests strategies."""
 
 import subprocess
+import time
 from abc import abstractmethod
 from pathlib import Path
 
@@ -62,6 +63,7 @@ class DafnyTestGenerator(TestGenerator):
         """
         cmd = self._build_cmd(dafny_file)
         cmd_str = " ".join(cmd)
+        start = time.monotonic()
         try:
             result = subprocess.run(
                 cmd,
@@ -69,6 +71,7 @@ class DafnyTestGenerator(TestGenerator):
                 capture_output=True,
                 text=True,
             )
+            elapsed = time.monotonic() - start
             if result.returncode == 0 and result.stdout.strip():
                 test_methods = _extract_test_methods(result.stdout)
                 if not test_methods:
@@ -77,6 +80,7 @@ class DafnyTestGenerator(TestGenerator):
                         test_file=None,
                         error_message="no test methods extracted from output",
                         command=cmd_str,
+                        execution_time=elapsed,
                     )
                 # Build test file: original content + test methods appended
                 original_content = dafny_file.read_text()
@@ -84,7 +88,8 @@ class DafnyTestGenerator(TestGenerator):
 
                 output_file.parent.mkdir(parents=True, exist_ok=True)
                 output_file.write_text(combined)
-                return TestGenResult(success=True, test_file=output_file, command=cmd_str)
+                return TestGenResult(success=True, test_file=output_file, command=cmd_str,
+                                     execution_time=elapsed)
 
             # Build informative error message
             err_msg = ""
@@ -101,12 +106,17 @@ class DafnyTestGenerator(TestGenerator):
                 test_file=None,
                 error_message=err_msg,
                 command=cmd_str,
+                execution_time=elapsed,
             )
         except subprocess.TimeoutExpired:
+            elapsed = time.monotonic() - start
             return TestGenResult(
                 success=False, test_file=None, error_message="timeout", command=cmd_str,
+                execution_time=elapsed,
             )
         except Exception as e:
+            elapsed = time.monotonic() - start
             return TestGenResult(
                 success=False, test_file=None, error_message=str(e), command=cmd_str,
+                execution_time=elapsed,
             )

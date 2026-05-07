@@ -1,0 +1,37 @@
+function even(n: int): bool
+  requires n >= 0
+{
+  if n == 0 then true else !even(n-1)
+}
+
+method {:testEntry} is_even(n: int) returns (r: bool)
+  requires n >= 0;
+  ensures r <==> even(n);
+{
+  var i: int := 0;
+  r := true;
+
+  while i < n
+    invariant 0 <= i <= n;
+    invariant r <==> even(i);
+  {
+    r := !r;
+    i := i + 1;
+  }
+}
+
+method {:test} Test0() {
+expect 7721 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := is_even(7721);
+expect r0 <==> even(7721);
+}
+method {:test} Test1() {
+expect 0 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := is_even(0);
+expect r0 <==> even(0);
+}
+method {:test} Test2() {
+expect 2147483647 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := is_even(2147483647);
+expect r0 <==> even(2147483647);
+}

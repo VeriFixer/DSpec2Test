@@ -13,6 +13,7 @@ import shutil
 import sys
 from pathlib import Path
 
+from src.logging_config import get_logger
 from src.config import (
     SELECTED_PROGRAMS_DIR,
     SELECTED_PROGRAMS_MUTANTS_DIR,
@@ -26,7 +27,7 @@ from src.mt_eval.metrics.pipeline_stats import PipelineStats
 from src.mt_eval.paths import get_strategy_combined_dir, get_strategy_results_path
 from src.mt_eval.reporting.comparison import print_comparison_table, write_comparison_json
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 def _map_mutants(mutants_dir: Path) -> dict[str, list[Path]]:
@@ -112,30 +113,37 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
         # 3a. Generate tests for each original
         tests_dir = SELECTED_PROGRAMS_DIR.parent / "tests"
         tests_dir.mkdir(parents=True, exist_ok=True)
+        strategy_combined_dir = get_strategy_combined_dir(strategy.mode)
 
-        def _gen_test(orig: Path) -> tuple[str, Path | None, str]:
+        def _gen_test(orig: Path) -> tuple[str, Path | None, str, float]:
             test_file = tests_dir / f"{orig.stem}.test.dfy"
             result = strategy.generate_tests(orig, test_file)
             if result.success and result.test_file:
-                return (orig.stem, result.test_file, result.command)
+                # Copy generated test artifact to strategy combined dir
+                artifact_dest = strategy_combined_dir / f"{orig.stem}.test.dfy"
+                artifact_dest.write_text(result.test_file.read_text())
+                return (orig.stem, result.test_file, result.command, result.execution_time)
             logger.warning("Test generation failed for %s: %s", orig.name, result.error_message)
-            return (orig.stem, None, result.command)
+            return (orig.stem, None, result.command, result.execution_time)
 
         parallel = not sequential
-        gen_results: list[tuple[str, Path | None, str]] = run_parallel_or_seq(
+        gen_results: list[tuple[str, Path | None, str, float]] = run_parallel_or_seq(
             originals, _gen_test, "Test generation", parallel=parallel,
         )
 
         test_map: dict[str, Path] = {}
         test_gen_cmd_map: dict[str, str] = {}
-        for stem, test_file, cmd in gen_results:
+        test_gen_time_map: dict[str, float] = {}
+        for stem, test_file, cmd, gen_time in gen_results:
             test_gen_cmd_map[stem] = cmd
+            test_gen_time_map[stem] = gen_time
             if test_file:
                 test_map[stem] = test_file
 
         # 3b. Safety check + kill check per original
         supported_originals: list[Path] = []
         not_supported_details: list[dict] = []
+        safety_time_map: dict[str, float] = {}
         for orig in originals:
             if orig.stem not in test_map:
                 # No tests generated — mark not supported
@@ -145,22 +153,39 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 not_supported_details.append({
                     "program": orig.name,
                     "reason": "test_generation_failed",
+                    "failed_step": "test_generation",
                     "mutants_skipped": n_mutants,
+                    "test_gen_command": test_gen_cmd_map.get(orig.stem, ""),
+                    "test_gen_time": test_gen_time_map.get(orig.stem, 0.0),
                 })
                 continue
 
             test_file = test_map[orig.stem]
-            safe = run_safety_check(orig, test_file)
+            safety_result = run_safety_check(orig, test_file, artifacts_dir=strategy_combined_dir)
+            safety_time_map[orig.stem] = safety_result.execution_time
 
-            if not safe:
+            if not safety_result.passed:
                 n_mutants = len(mutant_map.get(orig.stem, []))
                 not_supported_programs += 1
                 not_supported_mutants += n_mutants
-                not_supported_details.append({
+                detail: dict = {
                     "program": orig.name,
                     "reason": "safety_check_failed",
+                    "failed_step": "safety_check",
                     "mutants_skipped": n_mutants,
-                })
+                    "test_gen_command": test_gen_cmd_map.get(orig.stem, ""),
+                    "test_gen_time": test_gen_time_map.get(orig.stem, 0.0),
+                    "safety_check_command": safety_result.command,
+                    "safety_check_time": safety_result.execution_time,
+                    "safety_file": safety_result.safety_file,
+                }
+                if safety_result.error_message:
+                    detail["error_message"] = safety_result.error_message
+                if safety_result.stdout:
+                    detail["stdout"] = safety_result.stdout
+                if safety_result.stderr:
+                    detail["stderr"] = safety_result.stderr
+                not_supported_details.append(detail)
                 if sequential:
                     print(f"  [NOT SUPPORTED] {orig.name} — safety check failed")
                 continue
@@ -175,7 +200,6 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 kill_tasks.append((test_file, mutant))
 
         if kill_tasks:
-            strategy_combined_dir = get_strategy_combined_dir(strategy.mode)
             checker = KillChecker(
                 output_dir=strategy_combined_dir,
                 originals_dir=SELECTED_PROGRAMS_DIR,
@@ -188,10 +212,12 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             kill_results: list[MutantResult] = run_parallel_or_seq(
                 kill_tasks, _check_kill, "Kill checking", parallel=parallel,
             )
-            # Attach test generation command to each result
+            # Attach test generation command and timing to each result
             for r in kill_results:
                 orig_stem = r.original_name.removesuffix(".dfy")
                 r.test_gen_command = test_gen_cmd_map.get(orig_stem, "")
+                r.test_gen_time = test_gen_time_map.get(orig_stem, 0.0)
+                r.safety_check_time = safety_time_map.get(orig_stem, 0.0)
             results.extend(kill_results)
 
         # 3d. Compute stats
@@ -228,8 +254,10 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 print(f"\n  [{status_icon}] {r.mutant_name} ({r.execution_time:.1f}s)")
                 print(f"    Original: {r.original_name}")
                 if r.test_gen_command:
-                    print(f"    Test gen: {r.test_gen_command}")
-                print(f"    Kill cmd: {r.kill_check_command}")
+                    print(f"    Test gen: {r.test_gen_command} ({r.test_gen_time:.1f}s)")
+                if r.safety_check_time:
+                    print(f"    Safety check: {r.safety_check_time:.1f}s")
+                print(f"    Kill cmd: {r.kill_check_command} ({r.execution_time:.1f}s)")
                 if r.stdout:
                     stdout_lines = r.stdout.splitlines()[:5]
                     print(f"    stdout: {stdout_lines[0]}")
@@ -265,12 +293,37 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
         print(f"  Kill rate: {stats.kill_rate:.2%}")
         print(f"{'='*60}\n")
 
+        # 3f-timing. Per-program timing summary
+        print(f"  {'─'*56}")
+        print(f"  TIMING SUMMARY (per program):")
+        print(f"  {'─'*56}")
+        print(f"  {'Program':<30} {'TestGen':>8} {'Safety':>8} {'Kill(avg)':>10}")
+        print(f"  {'─'*56}")
+        for orig in originals:
+            tg = test_gen_time_map.get(orig.stem, 0.0)
+            sc = safety_time_map.get(orig.stem, 0.0)
+            # Average kill time for this program's mutants
+            prog_kills = [r for r in results if r.original_name == f"{orig.stem}.dfy"]
+            avg_kill = (sum(r.execution_time for r in prog_kills) / len(prog_kills)
+                        if prog_kills else 0.0)
+            print(f"  {orig.stem:<30} {tg:>7.1f}s {sc:>7.1f}s {avg_kill:>9.1f}s")
+        print(f"  {'─'*56}\n")
+
         # 3f. Write JSON
         output_dir.mkdir(parents=True, exist_ok=True)
         results_file = get_strategy_results_path(strategy.name, output_dir)
         output_data = {
             "strategy": strategy.name,
             "stats": stats.to_dict(),
+            "timing": {
+                "per_program": {
+                    orig.stem: {
+                        "test_gen_time": test_gen_time_map.get(orig.stem, 0.0),
+                        "safety_check_time": safety_time_map.get(orig.stem, 0.0),
+                    }
+                    for orig in originals
+                },
+            },
             "not_supported": not_supported_details,
             "results": [r.to_dict() for r in results],
         }

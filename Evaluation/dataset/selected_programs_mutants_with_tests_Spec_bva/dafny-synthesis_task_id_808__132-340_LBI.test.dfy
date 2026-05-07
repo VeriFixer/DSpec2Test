@@ -41,27 +41,27 @@ var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 var r0 := ContainsK(seqint0, 2147483647);
 expect r0 <==> 2147483647 in seqint0;
 }
-method {:test} Test5() {
+method {:test} Test9() {
 var seqint0 : seq<int> := [];
 var r0 := ContainsK(seqint0, 24);
 expect r0 <==> 24 in seqint0;
 }
-method {:test} Test7() {
+method {:test} Test11() {
 var seqint0 : seq<int> := [0];
 var r0 := ContainsK(seqint0, 24);
 expect r0 <==> 24 in seqint0;
 }
-method {:test} Test8() {
+method {:test} Test12() {
 var seqint0 : seq<int> := [0, 0];
 var r0 := ContainsK(seqint0, 24);
 expect r0 <==> 24 in seqint0;
 }
-method {:test} Test9() {
+method {:test} Test13() {
 var seqint0 : seq<int> := [];
 var r0 := ContainsK(seqint0, -2147483648);
 expect r0 <==> -2147483648 in seqint0;
 }
-method {:test} Test10() {
+method {:test} Test14() {
 var seqint0 : seq<int> := [];
 var r0 := ContainsK(seqint0, 2147483647);
 expect r0 <==> 2147483647 in seqint0;

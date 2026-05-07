@@ -49,6 +49,8 @@ class TestMutantResult:
             "status": "survived",
             "execution_time": 3.14,
             "test_gen_command": "",
+            "test_gen_time": 0.0,
+            "safety_check_time": 0.0,
             "kill_check_command": "",
         }
 

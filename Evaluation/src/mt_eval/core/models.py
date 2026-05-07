@@ -30,8 +30,10 @@ class MutantResult:
     mutant_name: str
     original_name: str
     status: MutantStatus
-    execution_time: float  # seconds
+    execution_time: float  # seconds (kill check)
     test_gen_command: str = ""
+    test_gen_time: float = 0.0  # seconds
+    safety_check_time: float = 0.0  # seconds
     kill_check_command: str = ""
     stdout: str = ""
     stderr: str = ""
@@ -44,6 +46,8 @@ class MutantResult:
             "status": self.status.value,
             "execution_time": self.execution_time,
             "test_gen_command": self.test_gen_command,
+            "test_gen_time": self.test_gen_time,
+            "safety_check_time": self.safety_check_time,
             "kill_check_command": self.kill_check_command,
         }
         if self.stdout:
