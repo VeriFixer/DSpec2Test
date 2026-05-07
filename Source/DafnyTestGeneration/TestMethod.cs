@@ -5,8 +5,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
+using Microsoft.BaseTypes;
 using Microsoft.Boogie;
 using Microsoft.Dafny;
 using MapType = Microsoft.Dafny.MapType;
@@ -521,6 +523,41 @@ namespace DafnyTestGeneration {
       return $"({value} as {asTypeString})";
     }
 
+    private static Expression GetRealExpr(string value, Type type, Type asType) {
+      var slashIndex = value.IndexOf('/');
+      if (slashIndex == -1) {
+        return new LiteralExpr(new Token(),
+          BigDec.FromString(GetPrimitiveAsType(value, type, asType)));
+      }
+      
+      string cleanValue = value.Replace(" ", "");
+      int sign = 1;
+
+      while (cleanValue.StartsWith('-') || cleanValue.StartsWith('(')) {
+          if (cleanValue.StartsWith('-')) {
+              sign *= -1;
+              cleanValue = cleanValue[1..];
+          }
+          if (cleanValue.StartsWith('(')) {
+              cleanValue = cleanValue[1..];
+          }
+      }
+        
+      cleanValue = cleanValue.Replace(")", "");
+      slashIndex = cleanValue.IndexOf('/');
+      var numStr = cleanValue[..slashIndex];
+      var denStr = cleanValue[(slashIndex + 1)..];
+
+      if (sign == -1 && numStr != "0") {
+        numStr = "-" + numStr;
+      }
+
+      var numExpr = new LiteralExpr(new Token(), BigDec.FromString(numStr));
+      var denExpr = new LiteralExpr(new Token(), BigDec.FromString(denStr));
+
+      return new BinaryExpr(new Token(), BinaryExpr.Opcode.Div, numExpr, denExpr);
+    }
+
     /// <summary>
     /// Return the default value for a variable of a particular type.
     /// Note that default value is different from unspecified value.
@@ -835,7 +872,7 @@ namespace DafnyTestGeneration {
           }
           var expression = ExtractExpression(variable, type);
           if (expression != null) {
-            result[paramName] = ExtractExpression(variable, type);
+            result[paramName] = expression;
           }
           break;
         }
@@ -882,10 +919,9 @@ namespace DafnyTestGeneration {
         case BigOrdinalType:
         case BitvectorType:
           return new LiteralExpr(new Token(),
-            System.Numerics.BigInteger.Parse(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
+            BigInteger.Parse(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
         case RealType:
-          return new LiteralExpr(new Token(),
-            Microsoft.BaseTypes.BigDec.FromString(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
+          return GetRealExpr(variable.PrimitiveLiteral, variableType, asType);
         case BoolType:
           return new LiteralExpr(new Token(),
             bool.Parse(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
@@ -982,15 +1018,15 @@ namespace DafnyTestGeneration {
     /// <summary>
     /// Returns the corresponding expression, based on the value's type.
     /// </summary>
-    private static Expression GetParsedValue(string value, Type type) {
+    private Expression GetParsedValue(string value, Type type) {
       if (type.IsBoolType) {
         return new LiteralExpr(new Token(), bool.Parse(value));
       }
       if (type.IsIntegerType || type.IsBigOrdinalType || type.IsBitVectorType) {
-        return new LiteralExpr(new Token(), System.Numerics.BigInteger.Parse(value));
+        return new LiteralExpr(new Token(), BigInteger.Parse(value));
       }
       if (type.IsRealType) {
-        return new LiteralExpr(new Token(), Microsoft.BaseTypes.BigDec.FromString(value)); 
+        return GetRealExpr(value, type, type); 
       }
       if (type.IsStringType) {
         return new StringLiteralExpr(new Token(), StripString(value), false);
