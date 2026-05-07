@@ -1,17 +1,23 @@
 """Strategy registry and resolver for Dafny test generators.
 
 STRATEGY_REGISTRY is auto-populated by @register_strategy decorator
-on each subclass import.
+on each subclass import. Subclasses are auto-discovered from this package.
 """
+
+import importlib
+import pkgutil
+from pathlib import Path
 
 from src.mt_eval.generators.dafny_test_generator import (
     DafnyTestGenerator,
     STRATEGY_REGISTRY,
 )
 
-# Import subclasses to trigger @register_strategy
-from src.mt_eval.generators.spec_test_generator import SpecTestGenerator  # noqa: F401
-from src.mt_eval.generators.block_test_generator import BlockTestGenerator  # noqa: F401
+# Auto-discover and import all modules in this package to trigger @register_strategy
+_pkg_dir = Path(__file__).resolve().parent
+for _finder, _name, _ispkg in pkgutil.iter_modules([str(_pkg_dir)]):
+    if _name != "dafny_test_generator":
+        importlib.import_module(f"{__name__}.{_name}")
 
 
 def resolve_strategies(names: list[str]) -> list[DafnyTestGenerator]:

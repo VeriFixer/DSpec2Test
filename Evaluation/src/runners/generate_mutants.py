@@ -14,7 +14,7 @@ from pathlib import Path
 
 from src.config import SELECTED_PROGRAMS_DIR, SELECTED_PROGRAMS_MUTANTS_DIR
 from src.mt_eval.core.mutation import apply_mutation
-from src.mt_eval.core.verification import verify_program
+from src.mt_eval.core.verification import verify_program, type_checks_program
 from src.mt_eval.execution.parallel_executor import run_parallel_or_seq
 
 logger = logging.getLogger(__name__)
@@ -45,8 +45,8 @@ def _process_program(
     # Generate mutants via MutDafny
     mutants = apply_mutation(program, prog_output_dir, max_mutants=max_mutants)
 
-    # Filter: keep only mutants that FAIL verification (real bugs)
-    valid_mutants = [m for m in mutants if not verify_program(m)]
+    # Filter: keep only mutants that FAIL verification (real bugs) And pass type checking
+    valid_mutants = [m for m in mutants if (type_checks_program(m) and (not verify_program(m)))]
 
     if not valid_mutants:
         logger.warning("No valid mutants produced for %s", program.name)

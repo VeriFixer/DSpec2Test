@@ -1,0 +1,1063 @@
+{
+  "strategy": "DafnyTestGenerator_Spec_bva",
+  "stats": {
+    "total_programs": 20,
+    "not_supported_programs": 9,
+    "not_supported_program_rate": 0.45,
+    "total_mutants": 200,
+    "not_supported_mutants": 90,
+    "not_supported_mutant_rate": 0.45,
+    "supported_mutants": 110,
+    "killed": 83,
+    "survived": 24,
+    "timeout": 3,
+    "error": 0,
+    "kill_rate": 0.7545
+  },
+  "not_supported": [
+    {
+      "program": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseFibonacci.dfy",
+      "reason": "safety_check_failed",
+      "mutants_skipped": 10
+    },
+    {
+      "program": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root.dfy",
+      "reason": "safety_check_failed",
+      "mutants_skipped": 10
+    },
+    {
+      "program": "Dafny-Grind75_tmp_tmpsxfz3i4r_problems_twoSum.dfy",
+      "reason": "safety_check_failed",
+      "mutants_skipped": 10
+    },
+    {
+      "program": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1.dfy",
+      "reason": "safety_check_failed",
+      "mutants_skipped": 10
+    },
+    {
+      "program": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop.dfy",
+      "reason": "safety_check_failed",
+      "mutants_skipped": 10
+    },
+    {
+      "program": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum.dfy",
+      "reason": "safety_check_failed",
+      "mutants_skipped": 10
+    },
+    {
+      "program": "MIEIC_mfes_tmp_tmpq3ho7nve_exams_appeal_20_p4.dfy",
+      "reason": "safety_check_failed",
+      "mutants_skipped": 10
+    },
+    {
+      "program": "MIEIC_mfes_tmp_tmpq3ho7nve_exams_mt2_19_p4.dfy",
+      "reason": "safety_check_failed",
+      "mutants_skipped": 10
+    },
+    {
+      "program": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0.dfy",
+      "reason": "test_generation_failed",
+      "mutants_skipped": 10
+    }
+  ],
+  "results": [
+    {
+      "mutant_name": "Clover_all_digits__154-154_COI.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "status": "killed",
+      "execution_time": 20.036416212000404,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Clover_all_digits.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Clover_all_digits__154-154_COI.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tClover_all_digits__154-154_COI.test.dfy(18,0): expectation violation\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED\nTest6: PASSED\n[Program halted] Clover_all_digits__154-154_COI.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Clover_all_digits__178-178_EVR_string.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "status": "killed",
+      "execution_time": 21.488501645000724,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Clover_all_digits.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Clover_all_digits__178-178_EVR_string.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: FAILED\n\tClover_all_digits__178-178_EVR_string.test.dfy(22,0): expectation violation\nTest3: FAILED\n\tClover_all_digits__178-178_EVR_string.test.dfy(26,0): expectation violation\nTest4: FAILED\n\tClover_all_digits__178-178_EVR_string.test.dfy(30,0): expectation violation\nTest5: FAILED\n\tClover_all_digits__178-178_EVR_string.test.dfy(34,0): expectation violation\nTest6: FAILED\n\tClover_all_digits__178-178_EVR_string.test.dfy(38,0): expectation violation\n[Program halted] Clover_all_digits__178-178_EVR_string.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Clover_all_digits__295-321_CBE.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "status": "survived",
+      "execution_time": 22.67471153400038,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Clover_all_digits.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Clover_all_digits__295-321_CBE.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED\nTest6: PASSED"
+    },
+    {
+      "mutant_name": "Clover_all_digits__303-315_SDL.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "status": "killed",
+      "execution_time": 24.77808083200034,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Clover_all_digits.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Clover_all_digits__303-315_SDL.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: FAILED\n\tClover_all_digits__303-315_SDL.test.dfy(21,0): expectation violation\nTest3: FAILED\n\tClover_all_digits__303-315_SDL.test.dfy(25,0): expectation violation\nTest4: FAILED\n\tClover_all_digits__303-315_SDL.test.dfy(29,0): expectation violation\nTest5: FAILED\n\tClover_all_digits__303-315_SDL.test.dfy(33,0): expectation violation\nTest6: FAILED\n\tClover_all_digits__303-315_SDL.test.dfy(37,0): expectation violation\n[Program halted] Clover_all_digits__303-315_SDL.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "BelowZero__884-900_SWS.dfy",
+      "original_name": "BelowZero.dfy",
+      "status": "survived",
+      "execution_time": 24.84691491599915,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/BelowZero.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/BelowZero__884-900_SWS.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED\nTest6: PASSED\nTest8: PASSED\nTest9: PASSED"
+    },
+    {
+      "mutant_name": "BelowZero__915_ROR_Eq.dfy",
+      "original_name": "BelowZero.dfy",
+      "status": "killed",
+      "execution_time": 25.68583627800035,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/BelowZero.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/BelowZero__915_ROR_Eq.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: FAILED\n\tBelowZero__915_ROR_Eq.test.dfy(62,0): expectation violation\nTest5: FAILED\n\tBelowZero__915_ROR_Eq.test.dfy(67,0): expectation violation\nTest6: PASSED\nTest8: FAILED\n\tBelowZero__915_ROR_Eq.test.dfy(77,0): expectation violation\nTest9: FAILED\n\tBelowZero__915_ROR_Eq.test.dfy(82,0): expectation violation\n[Program halted] BelowZero__915_ROR_Eq.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "BelowZero__727-983_LBI.dfy",
+      "original_name": "BelowZero.dfy",
+      "status": "killed",
+      "execution_time": 25.895308424000177,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/BelowZero.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/BelowZero__727-983_LBI.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: FAILED\n\tBelowZero__727-983_LBI.test.dfy(63,0): expectation violation\nTest5: FAILED\n\tBelowZero__727-983_LBI.test.dfy(68,0): expectation violation\nTest6: PASSED\nTest8: PASSED\nTest9: PASSED\n[Program halted] BelowZero__727-983_LBI.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "BelowZero__866_AOR_Mul.dfy",
+      "original_name": "BelowZero.dfy",
+      "status": "killed",
+      "execution_time": 27.241825920000338,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/BelowZero.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/BelowZero__866_AOR_Mul.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: FAILED\n\tBelowZero__866_AOR_Mul.test.dfy(62,0): expectation violation\nTest5: FAILED\n\tBelowZero__866_AOR_Mul.test.dfy(67,0): expectation violation\nTest6: PASSED\nTest8: PASSED\nTest9: PASSED\n[Program halted] BelowZero__866_AOR_Mul.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "BelowZero__711-721_SWS.dfy",
+      "original_name": "BelowZero.dfy",
+      "status": "survived",
+      "execution_time": 27.34001860999888,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/BelowZero.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/BelowZero__711-721_SWS.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED\nTest6: PASSED\nTest8: PASSED\nTest9: PASSED"
+    },
+    {
+      "mutant_name": "Clover_all_digits__163-325_SWS.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "status": "survived",
+      "execution_time": 28.183101933000216,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Clover_all_digits.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Clover_all_digits__163-325_SWS.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED\nTest6: PASSED"
+    },
+    {
+      "mutant_name": "BelowZero__-_ODL_Add-right.dfy",
+      "original_name": "BelowZero.dfy",
+      "status": "killed",
+      "execution_time": 29.328933404000054,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/BelowZero.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/BelowZero__-_ODL_Add-right.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: FAILED\n\tBelowZero__-_ODL_Add-right.test.dfy(62,0): expectation violation\nTest5: FAILED\n\tBelowZero__-_ODL_Add-right.test.dfy(67,0): expectation violation\nTest6: PASSED\nTest8: PASSED\nTest9: PASSED\n[Program halted] BelowZero__-_ODL_Add-right.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "BelowZero__859-874_SDL.dfy",
+      "original_name": "BelowZero.dfy",
+      "status": "killed",
+      "execution_time": 31.867484615999274,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/BelowZero.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/BelowZero__859-874_SDL.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: FAILED\n\tBelowZero__859-874_SDL.test.dfy(61,0): expectation violation\nTest5: FAILED\n\tBelowZero__859-874_SDL.test.dfy(66,0): expectation violation\nTest6: PASSED\nTest8: PASSED\nTest9: PASSED\n[Program halted] BelowZero__859-874_SDL.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Div-left.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "status": "killed",
+      "execution_time": 31.984262182000748,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Div-left.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Div-left.test.dfy(15,0): expectation violation\nTest1: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Div-left.test.dfy(20,0): expectation violation\n[Program halted] Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Div-left.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Clover_all_digits__177-179_EVR_int.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "status": "killed",
+      "execution_time": 34.434884247999435,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Clover_all_digits.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Clover_all_digits__177-179_EVR_int.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: FAILED\n\tClover_all_digits__177-179_EVR_int.test.dfy(22,0): expectation violation\nTest3: FAILED\n\tClover_all_digits__177-179_EVR_int.test.dfy(26,0): expectation violation\nTest4: FAILED\n\tClover_all_digits__177-179_EVR_int.test.dfy(30,0): expectation violation\nTest5: FAILED\n\tClover_all_digits__177-179_EVR_int.test.dfy(34,0): expectation violation\nTest6: FAILED\n\tClover_all_digits__177-179_EVR_int.test.dfy(38,0): expectation violation\n[Program halted] Clover_all_digits__177-179_EVR_int.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Clover_all_digits__163-325_LBI.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "status": "killed",
+      "execution_time": 35.38061367800037,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Clover_all_digits.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Clover_all_digits__163-325_LBI.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: FAILED\n\tClover_all_digits__163-325_LBI.test.dfy(23,0): expectation violation\nTest3: FAILED\n\tClover_all_digits__163-325_LBI.test.dfy(27,0): expectation violation\nTest4: FAILED\n\tClover_all_digits__163-325_LBI.test.dfy(31,0): expectation violation\nTest5: FAILED\n\tClover_all_digits__163-325_LBI.test.dfy(35,0): expectation violation\nTest6: FAILED\n\tClover_all_digits__163-325_LBI.test.dfy(39,0): expectation violation\n[Program halted] Clover_all_digits__163-325_LBI.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "BelowZero__-_ODL_Add-left.dfy",
+      "original_name": "BelowZero.dfy",
+      "status": "survived",
+      "execution_time": 36.19616474299983,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/BelowZero.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/BelowZero__-_ODL_Add-left.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED\nTest6: PASSED\nTest8: PASSED\nTest9: PASSED"
+    },
+    {
+      "mutant_name": "RollingMax__-_ODL_Gt-left.dfy",
+      "original_name": "RollingMax.dfy",
+      "status": "killed",
+      "execution_time": 8.553480515000047,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/RollingMax.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/RollingMax__-_ODL_Gt-left.test.dfy",
+      "stdout": "RollingMax__-_ODL_Gt-left.test.dfy(19,7): Error: condition is expected to be of type bool, but is int\n   |\n19 |     if result {\n   |        ^^^^^^\n\nRollingMax__-_ODL_Gt-left.test.dfy(37,7): Error: condition is expected to be of type bool, but is int\n   |\n37 |     if m {\n   |        ^\n\n2 resolution/type errors detected in RollingMax__-_ODL_Gt-left.test.dfy"
+    },
+    {
+      "mutant_name": "RollingMax__-_ODL_Gt-right.dfy",
+      "original_name": "RollingMax.dfy",
+      "status": "killed",
+      "execution_time": 8.459774425000433,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/RollingMax.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/RollingMax__-_ODL_Gt-right.test.dfy",
+      "stdout": "RollingMax__-_ODL_Gt-right.test.dfy(19,14): Error: condition is expected to be of type bool, but is int\n   |\n19 |     if numbers[i] {\n   |               ^\n\nRollingMax__-_ODL_Gt-right.test.dfy(37,14): Error: condition is expected to be of type bool, but is int\n   |\n37 |     if numbers[i] {\n   |               ^\n\n2 resolution/type errors detected in RollingMax__-_ODL_Gt-right.test.dfy"
+    },
+    {
+      "mutant_name": "Clover_all_digits__268-321_SDL.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "status": "killed",
+      "execution_time": 21.01294163500097,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Clover_all_digits.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Clover_all_digits__268-321_SDL.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: FAILED\n\tClover_all_digits__268-321_SDL.test.dfy(19,0): expectation violation\nTest3: FAILED\n\tClover_all_digits__268-321_SDL.test.dfy(23,0): expectation violation\nTest4: FAILED\n\tClover_all_digits__268-321_SDL.test.dfy(27,0): expectation violation\nTest5: FAILED\n\tClover_all_digits__268-321_SDL.test.dfy(31,0): expectation violation\nTest6: FAILED\n\tClover_all_digits__268-321_SDL.test.dfy(35,0): expectation violation\n[Program halted] Clover_all_digits__268-321_SDL.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Mul-left.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "status": "killed",
+      "execution_time": 20.782558652999796,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Mul-left.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Mul-left.test.dfy(15,0): expectation violation\nTest1: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Mul-left.test.dfy(20,0): expectation violation\n[Program halted] Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Mul-left.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "BelowZero__866_AOR_Sub.dfy",
+      "original_name": "BelowZero.dfy",
+      "status": "killed",
+      "execution_time": 28.70339212900035,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/BelowZero.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/BelowZero__866_AOR_Sub.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: FAILED\n\tBelowZero__866_AOR_Sub.test.dfy(57,0): expectation violation\nTest4: FAILED\n\tBelowZero__866_AOR_Sub.test.dfy(62,0): expectation violation\nTest5: PASSED\nTest6: PASSED\nTest8: PASSED\nTest9: PASSED\n[Program halted] BelowZero__866_AOR_Sub.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Clover_all_digits__172_LVR_-1.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "status": "killed",
+      "execution_time": 26.3367714470005,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Clover_all_digits.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Clover_all_digits__172_LVR_-1.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0:",
+      "stderr": "Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.\n   at System.Collections.Immutable.ImmutableArray`1.get_Item(Int32 index)\n   at Dafny.Sequence`1.Select(BigInteger index) in /tmp/kill_Clover_all_digits__172_LVR_-1_234lnegw/Clover_all_digits__172_LVR_-1.test.cs:line 1302\n   at _module.__default.allDigits(ISequence`1 s) in /tmp/kill_Clover_all_digits__172_LVR_-1_234lnegw/Clover_all_digits__172_LVR_-1.test.cs:line 5848\n   at _module.__default.Test0() in /tmp/kill_Clover_all_digits__172_LVR_-1_234lnegw/Clover_all_digits__172_LVR_-1.test.cs:line 5859\n   at _module.__default.__Test____Main__(ISequence`1 __noArgsParameter) in /tmp/kill_Clover_all_digits__172_LVR_-1_234lnegw/Clover_all_digits__172_LVR_-1.test.cs:line 5934\n   at __CallToMain.<>c__DisplayClass0_0.<Main>b__0() in /tmp/kill_Clover_all_digits__172_LVR_-1_234lnegw/Clover_all_digits__172_LVR_-1.test.cs:line 6065\n   at Dafny.Helpers.WithHaltHandling(Action action) in /tmp/kill_Clover_all_digits__172_LVR_-1_234lnegw/Clover_all_digits__172_LVR_-1.test.cs:line 1810\n   at __CallToMain.Main(String[] args) in /tmp/kill_Clover_all_digits__172_LVR_-1_234lnegw/Clover_all_digits__172_LVR_-1.test.cs:line 6065"
+    },
+    {
+      "mutant_name": "Clover_all_digits__172_LVR_1.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "status": "killed",
+      "execution_time": 27.611336859999938,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Clover_all_digits.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Clover_all_digits__172_LVR_1.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: FAILED\n\tClover_all_digits__172_LVR_1.test.dfy(22,0): expectation violation\nTest3: PASSED\nTest4: PASSED\nTest5: FAILED\n\tClover_all_digits__172_LVR_1.test.dfy(34,0): expectation violation\nTest6: PASSED\n[Program halted] Clover_all_digits__172_LVR_1.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Mod.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "status": "killed",
+      "execution_time": 22.814967948999765,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Mod.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Mod.test.dfy(15,0): expectation violation\nTest1: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Mod.test.dfy(20,0): expectation violation\n[Program halted] Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Mod.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__103-164_VDL_y.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "status": "killed",
+      "execution_time": 25.190872445999048,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__103-164_VDL_y.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__103-164_VDL_y.test.dfy(14,0): expectation violation\nTest1: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__103-164_VDL_y.test.dfy(19,0): expectation violation\n[Program halted] Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__103-164_VDL_y.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Div-right.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "status": "killed",
+      "execution_time": 26.972540479999225,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Div-right.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Div-right.test.dfy(15,0): expectation violation\nTest1: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Div-right.test.dfy(20,0): expectation violation\n[Program halted] Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Div-right.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Mul.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "status": "killed",
+      "execution_time": 23.435560406998775,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Mul.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Mul.test.dfy(15,0): expectation violation\nTest1: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Mul.test.dfy(20,0): expectation violation\n[Program halted] Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Mul.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Add.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "status": "killed",
+      "execution_time": 26.782954096999674,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Add.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Add.test.dfy(15,0): expectation violation\nTest1: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Add.test.dfy(20,0): expectation violation\n[Program halted] Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Add.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Sub.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "status": "killed",
+      "execution_time": 24.78951474800124,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Sub.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Sub.test.dfy(15,0): expectation violation\nTest1: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Sub.test.dfy(20,0): expectation violation\n[Program halted] Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Sub.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "BelowZero__884-900_SDL.dfy",
+      "original_name": "BelowZero.dfy",
+      "status": "survived",
+      "execution_time": 32.20017050699971,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/BelowZero.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/BelowZero__884-900_SDL.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED\nTest6: PASSED\nTest8: PASSED\nTest9: PASSED"
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__-_ODL_Lt-left.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "status": "killed",
+      "execution_time": 4.701118594999571,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-exercise_tmp_tmpouftptir_countNeg.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-exercise_tmp_tmpouftptir_countNeg__-_ODL_Lt-left.test.dfy",
+      "stdout": "dafny-exercise_tmp_tmpouftptir_countNeg__-_ODL_Lt-left.test.dfy(17,8): Error: condition is expected to be of type bool, but is int\n   |\n17 |   while |a|\n   |         ^\n\ndafny-exercise_tmp_tmpouftptir_countNeg__-_ODL_Lt-left.test.dfy(21,7): Error: condition is expected to be of type bool, but is int\n   |\n21 |     if 0 {\n   |        ^\n\n2 resolution/type errors detected in dafny-exercise_tmp_tmpouftptir_countNeg__-_ODL_Lt-left.test.dfy"
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__-_ODL_Lt-right.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "status": "killed",
+      "execution_time": 6.705488775000049,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-exercise_tmp_tmpouftptir_countNeg.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-exercise_tmp_tmpouftptir_countNeg__-_ODL_Lt-right.test.dfy",
+      "stdout": "dafny-exercise_tmp_tmpouftptir_countNeg__-_ODL_Lt-right.test.dfy(17,8): Error: condition is expected to be of type bool, but is int\n   |\n17 |   while i\n   |         ^\n\ndafny-exercise_tmp_tmpouftptir_countNeg__-_ODL_Lt-right.test.dfy(21,8): Error: condition is expected to be of type bool, but is int\n   |\n21 |     if a[i] {\n   |         ^\n\n2 resolution/type errors detected in dafny-exercise_tmp_tmpouftptir_countNeg__-_ODL_Lt-right.test.dfy"
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__136_AOR_Add.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "status": "killed",
+      "execution_time": 29.66422220899949,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__136_AOR_Add.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__136_AOR_Add.test.dfy(15,0): expectation violation\nTest1: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__136_AOR_Add.test.dfy(20,0): expectation violation\n[Program halted] Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__136_AOR_Add.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__136_AOR_Sub.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "status": "killed",
+      "execution_time": 28.009432070999537,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__136_AOR_Sub.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__136_AOR_Sub.test.dfy(15,0): expectation violation\nTest1: FAILED\n\tDafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__136_AOR_Sub.test.dfy(20,0): expectation violation\n[Program halted] Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__136_AOR_Sub.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "RollingMax__511_BBR_false.dfy",
+      "original_name": "RollingMax.dfy",
+      "status": "killed",
+      "execution_time": 18.1043205269998,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/RollingMax.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/RollingMax__511_BBR_false.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tRollingMax__511_BBR_false.test.dfy(48,0): expectation violation\nTest1: PASSED\nTest2: FAILED\n\tRollingMax__511_BBR_false.test.dfy(60,0): expectation violation\nTest3: PASSED\nTest5: PASSED\n[Program halted] RollingMax__511_BBR_false.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "RollingMax__511_ROR_Eq.dfy",
+      "original_name": "RollingMax.dfy",
+      "status": "killed",
+      "execution_time": 20.16768181900079,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/RollingMax.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/RollingMax__511_ROR_Eq.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tRollingMax__511_ROR_Eq.test.dfy(48,0): expectation violation\nTest1: PASSED\nTest2: FAILED\n\tRollingMax__511_ROR_Eq.test.dfy(60,0): expectation violation\nTest3: PASSED\nTest5: PASSED\n[Program halted] RollingMax__511_ROR_Eq.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "RollingMax__416-570_LBI.dfy",
+      "original_name": "RollingMax.dfy",
+      "status": "killed",
+      "execution_time": 26.701605035001194,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/RollingMax.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/RollingMax__416-570_LBI.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tRollingMax__416-570_LBI.test.dfy(49,0): expectation violation\nTest1: PASSED\nTest2: FAILED\n\tRollingMax__416-570_LBI.test.dfy(61,0): expectation violation\nTest3: PASSED\nTest5: PASSED\n[Program halted] RollingMax__416-570_LBI.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "RollingMax__511_ROR_Le.dfy",
+      "original_name": "RollingMax.dfy",
+      "status": "killed",
+      "execution_time": 21.793983692999973,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/RollingMax.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/RollingMax__511_ROR_Le.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tRollingMax__511_ROR_Le.test.dfy(48,0): expectation violation\nTest1: PASSED\nTest2: FAILED\n\tRollingMax__511_ROR_Le.test.dfy(60,0): expectation violation\nTest3: PASSED\nTest5: PASSED\n[Program halted] RollingMax__511_ROR_Le.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "status": "killed",
+      "execution_time": 16.19232046399884,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-exercise_tmp_tmpouftptir_countNeg.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0:",
+      "stderr": "Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.\n   at System.Collections.Immutable.ImmutableArray`1.get_Item(Int32 index)\n   at Dafny.Sequence`1.Select(BigInteger index) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true_6g914csb/dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true.test.cs:line 1275\n   at _module.__default.CountNeg(ISequence`1 a) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true_6g914csb/dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true.test.cs:line 5840\n   at _module.__default.Test0() in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true_6g914csb/dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true.test.cs:line 5853\n   at _module.__default.__Test____Main__(ISequence`1 __noArgsParameter) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true_6g914csb/dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true.test.cs:line 5898\n   at __CallToMain.<>c__DisplayClass0_0.<Main>b__0() in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true_6g914csb/dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true.test.cs:line 5987\n   at Dafny.Helpers.WithHaltHandling(Action action) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true_6g914csb/dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true.test.cs:line 1783\n   at __CallToMain.Main(String[] args) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true_6g914csb/dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true.test.cs:line 5987"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__764_AOR_Mul.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "status": "killed",
+      "execution_time": 1.739033911999286,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_477.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_477__764_AOR_Mul.test.dfy",
+      "stdout": "dafny-synthesis_task_id_477__764_AOR_Mul.test.dfy(30,15): Error: type of * must be of a numeric type, bitvector type, or a set-like type (instead got seq<char>)\n   |\n30 |       s' := s' * [Shift32(s[i])];\n   |                ^\n\n1 resolution/type errors detected in dafny-synthesis_task_id_477__764_AOR_Mul.test.dfy"
+    },
+    {
+      "mutant_name": "RollingMax__511_ROR_Lt.dfy",
+      "original_name": "RollingMax.dfy",
+      "status": "killed",
+      "execution_time": 27.24816148300124,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/RollingMax.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/RollingMax__511_ROR_Lt.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tRollingMax__511_ROR_Lt.test.dfy(48,0): expectation violation\nTest1: PASSED\nTest2: FAILED\n\tRollingMax__511_ROR_Lt.test.dfy(60,0): expectation violation\nTest3: PASSED\nTest5: PASSED\n[Program halted] RollingMax__511_ROR_Lt.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "RollingMax__511_ROR_Neq.dfy",
+      "original_name": "RollingMax.dfy",
+      "status": "survived",
+      "execution_time": 26.742513675000737,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/RollingMax.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/RollingMax__511_ROR_Neq.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest5: PASSED"
+    },
+    {
+      "mutant_name": "RollingMax__511_ROR_Ge.dfy",
+      "original_name": "RollingMax.dfy",
+      "status": "survived",
+      "execution_time": 29.142587324999113,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/RollingMax.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/RollingMax__511_ROR_Ge.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest5: PASSED"
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Gt.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "status": "killed",
+      "execution_time": 18.71132748799937,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-exercise_tmp_tmpouftptir_countNeg.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Gt.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Gt.test.dfy(31,0): expectation violation\nTest1: PASSED\nTest2: FAILED\n\tdafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Gt.test.dfy(41,0): expectation violation\nTest3: FAILED\n\tdafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Gt.test.dfy(46,0): expectation violation\n[Program halted] dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Gt.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__274-282_SWS.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "status": "survived",
+      "execution_time": 27.164115130000937,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-exercise_tmp_tmpouftptir_countNeg.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-exercise_tmp_tmpouftptir_countNeg__274-282_SWS.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__764_AOR_Sub.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "status": "killed",
+      "execution_time": 5.796377025000766,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_477.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_477__764_AOR_Sub.test.dfy",
+      "stdout": "dafny-synthesis_task_id_477__764_AOR_Sub.test.dfy(30,15): Error: type of - must be of a numeric type, bitvector type, ORDINAL, char, or a set-like or map-like type (instead got seq<char>)\n   |\n30 |       s' := s' - [Shift32(s[i])];\n   |                ^\n\n1 resolution/type errors detected in dafny-synthesis_task_id_477__764_AOR_Sub.test.dfy"
+    },
+    {
+      "mutant_name": "RollingMax__511_BBR_true.dfy",
+      "original_name": "RollingMax.dfy",
+      "status": "survived",
+      "execution_time": 35.96355398600099,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/RollingMax.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/RollingMax__511_BBR_true.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest5: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__838_AOR_Mul.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "status": "killed",
+      "execution_time": 4.64997230300105,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_477.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_477__838_AOR_Mul.test.dfy",
+      "stdout": "dafny-synthesis_task_id_477__838_AOR_Mul.test.dfy(32,15): Error: type of * must be of a numeric type, bitvector type, or a set-like type (instead got seq<char>)\n   |\n32 |       s' := s' * [s[i]];\n   |                ^\n\n1 resolution/type errors detected in dafny-synthesis_task_id_477__838_AOR_Mul.test.dfy"
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Neq.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "status": "survived",
+      "execution_time": 20.767589877999853,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-exercise_tmp_tmpouftptir_countNeg.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Neq.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED"
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__285-415_LBI.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "status": "killed",
+      "execution_time": 29.72395461800079,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-exercise_tmp_tmpouftptir_countNeg.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-exercise_tmp_tmpouftptir_countNeg__285-415_LBI.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-exercise_tmp_tmpouftptir_countNeg__285-415_LBI.test.dfy(32,0): expectation violation\nTest1: PASSED\nTest2: FAILED\n\tdafny-exercise_tmp_tmpouftptir_countNeg__285-415_LBI.test.dfy(42,0): expectation violation\nTest3: FAILED\n\tdafny-exercise_tmp_tmpouftptir_countNeg__285-415_LBI.test.dfy(47,0): expectation violation\n[Program halted] dafny-exercise_tmp_tmpouftptir_countNeg__285-415_LBI.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__838_AOR_Sub.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "status": "killed",
+      "execution_time": 5.943133439999656,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_477.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_477__838_AOR_Sub.test.dfy",
+      "stdout": "dafny-synthesis_task_id_477__838_AOR_Sub.test.dfy(32,15): Error: type of - must be of a numeric type, bitvector type, ORDINAL, char, or a set-like or map-like type (instead got seq<char>)\n   |\n32 |       s' := s' - [s[i]];\n   |                ^\n\n1 resolution/type errors detected in dafny-synthesis_task_id_477__838_AOR_Sub.test.dfy"
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "status": "killed",
+      "execution_time": 28.09346417300003,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-exercise_tmp_tmpouftptir_countNeg.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq.test.dfy(31,0): expectation violation\nTest1:",
+      "stderr": "Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.\n   at System.Collections.Immutable.ImmutableArray`1.get_Item(Int32 index)\n   at Dafny.Sequence`1.Select(BigInteger index) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq_bf3oje3l/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq.test.cs:line 1275\n   at _module.__default.CountNeg(ISequence`1 a) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq_bf3oje3l/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq.test.cs:line 5840\n   at _module.__default.Test1() in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq_bf3oje3l/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq.test.cs:line 5864\n   at _module.__default.__Test____Main__(ISequence`1 __noArgsParameter) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq_bf3oje3l/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq.test.cs:line 5919\n   at __CallToMain.<>c__DisplayClass0_0.<Main>b__0() in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq_bf3oje3l/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq.test.cs:line 5987\n   at Dafny.Helpers.WithHaltHandling(Action action) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq_bf3oje3l/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq.test.cs:line 1783\n   at __CallToMain.Main(String[] args) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq_bf3oje3l/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq.test.cs:line 5987"
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "status": "killed",
+      "execution_time": 26.928467740000997,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-exercise_tmp_tmpouftptir_countNeg.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0:",
+      "stderr": "Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.\n   at System.Collections.Immutable.ImmutableArray`1.get_Item(Int32 index)\n   at Dafny.Sequence`1.Select(BigInteger index) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le_91bzgi8w/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le.test.cs:line 1276\n   at _module.__default.CountNeg(ISequence`1 a) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le_91bzgi8w/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le.test.cs:line 5841\n   at _module.__default.Test0() in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le_91bzgi8w/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le.test.cs:line 5854\n   at _module.__default.__Test____Main__(ISequence`1 __noArgsParameter) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le_91bzgi8w/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le.test.cs:line 5899\n   at __CallToMain.<>c__DisplayClass0_0.<Main>b__0() in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le_91bzgi8w/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le.test.cs:line 5988\n   at Dafny.Helpers.WithHaltHandling(Action action) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le_91bzgi8w/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le.test.cs:line 1784\n   at __CallToMain.Main(String[] args) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le_91bzgi8w/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le.test.cs:line 5988"
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "status": "killed",
+      "execution_time": 31.663212645000385,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-exercise_tmp_tmpouftptir_countNeg.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge.test.dfy(31,0): expectation violation\nTest1:",
+      "stderr": "Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.\n   at System.Collections.Immutable.ImmutableArray`1.get_Item(Int32 index)\n   at Dafny.Sequence`1.Select(BigInteger index) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge_trjsngnu/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge.test.cs:line 1276\n   at _module.__default.CountNeg(ISequence`1 a) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge_trjsngnu/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge.test.cs:line 5841\n   at _module.__default.Test1() in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge_trjsngnu/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge.test.cs:line 5865\n   at _module.__default.__Test____Main__(ISequence`1 __noArgsParameter) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge_trjsngnu/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge.test.cs:line 5920\n   at __CallToMain.<>c__DisplayClass0_0.<Main>b__0() in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge_trjsngnu/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge.test.cs:line 5988\n   at Dafny.Helpers.WithHaltHandling(Action action) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge_trjsngnu/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge.test.cs:line 1784\n   at __CallToMain.Main(String[] args) in /tmp/kill_dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge_trjsngnu/dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge.test.cs:line 5988"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__-_ODL_Add-left.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "status": "killed",
+      "execution_time": 28.782610729000226,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_477.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_477__-_ODL_Add-left.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_477__-_ODL_Add-left.test.dfy(50,0): expectation violation\n[Program halted] dafny-synthesis_task_id_477__-_ODL_Add-left.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__458-862_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "status": "killed",
+      "execution_time": 21.04387039299945,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_477.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_477__458-862_LBI.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_477__458-862_LBI.test.dfy(41,0): expectation violation\nTest1: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_477__458-862_LBI.test.dfy(51,0): expectation violation\n[Program halted] dafny-synthesis_task_id_477__458-862_LBI.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__327_AOR_Sub.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "status": "killed",
+      "execution_time": 3.5238569370012556,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_565.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_565__327_AOR_Sub.test.dfy",
+      "stdout": "dafny-synthesis_task_id_565__327_AOR_Sub.test.dfy(13,11): Error: type of - must be of a numeric type, bitvector type, ORDINAL, char, or a set-like or map-like type (instead got seq<char>)\n   |\n13 |     v := v - [s[i]];\n   |            ^\n\n1 resolution/type errors detected in dafny-synthesis_task_id_565__327_AOR_Sub.test.dfy"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__-_ODL_Add-right.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "status": "killed",
+      "execution_time": 28.01376342900039,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_477.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_477__-_ODL_Add-right.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_477__-_ODL_Add-right.test.dfy(40,0): expectation violation\nTest1: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_477__-_ODL_Add-right.test.dfy(50,0): expectation violation\n[Program halted] dafny-synthesis_task_id_477__-_ODL_Add-right.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__755-781_SDL.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "status": "survived",
+      "execution_time": 24.50690046999989,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_477.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_477__755-781_SDL.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest3: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__327_AOR_Mul.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "status": "killed",
+      "execution_time": 8.038008564000847,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_565.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_565__327_AOR_Mul.test.dfy",
+      "stdout": "dafny-synthesis_task_id_565__327_AOR_Mul.test.dfy(13,11): Error: type of * must be of a numeric type, bitvector type, or a set-like type (instead got seq<char>)\n   |\n13 |     v := v * [s[i]];\n   |            ^\n\n1 resolution/type errors detected in dafny-synthesis_task_id_565__327_AOR_Mul.test.dfy"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__171-341_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "status": "killed",
+      "execution_time": 15.972444068000186,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_565.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_565__171-341_LBI.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_565__171-341_LBI.test.dfy(20,0): expectation violation\nTest1: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_565__171-341_LBI.test.dfy(30,0): expectation violation\n[Program halted] dafny-synthesis_task_id_565__171-341_LBI.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__815-856_SDL.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "status": "killed",
+      "execution_time": 25.271583812000245,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_477.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_477__815-856_SDL.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_477__815-856_SDL.test.dfy(38,0): expectation violation\nTest1: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_477__815-856_SDL.test.dfy(48,0): expectation violation\n[Program halted] dafny-synthesis_task_id_477__815-856_SDL.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__171-341_SWS.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "status": "killed",
+      "execution_time": 18.792433587999767,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_565.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_565__171-341_SWS.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_565__171-341_SWS.test.dfy(19,0): expectation violation\nTest1: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_565__171-341_SWS.test.dfy(29,0): expectation violation\n[Program halted] dafny-synthesis_task_id_565__171-341_SWS.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__163-164_CIR_char.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "status": "killed",
+      "execution_time": 20.320282643999235,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_565.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_565__163-164_CIR_char.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_565__163-164_CIR_char.test.dfy(19,0): expectation violation\nTest1: FAILED\n\tdafny-synthesis_task_id_565__163-164_CIR_char.test.dfy(24,0): expectation violation\nTest3: FAILED\n\tdafny-synthesis_task_id_565__163-164_CIR_char.test.dfy(29,0): expectation violation\n[Program halted] dafny-synthesis_task_id_565__163-164_CIR_char.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__-_ODL_Add-right.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "status": "killed",
+      "execution_time": 25.2855147199989,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_565.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_565__-_ODL_Add-right.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_565__-_ODL_Add-right.test.dfy(19,0): expectation violation\nTest1: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_565__-_ODL_Add-right.test.dfy(29,0): expectation violation\n[Program halted] dafny-synthesis_task_id_565__-_ODL_Add-right.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__829-846_SDL.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "status": "killed",
+      "execution_time": 29.570368058000895,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_477.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_477__829-846_SDL.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_477__829-846_SDL.test.dfy(39,0): expectation violation\nTest1: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_477__829-846_SDL.test.dfy(49,0): expectation violation\n[Program halted] dafny-synthesis_task_id_477__829-846_SDL.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__-_ODL_Add-left.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "status": "killed",
+      "execution_time": 29.1424401760014,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_565.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_565__-_ODL_Add-left.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_565__-_ODL_Add-left.test.dfy(29,0): expectation violation\n[Program halted] dafny-synthesis_task_id_565__-_ODL_Add-left.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__180_LVR_1.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "status": "killed",
+      "execution_time": 27.838765241000146,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_565.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_565__180_LVR_1.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_565__180_LVR_1.test.dfy(19,0): expectation violation\nTest1: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_565__180_LVR_1.test.dfy(29,0): expectation violation\n[Program halted] dafny-synthesis_task_id_565__180_LVR_1.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__-_ODL_And-right.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "status": "killed",
+      "execution_time": 20.19122047000019,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_602.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_602__-_ODL_And-right.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: FAILED\n\tdafny-synthesis_task_id_602__-_ODL_And-right.test.dfy(51,0): expectation violation\nTest5: FAILED\n\tdafny-synthesis_task_id_602__-_ODL_And-right.test.dfy(56,0): expectation violation\n[Program halted] dafny-synthesis_task_id_602__-_ODL_And-right.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__320-335_SDL.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "status": "killed",
+      "execution_time": 28.061548619998575,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_565.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_565__320-335_SDL.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_565__320-335_SDL.test.dfy(18,0): expectation violation\nTest1: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_565__320-335_SDL.test.dfy(28,0): expectation violation\n[Program halted] dafny-synthesis_task_id_565__320-335_SDL.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__180_LVR_-1.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "status": "killed",
+      "execution_time": 30.000220235000597,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_565.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_565__180_LVR_-1.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0:",
+      "stderr": "Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.\n   at System.Collections.Immutable.ImmutableArray`1.get_Item(Int32 index)\n   at Dafny.Sequence`1.Select(BigInteger index) in /tmp/kill_dafny-synthesis_task_id_565__180_LVR_-1_yt9hq81v/dafny-synthesis_task_id_565__180_LVR_-1.test.cs:line 1240\n   at _module.__default.SplitStringIntoChars(ISequence`1 s) in /tmp/kill_dafny-synthesis_task_id_565__180_LVR_-1_yt9hq81v/dafny-synthesis_task_id_565__180_LVR_-1.test.cs:line 5786\n   at _module.__default.Test0() in /tmp/kill_dafny-synthesis_task_id_565__180_LVR_-1_yt9hq81v/dafny-synthesis_task_id_565__180_LVR_-1.test.cs:line 5794\n   at _module.__default.__Test____Main__(ISequence`1 __noArgsParameter) in /tmp/kill_dafny-synthesis_task_id_565__180_LVR_-1_yt9hq81v/dafny-synthesis_task_id_565__180_LVR_-1.test.cs:line 5839\n   at __CallToMain.<>c__DisplayClass0_0.<Main>b__0() in /tmp/kill_dafny-synthesis_task_id_565__180_LVR_-1_yt9hq81v/dafny-synthesis_task_id_565__180_LVR_-1.test.cs:line 5907\n   at Dafny.Helpers.WithHaltHandling(Action action) in /tmp/kill_dafny-synthesis_task_id_565__180_LVR_-1_yt9hq81v/dafny-synthesis_task_id_565__180_LVR_-1.test.cs:line 1748\n   at __CallToMain.Main(String[] args) in /tmp/kill_dafny-synthesis_task_id_565__180_LVR_-1_yt9hq81v/dafny-synthesis_task_id_565__180_LVR_-1.test.cs:line 5907"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__323-337_SWS.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "status": "survived",
+      "execution_time": 26.544499354000436,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_602.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_602__323-337_SWS.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__343-367_SWS.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "status": "survived",
+      "execution_time": 24.844488046999686,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_602.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_602__343-367_SWS.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__-_ODL_And-left.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "status": "killed",
+      "execution_time": 28.759804562998397,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_602.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_602__-_ODL_And-left.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0:",
+      "stderr": "Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.\n   at System.Collections.Immutable.ImmutableArray`1.get_Item(Int32 index)\n   at Dafny.Sequence`1.Select(BigInteger index) in /tmp/kill_dafny-synthesis_task_id_602__-_ODL_And-left__do4_3f5/dafny-synthesis_task_id_602__-_ODL_And-left.test.cs:line 1303\n   at _module.__default.FindFirstRepeatedChar(ISequence`1 s, Boolean& found, Rune& c) in /tmp/kill_dafny-synthesis_task_id_602__-_ODL_And-left__do4_3f5/dafny-synthesis_task_id_602__-_ODL_And-left.test.cs:line 5857\n   at _module.__default.Test0() in /tmp/kill_dafny-synthesis_task_id_602__-_ODL_And-left__do4_3f5/dafny-synthesis_task_id_602__-_ODL_And-left.test.cs:line 5873\n   at _module.__default.__Test____Main__(ISequence`1 __noArgsParameter) in /tmp/kill_dafny-synthesis_task_id_602__-_ODL_And-left__do4_3f5/dafny-synthesis_task_id_602__-_ODL_And-left.test.cs:line 6034\n   at __CallToMain.<>c__DisplayClass0_0.<Main>b__0() in /tmp/kill_dafny-synthesis_task_id_602__-_ODL_And-left__do4_3f5/dafny-synthesis_task_id_602__-_ODL_And-left.test.cs:line 6144\n   at Dafny.Helpers.WithHaltHandling(Action action) in /tmp/kill_dafny-synthesis_task_id_602__-_ODL_And-left__do4_3f5/dafny-synthesis_task_id_602__-_ODL_And-left.test.cs:line 1811\n   at __CallToMain.Main(String[] args) in /tmp/kill_dafny-synthesis_task_id_602__-_ODL_And-left__do4_3f5/dafny-synthesis_task_id_602__-_ODL_And-left.test.cs:line 6144"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__389-1475_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "status": "killed",
+      "execution_time": 23.88460641799975,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_602.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_602__389-1475_LBI.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_602__389-1475_LBI.test.dfy(48,0): expectation violation\nTest4: FAILED\n\tdafny-synthesis_task_id_602__389-1475_LBI.test.dfy(53,0): expectation violation\nTest5: FAILED\n\tdafny-synthesis_task_id_602__389-1475_LBI.test.dfy(58,0): expectation violation\n[Program halted] dafny-synthesis_task_id_602__389-1475_LBI.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__373-383_SWS.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "status": "survived",
+      "execution_time": 25.84294771399982,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_602.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_602__373-383_SWS.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__279-531_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "status": "killed",
+      "execution_time": 21.334266482999737,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_759.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_759__279-531_LBI.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: FAILED\n\tdafny-synthesis_task_id_759__279-531_LBI.test.dfy(38,0): expectation violation\nTest5: FAILED\n\tdafny-synthesis_task_id_759__279-531_LBI.test.dfy(43,0): expectation violation\n[Program halted] dafny-synthesis_task_id_759__279-531_LBI.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__448_BBR_true.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "status": "killed",
+      "execution_time": 17.277528541999345,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_759.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_759__448_BBR_true.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: FAILED\n\tdafny-synthesis_task_id_759__448_BBR_true.test.dfy(26,0): expectation violation\nTest3: FAILED\n\tdafny-synthesis_task_id_759__448_BBR_true.test.dfy(31,0): expectation violation\nTest4: PASSED\nTest5: PASSED\n[Program halted] dafny-synthesis_task_id_759__448_BBR_true.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__403_COR_Iff.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "status": "survived",
+      "execution_time": 30.670492401000956,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_602.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_602__403_COR_Iff.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__-_ODL_And-left.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "status": "survived",
+      "execution_time": 29.655203581000023,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_759.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_759__-_ODL_And-left.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__-_ODL_And-right.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "status": "survived",
+      "execution_time": 30.992703447000167,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_759.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_759__-_ODL_And-right.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__441_ROR_Neq.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "status": "killed",
+      "execution_time": 26.635891690999415,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_759.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_759__441_ROR_Neq.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: FAILED\n\tdafny-synthesis_task_id_759__441_ROR_Neq.test.dfy(37,0): expectation violation\nTest5: FAILED\n\tdafny-synthesis_task_id_759__441_ROR_Neq.test.dfy(42,0): expectation violation\n[Program halted] dafny-synthesis_task_id_759__441_ROR_Neq.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__448_BBR_false.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "status": "killed",
+      "execution_time": 27.34624433299905,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_759.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_759__448_BBR_false.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: FAILED\n\tdafny-synthesis_task_id_759__448_BBR_false.test.dfy(37,0): expectation violation\nTest5: FAILED\n\tdafny-synthesis_task_id_759__448_BBR_false.test.dfy(42,0): expectation violation\n[Program halted] dafny-synthesis_task_id_759__448_BBR_false.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__448_COR_Or.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "status": "survived",
+      "execution_time": 19.94746463899901,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_759.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_759__448_COR_Or.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1097-1180_SDL.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "status": "survived",
+      "execution_time": 21.70781491299931,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_784.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_784__1097-1180_SDL.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__448_COR_Exp.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "status": "killed",
+      "execution_time": 29.41987178599993,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_759.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_759__448_COR_Exp.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: FAILED\n\tdafny-synthesis_task_id_759__448_COR_Exp.test.dfy(26,0): expectation violation\nTest3: FAILED\n\tdafny-synthesis_task_id_759__448_COR_Exp.test.dfy(31,0): expectation violation\nTest4: PASSED\nTest5: PASSED\n[Program halted] dafny-synthesis_task_id_759__448_COR_Exp.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1123-1180_CBE.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "status": "survived",
+      "execution_time": 22.614412911998443,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_784.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_784__1123-1180_CBE.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__-_ODL_Eq-left.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "status": "killed",
+      "execution_time": 3.3296774909995293,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_808.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_808__-_ODL_Eq-left.test.dfy",
+      "stdout": "dafny-synthesis_task_id_808__-_ODL_Eq-left.test.dfy(11,7): Error: condition is expected to be of type bool, but is int\n   |\n11 |     if k {\n   |        ^\n\n1 resolution/type errors detected in dafny-synthesis_task_id_808__-_ODL_Eq-left.test.dfy"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__-_ODL_Eq-right.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "status": "killed",
+      "execution_time": 4.870424956001443,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_808.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_808__-_ODL_Eq-right.test.dfy",
+      "stdout": "dafny-synthesis_task_id_808__-_ODL_Eq-right.test.dfy(11,8): Error: condition is expected to be of type bool, but is int\n   |\n11 |     if s[i] {\n   |         ^\n\n1 resolution/type errors detected in dafny-synthesis_task_id_808__-_ODL_Eq-right.test.dfy"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__448_COR_Imp.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "status": "killed",
+      "execution_time": 32.70226808699954,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_759.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_759__448_COR_Imp.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: FAILED\n\tdafny-synthesis_task_id_759__448_COR_Imp.test.dfy(26,0): expectation violation\nTest3: FAILED\n\tdafny-synthesis_task_id_759__448_COR_Imp.test.dfy(31,0): expectation violation\nTest4: PASSED\nTest5: PASSED\n[Program halted] dafny-synthesis_task_id_759__448_COR_Imp.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__448_COR_Iff.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "status": "killed",
+      "execution_time": 35.408459129999756,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_759.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_759__448_COR_Iff.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest2: FAILED\n\tdafny-synthesis_task_id_759__448_COR_Iff.test.dfy(26,0): expectation violation\nTest3: FAILED\n\tdafny-synthesis_task_id_759__448_COR_Iff.test.dfy(31,0): expectation violation\nTest4: PASSED\nTest5: PASSED\n[Program halted] dafny-synthesis_task_id_759__448_COR_Iff.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1165-1170_SWS.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "status": "survived",
+      "execution_time": 25.541854532999423,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_784.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_784__1165-1170_SWS.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1321-1402_SDL.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "status": "killed",
+      "execution_time": 22.121959201998834,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_784.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_784__1321-1402_SDL.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_784__1321-1402_SDL.test.dfy(75,0): expectation violation\nTest1: FAILED\n\tdafny-synthesis_task_id_784__1321-1402_SDL.test.dfy(86,0): expectation violation\nTest2: FAILED\n\tdafny-synthesis_task_id_784__1321-1402_SDL.test.dfy(94,0): expectation violation\nTest3: PASSED\n[Program halted] dafny-synthesis_task_id_784__1321-1402_SDL.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1165_LSR_continue.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "status": "killed",
+      "execution_time": 30.32253121299982,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_784.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_784__1165_LSR_continue.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_784__1165_LSR_continue.test.dfy(78,0): expectation violation\nTest1: PASSED\nTest2: FAILED\n\tdafny-synthesis_task_id_784__1165_LSR_continue.test.dfy(98,0): expectation violation\nTest3: PASSED\n[Program halted] dafny-synthesis_task_id_784__1165_LSR_continue.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1193-1408_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "status": "killed",
+      "execution_time": 30.249201020998953,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_784.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_784__1193-1408_LBI.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_784__1193-1408_LBI.test.dfy(80,0): expectation violation\nTest1: FAILED\n\tdafny-synthesis_task_id_784__1193-1408_LBI.test.dfy(91,0): expectation violation\nTest2: FAILED\n\tdafny-synthesis_task_id_784__1193-1408_LBI.test.dfy(99,0): expectation violation\nTest3: PASSED\n[Program halted] dafny-synthesis_task_id_784__1193-1408_LBI.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1387_LSR_continue.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "status": "killed",
+      "execution_time": 25.388729356000113,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_784.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_784__1387_LSR_continue.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_784__1387_LSR_continue.test.dfy(79,0): expectation violation\nTest1: PASSED\nTest2: FAILED\n\tdafny-synthesis_task_id_784__1387_LSR_continue.test.dfy(98,0): expectation violation\nTest3: PASSED\n[Program halted] dafny-synthesis_task_id_784__1387_LSR_continue.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1387-1392_SWS.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "status": "killed",
+      "execution_time": 26.453490466999938,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_784.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_784__1387-1392_SWS.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_784__1387-1392_SWS.test.dfy(79,0): expectation violation\nTest1: FAILED\n\tdafny-synthesis_task_id_784__1387-1392_SWS.test.dfy(90,0): expectation violation\nTest2: FAILED\n\tdafny-synthesis_task_id_784__1387-1392_SWS.test.dfy(98,0): expectation violation\nTest3: PASSED\n[Program halted] dafny-synthesis_task_id_784__1387-1392_SWS.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__132-340_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "status": "killed",
+      "execution_time": 21.635381988000518,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_808.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_808__132-340_LBI.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_808__132-340_LBI.test.dfy(22,0): expectation violation\nTest1: FAILED\n\tdafny-synthesis_task_id_808__132-340_LBI.test.dfy(27,0): expectation violation\nTest2: FAILED\n\tdafny-synthesis_task_id_808__132-340_LBI.test.dfy(32,0): expectation violation\nTest3: FAILED\n\tdafny-synthesis_task_id_808__132-340_LBI.test.dfy(37,0): expectation violation\nTest4: FAILED\n\tdafny-synthesis_task_id_808__132-340_LBI.test.dfy(42,0): expectation violation\nTest5: PASSED\nTest7: PASSED\nTest8: PASSED\nTest9: PASSED\nTest10: PASSED\n[Program halted] dafny-synthesis_task_id_808__132-340_LBI.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__970-1186_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "status": "survived",
+      "execution_time": 27.140427723999892,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_784.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_784__970-1186_LBI.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_ROR_Ge.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "status": "survived",
+      "execution_time": 18.698516967000614,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_808.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_808__272_ROR_Ge.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED\nTest7: PASSED\nTest8: PASSED\nTest9: PASSED\nTest10: PASSED"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1346-1402_CBE.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "status": "killed",
+      "execution_time": 35.38661156099988,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_784.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_784__1346-1402_CBE.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_784__1346-1402_CBE.test.dfy(77,0): expectation violation\nTest1: FAILED\n\tdafny-synthesis_task_id_784__1346-1402_CBE.test.dfy(88,0): expectation violation\nTest2: FAILED\n\tdafny-synthesis_task_id_784__1346-1402_CBE.test.dfy(96,0): expectation violation\nTest3: PASSED\n[Program halted] dafny-synthesis_task_id_784__1346-1402_CBE.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_BBR_false.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "status": "killed",
+      "execution_time": 28.500493199999255,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_808.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_808__272_BBR_false.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_808__272_BBR_false.test.dfy(21,0): expectation violation\nTest1: FAILED\n\tdafny-synthesis_task_id_808__272_BBR_false.test.dfy(26,0): expectation violation\nTest2: FAILED\n\tdafny-synthesis_task_id_808__272_BBR_false.test.dfy(31,0): expectation violation\nTest3: FAILED\n\tdafny-synthesis_task_id_808__272_BBR_false.test.dfy(36,0): expectation violation\nTest4: FAILED\n\tdafny-synthesis_task_id_808__272_BBR_false.test.dfy(41,0): expectation violation\nTest5: PASSED\nTest7: PASSED\nTest8: PASSED\nTest9: PASSED\nTest10: PASSED\n[Program halted] dafny-synthesis_task_id_808__272_BBR_false.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_BBR_true.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "status": "killed",
+      "execution_time": 26.243618055999832,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_808.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_808__272_BBR_true.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED\nTest7: FAILED\n\tdafny-synthesis_task_id_808__272_BBR_true.test.dfy(51,0): expectation violation\nTest8: FAILED\n\tdafny-synthesis_task_id_808__272_BBR_true.test.dfy(56,0): expectation violation\nTest9: PASSED\nTest10: PASSED\n[Program halted] dafny-synthesis_task_id_808__272_BBR_true.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_ROR_Le.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "status": "killed",
+      "execution_time": 19.40002331299911,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_808.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_808__272_ROR_Le.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: PASSED\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED\nTest7: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Le.test.dfy(51,0): expectation violation\nTest8: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Le.test.dfy(56,0): expectation violation\nTest9: PASSED\nTest10: PASSED\n[Program halted] dafny-synthesis_task_id_808__272_ROR_Le.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_ROR_Gt.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "status": "killed",
+      "execution_time": 21.79564738299996,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_808.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_808__272_ROR_Gt.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Gt.test.dfy(21,0): expectation violation\nTest1: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Gt.test.dfy(26,0): expectation violation\nTest2: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Gt.test.dfy(31,0): expectation violation\nTest3: PASSED\nTest4: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Gt.test.dfy(41,0): expectation violation\nTest5: PASSED\nTest7: PASSED\nTest8: PASSED\nTest9: PASSED\nTest10: PASSED\n[Program halted] dafny-synthesis_task_id_808__272_ROR_Gt.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_ROR_Lt.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "status": "killed",
+      "execution_time": 20.18037910000021,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_808.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_808__272_ROR_Lt.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Lt.test.dfy(26,0): expectation violation\nTest2: PASSED\nTest3: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Lt.test.dfy(36,0): expectation violation\nTest4: PASSED\nTest5: PASSED\nTest7: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Lt.test.dfy(51,0): expectation violation\nTest8: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Lt.test.dfy(56,0): expectation violation\nTest9: PASSED\nTest10: PASSED\n[Program halted] dafny-synthesis_task_id_808__272_ROR_Lt.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_ROR_Neq.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "status": "killed",
+      "execution_time": 17.947289628000362,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_808.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_808__272_ROR_Neq.test.dfy",
+      "stdout": "Dafny program verifier did not attempt verification\nTest0: PASSED\nTest1: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Neq.test.dfy(26,0): expectation violation\nTest2: PASSED\nTest3: PASSED\nTest4: PASSED\nTest5: PASSED\nTest7: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Neq.test.dfy(51,0): expectation violation\nTest8: FAILED\n\tdafny-synthesis_task_id_808__272_ROR_Neq.test.dfy(56,0): expectation violation\nTest9: PASSED\nTest10: PASSED\n[Program halted] dafny-synthesis_task_id_808__272_ROR_Neq.test.dfy(3,0): Test failures occurred: see above."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__403_COR_Exp.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "status": "timeout",
+      "execution_time": 300.12252982300015,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_602.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_602__403_COR_Exp.test.dfy",
+      "stderr": "TIMEOUT"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__403_COR_Imp.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "status": "timeout",
+      "execution_time": 300.1404263940003,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_602.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_602__403_COR_Imp.test.dfy",
+      "stderr": "TIMEOUT"
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__403_COR_Or.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "status": "timeout",
+      "execution_time": 300.12385519099917,
+      "test_gen_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny generate-tests Spec --bva /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs/dafny-synthesis_task_id_602.dfy --length-limit 50 --ignore-warnings",
+      "kill_check_command": "/home/ricostynha/Desktop/SpecTestGenerator/Binaries/Dafny test --no-verify --allow-warnings /home/ricostynha/Desktop/SpecTestGenerator/Evaluation/dataset/selected_programs_mutants_with_tests_Spec_bva/dafny-synthesis_task_id_602__403_COR_Or.test.dfy",
+      "stderr": "TIMEOUT"
+    }
+  ]
+}

@@ -6,11 +6,9 @@ from src.mt_eval.generators.dafny_test_generator import DafnyTestGenerator, regi
 from src import config
 
 
-@register_strategy
+@register_strategy("Block")
 class BlockTestGenerator(DafnyTestGenerator):
     """Block-mode test generator. Builds its own command."""
-
-    MODE = "Block"
 
     def __init__(self, dafny_binary: Path | None = None, **kwargs):
         super().__init__(mode="Block", **kwargs)

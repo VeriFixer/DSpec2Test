@@ -38,7 +38,7 @@ def _map_mutants(mutants_dir: Path) -> dict[str, list[Path]]:
     for mutant in sorted(mutants_dir.glob("**/*.dfy")):
         stem = mutant.stem
         if "__" in stem:
-            original_stem = stem.split("__")[0]
+            original_stem = stem.rsplit("__", 1)[0]
         else:
             original_stem = stem
         mapping.setdefault(original_stem, []).append(mutant)

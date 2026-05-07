@@ -25,6 +25,21 @@ def verify_program(dafny_file: Path) -> bool:
     except subprocess.TimeoutExpired:
         return False
 
+def type_checks_program(dafny_file: Path) -> bool:
+    """Run `dafny verify --allow-warnings <file>`, return True if passes.
+
+    Returns False on non-zero exit or timeout.
+    """
+    try:
+        result = subprocess.run(
+            [str(DAFNY_BINARY), "resolve", "--allow-warnings", str(dafny_file)],
+            timeout=VERIFY_TIMEOUT,
+            capture_output=True,
+        )
+        return result.returncode == 0
+    except subprocess.TimeoutExpired:
+        return False
+
 
 def filter_verified(
     files: list[Path], parallel: bool = True

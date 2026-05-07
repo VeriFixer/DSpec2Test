@@ -12,13 +12,18 @@ from src import config
 STRATEGY_REGISTRY: dict[str, type["DafnyTestGenerator"]] = {}
 
 
-def register_strategy(cls):
-    """Class decorator that registers a DafnyTestGenerator subclass by its mode."""
-    # Instantiate temporarily to grab mode, then register the class
-    # Instead, rely on class having mode set at class level or in __init_subclass__
-    # Simpler: use the class name convention or require a class-level MODE attr
-    STRATEGY_REGISTRY[cls.MODE] = cls
-    return cls
+def register_strategy(name: str):
+    """Class decorator that registers a DafnyTestGenerator subclass under *name*.
+
+    Usage:
+        @register_strategy("Spec")
+        class SpecTestGenerator(DafnyTestGenerator): ...
+    """
+    def decorator(cls):
+        cls.MODE = name
+        STRATEGY_REGISTRY[name] = cls
+        return cls
+    return decorator
 
 
 def _extract_test_methods(raw_output: str) -> str:

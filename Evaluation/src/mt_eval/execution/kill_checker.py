@@ -19,7 +19,7 @@ def _derive_original_name(mutant_name: str) -> str:
     """
     stem = Path(mutant_name).stem  # strip .dfy
     if "__" in stem:
-        original_stem = stem.split("__")[0]
+        original_stem = stem.rsplit("__", 1)[0]
         return f"{original_stem}.dfy"
     return mutant_name
 
