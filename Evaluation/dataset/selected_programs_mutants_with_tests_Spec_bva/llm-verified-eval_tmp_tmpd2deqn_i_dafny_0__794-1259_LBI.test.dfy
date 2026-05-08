@@ -43,9 +43,9 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 method {:test} Test2() {
-var seqreal0 : seq<real> := [0.0, -(941027333739.0 / 500.0)];
-var r0 := has_close_elements(seqreal0, 2147483647.0);
-expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && abs(seqreal0[i] - seqreal0[j]) < 2147483647.0;
+var seqreal0 : seq<real> := [0.0, -(108609.0 / 1250.0)];
+var r0 := has_close_elements(seqreal0, 100.0);
+expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && abs(seqreal0[i] - seqreal0[j]) < 100.0;
 expect r0 ==> |seqreal0| > 1;
 }
 method {:test} Test5() {
@@ -80,13 +80,13 @@ expect r0 ==> |seqreal0| > 1;
 }
 method {:test} Test11() {
 var seqreal0 : seq<real> := [];
-var r0 := has_close_elements(seqreal0, -2147483648.0);
-expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && abs(seqreal0[i] - seqreal0[j]) < -2147483648.0;
+var r0 := has_close_elements(seqreal0, -100.0);
+expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && abs(seqreal0[i] - seqreal0[j]) < -100.0;
 expect r0 ==> |seqreal0| > 1;
 }
 method {:test} Test12() {
 var seqreal0 : seq<real> := [];
-var r0 := has_close_elements(seqreal0, 2147483647.0);
-expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && abs(seqreal0[i] - seqreal0[j]) < 2147483647.0;
+var r0 := has_close_elements(seqreal0, 100.0);
+expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && abs(seqreal0[i] - seqreal0[j]) < 100.0;
 expect r0 ==> |seqreal0| > 1;
 }

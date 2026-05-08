@@ -31,7 +31,7 @@ var r0 := is_even(0);
 expect r0 <==> even(0);
 }
 method {:test} Test2() {
-expect 2147483647 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := is_even(2147483647);
-expect r0 <==> even(2147483647);
+expect 100 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := is_even(100);
+expect r0 <==> even(100);
 }

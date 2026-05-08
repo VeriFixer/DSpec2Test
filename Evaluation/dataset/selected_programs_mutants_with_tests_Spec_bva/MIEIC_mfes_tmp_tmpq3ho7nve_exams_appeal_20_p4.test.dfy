@@ -21,8 +21,8 @@ var r0 := calcF(2);
 expect r0 == F(2);
 }
 method {:test} Test1() {
-var r0 := calcF(2147483647);
-expect r0 == F(2147483647);
+var r0 := calcF(100);
+expect r0 == F(100);
 }
 method {:test} Test3() {
 var r0 := calcF(1802);

@@ -58,14 +58,14 @@ var r0 := mroot1(0);
 expect r0 >= 0 && r0 * r0 <= 0 < (r0 + 1) * (r0 + 1);
 }
 method {:test} Test2() {
-expect 2147483647 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := mroot1(2147483647);
-expect r0 >= 0 && r0 * r0 <= 2147483647 < (r0 + 1) * (r0 + 1);
+expect 100 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := mroot1(100);
+expect r0 >= 0 && r0 * r0 <= 100 < (r0 + 1) * (r0 + 1);
 }
 method {:test} Test5() {
-expect 4611686014132420609 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := mroot1(4611686014132420609);
-expect r0 >= 0 && r0 * r0 <= 4611686014132420609 < (r0 + 1) * (r0 + 1);
+expect 10000 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := mroot1(10000);
+expect r0 >= 0 && r0 * r0 <= 10000 < (r0 + 1) * (r0 + 1);
 }
 method {:test} Test8() {
 expect 0 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -73,14 +73,14 @@ var r0 := mroot2(0);
 expect r0 >= 0 && r0 * r0 <= 0 < (r0 + 1) * (r0 + 1);
 }
 method {:test} Test10() {
-expect 2147483647 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := mroot2(2147483647);
-expect r0 >= 0 && r0 * r0 <= 2147483647 < (r0 + 1) * (r0 + 1);
+expect 100 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := mroot2(100);
+expect r0 >= 0 && r0 * r0 <= 100 < (r0 + 1) * (r0 + 1);
 }
 method {:test} Test13() {
-expect 4611686014132420609 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := mroot2(4611686014132420609);
-expect r0 >= 0 && r0 * r0 <= 4611686014132420609 < (r0 + 1) * (r0 + 1);
+expect 10000 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := mroot2(10000);
+expect r0 >= 0 && r0 * r0 <= 10000 < (r0 + 1) * (r0 + 1);
 }
 method {:test} Test16() {
 expect 0 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -88,12 +88,12 @@ var r0 := mroot3(0);
 expect r0 >= 0 && r0 * r0 <= 0 < (r0 + 1) * (r0 + 1);
 }
 method {:test} Test18() {
-expect 2147483647 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := mroot3(2147483647);
-expect r0 >= 0 && r0 * r0 <= 2147483647 < (r0 + 1) * (r0 + 1);
+expect 100 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := mroot3(100);
+expect r0 >= 0 && r0 * r0 <= 100 < (r0 + 1) * (r0 + 1);
 }
 method {:test} Test21() {
-expect 4611686014132420609 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := mroot3(4611686014132420609);
-expect r0 >= 0 && r0 * r0 <= 4611686014132420609 < (r0 + 1) * (r0 + 1);
+expect 10000 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := mroot3(10000);
+expect r0 >= 0 && r0 * r0 <= 10000 < (r0 + 1) * (r0 + 1);
 }

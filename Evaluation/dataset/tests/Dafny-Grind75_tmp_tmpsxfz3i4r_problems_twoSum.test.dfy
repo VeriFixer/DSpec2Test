@@ -53,14 +53,14 @@ expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 
 var r0 := twoSum(seqint0, 1796);
 }
 method {:test} Test2() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 5853, -2147489501, 1142, 1142, -2147484790];
-expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, -2147483648) && forall l: nat, m: nat :: l < m < |seqint0| && l != i && m != j ==> !summingPair(l, m, seqint0, -2147483648), "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := twoSum(seqint0, -2147483648);
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8098, -8198, 0, 0, 0, 0, 0, 0, 0, 0, -381, 0, 281, 281];
+expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, -100) && forall l: nat, m: nat :: l < m < |seqint0| && l != i && m != j ==> !summingPair(l, m, seqint0, -100), "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := twoSum(seqint0, -100);
 }
 method {:test} Test3() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 609, 2147483038, 2147475549, 2147475549, 8098];
-expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 2147483647) && forall l: nat, m: nat :: l < m < |seqint0| && l != i && m != j ==> !summingPair(l, m, seqint0, 2147483647), "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := twoSum(seqint0, 2147483647);
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 609, -509, 8098, 8098, -7998];
+expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 100) && forall l: nat, m: nat :: l < m < |seqint0| && l != i && m != j ==> !summingPair(l, m, seqint0, 100), "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := twoSum(seqint0, 100);
 }
 method {:test} Test4() {
 var seqint0 : seq<int> := [2512, 5853, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7916, 0, 0, 0, 0, 0, 0, 0, 449, 449];

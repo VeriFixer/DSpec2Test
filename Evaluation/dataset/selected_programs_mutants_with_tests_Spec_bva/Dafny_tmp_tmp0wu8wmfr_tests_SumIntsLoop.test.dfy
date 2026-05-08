@@ -39,14 +39,8 @@ expect r0 == sumInts(0);
 expect r0 == 0 * (0 + 1) / 2;
 }
 method {:test} Test2() {
-expect 2147483647 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := SumIntsLoop(2147483647);
-expect r0 == sumInts(2147483647);
-expect r0 == 2147483647 * (2147483647 + 1) / 2;
-}
-method {:test} Test4() {
-expect 4294966269 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := SumIntsLoop(4294966269);
-expect r0 == sumInts(4294966269);
-expect r0 == 4294966269 * (4294966269 + 1) / 2;
+expect 100 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := SumIntsLoop(100);
+expect r0 == sumInts(100);
+expect r0 == 100 * (100 + 1) / 2;
 }

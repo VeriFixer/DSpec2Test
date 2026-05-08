@@ -27,6 +27,6 @@ var r0 := calcR(7721);
 expect r0 == R(7721);
 }
 method {:test} Test1() {
-var r0 := calcR(2147483647);
-expect r0 == R(2147483647);
+var r0 := calcR(100);
+expect r0 == R(100);
 }

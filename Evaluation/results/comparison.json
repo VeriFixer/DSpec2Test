@@ -30,17 +30,17 @@
     },
     "DafnyTestGenerator_Spec_bva": {
       "total_programs": 20,
-      "not_supported_programs": 6,
-      "not_supported_program_rate": 0.3,
+      "not_supported_programs": 3,
+      "not_supported_program_rate": 0.15,
       "total_mutants": 200,
-      "not_supported_mutants": 60,
-      "not_supported_mutant_rate": 0.3,
-      "supported_mutants": 140,
-      "killed": 110,
-      "survived": 21,
-      "timeout": 9,
+      "not_supported_mutants": 30,
+      "not_supported_mutant_rate": 0.15,
+      "supported_mutants": 170,
+      "killed": 128,
+      "survived": 25,
+      "timeout": 17,
       "error": 0,
-      "kill_rate": 0.7857
+      "kill_rate": 0.7529
     }
   },
   "best_kill_rate": "DafnyTestGenerator_Spec_bva"

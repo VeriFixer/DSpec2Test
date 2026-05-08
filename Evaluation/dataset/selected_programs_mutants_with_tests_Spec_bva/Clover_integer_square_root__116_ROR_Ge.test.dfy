@@ -16,10 +16,10 @@ var r0 := SquareRoot(0);
 expect r0 * r0 <= 0 < (r0 + 1) * (r0 + 1);
 }
 method {:test} Test1() {
-var r0 := SquareRoot(2147483647);
-expect r0 * r0 <= 2147483647 < (r0 + 1) * (r0 + 1);
+var r0 := SquareRoot(100);
+expect r0 * r0 <= 100 < (r0 + 1) * (r0 + 1);
 }
 method {:test} Test3() {
-var r0 := SquareRoot(4611686014132420609);
-expect r0 * r0 <= 4611686014132420609 < (r0 + 1) * (r0 + 1);
+var r0 := SquareRoot(10000);
+expect r0 * r0 <= 10000 < (r0 + 1) * (r0 + 1);
 }

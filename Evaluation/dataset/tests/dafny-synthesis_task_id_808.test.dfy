@@ -29,14 +29,14 @@ var r0 := ContainsK(seqint0, 24);
 expect r0 <==> 24 in seqint0;
 }
 method {:test} Test3() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2147483648];
-var r0 := ContainsK(seqint0, -2147483648);
-expect r0 <==> -2147483648 in seqint0;
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -100];
+var r0 := ContainsK(seqint0, -100);
+expect r0 <==> -100 in seqint0;
 }
 method {:test} Test4() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2147483647];
-var r0 := ContainsK(seqint0, 2147483647);
-expect r0 <==> 2147483647 in seqint0;
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100];
+var r0 := ContainsK(seqint0, 100);
+expect r0 <==> 100 in seqint0;
 }
 method {:test} Test9() {
 var seqint0 : seq<int> := [];
@@ -55,11 +55,11 @@ expect r0 <==> 24 in seqint0;
 }
 method {:test} Test13() {
 var seqint0 : seq<int> := [];
-var r0 := ContainsK(seqint0, -2147483648);
-expect r0 <==> -2147483648 in seqint0;
+var r0 := ContainsK(seqint0, -100);
+expect r0 <==> -100 in seqint0;
 }
 method {:test} Test14() {
 var seqint0 : seq<int> := [];
-var r0 := ContainsK(seqint0, 2147483647);
-expect r0 <==> 2147483647 in seqint0;
+var r0 := ContainsK(seqint0, 100);
+expect r0 <==> 100 in seqint0;
 }

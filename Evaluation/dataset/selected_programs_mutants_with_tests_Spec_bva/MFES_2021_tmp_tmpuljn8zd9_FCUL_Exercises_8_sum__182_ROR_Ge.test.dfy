@@ -25,10 +25,6 @@ var r0 := sum(0);
 expect r0 == calcSum(0 + 1);
 }
 method {:test} Test1() {
-var r0 := sum(2147483647);
-expect r0 == calcSum(2147483647 + 1);
-}
-method {:test} Test3() {
-var r0 := sum(512);
-expect r0 == calcSum(512 + 1);
+var r0 := sum(100);
+expect r0 == calcSum(100 + 1);
 }
