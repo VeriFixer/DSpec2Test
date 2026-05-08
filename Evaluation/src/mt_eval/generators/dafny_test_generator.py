@@ -6,6 +6,7 @@ from abc import abstractmethod
 from pathlib import Path
 
 from src.mt_eval.core.abstract import TestGenResult, TestGenerator
+from src.mt_eval.execution.subprocess_utils import run_with_cleanup
 from src import config
 
 
@@ -65,12 +66,7 @@ class DafnyTestGenerator(TestGenerator):
         cmd_str = " ".join(cmd)
         start = time.monotonic()
         try:
-            result = subprocess.run(
-                cmd,
-                timeout=config.TESTGEN_TIMEOUT,
-                capture_output=True,
-                text=True,
-            )
+            result = run_with_cleanup(cmd, timeout=config.TESTGEN_TIMEOUT)
             elapsed = time.monotonic() - start
             if result.returncode == 0 and result.stdout.strip():
                 test_methods = _extract_test_methods(result.stdout)

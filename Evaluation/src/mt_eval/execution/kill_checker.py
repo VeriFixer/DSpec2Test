@@ -9,6 +9,7 @@ from pathlib import Path
 
 from src import config
 from src.mt_eval.core.models import MutantResult, MutantStatus
+from src.mt_eval.execution.subprocess_utils import run_with_cleanup
 
 
 def _derive_original_name(mutant_name: str) -> str:
@@ -118,13 +119,7 @@ class KillChecker:
         start = time.monotonic()
 
         try:
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                timeout=self.timeout,
-                cwd=work_dir,
-            )
+            result = run_with_cleanup(cmd, timeout=self.timeout, cwd=work_dir)
             elapsed = time.monotonic() - start
             stdout = result.stdout or ""
             stderr = result.stderr or ""

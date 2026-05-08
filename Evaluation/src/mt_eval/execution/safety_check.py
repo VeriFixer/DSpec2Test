@@ -9,6 +9,7 @@ from pathlib import Path
 
 from src import config
 from src.mt_eval.execution.kill_checker import _extract_test_methods
+from src.mt_eval.execution.subprocess_utils import run_with_cleanup
 
 
 @dataclass
@@ -88,7 +89,7 @@ def run_safety_check(
 
     start = time.monotonic()
     try:
-        result = subprocess.run(cmd_exec, capture_output=True, text=True, timeout=timeout, cwd=work_dir)
+        result = run_with_cleanup(cmd_exec, timeout=timeout, cwd=work_dir)
         elapsed = time.monotonic() - start
         # Copy artifact to permanent location regardless of outcome
         permanent_path.write_text(combined)
