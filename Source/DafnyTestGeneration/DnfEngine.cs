@@ -168,12 +168,12 @@ namespace DafnyTestGeneration {
           var bounds = constraint.Bounds;
           double offset = (type.IsReal || type.IsFloat) ? 0.0001 : 1.0;
 
-          double fallbackLower = int.MinValue;
-          double fallbackUpper = int.MaxValue;
+          double fallbackLower = -100;
+          double fallbackUpper = 100;
 
           if (type.IsBv && type is BvType bvType) {
             fallbackLower = 0;
-            fallbackUpper = bvType.Bits < 31 ? (1 << bvType.Bits) - 1 : int.MaxValue;
+            fallbackUpper = bvType.Bits < 31 ? (1 << bvType.Bits) - 1 : 100;
           }
 
           if (!double.IsNegativeInfinity(bounds.LowerLimit)) {
