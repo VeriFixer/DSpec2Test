@@ -20,8 +20,8 @@ from src.config import (
 )
 from src.mt_eval.core.models import MutantResult, MutantStatus
 from src.mt_eval.execution.kill_checker import KillChecker
-from src.mt_eval.execution.parallel_executor import run_parallel_or_seq
-from src.mt_eval.execution.safety_check import run_safety_check
+from src.mt_eval.execution.parallel_executor import run_parallel_or_seq, shutdown_parallel_executor
+from src.mt_eval.execution.safety_check import run_safety_check, SafetyCheckResult
 from src.mt_eval.generators import STRATEGY_REGISTRY, resolve_strategies
 from src.mt_eval.metrics.pipeline_stats import PipelineStats
 from src.mt_eval.paths import get_strategy_combined_dir, get_strategy_results_path
@@ -140,28 +140,39 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             if test_file:
                 test_map[stem] = test_file
 
-        # 3b. Safety check + kill check per original
+        # 3b. Safety check per original (parallel)
         supported_originals: list[Path] = []
         not_supported_details: list[dict] = []
         safety_time_map: dict[str, float] = {}
-        for orig in originals:
-            if orig.stem not in test_map:
-                # No tests generated — mark not supported
-                n_mutants = len(mutant_map.get(orig.stem, []))
-                not_supported_programs += 1
-                not_supported_mutants += n_mutants
-                not_supported_details.append({
-                    "program": orig.name,
-                    "reason": "test_generation_failed",
-                    "failed_step": "test_generation",
-                    "mutants_skipped": n_mutants,
-                    "test_gen_command": test_gen_cmd_map.get(orig.stem, ""),
-                    "test_gen_time": test_gen_time_map.get(orig.stem, 0.0),
-                })
-                continue
 
+        # Separate originals with/without tests
+        originals_with_tests = [o for o in originals if o.stem in test_map]
+        originals_without_tests = [o for o in originals if o.stem not in test_map]
+
+        # Mark programs with no tests as not supported
+        for orig in originals_without_tests:
+            n_mutants = len(mutant_map.get(orig.stem, []))
+            not_supported_programs += 1
+            not_supported_mutants += n_mutants
+            not_supported_details.append({
+                "program": orig.name,
+                "reason": "test_generation_failed",
+                "failed_step": "test_generation",
+                "mutants_skipped": n_mutants,
+                "test_gen_command": test_gen_cmd_map.get(orig.stem, ""),
+                "test_gen_time": test_gen_time_map.get(orig.stem, 0.0),
+            })
+
+        def _safety_check(orig: Path) -> tuple[Path, SafetyCheckResult]:
             test_file = test_map[orig.stem]
-            safety_result = run_safety_check(orig, test_file, artifacts_dir=strategy_combined_dir)
+            result = run_safety_check(orig, test_file, artifacts_dir=strategy_combined_dir)
+            return (orig, result)
+
+        safety_results: list[tuple[Path, SafetyCheckResult]] = run_parallel_or_seq(
+            originals_with_tests, _safety_check, "Safety check", parallel=parallel,
+        )
+
+        for orig, safety_result in safety_results:
             safety_time_map[orig.stem] = safety_result.execution_time
 
             if not safety_result.passed:
@@ -336,6 +347,9 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
     comparison_path = output_dir / "comparison.json"
     write_comparison_json(all_strategy_results, comparison_path)
     print(f"[run_evaluation] Comparison written to {comparison_path}")
+
+    # --- Cleanup: shut down thread pool so process can exit ---
+    shutdown_parallel_executor(wait=False)
 
     return 0
 
