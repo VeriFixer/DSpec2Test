@@ -8,7 +8,7 @@ import subprocess
 import time
 from pathlib import Path
 
-from src.config import VERIFY_TIMEOUT, DAFNY_BINARY
+from src.config import VERIFY_TIMEOUT, DAFNY_BINARY, DAFNY_MAX_MEMORY_MB
 from src.mt_eval.execution.parallel_executor import run_parallel_or_seq
 
 logger = logging.getLogger(__name__)
@@ -22,7 +22,10 @@ def verify_program(dafny_file: Path) -> bool:
     start = time.monotonic()
     try:
         result = subprocess.run(
-            [str(DAFNY_BINARY), "verify", "--allow-warnings", str(dafny_file)],
+            [str(DAFNY_BINARY), "verify", "--allow-warnings",
+             "--cores", "1",
+             f"--solver-option:O:memory_max_size={DAFNY_MAX_MEMORY_MB}",
+             str(dafny_file)],
             timeout=VERIFY_TIMEOUT,
             capture_output=True,
         )
@@ -42,7 +45,9 @@ def type_checks_program(dafny_file: Path) -> bool:
     start = time.monotonic()
     try:
         result = subprocess.run(
-            [str(DAFNY_BINARY), "resolve", "--allow-warnings", str(dafny_file)],
+            [str(DAFNY_BINARY), "resolve", "--allow-warnings",
+             "--cores", "1",
+             str(dafny_file)],
             timeout=VERIFY_TIMEOUT,
             capture_output=True,
         )

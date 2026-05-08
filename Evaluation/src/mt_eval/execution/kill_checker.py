@@ -106,9 +106,15 @@ class KillChecker:
         work_dfy = Path(work_dir) / combined_file.name
         work_dfy.write_text(combined)
 
-        cmd = [str(self.dafny_binary), "test", "--no-verify", "--allow-warnings", str(work_dfy)]
+        cmd = [str(self.dafny_binary), "test", "--no-verify", "--allow-warnings",
+               "--cores", "1",
+               f"--solver-option:O:memory_max_size={config.DAFNY_MAX_MEMORY_MB}",
+               str(work_dfy)]
         # For reporting, show the persistent path (not the temp one)
-        report_cmd = [str(self.dafny_binary), "test", "--no-verify", "--allow-warnings", str(combined_file)]
+        report_cmd = [str(self.dafny_binary), "test", "--no-verify", "--allow-warnings",
+                      "--cores", "1",
+                      f"--solver-option:O:memory_max_size={config.DAFNY_MAX_MEMORY_MB}",
+                      str(combined_file)]
         start = time.monotonic()
 
         try:

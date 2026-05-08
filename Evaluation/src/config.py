@@ -8,11 +8,14 @@ Environment Variables (all optional):
     MT_TESTGEN_TIMEOUT: Override TESTGEN_TIMEOUT (default: 300)
     MT_EXECUTION_TIMEOUT: Override EXECUTION_TIMEOUT (default: 300)
     MT_MAX_JOBS: Override MAX_JOBS (default: cpu_count()-1, min 1)
+    MT_MAX_MEMORY_MB: Override DAFNY_MAX_MEMORY_MB (default: 0.75 * total RAM)
 """
 
 from pathlib import Path
 import os
 from multiprocessing import cpu_count
+
+import psutil
 
 
 def find_repo_root(marker: str = ".repo_mutation_testing_marker") -> Path:
@@ -70,3 +73,11 @@ VERIFY_TIMEOUT: int = int(os.environ.get("MT_VERIFY_TIMEOUT", "1500"))
 TESTGEN_TIMEOUT: int = int(os.environ.get("MT_TESTGEN_TIMEOUT", "1500"))
 EXECUTION_TIMEOUT: int = int(os.environ.get("MT_EXECUTION_TIMEOUT", "300"))
 MAX_JOBS: int = max(1, int(os.environ.get("MT_MAX_JOBS", str(max(cpu_count() - 1, 1)))))
+
+# === Memory Limit for Dafny/Z3 solver (MB) ===
+# Default: 75% of total system RAM. Override with MT_MAX_MEMORY_MB env var.
+_total_ram_mb = psutil.virtual_memory().total // (1024 * 1024)
+DAFNY_MAX_MEMORY_MB: int = int(os.environ.get(
+    "MT_MAX_MEMORY_MB",
+    str(int(_total_ram_mb * 0.75)),
+))

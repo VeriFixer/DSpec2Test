@@ -69,6 +69,8 @@ def run_safety_check(
         "test",
         "--no-verify",
         "--allow-warnings",
+        "--cores", "1",
+        f"--solver-option:O:memory_max_size={config.DAFNY_MAX_MEMORY_MB}",
         str(permanent_path),
     ]
     cmd_str = " ".join(cmd_permanent)
@@ -79,6 +81,8 @@ def run_safety_check(
         "test",
         "--no-verify",
         "--allow-warnings",
+        "--cores", "1",
+        f"--solver-option:O:memory_max_size={config.DAFNY_MAX_MEMORY_MB}",
         str(tmp_combined),
     ]
 

@@ -6,6 +6,7 @@ from unittest.mock import patch, MagicMock
 
 import pytest
 
+from src import config
 from src.mt_eval.generators.spec_test_generator import SpecTestGenerator
 from src.mt_eval.core.abstract import TestGenResult
 
@@ -137,6 +138,9 @@ class TestSubprocessCommand:
             "--length-limit",
             "50",
             "--ignore-warnings",
+            "--cores",
+            "1",
+            f"--solver-option:O:memory_max_size={config.DAFNY_MAX_MEMORY_MB}",
         ]
 
     @patch("src.mt_eval.generators.dafny_test_generator.subprocess.run")

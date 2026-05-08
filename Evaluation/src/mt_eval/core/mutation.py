@@ -17,7 +17,7 @@ import tempfile
 import time
 from pathlib import Path
 
-from src.config import MUTDAFNY_PLUGIN, MUTDAFNY_DIR, MUTDAFNY_DAFNY_BINARY
+from src.config import MUTDAFNY_PLUGIN, MUTDAFNY_DIR, MUTDAFNY_DAFNY_BINARY, DAFNY_MAX_MEMORY_MB
 
 logger = logging.getLogger(__name__)
 
@@ -38,6 +38,8 @@ def _run_dafny_plugin(dafny_file: Path, plugin_arg: str, cwd: Path,
     cmd = [
         str(MUTDAFNY_DAFNY_BINARY), "verify", str(dafny_file),
         "--allow-warnings",
+        "--cores", "1",
+        f"--solver-option:O:memory_max_size={DAFNY_MAX_MEMORY_MB}",
         f"--plugin:{MUTDAFNY_PLUGIN},{plugin_arg}",
     ]
 
