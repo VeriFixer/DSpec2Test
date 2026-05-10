@@ -1,0 +1,1731 @@
+{
+  "description": "Manual analysis of 170 common mutants (Block and Spec_bva scope). Classifies each as incompetent, equivalent, killed, killed_timeout, or survived. Provides per-tool corrected status (timeout folded into killed).",
+  "methodology": {
+    "incompetent": "Mutant does not compile (resolution/type errors). Neither tool can kill it meaningfully.",
+    "equivalent": "Semantically identical to original. No test can distinguish them.",
+    "killed": "Killed by test assertion failure (FAIL) or build error against mutant.",
+    "killed_timeout": "Runtime infinite loop confirmed by manual inspection. Timeout folded into kill.",
+    "survived": "Real bug that escapes both tools on the realistically-killable set."
+  },
+  "stats": {
+    "total_common_mutants": 170,
+    "incompetent": 22,
+    "equivalent": 17,
+    "realistically_killable": 131,
+    "block_fail": 99,
+    "block_timeout": 9,
+    "block_killed_corrected": 108,
+    "block_survived": 23,
+    "spec_bva_fail": 106,
+    "spec_bva_timeout": 17,
+    "spec_bva_killed_corrected": 123,
+    "spec_bva_survived": 8,
+    "killed_by_both": 106,
+    "killed_by_block_only": 2,
+    "killed_by_spec_bva_only": 17,
+    "killed_by_neither": 6,
+    "union_killed": 125
+  },
+  "results": [
+    {
+      "mutant_name": "BelowZero__-_ODL_Add-left.dfy",
+      "original_name": "BelowZero.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "survived",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "survived",
+      "reason": "Real bug escaping both tools."
+    },
+    {
+      "mutant_name": "BelowZero__-_ODL_Add-right.dfy",
+      "original_name": "BelowZero.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "BelowZero__711-721_SWS.dfy",
+      "original_name": "BelowZero.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "BelowZero__727-983_LBI.dfy",
+      "original_name": "BelowZero.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "BelowZero__859-874_SDL.dfy",
+      "original_name": "BelowZero.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "BelowZero__866_AOR_Mul.dfy",
+      "original_name": "BelowZero.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "BelowZero__866_AOR_Sub.dfy",
+      "original_name": "BelowZero.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "BelowZero__884-900_SDL.dfy",
+      "original_name": "BelowZero.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "BelowZero__884-900_SWS.dfy",
+      "original_name": "BelowZero.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "BelowZero__915_ROR_Eq.dfy",
+      "original_name": "BelowZero.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Clover_all_digits__154-154_COI.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Clover_all_digits__163-325_LBI.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Clover_all_digits__163-325_SWS.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "Clover_all_digits__172_LVR_-1.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Clover_all_digits__172_LVR_1.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Clover_all_digits__177-179_EVR_int.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Clover_all_digits__178-178_EVR_string.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Clover_all_digits__268-321_SDL.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Clover_all_digits__295-321_CBE.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "survived",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "survived",
+      "reason": "Real bug escaping both tools."
+    },
+    {
+      "mutant_name": "Clover_all_digits__303-315_SDL.dfy",
+      "original_name": "Clover_all_digits.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Clover_integer_square_root__-_ODL_Le-left.dfy",
+      "original_name": "Clover_integer_square_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "Clover_integer_square_root__-_ODL_Le-right.dfy",
+      "original_name": "Clover_integer_square_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "Clover_integer_square_root__116_BBR_false.dfy",
+      "original_name": "Clover_integer_square_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Clover_integer_square_root__116_BBR_true.dfy",
+      "original_name": "Clover_integer_square_root.dfy",
+      "original_block_status": "timeout",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "Clover_integer_square_root__116_ROR_Eq.dfy",
+      "original_name": "Clover_integer_square_root.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Clover_integer_square_root__116_ROR_Ge.dfy",
+      "original_name": "Clover_integer_square_root.dfy",
+      "original_block_status": "timeout",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "Clover_integer_square_root__116_ROR_Gt.dfy",
+      "original_name": "Clover_integer_square_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "Clover_integer_square_root__116_ROR_Lt.dfy",
+      "original_name": "Clover_integer_square_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Clover_integer_square_root__116_ROR_Neq.dfy",
+      "original_name": "Clover_integer_square_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "Clover_integer_square_root__99-159_LBI.dfy",
+      "original_name": "Clover_integer_square_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root__-_ODL_Le-left.dfy",
+      "original_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root__-_ODL_Le-right.dfy",
+      "original_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root__132-219_LBI.dfy",
+      "original_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root__150_BBR_false.dfy",
+      "original_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root__150_BBR_true.dfy",
+      "original_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root.dfy",
+      "original_block_status": "timeout",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root__150_ROR_Eq.dfy",
+      "original_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root__150_ROR_Ge.dfy",
+      "original_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root.dfy",
+      "original_block_status": "timeout",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root__150_ROR_Gt.dfy",
+      "original_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root__150_ROR_Lt.dfy",
+      "original_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root__150_ROR_Neq.dfy",
+      "original_name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Div-left.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Div-right.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__-_ODL_Mul-left.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__103-164_VDL_y.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Add.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Mod.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Mul.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__120_AOR_Sub.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__136_AOR_Add.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple__136_AOR_Sub.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1__-_ODL_Lt-left.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1__-_ODL_Lt-right.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1__211-220_SWS.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1__225-329_LBI.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1__233_BBR_true.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1.dfy",
+      "original_block_status": "timeout",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1__233_ROR_Eq.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1__233_ROR_Ge.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1__233_ROR_Gt.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1__233_ROR_Le.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1__233_ROR_Neq.dfy",
+      "original_name": "Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop__-_ODL_Neq-left.dfy",
+      "original_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop__-_ODL_Neq-right.dfy",
+      "original_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop__276-286_SWS.dfy",
+      "original_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop__292-473_LBI.dfy",
+      "original_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop__300_BBR_true.dfy",
+      "original_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop.dfy",
+      "original_block_status": "timeout",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop__300_ROR_Eq.dfy",
+      "original_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop__300_ROR_Ge.dfy",
+      "original_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop__300_ROR_Gt.dfy",
+      "original_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop__300_ROR_Le.dfy",
+      "original_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop__300_ROR_Lt.dfy",
+      "original_name": "Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum__-_ODL_Lt-left.dfy",
+      "original_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum__-_ODL_Lt-right.dfy",
+      "original_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum__158-168_SWS.dfy",
+      "original_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum__174-329_LBI.dfy",
+      "original_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum__182_BBR_true.dfy",
+      "original_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum.dfy",
+      "original_block_status": "timeout",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum__182_ROR_Eq.dfy",
+      "original_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum__182_ROR_Ge.dfy",
+      "original_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum__182_ROR_Gt.dfy",
+      "original_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum__182_ROR_Le.dfy",
+      "original_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum__182_ROR_Neq.dfy",
+      "original_name": "MFES_2021_tmp_tmpuljn8zd9_FCUL_Exercises_8_sum.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "RollingMax__-_ODL_Gt-left.dfy",
+      "original_name": "RollingMax.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "RollingMax__-_ODL_Gt-right.dfy",
+      "original_name": "RollingMax.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "RollingMax__416-570_LBI.dfy",
+      "original_name": "RollingMax.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "RollingMax__511_BBR_false.dfy",
+      "original_name": "RollingMax.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "RollingMax__511_BBR_true.dfy",
+      "original_name": "RollingMax.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "RollingMax__511_ROR_Eq.dfy",
+      "original_name": "RollingMax.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "RollingMax__511_ROR_Ge.dfy",
+      "original_name": "RollingMax.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "RollingMax__511_ROR_Le.dfy",
+      "original_name": "RollingMax.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "RollingMax__511_ROR_Lt.dfy",
+      "original_name": "RollingMax.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "RollingMax__511_ROR_Neq.dfy",
+      "original_name": "RollingMax.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__-_ODL_Lt-left.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__-_ODL_Lt-right.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__274-282_SWS.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__285-415_LBI.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__293_BBR_true.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Eq.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Ge.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Gt.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Le.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-exercise_tmp_tmpouftptir_countNeg__293_ROR_Neq.dfy",
+      "original_name": "dafny-exercise_tmp_tmpouftptir_countNeg.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__-_ODL_Add-left.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__-_ODL_Add-right.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__458-862_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__755-781_SDL.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "survived",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "survived",
+      "reason": "Real bug escaping both tools."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__764_AOR_Mul.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__764_AOR_Sub.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__815-856_SDL.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__829-846_SDL.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__838_AOR_Mul.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_477__838_AOR_Sub.dfy",
+      "original_name": "dafny-synthesis_task_id_477.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__-_ODL_Add-left.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__-_ODL_Add-right.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__163-164_CIR_char.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__171-341_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__171-341_SWS.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__180_LVR_-1.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__180_LVR_1.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__320-335_SDL.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__327_AOR_Mul.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_565__327_AOR_Sub.dfy",
+      "original_name": "dafny-synthesis_task_id_565.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__-_ODL_And-left.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__-_ODL_And-right.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__323-337_SWS.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__343-367_SWS.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__373-383_SWS.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__389-1475_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__403_COR_Exp.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__403_COR_Iff.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "equivalent",
+      "corrected_block_status": "equivalent",
+      "corrected_spec_bva_status": "equivalent",
+      "reason": "Semantically identical to original. No test can distinguish mutant from original."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__403_COR_Imp.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "original_block_status": "timeout",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_602__403_COR_Or.dfy",
+      "original_name": "dafny-synthesis_task_id_602.dfy",
+      "original_block_status": "timeout",
+      "original_spec_bva_status": "timeout",
+      "manual_classification": "killed_timeout",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Runtime infinite loop (300s exec_time, short test_gen_time). Timeout = kill."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__-_ODL_And-left.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "survived",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__-_ODL_And-right.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "survived",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "survived",
+      "reason": "Real bug escaping both tools."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__279-531_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__441_ROR_Neq.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__448_BBR_false.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__448_BBR_true.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__448_COR_Exp.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__448_COR_Iff.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__448_COR_Imp.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_759__448_COR_Or.dfy",
+      "original_name": "dafny-synthesis_task_id_759.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "survived",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1097-1180_SDL.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1123-1180_CBE.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1165-1170_SWS.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1165_LSR_continue.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1193-1408_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1321-1402_SDL.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1346-1402_CBE.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1387-1392_SWS.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__1387_LSR_continue.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_784__970-1186_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_784.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__-_ODL_Eq-left.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__-_ODL_Eq-right.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "incompetent",
+      "corrected_block_status": "incompetent",
+      "corrected_spec_bva_status": "incompetent",
+      "reason": "Does not compile (resolution/type errors). Not a meaningful test target."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__132-340_LBI.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_BBR_false.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_BBR_true.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_ROR_Ge.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "survived",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "survived",
+      "reason": "Real bug escaping both tools."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_ROR_Gt.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_ROR_Le.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_ROR_Lt.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "dafny-synthesis_task_id_808__272_ROR_Neq.dfy",
+      "original_name": "dafny-synthesis_task_id_808.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0__-_ODL_And-left.dfy",
+      "original_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "survived",
+      "manual_classification": "survived",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "survived",
+      "reason": "Real bug escaping both tools."
+    },
+    {
+      "mutant_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0__-_ODL_And-right.dfy",
+      "original_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0__1069_BBR_false.dfy",
+      "original_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0__1069_BBR_true.dfy",
+      "original_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0__1069_COR_Exp.dfy",
+      "original_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0__1069_COR_Iff.dfy",
+      "original_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0__1069_COR_Imp.dfy",
+      "original_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0__1069_COR_Or.dfy",
+      "original_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0.dfy",
+      "original_block_status": "survived",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "survived",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0__550-1265_LBI.dfy",
+      "original_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    },
+    {
+      "mutant_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0__794-1259_LBI.dfy",
+      "original_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0.dfy",
+      "original_block_status": "killed",
+      "original_spec_bva_status": "killed",
+      "manual_classification": "killed",
+      "corrected_block_status": "killed",
+      "corrected_spec_bva_status": "killed",
+      "reason": "Killed by assertion failure or build error against mutant."
+    }
+  ]
+}

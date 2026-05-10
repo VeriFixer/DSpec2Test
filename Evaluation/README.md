@@ -327,6 +327,37 @@ Evaluation/
 └── .repo_mutation_testing_marker
 ```
 
+## Manual Analysis (Post-Evaluation)
+
+After running the regular evaluation pipeline, a **manual analysis** is required to produce
+the final corrected results used in the paper. The raw kill rates include noise from:
+
+1. **Incompetent mutants** — don't compile (resolution/type errors). Both tools spuriously
+   report these as "killed" (non-zero exit from build failure).
+2. **Equivalent mutants** — semantically identical to the original. No test can distinguish them.
+3. **Timeouts** — all confirmed to be runtime infinite loops (loop-guard mutations on monotonic
+   counters). These are reclassified as kills.
+
+The manual classification for each of the 170 common mutants (Block ∩ Spec\_bva scope) is stored in:
+
+```
+results/manually_analysis.json
+```
+
+Each entry contains the original raw status from both tools, the corrected per-tool status
+(timeout → killed), and the manual classification (`incompetent`, `equivalent`, `killed`,
+`killed_timeout`, or `survived`).
+
+To produce the final corrected results table (Table 1 in the paper):
+
+```bash
+cd Evaluation
+python results_after_manual_analysis.py
+```
+
+This outputs the kill rates on the 131 realistically-killable mutants (after removing
+22 incompetent + 17 equivalent), with timeouts folded into kills.
+
 ## Configuration
 
 All configurable via environment variables:
