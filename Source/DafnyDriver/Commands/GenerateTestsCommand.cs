@@ -31,7 +31,7 @@ static class GenerateTestsCommand {
         PassingFailing,
         LoopUnroll,
         SequenceLengthLimit,
-        TestCount,
+        Repeat,
         BoogieOptionBag.SolverLog,
         BoogieOptionBag.SolverOption,
         BoogieOptionBag.SolverOptionHelp,
@@ -93,10 +93,10 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
             $"*** Error: The following options can only be used when the mode is 'Spec': {string.Join(", ", invalidFlags)}";
         }
       } else {
-        var testCountResult = commandResult.FindResultFor(TestCount);
-        var hasTestCount = testCountResult is not null && !testCountResult.IsImplicit;
-        if (hasBva && hasTestCount) {
-          commandResult.ErrorMessage = "*** Error: --bva and --test-count cannot be used simultaneously";
+        var repeatResult = commandResult.FindResultFor(Repeat);
+        var hasRepeat = repeatResult is not null && !repeatResult.IsImplicit;
+        if (hasBva && hasRepeat) {
+          commandResult.ErrorMessage = "*** Error: --bva and --repeat cannot be used simultaneously";
         }
       }
     });
@@ -312,20 +312,21 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     "Produces all 2^N − 1 non-empty subsets of branch satisfaction. For A || B: branches A ∧ B, A ∧ !B, !A ∧ B." +
     "Generates more clauses (more test scenarios) but drops the short-circuit-safety guarantee: tests may evaluate " +
     "guarded subexpressions where the guard is false, potentially causing runtime errors" +
-    "(out-of-bounds, division by zero) before the spec violation is reported.");
+    "(e.g.: out-of-bounds, division by zero).");
   
   public static readonly Option<bool> Bva = new("--bva",
-    "Only for the Spec mode. Generates tests based on Boundary Value Analysis. Cannot be used simultaneously with --test-count.");
+    "Only for the Spec mode. Adds Boundary Value Analysis to test generation. Cannot be used simultaneously with --repeat.");
 
-  public static readonly Option<uint> TestCount = new("--test-count", () => 1,
-    "Number of tests to generate per method on Spec mode. 1 (default) generates a single test per method." +
+  public static readonly Option<uint> Repeat = new("--repeat", () => 1,
+    "Repeats the pipeline <n> times, in order to generate, approximately, <n> times more tests than the initial iteration. " +
+    "1 (default) indicates no repetition" +
     "Cannot be used simultaneously with --bva.");
   
   public static readonly Option<bool> IgnoreWarnings = new("--ignore-warnings",
     "Ignore warnings when generating tests.");
   
   public static readonly Option<bool> PassingFailing = new("--passing-failing",
-    "Split generated tests into passing and failing.");
+    "Splits generated tests into passing and failing.");
 
   public static readonly Option<uint> SequenceLengthLimit = new("--length-limit",
     "Add an axiom that sets the length of all sequences to be no greater than <n>. 0 (default) indicates no limit.");
@@ -355,8 +356,8 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     DafnyOptions.RegisterLegacyBinding(Bva, (options, value) => {
       options.TestGenOptions.Bva = value;
     });
-    DafnyOptions.RegisterLegacyBinding(TestCount, (options, value) => {
-      options.TestGenOptions.TestCount = value;
+    DafnyOptions.RegisterLegacyBinding(Repeat, (options, value) => {
+      options.TestGenOptions.Repeat = value;
     });
     DafnyOptions.RegisterLegacyBinding(IgnoreWarnings, (options, value) => {
       options.TestGenOptions.IgnoreWarnings = value;
@@ -382,7 +383,7 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
 
     OptionRegistry.RegisterOption(LoopUnroll, OptionScope.Cli);
     OptionRegistry.RegisterOption(SequenceLengthLimit, OptionScope.Cli);
-    OptionRegistry.RegisterOption(TestCount, OptionScope.Cli);
+    OptionRegistry.RegisterOption(Repeat, OptionScope.Cli);
     OptionRegistry.RegisterOption(PrintBpl, OptionScope.Cli);
     OptionRegistry.RegisterOption(ExpectedCoverageReport, OptionScope.Cli);
     OptionRegistry.RegisterOption(ForcePrune, OptionScope.Cli);

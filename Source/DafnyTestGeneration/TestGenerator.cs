@@ -203,14 +203,14 @@ namespace DafnyTestGeneration {
       options.PrintMode = PrintModes.Everything;
       // Generate tests based on counterexamples produced from modifications
       
-      uint testCount = options.TestGenOptions.Bva? 1 : options.TestGenOptions.TestCount;
+      uint testRepeat = options.TestGenOptions.Bva? 1 : options.TestGenOptions.Repeat;
       List<TestMethod> testMethods = new List<TestMethod>();
 
       if (options.TestGenOptions.Mode == TestGenerationOptions.Modes.Spec) {
         PrepareProgram(program);
       }
 
-      for (int i = 0; i < testCount; i++) {
+      for (int i = 0; i < testRepeat; i++) {
         testMethods.Clear();
         
         Modifications currentCache = (i == 0)
@@ -232,7 +232,7 @@ namespace DafnyTestGeneration {
           yield return testMethod;
           testMethods.Add(testMethod);
         }
-        if (i < testCount - 1) {
+        if (i < testRepeat - 1) {
           program = await UpdateProgram(program, testMethods);
         }
       }

@@ -142,7 +142,7 @@ namespace DafnyTestGeneration {
     }
     
     /// <summary>
-    /// Calculates Boundary Value Analysis (BVA) for each input parameter based on extracted constraints.
+    /// Calculates Boundary Value Analysis (BVA) for each parameter based on extracted constraints.
     /// </summary>
     public static List<Expr> CalculateBva(List<Variable> variables, Dictionary<string, VariableConstraint> constraints, Program program) {
       var result = new List<Expr>();
@@ -427,8 +427,9 @@ namespace DafnyTestGeneration {
     /// Finds contradictions in a DNF combination, making the conjunction trivially UNSAT without needing Z3.
     /// Detects:
     ///   1. Direct complements: L and !(L) both present
-    ///   2. Equality contradictions: x == v1 and x == v2 where v1 != v2 (and v1 and v2 are numeric)
+    ///   2. Equality contradictions: x == v1 and x == v2 where v1 != v2 (and v1 and v2 are numeric values)
     ///   2. Inequality contradictions: e.g., x lt 0 and x gt 0, or x == 0 and x != 0
+    /// x might be the name of a variable, or the cardinality of a collection such as: |x|
     /// Returns true if a contradiction is found, and false otherwise.
     /// </summary>
     public static bool FindContradiction(List<Expr> combination, out Dictionary<string, VariableConstraint> constraints) {
