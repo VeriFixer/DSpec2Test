@@ -55,6 +55,11 @@ def _run_dafny_plugin(dafny_file: Path, plugin_arg: str, cwd: Path,
         elapsed = time.monotonic() - start
         logger.info("[mutdafny] %s arg=%s — %.1fs (rc=%d)",
                     dafny_file.name, plugin_arg, elapsed, result.returncode)
+        if result.returncode != 0:
+            cmd_str = " ".join(cmd)
+            stderr_snippet = (result.stderr or "").strip().splitlines()[:5]
+            logger.warning("[mutdafny] FAILED cmd: %s\n  stderr: %s",
+                           cmd_str, "\n  ".join(stderr_snippet))
         return result
     except (subprocess.TimeoutExpired, OSError) as exc:
         elapsed = time.monotonic() - start

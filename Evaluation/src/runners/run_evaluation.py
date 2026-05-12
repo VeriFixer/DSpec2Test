@@ -123,7 +123,8 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 artifact_dest = strategy_combined_dir / f"{orig.stem}.test.dfy"
                 artifact_dest.write_text(result.test_file.read_text())
                 return (orig.stem, result.test_file, result.command, result.execution_time)
-            logger.warning("Test generation failed for %s: %s", orig.name, result.error_message)
+            logger.warning("Test generation failed for %s: %s\n  Command: %s",
+                         orig.name, result.error_message, result.command)
             return (orig.stem, None, result.command, result.execution_time)
 
         parallel = not sequential

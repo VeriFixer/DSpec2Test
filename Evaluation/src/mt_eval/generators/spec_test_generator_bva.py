@@ -23,6 +23,5 @@ class SpecBvaTestGenerator(DafnyTestGenerator):
             str(dafny_file.resolve()),
             "--length-limit", "50",
             "--ignore-warnings",
-            "--cores", "1",
             f"--solver-option:O:memory_max_size={config.DAFNY_MAX_MEMORY_MB}",
         ]

@@ -51,19 +51,22 @@ SELECTED_PROGRAMS_MUTANTS_DIR: Path = BASE_PATH / "dataset" / "selected_programs
 SELECTED_PROGRAMS_MUTANTS_WITH_TESTS_DIR: Path = BASE_PATH / "dataset" / "selected_programs_mutants_with_tests"
 
 # === Dafny Binary ===
-DAFNY_BINARY: Path = BASE_PATH.parent / "Binaries" / "Dafny"
+_DAFNY_BINARY_LOCAL: Path = BASE_PATH.parent / "Binaries" / "Dafny"
+DAFNY_BINARY: Path = _DAFNY_BINARY_LOCAL if _DAFNY_BINARY_LOCAL.exists() else Path("dafny")
 
 # === SpecTestGenerator Binary (separate fork with Spec mode support) ===
 SPECTEST_DAFNY_BINARY: Path = Path(
     os.environ.get(
         "MT_SPECTEST_BINARY",
-        str(BASE_PATH.parent / "Binaries" / "Dafny"),
+        str(_DAFNY_BINARY_LOCAL) if _DAFNY_BINARY_LOCAL.exists() else "dafny",
     )
 )
 
 # === MutDafny Plugin ===
 MUTDAFNY_DIR: Path = EXTERNAL_ROOT / "mutation" / "mutdafny"
-MUTDAFNY_PLUGIN: Path = MUTDAFNY_DIR / "mutdafny" / "bin" / "Debug" / "net8.0" / "mutdafny.dll"
+_MUTDAFNY_PLUGIN_RELEASE: Path = MUTDAFNY_DIR / "mutdafny" / "bin" / "Release" / "net8.0" / "mutdafny.dll"
+_MUTDAFNY_PLUGIN_DEBUG: Path = MUTDAFNY_DIR / "mutdafny" / "bin" / "Debug" / "net8.0" / "mutdafny.dll"
+MUTDAFNY_PLUGIN: Path = _MUTDAFNY_PLUGIN_RELEASE if _MUTDAFNY_PLUGIN_RELEASE.exists() else _MUTDAFNY_PLUGIN_DEBUG
 # MutDafny must use its own bundled Dafny (version-coupled to the plugin)
 MUTDAFNY_DAFNY_BINARY: Path = MUTDAFNY_DIR / "dafny" / "Binaries" / "Dafny"
 

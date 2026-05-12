@@ -130,10 +130,6 @@ def run_mutant_generation(
         parallel=not sequential,
     )
 
-    total_mutants = sum(len(v) for v in results.values())
-    logger.info(
-        "Generated %d mutants across %d programs", total_mutants, len(results)
-    )
     return 0
 
 
