@@ -472,6 +472,8 @@ namespace DafnyTestGeneration {
                   ignoreNames.Add(formal.Name);
                 }
                 break;
+              case UserDefinedType { Name: "string" }:
+                break;
               case UserDefinedType:
                 ignoreNames.Add(formal.Name);
                 break;

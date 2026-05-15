@@ -35,7 +35,8 @@
       "manual_classification": "survived",
       "corrected_block_status": "survived",
       "corrected_spec_bva_status": "survived",
-      "reason": "Real bug escaping both tools."
+      "reason": "Real bug escaping both tools.",
+      "reason_spec_bva": "There is no test case where the input sequence contains a negative number, and the sum of that number with all the previous numbers is positive"
     },
     {
       "mutant_name": "BelowZero__-_ODL_Add-right.dfy",
@@ -215,7 +216,8 @@
       "manual_classification": "survived",
       "corrected_block_status": "survived",
       "corrected_spec_bva_status": "survived",
-      "reason": "Real bug escaping both tools."
+      "reason": "Real bug escaping both tools.",
+      "reason_spec_bva": "When Z3 generates a string, it does not contain digits"
     },
     {
       "mutant_name": "Clover_all_digits__303-315_SDL.dfy",
@@ -1065,7 +1067,8 @@
       "manual_classification": "survived",
       "corrected_block_status": "survived",
       "corrected_spec_bva_status": "survived",
-      "reason": "Real bug escaping both tools."
+      "reason": "Real bug escaping both tools.",
+      "reason_spec_bva":"When Z3 generates a string, it does not contain Upper Case letters"
     },
     {
       "mutant_name": "dafny-synthesis_task_id_477__764_AOR_Mul.dfy",
@@ -1335,7 +1338,8 @@
       "manual_classification": "killed",
       "corrected_block_status": "killed",
       "corrected_spec_bva_status": "survived",
-      "reason": "Killed by assertion failure or build error against mutant."
+      "reason": "Killed by assertion failure or build error against mutant.",
+      "reason_spec_bva": "If Block tests had been generated on the mutated program, they wouldn't have cathed it. Anyways, the problem is that in spec bva, no string with size >= 3 where the third to last character was not a '.' was generated. --repeat would solve this"
     },
     {
       "mutant_name": "dafny-synthesis_task_id_759__-_ODL_And-right.dfy",
@@ -1345,7 +1349,8 @@
       "manual_classification": "survived",
       "corrected_block_status": "survived",
       "corrected_spec_bva_status": "survived",
-      "reason": "Real bug escaping both tools."
+      "reason": "Real bug escaping both tools.",
+      "reason_spec_bva":"No string with size >= 3 where the third to last character was not a '.' was generated. --repeat would solve this"
     },
     {
       "mutant_name": "dafny-synthesis_task_id_759__279-531_LBI.dfy",
@@ -1425,7 +1430,8 @@
       "manual_classification": "killed",
       "corrected_block_status": "killed",
       "corrected_spec_bva_status": "survived",
-      "reason": "Killed by assertion failure or build error against mutant."
+      "reason": "Killed by assertion failure or build error against mutant.",
+      "reason_spec_bva":"No string with size >= 3 where the third to last character was not a '.' was generated. --repeat would solve this"
     },
     {
       "mutant_name": "dafny-synthesis_task_id_784__1097-1180_SDL.dfy",
@@ -1585,7 +1591,8 @@
       "manual_classification": "survived",
       "corrected_block_status": "survived",
       "corrected_spec_bva_status": "survived",
-      "reason": "Real bug escaping both tools."
+      "reason": "Real bug escaping both tools.",
+      "reason_spec_bva": "Even when a sequence with numbers other than 0 and K are present, they are always lower than K."
     },
     {
       "mutant_name": "dafny-synthesis_task_id_808__272_ROR_Gt.dfy",
@@ -1635,7 +1642,8 @@
       "manual_classification": "survived",
       "corrected_block_status": "survived",
       "corrected_spec_bva_status": "survived",
-      "reason": "Real bug escaping both tools."
+      "reason": "Real bug escaping both tools.",
+      "reason_spec_bva":"A test case where the threshold is positive, but there are no two different numbers that are close is missing. --repeat would solve this"
     },
     {
       "mutant_name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_0__-_ODL_And-right.dfy",

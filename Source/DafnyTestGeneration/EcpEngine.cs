@@ -12,7 +12,7 @@ using Type = Microsoft.Boogie.Type;
 
 namespace DafnyTestGeneration {
 
-  public static class DnfEngine {
+  public static class EcpEngine {
 
     /// <summary>
     /// Decomposes a Boogie Expr into Disjunctive Normal Form (DNF) 

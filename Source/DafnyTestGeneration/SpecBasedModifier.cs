@@ -83,11 +83,11 @@ namespace DafnyTestGeneration {
         .ToList();
 
       var reqDnfCombs = DafnyInfo.Options.TestGenOptions.Fdnf
-        ? DnfEngine.CalculateAllCombinations(reqClauses)
-        : DnfEngine.CalculateSafeCombinations(reqClauses);
+        ? EcpEngine.CalculateAllCombinations(reqClauses)
+        : EcpEngine.CalculateSafeCombinations(reqClauses);
       var ensDnfCombs = DafnyInfo.Options.TestGenOptions.Fdnf
-        ? DnfEngine.CalculateAllCombinations(ensClauses)
-        : DnfEngine.CalculateSafeCombinations(ensClauses);
+        ? EcpEngine.CalculateAllCombinations(ensClauses)
+        : EcpEngine.CalculateSafeCombinations(ensClauses);
 
       int specTestIndex = 0;
 
@@ -96,7 +96,7 @@ namespace DafnyTestGeneration {
           var baseComb = new List<Expr>(preComb);
           baseComb.AddRange(postComb);
 
-          if (DnfEngine.FindContradiction(baseComb, out var constraints)) {
+          if (EcpEngine.FindContradiction(baseComb, out var constraints)) {
             continue;
           }
           
@@ -106,7 +106,7 @@ namespace DafnyTestGeneration {
 
           if (DafnyInfo.Options.TestGenOptions.Bva) {
             List<Variable> allParams = [..implementation.InParams, ..implementation.OutParams];
-            var bvaCombs = DnfEngine.CalculateBva(allParams, constraints, program);
+            var bvaCombs = EcpEngine.CalculateBva(allParams, constraints, program);
             
             foreach (var bva in bvaCombs) {
               var currentBvaComb = new List<Expr>(baseComb) { bva };
@@ -120,9 +120,9 @@ namespace DafnyTestGeneration {
               new List<object> { uniqueStateId });
             var captureAssumeCmd = new AssumeCmd(new Token(), Expr.True, captureStateAttr);
 
-            var andExpr = DnfEngine.ConjoinExprs(finalComb);
+            var andExpr = EcpEngine.ConjoinExprs(finalComb);
 
-            DnfEngine.FixTypes(andExpr);
+            EcpEngine.FixTypes(andExpr);
 
             entryBlock.Cmds.Add(captureAssumeCmd);
             entryBlock.Cmds.Add(new AssumeCmd(new Token(), andExpr));
