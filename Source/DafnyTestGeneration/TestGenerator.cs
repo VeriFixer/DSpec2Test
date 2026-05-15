@@ -203,14 +203,13 @@ namespace DafnyTestGeneration {
       options.PrintMode = PrintModes.Everything;
       // Generate tests based on counterexamples produced from modifications
       
-      uint testRepeat = options.TestGenOptions.Bva? 1 : options.TestGenOptions.Repeat;
       List<TestMethod> testMethods = new List<TestMethod>();
 
       if (options.TestGenOptions.Mode == TestGenerationOptions.Modes.Spec) {
         PrepareProgram(program);
       }
 
-      for (int i = 0; i < testRepeat; i++) {
+      for (int i = 0; i < options.TestGenOptions.Repeat; i++) {
         testMethods.Clear();
         
         Modifications currentCache = (i == 0)
@@ -232,7 +231,7 @@ namespace DafnyTestGeneration {
           yield return testMethod;
           testMethods.Add(testMethod);
         }
-        if (i < testRepeat - 1) {
+        if (i < options.TestGenOptions.Repeat - 1) {
           program = await UpdateProgram(program, testMethods);
         }
       }
@@ -353,6 +352,8 @@ namespace DafnyTestGeneration {
     /// for each testMethod.
     /// </summary>
     private static async Task<Program> UpdateProgram(Program program, List<TestMethod> testMethods) {
+      // Turn off BVA so it does not attempt the same values
+      program.Options.TestGenOptions.Bva = false;
       
       // Delete method duplicates of functions
       foreach (var module in program.Modules()) {
@@ -373,10 +374,10 @@ namespace DafnyTestGeneration {
         }
       }
       
-      foreach (var testMethod in testMethods) {
-        foreach (var entryPoint in Utils.AllMemberDeclarationsWithAttribute(program.DefaultModule,
+      foreach (var entryPoint in Utils.AllMemberDeclarationsWithAttribute(program.DefaultModule,
                  TestGenerationOptions.TestEntryAttribute)) {
-
+        for (var i = testMethods.Count - 1; i >= 0; i--) {
+          var testMethod = testMethods[i];
           var shortName = testMethod.MethodName.Contains('.')
             ? testMethod.MethodName.Substring(testMethod.MethodName.LastIndexOf('.') + 1)
             : testMethod.MethodName;
@@ -424,7 +425,7 @@ namespace DafnyTestGeneration {
               }
             }
           }
-          break;
+          testMethods.RemoveAt(i);
         }
       }
       return await Utils.GetFreshProgram(program);
@@ -466,13 +467,13 @@ namespace DafnyTestGeneration {
 
           foreach (var formal in method.Ins) {
             switch (formal.Type) {
+              case UserDefinedType { Name: "string" or "nat" }:
+                break;
               case UserDefinedType tupleType when tupleType.Name.StartsWith("_tuple#"):
                 var tupleArgs = tupleType.TypeArgs;
                 if (tupleArgs.Any(arg => arg is UserDefinedType)) {
                   ignoreNames.Add(formal.Name);
                 }
-                break;
-              case UserDefinedType { Name: "string" }:
                 break;
               case UserDefinedType:
                 ignoreNames.Add(formal.Name);

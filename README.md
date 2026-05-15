@@ -7,15 +7,14 @@ This new integrated tool is called: DSpec2Test.
 
 This mode comes with 5 additional flags:
 
-- `--simplify`: Simplifies test output by including only input and output values." +
-  "In other words, removes 'expect' statements related to pre and post condition, whenever possible.");
+- `--simplify`: Simplifies test output by including only input and output values. In other words, removes 'expect' statements related to pre and post condition, whenever possible.
 
 - `--fdnf`: Calculates the full DNF, instead of the safe DNF (default). It produces all 2^N − 1 non-empty subsets of branch satisfaction. For A || B: branches A ∧ B, A ∧ !B, !A ∧ B.
   Generates more clauses (more test scenarios) but drops the short-circuit-safety guarantee: tests may evaluate guarded subexpressions where the guard is false, potentially causing runtime errors (e.g.: out-of-bounds, division by zero).
 
-- `--bva`: Adds Boundary Value Analysis to test generation. Cannot be used simultaneously with `--repeat`.
+- `--bva`: Adds Boundary Value Analysis to test generation.
 
-- `--repeat`: Repeats the pipeline N times, in order to generate, approximately, N times more tests than the initial iteration. 1 (default) indicates no repetition. Cannot be used simultaneously with `--bva`.
+- `--repeat`: Repeats the pipeline N times, in order to generate, approximately, N times more tests than the initial iteration. 1 (default) indicates no repetition.
 
 - `--passing-failing`: Splits generated tests into passing and failing.
 

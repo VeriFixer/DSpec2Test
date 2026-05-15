@@ -92,12 +92,6 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
           commandResult.ErrorMessage =
             $"*** Error: The following options can only be used when the mode is 'Spec': {string.Join(", ", invalidFlags)}";
         }
-      } else {
-        var repeatResult = commandResult.FindResultFor(Repeat);
-        var hasRepeat = repeatResult is not null && !repeatResult.IsImplicit;
-        if (hasBva && hasRepeat) {
-          commandResult.ErrorMessage = "*** Error: --bva and --repeat cannot be used simultaneously";
-        }
       }
     });
     
@@ -315,12 +309,11 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     "(e.g.: out-of-bounds, division by zero).");
   
   public static readonly Option<bool> Bva = new("--bva",
-    "Only for the Spec mode. Adds Boundary Value Analysis to test generation. Cannot be used simultaneously with --repeat.");
+    "Only for the Spec mode. Adds Boundary Value Analysis to test generation.");
 
   public static readonly Option<uint> Repeat = new("--repeat", () => 1,
     "Repeats the pipeline <n> times, in order to generate, approximately, <n> times more tests than the initial iteration. " +
-    "1 (default) indicates no repetition" +
-    "Cannot be used simultaneously with --bva.");
+    "1 (default) indicates no repetition.");
   
   public static readonly Option<bool> IgnoreWarnings = new("--ignore-warnings",
     "Ignore warnings when generating tests.");
