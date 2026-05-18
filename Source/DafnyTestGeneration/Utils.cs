@@ -220,7 +220,7 @@ namespace DafnyTestGeneration {
       printer.PrintProgram(program, true);
       string code = stringWriter.ToString();
 
-      Program freshProgram = await Utils.Parse(
+      Program freshProgram = await Parse(
         new BatchErrorReporter(program.Options),
         code,
         false,

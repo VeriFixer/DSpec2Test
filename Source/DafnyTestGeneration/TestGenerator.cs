@@ -19,8 +19,9 @@ namespace DafnyTestGeneration {
     public static bool SetNonZeroExitCode = false;
     private const string PassingMethodName = "Passing";
     private const string FailingMethodName = "Failing";
-    private static List<string> ignoreNames = [];
-    private static List<string> lengthNames = [];
+    private static readonly List<string> IgnoreNames = [];
+    private static readonly List<string> LengthNames = [];
+    private static readonly Dictionary<string, BlockStmt> MethodBodies = [];
 
     /// <summary>
     /// This method returns each capturedState that is unreachable, one by one,
@@ -205,9 +206,7 @@ namespace DafnyTestGeneration {
       
       List<TestMethod> testMethods = new List<TestMethod>();
 
-      if (options.TestGenOptions.Mode == TestGenerationOptions.Modes.Spec) {
-        PrepareProgram(program);
-      }
+      PrepareProgram(program, options.TestGenOptions.Mode == TestGenerationOptions.Modes.Spec);
 
       for (int i = 0; i < options.TestGenOptions.Repeat; i++) {
         testMethods.Clear();
@@ -371,6 +370,12 @@ namespace DafnyTestGeneration {
           decl.Members.RemoveAll(member => 
             member is Method method && functionNames.Contains(method.Name)
           );
+          
+          foreach (var method in decl.Members.OfType<Method>()) {
+            if (MethodBodies.ContainsKey(method.Name)) {
+              method.SetBody(MethodBodies[method.Name]);
+            }
+          }
         }
       }
       
@@ -400,11 +405,11 @@ namespace DafnyTestGeneration {
           
           
           foreach (var formal in argFormals) {
-            if (!ignoreNames.Contains(formal.Name) && testMethod.ArgExpressions.TryGetValue(formal.Name, out var argExpr) && argExpr != null) {
+            if (!IgnoreNames.Contains(formal.Name) && testMethod.ArgExpressions.TryGetValue(formal.Name, out var argExpr) && argExpr != null) {
               var nameSegment = new NameSegment(new Token(), formal.Name, null);
               
               BinaryExpr equalityExpr;
-              if (lengthNames.Contains(formal.Name)) {
+              if (LengthNames.Contains(formal.Name)) {
                 var cardinality = new UnaryOpExpr(new Token(), UnaryOpExpr.Opcode.Cardinality, nameSegment);
                 var literalExpr = new LiteralExpr(new Token(), argExpr.Children.Count());
                 equalityExpr = new BinaryExpr(new Token(), BinaryExpr.Opcode.Neq, cardinality, literalExpr);
@@ -417,6 +422,9 @@ namespace DafnyTestGeneration {
               if (entryPoint is Method method) {
                 if (method.Body != null) {
                   method.Body.Body.Insert(0, assumeStmt);
+                  if (MethodBodies.TryGetValue(method.Name, out var body)) {
+                    body.Body.Insert(0, assumeStmt);
+                  }
                 } else {
                   method.SetBody(new BlockStmt(new Token(), [assumeStmt]));
                 }
@@ -458,12 +466,18 @@ namespace DafnyTestGeneration {
     /// Deletes the implementation of the methods that will be tested, as this information is not useful
     /// for specification-based test generation, and can be conflicting with the following steps.
     /// </summary>
-    private static void PrepareProgram(Program program) {
+    private static void PrepareProgram(Program program, bool isSpecMode) {
       foreach (var entryPoint in Utils.AllMemberDeclarationsWithAttribute(program.DefaultModule,
                  TestGenerationOptions.TestEntryAttribute)) {
 
-        if (entryPoint is Method { Body: not null } method) {
-          method.SetBody(new BlockStmt(method.Body.Origin, []));
+        if (entryPoint is Method method) {
+          if (method.Body is not null) {
+            if (isSpecMode) {
+              method.SetBody(new BlockStmt(method.Body.Origin, []));
+            } else {
+              MethodBodies[method.Name] =  method.Body;
+            }
+          }
 
           foreach (var formal in method.Ins) {
             switch (formal.Type) {
@@ -472,28 +486,28 @@ namespace DafnyTestGeneration {
               case UserDefinedType tupleType when tupleType.Name.StartsWith("_tuple#"):
                 var tupleArgs = tupleType.TypeArgs;
                 if (tupleArgs.Any(arg => arg is UserDefinedType)) {
-                  ignoreNames.Add(formal.Name);
+                  IgnoreNames.Add(formal.Name);
                 }
                 break;
               case UserDefinedType:
-                ignoreNames.Add(formal.Name);
+                IgnoreNames.Add(formal.Name);
                 break;
               case SeqType seqType:
                 var seqArg = seqType.Arg;
                 if (seqArg is UserDefinedType) {
-                  lengthNames.Add(formal.Name);
+                  LengthNames.Add(formal.Name);
                 }
                 break;
               case SetType setType:
                 var setArg = setType.Arg;
                 if (setArg is UserDefinedType) {
-                  lengthNames.Add(formal.Name);
+                  LengthNames.Add(formal.Name);
                 }
                 break;
               case MapType mapType:
                 var mapArg = mapType.Arg;
                 if (mapArg is UserDefinedType) {
-                  lengthNames.Add(formal.Name);
+                  LengthNames.Add(formal.Name);
                 }
                 break;
             }
