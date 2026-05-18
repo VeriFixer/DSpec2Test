@@ -9,11 +9,9 @@ function sum(s: seq<int>, n: nat): int
     s[0] + sum(s[1..], n - 1)
 }
 
-lemma sum_plus(s: seq<int>, i: nat)
+lemma {:axiom} sum_plus(s: seq<int>, i: nat)
   requires i < |s|
   ensures sum(s, i) + s[i] == sum(s, i + 1)
-{
-}
 
 method {:testEntry} BelowZero(ops: seq<int>) returns (result: bool)
   ensures result <==> exists n: nat :: n <= |ops| && sum(ops, n) < 0

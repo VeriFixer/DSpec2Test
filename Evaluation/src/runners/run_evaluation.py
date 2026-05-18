@@ -111,7 +111,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
         results: list[MutantResult] = []
 
         # 3a. Generate tests for each original
-        tests_dir = SELECTED_PROGRAMS_DIR.parent / "tests"
+        tests_dir = SELECTED_PROGRAMS_DIR.parent / f"tests_{strategy.name}"
         tests_dir.mkdir(parents=True, exist_ok=True)
         strategy_combined_dir = get_strategy_combined_dir(strategy.mode)
 

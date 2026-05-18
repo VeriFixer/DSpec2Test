@@ -69,7 +69,7 @@ method {:testEntry} ProductEvenOdd(lst: seq<int>) returns (product: int)
 }
 
 method {:test} Test0() {
-var seqint0 : seq<int> := [12566, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1219, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4565, 1070, 2285];
+var seqint0 : seq<int> := [17710, 1219, 16197, 0, 0, 0, 17890, 0, 562, 4565];
 expect |seqint0| >= 2, "If this check fails at runtime, the test does not meet the preconditions";
 expect exists i :: 0 <= i < |seqint0| && IsEven(seqint0[i]), "If this check fails at runtime, the test does not meet the preconditions";
 expect exists i :: 0 <= i < |seqint0| && IsOdd(seqint0[i]), "If this check fails at runtime, the test does not meet the preconditions";
@@ -80,7 +80,7 @@ expect IsEven(seqint0[r0]) && IsFirstEven(r0, seqint0);
 expect IsOdd(seqint0[r1]) && IsFirstOdd(r1, seqint0);
 }
 method {:test} Test1() {
-var seqint0 : seq<int> := [16196, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 562, 0, 899, 0, 0, 0, 0, 0, 0, 0, 16731];
+var seqint0 : seq<int> := [0, 1735];
 expect |seqint0| >= 2, "If this check fails at runtime, the test does not meet the preconditions";
 expect exists i :: 0 <= i < |seqint0| && IsEven(seqint0[i]), "If this check fails at runtime, the test does not meet the preconditions";
 expect exists i :: 0 <= i < |seqint0| && IsOdd(seqint0[i]), "If this check fails at runtime, the test does not meet the preconditions";
