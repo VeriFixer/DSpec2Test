@@ -1,0 +1,56 @@
+{
+  "strategies": {
+    "DafnyTestGenerator_Block": {
+      "total_programs": 20,
+      "not_supported_programs": 0,
+      "not_supported_program_rate": 0.0,
+      "total_mutants": 156,
+      "not_supported_mutants": 0,
+      "not_supported_mutant_rate": 0.0,
+      "supported_mutants": 156,
+      "killed": 111,
+      "survived": 36,
+      "timeout": 9,
+      "error": 0,
+      "kill_rate": 0.7115,
+      "total_num_tests": 585,
+      "avg_num_tests": 2.98,
+      "median_num_tests": 3.0
+    },
+    "DafnyTestGenerator_Spec": {
+      "total_programs": 20,
+      "not_supported_programs": 0,
+      "not_supported_program_rate": 0.0,
+      "total_mutants": 156,
+      "not_supported_mutants": 0,
+      "not_supported_mutant_rate": 0.0,
+      "supported_mutants": 156,
+      "killed": 78,
+      "survived": 63,
+      "timeout": 15,
+      "error": 0,
+      "kill_rate": 0.5,
+      "total_num_tests": 557,
+      "avg_num_tests": 2.84,
+      "median_num_tests": 3.0
+    },
+    "DafnyTestGenerator_Spec_bva": {
+      "total_programs": 20,
+      "not_supported_programs": 0,
+      "not_supported_program_rate": 0.0,
+      "total_mutants": 156,
+      "not_supported_mutants": 0,
+      "not_supported_mutant_rate": 0.0,
+      "supported_mutants": 156,
+      "killed": 120,
+      "survived": 19,
+      "timeout": 17,
+      "error": 0,
+      "kill_rate": 0.7692,
+      "total_num_tests": 1455,
+      "avg_num_tests": 7.42,
+      "median_num_tests": 6.0
+    }
+  },
+  "best_kill_rate": "DafnyTestGenerator_Spec_bva"
+}
