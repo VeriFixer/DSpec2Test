@@ -1,0 +1,14 @@
+method {:testEntry}  TripleConditions(x: int) returns (r: int) 
+requires x % 2 == 0
+ensures r == 3 * x
+{
+    var y := x / 2;
+    r := 6 * y;
+    assert r == 3 * x;
+}
+
+method {:test} Test0() {
+expect 3592 % 2 == 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := TripleConditions(3592);
+expect r0 == 3 * 3592;
+}

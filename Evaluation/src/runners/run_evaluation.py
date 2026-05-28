@@ -11,6 +11,8 @@ import json
 import logging
 import shutil
 import sys
+import re
+import statistics
 from pathlib import Path
 
 from src.logging_config import get_logger
@@ -28,6 +30,14 @@ from src.mt_eval.paths import get_strategy_combined_dir, get_strategy_results_pa
 from src.mt_eval.reporting.comparison import print_comparison_table, write_comparison_json
 
 logger = get_logger(__name__)
+
+def get_test_count(dfy_file: Path) -> int:
+    """Parses a Dafny file and returns the total number of test methods."""
+    if not dfy_file.exists():
+        return 0
+    content = dfy_file.read_text(encoding='utf-8')
+    pattern = re.compile(r'method\s+\{\s*:test\}\s+([a-zA-Z0-9_]+)')
+    return len(set(pattern.findall(content)))
 
 
 def _map_mutants(mutants_dir: Path) -> dict[str, list[Path]]:
@@ -237,6 +247,11 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
         survived = sum(1 for r in results if r.status == MutantStatus.SURVIVED)
         timeout = sum(1 for r in results if r.status == MutantStatus.TIMEOUT)
         error = sum(1 for r in results if r.status == MutantStatus.ERROR)
+        test_count_map = {stem: get_test_count(path) for stem, path in test_map.items()}
+        test_counts = list(test_count_map.values())
+        total_num_tests = sum(test_counts) if test_counts else 0
+        avg_num_tests = (total_num_tests / len(test_counts)) if test_counts else 0.0
+        median_num_tests = statistics.median(test_counts) if test_counts else 0
 
         stats = PipelineStats(
             total_programs=len(originals),
@@ -247,6 +262,9 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             survived=survived,
             timeout=timeout,
             error=error,
+            total_num_tests=total_num_tests,
+            avg_num_tests=avg_num_tests,
+            median_num_tests=median_num_tests
         )
 
         # 3g. Verbose per-mutant output
@@ -297,6 +315,10 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
         print(f"    Supported:     {stats.supported_mutants}")
         print(f"    Not-supported: {stats.not_supported_mutants} "
               f"({stats.not_supported_mutant_rate:.1%})")
+        print(f"  Tests Generated:")
+        print(f"    Total:    {total_num_tests}")
+        print(f"    Average:  {avg_num_tests:.2f} per file")
+        print(f"    Median:   {median_num_tests} per file")
         print(f"  Kill results (supported only):")
         print(f"    Killed:   {stats.killed}")
         print(f"    Survived: {stats.survived}")
@@ -314,11 +336,12 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
         for orig in originals:
             tg = test_gen_time_map.get(orig.stem, 0.0)
             sc = safety_time_map.get(orig.stem, 0.0)
+            tc = test_count_map.get(orig.stem, 0)
             # Average kill time for this program's mutants
             prog_kills = [r for r in results if r.original_name == f"{orig.stem}.dfy"]
             avg_kill = (sum(r.execution_time for r in prog_kills) / len(prog_kills)
                         if prog_kills else 0.0)
-            print(f"  {orig.stem:<30} {tg:>7.1f}s {sc:>7.1f}s {avg_kill:>9.1f}s")
+            print(f"  {orig.stem:<30} {tg:>7.1f}s {sc:>7.1f}s {avg_kill:>9.1f}s {tc:>5}")
         print(f"  {'─'*56}\n")
 
         # 3f. Write JSON
@@ -335,6 +358,12 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                     }
                     for orig in originals
                 },
+            },
+            "test_counts": {
+                "per_program": {
+                    orig.stem: test_count_map.get(orig.stem, 0)
+                    for orig in originals
+                }
             },
             "not_supported": not_supported_details,
             "results": [r.to_dict() for r in results],

@@ -20,7 +20,7 @@ class SpecTestGenerator(DafnyTestGenerator):
             "generate-tests",
             "Spec",
             str(dafny_file.resolve()),
-            "--repeat", "1",
+            "--repeat", "7",
             "--length-limit", "50",
             "--ignore-warnings",
             f"--solver-option:O:memory_max_size={config.DAFNY_MAX_MEMORY_MB}",

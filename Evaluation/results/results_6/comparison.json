@@ -1,0 +1,73 @@
+{
+  "strategies": {
+    "DafnyTestGenerator_Block": {
+      "total_programs": 20,
+      "not_supported_programs": 0,
+      "not_supported_program_rate": 0.0,
+      "total_mutants": 147,
+      "not_supported_mutants": 0,
+      "not_supported_mutant_rate": 0.0,
+      "supported_mutants": 147,
+      "killed": 119,
+      "survived": 16,
+      "timeout": 12,
+      "error": 0,
+      "kill_rate": 0.8095,
+      "total_num_tests": 251,
+      "avg_num_tests": 12.55,
+      "median_num_tests": 9.0
+    },
+    "DafnyTestGenerator_Path": {
+      "total_programs": 20,
+      "not_supported_programs": 7,
+      "not_supported_program_rate": 0.35,
+      "total_mutants": 147,
+      "not_supported_mutants": 51,
+      "not_supported_mutant_rate": 0.3469,
+      "supported_mutants": 96,
+      "killed": 82,
+      "survived": 2,
+      "timeout": 12,
+      "error": 0,
+      "kill_rate": 0.8542,
+      "total_num_tests": 114,
+      "avg_num_tests": 8.77,
+      "median_num_tests": 6
+    },
+    "DafnyTestGenerator_Spec": {
+      "total_programs": 20,
+      "not_supported_programs": 0,
+      "not_supported_program_rate": 0.0,
+      "total_mutants": 147,
+      "not_supported_mutants": 0,
+      "not_supported_mutant_rate": 0.0,
+      "supported_mutants": 147,
+      "killed": 126,
+      "survived": 6,
+      "timeout": 15,
+      "error": 0,
+      "kill_rate": 0.8571,
+      "total_num_tests": 214,
+      "avg_num_tests": 10.7,
+      "median_num_tests": 9.0
+    },
+    "DafnyTestGenerator_Spec_bva": {
+      "total_programs": 20,
+      "not_supported_programs": 0,
+      "not_supported_program_rate": 0.0,
+      "total_mutants": 147,
+      "not_supported_mutants": 0,
+      "not_supported_mutant_rate": 0.0,
+      "supported_mutants": 147,
+      "killed": 124,
+      "survived": 6,
+      "timeout": 17,
+      "error": 0,
+      "kill_rate": 0.8435,
+      "total_num_tests": 321,
+      "avg_num_tests": 16.05,
+      "median_num_tests": 14.0
+    }
+  },
+  "best_kill_rate": "DafnyTestGenerator_Spec"
+}

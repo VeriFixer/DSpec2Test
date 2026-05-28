@@ -17,6 +17,9 @@ class PipelineStats:
         survived: Mutants classified as survived.
         timeout: Mutants that timed out during kill check.
         error: Mutants that errored during kill check.
+        total_num_tests: Total number of generated test methods.
+        avg_num_tests: Average number of tests per program.
+        median_num_tests: Median number of tests per program.
     """
 
     total_programs: int
@@ -27,6 +30,9 @@ class PipelineStats:
     survived: int
     timeout: int
     error: int
+    total_num_tests: int = 0
+    avg_num_tests: float = 0.0
+    median_num_tests: float = 0.0
 
     @property
     def supported_mutants(self) -> int:
@@ -60,4 +66,7 @@ class PipelineStats:
             "timeout": self.timeout,
             "error": self.error,
             "kill_rate": round(self.kill_rate, 4),
+            "total_num_tests": self.total_num_tests,
+            "avg_num_tests": round(self.avg_num_tests, 2),
+            "median_num_tests": self.median_num_tests,
         }
