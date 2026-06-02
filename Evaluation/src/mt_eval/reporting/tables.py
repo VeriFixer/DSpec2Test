@@ -199,140 +199,85 @@ def load_data(base_dir="results"):
     return pd.DataFrame(records_full), pd.DataFrame(records_common)
 
 # ==========================================
-# Plotting Functions
+# Table Generation Functions
 # ==========================================
 
-def plot_kill_rate_vs_x(df, out_dir, suffix=""):
-    plt.figure(figsize=(7, 5))
-    ax = sns.lineplot(
-        data=df, x="X", y="Kill Rate", hue="Strategy", 
-        style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
-        dashes=False, linewidth=2, markersize=8
-    )
-    plt.title("Mutant Kill Rate by Repeat Factor (X)")
-    plt.xlabel("Repeat Factor (X)")
-    plt.ylabel("Kill Rate")
-    plt.xticks([1, 2, 3, 4, 5, 6, 7])
+def generate_tables(df, out_dir, suffix=""):
+    """
+    Generates summary tables and exports them to CSV and LaTeX formats.
+    """
+    tables_dir = os.path.join(out_dir, "tables")
+    os.makedirs(tables_dir, exist_ok=True)
     
-    vals = ax.get_yticks()
-    ax.set_yticklabels(['{:,.1%}'.format(x) for x in vals])
-    plt.legend(title="Strategy")
-    plt.savefig(os.path.join(out_dir, f"plot_1_kill_rate_vs_x{suffix}.png"))
-    plt.close()
+    # Helper to save tables
+    def save_table(table_df, name):
+        # Save to CSV
+        table_df.to_csv(os.path.join(tables_dir, f"{name}{suffix}.csv"))
+        # Save to LaTeX
+        with open(os.path.join(tables_dir, f"{name}{suffix}.tex"), "w") as f:
+            f.write(table_df.to_latex(float_format="%.2f"))
 
-def plot_time_vs_x(df, out_dir, suffix=""):
-    plt.figure(figsize=(7, 5))
-    sns.lineplot(
-        data=df, x="X", y="Total Time (s)", hue="Strategy", 
-        style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
-        dashes=False, linewidth=2, markersize=8
-    )
-    plt.title("Computational Cost by Repeat Factor (X)")
-    plt.xlabel("Repeat Factor (X)")
-    plt.ylabel("Total Execution Time (seconds)")
-    plt.xticks([1, 2, 3, 4, 5, 6, 7])
+    # ---------------------------------------------------------
+    # Table 1: Overall Performance Summary at X = 7
+    # ---------------------------------------------------------
+    max_x = df["X"].max()
+    df_max_x = df[df["X"] == max_x].copy()
     
-    plt.legend(title="Strategy")
-    plt.savefig(os.path.join(out_dir, f"plot_2_time_vs_x{suffix}.png"))
-    plt.close()
-
-def plot_efficiency_tradeoff(df, out_dir, suffix=""):
-    plt.figure(figsize=(7, 5))
-    ax = sns.scatterplot(
-        data=df, x="Total Time (s)", y="Kill Rate", hue="Strategy", 
-        style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
-        size="X", sizes=(50, 200)
-    )
-    plt.title("Efficiency Trade-off: Time vs. Kill Rate")
-    plt.xlabel("Total Execution Time (seconds)")
-    plt.ylabel("Kill Rate")
-    
-    vals = ax.get_yticks()
-    ax.set_yticklabels(['{:,.1%}'.format(x) for x in vals])
-    h, l = ax.get_legend_handles_labels()
-    plt.legend(h, l, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-    plt.savefig(os.path.join(out_dir, f"plot_3_efficiency_tradeoff{suffix}.png"), bbox_inches='tight')
-    plt.close()
-
-def plot_status_breakdown(df, out_dir, target_x=7, suffix=""):
-    df_x = df[df["X"] == target_x]
-    if df_x.empty:
-        return
+    if not df_max_x.empty:
+        summary_cols = ["Strategy", "Kill Rate", "Total Time (s)", 
+                        "Total Number of Tests", "Average Number of Tests"]
+        table1 = df_max_x[summary_cols].set_index("Strategy").copy()
         
-    df_x = df_x.set_index("Strategy")
-    status_df = df_x[["Killed", "Timeout", "Survived", "Error"]]
-    colors = ["#4C72B0", "#DD8452", "#C44E52", "#8C8C8C"]
-    
-    ax = status_df.plot(kind="bar", stacked=True, figsize=(7, 5), color=colors, edgecolor='black')
-    plt.title(f"Mutant Resolution Breakdown (X={target_x})")
-    plt.xlabel("Strategy")
-    plt.ylabel("Number of Mutants")
-    plt.xticks(rotation=0)
-    
-    plt.legend(title="Status", bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.savefig(os.path.join(out_dir, f"plot_4_status_breakdown_x{target_x}{suffix}.png"), bbox_inches='tight')
-    plt.close()
+        # Format Kill Rate as percentage string for presentation
+        table1["Kill Rate (%)"] = (table1["Kill Rate"] * 100).round(2)
+        table1 = table1.drop(columns=["Kill Rate"])
+        
+        # Reorder columns nicely
+        table1 = table1[["Kill Rate (%)", "Total Time (s)", "Total Number of Tests", "Average Number of Tests"]]
+        save_table(table1, f"table_1_summary_x{max_x}")
 
-def plot_total_tests_vs_x(df, out_dir, suffix=""):
-    plt.figure(figsize=(7, 5))
-    sns.lineplot(
-        data=df, x="X", y="Total Number of Tests", hue="Strategy", 
-        style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
-        dashes=False, linewidth=2, markersize=8
-    )
-    plt.title("Total Number of Tests by Repeat Factor (X)")
-    plt.xlabel("Repeat Factor (X)")
-    plt.ylabel("Total Tests Generated")
-    plt.xticks([1, 2, 3, 4, 5, 6, 7])
-    
-    plt.legend(title="Strategy")
-    plt.savefig(os.path.join(out_dir, f"plot_5_total_tests_vs_x{suffix}.png"))
-    plt.close()
+    # ---------------------------------------------------------
+    # Table 2: Kill Rate Progression across X (Diminishing Returns)
+    # ---------------------------------------------------------
+    # Pivot: Index=Strategy, Columns=X, Values=Kill Rate
+    table2 = df.pivot(index="Strategy", columns="X", values="Kill Rate")
+    # Convert to percentages
+    table2 = (table2 * 100).round(2)
+    # Rename columns to indicate X
+    table2.columns = [f"X={col}" for col in table2.columns]
+    save_table(table2, "table_2_kill_rate_progression")
 
-def plot_test_efficiency_tradeoff(df, out_dir, suffix=""):
-    plt.figure(figsize=(7, 5))
-    ax = sns.scatterplot(
-        data=df, x="Total Number of Tests", y="Kill Rate", hue="Strategy", 
-        style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
-        size="X", sizes=(50, 200)
-    )
-    plt.title("Test Efficiency: Volume vs. Kill Rate")
-    plt.xlabel("Total Number of Tests")
-    plt.ylabel("Kill Rate")
-    
-    vals = ax.get_yticks()
-    ax.set_yticklabels(['{:,.1%}'.format(x) for x in vals])
-    h, l = ax.get_legend_handles_labels()
-    plt.legend(h, l, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-    plt.savefig(os.path.join(out_dir, f"plot_6_test_efficiency_tradeoff{suffix}.png"), bbox_inches='tight')
-    plt.close()
+    # ---------------------------------------------------------
+    # Table 3: Execution Time Progression across X
+    # ---------------------------------------------------------
+    table3 = df.pivot(index="Strategy", columns="X", values="Total Time (s)")
+    table3 = table3.round(2)
+    table3.columns = [f"X={col}" for col in table3.columns]
+    save_table(table3, "table_3_time_progression")
 
-def plot_avg_tests_vs_mutation_score(df, out_dir, suffix=""):
-    plt.figure(figsize=(7, 5))
-    ax = sns.scatterplot(
-        data=df, x="Average Number of Tests", y="Kill Rate", hue="Strategy", 
-        style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
-        size="X", sizes=(50, 200)
-    )
-    plt.title("Kill Rate vs. Avg Tests per Mutant")
-    plt.xlabel("Average Number of Tests per Mutant")
-    plt.ylabel("Kill Rate")
-    
-    vals = ax.get_yticks()
-    ax.set_yticks(vals)
-    ax.set_yticklabels(['{:,.1%}'.format(x) for x in vals])
-    h, l = ax.get_legend_handles_labels()
-    plt.legend(h, l, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-    plt.savefig(os.path.join(out_dir, f"plot_7_avg_tests_vs_mutation_score{suffix}.png"), bbox_inches='tight')
-    plt.close()
+    # ---------------------------------------------------------
+    # Table 4: Mutant Resolution Breakdown at Max X
+    # ---------------------------------------------------------
+    if not df_max_x.empty:
+        table4 = df_max_x[["Strategy", "Killed", "Survived", "Timeout", "Error"]].set_index("Strategy")
+        save_table(table4, f"table_4_status_breakdown_x{max_x}")
+
+    # ---------------------------------------------------------
+    # Table 5: Mutant Resolution Evolution across X
+    # ---------------------------------------------------------
+    # We use a multi-index (Strategy, then X) to keep the table narrow enough for a paper
+    table5 = df.set_index(["X", "Strategy"])[["Killed", "Survived", "Timeout", "Error"]].copy()
+    table5 = table5.sort_index()
+    table5 = table5.astype(int)
+    save_table(table5, "table_5_status_evolution")
 
 
 if __name__ == "__main__":
     output_directory = "results"
-    graphs_directory = os.path.join(output_directory, "graphs")
+    tables_directory = os.path.join(output_directory, "tables")
     
     os.makedirs(output_directory, exist_ok=True)
-    os.makedirs(graphs_directory, exist_ok=True)
+    os.makedirs(tables_directory, exist_ok=True)
 
     print("Loading data...")
     df_full, df_common = load_data(output_directory)
@@ -341,23 +286,9 @@ if __name__ == "__main__":
         print("No data loaded. Check your folder structure.")
     else:
         if not df_full.empty:
-            print("Generating plots for FULLY SUPPORTED strategies...")
-            plot_kill_rate_vs_x(df_full, graphs_directory, "_full_support")
-            plot_time_vs_x(df_full, graphs_directory, "_full_support")
-            plot_efficiency_tradeoff(df_full, graphs_directory, "_full_support")
-            plot_status_breakdown(df_full, graphs_directory, target_x=7, suffix="_full_support")
-            plot_total_tests_vs_x(df_full, graphs_directory, "_full_support")
-            plot_test_efficiency_tradeoff(df_full, graphs_directory, "_full_support")
-            plot_avg_tests_vs_mutation_score(df_full, graphs_directory, "_full_support")
+            generate_tables(df_full, output_directory, "_full_support")
             
         if not df_common.empty:
-            print("Generating plots for ALL strategies on COMMON programs...")
-            plot_kill_rate_vs_x(df_common, graphs_directory, "_common_programs")
-            plot_time_vs_x(df_common, graphs_directory, "_common_programs")
-            plot_efficiency_tradeoff(df_common, graphs_directory, "_common_programs")
-            plot_status_breakdown(df_common, graphs_directory, target_x=7, suffix="_common_programs")
-            plot_total_tests_vs_x(df_common, graphs_directory, "_common_programs")
-            plot_test_efficiency_tradeoff(df_common, graphs_directory, "_common_programs")
-            plot_avg_tests_vs_mutation_score(df_common, graphs_directory, "_common_programs")
+            generate_tables(df_common, output_directory, "_common_programs")
             
-        print(f"Done! Check the '{graphs_directory}' directory for the generated .png files.")
+        print(f"Done! Check the '{tables_directory}' directory for tables.")
