@@ -20,7 +20,7 @@ class BlockTestGenerator(DafnyTestGenerator):
             "generate-tests",
             "Block",
             str(dafny_file.resolve()),
-            "--repeat", "7",
+            "--repeat", "4",
             "--length-limit", "50",
             "--ignore-warnings",
             f"--solver-option:O:memory_max_size={config.DAFNY_MAX_MEMORY_MB}",

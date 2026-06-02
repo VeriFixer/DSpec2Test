@@ -18,6 +18,7 @@ import time
 from pathlib import Path
 
 from src.config import MUTDAFNY_PLUGIN, MUTDAFNY_DIR, MUTDAFNY_DAFNY_BINARY, DAFNY_MAX_MEMORY_MB
+from src.mt_eval.core.verification import verify_program, type_checks_program
 
 logger = logging.getLogger(__name__)
 
@@ -68,8 +69,8 @@ def _run_dafny_plugin(dafny_file: Path, plugin_arg: str, cwd: Path,
         return None
 
 
-def apply_mutation(original_file: Path, output_dir: Path, max_mutants: int = 1) -> list[Path]:
-    """Invoke MutDafny on original_file, return up to max_mutants mutant paths.
+def apply_mutation(original_file: Path, output_dir: Path, num_mutants: int = 1) -> list[Path]:
+    """Invoke MutDafny on original_file, return exactly num_mutants mutant paths.
 
     Uses the two-pass approach:
     1. Scan for mutation targets → targets.csv
@@ -78,7 +79,7 @@ def apply_mutation(original_file: Path, output_dir: Path, max_mutants: int = 1) 
     Args:
         original_file: Path to the original .dfy source file.
         output_dir: Directory where mutant files will be collected.
-        max_mutants: Maximum number of mutants to generate per file.
+        num_mutants: Exact number of mutants to generate per file (unless impossible).
 
     Returns:
         List of paths to mutant files (may be empty on failure).
@@ -112,9 +113,9 @@ def apply_mutation(original_file: Path, output_dir: Path, max_mutants: int = 1) 
             logger.warning("MutDafny produced empty targets for %s", original_file)
             return []
 
-        # Pass 2: Apply mutations until we have max_mutants
+        # Pass 2: Apply mutations until we have num_mutants
         for target in targets:
-            if len(collected) >= max_mutants:
+            if len(collected) >= num_mutants:
                 break
 
             pos = target[0].strip()
@@ -133,11 +134,12 @@ def apply_mutation(original_file: Path, output_dir: Path, max_mutants: int = 1) 
             # MutDafny writes .dfy files in the working directory
             mutant_files = sorted(work_path.glob("*.dfy"))
             for mf in mutant_files:
-                if len(collected) >= max_mutants:
+                if len(collected) >= num_mutants:
                     break
-                dest = output_dir / mf.name
-                dest.write_text(mf.read_text())
-                collected.append(dest)
+                if type_checks_program(mf) and not verify_program(mf):
+                    dest = output_dir / mf.name
+                    dest.write_text(mf.read_text())
+                    collected.append(dest)
 
             # Clean up generated files for next iteration
             for mf in work_path.glob("*.dfy"):
