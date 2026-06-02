@@ -53,7 +53,14 @@ def _process_program(
 
     # Filter: keep only mutants that FAIL verification (real bugs) And pass type checking
     filter_start = time.monotonic()
-    valid_mutants = [m for m in mutants if (type_checks_program(m) and (not verify_program(m)))]
+
+    valid_mutants = []
+    for m in mutants:
+        if type_checks_program(m) and not verify_program(m):
+            valid_mutants.append(m)
+        else:
+            m.unlink(missing_ok=True)
+
     filter_time = time.monotonic() - filter_start
 
     total_time = time.monotonic() - start

@@ -31,12 +31,12 @@ def register_strategy(name: str):
 def _extract_test_methods(raw_output: str) -> str:
     """Extract test methods from dafny generate-tests output.
 
-    Captures everything starting from the first 'method {:test}' line,
+    Captures everything starting from the first comment line,
     discarding any include directives or warnings that precede it.
     """
     lines = raw_output.splitlines(keepends=True)
     for i, line in enumerate(lines):
-        if "{:test}" in line:
+        if "//" in line:
             return "".join(lines[i:]).strip()
     return ""
 
