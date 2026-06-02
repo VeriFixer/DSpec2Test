@@ -209,6 +209,7 @@ namespace DafnyTestGeneration {
       PrepareProgram(program, options.TestGenOptions.Mode == TestGenerationOptions.Modes.Spec);
 
       for (int i = 0; i < options.TestGenOptions.Repeat; i++) {
+        await options.OutputWriter.Status($"\n// REPEAT {i+1}\n");
         testMethods.Clear();
         
         Modifications currentCache = (i == 0)
