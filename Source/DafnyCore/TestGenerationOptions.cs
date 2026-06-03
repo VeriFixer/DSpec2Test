@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using JetBrains.Annotations;
 using Bpl = Microsoft.Boogie;
 
@@ -10,6 +11,8 @@ namespace Microsoft.Dafny {
     public const string TestEntryAttribute = "testEntry";
     public bool WarnDeadCode = false;
 
+    public Stopwatch StopWatch;
+    public bool Time = false;
     public bool Fdnf = false;
     public bool Bva = false;
     public bool Simplify = false;

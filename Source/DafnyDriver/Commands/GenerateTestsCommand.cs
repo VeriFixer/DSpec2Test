@@ -43,6 +43,7 @@ static class GenerateTestsCommand {
         ExpectedCoverageReport,
         CommonOptionBag.NoTimeStampForCoverageReport,
         ForcePrune,
+        Time
       }.Concat(DafnyCommands.ConsoleOutputOptions.Except(new[] { CommonOptionBag.AllowWarnings }).ToList()).
         Concat(DafnyCommands.ResolverOptions);
     }
@@ -109,6 +110,7 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
       PostProcess(options, mode);
 
       var exitCode = await GenerateTests(options);
+      options.TestGenOptions.StopWatch.Stop();
       return (int)exitCode;
     });
 
@@ -295,6 +297,7 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     dafnyOptions.TypeEncodingMethod = CoreOptions.TypeEncoding.Predicates;
     dafnyOptions.Set(Snippets.ShowSnippets, false);
     dafnyOptions.TestGenOptions.Mode = mode;
+    dafnyOptions.TestGenOptions.StopWatch = Stopwatch.StartNew();
   }
   
   public static readonly Option<bool> Simplify = new("--simplify",
@@ -339,6 +342,10 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
   };
   public static readonly Option<bool> ForcePrune = new("--force-prune",
     "Enable axiom pruning that Dafny uses to speed up verification. This may negatively affect the quality of tests.");
+  
+  public static readonly Option<bool> Time = new("--time",
+    "Prints the elapsed time since the beginning of the program (in seconds), split by repeat section.");
+  
   static GenerateTestsCommand() {
     DafnyOptions.RegisterLegacyBinding(Simplify, (options, value) => {
       options.TestGenOptions.Simplify = value;
@@ -373,6 +380,10 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     DafnyOptions.RegisterLegacyBinding(ForcePrune, (options, value) => {
       options.TestGenOptions.ForcePrune = value;
     });
+    
+    DafnyOptions.RegisterLegacyBinding(Time, (options, value) => {
+      options.TestGenOptions.Time = value;
+    });
 
     OptionRegistry.RegisterOption(LoopUnroll, OptionScope.Cli);
     OptionRegistry.RegisterOption(SequenceLengthLimit, OptionScope.Cli);
@@ -385,5 +396,6 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     OptionRegistry.RegisterOption(Fdnf, OptionScope.Cli);
     OptionRegistry.RegisterOption(Bva, OptionScope.Cli);
     OptionRegistry.RegisterOption(PassingFailing, OptionScope.Cli);
+    OptionRegistry.RegisterOption(Time, OptionScope.Cli);
   }
 }

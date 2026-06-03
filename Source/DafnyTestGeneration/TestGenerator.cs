@@ -209,7 +209,6 @@ namespace DafnyTestGeneration {
       PrepareProgram(program, options.TestGenOptions.Mode == TestGenerationOptions.Modes.Spec);
 
       for (int i = 0; i < options.TestGenOptions.Repeat; i++) {
-        await options.OutputWriter.Status($"\n// REPEAT {i+1}\n");
         testMethods.Clear();
         
         Modifications currentCache = (i == 0)
@@ -231,6 +230,12 @@ namespace DafnyTestGeneration {
           yield return testMethod;
           testMethods.Add(testMethod);
         }
+
+        if (options.TestGenOptions.Time) {
+          await options.OutputWriter.Status(
+            $"\n// REPEAT {i + 1} - TIME: {options.TestGenOptions.StopWatch.Elapsed.TotalSeconds} s\n");
+        }
+
         if (i < options.TestGenOptions.Repeat - 1) {
           program = await UpdateProgram(program, testMethods);
         }
