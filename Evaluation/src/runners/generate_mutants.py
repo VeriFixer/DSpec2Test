@@ -46,7 +46,7 @@ def _process_program(
     start = time.monotonic()
 
     # Generate mutants via MutDafny
-    mutants = apply_mutation(program, prog_output_dir, num_mutants==num_mutants)
+    mutants = apply_mutation(program, prog_output_dir, num_mutants=num_mutants)
 
     mutation_time = time.monotonic() - start
 

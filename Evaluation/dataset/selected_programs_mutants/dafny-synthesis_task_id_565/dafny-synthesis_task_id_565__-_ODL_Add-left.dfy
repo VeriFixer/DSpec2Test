@@ -1,6 +1,6 @@
 // dafny-synthesis_task_id_565.dfy
 
-method {:testEntry} SplitStringIntoChars(s: string) returns (v: seq<char>)
+method SplitStringIntoChars(s: string) returns (v: seq<char>)
   ensures |v| == |s|
   ensures forall i :: 0 <= i < |s| ==> v[i] == s[i]
 {

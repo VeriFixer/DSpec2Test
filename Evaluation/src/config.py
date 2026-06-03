@@ -43,6 +43,7 @@ def find_repo_root(marker: str = ".repo_mutation_testing_marker") -> Path:
 # === Repository Structure ===
 BASE_PATH: Path = find_repo_root()
 DATASET_ROOT: Path = BASE_PATH / "dataset" / "data"
+CSV_ROOT: Path = BASE_PATH / "dataset" / "csv"
 EXTERNAL_ROOT: Path = BASE_PATH / "external"
 TMP_ROOT: Path = BASE_PATH / "tmp"
 ARTIFACTS_ROOT: Path = TMP_ROOT / "run_artifacts"
