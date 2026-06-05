@@ -9,7 +9,7 @@ from src.logging_config import get_logger
 
 logger = get_logger(__name__)
 
-KEYWORDS = {"array", "class"}
+KEYWORDS = {"array", "array2", "class"}
 
 def filter_and_copy_dafny_programs(csv_name: str):
     csv_path = Path(CSV_ROOT) / csv_name

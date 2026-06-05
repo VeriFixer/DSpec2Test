@@ -928,7 +928,7 @@ namespace DafnyTestGeneration {
 
         case CharType:
           var varLit = StripString(variable.PrimitiveLiteral);
-          return new StringLiteralExpr(new Token(), GetPrimitiveAsType(varLit, variableType, asType), false);
+          return new CharLiteralExpr(new Token(), GetPrimitiveAsType(varLit, variableType, asType));
 
         case SeqType seqType:
           var asBasicSeqType = GetBasicType(asType, type => type is SeqType) as SeqType;
