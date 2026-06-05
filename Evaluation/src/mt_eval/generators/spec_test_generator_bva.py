@@ -14,15 +14,16 @@ class SpecBvaTestGenerator(DafnyTestGenerator):
         super().__init__(mode="Spec_bva", **kwargs)
         self.dafny_binary = dafny_binary or config.SPECTEST_DAFNY_BINARY
 
-    def _build_cmd(self, dafny_file: Path) -> list[str]:
+    def _build_cmd(self, dafny_file: Path, repeat: int) -> list[str]:
         return [
             str(self.dafny_binary),
             "generate-tests",
             "Spec",
             str(dafny_file.resolve()),
             "--bva",
-            "--repeat", "6",
+            "--repeat", f"{repeat}",
             "--length-limit", "50",
+            "--time",
             "--ignore-warnings",
             f"--solver-option:O:memory_max_size={config.DAFNY_MAX_MEMORY_MB}",
         ]

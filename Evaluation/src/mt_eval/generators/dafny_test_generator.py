@@ -31,12 +31,12 @@ def register_strategy(name: str):
 def _extract_test_methods(raw_output: str) -> str:
     """Extract test methods from dafny generate-tests output.
 
-    Captures everything starting from the first comment line,
+    Captures everything starting from the first {:test} line,
     discarding any include directives or warnings that precede it.
     """
     lines = raw_output.splitlines(keepends=True)
     for i, line in enumerate(lines):
-        if "//" in line:
+        if "{:test}" in line:
             return "".join(lines[i:]).strip()
     return ""
 
@@ -53,16 +53,16 @@ class DafnyTestGenerator(TestGenerator):
         self.mode = mode
 
     @abstractmethod
-    def _build_cmd(self, dafny_file: Path) -> list[str]:
+    def _build_cmd(self, dafny_file: Path, repeat: int) -> list[str]:
         """Build the dafny generate-tests command. Implemented by subclasses."""
         ...
 
-    def generate_tests(self, dafny_file: Path, output_file: Path) -> TestGenResult:
+    def generate_tests(self, dafny_file: Path, output_file: Path, repeat:int = 1) -> TestGenResult:
         """Execute the command from _build_cmd() and return result.
 
         The output test file = original source + generated test methods at bottom.
         """
-        cmd = self._build_cmd(dafny_file)
+        cmd = self._build_cmd(dafny_file, repeat)
         cmd_str = " ".join(cmd)
         start = time.monotonic()
         try:

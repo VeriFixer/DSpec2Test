@@ -58,7 +58,7 @@ def _map_mutants(mutants_dir: Path) -> dict[str, list[Path]]:
 
 def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                  verbose: bool = False, max_display: int | None = None,
-                 strategies=None, clean_cache: bool = False) -> int:
+                 strategies=None, clean_cache: bool = False, repeat: int = 1) -> int:
     """Execute the evaluation pipeline.
 
     Returns 0 on success, 1 on critical failure.
@@ -127,11 +127,11 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
 
         def _gen_test(orig: Path) -> tuple[str, Path | None, str, float]:
             test_file = tests_dir / f"{orig.stem}.test.dfy"
-            result = strategy.generate_tests(orig, test_file)
+            result = strategy.generate_tests(orig, test_file, repeat)
             if result.success and result.test_file:
                 # Copy generated test artifact to strategy combined dir
-                artifact_dest = strategy_combined_dir / f"{orig.stem}.test.dfy"
-                artifact_dest.write_text(result.test_file.read_text())
+                #artifact_dest = strategy_combined_dir / f"{orig.stem}.test.dfy"
+                #artifact_dest.write_text(result.test_file.read_text())
                 return (orig.stem, result.test_file, result.command, result.execution_time)
             logger.warning("Test generation failed for %s: %s\n  Command: %s",
                          orig.name, result.error_message, result.command)
@@ -176,7 +176,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
 
         def _safety_check(orig: Path) -> tuple[Path, SafetyCheckResult]:
             test_file = test_map[orig.stem]
-            result = run_safety_check(orig, test_file, artifacts_dir=strategy_combined_dir)
+            result = run_safety_check(orig, test_file, artifacts_dir=tests_dir)
             return (orig, result)
 
         safety_results: list[tuple[Path, SafetyCheckResult]] = run_parallel_or_seq(
@@ -425,6 +425,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=False,
         help="Delete cached per-strategy results and combined dirs before running",
     )
+    parser.add_argument(
+        "--repeat",
+        type=int,
+        default=1,
+        help="Repeat flag for generate-tests command",
+    )
     return parser.parse_args(argv)
 
 
@@ -452,6 +458,7 @@ def main(argv: list[str] | None = None) -> None:
         max_display=args.max_display,
         strategies=resolved,
         clean_cache=args.clean_cache,
+        repeat=args.repeat
     )
     sys.exit(exit_code)
 
