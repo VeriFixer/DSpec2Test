@@ -31,7 +31,7 @@ from src.mt_eval.reporting.comparison import print_comparison_table, write_compa
 
 logger = get_logger(__name__)
 
-def get_test_count(dfy_file: Path) -> int:
+def _get_test_count(dfy_file: Path) -> int:
     """Parses a Dafny file and returns the total number of test methods."""
     if not dfy_file.exists():
         return 0
@@ -39,6 +39,46 @@ def get_test_count(dfy_file: Path) -> int:
     pattern = re.compile(r'method\s+\{\s*:test\}\s+([a-zA-Z0-9_]+)')
     return len(set(pattern.findall(content)))
 
+def _split_tests(test_file: Path, total_reps: int, base_tests_dir: Path, fallback_time: float) -> dict[int, tuple[Path, float]]:
+    """Parses the generated test file, splits by // REPEAT comments, and creates cumulative files."""
+    if not test_file.exists():
+        return {}
+    
+    lines = test_file.read_text(encoding='utf-8').splitlines()
+    reps_content = {i: [] for i in range(1, total_reps + 1)}
+    # Initialize with fallback time in case comments are missing
+    reps_time = {i: fallback_time for i in range(1, total_reps + 1)} 
+    current_rep = 1
+    
+    # Adjusted regex to handle floats and variable spacing: TIME: 6.5542942 s
+    rep_pattern = re.compile(r'//\s*REPEAT\s+(\d+)\s*-\s*TIME:\s*([0-9.]+)\s*s?')
+    
+    for line in lines:
+        if current_rep <= total_reps:
+            reps_content[current_rep].append(line)
+        
+        match = rep_pattern.search(line)
+        if match:
+            parsed_rep = int(match.group(1))
+            parsed_time = float(match.group(2))
+            reps_time[current_rep] = parsed_time
+            current_rep = min(parsed_rep + 1, total_reps)
+        
+    accumulated_paths = {}
+    accumulated_lines = []
+    
+    for r in range(1, total_reps + 1):
+        accumulated_lines.extend(reps_content[r])
+        rep_time = reps_time[r]
+        
+        rep_dir = base_tests_dir / f"rep_{r}"
+        rep_dir.mkdir(parents=True, exist_ok=True)
+        
+        out_path = rep_dir / test_file.name
+        out_path.write_text("\n".join(accumulated_lines), encoding='utf-8')
+        accumulated_paths[r] = (out_path, rep_time)
+        
+    return accumulated_paths
 
 def _map_mutants(mutants_dir: Path) -> dict[str, list[Path]]:
     """Map original_stem → list of mutant paths.
@@ -73,10 +113,10 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             combined = _base / "dataset" / f"selected_programs_mutants_with_tests_{mode}"
             if combined.exists():
                 shutil.rmtree(combined)
-            # Delete per-strategy results file
-            results_path = output_dir / f"results_{STRATEGY_REGISTRY[mode]().name}.json"
-            if results_path.exists():
-                results_path.unlink()
+            # Delete per-strategy results dir
+            strategy_results_dir = output_dir / f"results_{mode}"
+            if strategy_results_dir.exists():
+                shutil.rmtree(strategy_results_dir)
         # Delete comparison.json
         comparison_path = output_dir / "comparison.json"
         if comparison_path.exists():
@@ -104,24 +144,28 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
     all_strategy_results: dict[str, dict] = {}
 
     for strategy in strategies:
-        print(f"\n[run_evaluation] Strategy: {strategy.name}")
+        print(f"\n[run_evaluation] Strategy: {strategy.mode}")
 
-        # Cache hit: skip if per-strategy results file already exists
-        results_path = get_strategy_results_path(strategy.name, output_dir)
-        if results_path.exists():
-            print(f"[run_evaluation] Cache hit for {strategy.name}, loading from {results_path}")
-            cached_data = json.loads(results_path.read_text())
-            all_strategy_results[strategy.name] = cached_data
+        strategy_output_dir = output_dir / f"results_{strategy.mode}"
+
+        expected_last_rep_file = strategy_output_dir / f"results_{strategy.mode}_rep_{repeat}.json"
+        
+        if expected_last_rep_file.exists():
+            print(f"[run_evaluation] Cache hit for {strategy.mode}, loading from {strategy_output_dir}")
+            for rep in range(1, repeat + 1):
+                rep_file = strategy_output_dir / f"results_{strategy.mode}_rep_{rep}.json"
+                if rep_file.exists():
+                    rep_strategy_key = f"{strategy.mode}_rep_{rep}"
+                    all_strategy_results[rep_strategy_key] = json.loads(rep_file.read_text())
             continue
 
         # Track stats
         not_supported_programs = 0
         not_supported_mutants = 0
         total_mutants = sum(len(mutant_map.get(o.stem, [])) for o in originals)
-        results: list[MutantResult] = []
 
         # 3a. Generate tests for each original
-        tests_dir = SELECTED_PROGRAMS_DIR.parent / f"tests_{strategy.name}"
+        tests_dir = SELECTED_PROGRAMS_DIR.parent / f"tests_{strategy.mode}"
         tests_dir.mkdir(parents=True, exist_ok=True)
         strategy_combined_dir = get_strategy_combined_dir(strategy.mode)
 
@@ -214,163 +258,188 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
 
             supported_originals.append(orig)
 
-        # 3c. Kill check supported mutants
-        kill_tasks: list[tuple[Path, Path]] = []
+        split_data: dict[str, dict[int, tuple[Path, float]]] = {}
         for orig in supported_originals:
-            test_file = test_map[orig.stem]
-            for mutant in mutant_map.get(orig.stem, []):
-                kill_tasks.append((test_file, mutant))
+            total_time = test_gen_time_map.get(orig.stem, 0.0)
+            split_data[orig.stem] = _split_tests(test_map[orig.stem], repeat, tests_dir, total_time)
 
-        if kill_tasks:
-            checker = KillChecker(
-                output_dir=strategy_combined_dir,
-                originals_dir=SELECTED_PROGRAMS_DIR,
+        for rep in range(1, repeat + 1):
+            print(f"\n[run_evaluation] --- Running Repetition {rep}/{repeat} ---")
+            rep_results: list[MutantResult] = []
+
+            # Create rep specific directories
+            strategy_combined_rep_dir = strategy_combined_dir / f"rep_{rep}"
+            strategy_combined_rep_dir.mkdir(parents=True, exist_ok=True)
+
+            # 3c. Kill check supported mutants
+            kill_tasks: list[tuple[Path, Path]] = []
+            for orig in supported_originals:
+                if rep in split_data.get(orig.stem, {}):
+                    rep_test_file, _ = split_data[orig.stem][rep]
+                    for mutant in mutant_map.get(orig.stem, []):
+                        kill_tasks.append((rep_test_file, mutant))
+
+            if kill_tasks:
+                checker = KillChecker(
+                    output_dir=strategy_combined_rep_dir,
+                    originals_dir=SELECTED_PROGRAMS_DIR,
+                )
+
+                def _check_kill(task: tuple[Path, Path]) -> MutantResult:
+                    test_file, mutant_file = task
+                    return checker.check_kill(test_file, mutant_file)
+
+                kill_results: list[MutantResult] = run_parallel_or_seq(
+                    kill_tasks, _check_kill, f"Kill checking (Rep {rep})", parallel=parallel,
+                )
+                # Attach test generation command and timing to each result
+                for r in kill_results:
+                    orig_stem = r.original_name.removesuffix(".dfy")
+                    r.test_gen_command = test_gen_cmd_map.get(orig_stem, "")
+                    rep_gen_time = split_data.get(orig_stem, {}).get(rep, (None, test_gen_time_map.get(orig_stem, 0.0)))[1]
+                    r.test_gen_time = rep_gen_time
+                    r.safety_check_time = safety_time_map.get(orig_stem, 0.0)
+                rep_results.extend(kill_results)
+
+            # 3d. Compute stats
+            killed = sum(1 for r in rep_results if r.status == MutantStatus.KILLED)
+            survived = sum(1 for r in rep_results if r.status == MutantStatus.SURVIVED)
+            timeout = sum(1 for r in rep_results if r.status == MutantStatus.TIMEOUT)
+            error = sum(1 for r in rep_results if r.status == MutantStatus.ERROR)
+
+            test_count_map_rep = {}
+            for orig in supported_originals:
+                if rep in split_data.get(orig.stem, {}):
+                    test_count_map_rep[orig.stem] = _get_test_count(split_data[orig.stem][rep][0])
+
+            test_counts = list(test_count_map_rep.values())
+            total_num_tests = sum(test_counts) if test_counts else 0
+            avg_num_tests = (total_num_tests / len(test_counts)) if test_counts else 0.0
+            median_num_tests = statistics.median(test_counts) if test_counts else 0
+
+            stats = PipelineStats(
+                total_programs=len(originals),
+                not_supported_programs=not_supported_programs,
+                total_mutants=total_mutants,
+                not_supported_mutants=not_supported_mutants,
+                killed=killed,
+                survived=survived,
+                timeout=timeout,
+                error=error,
+                total_num_tests=total_num_tests,
+                avg_num_tests=avg_num_tests,
+                median_num_tests=median_num_tests
             )
 
-            def _check_kill(task: tuple[Path, Path]) -> MutantResult:
-                test_file, mutant_file = task
-                return checker.check_kill(test_file, mutant_file)
+            # 3g. Verbose per-mutant output
+            if verbose and rep_results:
+                display_results = rep_results[:max_display] if max_display else rep_results
+                print(f"\n{'─'*60}")
+                print(f"  VERBOSE: Per-mutant details ({len(display_results)}"
+                    f"{'/' + str(len(rep_results)) if max_display else ''} shown)")
+                print(f"{'─'*60}")
+                for r in display_results:
+                    status_icon = {
+                        MutantStatus.KILLED: "✗ KILLED",
+                        MutantStatus.SURVIVED: "✓ SURVIVED",
+                        MutantStatus.TIMEOUT: "⏱ TIMEOUT",
+                        MutantStatus.ERROR: "⚠ ERROR",
+                    }[r.status]
+                    print(f"\n  [{status_icon}] {r.mutant_name} ({r.execution_time:.1f}s)")
+                    print(f"    Original: {r.original_name}")
+                    if r.test_gen_command:
+                        print(f"    Test gen: {r.test_gen_command} ({r.test_gen_time:.1f}s)")
+                    if r.safety_check_time:
+                        print(f"    Safety check: {r.safety_check_time:.1f}s")
+                    print(f"    Kill cmd: {r.kill_check_command} ({r.execution_time:.1f}s)")
+                    if r.stdout:
+                        stdout_lines = r.stdout.splitlines()[:5]
+                        print(f"    stdout: {stdout_lines[0]}")
+                        for line in stdout_lines[1:]:
+                            print(f"            {line}")
+                    if r.stderr:
+                        stderr_lines = r.stderr.splitlines()[:5]
+                        print(f"    stderr: {stderr_lines[0]}")
+                        for line in stderr_lines[1:]:
+                            print(f"            {line}")
+                print(f"\n{'─'*60}")
 
-            kill_results: list[MutantResult] = run_parallel_or_seq(
-                kill_tasks, _check_kill, "Kill checking", parallel=parallel,
-            )
-            # Attach test generation command and timing to each result
-            for r in kill_results:
-                orig_stem = r.original_name.removesuffix(".dfy")
-                r.test_gen_command = test_gen_cmd_map.get(orig_stem, "")
-                r.test_gen_time = test_gen_time_map.get(orig_stem, 0.0)
-                r.safety_check_time = safety_time_map.get(orig_stem, 0.0)
-            results.extend(kill_results)
+            # 3e. Print summary
+            print(f"\n{'='*60}")
+            print(f"  Strategy: {strategy.mode} | Repetition: {rep}")
+            print(f"{'='*60}")
+            print(f"  Programs: {stats.total_programs} total")
+            print(f"    Supported:     {stats.total_programs - stats.not_supported_programs}")
+            print(f"    Not-supported: {stats.not_supported_programs} "
+                f"({stats.not_supported_program_rate:.1%})")
+            for detail in not_supported_details:
+                print(f"      - {detail['program']}: {detail['reason']} "
+                    f"({detail['mutants_skipped']} mutants skipped)")
+            print(f"  Mutants: {stats.total_mutants} total")
+            print(f"    Supported:     {stats.supported_mutants}")
+            print(f"    Not-supported: {stats.not_supported_mutants} "
+                f"({stats.not_supported_mutant_rate:.1%})")
+            print(f"  Tests Generated:")
+            print(f"    Total:    {total_num_tests}")
+            print(f"    Average:  {avg_num_tests:.2f} per file")
+            print(f"    Median:   {median_num_tests} per file")
+            print(f"  Kill results (supported only):")
+            print(f"    Killed:   {stats.killed}")
+            print(f"    Survived: {stats.survived}")
+            print(f"    Timeout:  {stats.timeout}")
+            print(f"    Error:    {stats.error}")
+            print(f"  Kill rate: {stats.kill_rate:.2%}")
+            print(f"{'='*60}\n")
 
-        # 3d. Compute stats
-        killed = sum(1 for r in results if r.status == MutantStatus.KILLED)
-        survived = sum(1 for r in results if r.status == MutantStatus.SURVIVED)
-        timeout = sum(1 for r in results if r.status == MutantStatus.TIMEOUT)
-        error = sum(1 for r in results if r.status == MutantStatus.ERROR)
-        test_count_map = {stem: get_test_count(path) for stem, path in test_map.items()}
-        test_counts = list(test_count_map.values())
-        total_num_tests = sum(test_counts) if test_counts else 0
-        avg_num_tests = (total_num_tests / len(test_counts)) if test_counts else 0.0
-        median_num_tests = statistics.median(test_counts) if test_counts else 0
+            # 3f-timing. Per-program timing summary
+            print(f"  {'─'*56}")
+            print(f"  TIMING SUMMARY (per program):")
+            print(f"  {'─'*56}")
+            print(f"  {'Program':<30} {'TestGen':>8} {'Safety':>8} {'Kill(avg)':>10}")
+            print(f"  {'─'*56}")
+            for orig in originals:
+                tg = test_gen_time_map.get(orig.stem, 0.0)
+                sc = safety_time_map.get(orig.stem, 0.0)
+                tc = test_count_map_rep.get(orig.stem, 0)
+                # Average kill time for this program's mutants
+                prog_kills = [r for r in rep_results if r.original_name == f"{orig.stem}.dfy"]
+                avg_kill = (sum(r.execution_time for r in prog_kills) / len(prog_kills)
+                            if prog_kills else 0.0)
+                print(f"  {orig.stem:<30} {tg:>7.1f}s {sc:>7.1f}s {avg_kill:>9.1f}s {tc:>5}")
+            print(f"  {'─'*56}\n")
 
-        stats = PipelineStats(
-            total_programs=len(originals),
-            not_supported_programs=not_supported_programs,
-            total_mutants=total_mutants,
-            not_supported_mutants=not_supported_mutants,
-            killed=killed,
-            survived=survived,
-            timeout=timeout,
-            error=error,
-            total_num_tests=total_num_tests,
-            avg_num_tests=avg_num_tests,
-            median_num_tests=median_num_tests
-        )
+            # 3f. Write JSON
+            output_dir.mkdir(parents=True, exist_ok=True)
+            strategy_output_dir = output_dir / f"results_{strategy.mode}"
+            strategy_output_dir.mkdir(parents=True, exist_ok=True)
 
-        # 3g. Verbose per-mutant output
-        if verbose and results:
-            display_results = results[:max_display] if max_display else results
-            print(f"\n{'─'*60}")
-            print(f"  VERBOSE: Per-mutant details ({len(display_results)}"
-                  f"{'/' + str(len(results)) if max_display else ''} shown)")
-            print(f"{'─'*60}")
-            for r in display_results:
-                status_icon = {
-                    MutantStatus.KILLED: "✗ KILLED",
-                    MutantStatus.SURVIVED: "✓ SURVIVED",
-                    MutantStatus.TIMEOUT: "⏱ TIMEOUT",
-                    MutantStatus.ERROR: "⚠ ERROR",
-                }[r.status]
-                print(f"\n  [{status_icon}] {r.mutant_name} ({r.execution_time:.1f}s)")
-                print(f"    Original: {r.original_name}")
-                if r.test_gen_command:
-                    print(f"    Test gen: {r.test_gen_command} ({r.test_gen_time:.1f}s)")
-                if r.safety_check_time:
-                    print(f"    Safety check: {r.safety_check_time:.1f}s")
-                print(f"    Kill cmd: {r.kill_check_command} ({r.execution_time:.1f}s)")
-                if r.stdout:
-                    stdout_lines = r.stdout.splitlines()[:5]
-                    print(f"    stdout: {stdout_lines[0]}")
-                    for line in stdout_lines[1:]:
-                        print(f"            {line}")
-                if r.stderr:
-                    stderr_lines = r.stderr.splitlines()[:5]
-                    print(f"    stderr: {stderr_lines[0]}")
-                    for line in stderr_lines[1:]:
-                        print(f"            {line}")
-            print(f"\n{'─'*60}")
-
-        # 3e. Print summary
-        print(f"\n{'='*60}")
-        print(f"  Strategy: {strategy.name}")
-        print(f"{'='*60}")
-        print(f"  Programs: {stats.total_programs} total")
-        print(f"    Supported:     {stats.total_programs - stats.not_supported_programs}")
-        print(f"    Not-supported: {stats.not_supported_programs} "
-              f"({stats.not_supported_program_rate:.1%})")
-        for detail in not_supported_details:
-            print(f"      - {detail['program']}: {detail['reason']} "
-                  f"({detail['mutants_skipped']} mutants skipped)")
-        print(f"  Mutants: {stats.total_mutants} total")
-        print(f"    Supported:     {stats.supported_mutants}")
-        print(f"    Not-supported: {stats.not_supported_mutants} "
-              f"({stats.not_supported_mutant_rate:.1%})")
-        print(f"  Tests Generated:")
-        print(f"    Total:    {total_num_tests}")
-        print(f"    Average:  {avg_num_tests:.2f} per file")
-        print(f"    Median:   {median_num_tests} per file")
-        print(f"  Kill results (supported only):")
-        print(f"    Killed:   {stats.killed}")
-        print(f"    Survived: {stats.survived}")
-        print(f"    Timeout:  {stats.timeout}")
-        print(f"    Error:    {stats.error}")
-        print(f"  Kill rate: {stats.kill_rate:.2%}")
-        print(f"{'='*60}\n")
-
-        # 3f-timing. Per-program timing summary
-        print(f"  {'─'*56}")
-        print(f"  TIMING SUMMARY (per program):")
-        print(f"  {'─'*56}")
-        print(f"  {'Program':<30} {'TestGen':>8} {'Safety':>8} {'Kill(avg)':>10}")
-        print(f"  {'─'*56}")
-        for orig in originals:
-            tg = test_gen_time_map.get(orig.stem, 0.0)
-            sc = safety_time_map.get(orig.stem, 0.0)
-            tc = test_count_map.get(orig.stem, 0)
-            # Average kill time for this program's mutants
-            prog_kills = [r for r in results if r.original_name == f"{orig.stem}.dfy"]
-            avg_kill = (sum(r.execution_time for r in prog_kills) / len(prog_kills)
-                        if prog_kills else 0.0)
-            print(f"  {orig.stem:<30} {tg:>7.1f}s {sc:>7.1f}s {avg_kill:>9.1f}s {tc:>5}")
-        print(f"  {'─'*56}\n")
-
-        # 3f. Write JSON
-        output_dir.mkdir(parents=True, exist_ok=True)
-        results_file = get_strategy_results_path(strategy.name, output_dir)
-        output_data = {
-            "strategy": strategy.name,
-            "stats": stats.to_dict(),
-            "timing": {
-                "per_program": {
-                    orig.stem: {
-                        "test_gen_time": test_gen_time_map.get(orig.stem, 0.0),
-                        "safety_check_time": safety_time_map.get(orig.stem, 0.0),
-                    }
-                    for orig in originals
+            rep_strategy_key = f"{strategy.mode}_rep_{rep}"
+            results_file = get_strategy_results_path(rep_strategy_key, strategy_output_dir)
+            output_data = {
+                "strategy": strategy.mode,
+                "repetition": rep,
+                "stats": stats.to_dict(),
+                "timing": {
+                    "per_program": {
+                        orig.stem: {
+                            "test_gen_time": split_data.get(orig.stem, {}).get(rep, (None, test_gen_time_map.get(orig.stem, 0.0)))[1],
+                            "safety_check_time": safety_time_map.get(orig.stem, 0.0),
+                        }
+                        for orig in originals
+                    },
                 },
-            },
-            "test_counts": {
-                "per_program": {
-                    orig.stem: test_count_map.get(orig.stem, 0)
-                    for orig in originals
-                }
-            },
-            "not_supported": not_supported_details,
-            "results": [r.to_dict() for r in results],
-        }
-        results_file.write_text(json.dumps(output_data, indent=2) + "\n")
-        print(f"[run_evaluation] Results written to {results_file}")
-        all_strategy_results[strategy.name] = output_data
+                "test_counts": {
+                    "per_program": {
+                        orig.stem: test_count_map_rep.get(orig.stem, 0)
+                        for orig in originals
+                    }
+                },
+                "not_supported": not_supported_details,
+                "results": [r.to_dict() for r in rep_results],
+            }
+            results_file.write_text(json.dumps(output_data, indent=2) + "\n")
+            print(f"[run_evaluation] Results written to {results_file}")
+            all_strategy_results[rep_strategy_key] = output_data
 
     # --- Step 4: Comparison summary ---
     print_comparison_table(all_strategy_results)
