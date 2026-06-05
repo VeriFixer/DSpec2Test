@@ -4,7 +4,7 @@ function Factorial(n: nat): nat {
 }
 
 // iterative implementation of factorial
-method IterativeFactorial(n: nat) returns (result: nat)
+method {:testEntry} IterativeFactorial(n: nat) returns (result: nat)
   ensures result == Factorial(n)
 {
   result := 1;

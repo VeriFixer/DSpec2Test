@@ -1,6 +1,6 @@
 // dafny-synthesis_task_id_401.dfy
 
-method IndexWiseAddition(a: seq<seq<int>>, b: seq<seq<int>>) returns (result: seq<seq<int>>)
+method {:testEntry} IndexWiseAddition(a: seq<seq<int>>, b: seq<seq<int>>) returns (result: seq<seq<int>>)
   requires |a| > 0 && |b| > 0
   requires |a| == |b|
   requires forall i :: 0 <= i < |a| ==> |a[i]| == |b[i]|

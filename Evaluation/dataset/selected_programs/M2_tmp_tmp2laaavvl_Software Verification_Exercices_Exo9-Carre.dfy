@@ -1,4 +1,4 @@
-method Carre(a: nat) returns (c: nat)
+method {:testEntry} Carre(a: nat) returns (c: nat)
 ensures c == a*a
 {
     var i := 0;

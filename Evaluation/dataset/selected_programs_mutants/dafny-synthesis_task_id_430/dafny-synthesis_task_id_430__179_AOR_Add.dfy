@@ -1,9 +1,9 @@
 // dafny-synthesis_task_id_430.dfy
 
-method ParabolaDirectrix(a: real, h: real, k: real)
+method {:testEntry} ParabolaDirectrix(a: real, h: real, k: real)
     returns (directrix: real)
   requires a != 0.0
   ensures directrix == k - 1.0 / (4.0 * a)
 {
-  directrix := k - 1.0 / (4.0 + a);
+  directrix := k + 1.0 / (4.0 * a);
 }

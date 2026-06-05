@@ -13,7 +13,7 @@ ghost function fSum(n: nat): int {
   if n <= 0 then 0 else f(n-1) + fSum(n-1)
 }
 
-method problem6(n:nat) returns (a: int)
+method {:testEntry} problem6(n:nat) returns (a: int)
 ensures a == fSum(n)
 {
   a := 0;

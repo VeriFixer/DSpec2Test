@@ -1,10 +1,10 @@
-method M()
+method {:testEntry} M()
 {
   N();
   assert false;
 }
 
-method N()
+method {:testEntry} N()
   ensures P();
 
 predicate P()

@@ -1,6 +1,6 @@
 // dafny-synthesis_task_id_618.dfy
 
-method ElementWiseDivide(a: seq<int>, b: seq<int>) returns (result: seq<int>)
+method {:testEntry} ElementWiseDivide(a: seq<int>, b: seq<int>) returns (result: seq<int>)
   requires |a| == |b|
   requires forall i :: 0 <= i < |b| ==> b[i] != 0
   ensures |result| == |a|

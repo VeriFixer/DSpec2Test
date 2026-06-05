@@ -4,7 +4,7 @@ ghost function f2(n: nat): nat {
     else 5*f2(n/3) + n%4
 }
 
-method mod2(n:nat) returns (a:nat) 
+method {:testEntry} mod2(n:nat) returns (a:nat) 
 ensures a == f2(n)
 {
 

@@ -1,6 +1,6 @@
 // dafny-synthesis_task_id_454.dfy
 
-method ContainsZ(s: string) returns (result: bool)
+method {:testEntry} ContainsZ(s: string) returns (result: bool)
   ensures result <==> exists i :: 0 <= i < |s| && (s[i] == 'z' || s[i] == 'Z')
 {
   result := false;

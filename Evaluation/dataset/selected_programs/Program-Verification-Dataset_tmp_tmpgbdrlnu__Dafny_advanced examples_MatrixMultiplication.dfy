@@ -20,7 +20,7 @@ function RowColumnProductFrom(m1: array2<int>, m2: array2<int>, row: nat, column
         m1[row,k]*m2[k,column] + RowColumnProductFrom(m1, m2, row, column, k+1)
 }
 
-method multiply(m1: array2<int>, m2: array2<int>) returns (m3: array2<int>)
+method {:testEntry} multiply(m1: array2<int>, m2: array2<int>) returns (m3: array2<int>)
     requires m1 != null && m2 != null
     requires m1.Length1 == m2.Length0
     ensures m3 != null && m3.Length0 == m1.Length0 && m3.Length1 == m2.Length1

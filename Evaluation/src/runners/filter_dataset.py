@@ -1,7 +1,7 @@
 import csv
-import shutil
 import re
 import argparse
+import time
 from pathlib import Path
 
 from src.config import CSV_ROOT, EXTERNAL_ROOT, SELECTED_PROGRAMS_DIR
@@ -63,7 +63,12 @@ def filter_and_copy_dafny_programs(csv_name: str):
                     # 5. Copy if clean
                     if not contains_keyword:
                         dest_file = SELECTED_PROGRAMS_DIR / src_file.name
-                        shutil.copy2(src_file, dest_file)
+
+                        modified_content = re.sub(r'\bmethod\b', 'method {:testEntry}', content)
+
+                        with open(dest_file, 'w', encoding='utf-8') as dest_f:
+                            dest_f.write(modified_content)
+
                         copied_files += 1
 
                 except Exception as e:
@@ -77,6 +82,7 @@ def filter_and_copy_dafny_programs(csv_name: str):
     logger.info("=========================")
 
 if __name__ == "__main__":
+    start_time = time.time()
     # Setup Argument Parser
     parser = argparse.ArgumentParser(description="Filter and copy Dafny programs based on a CSV and keywords.")
     parser.add_argument(
@@ -90,3 +96,7 @@ if __name__ == "__main__":
     
     # Execute function with the provided file argument
     filter_and_copy_dafny_programs(args.file)
+
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    logger.info(f"Total execution time: {elapsed_time:.4f} seconds")

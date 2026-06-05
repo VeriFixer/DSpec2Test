@@ -1,6 +1,6 @@
 // dafny-synthesis_task_id_142.dfy
 
-method CountIdenticalPositions(a: seq<int>, b: seq<int>, c: seq<int>)
+method {:testEntry} CountIdenticalPositions(a: seq<int>, b: seq<int>, c: seq<int>)
     returns (count: int)
   requires |a| == |b| && |b| == |c|
   ensures count >= 0

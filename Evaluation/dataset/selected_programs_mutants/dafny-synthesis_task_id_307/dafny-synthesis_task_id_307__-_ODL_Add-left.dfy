@@ -1,6 +1,6 @@
 // dafny-synthesis_task_id_307.dfy
 
-method DeepCopySeq(s: seq<int>) returns (copy: seq<int>)
+method {:testEntry} DeepCopySeq(s: seq<int>) returns (copy: seq<int>)
   ensures |copy| == |s|
   ensures forall i :: 0 <= i < |s| ==> copy[i] == s[i]
 {

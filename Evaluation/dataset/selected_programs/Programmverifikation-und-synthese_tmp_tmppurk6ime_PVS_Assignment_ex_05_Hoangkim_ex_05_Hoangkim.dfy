@@ -5,7 +5,7 @@ function fib(n: nat):nat
     if n < 2 then n else fib(n-2)+fib(n-1)
 }
 
-method fibIter(n:nat) returns (a:nat)
+method {:testEntry} fibIter(n:nat) returns (a:nat)
 requires n > 0
 ensures a == fib(n)
 {
@@ -31,7 +31,7 @@ ensures a == fib(n)
 function fact(n:nat):nat
 {if n==0 then 1 else n*fact(n-1)}
 
-method factIter(n:nat) returns (a:nat)
+method {:testEntry} factIter(n:nat) returns (a:nat)
 requires n >= 0;
 ensures a == fact(n)
 {
@@ -56,7 +56,7 @@ function gcd(m: nat, n: nat): nat
     else gcd(m, n - m)
 }
 
-method gcdI(m: int, n: int) returns (g: int)
+method {:testEntry} gcdI(m: int, n: int) returns (g: int)
     requires  m > 0 && n > 0 
     ensures g == gcd(m, n);
     {

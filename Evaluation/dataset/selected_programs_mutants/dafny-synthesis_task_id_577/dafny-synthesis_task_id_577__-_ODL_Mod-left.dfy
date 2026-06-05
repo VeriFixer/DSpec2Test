@@ -10,7 +10,7 @@ function Factorial(n: int): int
     n * Factorial(n - 1)
 }
 
-method FactorialOfLastDigit(n: int) returns (fact: int)
+method {:testEntry} FactorialOfLastDigit(n: int) returns (fact: int)
   requires n >= 0
   ensures fact == Factorial(n % 10)
 {

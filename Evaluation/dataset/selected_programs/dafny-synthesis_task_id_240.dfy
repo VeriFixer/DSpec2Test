@@ -1,4 +1,4 @@
-method ReplaceLastElement(first: seq<int>, second: seq<int>) returns (result: seq<int>)
+method {:testEntry} ReplaceLastElement(first: seq<int>, second: seq<int>) returns (result: seq<int>)
     requires |first| > 0
     ensures |result| == |first| - 1 + |second|
     ensures forall i :: 0 <= i < |first| - 1 ==> result[i] == first[i]

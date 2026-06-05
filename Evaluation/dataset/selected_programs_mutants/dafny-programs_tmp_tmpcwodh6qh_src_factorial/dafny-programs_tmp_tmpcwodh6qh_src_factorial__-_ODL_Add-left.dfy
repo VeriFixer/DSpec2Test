@@ -9,7 +9,7 @@ function fact(n: nat): nat
     n * fact(n - 1)
 }
 
-method factorial(n: nat) returns (res: nat)
+method {:testEntry} factorial(n: nat) returns (res: nat)
   ensures res == fact(n)
 {
   var i := 1;

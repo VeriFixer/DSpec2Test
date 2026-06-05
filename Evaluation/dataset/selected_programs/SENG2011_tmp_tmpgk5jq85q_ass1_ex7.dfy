@@ -1,5 +1,5 @@
 // successfully verifies
-method BigFoot(step: nat) // DO NOT CHANGE
+method {:testEntry} BigFoot(step: nat) // DO NOT CHANGE
 requires 0 < step <= 42;
 {
     var indx := 0; // DO NOT CHANGE

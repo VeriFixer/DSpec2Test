@@ -1,9 +1,9 @@
-method foo()
+method {:testEntry} foo()
 {
   bar();
   assert false;
 }
 
-method bar()
+method {:testEntry} bar()
   ensures false;
 

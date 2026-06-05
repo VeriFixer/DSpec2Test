@@ -1,6 +1,6 @@
 // dafny-synthesis_task_id_14.dfy
 
-method TriangularPrismVolume(base: int, height: int, length: int)
+method {:testEntry} TriangularPrismVolume(base: int, height: int, length: int)
     returns (volume: int)
   requires base > 0
   requires height > 0

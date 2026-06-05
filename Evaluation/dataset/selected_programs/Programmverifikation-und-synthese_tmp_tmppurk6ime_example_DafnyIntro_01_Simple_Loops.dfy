@@ -21,7 +21,7 @@
 
 // Here we use two invariants I1 and I2, which amounts to the same as using I1 && I2:   
 
-method Gauss(n:int) returns (sum:int)
+method {:testEntry} Gauss(n:int) returns (sum:int)
 requires n >= 0
 ensures sum == n*(n+1)/2     // 
 {
@@ -43,7 +43,7 @@ ensures sum == n*(n+1)/2     //
 //
 // Here is the proof using Dafny:
 
-method sumOdds(n:nat) returns (sum:nat)
+method {:testEntry} sumOdds(n:nat) returns (sum:nat)
 ensures sum == n*n;
 {
      sum := 0; 

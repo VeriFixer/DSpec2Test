@@ -3,7 +3,7 @@ function Stairs(n: nat): nat {
 }
 
 // A simple specification
-method ClimbStairs(n: nat) returns (r: nat)
+method {:testEntry} ClimbStairs(n: nat) returns (r: nat)
   ensures r == Stairs(n)
 {
   var a, b := 1, 1;
