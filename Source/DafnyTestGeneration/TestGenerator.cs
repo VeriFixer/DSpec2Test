@@ -21,7 +21,8 @@ namespace DafnyTestGeneration {
     private const string FailingMethodName = "Failing";
     private static readonly List<string> IgnoreNames = [];
     private static readonly List<string> LengthNames = [];
-    private static readonly Dictionary<string, BlockStmt> MethodBodies = [];
+    private static readonly Dictionary<string, BlockStmt> OriginalBodies = [];
+    private static readonly Dictionary<string, (List<AttributedExpression>, List<AttributedExpression>)> OriginalSpec = [];
 
     /// <summary>
     /// This method returns each capturedState that is unreachable, one by one,
@@ -378,8 +379,12 @@ namespace DafnyTestGeneration {
           );
           
           foreach (var method in decl.Members.OfType<Method>()) {
-            if (MethodBodies.ContainsKey(method.Name)) {
-              method.SetBody(MethodBodies[method.Name]);
+            if (OriginalBodies.TryGetValue(method.Name, out BlockStmt body)) {
+              method.SetBody(body);
+            }
+            if (OriginalSpec.TryGetValue(method.Name, out var spec)) {
+              method.Req = spec.Item1;
+              method.Ens = spec.Item2;
             }
           }
         }
@@ -428,7 +433,7 @@ namespace DafnyTestGeneration {
               if (entryPoint is Method method) {
                 if (method.Body != null) {
                   method.Body.Body.Insert(0, assumeStmt);
-                  if (MethodBodies.TryGetValue(method.Name, out var body)) {
+                  if (OriginalBodies.TryGetValue(method.Name, out var body)) {
                     body.Body.Insert(0, assumeStmt);
                   }
                 } else {
@@ -477,11 +482,21 @@ namespace DafnyTestGeneration {
                  TestGenerationOptions.TestEntryAttribute)) {
 
         if (entryPoint is Method method) {
+          
+            var cloner = new Cloner();
+            var copiedReq = method.Req.Select(req => 
+              new AttributedExpression(cloner.CloneExpr(req.E), req.Label, req.Attributes)
+            ).ToList();
+            var copiedEns = method.Ens.Select(ens => 
+              new AttributedExpression(cloner.CloneExpr(ens.E), ens.Label, ens.Attributes)
+            ).ToList();
+            OriginalSpec[method.Name] = (copiedReq, copiedEns);
+            
           if (method.Body is not null) {
             if (isSpecMode) {
               method.SetBody(new BlockStmt(method.Body.Origin, []));
             } else {
-              MethodBodies[method.Name] =  method.Body;
+              OriginalBodies[method.Name] = method.Body;
             }
           }
 
