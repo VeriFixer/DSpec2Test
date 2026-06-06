@@ -12,6 +12,7 @@ import shutil
 import sys
 import re
 import statistics
+import time
 from pathlib import Path
 
 from src.logging_config import get_logger
@@ -524,6 +525,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> None:
     """Entry point."""
+    start_time = time.time()
+
     args = parse_args(argv)
     out = Path(args.output_dir) if args.output_dir else None
 
@@ -548,6 +551,11 @@ def main(argv: list[str] | None = None) -> None:
         clean_cache=args.clean_cache,
         repeat=args.repeat
     )
+
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    logger.info(f"Total run_evaluation.py time: {elapsed_time / 3600:.4f} hours")
+
     sys.exit(exit_code)
 
 
