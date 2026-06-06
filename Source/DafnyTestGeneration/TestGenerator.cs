@@ -298,7 +298,7 @@ namespace DafnyTestGeneration {
         yield return "}";
       }
 
-      PopulateCoverageReport(report, program, cache);
+
 
       if (methodsGenerated == 0) {
         await options.ErrorWriter.WriteLineAsync(
@@ -417,19 +417,21 @@ namespace DafnyTestGeneration {
           
           foreach (var formal in argFormals) {
             if (!IgnoreNames.Contains(formal.Name) && testMethod.ArgExpressions.TryGetValue(formal.Name, out var argExpr) && argExpr != null) {
-              var nameSegment = new NameSegment(new Token(), formal.Name, null);
+              var validTok = entryPoint.StartToken;
+              
+              var nameSegment = new NameSegment(validTok, formal.Name, null);
               
               BinaryExpr equalityExpr;
               if (LengthNames.Contains(formal.Name)) {
-                var cardinality = new UnaryOpExpr(new Token(), UnaryOpExpr.Opcode.Cardinality, nameSegment);
-                var literalExpr = new LiteralExpr(new Token(), argExpr.Children.Count());
-                equalityExpr = new BinaryExpr(new Token(), BinaryExpr.Opcode.Neq, cardinality, literalExpr);
+                var cardinality = new UnaryOpExpr(validTok, UnaryOpExpr.Opcode.Cardinality, nameSegment);
+                var literalExpr = new LiteralExpr(validTok, argExpr.Children.Count());
+                equalityExpr = new BinaryExpr(validTok, BinaryExpr.Opcode.Neq, cardinality, literalExpr);
               } else {
-                equalityExpr = new BinaryExpr(new Token(), BinaryExpr.Opcode.Neq, nameSegment, argExpr);
+                equalityExpr = new BinaryExpr(validTok, BinaryExpr.Opcode.Neq, nameSegment, argExpr);
               }
 
               var axiomAttr = new Attributes(Attributes.AxiomAttributeName, [], null);
-              var assumeStmt = new AssumeStmt(new Token(), equalityExpr, axiomAttr);
+              var assumeStmt = new AssumeStmt(validTok, equalityExpr, axiomAttr);
               if (entryPoint is Method method) {
                 if (method.Body != null) {
                   method.Body.Body.Insert(0, assumeStmt);
@@ -437,10 +439,10 @@ namespace DafnyTestGeneration {
                     body.Body.Insert(0, assumeStmt);
                   }
                 } else {
-                  method.SetBody(new BlockStmt(new Token(), [assumeStmt]));
+                  method.SetBody(new BlockStmt(validTok, [assumeStmt]));
                 }
               } else if (entryPoint is Function function) {
-                function.Body = new StmtExpr(new Token(), assumeStmt, function.Body);
+                function.Body = new StmtExpr(validTok, assumeStmt, function.Body);
               }
             }
           }
