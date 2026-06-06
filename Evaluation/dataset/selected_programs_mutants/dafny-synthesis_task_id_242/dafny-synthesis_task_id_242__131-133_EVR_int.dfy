@@ -1,8 +1,0 @@
-// dafny-synthesis_task_id_242.dfy
-
-method {:testEntry} CountCharacters(s: string) returns (count: int)
-  ensures count >= 0
-  ensures count == |s|
-{
-  count := 0;
-}

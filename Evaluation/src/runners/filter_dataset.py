@@ -1,4 +1,5 @@
 import csv
+import sys
 import re
 import argparse
 import time
@@ -19,18 +20,16 @@ def filter_and_copy_dafny_programs(csv_name: str):
         logger.error(f"CSV file not found at {csv_path}")
         return
 
-    # Create destination directory if it doesn't exist
     SELECTED_PROGRAMS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 2. Initialize Counters
     total_csv_files = 0
     dafnybench_files = 0
+    methods_files = 0
     copied_files = 0
 
-    # Compile regex for exact word matching
     keyword_patterns = [re.compile(rf'\b{re.escape(kw)}\b') for kw in KEYWORDS]
+    method_pattern = re.compile(r'\bmethod\b')
 
-    # 3. Read and Process CSV
     logger.info(f"Starting to process {csv_name}...")
     
     with open(csv_path, mode='r', encoding='utf-8') as f:
@@ -44,7 +43,6 @@ def filter_and_copy_dafny_programs(csv_name: str):
             if benchmark_name == "DafnyBench":
                 dafnybench_files += 1
 
-                # Search for the file in ground_truth
                 matched_files = list(ground_truth_dir.glob(f"{program_name}.dfy"))
                 
                 if not matched_files:
@@ -53,15 +51,21 @@ def filter_and_copy_dafny_programs(csv_name: str):
 
                 src_file = matched_files[0] 
 
-                # 4. Check file content for keywords
                 try:
                     with open(src_file, 'r', encoding='utf-8') as src_f:
                         content = src_f.read()
 
+                    has_method = bool(method_pattern.search(content))
+
+                    if not has_method:
+                        continue
+
+                    methods_files += 1
+
                     contains_keyword = any(pattern.search(content) for pattern in keyword_patterns)
 
-                    # 5. Copy if clean
                     if not contains_keyword:
+
                         dest_file = SELECTED_PROGRAMS_DIR / src_file.name
 
                         modified_content = re.sub(r'\bmethod\b', 'method {:testEntry}', content)
@@ -74,29 +78,38 @@ def filter_and_copy_dafny_programs(csv_name: str):
                 except Exception as e:
                     logger.error(f"Error reading or copying {src_file.name}: {e}")
 
-    # 6. Log Summary Statistics
     logger.info("=== Execution Summary ===")
-    logger.info(f"Total files in CSV:               {total_csv_files}")
-    logger.info(f"Files belonging to DafnyBench:    {dafnybench_files}")
-    logger.info(f"Files copied (no keywords found): {copied_files}")
+    logger.info(f"Total files in CSV:           {total_csv_files}")
+    logger.info(f"Files from DafnyBench:        {dafnybench_files}")
+    logger.info(f"Files with methods:           {methods_files}")
+    logger.info(f"Files copied (no keywords):   {copied_files}")
     logger.info("=========================")
+    return 0
 
-if __name__ == "__main__":
-    start_time = time.time()
-    # Setup Argument Parser
-    parser = argparse.ArgumentParser(description="Filter and copy Dafny programs based on a CSV and keywords.")
+
+def parse_args(argv=None):
+    """Parse CLI arguments for dataset filtering."""
+    parser = argparse.ArgumentParser(description="Filter and copy Dafny programs.")
     parser.add_argument(
         "--file", 
         required=True, 
         help="The name of the CSV file (located in CSV_ROOT) to process."
     )
+    return parser.parse_args(argv)
+
+
+def main(argv=None):
+    start_time = time.time()
+
+    args = parse_args(argv)
     
-    # Parse arguments
-    args = parser.parse_args()
-    
-    # Execute function with the provided file argument
-    filter_and_copy_dafny_programs(args.file)
+    r = filter_and_copy_dafny_programs(args.file)
 
     end_time = time.time()
     elapsed_time = end_time - start_time
     logger.info(f"Total execution time: {elapsed_time:.4f} seconds")
+    sys.exit(r)
+
+
+if __name__ == "__main__":
+    main()
