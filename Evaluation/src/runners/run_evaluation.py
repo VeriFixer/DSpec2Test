@@ -8,7 +8,6 @@ Usage:
 
 import argparse
 import json
-import logging
 import shutil
 import sys
 import re
@@ -40,17 +39,15 @@ def _get_test_count(dfy_file: Path) -> int:
     return len(set(pattern.findall(content)))
 
 def _split_tests(test_file: Path, total_reps: int, base_tests_dir: Path, fallback_time: float) -> dict[int, tuple[Path, float]]:
-    """Parses the generated test file, splits by // REPEAT comments, and creates cumulative files."""
+    """Parses the generated test file, splits by // REPEAT comments, and creates isolated files per rep."""
     if not test_file.exists():
         return {}
     
     lines = test_file.read_text(encoding='utf-8').splitlines()
     reps_content = {i: [] for i in range(1, total_reps + 1)}
-    # Initialize with fallback time in case comments are missing
     reps_time = {i: fallback_time for i in range(1, total_reps + 1)} 
     current_rep = 1
     
-    # Adjusted regex to handle floats and variable spacing: TIME: 6.5542942 s
     rep_pattern = re.compile(r'//\s*REPEAT\s+(\d+)\s*-\s*TIME:\s*([0-9.]+)\s*s?')
     
     for line in lines:
@@ -65,17 +62,15 @@ def _split_tests(test_file: Path, total_reps: int, base_tests_dir: Path, fallbac
             current_rep = min(parsed_rep + 1, total_reps)
         
     accumulated_paths = {}
-    accumulated_lines = []
     
     for r in range(1, total_reps + 1):
-        accumulated_lines.extend(reps_content[r])
         rep_time = reps_time[r]
         
         rep_dir = base_tests_dir / f"rep_{r}"
         rep_dir.mkdir(parents=True, exist_ok=True)
         
         out_path = rep_dir / test_file.name
-        out_path.write_text("\n".join(accumulated_lines), encoding='utf-8')
+        out_path.write_text("\n".join(reps_content[r]), encoding='utf-8')
         accumulated_paths[r] = (out_path, rep_time)
         
     return accumulated_paths
@@ -159,11 +154,6 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                     all_strategy_results[rep_strategy_key] = json.loads(rep_file.read_text())
             continue
 
-        # Track stats
-        not_supported_programs = 0
-        not_supported_mutants = 0
-        total_mutants = sum(len(mutant_map.get(o.stem, [])) for o in originals)
-
         # 3a. Generate tests for each original
         tests_dir = SELECTED_PROGRAMS_DIR.parent / f"tests_{strategy.mode}"
         tests_dir.mkdir(parents=True, exist_ok=True)
@@ -173,9 +163,6 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             test_file = tests_dir / f"{orig.stem}.test.dfy"
             result = strategy.generate_tests(orig, test_file, repeat)
             if result.success and result.test_file:
-                # Copy generated test artifact to strategy combined dir
-                #artifact_dest = strategy_combined_dir / f"{orig.stem}.test.dfy"
-                #artifact_dest.write_text(result.test_file.read_text())
                 return (orig.stem, result.test_file, result.command, result.execution_time)
             logger.warning("Test generation failed for %s: %s\n  Command: %s",
                          orig.name, result.error_message, result.command)
@@ -195,16 +182,23 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             if test_file:
                 test_map[stem] = test_file
 
-        # 3b. Safety check per original (parallel)
-        supported_originals: list[Path] = []
-        not_supported_details: list[dict] = []
-        safety_time_map: dict[str, float] = {}
-
-        # Separate originals with/without tests
+        # 3b. Split tests (isolate reps into combined dir)
+        split_data: dict[str, dict[int, tuple[Path, float]]] = {}
         originals_with_tests = [o for o in originals if o.stem in test_map]
         originals_without_tests = [o for o in originals if o.stem not in test_map]
 
-        # Mark programs with no tests as not supported
+        for orig in originals_with_tests:
+            total_time = test_gen_time_map.get(orig.stem, 0.0)
+            split_data[orig.stem] = _split_tests(test_map[orig.stem], repeat, strategy_combined_dir, total_time)
+
+        # Initialize tracking variables across reps
+        supported_originals = originals_with_tests.copy()
+        not_supported_details = []
+        not_supported_programs = 0
+        not_supported_mutants = 0
+        total_mutants = sum(len(mutant_map.get(o.stem, [])) for o in originals)
+
+        # Mark programs with no tests as not supported initially
         for orig in originals_without_tests:
             n_mutants = len(mutant_map.get(orig.stem, []))
             not_supported_programs += 1
@@ -218,66 +212,81 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 "test_gen_time": test_gen_time_map.get(orig.stem, 0.0),
             })
 
-        def _safety_check(orig: Path) -> tuple[Path, SafetyCheckResult]:
-            test_file = test_map[orig.stem]
-            result = run_safety_check(orig, test_file, artifacts_dir=tests_dir)
-            return (orig, result)
-
-        safety_results: list[tuple[Path, SafetyCheckResult]] = run_parallel_or_seq(
-            originals_with_tests, _safety_check, "Safety check", parallel=parallel,
-        )
-
-        for orig, safety_result in safety_results:
-            safety_time_map[orig.stem] = safety_result.execution_time
-
-            if not safety_result.passed:
-                n_mutants = len(mutant_map.get(orig.stem, []))
-                not_supported_programs += 1
-                not_supported_mutants += n_mutants
-                detail: dict = {
-                    "program": orig.name,
-                    "reason": "safety_check_failed",
-                    "failed_step": "safety_check",
-                    "mutants_skipped": n_mutants,
-                    "test_gen_command": test_gen_cmd_map.get(orig.stem, ""),
-                    "test_gen_time": test_gen_time_map.get(orig.stem, 0.0),
-                    "safety_check_command": safety_result.command,
-                    "safety_check_time": safety_result.execution_time,
-                    "safety_file": safety_result.safety_file,
-                }
-                if safety_result.error_message:
-                    detail["error_message"] = safety_result.error_message
-                if safety_result.stdout:
-                    detail["stdout"] = safety_result.stdout
-                if safety_result.stderr:
-                    detail["stderr"] = safety_result.stderr
-                not_supported_details.append(detail)
-                if sequential:
-                    print(f"  [NOT SUPPORTED] {orig.name} — safety check failed")
-                continue
-
-            supported_originals.append(orig)
-
-        split_data: dict[str, dict[int, tuple[Path, float]]] = {}
-        for orig in supported_originals:
-            total_time = test_gen_time_map.get(orig.stem, 0.0)
-            split_data[orig.stem] = _split_tests(test_map[orig.stem], repeat, tests_dir, total_time)
+        cumulative_safety_time = {orig.stem: 0.0 for orig in originals}
+        cumulative_test_gen_time = {orig.stem: 0.0 for orig in originals}
+        cumulative_test_counts = {orig.stem: 0 for orig in originals}
+        
+        mutant_status_tracker: dict[str, MutantResult] = {}
+        mutant_accumulated_time: dict[str, float] = {}
 
         for rep in range(1, repeat + 1):
             print(f"\n[run_evaluation] --- Running Repetition {rep}/{repeat} ---")
-            rep_results: list[MutantResult] = []
-
-            # Create rep specific directories
+            
             strategy_combined_rep_dir = strategy_combined_dir / f"rep_{rep}"
-            strategy_combined_rep_dir.mkdir(parents=True, exist_ok=True)
 
-            # 3c. Kill check supported mutants
+            # 3c. Safety check per original using isolated rep tests
+            def _safety_check(orig: Path) -> tuple[Path, SafetyCheckResult]:
+                rep_test_file = split_data[orig.stem][rep][0]
+                result = run_safety_check(orig, rep_test_file, artifacts_dir=strategy_combined_rep_dir)
+                return (orig, result)
+
+            safety_results: list[tuple[Path, SafetyCheckResult]] = run_parallel_or_seq(
+                supported_originals, _safety_check, f"Safety check (Rep {rep})", parallel=parallel,
+            )
+
+            newly_failed_originals = []
+            for orig, safety_result in safety_results:
+                cumulative_safety_time[orig.stem] += safety_result.execution_time
+
+                if not safety_result.passed:
+                    n_mutants = len(mutant_map.get(orig.stem, []))
+                    not_supported_programs += 1
+                    not_supported_mutants += n_mutants
+                    detail: dict = {
+                        "program": orig.name,
+                        "reason": f"safety_check_failed_rep_{rep}",
+                        "failed_step": "safety_check",
+                        "mutants_skipped": n_mutants,
+                        "test_gen_command": test_gen_cmd_map.get(orig.stem, ""),
+                        "test_gen_time": split_data.get(orig.stem, {}).get(rep, (None, 0.0))[1],
+                        "safety_check_command": safety_result.command,
+                        "safety_check_time": safety_result.execution_time,
+                        "safety_file": safety_result.safety_file,
+                    }
+                    if safety_result.error_message:
+                        detail["error_message"] = safety_result.error_message
+                    if safety_result.stdout:
+                        detail["stdout"] = safety_result.stdout
+                    if safety_result.stderr:
+                        detail["stderr"] = safety_result.stderr
+                    not_supported_details.append(detail)
+                    newly_failed_originals.append(orig)
+                    if sequential:
+                        print(f"  [NOT SUPPORTED] {orig.name} — safety check failed in rep {rep}")
+                    continue
+
+            for orig in newly_failed_originals:
+                supported_originals.remove(orig)
+
+            # Accumulate test stats strictly for supported originals
+            for orig in supported_originals:
+                rep_gen_time = split_data.get(orig.stem, {}).get(rep, (None, 0.0))[1]
+                cumulative_test_gen_time[orig.stem] += rep_gen_time
+                
+                rep_test_file = split_data[orig.stem][rep][0]
+                cumulative_test_counts[orig.stem] += _get_test_count(rep_test_file)
+
+            # 3d. Kill check supported mutants
             kill_tasks: list[tuple[Path, Path]] = []
             for orig in supported_originals:
-                if rep in split_data.get(orig.stem, {}):
-                    rep_test_file, _ = split_data[orig.stem][rep]
-                    for mutant in mutant_map.get(orig.stem, []):
-                        kill_tasks.append((rep_test_file, mutant))
+                rep_test_file = split_data[orig.stem][rep][0]
+                for mutant in mutant_map.get(orig.stem, []):
+                    m_name = mutant.name
+                    prev_res = mutant_status_tracker.get(m_name)
+                    # Skip redundant work if it was already killed in a previous rep
+                    if prev_res and prev_res.status == MutantStatus.KILLED:
+                        continue
+                    kill_tasks.append((rep_test_file, mutant))
 
             if kill_tasks:
                 checker = KillChecker(
@@ -292,27 +301,37 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 kill_results: list[MutantResult] = run_parallel_or_seq(
                     kill_tasks, _check_kill, f"Kill checking (Rep {rep})", parallel=parallel,
                 )
-                # Attach test generation command and timing to each result
+                
                 for r in kill_results:
+                    m_name = r.mutant_name
+                    
+                    # Accumulate execution time
+                    prev_time = mutant_accumulated_time.get(m_name, 0.0)
+                    new_time = prev_time + r.execution_time
+                    mutant_accumulated_time[m_name] = new_time
+                    r.execution_time = new_time
+                    
                     orig_stem = r.original_name.removesuffix(".dfy")
                     r.test_gen_command = test_gen_cmd_map.get(orig_stem, "")
-                    rep_gen_time = split_data.get(orig_stem, {}).get(rep, (None, test_gen_time_map.get(orig_stem, 0.0)))[1]
-                    r.test_gen_time = rep_gen_time
-                    r.safety_check_time = safety_time_map.get(orig_stem, 0.0)
-                rep_results.extend(kill_results)
+                    r.test_gen_time = cumulative_test_gen_time.get(orig_stem, 0.0)
+                    r.safety_check_time = cumulative_safety_time.get(orig_stem, 0.0)
+                    
+                    mutant_status_tracker[m_name] = r
 
-            # 3d. Compute stats
+            # Reconstruct complete rep_results to accurately compute stats
+            rep_results: list[MutantResult] = []
+            for orig in supported_originals:
+                for mutant in mutant_map.get(orig.stem, []):
+                    if mutant.name in mutant_status_tracker:
+                        rep_results.append(mutant_status_tracker[mutant.name])
+
+            # 3e. Compute stats
             killed = sum(1 for r in rep_results if r.status == MutantStatus.KILLED)
             survived = sum(1 for r in rep_results if r.status == MutantStatus.SURVIVED)
             timeout = sum(1 for r in rep_results if r.status == MutantStatus.TIMEOUT)
             error = sum(1 for r in rep_results if r.status == MutantStatus.ERROR)
 
-            test_count_map_rep = {}
-            for orig in supported_originals:
-                if rep in split_data.get(orig.stem, {}):
-                    test_count_map_rep[orig.stem] = _get_test_count(split_data[orig.stem][rep][0])
-
-            test_counts = list(test_count_map_rep.values())
+            test_counts = [cumulative_test_counts[orig.stem] for orig in supported_originals]
             total_num_tests = sum(test_counts) if test_counts else 0
             avg_num_tests = (total_num_tests / len(test_counts)) if test_counts else 0.0
             median_num_tests = statistics.median(test_counts) if test_counts else 0
@@ -331,7 +350,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 median_num_tests=median_num_tests
             )
 
-            # 3g. Verbose per-mutant output
+            # 3f. Verbose per-mutant output
             if verbose and rep_results:
                 display_results = rep_results[:max_display] if max_display else rep_results
                 print(f"\n{'─'*60}")
@@ -364,7 +383,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                             print(f"            {line}")
                 print(f"\n{'─'*60}")
 
-            # 3e. Print summary
+            # 3g. Print summary
             print(f"\n{'='*60}")
             print(f"  Strategy: {strategy.mode} | Repetition: {rep}")
             print(f"{'='*60}")
@@ -391,16 +410,16 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             print(f"  Kill rate: {stats.kill_rate:.2%}")
             print(f"{'='*60}\n")
 
-            # 3f-timing. Per-program timing summary
+            # 3h-timing. Per-program timing summary
             print(f"  {'─'*56}")
             print(f"  TIMING SUMMARY (per program):")
             print(f"  {'─'*56}")
             print(f"  {'Program':<30} {'TestGen':>8} {'Safety':>8} {'Kill(avg)':>10}")
             print(f"  {'─'*56}")
             for orig in originals:
-                tg = test_gen_time_map.get(orig.stem, 0.0)
-                sc = safety_time_map.get(orig.stem, 0.0)
-                tc = test_count_map_rep.get(orig.stem, 0)
+                tg = cumulative_test_gen_time.get(orig.stem, 0.0)
+                sc = cumulative_safety_time.get(orig.stem, 0.0)
+                tc = cumulative_test_counts.get(orig.stem, 0)
                 # Average kill time for this program's mutants
                 prog_kills = [r for r in rep_results if r.original_name == f"{orig.stem}.dfy"]
                 avg_kill = (sum(r.execution_time for r in prog_kills) / len(prog_kills)
@@ -408,7 +427,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 print(f"  {orig.stem:<30} {tg:>7.1f}s {sc:>7.1f}s {avg_kill:>9.1f}s {tc:>5}")
             print(f"  {'─'*56}\n")
 
-            # 3f. Write JSON
+            # 3i. Write JSON
             output_dir.mkdir(parents=True, exist_ok=True)
             strategy_output_dir = output_dir / f"results_{strategy.mode}"
             strategy_output_dir.mkdir(parents=True, exist_ok=True)
@@ -422,15 +441,15 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 "timing": {
                     "per_program": {
                         orig.stem: {
-                            "test_gen_time": split_data.get(orig.stem, {}).get(rep, (None, test_gen_time_map.get(orig.stem, 0.0)))[1],
-                            "safety_check_time": safety_time_map.get(orig.stem, 0.0),
+                            "test_gen_time": cumulative_test_gen_time.get(orig.stem, 0.0),
+                            "safety_check_time": cumulative_safety_time.get(orig.stem, 0.0),
                         }
                         for orig in originals
                     },
                 },
                 "test_counts": {
                     "per_program": {
-                        orig.stem: test_count_map_rep.get(orig.stem, 0)
+                        orig.stem: cumulative_test_counts.get(orig.stem, 0)
                         for orig in originals
                     }
                 },
