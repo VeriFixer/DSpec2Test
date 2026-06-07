@@ -44,6 +44,11 @@ class PipelineStats:
         return self.killed / self.supported_mutants if self.supported_mutants > 0 else 0.0
 
     @property
+    def not_survived_rate(self) -> float:
+        """(Killed + timeout) / supported_mutants. 0.0 if no supported mutants."""
+        return (self.killed + self.timeout) / self.supported_mutants if self.supported_mutants > 0 else 0.0
+
+    @property
     def not_supported_program_rate(self) -> float:
         return self.not_supported_programs / self.total_programs if self.total_programs > 0 else 0.0
 
@@ -66,6 +71,7 @@ class PipelineStats:
             "timeout": self.timeout,
             "error": self.error,
             "kill_rate": round(self.kill_rate, 4),
+            "not_survived_rate": round(self.not_survived_rate, 4),
             "total_num_tests": self.total_num_tests,
             "avg_num_tests": round(self.avg_num_tests, 2),
             "median_num_tests": self.median_num_tests,

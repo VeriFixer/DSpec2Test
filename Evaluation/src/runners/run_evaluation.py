@@ -13,6 +13,7 @@ import sys
 import re
 import statistics
 import time
+import datetime
 from pathlib import Path
 
 from src.logging_config import get_logger
@@ -46,7 +47,8 @@ def _split_tests(test_file: Path, total_reps: int, base_tests_dir: Path, fallbac
     
     lines = test_file.read_text(encoding='utf-8').splitlines()
     reps_content = {i: [] for i in range(1, total_reps + 1)}
-    reps_time = {i: fallback_time for i in range(1, total_reps + 1)} 
+    avg_fallback = fallback_time / total_reps if total_reps > 0 else fallback_time
+    reps_time = {i: avg_fallback for i in range(1, total_reps + 1)}
     current_rep = 1
     
     rep_pattern = re.compile(r'//\s*REPEAT\s+(\d+)\s*-\s*TIME:\s*([0-9.]+)\s*s?')
@@ -102,9 +104,13 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
     if output_dir is None:
         output_dir = Path("results")
 
+    if strategies is None:
+        strategies = resolve_strategies(list(STRATEGY_REGISTRY.keys()))
+
     if clean_cache:
         from src.config import BASE_PATH as _base
-        for mode in STRATEGY_REGISTRY:
+        for strategy in strategies:
+            mode = strategy.mode
             # Delete per-strategy combined dir
             combined = _base / "dataset" / f"selected_programs_mutants_with_tests_{mode}"
             if combined.exists():
@@ -134,9 +140,6 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
           f"{sum(len(v) for v in mutant_map.values())} mutants")
 
     # --- Step 3: For each strategy ---
-    if strategies is None:
-        strategies = resolve_strategies(list(STRATEGY_REGISTRY.keys()))
-
     all_strategy_results: dict[str, dict] = {}
 
     for strategy in strategies:
@@ -284,8 +287,8 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 for mutant in mutant_map.get(orig.stem, []):
                     m_name = mutant.name
                     prev_res = mutant_status_tracker.get(m_name)
-                    # Skip redundant work if it was already killed in a previous rep
-                    if prev_res and prev_res.status == MutantStatus.KILLED:
+                    # Skip redundant work if it was already killed or timed-out in a previous rep
+                    if prev_res and (prev_res.status == MutantStatus.KILLED or prev_res.status == MutantStatus.TIMEOUT):
                         continue
                     kill_tasks.append((rep_test_file, mutant))
 
@@ -324,7 +327,12 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             for orig in supported_originals:
                 for mutant in mutant_map.get(orig.stem, []):
                     if mutant.name in mutant_status_tracker:
-                        rep_results.append(mutant_status_tracker[mutant.name])
+                        res = mutant_status_tracker[mutant.name]
+                        
+                        res.test_gen_time = cumulative_test_gen_time.get(orig.stem, 0.0)
+                        res.safety_check_time = cumulative_safety_time.get(orig.stem, 0.0)
+                        
+                        rep_results.append(res)
 
             # 3e. Compute stats
             killed = sum(1 for r in rep_results if r.status == MutantStatus.KILLED)
@@ -409,10 +417,11 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             print(f"    Timeout:  {stats.timeout}")
             print(f"    Error:    {stats.error}")
             print(f"  Kill rate: {stats.kill_rate:.2%}")
+            print(f"  Not surived rate: {stats.not_survived_rate:.2%}")
             print(f"{'='*60}\n")
 
             # 3h-timing. Per-program timing summary
-            print(f"  {'─'*56}")
+            """ print(f"  {'─'*56}")
             print(f"  TIMING SUMMARY (per program):")
             print(f"  {'─'*56}")
             print(f"  {'Program':<30} {'TestGen':>8} {'Safety':>8} {'Kill(avg)':>10}")
@@ -426,7 +435,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 avg_kill = (sum(r.execution_time for r in prog_kills) / len(prog_kills)
                             if prog_kills else 0.0)
                 print(f"  {orig.stem:<30} {tg:>7.1f}s {sc:>7.1f}s {avg_kill:>9.1f}s {tc:>5}")
-            print(f"  {'─'*56}\n")
+            print(f"  {'─'*56}\n") """
 
             # 3i. Write JSON
             output_dir.mkdir(parents=True, exist_ok=True)
@@ -525,6 +534,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> None:
     """Entry point."""
+    logger.info(f"Started at: {datetime.datetime.now()}")
     start_time = time.time()
 
     args = parse_args(argv)
@@ -555,7 +565,7 @@ def main(argv: list[str] | None = None) -> None:
     end_time = time.time()
     elapsed_time = end_time - start_time
     logger.info(f"Total run_evaluation.py time: {elapsed_time / 3600:.4f} hours")
-
+    logger.info(f"Finished at: {datetime.datetime.now()}")
     sys.exit(exit_code)
 
 
