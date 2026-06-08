@@ -772,7 +772,14 @@ namespace DafnyTestGeneration {
           var returnLine = "expect " + outVar + " == " + Printer.ExprToString(DafnyInfo.Options, OutExpressions[returnDict[outVar]]) + ";";
           lines.Add(returnLine);
         }
-      } else {
+      } 
+      else if (DafnyInfo.Options.TestGenOptions.PassingFailing) {
+        lines.AddRange(DafnyInfo.GetEnsures(ArgValues,
+          returnParNames,
+          MethodName,
+          receiver).Select(e => "// expect " + Printer.ExprToString(DafnyInfo.Options, e) + ";")); 
+      }
+      else {
         lines.AddRange(DafnyInfo.GetEnsures(ArgValues,
           returnParNames,
           MethodName,
