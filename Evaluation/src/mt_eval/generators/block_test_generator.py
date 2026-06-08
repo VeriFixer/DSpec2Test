@@ -14,14 +14,15 @@ class BlockTestGenerator(DafnyTestGenerator):
         super().__init__(mode="Block", **kwargs)
         self.dafny_binary = dafny_binary or config.SPECTEST_DAFNY_BINARY
 
-    def _build_cmd(self, dafny_file: Path) -> list[str]:
+    def _build_cmd(self, dafny_file: Path, repeat: int) -> list[str]:
         return [
             str(self.dafny_binary),
             "generate-tests",
             "Block",
             str(dafny_file.resolve()),
-            "--repeat", "1",
+            "--repeat", f"{repeat}",
             "--length-limit", "50",
+            "--time",
             "--ignore-warnings",
             f"--solver-option:O:memory_max_size={config.DAFNY_MAX_MEMORY_MB}",
         ]

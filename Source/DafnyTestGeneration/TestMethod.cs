@@ -523,39 +523,42 @@ namespace DafnyTestGeneration {
       return $"({value} as {asTypeString})";
     }
 
-    private static Expression GetRealExpr(string value, Type type, Type asType) {
-      var slashIndex = value.IndexOf('/');
-      if (slashIndex == -1) {
-        return new LiteralExpr(new Token(),
-          BigDec.FromString(GetPrimitiveAsType(value, type, asType)));
+    private static Expression GetRealExpr(string value, Type type = null, Type asType = null) {
+      bool isNegative = value.Count(c => c == '-') % 2 != 0;
+
+      var matches = Regex.Matches(value, @"\d+(?:\.\d+)?");
+
+      Expression resultExpr;
+
+      if (matches.Count == 1) {
+        // Single Decimal: (-3.14) or 3.14
+        string numStr = matches[0].Value;
+        if (isNegative && numStr != "0" && numStr != "0.0") {
+          numStr = "-" + numStr;
+        }
+        resultExpr = new LiteralExpr(new Token(), BigDec.FromString(numStr));
+      } else if (matches.Count >= 2) {
+        // Fraction (/ 3.0 4.0) or (/ (- 3.0) 4.0) or 3.0 / 4.0
+        string numStr = matches[0].Value;
+        string denStr = matches[1].Value;
+
+        if (isNegative && numStr != "0" && numStr != "0.0") {
+          numStr = "-" + numStr;
+        }
+
+        resultExpr = new BinaryExpr(new Token(), BinaryExpr.Opcode.Div, 
+          new LiteralExpr(new Token(), BigDec.FromString(numStr)), 
+          new LiteralExpr(new Token(), BigDec.FromString(denStr)));
+          
+      } else {
+        resultExpr = new LiteralExpr(new Token(), BigDec.FromString("0.0"));
       }
-      
-      string cleanValue = value.Replace(" ", "");
-      int sign = 1;
 
-      while (cleanValue.StartsWith('-') || cleanValue.StartsWith('(')) {
-          if (cleanValue.StartsWith('-')) {
-              sign *= -1;
-              cleanValue = cleanValue[1..];
-          }
-          if (cleanValue.StartsWith('(')) {
-              cleanValue = cleanValue[1..];
-          }
-      }
-        
-      cleanValue = cleanValue.Replace(")", "");
-      slashIndex = cleanValue.IndexOf('/');
-      var numStr = cleanValue[..slashIndex];
-      var denStr = cleanValue[(slashIndex + 1)..];
-
-      if (sign == -1 && numStr != "0") {
-        numStr = "-" + numStr;
+      if (type != null && asType != null && type.ToString() != asType.ToString()) {
+        return new ConversionExpr(new Token(), resultExpr, asType, null);
       }
 
-      var numExpr = new LiteralExpr(new Token(), BigDec.FromString(numStr));
-      var denExpr = new LiteralExpr(new Token(), BigDec.FromString(denStr));
-
-      return new BinaryExpr(new Token(), BinaryExpr.Opcode.Div, numExpr, denExpr);
+      return resultExpr;
     }
 
     /// <summary>
@@ -633,6 +636,19 @@ namespace DafnyTestGeneration {
       errorMessages.Add(
         $"// Failed to extract default value for type " + type ?? "(null)");
       return "null";
+    }
+    
+    private Expression GetDefaultExpression(Type type) {
+      return type switch {
+        _ when type.IsBoolType => new LiteralExpr(new Token(), false),
+        _ when type.IsIntegerType || type.IsBigOrdinalType || type.IsBitVectorType => new LiteralExpr(new Token(), 0),
+        _ when type.IsRealType => GetRealExpr("0.0", type, type),
+        _ when type.IsStringType => new StringLiteralExpr(new Token(), "", false),
+        SeqType => new SeqDisplayExpr(new Token(), new List<Expression>()),
+        SetType => new SetDisplayExpr(new Token(), true, new List<Expression>()),
+        MapType => new MapDisplayExpr(new Token(), true, new List<MapDisplayEntry>()),
+        _ => new IdentifierExpr(new Token(), "null")
+      };
     }
 
     /// <summary>
@@ -847,22 +863,25 @@ namespace DafnyTestGeneration {
           type = null;
         }
         if (printOutput[i] == "") {
-          getDefaultValueParams = [];
-          result[paramName] = new IdentifierExpr(new Token(), GetDefaultValue(type, type));
+          result[paramName] = GetDefaultExpression(type);
           continue;
         }
 
         if (!printOutput[i].StartsWith("T@")) {
-          string baseValue;
           if (Regex.IsMatch(printOutput[i], "^[0-9]+bv[0-9]+$")) {
             var baseIndex = printOutput[i].IndexOf('b');
-            baseValue = $"({printOutput[i][..baseIndex]} as {printOutput[i][baseIndex..]})";
-          } else {
-            baseValue = printOutput[i];
+            string numericPart = printOutput[i][..baseIndex];
+            var numericLiteral = new LiteralExpr(new Token(), BigInteger.Parse(numericPart));
+        
+            if (type != null) {
+              result[paramName] = new ConversionExpr(new Token(), numericLiteral, type, null);
+            } else {
+              result[paramName] = numericLiteral;
+            }
+          } 
+          else {
+            result[paramName] = GetParsedValue(printOutput[i], type);
           }
-
-          Expression parsedValue = GetParsedValue(GetPrimitiveAsType(baseValue, type, type), type);
-          result[paramName] = parsedValue;
           continue;
         }
 
@@ -889,7 +908,7 @@ namespace DafnyTestGeneration {
         if (asType == null) {
           return null;
         } 
-        return new IdentifierExpr(new Token(), GetDefaultValue(asType));
+        return GetDefaultExpression(asType);
       }
 
       if (asType != null) {
@@ -911,27 +930,41 @@ namespace DafnyTestGeneration {
         type => new UserDefinedType(type.Origin, type.Name[8..], type.TypeArgs));
       if (variableType.ToString() == defaultType.ToString() &&
           variableType.ToString() != variable.Type.ToString()) {
-        return new IdentifierExpr(new Token(), GetADefaultTypeValue(variable));
+        return new LiteralExpr(new Token(), BigInteger.Parse(GetADefaultTypeValue(variable)));
       }
 
       switch (variableType) {
         case IntType:
         case BigOrdinalType:
         case BitvectorType:
-          return new LiteralExpr(new Token(),
-            BigInteger.Parse(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
+          var literal = new LiteralExpr(new Token(), BigInteger.Parse(variable.PrimitiveLiteral));
+          if (asType != null && variableType.ToString() != asType.ToString()) {
+            return new ConversionExpr(new Token(), literal, asType, null);
+          }
+
+          return literal;
+        
         case RealType:
           return GetRealExpr(variable.PrimitiveLiteral, variableType, asType);
+        
         case BoolType:
-          return new LiteralExpr(new Token(),
-            bool.Parse(GetPrimitiveAsType(variable.PrimitiveLiteral, variableType, asType)));
-
+          var boolLiteral = new LiteralExpr(new Token(), bool.Parse(variable.PrimitiveLiteral));
+          if (asType != null && variableType.ToString() != asType.ToString()) {
+            return new ConversionExpr(new Token(), boolLiteral, asType, null);
+          }
+          return boolLiteral;
+        
         case CharType:
           var varLit = StripString(variable.PrimitiveLiteral);
-          return new StringLiteralExpr(new Token(), GetPrimitiveAsType(varLit, variableType, asType), false);
+          var charLiteral = new CharLiteralExpr(new Token(), varLit);
+          if (asType != null && variableType.ToString() != asType.ToString()) {
+            return new ConversionExpr(new Token(), charLiteral, asType, null);
+          }
+          return charLiteral;
 
         case SeqType seqType:
-          var asBasicSeqType = GetBasicType(asType, type => type is SeqType) as SeqType;
+          Type seqElementType = seqType.Arg.NormalizeExpand();
+          
           if (variable?.Cardinality() == -1) {
             if (seqType.Arg is CharType) {
               return new StringLiteralExpr(new Token(), "", false);
@@ -940,59 +973,60 @@ namespace DafnyTestGeneration {
             return new SeqDisplayExpr(new Token(), new List<Expression>());
           }
 
+          if (seqElementType is CharType) {
+            string extractedString = "";
+            for (var i = 0; i < variable?.Cardinality(); i++) {
+              var el = variable?[i];
+              extractedString += el == null ? "\0" : StripString(el.PrimitiveLiteral);
+            }
+            return new StringLiteralExpr(new Token(), extractedString, false);
+          }
+          
           var seqElements = new List<Expression>();
           for (var i = 0; i < variable?.Cardinality(); i++) {
             var element = variable?[i];
             if (element == null) {
-              getDefaultValueParams = [];
-              seqElements.Add(new IdentifierExpr(new Token(),
-                GetDefaultValue(seqType.Arg, asBasicSeqType?.TypeArgs?.FirstOrDefault((Type /*?*/)null))));
+              seqElements.Add(GetDefaultExpression(seqElementType));
               continue;
             }
 
-            seqElements.Add(ExtractExpression(element, asBasicSeqType?.TypeArgs?.FirstOrDefault((Type /*?*/)null)));
-          }
-
-          if (seqType.Arg is CharType || asBasicSeqType?.TypeArgs?.FirstOrDefault((Type /*?*/)null) is CharType) {
-            var charVar = StripString(ExtractVariable(variable, asType));
-            return new StringLiteralExpr(new Token(), charVar, false);
+            seqElements.Add(ExtractExpression(element, seqElementType));
           }
 
           return new SeqDisplayExpr(new Token(), seqElements);
 
-        case SetType:
-          var asBasicSetType = GetBasicType(asType, type => type is SetType) as SetType;
+        case SetType setType:
+          Type setElementType = setType.Arg.NormalizeExpand();
           var setElements = new List<Expression>();
           foreach (var element in variable.SetElements()) {
-            setElements.Add(ExtractExpression(element, asBasicSetType?.TypeArgs?.FirstOrDefault((Type /*?*/)null)));
+            setElements.Add(ExtractExpression(element, setElementType));
           }
 
           return new SetDisplayExpr(new Token(), true, setElements);
 
-        case MapType:
-          var asBasicMapType = GetBasicType(asType, type => type is MapType) as MapType;
+        case MapType mapType:
+          Type domainType = mapType.Domain.NormalizeExpand();
+          Type rangeType = mapType.Range.NormalizeExpand();
           var mapItems = new List<MapDisplayEntry>();
           foreach (var mapping in variable?.Mappings()) {
-            var asTypeTypeArgs = asBasicMapType?.TypeArgs?.Count == 2 ? asBasicMapType.TypeArgs : null;
-            var mapKey = ExtractExpression(mapping.Key, asTypeTypeArgs?[0]);
-            var mapValue = ExtractExpression(mapping.Value, asTypeTypeArgs?[1]);
-            if (mapKey == null || mapValue == null) {
-              return null;
+            var mapKey = ExtractExpression(mapping.Key, domainType);
+            var mapValue = ExtractExpression(mapping.Value, rangeType);
+            if (mapKey != null && mapValue != null) {
+              mapItems.Add(new MapDisplayEntry(mapKey, mapValue));
             }
-
-            mapItems.Add(new MapDisplayEntry(
-              ExtractExpression(mapping.Key, asTypeTypeArgs?[0]),
-              ExtractExpression(mapping.Value, asTypeTypeArgs?[1])
-            ));
           }
 
           return new MapDisplayExpr(new Token(), true, mapItems);
 
 
         case UserDefinedType tupleType when tupleType.Name.StartsWith("_tuple#"):
-          var tupleElements = variable.UnnamedDestructors()
-            .Select(v => new ActualBinding(null, ExtractExpression(v, null)))
-            .ToList();
+          var tupleValues = variable.UnnamedDestructors().ToList();
+          var tupleElements = new List<ActualBinding>();
+      
+          for (int i = 0; i < tupleValues.Count; i++) {
+            Type innerType = tupleType.TypeArgs[i].NormalizeExpand();
+            tupleElements.Add(new ActualBinding(null, ExtractExpression(tupleValues[i], innerType)));
+          }
 
           var ctorName = variable.DatatypeConstructorName();
           if (string.IsNullOrEmpty(ctorName)) {

@@ -1,0 +1,14 @@
+method {:testEntry} DogYears(humanYears: int) returns (dogYears: int)
+    requires humanYears >= 0
+    ensures dogYears == 7 * humanYears
+{
+    dogYears := 7 * humanYears;
+}
+
+method {:test} Test5() {
+expect 43 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DogYears(43);
+expect r0 == 7 * 43;
+}
+
+// REPEAT 6 - TIME: 7.5110237 s

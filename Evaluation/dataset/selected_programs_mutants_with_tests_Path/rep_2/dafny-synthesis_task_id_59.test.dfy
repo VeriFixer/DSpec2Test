@@ -1,0 +1,8 @@
+
+method {:test} Test1() {
+expect 1 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := NthOctagonalNumber(1);
+expect r0 == 1 * (3 * 1 - 2);
+}
+
+// REPEAT 2 - TIME: 4.6643651 s

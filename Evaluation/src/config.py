@@ -43,10 +43,12 @@ def find_repo_root(marker: str = ".repo_mutation_testing_marker") -> Path:
 # === Repository Structure ===
 BASE_PATH: Path = find_repo_root()
 DATASET_ROOT: Path = BASE_PATH / "dataset" / "data"
+CSV_ROOT: Path = BASE_PATH / "dataset" / "csv"
 EXTERNAL_ROOT: Path = BASE_PATH / "external"
 TMP_ROOT: Path = BASE_PATH / "tmp"
 ARTIFACTS_ROOT: Path = TMP_ROOT / "run_artifacts"
 SELECTED_PROGRAMS_DIR: Path = BASE_PATH / "dataset" / "selected_programs"
+SELECTED_PROGRAMS_FORMATTED_DIR: Path = BASE_PATH / "dataset" / "selected_programs_formatted"
 SELECTED_PROGRAMS_MUTANTS_DIR: Path = BASE_PATH / "dataset" / "selected_programs_mutants"
 SELECTED_PROGRAMS_MUTANTS_WITH_TESTS_DIR: Path = BASE_PATH / "dataset" / "selected_programs_mutants_with_tests"
 
@@ -71,10 +73,10 @@ MUTDAFNY_PLUGIN: Path = _MUTDAFNY_PLUGIN_RELEASE if _MUTDAFNY_PLUGIN_RELEASE.exi
 MUTDAFNY_DAFNY_BINARY: Path = MUTDAFNY_DIR / "dafny" / "Binaries" / "Dafny"
 
 # === Configurable Parameters (with env var overrides) ===
-SAMPLE_COUNT: int = int(os.environ.get("MT_SAMPLE_COUNT", "100"))
-VERIFY_TIMEOUT: int = int(os.environ.get("MT_VERIFY_TIMEOUT", "1500"))
-TESTGEN_TIMEOUT: int = int(os.environ.get("MT_TESTGEN_TIMEOUT", "1500"))
-EXECUTION_TIMEOUT: int = int(os.environ.get("MT_EXECUTION_TIMEOUT", "300"))
+SAMPLE_COUNT: int = int(os.environ.get("MT_SAMPLE_COUNT", "120"))
+VERIFY_TIMEOUT: int = int(os.environ.get("MT_VERIFY_TIMEOUT", "300"))
+TESTGEN_TIMEOUT: int = int(os.environ.get("MT_TESTGEN_TIMEOUT", "300"))
+EXECUTION_TIMEOUT: int = int(os.environ.get("MT_EXECUTION_TIMEOUT", "120"))
 MAX_JOBS: int = max(1, int(os.environ.get("MT_MAX_JOBS", str(max(cpu_count() - 1, 1)))))
 
 # === Memory Limit for Dafny/Z3 solver (MB) ===

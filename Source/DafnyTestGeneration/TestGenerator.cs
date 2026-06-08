@@ -21,7 +21,8 @@ namespace DafnyTestGeneration {
     private const string FailingMethodName = "Failing";
     private static readonly List<string> IgnoreNames = [];
     private static readonly List<string> LengthNames = [];
-    private static readonly Dictionary<string, BlockStmt> MethodBodies = [];
+    private static readonly Dictionary<string, BlockStmt> OriginalBodies = [];
+    private static readonly Dictionary<string, (List<AttributedExpression>, List<AttributedExpression>)> OriginalSpec = [];
 
     /// <summary>
     /// This method returns each capturedState that is unreachable, one by one,
@@ -230,6 +231,12 @@ namespace DafnyTestGeneration {
           yield return testMethod;
           testMethods.Add(testMethod);
         }
+
+        if (options.TestGenOptions.Time) {
+          await options.OutputWriter.Status(
+            $"\n// REPEAT {i + 1} - TIME: {options.TestGenOptions.StopWatch.Elapsed.TotalSeconds} s\n");
+        }
+
         if (i < options.TestGenOptions.Repeat - 1) {
           program = await UpdateProgram(program, testMethods);
         }
@@ -291,7 +298,7 @@ namespace DafnyTestGeneration {
         yield return "}";
       }
 
-      PopulateCoverageReport(report, program, cache);
+
 
       if (methodsGenerated == 0) {
         await options.ErrorWriter.WriteLineAsync(
@@ -372,8 +379,12 @@ namespace DafnyTestGeneration {
           );
           
           foreach (var method in decl.Members.OfType<Method>()) {
-            if (MethodBodies.ContainsKey(method.Name)) {
-              method.SetBody(MethodBodies[method.Name]);
+            if (OriginalBodies.TryGetValue(method.Name, out BlockStmt body)) {
+              method.SetBody(body);
+            }
+            if (OriginalSpec.TryGetValue(method.Name, out var spec)) {
+              method.Req = spec.Item1;
+              method.Ens = spec.Item2;
             }
           }
         }
@@ -406,30 +417,32 @@ namespace DafnyTestGeneration {
           
           foreach (var formal in argFormals) {
             if (!IgnoreNames.Contains(formal.Name) && testMethod.ArgExpressions.TryGetValue(formal.Name, out var argExpr) && argExpr != null) {
-              var nameSegment = new NameSegment(new Token(), formal.Name, null);
+              var validTok = entryPoint.StartToken;
+              
+              var nameSegment = new NameSegment(validTok, formal.Name, null);
               
               BinaryExpr equalityExpr;
               if (LengthNames.Contains(formal.Name)) {
-                var cardinality = new UnaryOpExpr(new Token(), UnaryOpExpr.Opcode.Cardinality, nameSegment);
-                var literalExpr = new LiteralExpr(new Token(), argExpr.Children.Count());
-                equalityExpr = new BinaryExpr(new Token(), BinaryExpr.Opcode.Neq, cardinality, literalExpr);
+                var cardinality = new UnaryOpExpr(validTok, UnaryOpExpr.Opcode.Cardinality, nameSegment);
+                var literalExpr = new LiteralExpr(validTok, argExpr.Children.Count());
+                equalityExpr = new BinaryExpr(validTok, BinaryExpr.Opcode.Neq, cardinality, literalExpr);
               } else {
-                equalityExpr = new BinaryExpr(new Token(), BinaryExpr.Opcode.Neq, nameSegment, argExpr);
+                equalityExpr = new BinaryExpr(validTok, BinaryExpr.Opcode.Neq, nameSegment, argExpr);
               }
 
               var axiomAttr = new Attributes(Attributes.AxiomAttributeName, [], null);
-              var assumeStmt = new AssumeStmt(new Token(), equalityExpr, axiomAttr);
+              var assumeStmt = new AssumeStmt(validTok, equalityExpr, axiomAttr);
               if (entryPoint is Method method) {
                 if (method.Body != null) {
                   method.Body.Body.Insert(0, assumeStmt);
-                  if (MethodBodies.TryGetValue(method.Name, out var body)) {
+                  if (OriginalBodies.TryGetValue(method.Name, out var body)) {
                     body.Body.Insert(0, assumeStmt);
                   }
                 } else {
-                  method.SetBody(new BlockStmt(new Token(), [assumeStmt]));
+                  method.SetBody(new BlockStmt(validTok, [assumeStmt]));
                 }
               } else if (entryPoint is Function function) {
-                function.Body = new StmtExpr(new Token(), assumeStmt, function.Body);
+                function.Body = new StmtExpr(validTok, assumeStmt, function.Body);
               }
             }
           }
@@ -471,11 +484,21 @@ namespace DafnyTestGeneration {
                  TestGenerationOptions.TestEntryAttribute)) {
 
         if (entryPoint is Method method) {
+          
+            var cloner = new Cloner();
+            var copiedReq = method.Req.Select(req => 
+              new AttributedExpression(cloner.CloneExpr(req.E), req.Label, req.Attributes)
+            ).ToList();
+            var copiedEns = method.Ens.Select(ens => 
+              new AttributedExpression(cloner.CloneExpr(ens.E), ens.Label, ens.Attributes)
+            ).ToList();
+            OriginalSpec[method.Name] = (copiedReq, copiedEns);
+            
           if (method.Body is not null) {
             if (isSpecMode) {
               method.SetBody(new BlockStmt(method.Body.Origin, []));
             } else {
-              MethodBodies[method.Name] =  method.Body;
+              OriginalBodies[method.Name] = method.Body;
             }
           }
 

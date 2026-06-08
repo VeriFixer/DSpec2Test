@@ -1,0 +1,7 @@
+
+method {:test} Test7() {
+var r0 := M(25);
+expect r0 == 7;
+}
+
+// REPEAT 3 - TIME: 6.5281119 s

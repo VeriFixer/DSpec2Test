@@ -11,12 +11,12 @@ import argparse
 import logging
 import sys
 import time
+import json
 from pathlib import Path
 
 from src.logging_config import get_logger
-from src.config import SELECTED_PROGRAMS_DIR, SELECTED_PROGRAMS_MUTANTS_DIR
-from src.mt_eval.core.mutation import apply_mutation
-from src.mt_eval.core.verification import verify_program, type_checks_program
+from src.config import SELECTED_PROGRAMS_DIR, SELECTED_PROGRAMS_MUTANTS_DIR, SELECTED_PROGRAMS_FORMATTED_DIR, DATASET_ROOT
+from src.mt_eval.core.mutation import apply_mutation, get_formatted_original_lines, get_mutant_diff_lines
 from src.mt_eval.execution.parallel_executor import run_parallel_or_seq
 
 logger = get_logger(__name__)
@@ -35,7 +35,7 @@ def collect_programs(programs_dir: Path) -> list[Path]:
 
 
 def _process_program(
-    program: Path, output_dir: Path, max_mutants: int
+    program: Path, output_dir: Path, num_mutants: int
 ) -> tuple[str, list[Path]]:
     """Generate and filter mutants for a single program.
 
@@ -43,38 +43,39 @@ def _process_program(
     """
     stem = program.stem
     prog_output_dir = output_dir / stem
+    diff_mapping = {}
 
     start = time.monotonic()
 
     # Generate mutants via MutDafny
-    mutants = apply_mutation(program, prog_output_dir, max_mutants=max_mutants)
+    mutants = apply_mutation(program, prog_output_dir, num_mutants=num_mutants)
 
     mutation_time = time.monotonic() - start
 
-    # Filter: keep only mutants that FAIL verification (real bugs) And pass type checking
-    filter_start = time.monotonic()
-    valid_mutants = [m for m in mutants if (type_checks_program(m) and (not verify_program(m)))]
-    filter_time = time.monotonic() - filter_start
+    if mutants:
+        original_lines = get_formatted_original_lines(program, SELECTED_PROGRAMS_FORMATTED_DIR)
 
-    total_time = time.monotonic() - start
+        for mutant_path in mutants:
+            diff_lines = get_mutant_diff_lines(original_lines, mutant_path)
+            diff_mapping[mutant_path.name] = diff_lines
 
     logger.info(
-        "[generate_mutants] %s — %.1fs total (mutation=%.1fs, filter=%.1fs) "
-        "| %d generated, %d valid",
-        program.name, total_time, mutation_time, filter_time,
-        len(mutants), len(valid_mutants),
+        "[generate_mutants] %s — %.1fs total "
+        "| %d generated",
+        program.name, mutation_time,
+        len(mutants)
     )
 
-    if not valid_mutants:
+    if not mutants:
         logger.warning("No valid mutants produced for %s", program.name)
 
-    return stem, valid_mutants
+    return stem, mutants, diff_mapping
 
 
 def generate_mutants(
     programs: list[Path],
     output_dir: Path,
-    max_mutants: int,
+    num_mutants: int,
     parallel: bool,
 ) -> dict[str, list[Path]]:
     """For each program, call apply_mutation + verify filter.
@@ -85,13 +86,30 @@ def generate_mutants(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     def process(program: Path) -> tuple[str, list[Path]]:
-        return _process_program(program, output_dir, max_mutants)
+        return _process_program(program, output_dir, num_mutants)
 
     results: list[tuple[str, list[Path]]] = run_parallel_or_seq(
         programs, process, "Generating mutants", parallel=parallel
     )
 
-    return dict(results)
+    mutants_dict = {res[0]: res[1] for res in results}
+    
+    diff_mapping = {}
+    for res in results:
+        diff_mapping.update(res[2])
+
+    return mutants_dict, diff_mapping
+
+
+def store_diff_json(diff_mapping, json_file):
+    
+    DATASET_ROOT.mkdir(parents=True, exist_ok=True)
+    json_path = DATASET_ROOT / json_file
+    
+    with open(json_path, 'w', encoding='utf-8') as f:
+            json.dump(diff_mapping, f, indent=4)
+        
+    logger.info(f"Diff lines mapping saved to {json_path.name}")
 
 
 def parse_args(argv=None):
@@ -111,11 +129,16 @@ def parse_args(argv=None):
         default=False,
         help="Run sequentially instead of in parallel",
     )
+    parser.add_argument(
+        "--json-file", 
+        default="ground_truth.json",
+        help="JSON file to output the diff to (default: ground_truth.json)."
+    )
     return parser.parse_args(argv)
 
 
 def run_mutant_generation(
-    n_mutants_per_program: int = 10, sequential: bool = False
+    n_mutants_per_program: int = 10, sequential: bool = False, json_file="ground_truth.json"
 ) -> int:
     """Collect programs, generate mutants, filter, write. Returns 0 on success."""
     programs = collect_programs(SELECTED_PROGRAMS_DIR)
@@ -123,23 +146,33 @@ def run_mutant_generation(
         "Collected %d programs from %s", len(programs), SELECTED_PROGRAMS_DIR
     )
 
-    results = generate_mutants(
+    results, diff_mapping = generate_mutants(
         programs,
         SELECTED_PROGRAMS_MUTANTS_DIR,
-        max_mutants=n_mutants_per_program,
+        num_mutants=n_mutants_per_program,
         parallel=not sequential,
     )
+
+    store_diff_json(diff_mapping, json_file)
 
     return 0
 
 
 def main(argv=None):
     """CLI entry point."""
+    start_time = time.time()
+
     args = parse_args(argv)
     rc = run_mutant_generation(
         n_mutants_per_program=args.n_mutants_per_program,
         sequential=args.sequential,
+        json_file=args.json_file
     )
+
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    logger.info(f"Total mutant generation time: {elapsed_time:.4f} seconds")
+
     sys.exit(rc)
 
 

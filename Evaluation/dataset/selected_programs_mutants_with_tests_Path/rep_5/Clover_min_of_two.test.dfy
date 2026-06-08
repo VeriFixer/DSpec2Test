@@ -1,0 +1,13 @@
+
+method {:test} Test8() {
+var r0 := Min(6, 7);
+expect 6 <= 7 ==> r0 == 6;
+expect 6 > 7 ==> r0 == 7;
+}
+method {:test} Test9() {
+var r0 := Min(6, 6);
+expect 6 <= 6 ==> r0 == 6;
+expect 6 > 6 ==> r0 == 6;
+}
+
+// REPEAT 5 - TIME: 10.2814673 s

@@ -1,0 +1,14 @@
+method {:testEntry} NthDecagonalNumber(n: int) returns (decagonal: int)
+    requires n >= 0
+    ensures decagonal == 4 * n * n - 3 * n
+{
+    decagonal := 4 * n * n - 3 * n;
+}
+
+method {:test} Test9() {
+expect 104 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := NthDecagonalNumber(104);
+expect r0 == 4 * 104 * 104 - 3 * 104;
+}
+
+// REPEAT 5 - TIME: 9.0550464 s

@@ -15,9 +15,11 @@ import logging
 import subprocess
 import tempfile
 import time
+import re
 from pathlib import Path
 
 from src.config import MUTDAFNY_PLUGIN, MUTDAFNY_DIR, MUTDAFNY_DAFNY_BINARY, DAFNY_MAX_MEMORY_MB
+from src.mt_eval.core.verification import verify_program, type_checks_program
 
 logger = logging.getLogger(__name__)
 
@@ -67,9 +69,10 @@ def _run_dafny_plugin(dafny_file: Path, plugin_arg: str, cwd: Path,
                        dafny_file, plugin_arg, exc, elapsed)
         return None
 
+import re
 
-def apply_mutation(original_file: Path, output_dir: Path, max_mutants: int = 1) -> list[Path]:
-    """Invoke MutDafny on original_file, return up to max_mutants mutant paths.
+def apply_mutation(original_file: Path, output_dir: Path, num_mutants: int = 1) -> list[Path]:
+    """Invoke MutDafny on original_file, return exactly num_mutants mutant paths.
 
     Uses the two-pass approach:
     1. Scan for mutation targets → targets.csv
@@ -78,7 +81,7 @@ def apply_mutation(original_file: Path, output_dir: Path, max_mutants: int = 1) 
     Args:
         original_file: Path to the original .dfy source file.
         output_dir: Directory where mutant files will be collected.
-        max_mutants: Maximum number of mutants to generate per file.
+        num_mutants: Exact number of mutants to generate per file (unless impossible).
 
     Returns:
         List of paths to mutant files (may be empty on failure).
@@ -112,9 +115,9 @@ def apply_mutation(original_file: Path, output_dir: Path, max_mutants: int = 1) 
             logger.warning("MutDafny produced empty targets for %s", original_file)
             return []
 
-        # Pass 2: Apply mutations until we have max_mutants
+        # Pass 2: Apply mutations until we have num_mutants
         for target in targets:
-            if len(collected) >= max_mutants:
+            if len(collected) >= num_mutants:
                 break
 
             pos = target[0].strip()
@@ -133,11 +136,12 @@ def apply_mutation(original_file: Path, output_dir: Path, max_mutants: int = 1) 
             # MutDafny writes .dfy files in the working directory
             mutant_files = sorted(work_path.glob("*.dfy"))
             for mf in mutant_files:
-                if len(collected) >= max_mutants:
+                if len(collected) >= num_mutants:
                     break
-                dest = output_dir / mf.name
-                dest.write_text(mf.read_text())
-                collected.append(dest)
+                if type_checks_program(mf) and not verify_program(mf):
+                    dest = output_dir / mf.name
+                    dest.write_text(mf.read_text())
+                    collected.append(dest)
 
             # Clean up generated files for next iteration
             for mf in work_path.glob("*.dfy"):
@@ -178,3 +182,44 @@ def generate_diff(original: Path, mutant: Path, output_path: Path) -> Path:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text("".join(diff))
     return output_path
+
+
+def get_formatted_original_lines(original_file: Path, formatted_dir: Path) -> list[str]:
+    """
+    Parses the original file and prints it using Dafny's AST printer.
+    This automatically strips comments and perfectly aligns spacing with MutDafny.
+    """
+    formatted_dir.mkdir(parents=True, exist_ok=True)
+    output_path = formatted_dir / original_file.name
+
+    cmd = [
+        str(MUTDAFNY_DAFNY_BINARY), 
+        "resolve", 
+        str(original_file), 
+        "--print", 
+        str(output_path)
+    ]
+    
+    subprocess.run(cmd, capture_output=True, text=True)
+
+    formatted_code = output_path.read_text()
+    
+    return formatted_code.splitlines()
+
+def get_mutant_diff_lines(original_lines: list[str], mutant_file: Path) -> list[int]:
+    """Compares original lines against the mutant file and returns 
+    a sorted list of line numbers (1-indexed) where differences exist."""
+    mutant_lines = mutant_file.read_text().splitlines()
+    matcher = difflib.SequenceMatcher(None, original_lines, mutant_lines)
+    
+    changed_lines = set()
+    
+    for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+        if tag != 'equal':
+            if tag == 'delete':
+                changed_lines.add(max(1, j1 if j1 > 0 else 1))
+            else:
+                for j in range(j1, j2):
+                    changed_lines.add(j + 1)
+                    
+    return sorted(list(changed_lines))

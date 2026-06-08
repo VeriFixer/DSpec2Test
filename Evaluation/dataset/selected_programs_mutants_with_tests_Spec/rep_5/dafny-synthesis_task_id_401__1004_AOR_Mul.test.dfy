@@ -1,0 +1,142 @@
+// dafny-synthesis_task_id_401.dfy
+
+method {:testEntry} IndexWiseAddition(a: seq<seq<int>>, b: seq<seq<int>>) returns (result: seq<seq<int>>)
+  requires |a| > 0 && |b| > 0
+  requires |a| == |b|
+  requires forall i :: 0 <= i < |a| ==> |a[i]| == |b[i]|
+  ensures |result| == |a|
+  ensures forall i :: 0 <= i < |result| ==> |result[i]| == |a[i]|
+  ensures forall i :: 0 <= i < |result| ==> forall j :: 0 <= j < |result[i]| ==> result[i][j] == a[i][j] + b[i][j]
+{
+  result := [];
+  for i := 0 to |a|
+    invariant 0 <= i <= |a|
+    invariant |result| == i
+    invariant forall k :: 0 <= k < i ==> |result[k]| == |a[k]|
+    invariant forall k :: 0 <= k < i ==> forall j :: 0 <= j < |result[k]| ==> result[k][j] == a[k][j] + b[k][j]
+  {
+    var subResult := [];
+    for j := 0 to |a[i]|
+      invariant 0 <= j <= |a[i]|
+      invariant |subResult| == j
+      invariant forall k :: 0 <= k < j ==> subResult[k] == a[i][k] + b[i][k]
+    {
+      subResult := subResult + [a[i][j] * b[i][j]];
+    }
+    result := result + [subResult];
+  }
+}
+
+method {:test} Test4() {
+var seqint0 : seq<int> := [0];
+var seqint1 : seq<int> := [];
+var seqint2 : seq<int> := [];
+var seqint3 : seq<int> := [];
+var seqint4 : seq<int> := [];
+var seqint5 : seq<int> := [];
+var seqint6 : seq<int> := [];
+var seqint7 : seq<int> := [];
+var seqint8 : seq<int> := [];
+var seqint9 : seq<int> := [];
+var seqint10 : seq<int> := [];
+var seqint11 : seq<int> := [];
+var seqint12 : seq<int> := [];
+var seqint13 : seq<int> := [];
+var seqint14 : seq<int> := [];
+var seqint15 : seq<int> := [];
+var seqint16 : seq<int> := [];
+var seqint17 : seq<int> := [];
+var seqint18 : seq<int> := [];
+var seqint19 : seq<int> := [];
+var seqint20 : seq<int> := [];
+var seqint21 : seq<int> := [];
+var seqint22 : seq<int> := [];
+var seqint23 : seq<int> := [];
+var seqint24 : seq<int> := [];
+var seqint25 : seq<int> := [];
+var seqint26 : seq<int> := [];
+var seqint27 : seq<int> := [];
+var seqint28 : seq<int> := [];
+var seqint29 : seq<int> := [];
+var seqint30 : seq<int> := [];
+var seqint31 : seq<int> := [];
+var seqint32 : seq<int> := [];
+var seqint33 : seq<int> := [];
+var seqint34 : seq<int> := [];
+var seqint35 : seq<int> := [];
+var seqint36 : seq<int> := [];
+var seqint37 : seq<int> := [];
+var seqint38 : seq<int> := [];
+var seqint39 : seq<int> := [];
+var seqint40 : seq<int> := [];
+var seqint41 : seq<int> := [];
+var seqint42 : seq<int> := [];
+var seqint43 : seq<int> := [];
+var seqint44 : seq<int> := [];
+var seqint45 : seq<int> := [];
+var seqint46 : seq<int> := [];
+var seqint47 : seq<int> := [0];
+var seqint48 : seq<int> := [0];
+var seqint49 : seq<int> := [];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29, seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37, seqint38, seqint39, seqint40, seqint41, seqint42, seqint43, seqint44, seqint45, seqint46, seqint47, seqint48, seqint49];
+var seqint50 : seq<int> := [0];
+var seqint51 : seq<int> := [];
+var seqint52 : seq<int> := [];
+var seqint53 : seq<int> := [];
+var seqint54 : seq<int> := [];
+var seqint55 : seq<int> := [];
+var seqint56 : seq<int> := [];
+var seqint57 : seq<int> := [];
+var seqint58 : seq<int> := [];
+var seqint59 : seq<int> := [];
+var seqint60 : seq<int> := [];
+var seqint61 : seq<int> := [];
+var seqint62 : seq<int> := [];
+var seqint63 : seq<int> := [];
+var seqint64 : seq<int> := [];
+var seqint65 : seq<int> := [];
+var seqint66 : seq<int> := [];
+var seqint67 : seq<int> := [];
+var seqint68 : seq<int> := [];
+var seqint69 : seq<int> := [];
+var seqint70 : seq<int> := [];
+var seqint71 : seq<int> := [];
+var seqint72 : seq<int> := [];
+var seqint73 : seq<int> := [];
+var seqint74 : seq<int> := [];
+var seqint75 : seq<int> := [];
+var seqint76 : seq<int> := [];
+var seqint77 : seq<int> := [];
+var seqint78 : seq<int> := [];
+var seqint79 : seq<int> := [];
+var seqint80 : seq<int> := [];
+var seqint81 : seq<int> := [];
+var seqint82 : seq<int> := [];
+var seqint83 : seq<int> := [];
+var seqint84 : seq<int> := [];
+var seqint85 : seq<int> := [];
+var seqint86 : seq<int> := [];
+var seqint87 : seq<int> := [];
+var seqint88 : seq<int> := [];
+var seqint89 : seq<int> := [];
+var seqint90 : seq<int> := [];
+var seqint91 : seq<int> := [];
+var seqint92 : seq<int> := [];
+var seqint93 : seq<int> := [];
+var seqint94 : seq<int> := [];
+var seqint95 : seq<int> := [];
+var seqint96 : seq<int> := [];
+var seqint97 : seq<int> := [0];
+var seqint98 : seq<int> := [0];
+var seqint99 : seq<int> := [];
+var seqseqint1 : seq<seq<int>> := [seqint50, seqint51, seqint52, seqint53, seqint54, seqint55, seqint56, seqint57, seqint58, seqint59, seqint60, seqint61, seqint62, seqint63, seqint64, seqint65, seqint66, seqint67, seqint68, seqint69, seqint70, seqint71, seqint72, seqint73, seqint74, seqint75, seqint76, seqint77, seqint78, seqint79, seqint80, seqint81, seqint82, seqint83, seqint84, seqint85, seqint86, seqint87, seqint88, seqint89, seqint90, seqint91, seqint92, seqint93, seqint94, seqint95, seqint96, seqint97, seqint98, seqint99];
+expect |seqseqint0| > 0 && |seqseqint1| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+expect |seqseqint0| == |seqseqint1|, "If this check fails at runtime, the test does not meet the preconditions";
+expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint1[i]|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := IndexWiseAddition(seqseqint0, seqseqint1);
+expect |r0| == |seqseqint0|;
+expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
+expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
+}
+
+// REPEAT 5 - TIME: 7.4721722 s

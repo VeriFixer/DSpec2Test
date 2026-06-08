@@ -1,0 +1,8 @@
+
+method {:test} Test5() {
+expect 6.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := CircleCircumference(6.0);
+expect r0 == 2.0 * 3.14159265358979323846 * 6.0;
+}
+
+// REPEAT 6 - TIME: 8.4206783 s
