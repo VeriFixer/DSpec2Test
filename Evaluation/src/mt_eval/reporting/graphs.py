@@ -18,191 +18,159 @@ plt.rcParams.update({
     'ytick.labelsize': 11,
     'figure.dpi': 300,
     'savefig.bbox': 'tight',
-    'font.family': 'serif' # Often preferred for papers
+    'font.family': 'serif'
 })
 
-# ==========================================
-# Explicit Style Mappings for Consistency
-# ==========================================
 STRATEGY_COLORS = {
-    "Block": "#1f77b4",     # Blue
-    "Path": "#ff7f0e",      # Orange
-    "Spec": "#2ca02c",      # Green
-    "Spec_bva": "#d62728"   # Red
+    "Block": "#1f77b4",
+    "Path": "#ff7f0e",
+    "Spec": "#2ca02c",
+    "Spec_bva": "#d62728"
 }
 
 STRATEGY_MARKERS = {
-    "Block": "o",           # Circle
-    "Path": "s",            # Square
-    "Spec": "^",            # Triangle up
-    "Spec_bva": "D"         # Diamond
+    "Block": "o",
+    "Path": "s",
+    "Spec": "^",
+    "Spec_bva": "D"
 }
 
 # ==========================================
 # Data Processing
 # ==========================================
 
-def get_excluded_programs(base_dir):
+def get_max_repetition(base_dir):
     """
-    Dynamically fetches the list of excluded programs from the X=7 Path strategy results.
+    Scans the folder structure to find the highest repetition (X) value dynamically.
     """
-    path_file = os.path.join(base_dir, "results_7", "results_DafnyTestGenerator_Path.json")
-    excluded = set()
-    
-    if os.path.exists(path_file):
-        with open(path_file, 'r') as f:
-            data = json.load(f)
-            
-        not_supported = data.get("not_supported", [])
-        for item in not_supported:
-            prog = item.get("program", "")
-            if prog:
-                # Strip .dfy to ensure clean matching
-                excluded.add(prog.replace(".dfy", ""))
-                
-        print(f"Dynamically loaded {len(excluded)} excluded programs from X=7 Path strategy.")
-    else:
-        print(f"Warning: {path_file} not found. Proceeding with 0 excluded programs.")
+    max_x = 0
+    if not os.path.exists(base_dir):
+        return max_x
         
-    return excluded
+    for item in os.listdir(base_dir):
+        strat_dir = os.path.join(base_dir, item)
+        if os.path.isdir(strat_dir) and item.startswith("results_"):
+            for file in os.listdir(strat_dir):
+                if "_rep_" in file and file.endswith(".json"):
+                    try:
+                        # Extract the number from results_Strategy_rep_X.json
+                        x_str = file.split("_rep_")[-1].replace(".json", "")
+                        max_x = max(max_x, int(x_str))
+                    except ValueError:
+                        pass
+    return max_x
 
 
-def load_data(base_dir="results"):
+def get_shared_programs_for_combo(base_dir, combo_strategies, max_x):
     """
-    Parses the folder structure and JSON files into two DataFrames:
-    1. df_full: Data for strategies that support 100% of the programs.
-    2. df_common: Data for all strategies, calculated on all programs EXCEPT the dynamically excluded ones.
+    Finds the exact set of programs that are supported by ALL strategies 
+    in the given combination, across all X repetitions.
     """
-    records_full = []
-    records_common = []
+    all_encountered = set()
+    unsupported_in_combo = set()
     
-    # Dynamically fetch the list of programs to exclude
-    excluded_programs = get_excluded_programs(base_dir)
-    
-    for x in range(1, 8):
-        folder_path = os.path.join(base_dir, f"results_{x}")
-        comp_path = os.path.join(folder_path, "comparison.json")
-        
-        if not os.path.exists(comp_path):
-            print(f"Warning: {comp_path} not found. Skipping X={x}.")
-            continue
+    for x in range(1, max_x + 1):
+        for strategy in combo_strategies:
+            # Updated path structure
+            strat_path = os.path.join(base_dir, f"results_{strategy}", f"results_{strategy}_rep_{x}.json")
             
-        with open(comp_path, 'r') as f:
-            comp_data = json.load(f)
-            
-        strategies_comp = comp_data.get("strategies", {})
-        
-        # 1. Identify which strategies support all programs
-        fully_supported_strats = [
-            strat for strat, stats in strategies_comp.items() 
-            if stats.get("not_supported_programs", 0) == 0
-        ]
-        
-        # 2. Load the individual strategy JSONs to analyze the program-level data
-        strat_data_map = {}
-        for strategy in strategies_comp.keys():
-            strat_path = os.path.join(folder_path, f"results_{strategy}.json")
             if os.path.exists(strat_path):
                 with open(strat_path, 'r') as sf:
-                    strat_data_map[strategy] = json.load(sf)
-                    
-        # 3. Define the common programs by excluding the dynamically extracted problematic ones
-        all_encountered_programs = set()
-        for strat, data in strat_data_map.items():
-            all_encountered_programs.update(data.get("timing", {}).get("per_program", {}).keys())
-            
-        # Strip '.dfy' from the encountered programs just in case, then filter
-        all_encountered_programs = {p.replace(".dfy", "") for p in all_encountered_programs}
-        common_programs = all_encountered_programs - excluded_programs
-
-        # 4. Build the records
-        for strategy, stats in strategies_comp.items():
-            clean_name = strategy.replace("DafnyTestGenerator_", "")
-            
-            # --- DATASET A: FULLY SUPPORTED STRATEGIES ---
-            if strategy in fully_supported_strats:
-                total_time = 0
-                if strategy in strat_data_map:
-                    timing_data = strat_data_map[strategy].get("timing", {}).get("per_program", {})
-                    for prog, times in timing_data.items():
-                        total_time += times.get("test_gen_time", 0) + times.get("safety_check_time", 0)
-                        
-                records_full.append({
-                    "X": x,
-                    "Strategy": clean_name,
-                    "Kill Rate": (stats.get("killed", 0) + stats.get("timeout", 0)) / stats.get("supported_mutants", 1),
-                    "Killed": stats.get("killed", 0),
-                    "Survived": stats.get("survived", 0),
-                    "Timeout": stats.get("timeout", 0),
-                    "Error": stats.get("error", 0),
-                    "Total Number of Tests": stats.get("total_num_tests", 0),
-                    "Average Number of Tests": stats.get("avg_num_tests", 0),
-                    "Median Number of Tests": stats.get("median_num_tests", 0),
-                    "Total Time (s)": total_time
-                })
+                    data = json.load(sf)
                 
-            # --- DATASET B: COMMON PROGRAMS ONLY (ALL STRATEGIES) ---
-            if strategy in strat_data_map:
-                data = strat_data_map[strategy]
-                
-                common_time = 0
-                common_test_counts = []
-                
+                # 1. Track every program we've ever seen
                 timing_data = data.get("timing", {}).get("per_program", {})
-                test_counts_data = data.get("test_counts", {}).get("per_program", {})
+                for prog in timing_data.keys():
+                    all_encountered.add(prog.replace(".dfy", ""))
                 
-                for prog in common_programs:
-                    # Some entries might still have the .dfy extension in the keys, so check both
-                    prog_key = prog if prog in timing_data else f"{prog}.dfy"
-                    
-                    # Recalculate Time
-                    if prog_key in timing_data:
-                        common_time += timing_data[prog_key].get("test_gen_time", 0) + timing_data[prog_key].get("safety_check_time", 0)
-                    
-                    # Accumulate Test Counts for common programs
-                    if prog_key in test_counts_data:
-                        common_test_counts.append(test_counts_data[prog_key])
-                        
-                # Recalculate Statuses
-                killed, survived, timeout, error = 0, 0, 0, 0
-                for res in data.get("results", []):
-                    prog_name = res.get("original_name", "").replace(".dfy", "")
-                    if prog_name in common_programs:
-                        st = res.get("status", "")
-                        if st == "killed": killed += 1
-                        elif st == "survived": survived += 1
-                        elif st == "timeout": timeout += 1
-                        elif st == "error": error += 1
-                        
-                total_common_mutants = killed + survived + timeout + error
-                common_kill_rate = (killed + timeout) / total_common_mutants if total_common_mutants > 0 else 0
+                # 2. Track failures for strategies in this combination
+                not_supported_list = data.get("not_supported", [])
+                for item in not_supported_list:
+                    if isinstance(item, dict) and "program" in item:
+                        unsupported_in_combo.add(item["program"].replace(".dfy", ""))
+
+    # The intersection of supported programs is the total minus the failures of this combo
+    shared_programs = all_encountered - unsupported_in_combo
+    return shared_programs
+
+
+def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
+    """
+    Builds a DataFrame calculating metrics strictly for the given combination of strategies,
+    evaluating them ONLY on the explicitly provided list of valid_programs.
+    """
+    records = []
+    
+    for x in range(1, max_x + 1):
+        for strategy in combo_strategies:
+            # Updated path structure
+            strat_path = os.path.join(base_dir, f"results_{strategy}", f"results_{strategy}_rep_{x}.json")
+            if not os.path.exists(strat_path):
+                continue
                 
-                # Recalculate Test Stats
-                total_common_tests = sum(common_test_counts)
-                avg_common_tests = (total_common_tests / len(common_test_counts)) if common_test_counts else 0.0
-                median_common_tests = statistics.median(common_test_counts) if common_test_counts else 0
+            with open(strat_path, 'r') as sf:
+                data = json.load(sf)
                 
-                records_common.append({
-                    "X": x,
-                    "Strategy": clean_name,
-                    "Kill Rate": common_kill_rate,
-                    "Killed": killed,
-                    "Survived": survived,
-                    "Timeout": timeout,
-                    "Error": error,
-                    "Total Time (s)": common_time,
-                    "Total Number of Tests": total_common_tests,
-                    "Average Number of Tests": avg_common_tests,
-                    "Median Number of Tests": median_common_tests
-                })
+            common_time = 0
+            common_test_counts = []
             
-    return pd.DataFrame(records_full), pd.DataFrame(records_common)
+            timing_data = data.get("timing", {}).get("per_program", {})
+            test_counts_data = data.get("test_counts", {}).get("per_program", {})
+            
+            # 1. Recalculate Time and Test Counts
+            for prog in valid_programs:
+                prog_key = prog if prog in timing_data else f"{prog}.dfy"
+                
+                if prog_key in timing_data:
+                    common_time += timing_data[prog_key].get("test_gen_time", 0) + timing_data[prog_key].get("safety_check_time", 0)
+                
+                if prog_key in test_counts_data:
+                    common_test_counts.append(test_counts_data[prog_key])
+                    
+            # 2. Recalculate Mutant Statuses
+            killed, survived, timeout, error = 0, 0, 0, 0
+            for res in data.get("results", []):
+                prog_name = res.get("original_name", "").replace(".dfy", "")
+                if prog_name in valid_programs:
+                    st = res.get("status", "")
+                    if st == "killed": killed += 1
+                    elif st == "survived": survived += 1
+                    elif st == "timeout": timeout += 1
+                    elif st == "error": error += 1
+                    
+            # 3. Final calculations for this X and Strategy
+            total_common_mutants = killed + survived + timeout + error
+
+            # Change to (killed), if do not wish to count timeouts as kills
+            common_kill_rate = (killed + timeout) / total_common_mutants if total_common_mutants > 0 else 0
+            
+            total_common_tests = sum(common_test_counts)
+            avg_common_tests = (total_common_tests / len(common_test_counts)) if common_test_counts else 0.0
+            median_common_tests = statistics.median(common_test_counts) if common_test_counts else 0
+            
+            records.append({
+                "X": x,
+                "Strategy": strategy,
+                "Kill Rate": common_kill_rate,
+                "Killed": killed,
+                "Survived": survived,
+                "Timeout": timeout,
+                "Error": error,
+                "Total Time (s)": common_time,
+                "Total Number of Tests": total_common_tests,
+                "Average Number of Tests": avg_common_tests,
+                "Median Number of Tests": median_common_tests
+            })
+            
+    return pd.DataFrame(records)
 
 # ==========================================
 # Plotting Functions
 # ==========================================
+# Note: Dynamic X-axis adjustments made to accommodate variable max_x
 
 def plot_kill_rate_vs_x(df, out_dir, suffix=""):
+    max_x = int(df["X"].max())
     plt.figure(figsize=(7, 5))
     ax = sns.lineplot(
         data=df, x="X", y="Kill Rate", hue="Strategy", 
@@ -212,15 +180,17 @@ def plot_kill_rate_vs_x(df, out_dir, suffix=""):
     plt.title("Mutant Kill Rate by Repeat Factor (X)")
     plt.xlabel("Repeat Factor (X)")
     plt.ylabel("Kill Rate")
-    plt.xticks([1, 2, 3, 4, 5, 6, 7])
+    plt.xticks(range(1, max_x + 1))
     
     vals = ax.get_yticks()
+    ax.set_yticks(vals)
     ax.set_yticklabels(['{:,.1%}'.format(x) for x in vals])
     plt.legend(title="Strategy")
     plt.savefig(os.path.join(out_dir, f"plot_1_kill_rate_vs_x{suffix}.png"))
     plt.close()
 
 def plot_time_vs_x(df, out_dir, suffix=""):
+    max_x = int(df["X"].max())
     plt.figure(figsize=(7, 5))
     sns.lineplot(
         data=df, x="X", y="Total Time (s)", hue="Strategy", 
@@ -230,7 +200,7 @@ def plot_time_vs_x(df, out_dir, suffix=""):
     plt.title("Computational Cost by Repeat Factor (X)")
     plt.xlabel("Repeat Factor (X)")
     plt.ylabel("Total Execution Time (seconds)")
-    plt.xticks([1, 2, 3, 4, 5, 6, 7])
+    plt.xticks(range(1, max_x + 1))
     
     plt.legend(title="Strategy")
     plt.savefig(os.path.join(out_dir, f"plot_2_time_vs_x{suffix}.png"))
@@ -248,13 +218,14 @@ def plot_efficiency_tradeoff(df, out_dir, suffix=""):
     plt.ylabel("Kill Rate")
     
     vals = ax.get_yticks()
+    ax.set_yticks(vals)
     ax.set_yticklabels(['{:,.1%}'.format(x) for x in vals])
     h, l = ax.get_legend_handles_labels()
     plt.legend(h, l, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     plt.savefig(os.path.join(out_dir, f"plot_3_efficiency_tradeoff{suffix}.png"), bbox_inches='tight')
     plt.close()
 
-def plot_status_breakdown(df, out_dir, target_x=7, suffix=""):
+def plot_status_breakdown(df, out_dir, target_x, suffix=""):
     df_x = df[df["X"] == target_x]
     if df_x.empty:
         return
@@ -274,6 +245,7 @@ def plot_status_breakdown(df, out_dir, target_x=7, suffix=""):
     plt.close()
 
 def plot_total_tests_vs_x(df, out_dir, suffix=""):
+    max_x = int(df["X"].max())
     plt.figure(figsize=(7, 5))
     sns.lineplot(
         data=df, x="X", y="Total Number of Tests", hue="Strategy", 
@@ -283,7 +255,7 @@ def plot_total_tests_vs_x(df, out_dir, suffix=""):
     plt.title("Total Number of Tests by Repeat Factor (X)")
     plt.xlabel("Repeat Factor (X)")
     plt.ylabel("Total Tests Generated")
-    plt.xticks([1, 2, 3, 4, 5, 6, 7])
+    plt.xticks(range(1, max_x + 1))
     
     plt.legend(title="Strategy")
     plt.savefig(os.path.join(out_dir, f"plot_5_total_tests_vs_x{suffix}.png"))
@@ -301,6 +273,7 @@ def plot_test_efficiency_tradeoff(df, out_dir, suffix=""):
     plt.ylabel("Kill Rate")
     
     vals = ax.get_yticks()
+    ax.set_yticks(vals)
     ax.set_yticklabels(['{:,.1%}'.format(x) for x in vals])
     h, l = ax.get_legend_handles_labels()
     plt.legend(h, l, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
@@ -334,30 +307,58 @@ if __name__ == "__main__":
     os.makedirs(output_directory, exist_ok=True)
     os.makedirs(graphs_directory, exist_ok=True)
 
-    print("Loading data...")
-    df_full, df_common = load_data(output_directory)
-    
-    if df_full.empty and df_common.empty:
-        print("No data loaded. Check your folder structure.")
-    else:
-        if not df_full.empty:
-            print("Generating plots for FULLY SUPPORTED strategies...")
-            plot_kill_rate_vs_x(df_full, graphs_directory, "_full_support")
-            plot_time_vs_x(df_full, graphs_directory, "_full_support")
-            plot_efficiency_tradeoff(df_full, graphs_directory, "_full_support")
-            plot_status_breakdown(df_full, graphs_directory, target_x=7, suffix="_full_support")
-            plot_total_tests_vs_x(df_full, graphs_directory, "_full_support")
-            plot_test_efficiency_tradeoff(df_full, graphs_directory, "_full_support")
-            plot_avg_tests_vs_mutation_score(df_full, graphs_directory, "_full_support")
+    # Detect the max X dynamically
+    max_x = get_max_repetition(output_directory)
+    print(f"Dynamically detected Maximum Repetition (X) = {max_x}")
+
+    if max_x == 0:
+        print("No valid repetition files found. Please check your results directory.")
+        exit()
+
+    # 1. Define the combinations you want to analyze
+    combinations_to_run = [
+        {
+            "name": "Block_Spec_SpecBva",
+            "strategies": ["Block", "Spec", "Spec_bva"]
+        },
+        {
+            "name": "All_Strategies",
+            "strategies": ["Block", "Path", "Spec", "Spec_bva"]
+        }
+    ]
+
+    for combo in combinations_to_run:
+        combo_name = combo["name"]
+        combo_strats = combo["strategies"]
+        
+        print(f"\n" + "="*55)
+        print(f"Processing Combination: {combo_strats}")
+        print("="*55)
+        
+        # Pass the max_x to the data processor
+        valid_programs = get_shared_programs_for_combo(output_directory, combo_strats, max_x)
+        print(f"-> Found {len(valid_programs)} commonly supported programs.")
+        
+        if len(valid_programs) == 0:
+            print(f"-> Skipping {combo_name} due to 0 shared programs.")
+            continue
             
-        if not df_common.empty:
-            print("Generating plots for ALL strategies on COMMON programs...")
-            plot_kill_rate_vs_x(df_common, graphs_directory, "_common_programs")
-            plot_time_vs_x(df_common, graphs_directory, "_common_programs")
-            plot_efficiency_tradeoff(df_common, graphs_directory, "_common_programs")
-            plot_status_breakdown(df_common, graphs_directory, target_x=7, suffix="_common_programs")
-            plot_total_tests_vs_x(df_common, graphs_directory, "_common_programs")
-            plot_test_efficiency_tradeoff(df_common, graphs_directory, "_common_programs")
-            plot_avg_tests_vs_mutation_score(df_common, graphs_directory, "_common_programs")
+        # Build DataFrame explicitly for these strategies and this subset of programs
+        df_combo = load_data_for_subset(output_directory, valid_programs, combo_strats, max_x)
+        
+        if df_combo.empty:
+            print(f"-> Error: No data could be loaded for {combo_name}.")
+            continue
             
-        print(f"Done! Check the '{graphs_directory}' directory for the generated .png files.")
+        # Plotting
+        suffix = f"_{combo_name}"
+        print(f"-> Generating plots with suffix '{suffix}'...")
+        plot_kill_rate_vs_x(df_combo, graphs_directory, suffix)
+        plot_time_vs_x(df_combo, graphs_directory, suffix)
+        plot_efficiency_tradeoff(df_combo, graphs_directory, suffix)
+        plot_status_breakdown(df_combo, graphs_directory, target_x=max_x, suffix=suffix)
+        plot_total_tests_vs_x(df_combo, graphs_directory, suffix)
+        plot_test_efficiency_tradeoff(df_combo, graphs_directory, suffix)
+        plot_avg_tests_vs_mutation_score(df_combo, graphs_directory, suffix)
+        
+    print(f"\nDone! Check the '{graphs_directory}' directory for all generated files.")
