@@ -421,28 +421,33 @@ namespace DafnyTestGeneration {
               
               var nameSegment = new NameSegment(validTok, formal.Name, null);
               
-              BinaryExpr equalityExpr;
+              List<Expression> allConstraints = [];
+              
               if (LengthNames.Contains(formal.Name)) {
                 var cardinality = new UnaryOpExpr(validTok, UnaryOpExpr.Opcode.Cardinality, nameSegment);
                 var literalExpr = new LiteralExpr(validTok, argExpr.Children.Count());
-                equalityExpr = new BinaryExpr(validTok, BinaryExpr.Opcode.Neq, cardinality, literalExpr);
+                allConstraints.Add(new BinaryExpr(validTok, BinaryExpr.Opcode.Neq, cardinality, literalExpr));
               } else {
-                equalityExpr = new BinaryExpr(validTok, BinaryExpr.Opcode.Neq, nameSegment, argExpr);
+                allConstraints.Add(new BinaryExpr(validTok, BinaryExpr.Opcode.Neq, nameSegment, argExpr));
+                allConstraints.AddRange(Utils.GetNestedConstraints(nameSegment, argExpr, validTok));
               }
 
               var axiomAttr = new Attributes(Attributes.AxiomAttributeName, [], null);
-              var assumeStmt = new AssumeStmt(validTok, equalityExpr, axiomAttr);
-              if (entryPoint is Method method) {
-                if (method.Body != null) {
-                  method.Body.Body.Insert(0, assumeStmt);
-                  if (OriginalBodies.TryGetValue(method.Name, out var body)) {
-                    body.Body.Insert(0, assumeStmt);
+
+              foreach (var constraint in allConstraints) {
+                var assumeStmt = new AssumeStmt(validTok, constraint, axiomAttr);
+                if (entryPoint is Method method) {
+                  if (method.Body != null) {
+                    method.Body.Body.Insert(0, assumeStmt);
+                    if (OriginalBodies.TryGetValue(method.Name, out var body)) {
+                      body.Body.Insert(0, assumeStmt);
+                    }
+                  } else {
+                    method.SetBody(new BlockStmt(validTok, [assumeStmt]));
                   }
-                } else {
-                  method.SetBody(new BlockStmt(validTok, [assumeStmt]));
+                } else if (entryPoint is Function function) {
+                  function.Body = new StmtExpr(validTok, assumeStmt, function.Body);
                 }
-              } else if (entryPoint is Function function) {
-                function.Body = new StmtExpr(validTok, assumeStmt, function.Body);
               }
             }
           }
