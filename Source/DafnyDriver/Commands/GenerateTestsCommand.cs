@@ -76,6 +76,8 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
       var hasFdnf = commandResult.FindResultFor(Fdnf) is not null;
       var hasBva = commandResult.FindResultFor(Bva) is not null;
       var hasSimplify = commandResult.FindResultFor(Simplify) is not null;
+      var hasTime = commandResult.FindResultFor(Time) is not null;
+      var hasPassingFailing = commandResult.FindResultFor(PassingFailing) is not null;
       
       if (mode != Mode.Spec) {
         var invalidFlags = new List<string>();
@@ -93,6 +95,16 @@ Spec - Generate specification-based tests (i.e. assume the specification is corr
           commandResult.ErrorMessage =
             $"*** Error: The following options can only be used when the mode is 'Spec': {string.Join(", ", invalidFlags)}";
         }
+      }
+      
+      if (hasTime && hasPassingFailing) {
+        commandResult.ErrorMessage =
+          "*** Error: --time and --passing-failing cannot be used simultaneously.";
+      }
+        
+      if (hasSimplify && hasPassingFailing) {
+        commandResult.ErrorMessage =
+          "*** Error: --simplify and --passing-failing cannot be used simultaneously.";
       }
     });
     
@@ -302,7 +314,8 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
   
   public static readonly Option<bool> Simplify = new("--simplify",
     "Only for methods on Spec mode. Simplifies test output by including only input and output values." +
-    "In other words, removes 'expect' statements related to pre and post condition, whenever possible.");
+    "In other words, removes 'expect' statements related to pre and post condition, whenever possible." +
+    "Cannot be used simultaneously with --passing-failing.");
   
   public static readonly Option<bool> Fdnf = new("--fdnf",
     "Only for the Spec mode. It calculates the full DNF, instead of the safe DNF (default)." +
@@ -322,7 +335,8 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     "Ignore warnings when generating tests.");
   
   public static readonly Option<bool> PassingFailing = new("--passing-failing",
-    "Splits generated tests into passing and failing.");
+    "Splits generated tests into passing and failing, and comments expect statements related to post-conditions." +
+    "Cannot be used simultaneously with --time or --simplify.");
 
   public static readonly Option<uint> SequenceLengthLimit = new("--length-limit",
     "Add an axiom that sets the length of all sequences to be no greater than <n>. 0 (default) indicates no limit.");
@@ -344,7 +358,8 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     "Enable axiom pruning that Dafny uses to speed up verification. This may negatively affect the quality of tests.");
   
   public static readonly Option<bool> Time = new("--time",
-    "Prints the elapsed time since the beginning of the program (in seconds), split by repeat section.");
+    "Prints the elapsed time since the beginning of the program (in seconds), split by repeat section." +
+    "Cannot be used simultaneously with --passing-failing.");
   
   static GenerateTestsCommand() {
     DafnyOptions.RegisterLegacyBinding(Simplify, (options, value) => {
