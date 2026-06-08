@@ -1,0 +1,99 @@
+function C(n: nat): nat 
+    decreases n
+{
+    if n == 0 then 1 else (4 * n - 2) * C(n-1) / (n + 1) 
+}
+
+method {:testEntry} calcC(n: nat) returns (res: nat)
+    ensures res == C(n)
+{
+    var i := 0;
+    res := 1;
+
+  assert res == C(i) && 0 <= i <= n;
+    while i < n 
+        decreases n - i //a - loop variant
+        invariant res == C(i) && 0 <= i <= n //b - loop invariant
+    {
+      ghost var v0 := n - i;
+      assert res == C(i) && 0 <= i <= n && i < n && n - i == v0;
+        i := i + 1;
+        res := (4 * i - 2) * res / (i + 1);
+      assert res == C(i) && 0 <= i <= n && 0 <= n - i < v0;
+    }
+   assert res == C(i) && 0 <= i <= n && i >= n; 
+}
+
+method {:test} Test0() {
+var r0 := calcC(2);
+expect r0 == C(2);
+}
+method {:test} Test1() {
+var r0 := calcC(100);
+expect r0 == C(100);
+}
+
+// REPEAT 1 - TIME: 6.639989 s
+
+method {:test} Test6() {
+var r0 := calcC(101);
+expect r0 == C(101);
+}
+
+// REPEAT 2 - TIME: 7.84571 s
+
+method {:test} Test7() {
+var r0 := calcC(102);
+expect r0 == C(102);
+}
+
+// REPEAT 3 - TIME: 8.8864109 s
+
+method {:test} Test8() {
+var r0 := calcC(103);
+expect r0 == C(103);
+}
+
+// REPEAT 4 - TIME: 9.9172176 s
+
+method {:test} Test9() {
+var r0 := calcC(104);
+expect r0 == C(104);
+}
+
+// REPEAT 5 - TIME: 10.8272555 s
+
+method {:test} Test10() {
+var r0 := calcC(105);
+expect r0 == C(105);
+}
+
+// REPEAT 6 - TIME: 11.7628556 s
+
+method {:test} Test11() {
+var r0 := calcC(106);
+expect r0 == C(106);
+}
+
+// REPEAT 7 - TIME: 12.5595263 s
+
+method {:test} Test12() {
+var r0 := calcC(107);
+expect r0 == C(107);
+}
+
+// REPEAT 8 - TIME: 13.2342568 s
+
+method {:test} Test13() {
+var r0 := calcC(108);
+expect r0 == C(108);
+}
+
+// REPEAT 9 - TIME: 13.8705237 s
+
+method {:test} Test14() {
+var r0 := calcC(109);
+expect r0 == C(109);
+}
+
+// REPEAT 10 - TIME: 14.5723675 s

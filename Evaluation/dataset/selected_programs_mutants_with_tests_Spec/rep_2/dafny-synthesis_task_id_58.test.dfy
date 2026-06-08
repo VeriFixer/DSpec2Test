@@ -1,0 +1,19 @@
+
+method {:test} Test5() {
+var r0 := HasOppositeSign(-2, 2);
+expect r0 <==> (-2 < 0 && 2 > 0) || (-2 > 0 && 2 < 0);
+}
+method {:test} Test6() {
+var r0 := HasOppositeSign(2, -2);
+expect r0 <==> (2 < 0 && -2 > 0) || (2 > 0 && -2 < 0);
+}
+method {:test} Test7() {
+var r0 := HasOppositeSign(2, 2);
+expect r0 <==> (2 < 0 && 2 > 0) || (2 > 0 && 2 < 0);
+}
+method {:test} Test8() {
+var r0 := HasOppositeSign(-2, -2);
+expect r0 <==> (-2 < 0 && -2 > 0) || (-2 > 0 && -2 < 0);
+}
+
+// REPEAT 2 - TIME: 7.1177124 s

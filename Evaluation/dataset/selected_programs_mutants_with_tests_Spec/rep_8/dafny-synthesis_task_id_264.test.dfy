@@ -1,0 +1,8 @@
+
+method {:test} Test7() {
+expect 45 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DogYears(45);
+expect r0 == 7 * 45;
+}
+
+// REPEAT 8 - TIME: 9.0356677 s

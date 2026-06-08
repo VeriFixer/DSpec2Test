@@ -1,0 +1,13 @@
+
+method {:test} Test12() {
+var r0 := Max(9, 9);
+expect r0 == 9 || r0 == 9;
+expect r0 >= 9 && r0 >= 9;
+}
+method {:test} Test13() {
+var r0 := Max(8, 9);
+expect r0 == 8 || r0 == 9;
+expect r0 >= 8 && r0 >= 9;
+}
+
+// REPEAT 7 - TIME: 10.4472439 s
