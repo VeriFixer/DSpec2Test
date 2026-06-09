@@ -60,4 +60,4 @@ expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 100;
 }
 
-// REPEAT 1 - TIME: 7.5367767 s
+// REPEAT 1 - TIME: 6.823505 s

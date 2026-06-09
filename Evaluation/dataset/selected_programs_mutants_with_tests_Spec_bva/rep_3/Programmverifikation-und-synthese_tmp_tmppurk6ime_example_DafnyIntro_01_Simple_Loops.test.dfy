@@ -9,4 +9,4 @@ var r0 := sumOdds(102);
 expect r0 == 102 * 102;
 }
 
-// REPEAT 3 - TIME: 11.417334 s
+// REPEAT 3 - TIME: 9.9360801 s

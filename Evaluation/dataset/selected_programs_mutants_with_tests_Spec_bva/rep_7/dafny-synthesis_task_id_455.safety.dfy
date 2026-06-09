@@ -5,4 +5,4 @@ method {:testEntry} MonthHas31Days(month: int) returns (result: bool)
     result := month in {1, 3, 5, 7, 8, 10, 12};
 }
 
-// REPEAT 7 - TIME: 32.2701821 s
+// REPEAT 7 - TIME: 29.7337257 s

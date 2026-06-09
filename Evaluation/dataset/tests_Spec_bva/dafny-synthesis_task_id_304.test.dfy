@@ -63,7 +63,7 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 2282, 0);
 expect r0 == seqint0[(0 - 2282 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 1 - TIME: 7.8608009 s
+// REPEAT 1 - TIME: 7.219126 s
 
 method {:test} Test11() {
 var seqint0 : seq<int> := [0, 28, 2];
@@ -73,7 +73,7 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 2283, 1);
 expect r0 == seqint0[(1 - 2283 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 2 - TIME: 8.5977538 s
+// REPEAT 2 - TIME: 8.1925863 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [29, 3, 5, 7, 0];
@@ -83,7 +83,7 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 2284, 4);
 expect r0 == seqint0[(4 - 2284 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 3 - TIME: 9.4704304 s
+// REPEAT 3 - TIME: 8.9228812 s
 
 method {:test} Test13() {
 var seqint0 : seq<int> := [30, 0, 0, 0, 4, 8];
@@ -93,7 +93,7 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 2285, 5);
 expect r0 == seqint0[(5 - 2285 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 4 - TIME: 10.2890865 s
+// REPEAT 4 - TIME: 9.6778665 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31, 0, 0, 0];
@@ -103,7 +103,7 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 2294, 28);
 expect r0 == seqint0[(28 - 2294 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 5 - TIME: 11.1873393 s
+// REPEAT 5 - TIME: 10.3411107 s
 
 method {:test} Test15() {
 var seqint0 : seq<int> := [17, 9, 0, 0, 0, 15, 19, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 34];
@@ -113,7 +113,7 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 2325, 30);
 expect r0 == seqint0[(30 - 2325 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 6 - TIME: 12.134305 s
+// REPEAT 6 - TIME: 11.0877007 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [18, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 10];
@@ -123,7 +123,7 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 2366, 31);
 expect r0 == seqint0[(31 - 2366 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 7 - TIME: 13.1049978 s
+// REPEAT 7 - TIME: 12.0515576 s
 
 method {:test} Test17() {
 var seqint0 : seq<int> := [20, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 0, 0, 0, 0, 0, 0];
@@ -133,7 +133,7 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 2382, 32);
 expect r0 == seqint0[(32 - 2382 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 8 - TIME: 14.1198841 s
+// REPEAT 8 - TIME: 13.2467869 s
 
 method {:test} Test18() {
 var seqint0 : seq<int> := [35, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 32, 22, 0, 41];
@@ -143,7 +143,7 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 2405, 36);
 expect r0 == seqint0[(36 - 2405 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 9 - TIME: 15.876823 s
+// REPEAT 9 - TIME: 15.0098087 s
 
 method {:test} Test19() {
 var seqint0 : seq<int> := [21, 0, 0, 0, 0, 43, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -153,4 +153,4 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 2464, 37);
 expect r0 == seqint0[(37 - 2464 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 10 - TIME: 17.4350359 s
+// REPEAT 10 - TIME: 16.5037323 s

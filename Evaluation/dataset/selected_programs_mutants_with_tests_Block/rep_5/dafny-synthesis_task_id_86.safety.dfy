@@ -11,4 +11,4 @@ var r0 := CenteredHexagonalNumber(6);
 expect r0 == 3 * 6 * (6 - 1) + 1;
 }
 
-// REPEAT 5 - TIME: 5.2828312 s
+// REPEAT 5 - TIME: 5.0508267 s

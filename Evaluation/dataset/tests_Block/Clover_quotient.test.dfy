@@ -20,7 +20,7 @@ var r0, r1 := Quotient(1, 1);
 expect r1 * 1 + r0 == 1 && 0 <= r0 < 1 && 0 <= r1;
 }
 
-// REPEAT 1 - TIME: 1.8298047 s
+// REPEAT 1 - TIME: 1.8417248 s
 
 method {:test} Test1() {
 expect 7721 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -28,7 +28,7 @@ var r0, r1 := Quotient(7721, 7721);
 expect r1 * 7721 + r0 == 7721 && 0 <= r0 < 7721 && 0 <= r1;
 }
 
-// REPEAT 2 - TIME: 2.473439 s
+// REPEAT 2 - TIME: 2.4712165 s
 
 method {:test} Test2() {
 expect 7722 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -36,7 +36,7 @@ var r0, r1 := Quotient(7722, 7722);
 expect r1 * 7722 + r0 == 7722 && 0 <= r0 < 7722 && 0 <= r1;
 }
 
-// REPEAT 3 - TIME: 3.185171 s
+// REPEAT 3 - TIME: 3.305058 s
 
 method {:test} Test3() {
 expect 7723 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -44,7 +44,7 @@ var r0, r1 := Quotient(7723, 7723);
 expect r1 * 7723 + r0 == 7723 && 0 <= r0 < 7723 && 0 <= r1;
 }
 
-// REPEAT 4 - TIME: 3.8751169 s
+// REPEAT 4 - TIME: 3.8703472 s
 
 method {:test} Test4() {
 expect 7724 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -52,7 +52,7 @@ var r0, r1 := Quotient(7724, 7724);
 expect r1 * 7724 + r0 == 7724 && 0 <= r0 < 7724 && 0 <= r1;
 }
 
-// REPEAT 5 - TIME: 4.6258167 s
+// REPEAT 5 - TIME: 4.562567 s
 
 method {:test} Test5() {
 expect 7725 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -60,7 +60,7 @@ var r0, r1 := Quotient(7725, 7725);
 expect r1 * 7725 + r0 == 7725 && 0 <= r0 < 7725 && 0 <= r1;
 }
 
-// REPEAT 6 - TIME: 5.338976 s
+// REPEAT 6 - TIME: 5.2138522 s
 
 method {:test} Test6() {
 expect 7726 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -68,7 +68,7 @@ var r0, r1 := Quotient(7726, 7726);
 expect r1 * 7726 + r0 == 7726 && 0 <= r0 < 7726 && 0 <= r1;
 }
 
-// REPEAT 7 - TIME: 6.0229874 s
+// REPEAT 7 - TIME: 5.8658887 s
 
 method {:test} Test7() {
 expect 7727 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -76,7 +76,7 @@ var r0, r1 := Quotient(7727, 7727);
 expect r1 * 7727 + r0 == 7727 && 0 <= r0 < 7727 && 0 <= r1;
 }
 
-// REPEAT 8 - TIME: 6.8266998 s
+// REPEAT 8 - TIME: 6.5371472 s
 
 method {:test} Test8() {
 expect 7728 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -84,7 +84,7 @@ var r0, r1 := Quotient(7728, 7728);
 expect r1 * 7728 + r0 == 7728 && 0 <= r0 < 7728 && 0 <= r1;
 }
 
-// REPEAT 9 - TIME: 7.5607867 s
+// REPEAT 9 - TIME: 7.1904147 s
 
 method {:test} Test9() {
 expect 7729 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -92,4 +92,4 @@ var r0, r1 := Quotient(7729, 7729);
 expect r1 * 7729 + r0 == 7729 && 0 <= r0 < 7729 && 0 <= r1;
 }
 
-// REPEAT 10 - TIME: 8.2141682 s
+// REPEAT 10 - TIME: 7.8879025 s

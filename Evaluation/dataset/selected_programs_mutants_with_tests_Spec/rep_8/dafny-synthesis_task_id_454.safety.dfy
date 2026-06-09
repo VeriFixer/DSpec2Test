@@ -26,4 +26,4 @@ var r0 := ContainsZ("\U{0004}aaaa\U{0008}aaaaa\0aaaaaaaaaaaaaa\U{0006}aaa\U{0002
 expect r0 <==> exists i :: 0 <= i < |"\U{0004}aaaa\U{0008}aaaaa\0aaaaaaaaaaaaaa\U{0006}aaa\U{0002}aaaaaaa\n\U{000E}\U{0010}\U{000C}"| && ("\U{0004}aaaa\U{0008}aaaaa\0aaaaaaaaaaaaaa\U{0006}aaa\U{0002}aaaaaaa\n\U{000E}\U{0010}\U{000C}"[i] == 'z' || "\U{0004}aaaa\U{0008}aaaaa\0aaaaaaaaaaaaaa\U{0006}aaa\U{0002}aaaaaaa\n\U{000E}\U{0010}\U{000C}"[i] == 'Z');
 }
 
-// REPEAT 8 - TIME: 17.7913842 s
+// REPEAT 8 - TIME: 15.2179115 s

@@ -5,4 +5,4 @@ var r0 := TriangleNumber(8);
 expect r0 == 8 * (8 + 1) / 2;
 }
 
-// REPEAT 8 - TIME: 7.3030605 s
+// REPEAT 8 - TIME: 6.3394211 s

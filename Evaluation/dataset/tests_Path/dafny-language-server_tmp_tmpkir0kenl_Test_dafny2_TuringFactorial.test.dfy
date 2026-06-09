@@ -34,7 +34,7 @@ var r0 := ComputeFactorial(2);
 expect r0 == Factorial(2);
 }
 
-// REPEAT 1 - TIME: 10.545331 s
+// REPEAT 1 - TIME: 11.8358143 s
 
 method {:test} Test1() {
 expect 1 <= 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -42,7 +42,7 @@ var r0 := ComputeFactorial(3);
 expect r0 == Factorial(3);
 }
 
-// REPEAT 2 - TIME: 17.1897469 s
+// REPEAT 2 - TIME: 19.525844 s
 
 method {:test} Test2() {
 expect 1 <= 4, "If this check fails at runtime, the test does not meet the preconditions";
@@ -50,7 +50,7 @@ var r0 := ComputeFactorial(4);
 expect r0 == Factorial(4);
 }
 
-// REPEAT 3 - TIME: 24.363016 s
+// REPEAT 3 - TIME: 27.9675128 s
 
 method {:test} Test3() {
 expect 1 <= 5, "If this check fails at runtime, the test does not meet the preconditions";
@@ -58,7 +58,7 @@ var r0 := ComputeFactorial(5);
 expect r0 == Factorial(5);
 }
 
-// REPEAT 4 - TIME: 31.7377312 s
+// REPEAT 4 - TIME: 35.6496552 s
 
 method {:test} Test4() {
 expect 1 <= 6, "If this check fails at runtime, the test does not meet the preconditions";
@@ -66,7 +66,7 @@ var r0 := ComputeFactorial(6);
 expect r0 == Factorial(6);
 }
 
-// REPEAT 5 - TIME: 38.834721 s
+// REPEAT 5 - TIME: 43.7739059 s
 
 method {:test} Test5() {
 expect 1 <= 7, "If this check fails at runtime, the test does not meet the preconditions";
@@ -74,7 +74,7 @@ var r0 := ComputeFactorial(7);
 expect r0 == Factorial(7);
 }
 
-// REPEAT 6 - TIME: 47.6101428 s
+// REPEAT 6 - TIME: 51.4129716 s
 
 method {:test} Test6() {
 expect 1 <= 8, "If this check fails at runtime, the test does not meet the preconditions";
@@ -82,7 +82,7 @@ var r0 := ComputeFactorial(8);
 expect r0 == Factorial(8);
 }
 
-// REPEAT 7 - TIME: 56.2553271 s
+// REPEAT 7 - TIME: 57.7131639 s
 
 method {:test} Test7() {
 expect 1 <= 9, "If this check fails at runtime, the test does not meet the preconditions";
@@ -90,7 +90,7 @@ var r0 := ComputeFactorial(9);
 expect r0 == Factorial(9);
 }
 
-// REPEAT 8 - TIME: 64.7979229 s
+// REPEAT 8 - TIME: 63.5885772 s
 
 method {:test} Test8() {
 expect 1 <= 10, "If this check fails at runtime, the test does not meet the preconditions";
@@ -98,7 +98,7 @@ var r0 := ComputeFactorial(10);
 expect r0 == Factorial(10);
 }
 
-// REPEAT 9 - TIME: 73.1465293 s
+// REPEAT 9 - TIME: 70.111087 s
 
 method {:test} Test9() {
 expect 1 <= 11, "If this check fails at runtime, the test does not meet the preconditions";
@@ -106,4 +106,4 @@ var r0 := ComputeFactorial(11);
 expect r0 == Factorial(11);
 }
 
-// REPEAT 10 - TIME: 82.0870527 s
+// REPEAT 10 - TIME: 78.6168773 s

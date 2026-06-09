@@ -22,4 +22,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i - 6 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 7 - TIME: 62.2022593 s
+// REPEAT 7 - TIME: 87.16881 s

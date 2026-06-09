@@ -10,4 +10,4 @@ var r0 := Triple(46);
 expect r0 == 3 * 46;
 }
 
-// REPEAT 9 - TIME: 11.7154271 s
+// REPEAT 9 - TIME: 11.8457545 s

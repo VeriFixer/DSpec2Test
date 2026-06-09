@@ -36,4 +36,4 @@ expect |r0| == |" "|;
 expect forall i :: 0 <= i < |" "| ==> (" "[i] == ' ' ==> r0[i] == '\0') && (" "[i] != ' ' ==> r0[i] == " "[i]);
 }
 
-// REPEAT 1 - TIME: 2.972127 s
+// REPEAT 1 - TIME: 3.1522244 s

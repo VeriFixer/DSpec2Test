@@ -9,4 +9,4 @@ var r0 := Multiply(7726, 7726);
 expect r0 == 7726 * 7726;
 }
 
-// REPEAT 8 - TIME: 10.1939428 s
+// REPEAT 8 - TIME: 10.1301926 s

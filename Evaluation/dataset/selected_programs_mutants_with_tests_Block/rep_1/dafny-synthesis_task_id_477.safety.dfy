@@ -47,4 +47,4 @@ expect |r0| == |"@"|;
 expect forall i :: 0 <= i < |"@"| ==> if IsUpperCase("@"[i]) then IsUpperLowerPair("@"[i], r0[i]) else r0[i] == "@"[i];
 }
 
-// REPEAT 1 - TIME: 4.6104772 s
+// REPEAT 1 - TIME: 4.0467367 s

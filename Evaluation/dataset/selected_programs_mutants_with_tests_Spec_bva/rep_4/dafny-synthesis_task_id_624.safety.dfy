@@ -42,4 +42,4 @@ expect |r0| == |"\\a"|;
 expect forall i :: 0 <= i < |"\\a"| ==> if IsLowerCase("\\a"[i]) then IsLowerUpperPair("\\a"[i], r0[i]) else r0[i] == "\\a"[i];
 }
 
-// REPEAT 4 - TIME: 10.631301 s
+// REPEAT 4 - TIME: 9.3816393 s

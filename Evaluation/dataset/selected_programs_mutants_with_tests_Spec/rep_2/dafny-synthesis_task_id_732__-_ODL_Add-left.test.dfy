@@ -30,4 +30,4 @@ expect |r0| == |"a\0"|;
 expect forall i :: 0 <= i < |"a\0"| ==> (IsSpaceCommaDot("a\0"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("a\0"[i]) ==> r0[i] == "a\0"[i]);
 }
 
-// REPEAT 2 - TIME: 4.3060293 s
+// REPEAT 2 - TIME: 3.7459485 s

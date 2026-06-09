@@ -9,4 +9,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 6 - TIME: 8.0176671 s
+// REPEAT 6 - TIME: 7.3194964 s

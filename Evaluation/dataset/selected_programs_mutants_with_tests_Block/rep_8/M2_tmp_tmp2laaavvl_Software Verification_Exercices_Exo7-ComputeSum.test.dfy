@@ -4,4 +4,4 @@ var r0 := ComputeSum(8);
 expect r0 == Sum(8);
 }
 
-// REPEAT 8 - TIME: 7.0512704 s
+// REPEAT 8 - TIME: 6.2154456 s

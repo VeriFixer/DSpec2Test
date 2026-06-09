@@ -11,4 +11,4 @@ var r0 := MedianLength(2484, 12);
 expect r0 == (2484 + 12) / 2;
 }
 
-// REPEAT 6 - TIME: 7.7125151 s
+// REPEAT 6 - TIME: 6.9423758 s

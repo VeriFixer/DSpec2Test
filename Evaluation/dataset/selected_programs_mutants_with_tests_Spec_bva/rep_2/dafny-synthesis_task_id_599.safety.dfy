@@ -20,4 +20,4 @@ expect r0 == 200 * (200 + 1) / 2;
 expect r1 == r0 as real / 200 as real;
 }
 
-// REPEAT 2 - TIME: 7.9854582 s
+// REPEAT 2 - TIME: 7.4856852 s

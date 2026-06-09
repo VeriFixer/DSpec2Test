@@ -5,4 +5,4 @@ var r0 := ComputeFactorial(11);
 expect r0 == Factorial(11);
 }
 
-// REPEAT 10 - TIME: 82.0870527 s
+// REPEAT 10 - TIME: 78.6168773 s

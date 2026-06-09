@@ -8,4 +8,4 @@ expect forall k :: k in mapnat0 <==> arrow0(k) in r0;
 expect forall k :: k in mapnat0 ==> r0[arrow0(k)] == mapnat0[k];
 }
 
-// REPEAT 6 - TIME: 12.286865 s
+// REPEAT 6 - TIME: 10.3653787 s

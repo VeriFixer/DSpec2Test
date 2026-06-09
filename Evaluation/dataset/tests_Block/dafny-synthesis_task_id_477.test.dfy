@@ -47,7 +47,7 @@ expect |r0| == |"@"|;
 expect forall i :: 0 <= i < |"@"| ==> if IsUpperCase("@"[i]) then IsUpperLowerPair("@"[i], r0[i]) else r0[i] == "@"[i];
 }
 
-// REPEAT 1 - TIME: 4.6104772 s
+// REPEAT 1 - TIME: 4.0467367 s
 
 method {:test} Test4() {
 var r0 := ToLowercase("&");
@@ -70,7 +70,7 @@ expect |r0| == |"\U{001A}a"|;
 expect forall i :: 0 <= i < |"\U{001A}a"| ==> if IsUpperCase("\U{001A}a"[i]) then IsUpperLowerPair("\U{001A}a"[i], r0[i]) else r0[i] == "\U{001A}a"[i];
 }
 
-// REPEAT 2 - TIME: 6.874364 s
+// REPEAT 2 - TIME: 6.2920006 s
 
 method {:test} Test8() {
 var r0 := ToLowercase(" a\U{000F}");
@@ -93,7 +93,7 @@ expect |r0| == |" a\U{0001}aaaaaaaaaaaaaaaaaaaaa\0"|;
 expect forall i :: 0 <= i < |" a\U{0001}aaaaaaaaaaaaaaaaaaaaa\0"| ==> if IsUpperCase(" a\U{0001}aaaaaaaaaaaaaaaaaaaaa\0"[i]) then IsUpperLowerPair(" a\U{0001}aaaaaaaaaaaaaaaaaaaaa\0"[i], r0[i]) else r0[i] == " a\U{0001}aaaaaaaaaaaaaaaaaaaaa\0"[i];
 }
 
-// REPEAT 3 - TIME: 9.2402387 s
+// REPEAT 3 - TIME: 8.5342768 s
 
 method {:test} Test12() {
 var r0 := ToLowercase("4@a");
@@ -111,7 +111,7 @@ expect |r0| == |" 1aaaaaaaaaa\0aaaaaa\U{0001}"|;
 expect forall i :: 0 <= i < |" 1aaaaaaaaaa\0aaaaaa\U{0001}"| ==> if IsUpperCase(" 1aaaaaaaaaa\0aaaaaa\U{0001}"[i]) then IsUpperLowerPair(" 1aaaaaaaaaa\0aaaaaa\U{0001}"[i], r0[i]) else r0[i] == " 1aaaaaaaaaa\0aaaaaa\U{0001}"[i];
 }
 
-// REPEAT 4 - TIME: 11.6282007 s
+// REPEAT 4 - TIME: 10.693727 s
 
 method {:test} Test16() {
 var r0 := ToLowercase(",a-aaaaaaa2aaaaaaaaa>");
@@ -134,7 +134,7 @@ expect |r0| == |"a\U{0013}\U{0001}aaaaaaaaaaaaaaaaaaa\U{0003}aa\ta\U{0007}aaaa\U
 expect forall i :: 0 <= i < |"a\U{0013}\U{0001}aaaaaaaaaaaaaaaaaaa\U{0003}aa\ta\U{0007}aaaa\U{0005}aaaaaaaaaaaaaaa\U{000B}"| ==> if IsUpperCase("a\U{0013}\U{0001}aaaaaaaaaaaaaaaaaaa\U{0003}aa\ta\U{0007}aaaa\U{0005}aaaaaaaaaaaaaaa\U{000B}"[i]) then IsUpperLowerPair("a\U{0013}\U{0001}aaaaaaaaaaaaaaaaaaa\U{0003}aa\ta\U{0007}aaaa\U{0005}aaaaaaaaaaaaaaa\U{000B}"[i], r0[i]) else r0[i] == "a\U{0013}\U{0001}aaaaaaaaaaaaaaaaaaa\U{0003}aa\ta\U{0007}aaaa\U{0005}aaaaaaaaaaaaaaa\U{000B}"[i];
 }
 
-// REPEAT 5 - TIME: 14.3367011 s
+// REPEAT 5 - TIME: 12.7539334 s
 
 method {:test} Test20() {
 var r0 := ToLowercase("%aaaaaaaaaaaa=a\U{0014}");
@@ -157,7 +157,7 @@ expect |r0| == |"a\U{000F}aaa\0a"|;
 expect forall i :: 0 <= i < |"a\U{000F}aaa\0a"| ==> if IsUpperCase("a\U{000F}aaa\0a"[i]) then IsUpperLowerPair("a\U{000F}aaa\0a"[i], r0[i]) else r0[i] == "a\U{000F}aaa\0a"[i];
 }
 
-// REPEAT 6 - TIME: 16.6700012 s
+// REPEAT 6 - TIME: 14.778549 s
 
 method {:test} Test24() {
 var r0 := ToLowercase(" aaa\U{000F}");
@@ -180,7 +180,7 @@ expect |r0| == |"-a\U{0013}aaaaaaaaaaaaaaaaaa\U{0001}aaa\U{0008}aaaaaaaa\U{0004}
 expect forall i :: 0 <= i < |"-a\U{0013}aaaaaaaaaaaaaaaaaa\U{0001}aaa\U{0008}aaaaaaaa\U{0004}aaaa\U{0006}aaa\naaaa"| ==> if IsUpperCase("-a\U{0013}aaaaaaaaaaaaaaaaaa\U{0001}aaa\U{0008}aaaaaaaa\U{0004}aaaa\U{0006}aaa\naaaa"[i]) then IsUpperLowerPair("-a\U{0013}aaaaaaaaaaaaaaaaaa\U{0001}aaa\U{0008}aaaaaaaa\U{0004}aaaa\U{0006}aaa\naaaa"[i], r0[i]) else r0[i] == "-a\U{0013}aaaaaaaaaaaaaaaaaa\U{0001}aaa\U{0008}aaaaaaaa\U{0004}aaaa\U{0006}aaa\naaaa"[i];
 }
 
-// REPEAT 7 - TIME: 19.2424195 s
+// REPEAT 7 - TIME: 17.2424354 s
 
 method {:test} Test28() {
 var r0 := ToLowercase("aaaaaaaaaaaaaaaaaaaa\U{000F}aaaaaaaaaaaaaaaaaaaaa\U{0010}aa-a");
@@ -203,7 +203,7 @@ expect |r0| == |"a aaaaaaaaaaaaaaaaaaaaaaa\0aaaaaaaaaaaa\U{0002}aa\U{0004}aaaaa"
 expect forall i :: 0 <= i < |"a aaaaaaaaaaaaaaaaaaaaaaa\0aaaaaaaaaaaa\U{0002}aa\U{0004}aaaaa"| ==> if IsUpperCase("a aaaaaaaaaaaaaaaaaaaaaaa\0aaaaaaaaaaaa\U{0002}aa\U{0004}aaaaa"[i]) then IsUpperLowerPair("a aaaaaaaaaaaaaaaaaaaaaaa\0aaaaaaaaaaaa\U{0002}aa\U{0004}aaaaa"[i], r0[i]) else r0[i] == "a aaaaaaaaaaaaaaaaaaaaaaa\0aaaaaaaaaaaa\U{0002}aa\U{0004}aaaaa"[i];
 }
 
-// REPEAT 8 - TIME: 22.1852951 s
+// REPEAT 8 - TIME: 19.5838973 s
 
 method {:test} Test32() {
 var r0 := ToLowercase("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -216,7 +216,7 @@ expect |r0| == |"\U{0010}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"|;
 expect forall i :: 0 <= i < |"\U{0010}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| ==> if IsUpperCase("\U{0010}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[i]) then IsUpperLowerPair("\U{0010}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[i], r0[i]) else r0[i] == "\U{0010}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[i];
 }
 
-// REPEAT 9 - TIME: 25.5021199 s
+// REPEAT 9 - TIME: 22.114931 s
 
 method {:test} Test36() {
 var r0 := ToLowercase("a2-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -239,4 +239,4 @@ expect |r0| == |"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaa"|;
 expect forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaa"| ==> if IsUpperCase("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaa"[i]) then IsUpperLowerPair("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaa"[i], r0[i]) else r0[i] == "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaa"[i];
 }
 
-// REPEAT 10 - TIME: 28.7489982 s
+// REPEAT 10 - TIME: 24.8974873 s

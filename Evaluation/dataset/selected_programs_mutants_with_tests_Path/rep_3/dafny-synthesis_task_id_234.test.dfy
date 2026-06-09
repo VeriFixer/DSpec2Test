@@ -5,4 +5,4 @@ var r0 := CubeVolume(3);
 expect r0 == 3 * 3 * 3;
 }
 
-// REPEAT 3 - TIME: 5.0245441 s
+// REPEAT 3 - TIME: 5.1792307 s

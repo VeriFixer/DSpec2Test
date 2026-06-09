@@ -5,4 +5,4 @@ var r0 := RotateLeftBits((536870912 as bv32), 2);
 expect r0 == ((536870912 as bv32) << 2 as bv6) | ((536870912 as bv32) >> (32 - 2) as bv6);
 }
 
-// REPEAT 5 - TIME: 6.5715134 s
+// REPEAT 5 - TIME: 6.7478156 s

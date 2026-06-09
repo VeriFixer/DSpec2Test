@@ -15,4 +15,4 @@ expect |r0| == |"\U{0001}aaaaaaaaaaaa\U{0006}aaaa\U{0004}a\U{0002}aaaaaaaaaaaaaa
 expect forall i :: 0 <= i < |"\U{0001}aaaaaaaaaaaa\U{0006}aaaa\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaa\U{0008}aa"| ==> ("\U{0001}aaaaaaaaaaaa\U{0006}aaaa\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaa\U{0008}aa"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}aaaaaaaaaaaa\U{0006}aaaa\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaa\U{0008}aa"[i] != '\U{0001}' ==> r0[i] == "\U{0001}aaaaaaaaaaaa\U{0006}aaaa\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaa\U{0008}aa"[i]);
 }
 
-// REPEAT 5 - TIME: 10.2824803 s
+// REPEAT 5 - TIME: 9.5343039 s

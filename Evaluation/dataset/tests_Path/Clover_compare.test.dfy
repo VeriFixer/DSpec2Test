@@ -11,7 +11,7 @@ expect 0 == 0 ==> r0 == true;
 expect 0 != 0 ==> r0 == false;
 }
 
-// REPEAT 1 - TIME: 3.9329302 s
+// REPEAT 1 - TIME: 3.2745817 s
 
 method {:test} Test2() {
 var r0 := Compare<int>(0, 0);
@@ -19,7 +19,7 @@ expect 0 == 0 ==> r0 == true;
 expect 0 != 0 ==> r0 == false;
 }
 
-// REPEAT 2 - TIME: 5.9414075 s
+// REPEAT 2 - TIME: 5.124574 s
 
 method {:test} Test4() {
 var r0 := Compare<int>(0, 0);
@@ -27,7 +27,7 @@ expect 0 == 0 ==> r0 == true;
 expect 0 != 0 ==> r0 == false;
 }
 
-// REPEAT 3 - TIME: 7.4644864 s
+// REPEAT 3 - TIME: 7.049586 s
 
 method {:test} Test6() {
 var r0 := Compare<int>(0, 0);
@@ -35,7 +35,7 @@ expect 0 == 0 ==> r0 == true;
 expect 0 != 0 ==> r0 == false;
 }
 
-// REPEAT 4 - TIME: 9.0811579 s
+// REPEAT 4 - TIME: 8.9562622 s
 
 method {:test} Test8() {
 var r0 := Compare<int>(0, 0);
@@ -43,7 +43,7 @@ expect 0 == 0 ==> r0 == true;
 expect 0 != 0 ==> r0 == false;
 }
 
-// REPEAT 5 - TIME: 10.6847821 s
+// REPEAT 5 - TIME: 10.8005333 s
 
 method {:test} Test10() {
 var r0 := Compare<int>(0, 0);
@@ -51,7 +51,7 @@ expect 0 == 0 ==> r0 == true;
 expect 0 != 0 ==> r0 == false;
 }
 
-// REPEAT 6 - TIME: 12.1439006 s
+// REPEAT 6 - TIME: 12.518513 s
 
 method {:test} Test12() {
 var r0 := Compare<int>(0, 0);
@@ -59,7 +59,7 @@ expect 0 == 0 ==> r0 == true;
 expect 0 != 0 ==> r0 == false;
 }
 
-// REPEAT 7 - TIME: 13.351671 s
+// REPEAT 7 - TIME: 14.1932851 s
 
 method {:test} Test14() {
 var r0 := Compare<int>(0, 0);
@@ -67,7 +67,7 @@ expect 0 == 0 ==> r0 == true;
 expect 0 != 0 ==> r0 == false;
 }
 
-// REPEAT 8 - TIME: 14.7818145 s
+// REPEAT 8 - TIME: 15.6209015 s
 
 method {:test} Test16() {
 var r0 := Compare<int>(0, 0);
@@ -75,7 +75,7 @@ expect 0 == 0 ==> r0 == true;
 expect 0 != 0 ==> r0 == false;
 }
 
-// REPEAT 9 - TIME: 16.1346592 s
+// REPEAT 9 - TIME: 17.2220891 s
 
 method {:test} Test18() {
 var r0 := Compare<int>(0, 0);
@@ -83,4 +83,4 @@ expect 0 == 0 ==> r0 == true;
 expect 0 != 0 ==> r0 == false;
 }
 
-// REPEAT 10 - TIME: 17.3827475 s
+// REPEAT 10 - TIME: 18.6806735 s

@@ -5,4 +5,4 @@ method {:testEntry} NthNonagonalNumber(n: int) returns (number: int)
     number := n * (7 * n - 5) / 2;
 }
 
-// REPEAT 8 - TIME: 69.9051759 s
+// REPEAT 8 - TIME: 69.9631773 s

@@ -38,7 +38,7 @@ expect r0 == 2 <==> (26 == 26 && 26 != 26) || (26 != 26 && 26 == 26) || (26 == 2
 expect r0 == 1 <==> 26 != 26 && 26 != 26 && 26 != 26;
 }
 
-// REPEAT 1 - TIME: 2.9356936 s
+// REPEAT 1 - TIME: 2.9502731 s
 
 method {:test} Test3() {
 var r0 := CountEqualNumbers(28, 27, 27);
@@ -55,7 +55,7 @@ expect r0 == 2 <==> (27 == 27 && 27 != 27) || (27 != 27 && 27 == 27) || (27 == 2
 expect r0 == 1 <==> 27 != 27 && 27 != 27 && 27 != 27;
 }
 
-// REPEAT 2 - TIME: 4.2787138 s
+// REPEAT 2 - TIME: 4.2455211 s
 
 method {:test} Test5() {
 var r0 := CountEqualNumbers(29, 30, 30);
@@ -72,7 +72,7 @@ expect r0 == 2 <==> (31 == 31 && 31 != 31) || (31 != 31 && 31 == 31) || (31 == 3
 expect r0 == 1 <==> 31 != 31 && 31 != 31 && 31 != 31;
 }
 
-// REPEAT 3 - TIME: 5.5847218 s
+// REPEAT 3 - TIME: 5.5958199 s
 
 method {:test} Test7() {
 var r0 := CountEqualNumbers(33, 32, 32);
@@ -89,7 +89,7 @@ expect r0 == 2 <==> (33 == 33 && 33 != 33) || (33 != 33 && 33 == 33) || (33 == 3
 expect r0 == 1 <==> 33 != 33 && 33 != 33 && 33 != 33;
 }
 
-// REPEAT 4 - TIME: 7.0105091 s
+// REPEAT 4 - TIME: 6.8412347 s
 
 method {:test} Test9() {
 var r0 := CountEqualNumbers(36, 35, 35);
@@ -106,7 +106,7 @@ expect r0 == 2 <==> (34 == 34 && 34 != 34) || (34 != 34 && 34 == 34) || (34 == 3
 expect r0 == 1 <==> 34 != 34 && 34 != 34 && 34 != 34;
 }
 
-// REPEAT 5 - TIME: 8.2558013 s
+// REPEAT 5 - TIME: 8.0212185 s
 
 method {:test} Test11() {
 var r0 := CountEqualNumbers(37, 38, 38);
@@ -123,7 +123,7 @@ expect r0 == 2 <==> (37 == 37 && 37 != 37) || (37 != 37 && 37 == 37) || (37 == 3
 expect r0 == 1 <==> 37 != 37 && 37 != 37 && 37 != 37;
 }
 
-// REPEAT 6 - TIME: 9.6232544 s
+// REPEAT 6 - TIME: 8.9656163 s
 
 method {:test} Test13() {
 var r0 := CountEqualNumbers(40, 39, 39);
@@ -147,7 +147,7 @@ expect r0 == 2 <==> (39 == 39 && 39 != 39) || (39 != 39 && 39 == 39) || (39 == 3
 expect r0 == 1 <==> 39 != 39 && 39 != 39 && 39 != 39;
 }
 
-// REPEAT 7 - TIME: 10.9759683 s
+// REPEAT 7 - TIME: 10.3525865 s
 
 method {:test} Test16() {
 var r0 := CountEqualNumbers(41, 42, 42);
@@ -164,7 +164,7 @@ expect r0 == 2 <==> (41 == 41 && 41 != 41) || (41 != 41 && 41 == 41) || (41 == 4
 expect r0 == 1 <==> 41 != 41 && 41 != 41 && 41 != 41;
 }
 
-// REPEAT 8 - TIME: 12.0414352 s
+// REPEAT 8 - TIME: 11.2793461 s
 
 method {:test} Test18() {
 var r0 := CountEqualNumbers(43, 44, 44);
@@ -181,7 +181,7 @@ expect r0 == 2 <==> (43 == 43 && 43 != 43) || (43 != 43 && 43 == 43) || (43 == 4
 expect r0 == 1 <==> 43 != 43 && 43 != 43 && 43 != 43;
 }
 
-// REPEAT 9 - TIME: 13.072211 s
+// REPEAT 9 - TIME: 12.2252852 s
 
 method {:test} Test20() {
 var r0 := CountEqualNumbers(45, 46, 46);
@@ -205,4 +205,4 @@ expect r0 == 2 <==> (45 == 46 && 46 != 45) || (45 != 46 && 46 == 45) || (45 == 4
 expect r0 == 1 <==> 45 != 46 && 46 != 45 && 45 != 45;
 }
 
-// REPEAT 10 - TIME: 14.2993405 s
+// REPEAT 10 - TIME: 13.5003082 s

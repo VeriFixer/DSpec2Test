@@ -5,4 +5,4 @@ var r0 := Sum(5);
 expect r0 == 5 * (5 + 1) / 2;
 }
 
-// REPEAT 6 - TIME: 29.9315386 s
+// REPEAT 6 - TIME: 19.5905462 s

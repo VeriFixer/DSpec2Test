@@ -9,4 +9,4 @@ var r0 := AsciiValue('\U{22BD}');
 expect r0 == '\U{22BD}' as int;
 }
 
-// REPEAT 10 - TIME: 9.104822 s
+// REPEAT 10 - TIME: 8.0925996 s

@@ -9,67 +9,67 @@ var r0 := DegreesToRadians(0.0);
 expect r0 == 0.0 * 3.14159265358979323846 / 180.0;
 }
 
-// REPEAT 1 - TIME: 2.9567551 s
+// REPEAT 1 - TIME: 2.951431 s
 
 method {:test} Test1() {
 var r0 := DegreesToRadians(1.0);
 expect r0 == 1.0 * 3.14159265358979323846 / 180.0;
 }
 
-// REPEAT 2 - TIME: 4.049587 s
+// REPEAT 2 - TIME: 3.9510635 s
 
 method {:test} Test2() {
 var r0 := DegreesToRadians(2.0);
 expect r0 == 2.0 * 3.14159265358979323846 / 180.0;
 }
 
-// REPEAT 3 - TIME: 5.3096334 s
+// REPEAT 3 - TIME: 5.2077702 s
 
 method {:test} Test3() {
 var r0 := DegreesToRadians(3.0);
 expect r0 == 3.0 * 3.14159265358979323846 / 180.0;
 }
 
-// REPEAT 4 - TIME: 6.4384211 s
+// REPEAT 4 - TIME: 6.33145 s
 
 method {:test} Test4() {
 var r0 := DegreesToRadians(4.0);
 expect r0 == 4.0 * 3.14159265358979323846 / 180.0;
 }
 
-// REPEAT 5 - TIME: 7.748721 s
+// REPEAT 5 - TIME: 7.255332 s
 
 method {:test} Test5() {
 var r0 := DegreesToRadians(5.0);
 expect r0 == 5.0 * 3.14159265358979323846 / 180.0;
 }
 
-// REPEAT 6 - TIME: 8.6700802 s
+// REPEAT 6 - TIME: 7.98475 s
 
 method {:test} Test6() {
 var r0 := DegreesToRadians(6.0);
 expect r0 == 6.0 * 3.14159265358979323846 / 180.0;
 }
 
-// REPEAT 7 - TIME: 9.5744337 s
+// REPEAT 7 - TIME: 8.88988 s
 
 method {:test} Test7() {
 var r0 := DegreesToRadians(7.0);
 expect r0 == 7.0 * 3.14159265358979323846 / 180.0;
 }
 
-// REPEAT 8 - TIME: 10.379961 s
+// REPEAT 8 - TIME: 9.5326475 s
 
 method {:test} Test8() {
 var r0 := DegreesToRadians(8.0);
 expect r0 == 8.0 * 3.14159265358979323846 / 180.0;
 }
 
-// REPEAT 9 - TIME: 11.3093445 s
+// REPEAT 9 - TIME: 10.1119334 s
 
 method {:test} Test9() {
 var r0 := DegreesToRadians(9.0);
 expect r0 == 9.0 * 3.14159265358979323846 / 180.0;
 }
 
-// REPEAT 10 - TIME: 12.22109 s
+// REPEAT 10 - TIME: 10.9200272 s

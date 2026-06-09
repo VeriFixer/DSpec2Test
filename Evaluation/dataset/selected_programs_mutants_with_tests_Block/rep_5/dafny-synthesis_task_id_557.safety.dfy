@@ -87,4 +87,4 @@ expect |r0| == |"Daa\U{0001}gg"|;
 expect forall i :: 0 <= i < |"Daa\U{0001}gg"| ==> if IsLowerCase("Daa\U{0001}gg"[i]) then IsLowerUpperPair("Daa\U{0001}gg"[i], r0[i]) else if IsUpperCase("Daa\U{0001}gg"[i]) then IsUpperLowerPair("Daa\U{0001}gg"[i], r0[i]) else r0[i] == "Daa\U{0001}gg"[i];
 }
 
-// REPEAT 5 - TIME: 18.48542 s
+// REPEAT 5 - TIME: 17.1261246 s

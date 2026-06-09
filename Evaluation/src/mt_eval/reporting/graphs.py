@@ -53,7 +53,6 @@ def get_max_repetition(base_dir):
             for file in os.listdir(strat_dir):
                 if "_rep_" in file and file.endswith(".json"):
                     try:
-                        # Extract the number from results_Strategy_rep_X.json
                         x_str = file.split("_rep_")[-1].replace(".json", "")
                         max_x = max(max_x, int(x_str))
                     except ValueError:
@@ -71,7 +70,6 @@ def get_shared_programs_for_combo(base_dir, combo_strategies, max_x):
     
     for x in range(1, max_x + 1):
         for strategy in combo_strategies:
-            # Updated path structure
             strat_path = os.path.join(base_dir, f"results_{strategy}", f"results_{strategy}_rep_{x}.json")
             
             if os.path.exists(strat_path):
@@ -142,7 +140,7 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
             total_common_mutants = killed + survived + timeout + error
 
             # Change to (killed), if do not wish to count timeouts as kills
-            common_kill_rate = (killed + timeout) / total_common_mutants if total_common_mutants > 0 else 0
+            common_kill_rate = (killed) / total_common_mutants if total_common_mutants > 0 else 0
             
             total_common_tests = sum(common_test_counts)
             avg_common_tests = (total_common_tests / len(common_test_counts)) if common_test_counts else 0.0

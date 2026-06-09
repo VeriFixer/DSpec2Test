@@ -187,7 +187,7 @@ method {:test} Test5() {
 testDeserialiseWithAllElements();
 }
 
-// REPEAT 1 - TIME: 6.7619183 s
+// REPEAT 1 - TIME: 6.3704165 s
 
 method {:test} Test6() {
 testSerializeWithASingleLeaf();
@@ -208,7 +208,7 @@ method {:test} Test11() {
 testDeserialiseWithAllElements();
 }
 
-// REPEAT 2 - TIME: 9.5801683 s
+// REPEAT 2 - TIME: 9.1529026 s
 
 method {:test} Test12() {
 testSerializeWithASingleLeaf();
@@ -229,7 +229,7 @@ method {:test} Test17() {
 testDeserialiseWithAllElements();
 }
 
-// REPEAT 3 - TIME: 11.9633672 s
+// REPEAT 3 - TIME: 11.669113 s
 
 method {:test} Test18() {
 testSerializeWithASingleLeaf();
@@ -250,7 +250,7 @@ method {:test} Test23() {
 testDeserialiseWithAllElements();
 }
 
-// REPEAT 4 - TIME: 14.0579441 s
+// REPEAT 4 - TIME: 13.6225684 s
 
 method {:test} Test24() {
 testSerializeWithASingleLeaf();
@@ -271,7 +271,7 @@ method {:test} Test29() {
 testDeserialiseWithAllElements();
 }
 
-// REPEAT 5 - TIME: 15.818084 s
+// REPEAT 5 - TIME: 15.2485642 s
 
 method {:test} Test30() {
 testSerializeWithASingleLeaf();
@@ -292,7 +292,7 @@ method {:test} Test35() {
 testDeserialiseWithAllElements();
 }
 
-// REPEAT 6 - TIME: 17.4794868 s
+// REPEAT 6 - TIME: 16.7670103 s
 
 method {:test} Test36() {
 testSerializeWithASingleLeaf();
@@ -313,7 +313,7 @@ method {:test} Test41() {
 testDeserialiseWithAllElements();
 }
 
-// REPEAT 7 - TIME: 19.102673 s
+// REPEAT 7 - TIME: 18.1675604 s
 
 method {:test} Test42() {
 testSerializeWithASingleLeaf();
@@ -334,7 +334,7 @@ method {:test} Test47() {
 testDeserialiseWithAllElements();
 }
 
-// REPEAT 8 - TIME: 20.6358038 s
+// REPEAT 8 - TIME: 19.5666047 s
 
 method {:test} Test48() {
 testSerializeWithASingleLeaf();
@@ -355,7 +355,7 @@ method {:test} Test53() {
 testDeserialiseWithAllElements();
 }
 
-// REPEAT 9 - TIME: 22.136902 s
+// REPEAT 9 - TIME: 20.8741172 s
 
 method {:test} Test54() {
 testSerializeWithASingleLeaf();
@@ -376,4 +376,4 @@ method {:test} Test59() {
 testDeserialiseWithAllElements();
 }
 
-// REPEAT 10 - TIME: 23.6920235 s
+// REPEAT 10 - TIME: 22.2388444 s

@@ -11,4 +11,4 @@ var r0 := CylinderSurfaceArea(3.0, 3.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 3.0 * (3.0 + 3.0);
 }
 
-// REPEAT 3 - TIME: 4.5591549 s
+// REPEAT 3 - TIME: 4.1380002 s

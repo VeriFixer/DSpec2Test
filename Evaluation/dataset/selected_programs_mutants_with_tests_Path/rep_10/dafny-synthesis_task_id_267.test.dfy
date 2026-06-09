@@ -5,4 +5,4 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(14);
 expect r0 == 14 * (2 * 14 - 1) * (2 * 14 + 1) / 3;
 }
 
-// REPEAT 10 - TIME: 30.7951111 s
+// REPEAT 10 - TIME: 39.9872752 s

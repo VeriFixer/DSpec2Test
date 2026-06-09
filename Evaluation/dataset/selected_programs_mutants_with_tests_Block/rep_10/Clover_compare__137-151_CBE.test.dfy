@@ -13,4 +13,4 @@ expect 0 == 0 ==> r0 == true;
 expect 0 != 0 ==> r0 == false;
 }
 
-// REPEAT 10 - TIME: 10.4725899 s
+// REPEAT 10 - TIME: 10.0108601 s

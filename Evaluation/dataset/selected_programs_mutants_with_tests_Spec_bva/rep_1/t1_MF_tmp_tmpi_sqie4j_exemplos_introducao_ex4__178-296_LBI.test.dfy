@@ -32,4 +32,4 @@ var r0 := Fatorial(100);
 expect r0 == Fat(100);
 }
 
-// REPEAT 1 - TIME: 5.4563498 s
+// REPEAT 1 - TIME: 5.2352892 s

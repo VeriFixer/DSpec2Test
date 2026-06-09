@@ -217,7 +217,6 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             })
 
         cumulative_safety_time = {orig.stem: 0.0 for orig in originals}
-        cumulative_test_gen_time = {orig.stem: 0.0 for orig in originals}
         cumulative_test_counts = {orig.stem: 0 for orig in originals}
         
         mutant_status_tracker: dict[str, MutantResult] = {}
@@ -225,6 +224,11 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
 
         for rep in range(1, repeat + 1):
             print(f"\n[run_evaluation] --- Running Repetition {rep}/{repeat} ---")
+
+            rep_test_gen_time = {
+                orig.stem: split_data.get(orig.stem, {}).get(rep, (None, 0.0))[1]
+                for orig in originals
+            }
             
             strategy_combined_rep_dir = strategy_combined_dir / f"rep_{rep}"
 
@@ -252,7 +256,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                         "failed_step": "safety_check",
                         "mutants_skipped": n_mutants,
                         "test_gen_command": test_gen_cmd_map.get(orig.stem, ""),
-                        "test_gen_time": split_data.get(orig.stem, {}).get(rep, (None, 0.0))[1],
+                        "test_gen_time": split_data.get(orig.stem, {}).get(rep, (None, test_gen_time_map.get(orig.stem, 0.0)))[1],
                         "safety_check_command": safety_result.command,
                         "safety_check_time": safety_result.execution_time,
                         "safety_file": safety_result.safety_file,
@@ -274,9 +278,6 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
 
             # Accumulate test stats strictly for supported originals
             for orig in supported_originals:
-                rep_gen_time = split_data.get(orig.stem, {}).get(rep, (None, 0.0))[1]
-                cumulative_test_gen_time[orig.stem] += rep_gen_time
-                
                 rep_test_file = split_data[orig.stem][rep][0]
                 cumulative_test_counts[orig.stem] += _get_test_count(rep_test_file)
 
@@ -317,7 +318,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                     
                     orig_stem = r.original_name.removesuffix(".dfy")
                     r.test_gen_command = test_gen_cmd_map.get(orig_stem, "")
-                    r.test_gen_time = cumulative_test_gen_time.get(orig_stem, 0.0)
+                    r.test_gen_time = rep_test_gen_time.get(orig_stem, 0.0)
                     r.safety_check_time = cumulative_safety_time.get(orig_stem, 0.0)
                     
                     mutant_status_tracker[m_name] = r
@@ -329,7 +330,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                     if mutant.name in mutant_status_tracker:
                         res = mutant_status_tracker[mutant.name]
                         
-                        res.test_gen_time = cumulative_test_gen_time.get(orig.stem, 0.0)
+                        res.test_gen_time = rep_test_gen_time.get(orig.stem, 0.0)
                         res.safety_check_time = cumulative_safety_time.get(orig.stem, 0.0)
                         
                         rep_results.append(res)
@@ -427,7 +428,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             print(f"  {'Program':<30} {'TestGen':>8} {'Safety':>8} {'Kill(avg)':>10}")
             print(f"  {'─'*56}")
             for orig in originals:
-                tg = cumulative_test_gen_time.get(orig.stem, 0.0)
+                tg = rep_test_gen_time.get(orig.stem, 0.0)
                 sc = cumulative_safety_time.get(orig.stem, 0.0)
                 tc = cumulative_test_counts.get(orig.stem, 0)
                 # Average kill time for this program's mutants
@@ -451,7 +452,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 "timing": {
                     "per_program": {
                         orig.stem: {
-                            "test_gen_time": cumulative_test_gen_time.get(orig.stem, 0.0),
+                            "test_gen_time": rep_test_gen_time.get(orig.stem, 0.0),
                             "safety_check_time": cumulative_safety_time.get(orig.stem, 0.0),
                         }
                         for orig in originals

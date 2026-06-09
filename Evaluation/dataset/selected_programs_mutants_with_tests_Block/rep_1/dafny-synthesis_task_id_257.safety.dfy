@@ -13,4 +13,4 @@ expect r0[0] == 24;
 expect r0[1] == 25;
 }
 
-// REPEAT 1 - TIME: 2.1587174 s
+// REPEAT 1 - TIME: 2.0878618 s

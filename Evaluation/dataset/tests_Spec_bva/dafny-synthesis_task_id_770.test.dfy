@@ -40,10 +40,10 @@ var r0 := SumOfFourthPowerOfOddNumbers(27);
 expect r0 == 27 * (2 * 27 + 1) * (24 * 27 * 27 * 27 - 12 * 27 * 27 - 14 * 27 + 7) / 15;
 }
 
-// REPEAT 1 - TIME: 54.9088996 s
+// REPEAT 1 - TIME: 51.7136629 s
 
 
-// REPEAT 2 - TIME: 85.3112026 s
+// REPEAT 2 - TIME: 82.1572474 s
 
 method {:test} Test5() {
 expect 196 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -51,7 +51,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(196);
 expect r0 == 196 * (2 * 196 + 1) * (24 * 196 * 196 * 196 - 12 * 196 * 196 - 14 * 196 + 7) / 15;
 }
 
-// REPEAT 3 - TIME: 98.6497337 s
+// REPEAT 3 - TIME: 97.0449169 s
 
 method {:test} Test6() {
 expect 197 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -59,7 +59,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(197);
 expect r0 == 197 * (2 * 197 + 1) * (24 * 197 * 197 * 197 - 12 * 197 * 197 - 14 * 197 + 7) / 15;
 }
 
-// REPEAT 4 - TIME: 98.9875112 s
+// REPEAT 4 - TIME: 97.5927848 s
 
 method {:test} Test7() {
 expect 198 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -67,7 +67,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(198);
 expect r0 == 198 * (2 * 198 + 1) * (24 * 198 * 198 * 198 - 12 * 198 * 198 - 14 * 198 + 7) / 15;
 }
 
-// REPEAT 5 - TIME: 99.3432775 s
+// REPEAT 5 - TIME: 98.099081 s
 
 method {:test} Test8() {
 expect 199 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -75,7 +75,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(199);
 expect r0 == 199 * (2 * 199 + 1) * (24 * 199 * 199 * 199 - 12 * 199 * 199 - 14 * 199 + 7) / 15;
 }
 
-// REPEAT 6 - TIME: 99.670474 s
+// REPEAT 6 - TIME: 98.580644 s
 
 method {:test} Test9() {
 expect 200 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -83,7 +83,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(200);
 expect r0 == 200 * (2 * 200 + 1) * (24 * 200 * 200 * 200 - 12 * 200 * 200 - 14 * 200 + 7) / 15;
 }
 
-// REPEAT 7 - TIME: 100.0117292 s
+// REPEAT 7 - TIME: 99.0637976 s
 
 method {:test} Test10() {
 expect 201 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -91,7 +91,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(201);
 expect r0 == 201 * (2 * 201 + 1) * (24 * 201 * 201 * 201 - 12 * 201 * 201 - 14 * 201 + 7) / 15;
 }
 
-// REPEAT 8 - TIME: 100.3350207 s
+// REPEAT 8 - TIME: 99.5699847 s
 
 method {:test} Test11() {
 expect 202 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -99,7 +99,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(202);
 expect r0 == 202 * (2 * 202 + 1) * (24 * 202 * 202 * 202 - 12 * 202 * 202 - 14 * 202 + 7) / 15;
 }
 
-// REPEAT 9 - TIME: 100.6692592 s
+// REPEAT 9 - TIME: 100.1766668 s
 
 method {:test} Test12() {
 expect 203 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -107,4 +107,4 @@ var r0 := SumOfFourthPowerOfOddNumbers(203);
 expect r0 == 203 * (2 * 203 + 1) * (24 * 203 * 203 * 203 - 12 * 203 * 203 - 14 * 203 + 7) / 15;
 }
 
-// REPEAT 10 - TIME: 101.109323 s
+// REPEAT 10 - TIME: 100.9883031 s

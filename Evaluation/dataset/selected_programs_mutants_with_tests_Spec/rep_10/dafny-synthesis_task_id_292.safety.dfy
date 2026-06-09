@@ -11,4 +11,4 @@ var r0 := Quotient(10, -10);
 expect r0 == 10 / -10;
 }
 
-// REPEAT 10 - TIME: 10.9015675 s
+// REPEAT 10 - TIME: 9.2173278 s

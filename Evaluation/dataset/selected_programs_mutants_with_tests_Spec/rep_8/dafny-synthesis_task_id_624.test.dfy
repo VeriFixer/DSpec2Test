@@ -5,4 +5,4 @@ expect |r0| == |"]Ta"|;
 expect forall i :: 0 <= i < |"]Ta"| ==> if IsLowerCase("]Ta"[i]) then IsLowerUpperPair("]Ta"[i], r0[i]) else r0[i] == "]Ta"[i];
 }
 
-// REPEAT 8 - TIME: 10.7589297 s
+// REPEAT 8 - TIME: 9.2135986 s

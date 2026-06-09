@@ -30,4 +30,4 @@ expect |r0| == |"g\U{0004}bg"|;
 expect forall i :: 0 <= i < |"g\U{0004}bg"| ==> if IsLowerCase("g\U{0004}bg"[i]) then IsLowerUpperPair("g\U{0004}bg"[i], r0[i]) else if IsUpperCase("g\U{0004}bg"[i]) then IsUpperLowerPair("g\U{0004}bg"[i], r0[i]) else r0[i] == "g\U{0004}bg"[i];
 }
 
-// REPEAT 3 - TIME: 12.642103 s
+// REPEAT 3 - TIME: 11.77369 s

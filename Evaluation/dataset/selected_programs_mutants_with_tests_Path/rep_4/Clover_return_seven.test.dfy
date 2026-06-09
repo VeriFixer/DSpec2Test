@@ -4,4 +4,4 @@ var r0 := M(26);
 expect r0 == 7;
 }
 
-// REPEAT 4 - TIME: 6.3642197 s
+// REPEAT 4 - TIME: 5.5304332 s

@@ -5,4 +5,4 @@ method {:testEntry} IsMonthWith30Days(month: int) returns (result: bool)
     result := month == 4 || month == 6 || month == 9 || month == 11;
 }
 
-// REPEAT 10 - TIME: 19.7314155 s
+// REPEAT 10 - TIME: 17.1270882 s

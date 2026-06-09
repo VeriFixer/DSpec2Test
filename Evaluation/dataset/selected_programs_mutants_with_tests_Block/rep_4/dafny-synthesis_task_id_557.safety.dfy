@@ -87,4 +87,4 @@ expect |r0| == |"bT\U{0004}\U{0006}\0"|;
 expect forall i :: 0 <= i < |"bT\U{0004}\U{0006}\0"| ==> if IsLowerCase("bT\U{0004}\U{0006}\0"[i]) then IsLowerUpperPair("bT\U{0004}\U{0006}\0"[i], r0[i]) else if IsUpperCase("bT\U{0004}\U{0006}\0"[i]) then IsUpperLowerPair("bT\U{0004}\U{0006}\0"[i], r0[i]) else r0[i] == "bT\U{0004}\U{0006}\0"[i];
 }
 
-// REPEAT 4 - TIME: 15.7791088 s
+// REPEAT 4 - TIME: 14.3644382 s

@@ -19,4 +19,4 @@ var r0 := Sum(107);
 expect r0 == 107 * (107 + 1) / 2;
 }
 
-// REPEAT 8 - TIME: 11.2351438 s
+// REPEAT 8 - TIME: 10.4266959 s

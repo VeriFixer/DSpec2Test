@@ -35,4 +35,4 @@ expect |r0| == |"aa"|;
 expect forall i :: 0 <= i < |"aa"| ==> ("aa"[i] == '\U{0001}' ==> r0[i] == '\0') && ("aa"[i] != '\U{0001}' ==> r0[i] == "aa"[i]);
 }
 
-// REPEAT 1 - TIME: 6.7134796 s
+// REPEAT 1 - TIME: 6.4805987 s

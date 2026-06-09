@@ -5,4 +5,4 @@ var r0 := TriangleNumber(3);
 expect r0 == 3 * (3 + 1) / 2;
 }
 
-// REPEAT 3 - TIME: 3.8780107 s
+// REPEAT 3 - TIME: 3.0801153 s

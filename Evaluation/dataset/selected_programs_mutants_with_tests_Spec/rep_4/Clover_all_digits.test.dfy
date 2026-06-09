@@ -8,4 +8,4 @@ var r0 := allDigits("a\0\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0006}\U{00
 expect r0 <==> forall i :: 0 <= i < |"a\0\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0006}\U{0004}a"| ==> "a\0\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0006}\U{0004}a"[i] in "0123456789";
 }
 
-// REPEAT 4 - TIME: 7.8174913 s
+// REPEAT 4 - TIME: 7.0832023 s

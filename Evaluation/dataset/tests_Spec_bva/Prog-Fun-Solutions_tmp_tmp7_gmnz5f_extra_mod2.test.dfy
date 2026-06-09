@@ -49,58 +49,58 @@ method {:test} Test4() {
 var r0 := mod2(637740);
 }
 
-// REPEAT 1 - TIME: 8.6632621 s
+// REPEAT 1 - TIME: 8.176258 s
 
 method {:test} Test5() {
 var r0 := mod2(775140);
 }
 
-// REPEAT 2 - TIME: 9.6648263 s
+// REPEAT 2 - TIME: 8.9889703 s
 
 method {:test} Test6() {
 var r0 := mod2(775141);
 }
 
-// REPEAT 3 - TIME: 10.6427755 s
+// REPEAT 3 - TIME: 9.8425393 s
 
 method {:test} Test7() {
 var r0 := mod2(775148);
 }
 
-// REPEAT 4 - TIME: 11.4807271 s
+// REPEAT 4 - TIME: 10.6204808 s
 
 method {:test} Test8() {
 var r0 := mod2(775149);
 }
 
-// REPEAT 5 - TIME: 12.3049593 s
+// REPEAT 5 - TIME: 11.3018957 s
 
 method {:test} Test9() {
 var r0 := mod2(775151);
 }
 
-// REPEAT 6 - TIME: 13.0937895 s
+// REPEAT 6 - TIME: 11.9527472 s
 
 method {:test} Test10() {
 var r0 := mod2(775152);
 }
 
-// REPEAT 7 - TIME: 13.7853662 s
+// REPEAT 7 - TIME: 12.5074568 s
 
 method {:test} Test11() {
 var r0 := mod2(775153);
 }
 
-// REPEAT 8 - TIME: 14.4790204 s
+// REPEAT 8 - TIME: 13.0155183 s
 
 method {:test} Test12() {
 var r0 := mod2(775154);
 }
 
-// REPEAT 9 - TIME: 15.2904115 s
+// REPEAT 9 - TIME: 13.561734 s
 
 method {:test} Test13() {
 var r0 := mod2(775176);
 }
 
-// REPEAT 10 - TIME: 15.9928252 s
+// REPEAT 10 - TIME: 14.1633893 s

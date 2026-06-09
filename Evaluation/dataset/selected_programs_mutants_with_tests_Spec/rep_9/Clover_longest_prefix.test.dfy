@@ -15,4 +15,4 @@ expect |r0| <= |"a\0aaa\U{000C}a\U{0010}aaaaaaa\U{0008}aaaaaaaaaaaaa\U{0012}aaaa
 expect |r0| == |"a\0aaa\U{000C}a\U{0010}aaaaaaa\U{0008}aaaaaaaaaaaaa\U{0012}aaaaaaaaaaaa\U{000E}aa\U{0016}a"| || |r0| == |"a\U{0002}aaaaaaaaaaaaaaaaaaaaaaa\U{0006}\naaaaaaaaaaaaaa\U{0014}aaaa\U{0004}a\U{0018}a"| || "a\0aaa\U{000C}a\U{0010}aaaaaaa\U{0008}aaaaaaaaaaaaa\U{0012}aaaaaaaaaaaa\U{000E}aa\U{0016}a"[|r0|] != "a\U{0002}aaaaaaaaaaaaaaaaaaaaaaa\U{0006}\naaaaaaaaaaaaaa\U{0014}aaaa\U{0004}a\U{0018}a"[|r0|];
 }
 
-// REPEAT 9 - TIME: 21.2492388 s
+// REPEAT 9 - TIME: 19.5026245 s

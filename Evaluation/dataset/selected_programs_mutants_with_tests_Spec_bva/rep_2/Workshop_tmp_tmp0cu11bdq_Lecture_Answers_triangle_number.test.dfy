@@ -5,4 +5,4 @@ var r0 := TriangleNumber(101);
 expect r0 == 101 * (101 + 1) / 2;
 }
 
-// REPEAT 2 - TIME: 6.5753126 s
+// REPEAT 2 - TIME: 5.5550218 s

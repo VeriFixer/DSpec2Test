@@ -15,4 +15,4 @@ var r0 := Match("\0aa\U{0006}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaaa",
 expect r0 <==> forall n :: 0 <= n < |"\0aa\U{0006}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaaa"| ==> "\0aa\U{0006}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaaa"[n] == "\0aa\U{0008}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}aaaaa"[n] || "\0aa\U{0008}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}aaaaa"[n] == '?';
 }
 
-// REPEAT 6 - TIME: 12.6096956 s
+// REPEAT 6 - TIME: 12.3319612 s

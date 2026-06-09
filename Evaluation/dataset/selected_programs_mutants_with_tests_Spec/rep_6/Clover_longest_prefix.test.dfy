@@ -15,4 +15,4 @@ expect |r0| <= |"\U{0004}\0aaaaaaaaaaaaaaa"| && r0 == "\U{0004}\0aaaaaaaaaaaaaaa
 expect |r0| == |"\U{0004}\0aaaaaaaaaaaaaaa"| || |r0| == |"\U{0004}\U{0002}aa"| || "\U{0004}\0aaaaaaaaaaaaaaa"[|r0|] != "\U{0004}\U{0002}aa"[|r0|];
 }
 
-// REPEAT 6 - TIME: 14.4265224 s
+// REPEAT 6 - TIME: 13.1389104 s

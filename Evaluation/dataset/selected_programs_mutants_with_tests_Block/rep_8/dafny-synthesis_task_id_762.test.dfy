@@ -5,4 +5,4 @@ var r0 := IsMonthWith30Days(3);
 expect r0 <==> 3 == 4 || 3 == 6 || 3 == 9 || 3 == 11;
 }
 
-// REPEAT 8 - TIME: 15.3383515 s
+// REPEAT 8 - TIME: 13.4067623 s

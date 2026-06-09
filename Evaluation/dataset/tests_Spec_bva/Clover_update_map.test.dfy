@@ -79,7 +79,7 @@ expect forall k :: !(k in mapint1) && k in mapint0 ==> r0[k] == mapint0[k];
 expect forall k :: !(k in mapint1) && !(k in mapint0) ==> !(k in r0);
 }
 
-// REPEAT 1 - TIME: 8.1474104 s
+// REPEAT 1 - TIME: 7.3414985 s
 
 method {:test} Test13() {
 var mapint0 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
@@ -92,7 +92,7 @@ expect forall k :: !(k in mapint1) && k in mapint0 ==> r0[k] == mapint0[k];
 expect forall k :: !(k in mapint1) && !(k in mapint0) ==> !(k in r0);
 }
 
-// REPEAT 2 - TIME: 9.1185445 s
+// REPEAT 2 - TIME: 8.0844098 s
 
 method {:test} Test14() {
 var mapint0 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
@@ -105,7 +105,7 @@ expect forall k :: !(k in mapint1) && k in mapint0 ==> r0[k] == mapint0[k];
 expect forall k :: !(k in mapint1) && !(k in mapint0) ==> !(k in r0);
 }
 
-// REPEAT 3 - TIME: 9.9104602 s
+// REPEAT 3 - TIME: 8.772023 s
 
 method {:test} Test15() {
 var mapint0 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
@@ -118,7 +118,7 @@ expect forall k :: !(k in mapint1) && k in mapint0 ==> r0[k] == mapint0[k];
 expect forall k :: !(k in mapint1) && !(k in mapint0) ==> !(k in r0);
 }
 
-// REPEAT 4 - TIME: 10.7390887 s
+// REPEAT 4 - TIME: 9.4476192 s
 
 method {:test} Test16() {
 var mapint0 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
@@ -131,7 +131,7 @@ expect forall k :: !(k in mapint1) && k in mapint0 ==> r0[k] == mapint0[k];
 expect forall k :: !(k in mapint1) && !(k in mapint0) ==> !(k in r0);
 }
 
-// REPEAT 5 - TIME: 11.4433526 s
+// REPEAT 5 - TIME: 10.1319156 s
 
 method {:test} Test17() {
 var mapint0 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
@@ -144,7 +144,7 @@ expect forall k :: !(k in mapint1) && k in mapint0 ==> r0[k] == mapint0[k];
 expect forall k :: !(k in mapint1) && !(k in mapint0) ==> !(k in r0);
 }
 
-// REPEAT 6 - TIME: 12.1138102 s
+// REPEAT 6 - TIME: 10.7814374 s
 
 method {:test} Test18() {
 var mapint0 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
@@ -157,7 +157,7 @@ expect forall k :: !(k in mapint1) && k in mapint0 ==> r0[k] == mapint0[k];
 expect forall k :: !(k in mapint1) && !(k in mapint0) ==> !(k in r0);
 }
 
-// REPEAT 7 - TIME: 12.9071302 s
+// REPEAT 7 - TIME: 11.4250447 s
 
 method {:test} Test19() {
 var mapint0 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
@@ -170,7 +170,7 @@ expect forall k :: !(k in mapint1) && k in mapint0 ==> r0[k] == mapint0[k];
 expect forall k :: !(k in mapint1) && !(k in mapint0) ==> !(k in r0);
 }
 
-// REPEAT 8 - TIME: 13.586843 s
+// REPEAT 8 - TIME: 12.0505232 s
 
 method {:test} Test20() {
 var mapint0 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
@@ -183,7 +183,7 @@ expect forall k :: !(k in mapint1) && k in mapint0 ==> r0[k] == mapint0[k];
 expect forall k :: !(k in mapint1) && !(k in mapint0) ==> !(k in r0);
 }
 
-// REPEAT 9 - TIME: 14.2236647 s
+// REPEAT 9 - TIME: 12.6602717 s
 
 method {:test} Test21() {
 var mapint0 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
@@ -196,4 +196,4 @@ expect forall k :: !(k in mapint1) && k in mapint0 ==> r0[k] == mapint0[k];
 expect forall k :: !(k in mapint1) && !(k in mapint0) ==> !(k in r0);
 }
 
-// REPEAT 10 - TIME: 14.7782444 s
+// REPEAT 10 - TIME: 13.2927091 s

@@ -49,7 +49,7 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "a" && !(r0[i] in "aa");
 expect forall i :: 0 <= i < |"a"| ==> "a"[i] in "aa" || "a"[i] in r0;
 }
 
-// REPEAT 1 - TIME: 8.098989 s
+// REPEAT 1 - TIME: 7.9117042 s
 
 method {:test} Test13() {
 var r0 := RemoveChars("aa\0", "\U{0002}\0");
@@ -58,7 +58,7 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "aa\0" && !(r0[i] in "\U{0002}\0")
 expect forall i :: 0 <= i < |"aa\0"| ==> "aa\0"[i] in "\U{0002}\0" || "aa\0"[i] in r0;
 }
 
-// REPEAT 2 - TIME: 8.9620514 s
+// REPEAT 2 - TIME: 8.6583378 s
 
 method {:test} Test14() {
 var r0 := RemoveChars("a\U{0002}a\U{0002}\0", "aaaa\0a");
@@ -67,7 +67,7 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "a\U{0002}a\U{0002}\0" && !(r0[i] 
 expect forall i :: 0 <= i < |"a\U{0002}a\U{0002}\0"| ==> "a\U{0002}a\U{0002}\0"[i] in "aaaa\0a" || "a\U{0002}a\U{0002}\0"[i] in r0;
 }
 
-// REPEAT 3 - TIME: 9.7874493 s
+// REPEAT 3 - TIME: 9.3751851 s
 
 method {:test} Test15() {
 var r0 := RemoveChars("\0\0", "\U{0002}\0a");
@@ -76,7 +76,7 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "\0\0" && !(r0[i] in "\U{0002}\0a"
 expect forall i :: 0 <= i < |"\0\0"| ==> "\0\0"[i] in "\U{0002}\0a" || "\0\0"[i] in r0;
 }
 
-// REPEAT 4 - TIME: 10.7169906 s
+// REPEAT 4 - TIME: 10.1009637 s
 
 method {:test} Test16() {
 var r0 := RemoveChars("\U{0004}aa\U{0004}", "\U{0002}\U{0004}\0");
@@ -85,7 +85,7 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "\U{0004}aa\U{0004}" && !(r0[i] in
 expect forall i :: 0 <= i < |"\U{0004}aa\U{0004}"| ==> "\U{0004}aa\U{0004}"[i] in "\U{0002}\U{0004}\0" || "\U{0004}aa\U{0004}"[i] in r0;
 }
 
-// REPEAT 5 - TIME: 11.5704018 s
+// REPEAT 5 - TIME: 10.7743684 s
 
 method {:test} Test17() {
 var r0 := RemoveChars("\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0", "\U{0002}\0");
@@ -94,7 +94,7 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaa
 expect forall i :: 0 <= i < |"\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"| ==> "\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"[i] in "\U{0002}\0" || "\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"[i] in r0;
 }
 
-// REPEAT 6 - TIME: 12.6303775 s
+// REPEAT 6 - TIME: 11.3902483 s
 
 method {:test} Test18() {
 var r0 := RemoveChars("\0\0aaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaaaaaaaaaaaaaa\0", "\U{0002}\0\U{0004}");
@@ -103,7 +103,7 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "\0\0aaaaaaaaaaaaaaaaaaaaaaa\U{000
 expect forall i :: 0 <= i < |"\0\0aaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaaaaaaaaaaaaaa\0"| ==> "\0\0aaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaaaaaaaaaaaaaa\0"[i] in "\U{0002}\0\U{0004}" || "\0\0aaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaaaaaaaaaaaaaa\0"[i] in r0;
 }
 
-// REPEAT 7 - TIME: 13.4288548 s
+// REPEAT 7 - TIME: 12.1517508 s
 
 method {:test} Test19() {
 var r0 := RemoveChars("\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0", "\U{0002}\0a\U{0004}");
@@ -112,7 +112,7 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaa
 expect forall i :: 0 <= i < |"\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"| ==> "\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"[i] in "\U{0002}\0a\U{0004}" || "\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"[i] in r0;
 }
 
-// REPEAT 8 - TIME: 14.1614028 s
+// REPEAT 8 - TIME: 12.8093942 s
 
 method {:test} Test20() {
 var r0 := RemoveChars("\U{0006}\0aaa\U{0004}aaaaaaaaaaaaaaaaaaaa\0aaaaaaaaaaa\0", "\0a\U{0004}\U{0006}\U{0002}");
@@ -121,7 +121,7 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "\U{0006}\0aaa\U{0004}aaaaaaaaaaaa
 expect forall i :: 0 <= i < |"\U{0006}\0aaa\U{0004}aaaaaaaaaaaaaaaaaaaa\0aaaaaaaaaaa\0"| ==> "\U{0006}\0aaa\U{0004}aaaaaaaaaaaaaaaaaaaa\0aaaaaaaaaaa\0"[i] in "\0a\U{0004}\U{0006}\U{0002}" || "\U{0006}\0aaa\U{0004}aaaaaaaaaaaaaaaaaaaa\0aaaaaaaaaaa\0"[i] in r0;
 }
 
-// REPEAT 9 - TIME: 15.0398644 s
+// REPEAT 9 - TIME: 13.550738 s
 
 method {:test} Test21() {
 var r0 := RemoveChars("\U{0002}\U{0008}aaa\U{0008}", "\U{0004}\U{0008}\U{0002}a\0\U{0006}a");
@@ -130,4 +130,4 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "\U{0002}\U{0008}aaa\U{0008}" && !
 expect forall i :: 0 <= i < |"\U{0002}\U{0008}aaa\U{0008}"| ==> "\U{0002}\U{0008}aaa\U{0008}"[i] in "\U{0004}\U{0008}\U{0002}a\0\U{0006}a" || "\U{0002}\U{0008}aaa\U{0008}"[i] in r0;
 }
 
-// REPEAT 10 - TIME: 15.6958492 s
+// REPEAT 10 - TIME: 14.1950452 s

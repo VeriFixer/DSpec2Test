@@ -11,4 +11,4 @@ var r0 := NthNonagonalNumber(9);
 expect r0 == 9 * (7 * 9 - 5) / 2;
 }
 
-// REPEAT 10 - TIME: 9.8911537 s
+// REPEAT 10 - TIME: 9.4056564 s

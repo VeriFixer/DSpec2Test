@@ -5,4 +5,4 @@ var r0 := Sum(8);
 expect r0 == 8 * (8 + 1) / 2;
 }
 
-// REPEAT 9 - TIME: 43.2200716 s
+// REPEAT 9 - TIME: 28.7739469 s

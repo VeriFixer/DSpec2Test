@@ -11,4 +11,4 @@ var r0 := ClosestSmaller(9);
 expect r0 + 1 == 9;
 }
 
-// REPEAT 9 - TIME: 9.0333197 s
+// REPEAT 9 - TIME: 8.593573 s

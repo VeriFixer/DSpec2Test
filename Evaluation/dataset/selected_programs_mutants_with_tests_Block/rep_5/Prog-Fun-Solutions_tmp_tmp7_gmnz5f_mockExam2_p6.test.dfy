@@ -6,4 +6,4 @@ method {:test} Test9() {
 var r0 := problem6(40);
 }
 
-// REPEAT 5 - TIME: 9.2782713 s
+// REPEAT 5 - TIME: 8.3267621 s

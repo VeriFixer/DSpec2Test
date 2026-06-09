@@ -5,4 +5,4 @@ var r0 := Sum(1805);
 expect r0 == 1805 * (1805 + 1) / 2;
 }
 
-// REPEAT 9 - TIME: 6.9281435 s
+// REPEAT 9 - TIME: 6.9202741 s

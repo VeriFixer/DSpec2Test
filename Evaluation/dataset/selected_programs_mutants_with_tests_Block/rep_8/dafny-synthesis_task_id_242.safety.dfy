@@ -11,4 +11,4 @@ expect r0 >= 0;
 expect r0 == |"a\0aaaaa\U{0002}aaaaaaa\U{0004}"|;
 }
 
-// REPEAT 8 - TIME: 7.4410187 s
+// REPEAT 8 - TIME: 6.8004222 s

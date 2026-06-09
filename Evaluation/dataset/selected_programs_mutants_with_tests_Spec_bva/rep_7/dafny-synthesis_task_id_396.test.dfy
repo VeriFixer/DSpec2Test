@@ -10,4 +10,4 @@ var r0 := StartAndEndWithSameChar("\U{0002}\0aa\n\U{0004}aaaaaaaaaa\U{0006}\U{00
 expect r0 <==> "\U{0002}\0aa\n\U{0004}aaaaaaaaaa\U{0006}\U{0008}"[0] == "\U{0002}\0aa\n\U{0004}aaaaaaaaaa\U{0006}\U{0008}"[|"\U{0002}\0aa\n\U{0004}aaaaaaaaaa\U{0006}\U{0008}"| - 1];
 }
 
-// REPEAT 7 - TIME: 15.8184737 s
+// REPEAT 7 - TIME: 14.7587813 s

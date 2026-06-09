@@ -7,4 +7,4 @@ expect |r0| == |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[i] == seqstring0[i][|seqstring0[i]| - 1];
 }
 
-// REPEAT 4 - TIME: 10.4547467 s
+// REPEAT 4 - TIME: 8.5918096 s

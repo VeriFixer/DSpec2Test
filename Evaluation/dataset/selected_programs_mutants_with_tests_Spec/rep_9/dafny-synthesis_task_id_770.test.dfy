@@ -5,4 +5,4 @@ var r0 := SumOfFourthPowerOfOddNumbers(65);
 expect r0 == 65 * (2 * 65 + 1) * (24 * 65 * 65 * 65 - 12 * 65 * 65 - 14 * 65 + 7) / 15;
 }
 
-// REPEAT 9 - TIME: 52.0711887 s
+// REPEAT 9 - TIME: 49.1114204 s

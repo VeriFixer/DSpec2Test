@@ -14,4 +14,4 @@ method {:testEntry} SumOfFourthPowerOfOddNumbers(n: int) returns (sum: int)
     }
 }
 
-// REPEAT 5 - TIME: 108.0141225 s
+// REPEAT 5 - TIME: 106.6935568 s

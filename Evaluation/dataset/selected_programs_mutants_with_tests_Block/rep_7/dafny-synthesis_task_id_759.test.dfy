@@ -10,4 +10,4 @@ expect r0 ==> exists i :: 0 <= i < |"\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0aa
 expect !r0 ==> !exists i :: 0 <= i < |"\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0aa"| && "\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0aa"[i] == '.' && |"\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0aa"| - i - 1 == 2;
 }
 
-// REPEAT 7 - TIME: 12.5560939 s
+// REPEAT 7 - TIME: 11.6667944 s

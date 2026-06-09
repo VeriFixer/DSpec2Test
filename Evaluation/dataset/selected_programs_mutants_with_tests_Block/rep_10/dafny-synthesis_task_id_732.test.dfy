@@ -20,4 +20,4 @@ expect |r0| == |"aaaaaaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaa"|;
 expect forall i :: 0 <= i < |"aaaaaaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaa"| ==> (IsSpaceCommaDot("aaaaaaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaa"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("aaaaaaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaa"[i]) ==> r0[i] == "aaaaaaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaa"[i]);
 }
 
-// REPEAT 10 - TIME: 30.9125357 s
+// REPEAT 10 - TIME: 26.6298254 s

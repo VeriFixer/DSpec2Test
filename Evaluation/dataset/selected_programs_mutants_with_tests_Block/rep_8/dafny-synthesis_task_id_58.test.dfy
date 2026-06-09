@@ -12,4 +12,4 @@ var r0 := HasOppositeSign(-8, -7);
 expect r0 <==> (-8 < 0 && -7 > 0) || (-8 > 0 && -7 < 0);
 }
 
-// REPEAT 8 - TIME: 14.5073247 s
+// REPEAT 8 - TIME: 13.286675 s

@@ -5,4 +5,4 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(9);
 expect r0 == 9 * (2 * 9 - 1) * (2 * 9 + 1) / 3;
 }
 
-// REPEAT 9 - TIME: 8.5680005 s
+// REPEAT 9 - TIME: 7.9457657 s

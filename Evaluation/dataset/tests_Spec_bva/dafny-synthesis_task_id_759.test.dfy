@@ -45,7 +45,7 @@ expect r0 ==> exists i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aa"|
 expect !r0 ==> !exists i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aa"| && "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aa"[i] == '.' && |"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aa"| - i - 1 == 2;
 }
 
-// REPEAT 1 - TIME: 8.6987499 s
+// REPEAT 1 - TIME: 8.5483795 s
 
 method {:test} Test14() {
 var r0 := IsDecimalWithTwoPrecision("aaaaaaaaaaa\U{0002}\0");
@@ -58,7 +58,7 @@ expect r0 ==> exists i :: 0 <= i < |"\U{0003}\U{0001}aaaaaaaaaa\U{0005}aaaaaaaaa
 expect !r0 ==> !exists i :: 0 <= i < |"\U{0003}\U{0001}aaaaaaaaaa\U{0005}aaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0007}a"| && "\U{0003}\U{0001}aaaaaaaaaa\U{0005}aaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0007}a"[i] == '.' && |"\U{0003}\U{0001}aaaaaaaaaa\U{0005}aaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0007}a"| - i - 1 == 2;
 }
 
-// REPEAT 2 - TIME: 9.8001848 s
+// REPEAT 2 - TIME: 9.561896 s
 
 method {:test} Test16() {
 var r0 := IsDecimalWithTwoPrecision("\U{0006}aaaaaaaaaaa\U{0004}aaaaaa\0aaaaaaaaaa\U{0002}aaaaaaaaaa\U{0008}\na");
@@ -71,7 +71,7 @@ expect r0 ==> exists i :: 0 <= i < |"\U{0005}\U{0001}.\U{0003}a"| && "\U{0005}\U
 expect !r0 ==> !exists i :: 0 <= i < |"\U{0005}\U{0001}.\U{0003}a"| && "\U{0005}\U{0001}.\U{0003}a"[i] == '.' && |"\U{0005}\U{0001}.\U{0003}a"| - i - 1 == 2;
 }
 
-// REPEAT 3 - TIME: 10.9769213 s
+// REPEAT 3 - TIME: 10.5394338 s
 
 method {:test} Test18() {
 var r0 := IsDecimalWithTwoPrecision("\naa\0a\U{0004}aaaaaa\U{0006}\U{0008}aaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}");
@@ -84,7 +84,7 @@ expect r0 ==> exists i :: 0 <= i < |"\U{0007}aaaaaaaaaaaaaaaaaaaa\U{0001}aaaaaaa
 expect !r0 ==> !exists i :: 0 <= i < |"\U{0007}aaaaaaaaaaaaaaaaaaaa\U{0001}aaaaaaaaaaaaaaaaaaa.\U{0005}\U{0003}"| && "\U{0007}aaaaaaaaaaaaaaaaaaaa\U{0001}aaaaaaaaaaaaaaaaaaa.\U{0005}\U{0003}"[i] == '.' && |"\U{0007}aaaaaaaaaaaaaaaaaaaa\U{0001}aaaaaaaaaaaaaaaaaaa.\U{0005}\U{0003}"| - i - 1 == 2;
 }
 
-// REPEAT 4 - TIME: 12.1683391 s
+// REPEAT 4 - TIME: 11.7186797 s
 
 method {:test} Test20() {
 var r0 := IsDecimalWithTwoPrecision("aaaaaaaaaaaa\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}a\0a");
@@ -97,7 +97,7 @@ expect r0 ==> exists i :: 0 <= i < |"\U{0003}aaaaa.a\U{0001}"| && "\U{0003}aaaaa
 expect !r0 ==> !exists i :: 0 <= i < |"\U{0003}aaaaa.a\U{0001}"| && "\U{0003}aaaaa.a\U{0001}"[i] == '.' && |"\U{0003}aaaaa.a\U{0001}"| - i - 1 == 2;
 }
 
-// REPEAT 5 - TIME: 13.7466694 s
+// REPEAT 5 - TIME: 13.1628717 s
 
 method {:test} Test22() {
 var r0 := IsDecimalWithTwoPrecision("a\U{000E}aaaaaaa\U{0004}aa\U{0006}aaaaaaaaaaaaaa\U{0002}aaaaaaaaaaaaa\U{0008}\U{000C}\0\n");
@@ -110,7 +110,7 @@ expect r0 ==> exists i :: 0 <= i < |"aa\U{0001}aaaaaa\U{0005}aa\U{0007}\taaaaa\U
 expect !r0 ==> !exists i :: 0 <= i < |"aa\U{0001}aaaaaa\U{0005}aa\U{0007}\taaaaa\U{0003}aaaaaaaaaaaaaaaaaaaaa\U{000B}a.aa"| && "aa\U{0001}aaaaaa\U{0005}aa\U{0007}\taaaaa\U{0003}aaaaaaaaaaaaaaaaaaaaa\U{000B}a.aa"[i] == '.' && |"aa\U{0001}aaaaaa\U{0005}aa\U{0007}\taaaaa\U{0003}aaaaaaaaaaaaaaaaaaaaa\U{000B}a.aa"| - i - 1 == 2;
 }
 
-// REPEAT 6 - TIME: 14.9071821 s
+// REPEAT 6 - TIME: 14.2240997 s
 
 method {:test} Test24() {
 var r0 := IsDecimalWithTwoPrecision("aaaaaaaaaaaaaa\U{0002}aaaaaaaaaaaaaaaaaaa\U{0006}aaaaaaa\U{0008}a\naa\0\U{0004}\U{000C}");
@@ -123,7 +123,7 @@ expect r0 ==> exists i :: 0 <= i < |"aaaaaaaaa\U{0001}aaa\U{0005}aaaaaaaaaaaaaaa
 expect !r0 ==> !exists i :: 0 <= i < |"aaaaaaaaa\U{0001}aaa\U{0005}aaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\t\U{0003}aa.a\U{000B}"| && "aaaaaaaaa\U{0001}aaa\U{0005}aaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\t\U{0003}aa.a\U{000B}"[i] == '.' && |"aaaaaaaaa\U{0001}aaa\U{0005}aaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\t\U{0003}aa.a\U{000B}"| - i - 1 == 2;
 }
 
-// REPEAT 7 - TIME: 16.1212195 s
+// REPEAT 7 - TIME: 15.4079302 s
 
 method {:test} Test26() {
 var r0 := IsDecimalWithTwoPrecision("aaaaa\U{0018}aaaaaaa\U{0008}\0aaaaaaaaaaaaaaaaaaa\U{0006}aaaaa\U{0004}a\U{000C}\U{000E}\U{0010}\U{0012}\n\U{0002}\U{0014}\U{0016}");
@@ -136,7 +136,7 @@ expect r0 ==> exists i :: 0 <= i < |"\U{0003}.\U{0001}\U{0005}"| && "\U{0003}.\U
 expect !r0 ==> !exists i :: 0 <= i < |"\U{0003}.\U{0001}\U{0005}"| && "\U{0003}.\U{0001}\U{0005}"[i] == '.' && |"\U{0003}.\U{0001}\U{0005}"| - i - 1 == 2;
 }
 
-// REPEAT 8 - TIME: 17.5564168 s
+// REPEAT 8 - TIME: 16.7787874 s
 
 method {:test} Test28() {
 var r0 := IsDecimalWithTwoPrecision("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0a\U{0002}\U{0004}");
@@ -149,7 +149,7 @@ expect r0 ==> exists i :: 0 <= i < |"aaaaaaaaaaaaa\U{0006}aaaaaa\0aaaaaaaaaa\U{0
 expect !r0 ==> !exists i :: 0 <= i < |"aaaaaaaaaaaaa\U{0006}aaaaaa\0aaaaaaaaaa\U{0004}aaaaaaaaaa\U{0002}\U{0008}a.a\n"| && "aaaaaaaaaaaaa\U{0006}aaaaaa\0aaaaaaaaaa\U{0004}aaaaaaaaaa\U{0002}\U{0008}a.a\n"[i] == '.' && |"aaaaaaaaaaaaa\U{0006}aaaaaa\0aaaaaaaaaa\U{0004}aaaaaaaaaa\U{0002}\U{0008}a.a\n"| - i - 1 == 2;
 }
 
-// REPEAT 9 - TIME: 18.9962631 s
+// REPEAT 9 - TIME: 18.0546038 s
 
 method {:test} Test30() {
 var r0 := IsDecimalWithTwoPrecision("aaa\U{0008}aaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}\U{0004}\n\U{0006}");
@@ -162,4 +162,4 @@ expect r0 ==> exists i :: 0 <= i < |"aa\U{0007}aa\U{0001}aaaaaaaaaaaaaaaaaaaaaaa
 expect !r0 ==> !exists i :: 0 <= i < |"aa\U{0007}aa\U{0001}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0003}\U{0005}"| && "aa\U{0007}aa\U{0001}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0003}\U{0005}"[i] == '.' && |"aa\U{0007}aa\U{0001}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0003}\U{0005}"| - i - 1 == 2;
 }
 
-// REPEAT 10 - TIME: 20.5766053 s
+// REPEAT 10 - TIME: 19.4102278 s

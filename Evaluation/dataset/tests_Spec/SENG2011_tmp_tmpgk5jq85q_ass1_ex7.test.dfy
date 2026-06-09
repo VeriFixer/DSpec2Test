@@ -15,67 +15,67 @@ expect 0 < 1 <= 42, "If this check fails at runtime, the test does not meet the 
 BigFoot(1);
 }
 
-// REPEAT 1 - TIME: 3.1129696 s
+// REPEAT 1 - TIME: 2.5418445 s
 
 method {:test} Test1() {
 expect 0 < 2 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(2);
 }
 
-// REPEAT 2 - TIME: 4.0322425 s
+// REPEAT 2 - TIME: 3.3601598 s
 
 method {:test} Test2() {
 expect 0 < 3 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(3);
 }
 
-// REPEAT 3 - TIME: 4.9281493 s
+// REPEAT 3 - TIME: 4.2284344 s
 
 method {:test} Test3() {
 expect 0 < 4 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(4);
 }
 
-// REPEAT 4 - TIME: 5.9038651 s
+// REPEAT 4 - TIME: 5.0360216 s
 
 method {:test} Test4() {
 expect 0 < 5 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(5);
 }
 
-// REPEAT 5 - TIME: 6.872211 s
+// REPEAT 5 - TIME: 5.8822473 s
 
 method {:test} Test5() {
 expect 0 < 6 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(6);
 }
 
-// REPEAT 6 - TIME: 7.8156739 s
+// REPEAT 6 - TIME: 6.7554748 s
 
 method {:test} Test6() {
 expect 0 < 7 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(7);
 }
 
-// REPEAT 7 - TIME: 8.6671677 s
+// REPEAT 7 - TIME: 7.5178211 s
 
 method {:test} Test7() {
 expect 0 < 8 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(8);
 }
 
-// REPEAT 8 - TIME: 9.5153458 s
+// REPEAT 8 - TIME: 8.2401547 s
 
 method {:test} Test8() {
 expect 0 < 9 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(9);
 }
 
-// REPEAT 9 - TIME: 10.2645507 s
+// REPEAT 9 - TIME: 8.9414577 s
 
 method {:test} Test9() {
 expect 0 < 10 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(10);
 }
 
-// REPEAT 10 - TIME: 11.0812645 s
+// REPEAT 10 - TIME: 9.6666105 s

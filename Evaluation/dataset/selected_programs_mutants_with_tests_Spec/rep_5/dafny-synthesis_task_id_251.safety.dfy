@@ -19,4 +19,4 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\0aa" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 5 - TIME: 6.6990835 s
+// REPEAT 5 - TIME: 5.853674 s

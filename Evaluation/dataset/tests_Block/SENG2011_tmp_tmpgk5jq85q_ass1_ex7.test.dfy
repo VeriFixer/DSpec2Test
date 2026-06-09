@@ -15,67 +15,67 @@ expect 0 < 1 <= 42, "If this check fails at runtime, the test does not meet the 
 BigFoot(1);
 }
 
-// REPEAT 1 - TIME: 2.6564275 s
+// REPEAT 1 - TIME: 2.4183903 s
 
 method {:test} Test1() {
 expect 0 < 2 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(2);
 }
 
-// REPEAT 2 - TIME: 3.7488549 s
+// REPEAT 2 - TIME: 3.393278 s
 
 method {:test} Test2() {
 expect 0 < 42 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(42);
 }
 
-// REPEAT 3 - TIME: 4.777046 s
+// REPEAT 3 - TIME: 4.2940759 s
 
 method {:test} Test3() {
 expect 0 < 3 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(3);
 }
 
-// REPEAT 4 - TIME: 5.9815662 s
+// REPEAT 4 - TIME: 5.4330614 s
 
 method {:test} Test4() {
 expect 0 < 4 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(4);
 }
 
-// REPEAT 5 - TIME: 6.9736462 s
+// REPEAT 5 - TIME: 6.344046 s
 
 method {:test} Test5() {
 expect 0 < 5 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(5);
 }
 
-// REPEAT 6 - TIME: 7.8825817 s
+// REPEAT 6 - TIME: 7.1797126 s
 
 method {:test} Test6() {
 expect 0 < 21 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(21);
 }
 
-// REPEAT 7 - TIME: 8.6392977 s
+// REPEAT 7 - TIME: 7.9391659 s
 
 method {:test} Test7() {
 expect 0 < 22 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(22);
 }
 
-// REPEAT 8 - TIME: 9.3521884 s
+// REPEAT 8 - TIME: 8.6757362 s
 
 method {:test} Test8() {
 expect 0 < 23 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(23);
 }
 
-// REPEAT 9 - TIME: 10.1514857 s
+// REPEAT 9 - TIME: 9.3885736 s
 
 method {:test} Test9() {
 expect 0 < 24 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(24);
 }
 
-// REPEAT 10 - TIME: 10.8673014 s
+// REPEAT 10 - TIME: 9.9661978 s

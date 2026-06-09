@@ -6,4 +6,4 @@ expect r0 == 8 * (8 + 1) / 2;
 expect r1 == r0 as real / 8 as real;
 }
 
-// REPEAT 8 - TIME: 8.71122 s
+// REPEAT 8 - TIME: 7.5777367 s

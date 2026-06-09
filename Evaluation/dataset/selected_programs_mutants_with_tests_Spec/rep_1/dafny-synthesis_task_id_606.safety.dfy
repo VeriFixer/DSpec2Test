@@ -9,4 +9,4 @@ var r0 := DegreesToRadians(0.0);
 expect r0 == 0.0 * 3.14159265358979323846 / 180.0;
 }
 
-// REPEAT 1 - TIME: 2.8035017 s
+// REPEAT 1 - TIME: 2.2704855 s

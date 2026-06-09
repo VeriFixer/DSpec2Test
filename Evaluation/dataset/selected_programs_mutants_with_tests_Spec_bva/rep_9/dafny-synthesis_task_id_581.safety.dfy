@@ -13,4 +13,4 @@ var r0 := SquarePyramidSurfaceArea(108, 7728);
 expect r0 == 108 * 108 + 2 * 108 * 7728;
 }
 
-// REPEAT 9 - TIME: 12.19022 s
+// REPEAT 9 - TIME: 11.4195264 s

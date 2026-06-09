@@ -19,4 +19,4 @@ var r0 := Sum(2);
 expect r0 == 2 * (2 + 1) / 2;
 }
 
-// REPEAT 3 - TIME: 16.2422089 s
+// REPEAT 3 - TIME: 10.7763001 s

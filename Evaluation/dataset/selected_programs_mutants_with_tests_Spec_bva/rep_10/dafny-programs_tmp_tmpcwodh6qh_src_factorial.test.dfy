@@ -4,4 +4,4 @@ var r0 := factorial(109);
 expect r0 == fact(109);
 }
 
-// REPEAT 10 - TIME: 13.6572862 s
+// REPEAT 10 - TIME: 11.3505425 s

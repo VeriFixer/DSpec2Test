@@ -3,4 +3,4 @@ method {:test} Test6() {
 foo();
 }
 
-// REPEAT 5 - TIME: 7.4673132 s
+// REPEAT 5 - TIME: 5.7545477 s

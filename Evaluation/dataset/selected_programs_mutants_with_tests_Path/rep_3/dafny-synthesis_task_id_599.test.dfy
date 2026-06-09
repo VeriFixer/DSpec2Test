@@ -6,4 +6,4 @@ expect r0 == 9 * (9 + 1) / 2;
 expect r1 == r0 as real / 9 as real;
 }
 
-// REPEAT 3 - TIME: 13.189974 s
+// REPEAT 3 - TIME: 13.04857 s

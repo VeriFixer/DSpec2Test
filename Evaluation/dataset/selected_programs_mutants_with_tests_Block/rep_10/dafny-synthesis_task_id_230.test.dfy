@@ -15,4 +15,4 @@ expect |r0| == |"aaaaaaaaaaaaaaaaaaaaaaaaa aa"|;
 expect forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaaaaa aa"| ==> ("aaaaaaaaaaaaaaaaaaaaaaaaa aa"[i] == ' ' ==> r0[i] == '\0') && ("aaaaaaaaaaaaaaaaaaaaaaaaa aa"[i] != ' ' ==> r0[i] == "aaaaaaaaaaaaaaaaaaaaaaaaa aa"[i]);
 }
 
-// REPEAT 10 - TIME: 17.557722 s
+// REPEAT 10 - TIME: 16.621221 s

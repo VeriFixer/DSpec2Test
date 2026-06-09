@@ -6,4 +6,4 @@ expect |r0| == |""|;
 expect forall i :: 0 <= i < |""| ==> r0[i] == ""[i][|""[i]| - 1];
 }
 
-// REPEAT 5 - TIME: 6.6503015 s
+// REPEAT 5 - TIME: 5.8449732 s

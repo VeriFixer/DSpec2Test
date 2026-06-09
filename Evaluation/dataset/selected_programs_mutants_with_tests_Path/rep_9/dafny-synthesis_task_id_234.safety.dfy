@@ -11,4 +11,4 @@ var r0 := CubeVolume(9);
 expect r0 == 9 * 9 * 9;
 }
 
-// REPEAT 9 - TIME: 9.9475014 s
+// REPEAT 9 - TIME: 11.183785 s

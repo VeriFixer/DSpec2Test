@@ -5,4 +5,4 @@ expect r0 == 191 / 7;
 expect r1 == 191 % 7;
 }
 
-// REPEAT 5 - TIME: 6.477608 s
+// REPEAT 5 - TIME: 5.6789421 s

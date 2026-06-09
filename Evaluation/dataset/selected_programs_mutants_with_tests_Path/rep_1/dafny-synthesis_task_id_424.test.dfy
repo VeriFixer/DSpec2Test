@@ -22,4 +22,4 @@ expect |r0| == |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[i] == seqstring0[i][|seqstring0[i]| - 1];
 }
 
-// REPEAT 1 - TIME: 14.296296 s
+// REPEAT 1 - TIME: 6.3395035 s

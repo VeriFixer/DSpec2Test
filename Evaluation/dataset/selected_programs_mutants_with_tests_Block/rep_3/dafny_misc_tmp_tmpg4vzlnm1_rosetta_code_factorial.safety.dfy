@@ -23,4 +23,4 @@ var r0 := IterativeFactorial(3);
 expect r0 == Factorial(3);
 }
 
-// REPEAT 3 - TIME: 4.057396 s
+// REPEAT 3 - TIME: 4.1590981 s

@@ -9,4 +9,4 @@ expect forall i :: 0 <= i < |seqint0| - 1 ==> r0[i] == seqint0[i];
 expect forall i :: |seqint0| - 1 <= i < |r0| ==> r0[i] == seqint1[i - |seqint0| + 1];
 }
 
-// REPEAT 4 - TIME: 5.7549973 s
+// REPEAT 4 - TIME: 5.3960562 s

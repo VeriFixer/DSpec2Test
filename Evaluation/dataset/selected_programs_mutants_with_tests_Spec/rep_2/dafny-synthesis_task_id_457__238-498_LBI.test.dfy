@@ -20,7 +20,7 @@ method {:testEntry} MinLengthSublist(s: seq<seq<int>>) returns (minSublist: seq<
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [0];
-var seqint1 : seq<int> := [0];
+var seqint1 : seq<int> := [];
 var seqseqint0 : seq<seq<int>> := [seqint0, seqint1];
 expect |seqseqint0| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := MinLengthSublist(seqseqint0);
@@ -28,4 +28,4 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 2 - TIME: 3.7949301 s
+// REPEAT 2 - TIME: 3.565742 s

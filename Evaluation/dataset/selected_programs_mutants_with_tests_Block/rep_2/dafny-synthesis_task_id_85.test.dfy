@@ -5,4 +5,4 @@ var r0 := SphereSurfaceArea(2.0);
 expect r0 == 4.0 * 3.14159265358979323846 * 2.0 * 2.0;
 }
 
-// REPEAT 2 - TIME: 2.956935 s
+// REPEAT 2 - TIME: 2.6929469 s

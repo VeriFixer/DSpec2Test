@@ -9,4 +9,4 @@ var r0 := sumOdds(5);
 expect r0 == 5 * 5;
 }
 
-// REPEAT 5 - TIME: 7.0313609 s
+// REPEAT 5 - TIME: 6.7646068 s

@@ -11,4 +11,4 @@ var r0 := PentagonPerimeter(103);
 expect r0 == 5 * 103;
 }
 
-// REPEAT 4 - TIME: 7.8254936 s
+// REPEAT 4 - TIME: 6.7224809 s

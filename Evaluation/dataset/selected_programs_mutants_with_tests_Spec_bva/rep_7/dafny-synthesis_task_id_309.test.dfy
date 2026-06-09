@@ -10,4 +10,4 @@ expect r0 == 109 || r0 == 110;
 expect r0 >= 109 && r0 >= 110;
 }
 
-// REPEAT 7 - TIME: 16.2261708 s
+// REPEAT 7 - TIME: 14.6313417 s

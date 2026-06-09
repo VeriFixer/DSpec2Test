@@ -8,4 +8,4 @@ var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 7 - TIME: 15.3929025 s
+// REPEAT 7 - TIME: 13.0565647 s

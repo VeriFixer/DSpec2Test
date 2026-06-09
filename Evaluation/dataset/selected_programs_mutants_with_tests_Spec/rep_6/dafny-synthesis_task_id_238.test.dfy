@@ -5,4 +5,4 @@ expect r0 >= 0;
 expect r0 == |"\U{0002}a\0"| * (|"\U{0002}a\0"| + 1) / 2;
 }
 
-// REPEAT 6 - TIME: 7.0740413 s
+// REPEAT 6 - TIME: 6.5643234 s

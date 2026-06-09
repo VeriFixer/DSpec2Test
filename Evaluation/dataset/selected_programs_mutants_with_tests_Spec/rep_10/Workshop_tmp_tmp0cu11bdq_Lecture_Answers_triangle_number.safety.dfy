@@ -20,4 +20,4 @@ var r0 := TriangleNumber(9);
 expect r0 == 9 * (9 + 1) / 2;
 }
 
-// REPEAT 10 - TIME: 10.6554657 s
+// REPEAT 10 - TIME: 8.9887551 s

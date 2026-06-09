@@ -4,4 +4,4 @@ var r0 := AsciiValue('\'');
 expect r0 == '\'' as int;
 }
 
-// REPEAT 8 - TIME: 9.8591962 s
+// REPEAT 8 - TIME: 8.145282 s

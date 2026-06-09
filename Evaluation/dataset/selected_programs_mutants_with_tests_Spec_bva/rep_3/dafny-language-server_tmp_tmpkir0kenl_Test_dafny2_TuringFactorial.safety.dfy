@@ -34,4 +34,4 @@ var r0 := ComputeFactorial(102);
 expect r0 == Factorial(102);
 }
 
-// REPEAT 3 - TIME: 8.5553288 s
+// REPEAT 3 - TIME: 7.1270674 s

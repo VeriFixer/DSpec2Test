@@ -27,67 +27,67 @@ var r0 := calcR(1);
 expect r0 == R(1);
 }
 
-// REPEAT 1 - TIME: 2.3676259 s
+// REPEAT 1 - TIME: 2.3167716 s
 
 method {:test} Test1() {
 var r0 := calcR(2);
 expect r0 == R(2);
 }
 
-// REPEAT 2 - TIME: 3.2296615 s
+// REPEAT 2 - TIME: 3.1740325 s
 
 method {:test} Test2() {
 var r0 := calcR(3);
 expect r0 == R(3);
 }
 
-// REPEAT 3 - TIME: 4.2398472 s
+// REPEAT 3 - TIME: 3.9514504 s
 
 method {:test} Test3() {
 var r0 := calcR(4);
 expect r0 == R(4);
 }
 
-// REPEAT 4 - TIME: 5.1171818 s
+// REPEAT 4 - TIME: 4.8014012 s
 
 method {:test} Test4() {
 var r0 := calcR(5);
 expect r0 == R(5);
 }
 
-// REPEAT 5 - TIME: 6.0429195 s
+// REPEAT 5 - TIME: 5.547294 s
 
 method {:test} Test5() {
 var r0 := calcR(6);
 expect r0 == R(6);
 }
 
-// REPEAT 6 - TIME: 6.9077037 s
+// REPEAT 6 - TIME: 6.4891174 s
 
 method {:test} Test6() {
 var r0 := calcR(7);
 expect r0 == R(7);
 }
 
-// REPEAT 7 - TIME: 7.7742525 s
+// REPEAT 7 - TIME: 7.4025686 s
 
 method {:test} Test7() {
 var r0 := calcR(8);
 expect r0 == R(8);
 }
 
-// REPEAT 8 - TIME: 8.574502 s
+// REPEAT 8 - TIME: 8.1414231 s
 
 method {:test} Test8() {
 var r0 := calcR(9);
 expect r0 == R(9);
 }
 
-// REPEAT 9 - TIME: 9.518872 s
+// REPEAT 9 - TIME: 8.8019076 s
 
 method {:test} Test9() {
 var r0 := calcR(10);
 expect r0 == R(10);
 }
 
-// REPEAT 10 - TIME: 10.2870435 s
+// REPEAT 10 - TIME: 9.5671177 s

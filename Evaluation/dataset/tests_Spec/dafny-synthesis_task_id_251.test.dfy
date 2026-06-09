@@ -19,7 +19,7 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 1 - TIME: 2.700367 s
+// REPEAT 1 - TIME: 2.5951288 s
 
 method {:test} Test1() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
@@ -28,7 +28,7 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "a" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 2 - TIME: 3.665439 s
+// REPEAT 2 - TIME: 3.4932538 s
 
 method {:test} Test2() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
@@ -37,7 +37,7 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "a\0" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 3 - TIME: 4.647674 s
+// REPEAT 3 - TIME: 4.3319893 s
 
 method {:test} Test3() {
 var seqstring0 : seq<string> := [];
@@ -46,7 +46,7 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaa\0" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 4 - TIME: 5.5751679 s
+// REPEAT 4 - TIME: 5.0470536 s
 
 method {:test} Test4() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
@@ -55,7 +55,7 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\0aa" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 5 - TIME: 6.6990835 s
+// REPEAT 5 - TIME: 5.853674 s
 
 method {:test} Test5() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
@@ -64,7 +64,7 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0a\U{0004}" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 6 - TIME: 7.6359907 s
+// REPEAT 6 - TIME: 6.6795117 s
 
 method {:test} Test6() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
@@ -73,7 +73,7 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0006}\0\U{0002}\U{0004}" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 7 - TIME: 8.487028 s
+// REPEAT 7 - TIME: 7.530371 s
 
 method {:test} Test7() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
@@ -82,7 +82,7 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0002}\0" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 8 - TIME: 9.2650427 s
+// REPEAT 8 - TIME: 8.2874572 s
 
 method {:test} Test8() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
@@ -91,7 +91,7 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaaaaaa" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 9 - TIME: 10.2152332 s
+// REPEAT 9 - TIME: 9.016284 s
 
 method {:test} Test9() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
@@ -100,4 +100,4 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0004}\U{0002}a\0a" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 10 - TIME: 11.1126125 s
+// REPEAT 10 - TIME: 9.6398996 s

@@ -11,4 +11,4 @@ var r0 := AreaOfLargestTriangleInSemicircle(103);
 expect r0 == 103 * 103;
 }
 
-// REPEAT 4 - TIME: 8.6195242 s
+// REPEAT 4 - TIME: 7.608864 s

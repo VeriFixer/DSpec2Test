@@ -20,4 +20,4 @@ var r0 := allDigits("\0");
 expect r0 <==> forall i :: 0 <= i < |"\0"| ==> "\0"[i] in "0123456789";
 }
 
-// REPEAT 2 - TIME: 4.2861653 s
+// REPEAT 2 - TIME: 4.3354261 s

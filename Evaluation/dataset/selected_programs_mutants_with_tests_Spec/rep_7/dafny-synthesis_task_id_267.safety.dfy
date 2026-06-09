@@ -20,4 +20,4 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(18);
 expect r0 == 18 * (2 * 18 - 1) * (2 * 18 + 1) / 3;
 }
 
-// REPEAT 7 - TIME: 8.695221 s
+// REPEAT 7 - TIME: 7.2975263 s

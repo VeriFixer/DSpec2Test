@@ -11,4 +11,4 @@ var r0 := StartAndEndWithSameChar("\0aa\naaaaaaaa\U{0002}aaaaaaaaaaaaaaaaaaaaaaa
 expect r0 <==> "\0aa\naaaaaaaa\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaaaaaaa\U{0006}\U{0008}"[0] == "\0aa\naaaaaaaa\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaaaaaaa\U{0006}\U{0008}"[|"\0aa\naaaaaaaa\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaaaaaaa\U{0006}\U{0008}"| - 1];
 }
 
-// REPEAT 7 - TIME: 7.3543807 s
+// REPEAT 7 - TIME: 6.8831114 s

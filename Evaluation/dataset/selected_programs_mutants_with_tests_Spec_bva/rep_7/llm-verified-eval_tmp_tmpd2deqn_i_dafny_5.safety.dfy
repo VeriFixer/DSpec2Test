@@ -28,4 +28,4 @@ expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 30;
 }
 
-// REPEAT 7 - TIME: 12.1541 s
+// REPEAT 7 - TIME: 10.8640467 s

@@ -30,4 +30,4 @@ expect |r0| == |"C{"|;
 expect forall i :: 0 <= i < |"C{"| ==> if IsLowerCase("C{"[i]) then IsLowerUpperPair("C{"[i], r0[i]) else if IsUpperCase("C{"[i]) then IsUpperLowerPair("C{"[i], r0[i]) else r0[i] == "C{"[i];
 }
 
-// REPEAT 2 - TIME: 9.178366 s
+// REPEAT 2 - TIME: 8.878685 s

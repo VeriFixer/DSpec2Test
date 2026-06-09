@@ -11,4 +11,4 @@ var r0 := ClosestSmaller(102);
 expect r0 + 1 == 102;
 }
 
-// REPEAT 2 - TIME: 6.0533352 s
+// REPEAT 2 - TIME: 5.5141126 s

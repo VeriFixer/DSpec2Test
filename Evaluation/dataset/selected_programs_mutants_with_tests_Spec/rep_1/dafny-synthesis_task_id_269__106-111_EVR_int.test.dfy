@@ -11,4 +11,4 @@ var r0 := AsciiValue('&');
 expect r0 == '&' as int;
 }
 
-// REPEAT 1 - TIME: 2.776016 s
+// REPEAT 1 - TIME: 2.4533256 s

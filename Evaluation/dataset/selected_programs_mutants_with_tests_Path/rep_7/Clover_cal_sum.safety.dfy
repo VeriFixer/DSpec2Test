@@ -19,4 +19,4 @@ var r0 := Sum(6);
 expect r0 == 6 * (6 + 1) / 2;
 }
 
-// REPEAT 7 - TIME: 34.3077139 s
+// REPEAT 7 - TIME: 22.9350447 s

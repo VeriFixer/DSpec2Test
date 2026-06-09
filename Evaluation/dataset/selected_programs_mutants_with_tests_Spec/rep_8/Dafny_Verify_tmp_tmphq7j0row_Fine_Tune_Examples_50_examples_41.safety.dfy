@@ -21,4 +21,4 @@ var r0, r1 := main(7726, 9);
 expect 9 + r0 + r1 >= 2 * 7726;
 }
 
-// REPEAT 8 - TIME: 6.7491595 s
+// REPEAT 8 - TIME: 10.0896625 s

@@ -5,4 +5,4 @@ var r0 := CenteredHexagonalNumber(8);
 expect r0 == 3 * 8 * (8 - 1) + 1;
 }
 
-// REPEAT 8 - TIME: 8.506335 s
+// REPEAT 8 - TIME: 7.6767161 s

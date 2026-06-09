@@ -18,4 +18,4 @@ expect |r0| == |"\U{0002}\0a"|;
 expect forall i :: 0 <= i < |"\U{0002}\0a"| ==> r0[i] == "\U{0002}\0a"[i];
 }
 
-// REPEAT 6 - TIME: 7.8361562 s
+// REPEAT 6 - TIME: 6.5634983 s

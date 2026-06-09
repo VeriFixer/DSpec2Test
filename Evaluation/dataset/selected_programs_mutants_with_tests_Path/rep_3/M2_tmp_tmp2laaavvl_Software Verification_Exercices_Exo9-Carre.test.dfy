@@ -4,4 +4,4 @@ var r0 := Carre(2);
 expect r0 == 2 * 2;
 }
 
-// REPEAT 3 - TIME: 12.5467275 s
+// REPEAT 3 - TIME: 14.1748485 s

@@ -19,4 +19,4 @@ var r0 := Sum(7);
 expect r0 == 7 * (7 + 1) / 2;
 }
 
-// REPEAT 8 - TIME: 38.4875507 s
+// REPEAT 8 - TIME: 25.7782658 s

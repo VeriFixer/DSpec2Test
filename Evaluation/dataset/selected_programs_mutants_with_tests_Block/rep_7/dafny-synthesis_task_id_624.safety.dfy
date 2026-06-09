@@ -57,4 +57,4 @@ expect |r0| == |"<aaaaa\U{0004}\U{001C}"|;
 expect forall i :: 0 <= i < |"<aaaaa\U{0004}\U{001C}"| ==> if IsLowerCase("<aaaaa\U{0004}\U{001C}"[i]) then IsLowerUpperPair("<aaaaa\U{0004}\U{001C}"[i], r0[i]) else r0[i] == "<aaaaa\U{0004}\U{001C}"[i];
 }
 
-// REPEAT 7 - TIME: 19.5141245 s
+// REPEAT 7 - TIME: 17.7599891 s

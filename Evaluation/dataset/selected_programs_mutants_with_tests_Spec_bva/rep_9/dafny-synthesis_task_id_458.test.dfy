@@ -6,4 +6,4 @@ var r0 := RectangleArea(7728, 7728);
 expect r0 == 7728 * 7728;
 }
 
-// REPEAT 9 - TIME: 12.4496392 s
+// REPEAT 9 - TIME: 11.2360965 s

@@ -20,4 +20,4 @@ expect r0 == 7 * (7 + 1) / 2;
 expect r1 == r0 as real / 7 as real;
 }
 
-// REPEAT 7 - TIME: 8.1078633 s
+// REPEAT 7 - TIME: 7.0009442 s

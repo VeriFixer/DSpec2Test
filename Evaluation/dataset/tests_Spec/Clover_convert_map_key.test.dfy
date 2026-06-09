@@ -15,7 +15,7 @@ expect forall k :: k in mapnat0 <==> arrow0(k) in r0;
 expect forall k :: k in mapnat0 ==> r0[arrow0(k)] == mapnat0[k];
 }
 
-// REPEAT 1 - TIME: 2.5998356 s
+// REPEAT 1 - TIME: 2.7073286 s
 
 method {:test} Test1() {
 var mapnat0 : map<nat, bool> := map[(4287 as nat) := false, (4286 as nat) := false, (610 as nat) := false, (609 as nat) := true, (4285 as nat) := false, (3048 as nat) := false];
@@ -26,7 +26,7 @@ expect forall k :: k in mapnat0 <==> arrow0(k) in r0;
 expect forall k :: k in mapnat0 ==> r0[arrow0(k)] == mapnat0[k];
 }
 
-// REPEAT 2 - TIME: 3.9125449 s
+// REPEAT 2 - TIME: 3.6368065 s
 
 method {:test} Test2() {
 var mapnat0 : map<nat, bool> := map[(4820 as nat) := false, (4819 as nat) := false, (1143 as nat) := false, (1142 as nat) := true, (4818 as nat) := false, (3581 as nat) := false];
@@ -37,7 +37,7 @@ expect forall k :: k in mapnat0 <==> arrow0(k) in r0;
 expect forall k :: k in mapnat0 ==> r0[arrow0(k)] == mapnat0[k];
 }
 
-// REPEAT 3 - TIME: 4.9817748 s
+// REPEAT 3 - TIME: 4.5040967 s
 
 method {:test} Test3() {
 var mapnat0 : map<nat, bool> := map[(4820 as nat) := false, (4819 as nat) := false, (1143 as nat) := false, (1142 as nat) := true, (4818 as nat) := false, (3581 as nat) := false];
@@ -48,7 +48,7 @@ expect forall k :: k in mapnat0 <==> arrow0(k) in r0;
 expect forall k :: k in mapnat0 ==> r0[arrow0(k)] == mapnat0[k];
 }
 
-// REPEAT 4 - TIME: 5.9010515 s
+// REPEAT 4 - TIME: 5.4197734 s
 
 method {:test} Test4() {
 var mapnat0 : map<nat, bool> := map[(4820 as nat) := false, (4819 as nat) := false, (1143 as nat) := false, (1142 as nat) := true, (4818 as nat) := false, (3581 as nat) := false];
@@ -59,7 +59,7 @@ expect forall k :: k in mapnat0 <==> arrow0(k) in r0;
 expect forall k :: k in mapnat0 ==> r0[arrow0(k)] == mapnat0[k];
 }
 
-// REPEAT 5 - TIME: 6.8794329 s
+// REPEAT 5 - TIME: 6.1658152 s
 
 method {:test} Test5() {
 var mapnat0 : map<nat, bool> := map[(4820 as nat) := false, (4819 as nat) := false, (1143 as nat) := false, (1142 as nat) := true, (4818 as nat) := false, (3581 as nat) := false];
@@ -70,7 +70,7 @@ expect forall k :: k in mapnat0 <==> arrow0(k) in r0;
 expect forall k :: k in mapnat0 ==> r0[arrow0(k)] == mapnat0[k];
 }
 
-// REPEAT 6 - TIME: 7.8835519 s
+// REPEAT 6 - TIME: 6.9032878 s
 
 method {:test} Test6() {
 var mapnat0 : map<nat, bool> := map[(4818 as nat) := false, (4819 as nat) := false, (1143 as nat) := false, (1142 as nat) := true, (3581 as nat) := false, (4820 as nat) := false];
@@ -81,7 +81,7 @@ expect forall k :: k in mapnat0 <==> arrow0(k) in r0;
 expect forall k :: k in mapnat0 ==> r0[arrow0(k)] == mapnat0[k];
 }
 
-// REPEAT 7 - TIME: 9.0756215 s
+// REPEAT 7 - TIME: 7.6258458 s
 
 method {:test} Test7() {
 var mapnat0 : map<nat, bool> := map[(4820 as nat) := false, (4819 as nat) := false, (1143 as nat) := false, (1142 as nat) := true, (4818 as nat) := false, (3581 as nat) := false];
@@ -92,7 +92,7 @@ expect forall k :: k in mapnat0 <==> arrow0(k) in r0;
 expect forall k :: k in mapnat0 ==> r0[arrow0(k)] == mapnat0[k];
 }
 
-// REPEAT 8 - TIME: 10.0234699 s
+// REPEAT 8 - TIME: 8.2427192 s
 
 method {:test} Test8() {
 var mapnat0 : map<nat, bool> := map[(4818 as nat) := false, (4819 as nat) := false, (1143 as nat) := false, (1142 as nat) := true, (3581 as nat) := false, (4820 as nat) := false];
@@ -103,7 +103,7 @@ expect forall k :: k in mapnat0 <==> arrow0(k) in r0;
 expect forall k :: k in mapnat0 ==> r0[arrow0(k)] == mapnat0[k];
 }
 
-// REPEAT 9 - TIME: 10.9070041 s
+// REPEAT 9 - TIME: 8.9826917 s
 
 method {:test} Test9() {
 var mapnat0 : map<nat, bool> := map[(4818 as nat) := false, (4819 as nat) := false, (1143 as nat) := false, (1142 as nat) := true, (3581 as nat) := false, (4820 as nat) := false];
@@ -114,4 +114,4 @@ expect forall k :: k in mapnat0 <==> arrow0(k) in r0;
 expect forall k :: k in mapnat0 ==> r0[arrow0(k)] == mapnat0[k];
 }
 
-// REPEAT 10 - TIME: 11.9050987 s
+// REPEAT 10 - TIME: 9.5936727 s

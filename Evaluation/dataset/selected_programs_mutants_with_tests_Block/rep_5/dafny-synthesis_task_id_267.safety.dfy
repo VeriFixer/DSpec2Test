@@ -20,4 +20,4 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(5);
 expect r0 == 5 * (2 * 5 - 1) * (2 * 5 + 1) / 3;
 }
 
-// REPEAT 5 - TIME: 5.4873311 s
+// REPEAT 5 - TIME: 5.4474374 s

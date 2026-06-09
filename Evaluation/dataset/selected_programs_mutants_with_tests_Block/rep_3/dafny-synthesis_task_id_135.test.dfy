@@ -5,4 +5,4 @@ var r0 := NthHexagonalNumber(2);
 expect r0 == 2 * (2 * 2 - 1);
 }
 
-// REPEAT 3 - TIME: 3.2414529 s
+// REPEAT 3 - TIME: 3.7474016 s

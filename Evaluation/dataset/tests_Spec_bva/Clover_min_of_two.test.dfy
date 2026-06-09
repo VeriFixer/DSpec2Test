@@ -60,7 +60,7 @@ expect 0 <= 100 ==> r0 == 0;
 expect 0 > 100 ==> r0 == 100;
 }
 
-// REPEAT 1 - TIME: 16.2289175 s
+// REPEAT 1 - TIME: 13.3897251 s
 
 method {:test} Test20() {
 var r0 := Min(102, 101);
@@ -73,7 +73,7 @@ expect 102 <= 102 ==> r0 == 102;
 expect 102 > 102 ==> r0 == 102;
 }
 
-// REPEAT 2 - TIME: 17.64683 s
+// REPEAT 2 - TIME: 14.6902901 s
 
 method {:test} Test22() {
 var r0 := Min(104, 103);
@@ -86,7 +86,7 @@ expect 103 <= 103 ==> r0 == 103;
 expect 103 > 103 ==> r0 == 103;
 }
 
-// REPEAT 3 - TIME: 19.0179972 s
+// REPEAT 3 - TIME: 15.8839589 s
 
 method {:test} Test24() {
 var r0 := Min(105, 104);
@@ -99,7 +99,7 @@ expect 105 <= 105 ==> r0 == 105;
 expect 105 > 105 ==> r0 == 105;
 }
 
-// REPEAT 4 - TIME: 20.5352206 s
+// REPEAT 4 - TIME: 17.073272 s
 
 method {:test} Test26() {
 var r0 := Min(107, 106);
@@ -112,7 +112,7 @@ expect 106 <= 106 ==> r0 == 106;
 expect 106 > 106 ==> r0 == 106;
 }
 
-// REPEAT 5 - TIME: 21.9314486 s
+// REPEAT 5 - TIME: 18.1382445 s
 
 method {:test} Test28() {
 var r0 := Min(108, 107);
@@ -125,7 +125,7 @@ expect 108 <= 108 ==> r0 == 108;
 expect 108 > 108 ==> r0 == 108;
 }
 
-// REPEAT 6 - TIME: 23.4956542 s
+// REPEAT 6 - TIME: 19.1653207 s
 
 method {:test} Test30() {
 var r0 := Min(110, 109);
@@ -138,7 +138,7 @@ expect 109 <= 109 ==> r0 == 109;
 expect 109 > 109 ==> r0 == 109;
 }
 
-// REPEAT 7 - TIME: 24.8955455 s
+// REPEAT 7 - TIME: 20.2468825 s
 
 method {:test} Test32() {
 var r0 := Min(111, 110);
@@ -151,7 +151,7 @@ expect 111 <= 111 ==> r0 == 111;
 expect 111 > 111 ==> r0 == 111;
 }
 
-// REPEAT 8 - TIME: 26.3280323 s
+// REPEAT 8 - TIME: 21.496204 s
 
 method {:test} Test34() {
 var r0 := Min(113, 112);
@@ -164,7 +164,7 @@ expect 112 <= 112 ==> r0 == 112;
 expect 112 > 112 ==> r0 == 112;
 }
 
-// REPEAT 9 - TIME: 27.7334025 s
+// REPEAT 9 - TIME: 22.6694275 s
 
 method {:test} Test36() {
 var r0 := Min(114, 113);
@@ -177,4 +177,4 @@ expect 114 <= 114 ==> r0 == 114;
 expect 114 > 114 ==> r0 == 114;
 }
 
-// REPEAT 10 - TIME: 29.1315167 s
+// REPEAT 10 - TIME: 23.7731695 s

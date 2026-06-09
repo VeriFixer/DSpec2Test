@@ -20,4 +20,4 @@ var r0 := TriangleNumber(6);
 expect r0 == 6 * (6 + 1) / 2;
 }
 
-// REPEAT 6 - TIME: 5.9765088 s
+// REPEAT 6 - TIME: 4.9970579 s

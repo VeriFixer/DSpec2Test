@@ -33,4 +33,4 @@ expect r0 == 199 * (199 + 1) / 2;
 expect r1 == r0 as real / 199 as real;
 }
 
-// REPEAT 1 - TIME: 7.1400059 s
+// REPEAT 1 - TIME: 6.6389089 s

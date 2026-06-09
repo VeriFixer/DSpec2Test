@@ -11,4 +11,4 @@ var r0 := NthHexagonalNumber(101);
 expect r0 == 101 * (2 * 101 - 1);
 }
 
-// REPEAT 2 - TIME: 6.6833083 s
+// REPEAT 2 - TIME: 5.6098441 s

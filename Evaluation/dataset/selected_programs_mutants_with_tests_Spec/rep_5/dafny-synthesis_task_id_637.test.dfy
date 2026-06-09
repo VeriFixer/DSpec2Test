@@ -10,4 +10,4 @@ var r0 := IsBreakEven(7, 6);
 expect r0 <==> 7 == 6;
 }
 
-// REPEAT 5 - TIME: 8.3854219 s
+// REPEAT 5 - TIME: 7.8244699 s

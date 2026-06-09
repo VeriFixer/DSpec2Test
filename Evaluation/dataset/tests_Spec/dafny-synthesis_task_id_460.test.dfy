@@ -22,73 +22,21 @@ expect |r0| == |seqseqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
 }
 
-// REPEAT 1 - TIME: 2.8792275 s
+// REPEAT 1 - TIME: 2.5857932 s
 
 method {:test} Test1() {
-var seqint0 : seq<int> := [];
-var seqint1 : seq<int> := [27];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1];
+var seqint0 : seq<int> := [25];
+var seqseqint0 : seq<seq<int>> := [seqint0];
 expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := GetFirstElements(seqseqint0);
 expect |r0| == |seqseqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
 }
 
-// REPEAT 2 - TIME: 4.1603777 s
+// REPEAT 2 - TIME: 3.3847327 s
 
 method {:test} Test2() {
-var seqint0 : seq<int> := [];
-var seqint1 : seq<int> := [];
-var seqint2 : seq<int> := [];
-var seqint3 : seq<int> := [];
-var seqint4 : seq<int> := [];
-var seqint5 : seq<int> := [];
-var seqint6 : seq<int> := [];
-var seqint7 : seq<int> := [];
-var seqint8 : seq<int> := [];
-var seqint9 : seq<int> := [];
-var seqint10 : seq<int> := [];
-var seqint11 : seq<int> := [];
-var seqint12 : seq<int> := [];
-var seqint13 : seq<int> := [];
-var seqint14 : seq<int> := [];
-var seqint15 : seq<int> := [];
-var seqint16 : seq<int> := [];
-var seqint17 : seq<int> := [];
-var seqint18 : seq<int> := [];
-var seqint19 : seq<int> := [];
-var seqint20 : seq<int> := [];
-var seqint21 : seq<int> := [];
-var seqint22 : seq<int> := [];
-var seqint23 : seq<int> := [];
-var seqint24 : seq<int> := [];
-var seqint25 : seq<int> := [];
-var seqint26 : seq<int> := [];
-var seqint27 : seq<int> := [];
-var seqint28 : seq<int> := [];
-var seqint29 : seq<int> := [];
-var seqint30 : seq<int> := [];
-var seqint31 : seq<int> := [];
-var seqint32 : seq<int> := [];
-var seqint33 : seq<int> := [];
-var seqint34 : seq<int> := [];
-var seqint35 : seq<int> := [];
-var seqint36 : seq<int> := [];
-var seqint37 : seq<int> := [];
-var seqint38 : seq<int> := [];
-var seqint39 : seq<int> := [];
-var seqint40 : seq<int> := [31];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29, seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37, seqint38, seqint39, seqint40];
-expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := GetFirstElements(seqseqint0);
-expect |r0| == |seqseqint0|;
-expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
-}
-
-// REPEAT 3 - TIME: 5.2312779 s
-
-method {:test} Test3() {
-var seqint0 : seq<int> := [79];
+var seqint0 : seq<int> := [30, 0];
 var seqint1 : seq<int> := [];
 var seqseqint0 : seq<seq<int>> := [seqint0, seqint1];
 expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -97,64 +45,12 @@ expect |r0| == |seqseqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
 }
 
-// REPEAT 4 - TIME: 6.3059227 s
+// REPEAT 3 - TIME: 4.2155182 s
 
-method {:test} Test4() {
-var seqint0 : seq<int> := [];
-var seqint1 : seq<int> := [82];
-var seqint2 : seq<int> := [];
-var seqint3 : seq<int> := [];
-var seqint4 : seq<int> := [];
-var seqint5 : seq<int> := [];
-var seqint6 : seq<int> := [];
-var seqint7 : seq<int> := [];
-var seqint8 : seq<int> := [];
-var seqint9 : seq<int> := [];
-var seqint10 : seq<int> := [];
-var seqint11 : seq<int> := [];
-var seqint12 : seq<int> := [];
-var seqint13 : seq<int> := [];
-var seqint14 : seq<int> := [];
-var seqint15 : seq<int> := [];
-var seqint16 : seq<int> := [];
-var seqint17 : seq<int> := [];
-var seqint18 : seq<int> := [];
-var seqint19 : seq<int> := [];
-var seqint20 : seq<int> := [];
-var seqint21 : seq<int> := [];
-var seqint22 : seq<int> := [];
-var seqint23 : seq<int> := [];
-var seqint24 : seq<int> := [];
-var seqint25 : seq<int> := [];
-var seqint26 : seq<int> := [];
-var seqint27 : seq<int> := [];
-var seqint28 : seq<int> := [];
-var seqint29 : seq<int> := [];
-var seqint30 : seq<int> := [];
-var seqint31 : seq<int> := [];
-var seqint32 : seq<int> := [];
-var seqint33 : seq<int> := [];
-var seqint34 : seq<int> := [];
-var seqint35 : seq<int> := [];
-var seqint36 : seq<int> := [];
-var seqint37 : seq<int> := [];
-var seqint38 : seq<int> := [];
-var seqint39 : seq<int> := [];
-var seqint40 : seq<int> := [];
-var seqint41 : seq<int> := [85];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29, seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37, seqint38, seqint39, seqint40, seqint41];
-expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := GetFirstElements(seqseqint0);
-expect |r0| == |seqseqint0|;
-expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
-}
-
-// REPEAT 5 - TIME: 7.2924712 s
-
-method {:test} Test5() {
-var seqint0 : seq<int> := [130];
-var seqint1 : seq<int> := [127];
-var seqint2 : seq<int> := [];
+method {:test} Test3() {
+var seqint0 : seq<int> := [28, 0, 0];
+var seqint1 : seq<int> := [27];
+var seqint2 : seq<int> := [39];
 var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2];
 expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := GetFirstElements(seqseqint0);
@@ -162,89 +58,13 @@ expect |r0| == |seqseqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
 }
 
-// REPEAT 6 - TIME: 8.428359 s
+// REPEAT 4 - TIME: 5.1297392 s
 
-method {:test} Test6() {
-var seqint0 : seq<int> := [138];
-var seqint1 : seq<int> := [136];
-var seqint2 : seq<int> := [139];
+method {:test} Test4() {
+var seqint0 : seq<int> := [47, 0, 0, 0];
+var seqint1 : seq<int> := [49, 0];
+var seqint2 : seq<int> := [50, 0];
 var seqint3 : seq<int> := [];
-var seqint4 : seq<int> := [];
-var seqint5 : seq<int> := [];
-var seqint6 : seq<int> := [];
-var seqint7 : seq<int> := [];
-var seqint8 : seq<int> := [];
-var seqint9 : seq<int> := [];
-var seqint10 : seq<int> := [];
-var seqint11 : seq<int> := [];
-var seqint12 : seq<int> := [];
-var seqint13 : seq<int> := [];
-var seqint14 : seq<int> := [141];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14];
-expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := GetFirstElements(seqseqint0);
-expect |r0| == |seqseqint0|;
-expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
-}
-
-// REPEAT 7 - TIME: 9.4589896 s
-
-method {:test} Test7() {
-var seqint0 : seq<int> := [168];
-var seqint1 : seq<int> := [158];
-var seqint2 : seq<int> := [];
-var seqint3 : seq<int> := [];
-var seqint4 : seq<int> := [];
-var seqint5 : seq<int> := [];
-var seqint6 : seq<int> := [];
-var seqint7 : seq<int> := [];
-var seqint8 : seq<int> := [];
-var seqint9 : seq<int> := [];
-var seqint10 : seq<int> := [];
-var seqint11 : seq<int> := [];
-var seqint12 : seq<int> := [161];
-var seqint13 : seq<int> := [163];
-var seqint14 : seq<int> := [];
-var seqint15 : seq<int> := [165];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15];
-expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := GetFirstElements(seqseqint0);
-expect |r0| == |seqseqint0|;
-expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
-}
-
-// REPEAT 8 - TIME: 10.236043 s
-
-method {:test} Test8() {
-var seqint0 : seq<int> := [187];
-var seqint1 : seq<int> := [185];
-var seqint2 : seq<int> := [];
-var seqint3 : seq<int> := [];
-var seqint4 : seq<int> := [];
-var seqint5 : seq<int> := [];
-var seqint6 : seq<int> := [];
-var seqint7 : seq<int> := [];
-var seqint8 : seq<int> := [];
-var seqint9 : seq<int> := [];
-var seqint10 : seq<int> := [];
-var seqint11 : seq<int> := [];
-var seqint12 : seq<int> := [];
-var seqint13 : seq<int> := [];
-var seqint14 : seq<int> := [188];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14];
-expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := GetFirstElements(seqseqint0);
-expect |r0| == |seqseqint0|;
-expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
-}
-
-// REPEAT 9 - TIME: 11.1468047 s
-
-method {:test} Test9() {
-var seqint0 : seq<int> := [219];
-var seqint1 : seq<int> := [211];
-var seqint2 : seq<int> := [206];
-var seqint3 : seq<int> := [205];
 var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3];
 expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := GetFirstElements(seqseqint0);
@@ -252,4 +72,89 @@ expect |r0| == |seqseqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
 }
 
-// REPEAT 10 - TIME: 12.2543912 s
+// REPEAT 5 - TIME: 6.1114714 s
+
+method {:test} Test5() {
+var seqint0 : seq<int> := [32, 0, 0, 0, 0];
+var seqint1 : seq<int> := [33, 0, 0];
+var seqint2 : seq<int> := [31, 0, 0];
+var seqint3 : seq<int> := [29];
+var seqint4 : seq<int> := [];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4];
+expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := GetFirstElements(seqseqint0);
+expect |r0| == |seqseqint0|;
+expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
+}
+
+// REPEAT 6 - TIME: 7.0486221 s
+
+method {:test} Test6() {
+var seqint0 : seq<int> := [40, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [37, 0, 0, 0];
+var seqint2 : seq<int> := [36, 0, 0, 0];
+var seqint3 : seq<int> := [35, 0];
+var seqint4 : seq<int> := [34];
+var seqint5 : seq<int> := [];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5];
+expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := GetFirstElements(seqseqint0);
+expect |r0| == |seqseqint0|;
+expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
+}
+
+// REPEAT 7 - TIME: 7.9395259 s
+
+method {:test} Test7() {
+var seqint0 : seq<int> := [101, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [99, 0, 0, 0, 0];
+var seqint2 : seq<int> := [98, 0, 0, 0, 0];
+var seqint3 : seq<int> := [103, 0, 0];
+var seqint4 : seq<int> := [102, 0];
+var seqint5 : seq<int> := [104];
+var seqint6 : seq<int> := [116];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6];
+expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := GetFirstElements(seqseqint0);
+expect |r0| == |seqseqint0|;
+expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
+}
+
+// REPEAT 8 - TIME: 8.8849546 s
+
+method {:test} Test8() {
+var seqint0 : seq<int> := [130, 0, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [136, 0, 0, 0, 0, 0];
+var seqint2 : seq<int> := [134, 0, 0, 0, 0, 0];
+var seqint3 : seq<int> := [133, 0, 0, 0];
+var seqint4 : seq<int> := [132, 0, 0];
+var seqint5 : seq<int> := [131, 0];
+var seqint6 : seq<int> := [135, 0];
+var seqint7 : seq<int> := [183];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7];
+expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := GetFirstElements(seqseqint0);
+expect |r0| == |seqseqint0|;
+expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
+}
+
+// REPEAT 9 - TIME: 9.872918 s
+
+method {:test} Test9() {
+var seqint0 : seq<int> := [174, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [173, 0, 0, 0, 0, 0, 0];
+var seqint2 : seq<int> := [171, 0, 0, 0, 0, 0, 0];
+var seqint3 : seq<int> := [170, 0, 0, 0, 0];
+var seqint4 : seq<int> := [169, 0, 0, 0];
+var seqint5 : seq<int> := [177, 0, 0];
+var seqint6 : seq<int> := [176, 0, 0];
+var seqint7 : seq<int> := [175, 0];
+var seqint8 : seq<int> := [];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8];
+expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := GetFirstElements(seqseqint0);
+expect |r0| == |seqseqint0|;
+expect forall i :: 0 <= i < |r0| ==> r0[i] == seqseqint0[i][0];
+}
+
+// REPEAT 10 - TIME: 10.7662632 s

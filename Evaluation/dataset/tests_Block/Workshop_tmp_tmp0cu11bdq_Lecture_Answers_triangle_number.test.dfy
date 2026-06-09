@@ -20,7 +20,7 @@ var r0 := TriangleNumber(1);
 expect r0 == 1 * (1 + 1) / 2;
 }
 
-// REPEAT 1 - TIME: 2.2336037 s
+// REPEAT 1 - TIME: 1.7970068 s
 
 method {:test} Test1() {
 expect 2 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -28,7 +28,7 @@ var r0 := TriangleNumber(2);
 expect r0 == 2 * (2 + 1) / 2;
 }
 
-// REPEAT 2 - TIME: 3.1260757 s
+// REPEAT 2 - TIME: 2.434637 s
 
 method {:test} Test2() {
 expect 3 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -36,7 +36,7 @@ var r0 := TriangleNumber(3);
 expect r0 == 3 * (3 + 1) / 2;
 }
 
-// REPEAT 3 - TIME: 3.8780107 s
+// REPEAT 3 - TIME: 3.0801153 s
 
 method {:test} Test3() {
 expect 4 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -44,7 +44,7 @@ var r0 := TriangleNumber(4);
 expect r0 == 4 * (4 + 1) / 2;
 }
 
-// REPEAT 4 - TIME: 4.53868 s
+// REPEAT 4 - TIME: 3.7943923 s
 
 method {:test} Test4() {
 expect 5 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -52,7 +52,7 @@ var r0 := TriangleNumber(5);
 expect r0 == 5 * (5 + 1) / 2;
 }
 
-// REPEAT 5 - TIME: 5.2903877 s
+// REPEAT 5 - TIME: 4.4096508 s
 
 method {:test} Test5() {
 expect 6 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -60,7 +60,7 @@ var r0 := TriangleNumber(6);
 expect r0 == 6 * (6 + 1) / 2;
 }
 
-// REPEAT 6 - TIME: 5.9765088 s
+// REPEAT 6 - TIME: 4.9970579 s
 
 method {:test} Test6() {
 expect 7 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -68,7 +68,7 @@ var r0 := TriangleNumber(7);
 expect r0 == 7 * (7 + 1) / 2;
 }
 
-// REPEAT 7 - TIME: 6.6502372 s
+// REPEAT 7 - TIME: 5.7301498 s
 
 method {:test} Test7() {
 expect 8 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -76,7 +76,7 @@ var r0 := TriangleNumber(8);
 expect r0 == 8 * (8 + 1) / 2;
 }
 
-// REPEAT 8 - TIME: 7.3030605 s
+// REPEAT 8 - TIME: 6.3394211 s
 
 method {:test} Test8() {
 expect 9 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -84,7 +84,7 @@ var r0 := TriangleNumber(9);
 expect r0 == 9 * (9 + 1) / 2;
 }
 
-// REPEAT 9 - TIME: 7.876881 s
+// REPEAT 9 - TIME: 6.9515042 s
 
 method {:test} Test9() {
 expect 10 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -92,4 +92,4 @@ var r0 := TriangleNumber(10);
 expect r0 == 10 * (10 + 1) / 2;
 }
 
-// REPEAT 10 - TIME: 8.4966263 s
+// REPEAT 10 - TIME: 7.475553 s

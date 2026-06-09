@@ -4,4 +4,4 @@ var r0 := calcC(4);
 expect r0 == C(4);
 }
 
-// REPEAT 3 - TIME: 5.4498629 s
+// REPEAT 3 - TIME: 5.239925 s

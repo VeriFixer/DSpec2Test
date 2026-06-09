@@ -40,4 +40,4 @@ expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 10 - TIME: 26.5195714 s
+// REPEAT 10 - TIME: 22.3731728 s

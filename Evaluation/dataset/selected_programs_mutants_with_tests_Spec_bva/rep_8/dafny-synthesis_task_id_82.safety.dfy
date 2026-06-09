@@ -11,4 +11,4 @@ var r0 := SphereVolume(107.0);
 expect r0 == 4.0 / 3.0 * 3.1415926535 * 107.0 * 107.0 * 107.0;
 }
 
-// REPEAT 8 - TIME: 10.4996749 s
+// REPEAT 8 - TIME: 9.6751744 s

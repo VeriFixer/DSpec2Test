@@ -6,4 +6,4 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\0" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 10 - TIME: 9.5686464 s
+// REPEAT 10 - TIME: 8.8518169 s

@@ -6,4 +6,4 @@ expect r0 == 19 * (19 + 1) / 2;
 expect r1 == r0 as real / 19 as real;
 }
 
-// REPEAT 8 - TIME: 28.8188905 s
+// REPEAT 8 - TIME: 29.5241752 s

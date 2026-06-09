@@ -18,4 +18,4 @@ var r0 := Carre(109);
 expect r0 == 109 * 109;
 }
 
-// REPEAT 10 - TIME: 8.889939 s
+// REPEAT 10 - TIME: 10.8794771 s

@@ -20,4 +20,4 @@ var r0 := SumOfFourthPowerOfOddNumbers(201);
 expect r0 == 201 * (2 * 201 + 1) * (24 * 201 * 201 * 201 - 12 * 201 * 201 - 14 * 201 + 7) / 15;
 }
 
-// REPEAT 8 - TIME: 100.3350207 s
+// REPEAT 8 - TIME: 99.5699847 s

@@ -26,4 +26,4 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "\U{0002}\U{0002}a" && !(r0[i] in 
 expect forall i :: 0 <= i < |"\U{0002}\U{0002}a"| ==> "\U{0002}\U{0002}a"[i] in "\U{0006}\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}" || "\U{0002}\U{0002}a"[i] in r0;
 }
 
-// REPEAT 8 - TIME: 9.6129342 s
+// REPEAT 8 - TIME: 9.4395224 s

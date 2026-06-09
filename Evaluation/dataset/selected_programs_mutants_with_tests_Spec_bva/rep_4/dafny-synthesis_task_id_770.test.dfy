@@ -5,4 +5,4 @@ var r0 := SumOfFourthPowerOfOddNumbers(197);
 expect r0 == 197 * (2 * 197 + 1) * (24 * 197 * 197 * 197 - 12 * 197 * 197 - 14 * 197 + 7) / 15;
 }
 
-// REPEAT 4 - TIME: 98.9875112 s
+// REPEAT 4 - TIME: 97.5927848 s

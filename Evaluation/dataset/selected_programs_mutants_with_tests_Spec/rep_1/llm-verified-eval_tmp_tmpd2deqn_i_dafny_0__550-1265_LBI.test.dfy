@@ -43,4 +43,4 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 1 - TIME: 3.2272 s
+// REPEAT 1 - TIME: 3.0093215 s

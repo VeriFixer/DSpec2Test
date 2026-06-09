@@ -5,4 +5,4 @@ var r0 := ClosestSmaller(8);
 expect r0 + 1 == 8;
 }
 
-// REPEAT 8 - TIME: 7.248162 s
+// REPEAT 8 - TIME: 7.5575193 s

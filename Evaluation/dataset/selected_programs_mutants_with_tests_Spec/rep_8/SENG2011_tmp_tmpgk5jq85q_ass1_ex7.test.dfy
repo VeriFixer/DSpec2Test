@@ -4,4 +4,4 @@ expect 0 < 8 <= 42, "If this check fails at runtime, the test does not meet the 
 BigFoot(8);
 }
 
-// REPEAT 8 - TIME: 9.5153458 s
+// REPEAT 8 - TIME: 8.2401547 s

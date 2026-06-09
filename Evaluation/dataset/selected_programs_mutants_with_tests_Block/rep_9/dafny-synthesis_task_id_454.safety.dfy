@@ -22,4 +22,4 @@ var r0 := ContainsZ("\U{0002}z\U{0004}aaaaaaaaaa\0aaaaaaa");
 expect r0 <==> exists i :: 0 <= i < |"\U{0002}z\U{0004}aaaaaaaaaa\0aaaaaaa"| && ("\U{0002}z\U{0004}aaaaaaaaaa\0aaaaaaa"[i] == 'z' || "\U{0002}z\U{0004}aaaaaaaaaa\0aaaaaaa"[i] == 'Z');
 }
 
-// REPEAT 9 - TIME: 14.0774805 s
+// REPEAT 9 - TIME: 13.3181717 s

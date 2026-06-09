@@ -5,4 +5,4 @@ var r0 := CircleCircumference(3.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 3.0;
 }
 
-// REPEAT 3 - TIME: 3.7381848 s
+// REPEAT 3 - TIME: 3.3206067 s

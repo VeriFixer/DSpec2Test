@@ -4,4 +4,4 @@ var r0 := Carre(5);
 expect r0 == 5 * 5;
 }
 
-// REPEAT 6 - TIME: 22.7246377 s
+// REPEAT 6 - TIME: 24.228919 s

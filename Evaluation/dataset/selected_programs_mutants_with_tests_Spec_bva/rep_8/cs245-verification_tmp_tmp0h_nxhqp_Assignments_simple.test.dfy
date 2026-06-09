@@ -1,3 +1,3 @@
 
 
-// REPEAT 8 - TIME: 9.9284472 s
+// REPEAT 8 - TIME: 8.3483733 s

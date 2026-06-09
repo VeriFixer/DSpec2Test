@@ -6,4 +6,4 @@ expect r0 == 202 * (202 + 1) / 2;
 expect r1 == r0 as real / 202 as real;
 }
 
-// REPEAT 4 - TIME: 9.4418772 s
+// REPEAT 4 - TIME: 8.9991135 s

@@ -27,4 +27,4 @@ var r0 := calcR(6);
 expect r0 == R(6);
 }
 
-// REPEAT 6 - TIME: 6.9077037 s
+// REPEAT 6 - TIME: 6.4891174 s

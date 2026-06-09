@@ -1,3 +1,3 @@
 
 
-// REPEAT 3 - TIME: 43.1232482 s
+// REPEAT 3 - TIME: 40.4555166 s

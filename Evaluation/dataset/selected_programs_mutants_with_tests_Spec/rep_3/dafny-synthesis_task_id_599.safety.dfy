@@ -20,4 +20,4 @@ expect r0 == 3 * (3 + 1) / 2;
 expect r1 == r0 as real / 3 as real;
 }
 
-// REPEAT 3 - TIME: 4.6091032 s
+// REPEAT 3 - TIME: 4.1320085 s

@@ -11,4 +11,4 @@ var r0 := CubeVolume(6);
 expect r0 == 6 * 6 * 6;
 }
 
-// REPEAT 6 - TIME: 7.673056 s
+// REPEAT 6 - TIME: 6.0890608 s

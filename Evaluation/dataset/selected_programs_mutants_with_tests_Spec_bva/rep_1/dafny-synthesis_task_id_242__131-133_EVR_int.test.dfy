@@ -23,4 +23,4 @@ expect r0 >= 0;
 expect r0 == |"aa"|;
 }
 
-// REPEAT 1 - TIME: 6.0027697 s
+// REPEAT 1 - TIME: 6.0197212 s

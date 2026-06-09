@@ -7,4 +7,4 @@ expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 31;
 }
 
-// REPEAT 9 - TIME: 10.3740317 s
+// REPEAT 9 - TIME: 9.7196442 s

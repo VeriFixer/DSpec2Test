@@ -69,4 +69,4 @@ var r0 := sumOdds(7);
 expect r0 == 7 * 7;
 }
 
-// REPEAT 8 - TIME: 36.1140762 s
+// REPEAT 8 - TIME: 38.1065427 s

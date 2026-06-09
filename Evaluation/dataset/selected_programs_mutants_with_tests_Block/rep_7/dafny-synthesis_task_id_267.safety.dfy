@@ -20,4 +20,4 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(7);
 expect r0 == 7 * (2 * 7 - 1) * (2 * 7 + 1) / 3;
 }
 
-// REPEAT 7 - TIME: 7.0625049 s
+// REPEAT 7 - TIME: 6.6646146 s

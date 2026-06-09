@@ -15,4 +15,4 @@ expect |r0| == |"aaaaaaaaaaaaaaaa$aaaaaaaaaaaaaaaaa\U{0001}aaaa\U{0003}a\U{0005}
 expect forall i :: 0 <= i < |"aaaaaaaaaaaaaaaa$aaaaaaaaaaaaaaaaa\U{0001}aaaa\U{0003}a\U{0005}"| ==> if IsLowerCase("aaaaaaaaaaaaaaaa$aaaaaaaaaaaaaaaaa\U{0001}aaaa\U{0003}a\U{0005}"[i]) then IsLowerUpperPair("aaaaaaaaaaaaaaaa$aaaaaaaaaaaaaaaaa\U{0001}aaaa\U{0003}a\U{0005}"[i], r0[i]) else r0[i] == "aaaaaaaaaaaaaaaa$aaaaaaaaaaaaaaaaa\U{0001}aaaa\U{0003}a\U{0005}"[i];
 }
 
-// REPEAT 10 - TIME: 29.6410225 s
+// REPEAT 10 - TIME: 26.8914509 s

@@ -20,4 +20,4 @@ var r0 := gcdI(48440, 24220);
 expect r0 == gcd(48440, 24220);
 }
 
-// REPEAT 7 - TIME: 17.6859644 s
+// REPEAT 7 - TIME: 16.42913 s

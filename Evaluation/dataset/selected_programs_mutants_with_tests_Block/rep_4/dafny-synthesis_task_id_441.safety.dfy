@@ -11,4 +11,4 @@ var r0 := CubeSurfaceArea(4);
 expect r0 == 6 * 4 * 4;
 }
 
-// REPEAT 4 - TIME: 4.0634907 s
+// REPEAT 4 - TIME: 4.3935468 s

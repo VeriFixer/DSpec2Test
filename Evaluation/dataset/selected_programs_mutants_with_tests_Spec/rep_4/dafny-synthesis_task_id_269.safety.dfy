@@ -9,4 +9,4 @@ var r0 := AsciiValue('\U{0004}');
 expect r0 == '\U{0004}' as int;
 }
 
-// REPEAT 4 - TIME: 5.4757401 s
+// REPEAT 4 - TIME: 4.7918611 s

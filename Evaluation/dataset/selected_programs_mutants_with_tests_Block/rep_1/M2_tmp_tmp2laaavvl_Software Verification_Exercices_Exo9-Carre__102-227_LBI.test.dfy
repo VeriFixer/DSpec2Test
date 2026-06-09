@@ -21,4 +21,4 @@ var r0 := Carre(1);
 expect r0 == 1 * 1;
 }
 
-// REPEAT 1 - TIME: 1.8776461 s
+// REPEAT 1 - TIME: 1.9588507 s

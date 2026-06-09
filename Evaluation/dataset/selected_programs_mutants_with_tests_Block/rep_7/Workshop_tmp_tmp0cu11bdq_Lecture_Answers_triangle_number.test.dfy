@@ -5,4 +5,4 @@ var r0 := TriangleNumber(7);
 expect r0 == 7 * (7 + 1) / 2;
 }
 
-// REPEAT 7 - TIME: 6.6502372 s
+// REPEAT 7 - TIME: 5.7301498 s

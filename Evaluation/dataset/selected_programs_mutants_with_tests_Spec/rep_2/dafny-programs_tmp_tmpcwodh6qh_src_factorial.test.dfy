@@ -4,4 +4,4 @@ var r0 := factorial(3);
 expect r0 == fact(3);
 }
 
-// REPEAT 2 - TIME: 4.3663935 s
+// REPEAT 2 - TIME: 3.4414945 s

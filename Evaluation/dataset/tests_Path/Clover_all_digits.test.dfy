@@ -20,7 +20,7 @@ var r0 := allDigits("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0");
 expect r0 <==> forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"| ==> "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"[i] in "0123456789";
 }
 
-// REPEAT 1 - TIME: 11.6554723 s
+// REPEAT 1 - TIME: 7.5993652 s
 
 method {:test} Test2() {
 var r0 := allDigits("a9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0");
@@ -31,7 +31,7 @@ var r0 := allDigits("a\0");
 expect r0 <==> forall i :: 0 <= i < |"a\0"| ==> "a\0"[i] in "0123456789";
 }
 
-// REPEAT 2 - TIME: 18.976511 s
+// REPEAT 2 - TIME: 13.2506444 s
 
 method {:test} Test4() {
 var r0 := allDigits("1a9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0a");
@@ -42,7 +42,7 @@ var r0 := allDigits("aa\0");
 expect r0 <==> forall i :: 0 <= i < |"aa\0"| ==> "aa\0"[i] in "0123456789";
 }
 
-// REPEAT 3 - TIME: 26.9360251 s
+// REPEAT 3 - TIME: 18.8377395 s
 
 method {:test} Test6() {
 var r0 := allDigits("99aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa9a9");
@@ -53,7 +53,7 @@ var r0 := allDigits("\0aa\U{0002}");
 expect r0 <==> forall i :: 0 <= i < |"\0aa\U{0002}"| ==> "\0aa\U{0002}"[i] in "0123456789";
 }
 
-// REPEAT 4 - TIME: 35.1137047 s
+// REPEAT 4 - TIME: 24.545236 s
 
 method {:test} Test8() {
 var r0 := allDigits("20");
@@ -64,7 +64,7 @@ var r0 := allDigits("\U{0002}0\0");
 expect r0 <==> forall i :: 0 <= i < |"\U{0002}0\0"| ==> "\U{0002}0\0"[i] in "0123456789";
 }
 
-// REPEAT 5 - TIME: 44.6695759 s
+// REPEAT 5 - TIME: 31.283933 s
 
 method {:test} Test10() {
 var r0 := allDigits("132aaaaaaaaa0aaaaa");
@@ -75,7 +75,7 @@ var r0 := allDigits("\U{0002}\0a\U{0004}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{00
 expect r0 <==> forall i :: 0 <= i < |"\U{0002}\0a\U{0004}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0006}a9a"| ==> "\U{0002}\0a\U{0004}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0006}a9a"[i] in "0123456789";
 }
 
-// REPEAT 6 - TIME: 53.4473023 s
+// REPEAT 6 - TIME: 38.1024375 s
 
 method {:test} Test12() {
 var r0 := allDigits("18a0a");
@@ -86,7 +86,7 @@ var r0 := allDigits("aaa\0a");
 expect r0 <==> forall i :: 0 <= i < |"aaa\0a"| ==> "aaa\0a"[i] in "0123456789";
 }
 
-// REPEAT 7 - TIME: 62.7748539 s
+// REPEAT 7 - TIME: 45.1333623 s
 
 method {:test} Test14() {
 var r0 := allDigits("001aa");
@@ -97,7 +97,7 @@ var r0 := allDigits("\U{0002}\0");
 expect r0 <==> forall i :: 0 <= i < |"\U{0002}\0"| ==> "\U{0002}\0"[i] in "0123456789";
 }
 
-// REPEAT 8 - TIME: 72.5549385 s
+// REPEAT 8 - TIME: 53.3133614 s
 
 method {:test} Test16() {
 var r0 := allDigits("99a9aaaaaaaaaaaaaa9aaaaa9aaaaaaaaaaaa9a99999");
@@ -108,7 +108,7 @@ var r0 := allDigits("\0aa\U{0002}aaaaaaaaaaaaaa\U{000C}\U{0004}aaaa\U{0008}aa\U{
 expect r0 <==> forall i :: 0 <= i < |"\0aa\U{0002}aaaaaaaaaaaaaa\U{000C}\U{0004}aaaa\U{0008}aa\U{0006}aaaaaaaaaaa\U{000E}\U{0010}\n\U{0012}a"| ==> "\0aa\U{0002}aaaaaaaaaaaaaa\U{000C}\U{0004}aaaa\U{0008}aa\U{0006}aaaaaaaaaaa\U{000E}\U{0010}\n\U{0012}a"[i] in "0123456789";
 }
 
-// REPEAT 9 - TIME: 83.2168299 s
+// REPEAT 9 - TIME: 60.0416161 s
 
 method {:test} Test18() {
 var r0 := allDigits("99a9aaaaaaaaaaaaa9aaaaa9aaaaaaaaaaaaaaa9a9999");
@@ -119,4 +119,4 @@ var r0 := allDigits("\0aaaaa");
 expect r0 <==> forall i :: 0 <= i < |"\0aaaaa"| ==> "\0aaaaa"[i] in "0123456789";
 }
 
-// REPEAT 10 - TIME: 94.8059669 s
+// REPEAT 10 - TIME: 67.980341 s

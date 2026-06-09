@@ -27,7 +27,7 @@ expect |r0| <= |"\0a"| && r0 == "\0a"[0 .. |r0|] && |r0| <= |"a"| && r0 == "a"[0
 expect |r0| == |"\0a"| || |r0| == |"a"| || "\0a"[|r0|] != "a"[|r0|];
 }
 
-// REPEAT 1 - TIME: 2.5218328 s
+// REPEAT 1 - TIME: 2.403631 s
 
 method {:test} Test2() {
 var r0 := LongestCommonPrefix("\0\U{0002}a", "\0aa");
@@ -40,7 +40,7 @@ expect |r0| <= |"\U{0004}\U{0002}\0"| && r0 == "\U{0004}\U{0002}\0"[0 .. |r0|] &
 expect |r0| == |"\U{0004}\U{0002}\0"| || |r0| == |"\U{0006}aaa"| || "\U{0004}\U{0002}\0"[|r0|] != "\U{0006}aaa"[|r0|];
 }
 
-// REPEAT 2 - TIME: 3.6523588 s
+// REPEAT 2 - TIME: 3.7242341 s
 
 method {:test} Test4() {
 var r0 := LongestCommonPrefix("\0aaa", "\0aaaa");
@@ -53,7 +53,7 @@ expect |r0| <= |"\0\U{0004}"| && r0 == "\0\U{0004}"[0 .. |r0|] && |r0| <= |"\U{0
 expect |r0| == |"\0\U{0004}"| || |r0| == |"\U{0002}a"| || "\0\U{0004}"[|r0|] != "\U{0002}a"[|r0|];
 }
 
-// REPEAT 3 - TIME: 4.7956334 s
+// REPEAT 3 - TIME: 4.8065122 s
 
 method {:test} Test6() {
 var r0 := LongestCommonPrefix("\0aaaaa", "\0aaaaa");
@@ -66,7 +66,7 @@ expect |r0| <= |"\U{0006}\0"| && r0 == "\U{0006}\0"[0 .. |r0|] && |r0| <= |"\U{0
 expect |r0| == |"\U{0006}\0"| || |r0| == |"\U{0002}a\U{0004}"| || "\U{0006}\0"[|r0|] != "\U{0002}a\U{0004}"[|r0|];
 }
 
-// REPEAT 4 - TIME: 5.9537193 s
+// REPEAT 4 - TIME: 6.0609042 s
 
 method {:test} Test8() {
 var r0 := LongestCommonPrefix("\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}", "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -79,7 +79,7 @@ expect |r0| <= |"\0aaaaaaa"| && r0 == "\0aaaaaaa"[0 .. |r0|] && |r0| <= |"aaaaaa
 expect |r0| == |"\0aaaaaaa"| || |r0| == |"aaaaaaa"| || "\0aaaaaaa"[|r0|] != "aaaaaaa"[|r0|];
 }
 
-// REPEAT 5 - TIME: 7.1392453 s
+// REPEAT 5 - TIME: 7.258734 s
 
 method {:test} Test10() {
 var r0 := LongestCommonPrefix("\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -92,7 +92,7 @@ expect |r0| <= |"\0aaaa"| && r0 == "\0aaaa"[0 .. |r0|] && |r0| <= |"aaaaaaaaaaaa
 expect |r0| == |"\0aaaa"| || |r0| == |"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| || "\0aaaa"[|r0|] != "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[|r0|];
 }
 
-// REPEAT 6 - TIME: 8.5122685 s
+// REPEAT 6 - TIME: 8.3325949 s
 
 method {:test} Test12() {
 var r0 := LongestCommonPrefix("\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}");
@@ -105,7 +105,7 @@ expect |r0| <= |"\0\U{0008}\U{0002}aaaa"| && r0 == "\0\U{0008}\U{0002}aaaa"[0 ..
 expect |r0| == |"\0\U{0008}\U{0002}aaaa"| || |r0| == |"\U{0004}\U{0006}aaaaaa"| || "\0\U{0008}\U{0002}aaaa"[|r0|] != "\U{0004}\U{0006}aaaaaa"[|r0|];
 }
 
-// REPEAT 7 - TIME: 10.0414874 s
+// REPEAT 7 - TIME: 9.6154778 s
 
 method {:test} Test14() {
 var r0 := LongestCommonPrefix("\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -118,7 +118,7 @@ expect |r0| <= |"\0aaa\U{0006}aaaaa"| && r0 == "\0aaa\U{0006}aaaaa"[0 .. |r0|] &
 expect |r0| == |"\0aaa\U{0006}aaaaa"| || |r0| == |"\U{0002}aaaa\U{0004}aaaa"| || "\0aaa\U{0006}aaaaa"[|r0|] != "\U{0002}aaaa\U{0004}aaaa"[|r0|];
 }
 
-// REPEAT 8 - TIME: 11.3650293 s
+// REPEAT 8 - TIME: 10.6153462 s
 
 method {:test} Test16() {
 var r0 := LongestCommonPrefix("\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -131,7 +131,7 @@ expect |r0| <= |"\0\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| &&
 expect |r0| == |"\0\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| || |r0| == |"a\U{0004}aaaaaaa"| || "\0\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[|r0|] != "a\U{0004}aaaaaaa"[|r0|];
 }
 
-// REPEAT 9 - TIME: 12.4975 s
+// REPEAT 9 - TIME: 11.6884082 s
 
 method {:test} Test18() {
 var r0 := LongestCommonPrefix("\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}a", "\0aaaaaaaaa\U{0002}");
@@ -144,4 +144,4 @@ expect |r0| <= |"\0\U{0006}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| && r0 =
 expect |r0| == |"\0\U{0006}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| || |r0| == |"\U{0004}\U{0008}aaaa\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| || "\0\U{0006}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[|r0|] != "\U{0004}\U{0008}aaaa\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[|r0|];
 }
 
-// REPEAT 10 - TIME: 13.559518 s
+// REPEAT 10 - TIME: 12.6547035 s

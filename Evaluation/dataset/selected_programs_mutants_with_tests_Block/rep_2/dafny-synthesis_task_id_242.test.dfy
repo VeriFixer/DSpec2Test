@@ -5,4 +5,4 @@ expect r0 >= 0;
 expect r0 == |"a"|;
 }
 
-// REPEAT 2 - TIME: 3.0362577 s
+// REPEAT 2 - TIME: 2.8295711 s

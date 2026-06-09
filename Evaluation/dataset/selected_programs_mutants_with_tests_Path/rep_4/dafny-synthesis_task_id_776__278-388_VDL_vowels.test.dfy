@@ -32,4 +32,4 @@ var r0 := CountVowelNeighbors("\U{0008}aaaa\naaaaaaaaaaaa\0aaaaaaaaaa\U{0004}a\U
 expect r0 >= 0;
 }
 
-// REPEAT 4 - TIME: 37.1840065 s
+// REPEAT 4 - TIME: 24.6967433 s

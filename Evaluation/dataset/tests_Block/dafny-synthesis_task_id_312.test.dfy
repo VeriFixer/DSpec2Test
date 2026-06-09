@@ -11,7 +11,7 @@ var r0 := ConeVolume(1.0, 1.0);
 expect r0 == 1.0 / 3.0 * 3.14159265358979323846 * 1.0 * 1.0 * 1.0;
 }
 
-// REPEAT 1 - TIME: 2.2069693 s
+// REPEAT 1 - TIME: 2.325639 s
 
 method {:test} Test1() {
 expect 2.0 > 0.0 && 2.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -19,7 +19,7 @@ var r0 := ConeVolume(2.0, 2.0);
 expect r0 == 1.0 / 3.0 * 3.14159265358979323846 * 2.0 * 2.0 * 2.0;
 }
 
-// REPEAT 2 - TIME: 2.9457473 s
+// REPEAT 2 - TIME: 3.0523957 s
 
 method {:test} Test2() {
 expect 3.0 > 0.0 && 3.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -27,7 +27,7 @@ var r0 := ConeVolume(3.0, 3.0);
 expect r0 == 1.0 / 3.0 * 3.14159265358979323846 * 3.0 * 3.0 * 3.0;
 }
 
-// REPEAT 3 - TIME: 3.6250964 s
+// REPEAT 3 - TIME: 3.7010007 s
 
 method {:test} Test3() {
 expect 4.0 > 0.0 && 4.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -35,7 +35,7 @@ var r0 := ConeVolume(4.0, 4.0);
 expect r0 == 1.0 / 3.0 * 3.14159265358979323846 * 4.0 * 4.0 * 4.0;
 }
 
-// REPEAT 4 - TIME: 4.6896587 s
+// REPEAT 4 - TIME: 4.4248015 s
 
 method {:test} Test4() {
 expect 5.0 > 0.0 && 5.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -43,7 +43,7 @@ var r0 := ConeVolume(5.0, 5.0);
 expect r0 == 1.0 / 3.0 * 3.14159265358979323846 * 5.0 * 5.0 * 5.0;
 }
 
-// REPEAT 5 - TIME: 5.6482845 s
+// REPEAT 5 - TIME: 5.1538021 s
 
 method {:test} Test5() {
 expect 6.0 > 0.0 && 6.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -51,7 +51,7 @@ var r0 := ConeVolume(6.0, 6.0);
 expect r0 == 1.0 / 3.0 * 3.14159265358979323846 * 6.0 * 6.0 * 6.0;
 }
 
-// REPEAT 6 - TIME: 6.4724428 s
+// REPEAT 6 - TIME: 5.7316705 s
 
 method {:test} Test6() {
 expect 7.0 > 0.0 && 7.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -59,7 +59,7 @@ var r0 := ConeVolume(7.0, 7.0);
 expect r0 == 1.0 / 3.0 * 3.14159265358979323846 * 7.0 * 7.0 * 7.0;
 }
 
-// REPEAT 7 - TIME: 7.2578547 s
+// REPEAT 7 - TIME: 6.4421297 s
 
 method {:test} Test7() {
 expect 8.0 > 0.0 && 8.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -67,7 +67,7 @@ var r0 := ConeVolume(8.0, 8.0);
 expect r0 == 1.0 / 3.0 * 3.14159265358979323846 * 8.0 * 8.0 * 8.0;
 }
 
-// REPEAT 8 - TIME: 8.0490625 s
+// REPEAT 8 - TIME: 6.9894832 s
 
 method {:test} Test8() {
 expect 9.0 > 0.0 && 9.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -75,7 +75,7 @@ var r0 := ConeVolume(9.0, 9.0);
 expect r0 == 1.0 / 3.0 * 3.14159265358979323846 * 9.0 * 9.0 * 9.0;
 }
 
-// REPEAT 9 - TIME: 8.7851581 s
+// REPEAT 9 - TIME: 7.5625323 s
 
 method {:test} Test9() {
 expect 10.0 > 0.0 && 10.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -83,4 +83,4 @@ var r0 := ConeVolume(10.0, 10.0);
 expect r0 == 1.0 / 3.0 * 3.14159265358979323846 * 10.0 * 10.0 * 10.0;
 }
 
-// REPEAT 10 - TIME: 9.4102482 s
+// REPEAT 10 - TIME: 8.1817215 s

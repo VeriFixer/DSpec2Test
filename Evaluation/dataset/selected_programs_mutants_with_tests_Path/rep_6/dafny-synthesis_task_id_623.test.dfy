@@ -7,4 +7,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 1578);
 }
 
-// REPEAT 6 - TIME: 77.7410312 s
+// REPEAT 6 - TIME: 81.0063995 s

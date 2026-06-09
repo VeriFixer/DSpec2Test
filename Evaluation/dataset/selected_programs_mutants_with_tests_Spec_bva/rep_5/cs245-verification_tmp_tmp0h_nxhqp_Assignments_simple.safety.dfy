@@ -19,4 +19,4 @@ method {:testEntry} simple(y: int) returns (x: int)
     Then y + 1 = 7.
 */
 
-// REPEAT 5 - TIME: 7.7833116 s
+// REPEAT 5 - TIME: 6.2642137 s

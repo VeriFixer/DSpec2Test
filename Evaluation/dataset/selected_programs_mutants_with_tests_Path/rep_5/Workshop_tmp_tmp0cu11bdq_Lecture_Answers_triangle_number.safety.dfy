@@ -20,4 +20,4 @@ var r0 := TriangleNumber(4);
 expect r0 == 4 * (4 + 1) / 2;
 }
 
-// REPEAT 5 - TIME: 17.338413 s
+// REPEAT 5 - TIME: 19.0098205 s

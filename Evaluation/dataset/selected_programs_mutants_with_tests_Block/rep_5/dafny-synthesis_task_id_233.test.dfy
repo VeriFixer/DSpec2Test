@@ -5,4 +5,4 @@ var r0 := CylinderLateralSurfaceArea(5.0, 5.0);
 expect r0 == 2.0 * (5.0 * 5.0) * 3.14;
 }
 
-// REPEAT 5 - TIME: 5.0868872 s
+// REPEAT 5 - TIME: 4.8710163 s

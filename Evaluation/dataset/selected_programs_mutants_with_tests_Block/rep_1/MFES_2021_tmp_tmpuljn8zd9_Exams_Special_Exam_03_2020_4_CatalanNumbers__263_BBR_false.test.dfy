@@ -37,4 +37,4 @@ var r0 := calcC(12);
 expect r0 == C(12);
 }
 
-// REPEAT 1 - TIME: 3.4498602 s
+// REPEAT 1 - TIME: 3.0037093 s

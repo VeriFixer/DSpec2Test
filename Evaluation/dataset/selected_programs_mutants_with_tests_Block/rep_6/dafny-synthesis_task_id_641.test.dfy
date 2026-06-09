@@ -5,4 +5,4 @@ var r0 := NthNonagonalNumber(739);
 expect r0 == 739 * (7 * 739 - 5) / 2;
 }
 
-// REPEAT 6 - TIME: 6.7507374 s
+// REPEAT 6 - TIME: 6.2417359 s

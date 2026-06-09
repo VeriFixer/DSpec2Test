@@ -6,4 +6,4 @@ var r0 := CylinderVolume(8.0, 8.0);
 expect r0 == 3.14159265359 * 8.0 * 8.0 * 8.0;
 }
 
-// REPEAT 8 - TIME: 8.0550483 s
+// REPEAT 8 - TIME: 7.8512266 s

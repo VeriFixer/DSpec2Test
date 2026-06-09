@@ -11,7 +11,7 @@ expect r0 >= 0;
 expect r0 == |"a"| * (|"a"| + 1) / 2;
 }
 
-// REPEAT 1 - TIME: 2.1276843 s
+// REPEAT 1 - TIME: 1.9852966 s
 
 method {:test} Test1() {
 var r0 := CountNonEmptySubstrings("aa\0");
@@ -19,7 +19,7 @@ expect r0 >= 0;
 expect r0 == |"aa\0"| * (|"aa\0"| + 1) / 2;
 }
 
-// REPEAT 2 - TIME: 2.9303031 s
+// REPEAT 2 - TIME: 2.6966459 s
 
 method {:test} Test2() {
 var r0 := CountNonEmptySubstrings("aaaa");
@@ -27,7 +27,7 @@ expect r0 >= 0;
 expect r0 == |"aaaa"| * (|"aaaa"| + 1) / 2;
 }
 
-// REPEAT 3 - TIME: 3.9646035 s
+// REPEAT 3 - TIME: 3.6380857 s
 
 method {:test} Test3() {
 var r0 := CountNonEmptySubstrings("\U{0002}\0");
@@ -35,7 +35,7 @@ expect r0 >= 0;
 expect r0 == |"\U{0002}\0"| * (|"\U{0002}\0"| + 1) / 2;
 }
 
-// REPEAT 4 - TIME: 4.6790584 s
+// REPEAT 4 - TIME: 4.4297939 s
 
 method {:test} Test4() {
 var r0 := CountNonEmptySubstrings("\U{0002}\0");
@@ -43,7 +43,7 @@ expect r0 >= 0;
 expect r0 == |"\U{0002}\0"| * (|"\U{0002}\0"| + 1) / 2;
 }
 
-// REPEAT 5 - TIME: 5.4297686 s
+// REPEAT 5 - TIME: 5.1134712 s
 
 method {:test} Test5() {
 var r0 := CountNonEmptySubstrings("\U{0002}\0a");
@@ -51,7 +51,7 @@ expect r0 >= 0;
 expect r0 == |"\U{0002}\0a"| * (|"\U{0002}\0a"| + 1) / 2;
 }
 
-// REPEAT 6 - TIME: 6.2309017 s
+// REPEAT 6 - TIME: 5.8175687 s
 
 method {:test} Test6() {
 var r0 := CountNonEmptySubstrings("\U{0002}\0");
@@ -59,7 +59,7 @@ expect r0 >= 0;
 expect r0 == |"\U{0002}\0"| * (|"\U{0002}\0"| + 1) / 2;
 }
 
-// REPEAT 7 - TIME: 6.9180164 s
+// REPEAT 7 - TIME: 6.3614858 s
 
 method {:test} Test7() {
 var r0 := CountNonEmptySubstrings("\U{0002}\0");
@@ -67,7 +67,7 @@ expect r0 >= 0;
 expect r0 == |"\U{0002}\0"| * (|"\U{0002}\0"| + 1) / 2;
 }
 
-// REPEAT 8 - TIME: 7.4937615 s
+// REPEAT 8 - TIME: 6.9283187 s
 
 method {:test} Test8() {
 var r0 := CountNonEmptySubstrings("\U{0002}\0");
@@ -75,7 +75,7 @@ expect r0 >= 0;
 expect r0 == |"\U{0002}\0"| * (|"\U{0002}\0"| + 1) / 2;
 }
 
-// REPEAT 9 - TIME: 8.2587348 s
+// REPEAT 9 - TIME: 7.4923432 s
 
 method {:test} Test9() {
 var r0 := CountNonEmptySubstrings("\U{0002}\0");
@@ -83,4 +83,4 @@ expect r0 >= 0;
 expect r0 == |"\U{0002}\0"| * (|"\U{0002}\0"| + 1) / 2;
 }
 
-// REPEAT 10 - TIME: 8.8853381 s
+// REPEAT 10 - TIME: 7.9805923 s

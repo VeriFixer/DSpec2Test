@@ -27,4 +27,4 @@ var r0 := Match("aaaaaaaaaaaaaaaa\U{0012}aaaaaaaa\U{0006}aaaaaaaaaaa\n\0a\U{0014
 expect r0 <==> forall n :: 0 <= n < |"aaaaaaaaaaaaaaaa\U{0012}aaaaaaaa\U{0006}aaaaaaaaaaa\n\0a\U{0014}"| ==> "aaaaaaaaaaaaaaaa\U{0012}aaaaaaaa\U{0006}aaaaaaaaaaa\n\0a\U{0014}"[n] == "aaa\U{0004}aaa\U{000C}\U{0008}aaaaaa\U{000E}aaaaaaaaaa\U{0010}aaaaaaaaaaa\U{0002}\U{0016}\U{0018}"[n] || "aaa\U{0004}aaa\U{000C}\U{0008}aaaaaa\U{000E}aaaaaaaaaa\U{0010}aaaaaaaaaaa\U{0002}\U{0016}\U{0018}"[n] == '?';
 }
 
-// REPEAT 7 - TIME: 11.7431108 s
+// REPEAT 7 - TIME: 10.5344215 s

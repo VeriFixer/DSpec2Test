@@ -66,4 +66,4 @@ expect 201 > 0 && 100 > 0, "If this check fails at runtime, the test does not me
 var r0 := gcdI(201, 100);
 }
 
-// REPEAT 1 - TIME: 8.213813 s
+// REPEAT 1 - TIME: 6.7108805 s

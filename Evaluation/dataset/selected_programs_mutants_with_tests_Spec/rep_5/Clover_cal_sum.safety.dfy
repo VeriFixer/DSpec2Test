@@ -19,4 +19,4 @@ var r0 := Sum(4);
 expect r0 == 4 * (4 + 1) / 2;
 }
 
-// REPEAT 5 - TIME: 6.7107885 s
+// REPEAT 5 - TIME: 5.8805728 s

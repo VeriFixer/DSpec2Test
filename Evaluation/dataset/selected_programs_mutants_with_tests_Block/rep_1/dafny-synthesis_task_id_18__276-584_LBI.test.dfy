@@ -33,4 +33,4 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "a\0" && !(r0[i] in "");
 expect forall i :: 0 <= i < |"a\0"| ==> "a\0"[i] in "" || "a\0"[i] in r0;
 }
 
-// REPEAT 1 - TIME: 3.0340734 s
+// REPEAT 1 - TIME: 2.574991 s

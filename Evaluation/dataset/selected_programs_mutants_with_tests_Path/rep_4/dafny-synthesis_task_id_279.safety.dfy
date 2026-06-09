@@ -11,4 +11,4 @@ var r0 := NthDecagonalNumber(3);
 expect r0 == 4 * 3 * 3 - 3 * 3;
 }
 
-// REPEAT 4 - TIME: 6.4577347 s
+// REPEAT 4 - TIME: 7.7820158 s

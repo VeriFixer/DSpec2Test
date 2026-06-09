@@ -43,58 +43,58 @@ method {:test} Test0() {
 var r0 := problem5(1);
 }
 
-// REPEAT 1 - TIME: 2.5955097 s
+// REPEAT 1 - TIME: 2.3094378 s
 
 method {:test} Test1() {
 var r0 := problem5(2);
 }
 
-// REPEAT 2 - TIME: 3.5738986 s
+// REPEAT 2 - TIME: 3.2042391 s
 
 method {:test} Test2() {
 var r0 := problem5(3);
 }
 
-// REPEAT 3 - TIME: 4.6873917 s
+// REPEAT 3 - TIME: 4.1703842 s
 
 method {:test} Test3() {
 var r0 := problem5(4);
 }
 
-// REPEAT 4 - TIME: 5.8287042 s
+// REPEAT 4 - TIME: 5.0170136 s
 
 method {:test} Test4() {
 var r0 := problem5(1801);
 }
 
-// REPEAT 5 - TIME: 6.771782 s
+// REPEAT 5 - TIME: 5.8893587 s
 
 method {:test} Test5() {
 var r0 := problem5(1803);
 }
 
-// REPEAT 6 - TIME: 7.8615608 s
+// REPEAT 6 - TIME: 6.8333947 s
 
 method {:test} Test6() {
 var r0 := problem5(1806);
 }
 
-// REPEAT 7 - TIME: 8.6240537 s
+// REPEAT 7 - TIME: 7.5271117 s
 
 method {:test} Test7() {
 var r0 := problem5(1809);
 }
 
-// REPEAT 8 - TIME: 9.5396697 s
+// REPEAT 8 - TIME: 8.3683347 s
 
 method {:test} Test8() {
 var r0 := problem5(1812);
 }
 
-// REPEAT 9 - TIME: 10.523853 s
+// REPEAT 9 - TIME: 9.0868512 s
 
 method {:test} Test9() {
 var r0 := problem5(1815);
 }
 
-// REPEAT 10 - TIME: 11.2034087 s
+// REPEAT 10 - TIME: 9.6834533 s

@@ -67,4 +67,4 @@ expect |r0| == |"aaaaaaaaaaaaaaaTaaaaaaaaaaaa\0aaaaaaaa"|;
 expect forall i :: 0 <= i < |"aaaaaaaaaaaaaaaTaaaaaaaaaaaa\0aaaaaaaa"| ==> if IsLowerCase("aaaaaaaaaaaaaaaTaaaaaaaaaaaa\0aaaaaaaa"[i]) then IsLowerUpperPair("aaaaaaaaaaaaaaaTaaaaaaaaaaaa\0aaaaaaaa"[i], r0[i]) else if IsUpperCase("aaaaaaaaaaaaaaaTaaaaaaaaaaaa\0aaaaaaaa"[i]) then IsUpperLowerPair("aaaaaaaaaaaaaaaTaaaaaaaaaaaa\0aaaaaaaa"[i], r0[i]) else r0[i] == "aaaaaaaaaaaaaaaTaaaaaaaaaaaa\0aaaaaaaa"[i];
 }
 
-// REPEAT 7 - TIME: 25.7268483 s
+// REPEAT 7 - TIME: 23.3438679 s

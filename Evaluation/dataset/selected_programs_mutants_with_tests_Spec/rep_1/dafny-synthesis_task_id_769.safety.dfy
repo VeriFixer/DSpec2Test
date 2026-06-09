@@ -23,4 +23,4 @@ expect forall x :: x in r0 <==> x in seqint0 && x !in seqint1;
 expect forall i, j :: 0 <= i < j < |r0| ==> r0[i] != r0[j];
 }
 
-// REPEAT 1 - TIME: 3.185634 s
+// REPEAT 1 - TIME: 2.7969544 s

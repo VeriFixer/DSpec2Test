@@ -9,4 +9,4 @@ var r0 := sumOdds(2);
 expect r0 == 2 * 2;
 }
 
-// REPEAT 2 - TIME: 3.7318103 s
+// REPEAT 2 - TIME: 3.5215667 s

@@ -20,7 +20,7 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(0);
 expect r0 == 0 * (2 * 0 - 1) * (2 * 0 + 1) / 3;
 }
 
-// REPEAT 1 - TIME: 3.0134334 s
+// REPEAT 1 - TIME: 2.4493739 s
 
 method {:test} Test1() {
 expect 1 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -28,7 +28,7 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(1);
 expect r0 == 1 * (2 * 1 - 1) * (2 * 1 + 1) / 3;
 }
 
-// REPEAT 2 - TIME: 3.8945406 s
+// REPEAT 2 - TIME: 3.2125104 s
 
 method {:test} Test2() {
 expect 14 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -36,7 +36,7 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(14);
 expect r0 == 14 * (2 * 14 - 1) * (2 * 14 + 1) / 3;
 }
 
-// REPEAT 3 - TIME: 4.9477698 s
+// REPEAT 3 - TIME: 4.0947087 s
 
 method {:test} Test3() {
 expect 15 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -44,7 +44,7 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(15);
 expect r0 == 15 * (2 * 15 - 1) * (2 * 15 + 1) / 3;
 }
 
-// REPEAT 4 - TIME: 5.857496 s
+// REPEAT 4 - TIME: 4.9385674 s
 
 method {:test} Test4() {
 expect 16 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -52,7 +52,7 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(16);
 expect r0 == 16 * (2 * 16 - 1) * (2 * 16 + 1) / 3;
 }
 
-// REPEAT 5 - TIME: 6.9761696 s
+// REPEAT 5 - TIME: 5.9263834 s
 
 method {:test} Test5() {
 expect 17 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -60,7 +60,7 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(17);
 expect r0 == 17 * (2 * 17 - 1) * (2 * 17 + 1) / 3;
 }
 
-// REPEAT 6 - TIME: 7.9320734 s
+// REPEAT 6 - TIME: 6.6173493 s
 
 method {:test} Test6() {
 expect 18 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -68,7 +68,7 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(18);
 expect r0 == 18 * (2 * 18 - 1) * (2 * 18 + 1) / 3;
 }
 
-// REPEAT 7 - TIME: 8.695221 s
+// REPEAT 7 - TIME: 7.2975263 s
 
 method {:test} Test7() {
 expect 19 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -76,7 +76,7 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(19);
 expect r0 == 19 * (2 * 19 - 1) * (2 * 19 + 1) / 3;
 }
 
-// REPEAT 8 - TIME: 9.3327009 s
+// REPEAT 8 - TIME: 7.9206535 s
 
 method {:test} Test8() {
 expect 20 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -84,7 +84,7 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(20);
 expect r0 == 20 * (2 * 20 - 1) * (2 * 20 + 1) / 3;
 }
 
-// REPEAT 9 - TIME: 9.9642093 s
+// REPEAT 9 - TIME: 8.435941 s
 
 method {:test} Test9() {
 expect 21 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -92,4 +92,4 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(21);
 expect r0 == 21 * (2 * 21 - 1) * (2 * 21 + 1) / 3;
 }
 
-// REPEAT 10 - TIME: 10.6061398 s
+// REPEAT 10 - TIME: 9.0461264 s

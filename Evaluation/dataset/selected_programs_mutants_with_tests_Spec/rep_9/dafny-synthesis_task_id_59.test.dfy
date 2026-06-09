@@ -5,4 +5,4 @@ var r0 := NthOctagonalNumber(8);
 expect r0 == 8 * (3 * 8 - 2);
 }
 
-// REPEAT 9 - TIME: 9.6569984 s
+// REPEAT 9 - TIME: 8.3915118 s

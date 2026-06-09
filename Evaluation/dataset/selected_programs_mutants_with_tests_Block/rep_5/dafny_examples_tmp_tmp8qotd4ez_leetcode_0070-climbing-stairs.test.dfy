@@ -4,4 +4,4 @@ var r0 := ClimbStairs(616);
 expect r0 == Stairs(616);
 }
 
-// REPEAT 5 - TIME: 7.2187255 s
+// REPEAT 5 - TIME: 6.5043356 s

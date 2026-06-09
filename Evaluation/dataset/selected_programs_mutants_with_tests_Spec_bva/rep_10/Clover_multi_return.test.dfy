@@ -5,4 +5,4 @@ expect r0 == 109 + 109;
 expect r1 == 109 - 109;
 }
 
-// REPEAT 10 - TIME: 13.2729773 s
+// REPEAT 10 - TIME: 13.04094 s

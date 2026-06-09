@@ -41,4 +41,4 @@ expect |r0| == |"\0aa\U{0002}a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}\U{0006
 expect forall i :: 0 <= i < |"\0aa\U{0002}a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}\U{0006}\U{0008}a"| ==> (IsSpaceCommaDot("\0aa\U{0002}a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}\U{0006}\U{0008}a"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("\0aa\U{0002}a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}\U{0006}\U{0008}a"[i]) ==> r0[i] == "\0aa\U{0002}a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}\U{0006}\U{0008}a"[i]);
 }
 
-// REPEAT 6 - TIME: 17.8486768 s
+// REPEAT 6 - TIME: 15.8166046 s

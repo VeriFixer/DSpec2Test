@@ -23,4 +23,4 @@ var r0 := sum(7);
 expect r0 == calcSum(7 + 1);
 }
 
-// REPEAT 8 - TIME: 9.6397269 s
+// REPEAT 8 - TIME: 8.5733967 s

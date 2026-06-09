@@ -20,4 +20,4 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(6);
 expect r0 == 6 * (2 * 6 - 1) * (2 * 6 + 1) / 3;
 }
 
-// REPEAT 6 - TIME: 6.2163577 s
+// REPEAT 6 - TIME: 6.1520574 s

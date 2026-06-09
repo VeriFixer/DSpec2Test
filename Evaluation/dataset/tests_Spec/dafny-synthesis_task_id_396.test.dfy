@@ -16,7 +16,7 @@ var r0 := StartAndEndWithSameChar("\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{000
 expect r0 <==> "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}"[0] == "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}"[|"\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}"| - 1];
 }
 
-// REPEAT 1 - TIME: 3.5467842 s
+// REPEAT 1 - TIME: 2.7636426 s
 
 method {:test} Test2() {
 expect |"\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -29,7 +29,7 @@ var r0 := StartAndEndWithSameChar("\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{00
 expect r0 <==> "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}"[0] == "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}"[|"\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}"| - 1];
 }
 
-// REPEAT 2 - TIME: 4.921995 s
+// REPEAT 2 - TIME: 4.1427113 s
 
 method {:test} Test4() {
 expect |"\0aaaaaaaaaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -42,7 +42,7 @@ var r0 := StartAndEndWithSameChar("\0\U{0002}");
 expect r0 <==> "\0\U{0002}"[0] == "\0\U{0002}"[|"\0\U{0002}"| - 1];
 }
 
-// REPEAT 3 - TIME: 6.3547982 s
+// REPEAT 3 - TIME: 5.468203 s
 
 method {:test} Test6() {
 expect |"\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -55,7 +55,7 @@ var r0 := StartAndEndWithSameChar("\0aaaaaaaaaaa\U{0002}");
 expect r0 <==> "\0aaaaaaaaaaa\U{0002}"[0] == "\0aaaaaaaaaaa\U{0002}"[|"\0aaaaaaaaaaa\U{0002}"| - 1];
 }
 
-// REPEAT 4 - TIME: 7.6030185 s
+// REPEAT 4 - TIME: 6.7797465 s
 
 method {:test} Test8() {
 expect |"\0aaaaaaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -68,7 +68,7 @@ var r0 := StartAndEndWithSameChar("\U{0002}\0aaaaaa\U{0004}");
 expect r0 <==> "\U{0002}\0aaaaaa\U{0004}"[0] == "\U{0002}\0aaaaaa\U{0004}"[|"\U{0002}\0aaaaaa\U{0004}"| - 1];
 }
 
-// REPEAT 5 - TIME: 8.9383684 s
+// REPEAT 5 - TIME: 7.8891796 s
 
 method {:test} Test10() {
 expect |"\0aaaaaaaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -81,7 +81,7 @@ var r0 := StartAndEndWithSameChar("\U{0004}\U{0002}\0");
 expect r0 <==> "\U{0004}\U{0002}\0"[0] == "\U{0004}\U{0002}\0"[|"\U{0004}\U{0002}\0"| - 1];
 }
 
-// REPEAT 6 - TIME: 10.4530526 s
+// REPEAT 6 - TIME: 9.1079358 s
 
 method {:test} Test12() {
 expect |"\0\U{0002}aa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -94,7 +94,7 @@ var r0 := StartAndEndWithSameChar("\U{0002}\0");
 expect r0 <==> "\U{0002}\0"[0] == "\U{0002}\0"[|"\U{0002}\0"| - 1];
 }
 
-// REPEAT 7 - TIME: 11.9283093 s
+// REPEAT 7 - TIME: 10.162295 s
 
 method {:test} Test14() {
 expect |"\0\U{0002}aaaaaaa\U{0006}aaaaaaaaaaaaaa\U{0004}aaaaaaaaaaaaaaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -107,7 +107,7 @@ var r0 := StartAndEndWithSameChar("\U{0004}\U{0002}\0");
 expect r0 <==> "\U{0004}\U{0002}\0"[0] == "\U{0004}\U{0002}\0"[|"\U{0004}\U{0002}\0"| - 1];
 }
 
-// REPEAT 8 - TIME: 13.2962599 s
+// REPEAT 8 - TIME: 11.2705464 s
 
 method {:test} Test16() {
 expect |"\0\U{0002}\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -120,7 +120,7 @@ var r0 := StartAndEndWithSameChar("\U{0002}\0a\U{0004}a\U{0008}aaa\n\U{000E}\U{0
 expect r0 <==> "\U{0002}\0a\U{0004}a\U{0008}aaa\n\U{000E}\U{0006}a\U{000C}"[0] == "\U{0002}\0a\U{0004}a\U{0008}aaa\n\U{000E}\U{0006}a\U{000C}"[|"\U{0002}\0a\U{0004}a\U{0008}aaa\n\U{000E}\U{0006}a\U{000C}"| - 1];
 }
 
-// REPEAT 9 - TIME: 14.6547913 s
+// REPEAT 9 - TIME: 12.3685967 s
 
 method {:test} Test18() {
 expect |"\0\U{0002}aaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -133,4 +133,4 @@ var r0 := StartAndEndWithSameChar("\U{0016}\U{0002}aaa\na\U{0006}a\U{000C}aaaaaa
 expect r0 <==> "\U{0016}\U{0002}aaa\na\U{0006}a\U{000C}aaaaaaa\U{0004}a\U{0010}aa\U{0008}aaaaa\U{000E}aaaaaaaaaa\U{0012}\U{0014}\0"[0] == "\U{0016}\U{0002}aaa\na\U{0006}a\U{000C}aaaaaaa\U{0004}a\U{0010}aa\U{0008}aaaaa\U{000E}aaaaaaaaaa\U{0012}\U{0014}\0"[|"\U{0016}\U{0002}aaa\na\U{0006}a\U{000C}aaaaaaa\U{0004}a\U{0010}aa\U{0008}aaaaa\U{000E}aaaaaaaaaa\U{0012}\U{0014}\0"| - 1];
 }
 
-// REPEAT 10 - TIME: 15.6726073 s
+// REPEAT 10 - TIME: 13.516172 s

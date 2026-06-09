@@ -36,67 +36,67 @@ var r0 := Fatorial(100);
 expect r0 == Fat(100);
 }
 
-// REPEAT 1 - TIME: 6.0348199 s
+// REPEAT 1 - TIME: 5.2205776 s
 
 method {:test} Test6() {
 var r0 := Fatorial(101);
 expect r0 == Fat(101);
 }
 
-// REPEAT 2 - TIME: 6.971441 s
+// REPEAT 2 - TIME: 6.1037527 s
 
 method {:test} Test7() {
 var r0 := Fatorial(102);
 expect r0 == Fat(102);
 }
 
-// REPEAT 3 - TIME: 7.8571276 s
+// REPEAT 3 - TIME: 6.8405065 s
 
 method {:test} Test8() {
 var r0 := Fatorial(103);
 expect r0 == Fat(103);
 }
 
-// REPEAT 4 - TIME: 8.63463 s
+// REPEAT 4 - TIME: 7.5191783 s
 
 method {:test} Test9() {
 var r0 := Fatorial(104);
 expect r0 == Fat(104);
 }
 
-// REPEAT 5 - TIME: 9.381717 s
+// REPEAT 5 - TIME: 8.1719221 s
 
 method {:test} Test10() {
 var r0 := Fatorial(105);
 expect r0 == Fat(105);
 }
 
-// REPEAT 6 - TIME: 10.0381695 s
+// REPEAT 6 - TIME: 8.8263746 s
 
 method {:test} Test11() {
 var r0 := Fatorial(106);
 expect r0 == Fat(106);
 }
 
-// REPEAT 7 - TIME: 10.6660038 s
+// REPEAT 7 - TIME: 9.4729043 s
 
 method {:test} Test12() {
 var r0 := Fatorial(107);
 expect r0 == Fat(107);
 }
 
-// REPEAT 8 - TIME: 11.4163785 s
+// REPEAT 8 - TIME: 10.12362 s
 
 method {:test} Test13() {
 var r0 := Fatorial(108);
 expect r0 == Fat(108);
 }
 
-// REPEAT 9 - TIME: 12.0355134 s
+// REPEAT 9 - TIME: 10.6928115 s
 
 method {:test} Test14() {
 var r0 := Fatorial(109);
 expect r0 == Fat(109);
 }
 
-// REPEAT 10 - TIME: 12.8148801 s
+// REPEAT 10 - TIME: 11.4824572 s

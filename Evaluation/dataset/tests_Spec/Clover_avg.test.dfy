@@ -9,67 +9,67 @@ var r0 := ComputeAvg(0, 1);
 expect r0 == (0 + 1) / 2;
 }
 
-// REPEAT 1 - TIME: 2.6415793 s
+// REPEAT 1 - TIME: 2.0781175 s
 
 method {:test} Test1() {
 var r0 := ComputeAvg(4876, 2);
 expect r0 == (4876 + 2) / 2;
 }
 
-// REPEAT 2 - TIME: 3.9010153 s
+// REPEAT 2 - TIME: 2.7489799 s
 
 method {:test} Test2() {
 var r0 := ComputeAvg(4877, 3);
 expect r0 == (4877 + 3) / 2;
 }
 
-// REPEAT 3 - TIME: 4.8722683 s
+// REPEAT 3 - TIME: 3.5872429 s
 
 method {:test} Test3() {
 var r0 := ComputeAvg(4878, 4);
 expect r0 == (4878 + 4) / 2;
 }
 
-// REPEAT 4 - TIME: 5.9717251 s
+// REPEAT 4 - TIME: 4.4026827 s
 
 method {:test} Test4() {
 var r0 := ComputeAvg(4880, 6);
 expect r0 == (4880 + 6) / 2;
 }
 
-// REPEAT 5 - TIME: 6.8615005 s
+// REPEAT 5 - TIME: 5.2026485 s
 
 method {:test} Test5() {
 var r0 := ComputeAvg(4882, 8);
 expect r0 == (4882 + 8) / 2;
 }
 
-// REPEAT 6 - TIME: 7.6729627 s
+// REPEAT 6 - TIME: 5.9093626 s
 
 method {:test} Test6() {
 var r0 := ComputeAvg(4884, 10);
 expect r0 == (4884 + 10) / 2;
 }
 
-// REPEAT 7 - TIME: 8.3992112 s
+// REPEAT 7 - TIME: 6.8227367 s
 
 method {:test} Test7() {
 var r0 := ComputeAvg(4886, 12);
 expect r0 == (4886 + 12) / 2;
 }
 
-// REPEAT 8 - TIME: 9.1413093 s
+// REPEAT 8 - TIME: 7.5818295 s
 
 method {:test} Test8() {
 var r0 := ComputeAvg(4888, 14);
 expect r0 == (4888 + 14) / 2;
 }
 
-// REPEAT 9 - TIME: 9.9368804 s
+// REPEAT 9 - TIME: 8.2841479 s
 
 method {:test} Test9() {
 var r0 := ComputeAvg(4890, 16);
 expect r0 == (4890 + 16) / 2;
 }
 
-// REPEAT 10 - TIME: 10.7161994 s
+// REPEAT 10 - TIME: 8.9125574 s

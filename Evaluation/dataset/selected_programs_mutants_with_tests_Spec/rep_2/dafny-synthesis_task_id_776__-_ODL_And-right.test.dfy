@@ -18,4 +18,4 @@ var r0 := CountVowelNeighbors("a");
 expect r0 >= 0;
 }
 
-// REPEAT 2 - TIME: 4.0389289 s
+// REPEAT 2 - TIME: 3.7874314 s

@@ -5,4 +5,4 @@ var r0 := StarNumber(4);
 expect r0 == 6 * 4 * (4 - 1) + 1;
 }
 
-// REPEAT 5 - TIME: 4.8574457 s
+// REPEAT 5 - TIME: 5.1848587 s

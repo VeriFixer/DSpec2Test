@@ -4,4 +4,4 @@ var r0 := AsciiValue('%');
 expect r0 == '%' as int;
 }
 
-// REPEAT 2 - TIME: 3.1897575 s
+// REPEAT 2 - TIME: 2.7511544 s

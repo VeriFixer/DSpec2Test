@@ -25,7 +25,7 @@ expect r0 == ((0 as bv32) << 31 as bv6) | ((0 as bv32) >> (32 - 31) as bv6);
 (0,-1): Error: invalid argument types (bv32 and int) to binary operator ==
 (0,-1): Error: invalid argument types (bv32 and int) to binary operator ==
 
-// REPEAT 1 - TIME: 5.8865197 s
+// REPEAT 1 - TIME: 5.552993 s
 
 method {:test} Test6() {
 expect 0 <= 30 < 32, "If this check fails at runtime, the test does not meet the preconditions";
@@ -33,7 +33,7 @@ var r0 := RotateLeftBits((2147483648 as bv32), 30);
 expect r0 == ((2147483648 as bv32) << 30 as bv6) | ((2147483648 as bv32) >> (32 - 30) as bv6);
 }
 
-// REPEAT 2 - TIME: 6.7421597 s
+// REPEAT 2 - TIME: 6.358544 s
 
 method {:test} Test7() {
 expect 0 <= 1 < 32, "If this check fails at runtime, the test does not meet the preconditions";
@@ -41,7 +41,7 @@ var r0 := RotateLeftBits((1073741824 as bv32), 1);
 expect r0 == ((1073741824 as bv32) << 1 as bv6) | ((1073741824 as bv32) >> (32 - 1) as bv6);
 }
 
-// REPEAT 3 - TIME: 7.4160774 s
+// REPEAT 3 - TIME: 7.0825188 s
 
 method {:test} Test8() {
 expect 0 <= 29 < 32, "If this check fails at runtime, the test does not meet the preconditions";
@@ -49,7 +49,7 @@ var r0 := RotateLeftBits((3221225472 as bv32), 29);
 expect r0 == ((3221225472 as bv32) << 29 as bv6) | ((3221225472 as bv32) >> (32 - 29) as bv6);
 }
 
-// REPEAT 4 - TIME: 8.1486713 s
+// REPEAT 4 - TIME: 7.8839134 s
 
 method {:test} Test9() {
 expect 0 <= 2 < 32, "If this check fails at runtime, the test does not meet the preconditions";
@@ -57,7 +57,7 @@ var r0 := RotateLeftBits((536870912 as bv32), 2);
 expect r0 == ((536870912 as bv32) << 2 as bv6) | ((536870912 as bv32) >> (32 - 2) as bv6);
 }
 
-// REPEAT 5 - TIME: 8.8589209 s
+// REPEAT 5 - TIME: 8.4956405 s
 
 method {:test} Test10() {
 expect 0 <= 28 < 32, "If this check fails at runtime, the test does not meet the preconditions";
@@ -65,7 +65,7 @@ var r0 := RotateLeftBits((2684354560 as bv32), 28);
 expect r0 == ((2684354560 as bv32) << 28 as bv6) | ((2684354560 as bv32) >> (32 - 28) as bv6);
 }
 
-// REPEAT 6 - TIME: 9.5017673 s
+// REPEAT 6 - TIME: 9.106185 s
 
 method {:test} Test11() {
 expect 0 <= 27 < 32, "If this check fails at runtime, the test does not meet the preconditions";
@@ -73,7 +73,7 @@ var r0 := RotateLeftBits((1610612736 as bv32), 27);
 expect r0 == ((1610612736 as bv32) << 27 as bv6) | ((1610612736 as bv32) >> (32 - 27) as bv6);
 }
 
-// REPEAT 7 - TIME: 10.0811949 s
+// REPEAT 7 - TIME: 9.6493319 s
 
 method {:test} Test12() {
 expect 0 <= 26 < 32, "If this check fails at runtime, the test does not meet the preconditions";
@@ -81,7 +81,7 @@ var r0 := RotateLeftBits((3758096384 as bv32), 26);
 expect r0 == ((3758096384 as bv32) << 26 as bv6) | ((3758096384 as bv32) >> (32 - 26) as bv6);
 }
 
-// REPEAT 8 - TIME: 10.7506767 s
+// REPEAT 8 - TIME: 10.3081293 s
 
 method {:test} Test13() {
 expect 0 <= 3 < 32, "If this check fails at runtime, the test does not meet the preconditions";
@@ -89,7 +89,7 @@ var r0 := RotateLeftBits((268435456 as bv32), 3);
 expect r0 == ((268435456 as bv32) << 3 as bv6) | ((268435456 as bv32) >> (32 - 3) as bv6);
 }
 
-// REPEAT 9 - TIME: 11.3580389 s
+// REPEAT 9 - TIME: 10.9386542 s
 
 method {:test} Test14() {
 expect 0 <= 25 < 32, "If this check fails at runtime, the test does not meet the preconditions";
@@ -97,4 +97,4 @@ var r0 := RotateLeftBits((2415919104 as bv32), 25);
 expect r0 == ((2415919104 as bv32) << 25 as bv6) | ((2415919104 as bv32) >> (32 - 25) as bv6);
 }
 
-// REPEAT 10 - TIME: 12.2530248 s
+// REPEAT 10 - TIME: 11.4906062 s

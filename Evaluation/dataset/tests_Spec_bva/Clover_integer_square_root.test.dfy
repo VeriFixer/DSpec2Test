@@ -22,67 +22,67 @@ var r0 := SquareRoot(10000);
 expect r0 * r0 <= 10000 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 1 - TIME: 5.5554307 s
+// REPEAT 1 - TIME: 5.165088 s
 
 method {:test} Test6() {
 var r0 := SquareRoot(10001);
 expect r0 * r0 <= 10001 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 2 - TIME: 6.4980512 s
+// REPEAT 2 - TIME: 6.1005344 s
 
 method {:test} Test7() {
 var r0 := SquareRoot(10200);
 expect r0 * r0 <= 10200 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 3 - TIME: 7.3021155 s
+// REPEAT 3 - TIME: 6.8983132 s
 
 method {:test} Test8() {
 var r0 := SquareRoot(10403);
 expect r0 * r0 <= 10403 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 4 - TIME: 8.0251716 s
+// REPEAT 4 - TIME: 7.6918125 s
 
 method {:test} Test9() {
 var r0 := SquareRoot(10608);
 expect r0 * r0 <= 10608 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 5 - TIME: 8.7058392 s
+// REPEAT 5 - TIME: 8.4238337 s
 
 method {:test} Test10() {
 var r0 := SquareRoot(10815);
 expect r0 * r0 <= 10815 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 6 - TIME: 9.3650608 s
+// REPEAT 6 - TIME: 9.1047985 s
 
 method {:test} Test11() {
 var r0 := SquareRoot(10816);
 expect r0 * r0 <= 10816 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 7 - TIME: 10.0322088 s
+// REPEAT 7 - TIME: 9.7714153 s
 
 method {:test} Test12() {
 var r0 := SquareRoot(10817);
 expect r0 * r0 <= 10817 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 8 - TIME: 10.6679492 s
+// REPEAT 8 - TIME: 10.384828 s
 
 method {:test} Test13() {
 var r0 := SquareRoot(10818);
 expect r0 * r0 <= 10818 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 9 - TIME: 11.3146067 s
+// REPEAT 9 - TIME: 11.0455095 s
 
 method {:test} Test14() {
 var r0 := SquareRoot(10819);
 expect r0 * r0 <= 10819 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 10 - TIME: 11.9898092 s
+// REPEAT 10 - TIME: 11.6398026 s

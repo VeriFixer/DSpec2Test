@@ -12,7 +12,7 @@ expect r0 == 0 + 0;
 expect r1 == 0 - 0;
 }
 
-// REPEAT 1 - TIME: 2.6770625 s
+// REPEAT 1 - TIME: 1.8331679 s
 
 method {:test} Test1() {
 var r0, r1 := MultipleReturns(1, 1);
@@ -20,7 +20,7 @@ expect r0 == 1 + 1;
 expect r1 == 1 - 1;
 }
 
-// REPEAT 2 - TIME: 3.9648963 s
+// REPEAT 2 - TIME: 2.403895 s
 
 method {:test} Test2() {
 var r0, r1 := MultipleReturns(2, 2);
@@ -28,7 +28,7 @@ expect r0 == 2 + 2;
 expect r1 == 2 - 2;
 }
 
-// REPEAT 3 - TIME: 5.0306885 s
+// REPEAT 3 - TIME: 3.0679505 s
 
 method {:test} Test3() {
 var r0, r1 := MultipleReturns(3, 3);
@@ -36,7 +36,7 @@ expect r0 == 3 + 3;
 expect r1 == 3 - 3;
 }
 
-// REPEAT 4 - TIME: 6.1046964 s
+// REPEAT 4 - TIME: 3.6294732 s
 
 method {:test} Test4() {
 var r0, r1 := MultipleReturns(4, 4);
@@ -44,7 +44,7 @@ expect r0 == 4 + 4;
 expect r1 == 4 - 4;
 }
 
-// REPEAT 5 - TIME: 7.4002007 s
+// REPEAT 5 - TIME: 4.3404601 s
 
 method {:test} Test5() {
 var r0, r1 := MultipleReturns(5, 5);
@@ -52,7 +52,7 @@ expect r0 == 5 + 5;
 expect r1 == 5 - 5;
 }
 
-// REPEAT 6 - TIME: 8.1795146 s
+// REPEAT 6 - TIME: 4.8846717 s
 
 method {:test} Test6() {
 var r0, r1 := MultipleReturns(6, 6);
@@ -60,7 +60,7 @@ expect r0 == 6 + 6;
 expect r1 == 6 - 6;
 }
 
-// REPEAT 7 - TIME: 8.8804255 s
+// REPEAT 7 - TIME: 5.4657682 s
 
 method {:test} Test7() {
 var r0, r1 := MultipleReturns(7, 7);
@@ -68,7 +68,7 @@ expect r0 == 7 + 7;
 expect r1 == 7 - 7;
 }
 
-// REPEAT 8 - TIME: 9.5991989 s
+// REPEAT 8 - TIME: 5.922643 s
 
 method {:test} Test8() {
 var r0, r1 := MultipleReturns(8, 8);
@@ -76,7 +76,7 @@ expect r0 == 8 + 8;
 expect r1 == 8 - 8;
 }
 
-// REPEAT 9 - TIME: 10.4179399 s
+// REPEAT 9 - TIME: 6.409647 s
 
 method {:test} Test9() {
 var r0, r1 := MultipleReturns(9, 9);
@@ -84,4 +84,4 @@ expect r0 == 9 + 9;
 expect r1 == 9 - 9;
 }
 
-// REPEAT 10 - TIME: 11.3233682 s
+// REPEAT 10 - TIME: 6.9480391 s

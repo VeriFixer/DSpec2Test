@@ -11,4 +11,4 @@ var r0 := NthNonagonalNumber(103);
 expect r0 == 103 * (7 * 103 - 5) / 2;
 }
 
-// REPEAT 4 - TIME: 37.2954797 s
+// REPEAT 4 - TIME: 36.8585593 s

@@ -37,7 +37,7 @@ var r0 := SquarePyramidSurfaceArea(2, 24);
 expect r0 == 2 * 2 + 2 * 2 * 24;
 }
 
-// REPEAT 1 - TIME: 6.2270203 s
+// REPEAT 1 - TIME: 5.9141277 s
 
 method {:test} Test9() {
 expect 101 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -46,7 +46,7 @@ var r0 := SquarePyramidSurfaceArea(101, 7721);
 expect r0 == 101 * 101 + 2 * 101 * 7721;
 }
 
-// REPEAT 2 - TIME: 7.258104 s
+// REPEAT 2 - TIME: 6.6602367 s
 
 method {:test} Test10() {
 expect 102 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -55,7 +55,7 @@ var r0 := SquarePyramidSurfaceArea(102, 7722);
 expect r0 == 102 * 102 + 2 * 102 * 7722;
 }
 
-// REPEAT 3 - TIME: 8.0392697 s
+// REPEAT 3 - TIME: 7.338286 s
 
 method {:test} Test11() {
 expect 103 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -64,7 +64,7 @@ var r0 := SquarePyramidSurfaceArea(103, 7723);
 expect r0 == 103 * 103 + 2 * 103 * 7723;
 }
 
-// REPEAT 4 - TIME: 8.7507595 s
+// REPEAT 4 - TIME: 8.115159 s
 
 method {:test} Test12() {
 expect 104 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -73,7 +73,7 @@ var r0 := SquarePyramidSurfaceArea(104, 7724);
 expect r0 == 104 * 104 + 2 * 104 * 7724;
 }
 
-// REPEAT 5 - TIME: 9.4560187 s
+// REPEAT 5 - TIME: 8.7401897 s
 
 method {:test} Test13() {
 expect 105 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -82,7 +82,7 @@ var r0 := SquarePyramidSurfaceArea(105, 7725);
 expect r0 == 105 * 105 + 2 * 105 * 7725;
 }
 
-// REPEAT 6 - TIME: 10.1027422 s
+// REPEAT 6 - TIME: 9.3601897 s
 
 method {:test} Test14() {
 expect 106 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -91,7 +91,7 @@ var r0 := SquarePyramidSurfaceArea(106, 7726);
 expect r0 == 106 * 106 + 2 * 106 * 7726;
 }
 
-// REPEAT 7 - TIME: 10.7719972 s
+// REPEAT 7 - TIME: 9.984784 s
 
 method {:test} Test15() {
 expect 107 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -100,7 +100,7 @@ var r0 := SquarePyramidSurfaceArea(107, 7727);
 expect r0 == 107 * 107 + 2 * 107 * 7727;
 }
 
-// REPEAT 8 - TIME: 11.467563 s
+// REPEAT 8 - TIME: 10.6387358 s
 
 method {:test} Test16() {
 expect 108 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -109,7 +109,7 @@ var r0 := SquarePyramidSurfaceArea(108, 7728);
 expect r0 == 108 * 108 + 2 * 108 * 7728;
 }
 
-// REPEAT 9 - TIME: 12.19022 s
+// REPEAT 9 - TIME: 11.4195264 s
 
 method {:test} Test17() {
 expect 109 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -118,4 +118,4 @@ var r0 := SquarePyramidSurfaceArea(109, 7729);
 expect r0 == 109 * 109 + 2 * 109 * 7729;
 }
 
-// REPEAT 10 - TIME: 12.7121729 s
+// REPEAT 10 - TIME: 12.0739798 s

@@ -16,7 +16,7 @@ var r0 := NthNonagonalNumber(100);
 expect r0 == 100 * (7 * 100 - 5) / 2;
 }
 
-// REPEAT 1 - TIME: 35.1169933 s
+// REPEAT 1 - TIME: 34.7621395 s
 
 method {:test} Test6() {
 expect 101 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -24,7 +24,7 @@ var r0 := NthNonagonalNumber(101);
 expect r0 == 101 * (7 * 101 - 5) / 2;
 }
 
-// REPEAT 2 - TIME: 35.8487237 s
+// REPEAT 2 - TIME: 35.4258904 s
 
 method {:test} Test7() {
 expect 102 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -32,7 +32,7 @@ var r0 := NthNonagonalNumber(102);
 expect r0 == 102 * (7 * 102 - 5) / 2;
 }
 
-// REPEAT 3 - TIME: 36.5777087 s
+// REPEAT 3 - TIME: 36.1716902 s
 
 method {:test} Test8() {
 expect 103 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -40,7 +40,7 @@ var r0 := NthNonagonalNumber(103);
 expect r0 == 103 * (7 * 103 - 5) / 2;
 }
 
-// REPEAT 4 - TIME: 37.2954797 s
+// REPEAT 4 - TIME: 36.8585593 s
 
 method {:test} Test9() {
 expect 104 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -48,7 +48,7 @@ var r0 := NthNonagonalNumber(104);
 expect r0 == 104 * (7 * 104 - 5) / 2;
 }
 
-// REPEAT 5 - TIME: 37.9364917 s
+// REPEAT 5 - TIME: 37.6473485 s
 
 method {:test} Test10() {
 expect 341796877 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -56,7 +56,7 @@ var r0 := NthNonagonalNumber(341796877);
 expect r0 == 341796877 * (7 * 341796877 - 5) / 2;
 }
 
-// REPEAT 6 - TIME: 38.5846746 s
+// REPEAT 6 - TIME: 38.338784 s
 
 method {:test} Test11() {
 expect 341796878 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -64,7 +64,7 @@ var r0 := NthNonagonalNumber(341796878);
 expect r0 == 341796878 * (7 * 341796878 - 5) / 2;
 }
 
-// REPEAT 7 - TIME: 39.3062541 s
+// REPEAT 7 - TIME: 38.940562 s
 
 method {:test} Test12() {
 expect 163555288339858862 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -72,7 +72,7 @@ var r0 := NthNonagonalNumber(163555288339858862);
 expect r0 == 163555288339858862 * (7 * 163555288339858862 - 5) / 2;
 }
 
-// REPEAT 8 - TIME: 40.4077421 s
+// REPEAT 8 - TIME: 39.8281645 s
 
 method {:test} Test13() {
 expect 37450465281508189576483680376842269 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -80,7 +80,7 @@ var r0 := NthNonagonalNumber(37450465281508189576483680376842269);
 expect r0 == 37450465281508189576483680376842269 * (7 * 37450465281508189576483680376842269 - 5) / 2;
 }
 
-// REPEAT 9 - TIME: 43.7968154 s
+// REPEAT 9 - TIME: 42.9378584 s
 
 method {:test} Test14() {
 expect 37450465281508189576483680376842270 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -88,4 +88,4 @@ var r0 := NthNonagonalNumber(37450465281508189576483680376842270);
 expect r0 == 37450465281508189576483680376842270 * (7 * 37450465281508189576483680376842270 - 5) / 2;
 }
 
-// REPEAT 10 - TIME: 44.2496825 s
+// REPEAT 10 - TIME: 43.3296139 s

@@ -32,7 +32,7 @@ expect |r0| <= |"a\0"| && r0 == "a\0"[0 .. |r0|] && |r0| <= |"a\U{0002}"| && r0 
 expect |r0| == |"a\0"| || |r0| == |"a\U{0002}"| || "a\0"[|r0|] != "a\U{0002}"[|r0|];
 }
 
-// REPEAT 1 - TIME: 3.634399 s
+// REPEAT 1 - TIME: 3.2289243 s
 
 method {:test} Test3() {
 var r0 := LongestCommonPrefix("aaa\U{0002}aaaaaaaaaaaaaaaaaaaa\U{0004}a", "aaa\U{0002}aaaaaaaaaaaaaaaaaaaa\U{0004}aaaaaaaaaa\U{0006}a\0");
@@ -50,7 +50,7 @@ expect |r0| <= |"\U{0006}\U{0004}"| && r0 == "\U{0006}\U{0004}"[0 .. |r0|] && |r
 expect |r0| == |"\U{0006}\U{0004}"| || |r0| == |"\U{0006}\0\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0008}"| || "\U{0006}\U{0004}"[|r0|] != "\U{0006}\0\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0008}"[|r0|];
 }
 
-// REPEAT 2 - TIME: 5.5347529 s
+// REPEAT 2 - TIME: 4.7127747 s
 
 method {:test} Test6() {
 var r0 := LongestCommonPrefix("\naaaaaaaaaa\0aa\U{0002}aaaaaaaaa\U{0004}a\U{0008}aaaaaaaaaa", "\naaaaaaaaaa\0aa\U{0002}aaaaaaaaa\U{0004}a\U{0008}aaaaaaaaaa\U{0006}");
@@ -68,7 +68,7 @@ expect |r0| <= |"\U{0004}\U{0006}aaaaaaaaaaaaaaaa\U{0002}"| && r0 == "\U{0004}\U
 expect |r0| == |"\U{0004}\U{0006}aaaaaaaaaaaaaaaa\U{0002}"| || |r0| == |"\U{0004}\U{0008}\0"| || "\U{0004}\U{0006}aaaaaaaaaaaaaaaa\U{0002}"[|r0|] != "\U{0004}\U{0008}\0"[|r0|];
 }
 
-// REPEAT 3 - TIME: 7.7442521 s
+// REPEAT 3 - TIME: 6.7084927 s
 
 method {:test} Test9() {
 var r0 := LongestCommonPrefix("\U{0002}\0", "\U{0002}\0");
@@ -86,7 +86,7 @@ expect |r0| <= |"\U{0006}\U{0004}a"| && r0 == "\U{0006}\U{0004}a"[0 .. |r0|] && 
 expect |r0| == |"\U{0006}\U{0004}a"| || |r0| == |"\U{0006}\0aaaa\U{0002}aaaa"| || "\U{0006}\U{0004}a"[|r0|] != "\U{0006}\0aaaa\U{0002}aaaa"[|r0|];
 }
 
-// REPEAT 4 - TIME: 10.0419318 s
+// REPEAT 4 - TIME: 8.691531 s
 
 method {:test} Test12() {
 var r0 := LongestCommonPrefix("\U{000C}\0aa\U{0004}\n\U{0002}a\U{0008}aaaaaaa", "\U{000C}\0aa\U{0004}\n\U{0002}a\U{0008}aaaaaaaaaaaa\U{0006}");
@@ -104,7 +104,7 @@ expect |r0| <= |"\U{0004}\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| && r0 == "\U{0
 expect |r0| == |"\U{0004}\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| || |r0| == |"\U{0004}\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| || "\U{0004}\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[|r0|] != "\U{0004}\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[|r0|];
 }
 
-// REPEAT 5 - TIME: 12.1728956 s
+// REPEAT 5 - TIME: 10.7450331 s
 
 method {:test} Test15() {
 var r0 := LongestCommonPrefix("\0aaa", "\0aaa");
@@ -122,7 +122,7 @@ expect |r0| <= |"\U{0004}\0aaaaaaaaaaaaaaa"| && r0 == "\U{0004}\0aaaaaaaaaaaaaaa
 expect |r0| == |"\U{0004}\0aaaaaaaaaaaaaaa"| || |r0| == |"\U{0004}\U{0002}aa"| || "\U{0004}\0aaaaaaaaaaaaaaa"[|r0|] != "\U{0004}\U{0002}aa"[|r0|];
 }
 
-// REPEAT 6 - TIME: 14.4265224 s
+// REPEAT 6 - TIME: 13.1389104 s
 
 method {:test} Test18() {
 var r0 := LongestCommonPrefix("aaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}\U{0006}aaaaaaaaa\U{0008}aaaa\na", "aaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}\U{0006}aaaaaaaaa\U{0008}aaaa\na\0a\U{0002}");
@@ -140,7 +140,7 @@ expect |r0| <= |"\U{0004}\0aaa"| && r0 == "\U{0004}\0aaa"[0 .. |r0|] && |r0| <= 
 expect |r0| == |"\U{0004}\0aaa"| || |r0| == |"\U{0004}\U{0002}aa"| || "\U{0004}\0aaa"[|r0|] != "\U{0004}\U{0002}aa"[|r0|];
 }
 
-// REPEAT 7 - TIME: 16.5119072 s
+// REPEAT 7 - TIME: 14.8876132 s
 
 method {:test} Test21() {
 var r0 := LongestCommonPrefix("\U{0010}aaaaaaaaaaaaaaaaaa\U{0004}aaaaaaa\U{0008}\naaaaaaaa\U{000C}\U{000E}aaaa\U{0002}aa", "\U{0010}aaaaaaaaaaaaaaaaaa\U{0004}aaaaaaa\U{0008}\naaaaaaaa\U{000C}\U{000E}aaaa\U{0002}aa\0a\U{0006}");
@@ -158,7 +158,7 @@ expect |r0| <= |"\0\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaa"| && r0 == "\0\U{0002}aaa
 expect |r0| == |"\0\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaa"| || |r0| == |"\0\U{0004}a"| || "\0\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaa"[|r0|] != "\0\U{0004}a"[|r0|];
 }
 
-// REPEAT 8 - TIME: 18.6683585 s
+// REPEAT 8 - TIME: 17.0169205 s
 
 method {:test} Test24() {
 var r0 := LongestCommonPrefix("\0\U{0002}\U{0004}aa\U{0006}", "\0\U{0002}\U{0004}aa\U{0006}aa");
@@ -176,7 +176,7 @@ expect |r0| <= |"a\0aaa\U{000C}a\U{0010}aaaaaaa\U{0008}aaaaaaaaaaaaa\U{0012}aaaa
 expect |r0| == |"a\0aaa\U{000C}a\U{0010}aaaaaaa\U{0008}aaaaaaaaaaaaa\U{0012}aaaaaaaaaaaa\U{000E}aa\U{0016}a"| || |r0| == |"a\U{0002}aaaaaaaaaaaaaaaaaaaaaaa\U{0006}\naaaaaaaaaaaaaa\U{0014}aaaa\U{0004}a\U{0018}a"| || "a\0aaa\U{000C}a\U{0010}aaaaaaa\U{0008}aaaaaaaaaaaaa\U{0012}aaaaaaaaaaaa\U{000E}aa\U{0016}a"[|r0|] != "a\U{0002}aaaaaaaaaaaaaaaaaaaaaaa\U{0006}\naaaaaaaaaaaaaa\U{0014}aaaa\U{0004}a\U{0018}a"[|r0|];
 }
 
-// REPEAT 9 - TIME: 21.2492388 s
+// REPEAT 9 - TIME: 19.5026245 s
 
 method {:test} Test27() {
 var r0 := LongestCommonPrefix("aaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}aaaaaaaa\U{0004}\U{0006}aaaaa", "aaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}aaaaaaaa\U{0004}\U{0006}aaaaa\0aa");
@@ -194,4 +194,4 @@ expect |r0| <= |"a\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| && r0
 expect |r0| == |"a\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| || |r0| == |"a\U{0004}aaaaaa\0aaa"| || "a\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[|r0|] != "a\U{0004}aaaaaa\0aaa"[|r0|];
 }
 
-// REPEAT 10 - TIME: 23.498445 s
+// REPEAT 10 - TIME: 21.5926268 s

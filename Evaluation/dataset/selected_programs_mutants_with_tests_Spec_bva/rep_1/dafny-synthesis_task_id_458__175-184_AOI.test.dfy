@@ -39,4 +39,4 @@ var r0 := RectangleArea(1, 100);
 expect r0 == 1 * 100;
 }
 
-// REPEAT 1 - TIME: 6.6366153 s
+// REPEAT 1 - TIME: 5.7040383 s

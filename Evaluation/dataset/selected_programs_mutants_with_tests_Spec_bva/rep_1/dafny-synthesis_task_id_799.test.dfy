@@ -25,4 +25,4 @@ expect r0 == ((0 as bv32) << 31 as bv6) | ((0 as bv32) >> (32 - 31) as bv6);
 (0,-1): Error: invalid argument types (bv32 and int) to binary operator ==
 (0,-1): Error: invalid argument types (bv32 and int) to binary operator ==
 
-// REPEAT 1 - TIME: 5.8865197 s
+// REPEAT 1 - TIME: 5.552993 s

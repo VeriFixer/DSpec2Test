@@ -11,4 +11,4 @@ var r0 := CenteredHexagonalNumber(9);
 expect r0 == 3 * 9 * (9 - 1) + 1;
 }
 
-// REPEAT 9 - TIME: 9.3352487 s
+// REPEAT 9 - TIME: 8.2854795 s

@@ -11,4 +11,4 @@ var r0 := TetrahedralNumber(104);
 expect r0 == 104 * (104 + 1) * (104 + 2) / 6;
 }
 
-// REPEAT 5 - TIME: 8.3546426 s
+// REPEAT 5 - TIME: 7.8023561 s

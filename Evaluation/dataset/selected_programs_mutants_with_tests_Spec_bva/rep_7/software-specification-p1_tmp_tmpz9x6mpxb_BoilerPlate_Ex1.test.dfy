@@ -18,4 +18,4 @@ method {:test} Test53() {
 testDeserialiseWithAllElements();
 }
 
-// REPEAT 7 - TIME: 29.0334737 s
+// REPEAT 7 - TIME: 26.7061086 s

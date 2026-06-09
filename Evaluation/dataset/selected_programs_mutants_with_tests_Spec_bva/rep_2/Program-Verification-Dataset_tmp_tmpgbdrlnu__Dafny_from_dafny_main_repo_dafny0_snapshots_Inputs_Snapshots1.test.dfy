@@ -3,4 +3,4 @@ method {:test} Test3() {
 M();
 }
 
-// REPEAT 2 - TIME: 4.5898726 s
+// REPEAT 2 - TIME: 3.6814149 s

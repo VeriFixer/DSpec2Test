@@ -5,4 +5,4 @@ var r0 := Sum(3);
 expect r0 == 3 * (3 + 1) / 2;
 }
 
-// REPEAT 4 - TIME: 5.7092234 s
+// REPEAT 4 - TIME: 5.1741945 s

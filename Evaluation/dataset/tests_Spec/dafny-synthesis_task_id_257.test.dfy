@@ -13,7 +13,7 @@ expect r0[0] == 24;
 expect r0[1] == 25;
 }
 
-// REPEAT 1 - TIME: 2.6134325 s
+// REPEAT 1 - TIME: 2.4475777 s
 
 method {:test} Test1() {
 var r0 := Swap(27, 26);
@@ -22,7 +22,7 @@ expect r0[0] == 26;
 expect r0[1] == 27;
 }
 
-// REPEAT 2 - TIME: 3.4203805 s
+// REPEAT 2 - TIME: 3.3514441 s
 
 method {:test} Test2() {
 var r0 := Swap(29, 28);
@@ -31,7 +31,7 @@ expect r0[0] == 28;
 expect r0[1] == 29;
 }
 
-// REPEAT 3 - TIME: 4.3083407 s
+// REPEAT 3 - TIME: 4.098917 s
 
 method {:test} Test3() {
 var r0 := Swap(31, 30);
@@ -40,7 +40,7 @@ expect r0[0] == 30;
 expect r0[1] == 31;
 }
 
-// REPEAT 4 - TIME: 5.2053827 s
+// REPEAT 4 - TIME: 4.9726051 s
 
 method {:test} Test4() {
 var r0 := Swap(33, 32);
@@ -49,7 +49,7 @@ expect r0[0] == 32;
 expect r0[1] == 33;
 }
 
-// REPEAT 5 - TIME: 6.3406118 s
+// REPEAT 5 - TIME: 5.6673351 s
 
 method {:test} Test5() {
 var r0 := Swap(35, 34);
@@ -58,7 +58,7 @@ expect r0[0] == 34;
 expect r0[1] == 35;
 }
 
-// REPEAT 6 - TIME: 7.2425978 s
+// REPEAT 6 - TIME: 6.3989312 s
 
 method {:test} Test6() {
 var r0 := Swap(37, 36);
@@ -67,7 +67,7 @@ expect r0[0] == 36;
 expect r0[1] == 37;
 }
 
-// REPEAT 7 - TIME: 8.1409407 s
+// REPEAT 7 - TIME: 7.0250827 s
 
 method {:test} Test7() {
 var r0 := Swap(39, 38);
@@ -76,7 +76,7 @@ expect r0[0] == 38;
 expect r0[1] == 39;
 }
 
-// REPEAT 8 - TIME: 8.9279361 s
+// REPEAT 8 - TIME: 7.7435524 s
 
 method {:test} Test8() {
 var r0 := Swap(41, 40);
@@ -85,7 +85,7 @@ expect r0[0] == 40;
 expect r0[1] == 41;
 }
 
-// REPEAT 9 - TIME: 9.6919421 s
+// REPEAT 9 - TIME: 8.4206793 s
 
 method {:test} Test9() {
 var r0 := Swap(42, 43);
@@ -94,4 +94,4 @@ expect r0[0] == 43;
 expect r0[1] == 42;
 }
 
-// REPEAT 10 - TIME: 10.5328221 s
+// REPEAT 10 - TIME: 9.14789 s

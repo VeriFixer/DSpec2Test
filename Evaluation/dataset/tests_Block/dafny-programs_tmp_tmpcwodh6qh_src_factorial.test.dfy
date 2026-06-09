@@ -23,67 +23,67 @@ var r0 := factorial(1);
 expect r0 == fact(1);
 }
 
-// REPEAT 1 - TIME: 2.294546 s
+// REPEAT 1 - TIME: 2.3014776 s
 
 method {:test} Test1() {
 var r0 := factorial(2);
 expect r0 == fact(2);
 }
 
-// REPEAT 2 - TIME: 3.1148542 s
+// REPEAT 2 - TIME: 3.071516 s
 
 method {:test} Test2() {
 var r0 := factorial(3);
 expect r0 == fact(3);
 }
 
-// REPEAT 3 - TIME: 3.9980582 s
+// REPEAT 3 - TIME: 3.7855477 s
 
 method {:test} Test3() {
 var r0 := factorial(4);
 expect r0 == fact(4);
 }
 
-// REPEAT 4 - TIME: 4.7816487 s
+// REPEAT 4 - TIME: 4.517061 s
 
 method {:test} Test4() {
 var r0 := factorial(5);
 expect r0 == fact(5);
 }
 
-// REPEAT 5 - TIME: 5.5236806 s
+// REPEAT 5 - TIME: 5.208413 s
 
 method {:test} Test5() {
 var r0 := factorial(6);
 expect r0 == fact(6);
 }
 
-// REPEAT 6 - TIME: 6.319908 s
+// REPEAT 6 - TIME: 6.0558665 s
 
 method {:test} Test6() {
 var r0 := factorial(7);
 expect r0 == fact(7);
 }
 
-// REPEAT 7 - TIME: 6.9171503 s
+// REPEAT 7 - TIME: 6.7986162 s
 
 method {:test} Test7() {
 var r0 := factorial(8);
 expect r0 == fact(8);
 }
 
-// REPEAT 8 - TIME: 7.5620935 s
+// REPEAT 8 - TIME: 7.3293952 s
 
 method {:test} Test8() {
 var r0 := factorial(9);
 expect r0 == fact(9);
 }
 
-// REPEAT 9 - TIME: 8.0964769 s
+// REPEAT 9 - TIME: 7.9819032 s
 
 method {:test} Test9() {
 var r0 := factorial(10);
 expect r0 == fact(10);
 }
 
-// REPEAT 10 - TIME: 8.7965227 s
+// REPEAT 10 - TIME: 8.5558296 s
