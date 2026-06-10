@@ -6,7 +6,7 @@ import seaborn as sns
 import statistics
 
 # ==========================================
-# Configuration for Scientific Paper Style
+# Configurations
 # ==========================================
 sns.set_theme(style="whitegrid", context="paper")
 plt.rcParams.update({
@@ -76,18 +76,15 @@ def get_shared_programs_for_combo(base_dir, combo_strategies, max_x):
                 with open(strat_path, 'r') as sf:
                     data = json.load(sf)
                 
-                # 1. Track every program we've ever seen
                 timing_data = data.get("timing", {}).get("per_program", {})
                 for prog in timing_data.keys():
                     all_encountered.add(prog.replace(".dfy", ""))
                 
-                # 2. Track failures for strategies in this combination
                 not_supported_list = data.get("not_supported", [])
                 for item in not_supported_list:
                     if isinstance(item, dict) and "program" in item:
                         unsupported_in_combo.add(item["program"].replace(".dfy", ""))
 
-    # The intersection of supported programs is the total minus the failures of this combo
     shared_programs = all_encountered - unsupported_in_combo
     return shared_programs
 
@@ -101,7 +98,6 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
     
     for x in range(1, max_x + 1):
         for strategy in combo_strategies:
-            # Updated path structure
             strat_path = os.path.join(base_dir, f"results_{strategy}", f"results_{strategy}_rep_{x}.json")
             if not os.path.exists(strat_path):
                 continue
@@ -109,7 +105,10 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
             with open(strat_path, 'r') as sf:
                 data = json.load(sf)
                 
-            common_time = 0
+            common_test_gen_time = 0.0
+            common_safety_check_time = 0.0
+            common_execution_time = 0.0
+            
             common_test_counts = []
             
             timing_data = data.get("timing", {}).get("per_program", {})
@@ -120,7 +119,8 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
                 prog_key = prog if prog in timing_data else f"{prog}.dfy"
                 
                 if prog_key in timing_data:
-                    common_time += timing_data[prog_key].get("test_gen_time", 0) + timing_data[prog_key].get("safety_check_time", 0)
+                    common_test_gen_time += timing_data[prog_key].get("test_gen_time", 0.0)
+                    common_safety_check_time += timing_data[prog_key].get("safety_check_time", 0.0)
                 
                 if prog_key in test_counts_data:
                     common_test_counts.append(test_counts_data[prog_key])
@@ -134,18 +134,30 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
                     if st == "killed": killed += 1
                     elif st == "survived": survived += 1
                     elif st == "timeout": timeout += 1
-                    elif st == "error": error += 1
+                    elif st == "error" or st == "": error += 1
+
+                    common_execution_time += res.get("execution_time", 0.0)
                     
             # 3. Final calculations for this X and Strategy
             total_common_mutants = killed + survived + timeout + error
+            num_common_programs = len(valid_programs)
 
             # Change to (killed), if do not wish to count timeouts as kills
-            common_kill_rate = (killed) / total_common_mutants if total_common_mutants > 0 else 0
+            common_kill_rate = (killed + timeout) / total_common_mutants if total_common_mutants > 0 else 0
             
             total_common_tests = sum(common_test_counts)
             avg_common_tests = (total_common_tests / len(common_test_counts)) if common_test_counts else 0.0
             median_common_tests = statistics.median(common_test_counts) if common_test_counts else 0
+
+
+            avg_test_gen_time = common_test_gen_time / num_common_programs if num_common_programs > 0 else 0.0
+            avg_safety_check_time = common_safety_check_time / num_common_programs if num_common_programs > 0 else 0.0
+            avg_execution_time = common_execution_time / total_common_mutants if total_common_mutants > 0 else 0.0
             
+            avg_total_time = avg_test_gen_time + avg_safety_check_time + avg_execution_time
+            
+            total_time = common_test_gen_time + common_safety_check_time + common_execution_time
+
             records.append({
                 "X": x,
                 "Strategy": strategy,
@@ -154,7 +166,11 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
                 "Survived": survived,
                 "Timeout": timeout,
                 "Error": error,
-                "Total Time (s)": common_time,
+                "Total Time (s)": total_time,
+                "Avg Total Time (s)": avg_total_time,
+                "Avg Test Gen Time (s)": avg_test_gen_time,
+                "Avg Safety Check Time (s)": avg_safety_check_time,
+                "Avg Execution Time (s)": avg_execution_time,
                 "Total Number of Tests": total_common_tests,
                 "Average Number of Tests": avg_common_tests,
                 "Median Number of Tests": median_common_tests
@@ -191,11 +207,11 @@ def plot_time_vs_x(df, out_dir, suffix=""):
     max_x = int(df["X"].max())
     plt.figure(figsize=(7, 5))
     sns.lineplot(
-        data=df, x="X", y="Total Time (s)", hue="Strategy", 
+        data=df, x="X", y="Avg Total Time (s)", hue="Strategy", 
         style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
         dashes=False, linewidth=2, markersize=8
     )
-    plt.title("Computational Cost by Repeat Factor (X)")
+    plt.title("Average Cost per Mutant by Repeat Factor (X)")
     plt.xlabel("Repeat Factor (X)")
     plt.ylabel("Total Execution Time (seconds)")
     plt.xticks(range(1, max_x + 1))
@@ -207,12 +223,12 @@ def plot_time_vs_x(df, out_dir, suffix=""):
 def plot_efficiency_tradeoff(df, out_dir, suffix=""):
     plt.figure(figsize=(7, 5))
     ax = sns.scatterplot(
-        data=df, x="Total Time (s)", y="Kill Rate", hue="Strategy", 
+        data=df, x="Avg Total Time (s)", y="Kill Rate", hue="Strategy", 
         style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
         size="X", sizes=(50, 200)
     )
-    plt.title("Efficiency Trade-off: Time vs. Kill Rate")
-    plt.xlabel("Total Execution Time (seconds)")
+    plt.title("Efficiency Trade-off: Avg Time vs. Kill Rate")
+    plt.xlabel("Avg Total Time (seconds)")
     plt.ylabel("Kill Rate")
     
     vals = ax.get_yticks()
@@ -298,6 +314,63 @@ def plot_avg_tests_vs_mutation_score(df, out_dir, suffix=""):
     plt.close()
 
 
+def plot_time_breakdown_bar(df, out_dir, target_x, suffix=""):
+    # Filter for the target repeat factor
+    df_x = df[df["X"] == target_x]
+    if df_x.empty:
+        return
+        
+    df_x = df_x.set_index("Strategy")
+    time_df = df_x[["Avg Test Gen Time (s)", "Avg Safety Check Time (s)", "Avg Execution Time (s)"]]
+    
+    # Using distinct colors for different time phases
+    colors = ["#4C72B0", "#55A868", "#C44E52"] 
+    
+    ax = time_df.plot(kind="bar", stacked=True, figsize=(8, 6), color=colors, edgecolor='black')
+    plt.title(f"Avg Cost Breakdown by Strategy (X={target_x})")
+    plt.xlabel("Strategy")
+    plt.ylabel("Time (seconds)")
+    plt.xticks(rotation=0)
+
+    handles, labels = ax.get_legend_handles_labels()
+    clean_labels = ["Test Generation", "Safety Check", "Mutant Execution"]
+    plt.legend(handles, clean_labels, title="Pipeline Phase", bbox_to_anchor=(1.05, 1), loc='upper left')
+    
+    plt.legend(title="Time Phase", bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.savefig(os.path.join(out_dir, f"plot_8_time_breakdown_x{target_x}{suffix}.png"), bbox_inches='tight')
+    plt.close()
+
+
+def plot_time_components_growth(df, out_dir, suffix=""):
+    max_x = int(df["X"].max())
+    
+    # Restructure the dataframe for seaborn's hue mapping
+    melted_df = df.melt(
+        id_vars=["X", "Strategy"], 
+        value_vars=["Avg Test Gen Time (s)", "Avg Safety Check Time (s)", "Avg Execution Time (s)"],
+        var_name="Time Phase", 
+        value_name="Seconds"
+    )
+    
+    melted_df["Time Phase"] = melted_df["Time Phase"].str.replace("Avg ", "").str.replace(" (s)", "", regex=False)
+    # Create a grid of plots, one for each strategy
+    g = sns.FacetGrid(melted_df, col="Strategy", col_wrap=2, height=4, aspect=1.2)
+    g.map_dataframe(
+        sns.lineplot, x="X", y="Seconds", hue="Time Phase", 
+        style="Time Phase", markers=True, dashes=False, linewidth=2, markersize=8
+    )
+    
+    g.add_legend(title="Time Phase", bbox_to_anchor=(1.05, 0.5), loc='center left')
+    g.fig.subplots_adjust(top=0.88)
+    g.fig.suptitle("Growth of Time Components by Repeat Factor (X)")
+    
+    # Ensure X-axis only shows integer repeat factors
+    g.set(xticks=range(1, max_x + 1))
+    
+    plt.savefig(os.path.join(out_dir, f"plot_9_time_components_growth{suffix}.png"), bbox_inches='tight')
+    plt.close()
+
+
 if __name__ == "__main__":
     output_directory = "results"
     graphs_directory = os.path.join(output_directory, "graphs")
@@ -358,5 +431,7 @@ if __name__ == "__main__":
         plot_total_tests_vs_x(df_combo, graphs_directory, suffix)
         plot_test_efficiency_tradeoff(df_combo, graphs_directory, suffix)
         plot_avg_tests_vs_mutation_score(df_combo, graphs_directory, suffix)
+        plot_time_breakdown_bar(df_combo, graphs_directory, target_x=max_x, suffix=suffix)
+        plot_time_components_growth(df_combo, graphs_directory, suffix)
         
     print(f"\nDone! Check the '{graphs_directory}' directory for all generated files.")
