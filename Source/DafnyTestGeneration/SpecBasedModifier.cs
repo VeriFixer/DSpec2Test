@@ -104,9 +104,9 @@ namespace DafnyTestGeneration {
           
           testCombs.Add(baseComb);
 
-          if (DafnyInfo.Options.TestGenOptions.Bva) {
+          if (DafnyInfo.Options.TestGenOptions.Bva != null) {
             List<Variable> allParams = [..implementation.InParams, ..implementation.OutParams];
-            var bvaCombs = EcpEngine.CalculateBva(allParams, constraints, program);
+            var bvaCombs = EcpEngine.CalculateBva(allParams, constraints, program, (int)DafnyInfo.Options.TestGenOptions.Bva);
             
             foreach (var bva in bvaCombs) {
               var currentBvaComb = new List<Expr>(baseComb) { bva };

@@ -323,9 +323,6 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
     "Generates more clauses (more test scenarios) but drops the short-circuit-safety guarantee: tests may evaluate " +
     "guarded subexpressions where the guard is false, potentially causing runtime errors" +
     "(e.g.: out-of-bounds, division by zero).");
-  
-  public static readonly Option<bool> Bva = new("--bva",
-    "Only for the Spec mode. Adds Boundary Value Analysis to test generation.");
 
   public static readonly Option<uint> Repeat = new("--repeat", () => 1,
     "Repeats the pipeline <n> times, in order to generate, approximately, <n> times more tests than the initial iteration. " +
@@ -360,6 +357,25 @@ public static async Task<HashSet<String>> GetUnverified(DafnyOptions options) {
   public static readonly Option<bool> Time = new("--time",
     "Prints the elapsed time since the beginning of the program (in seconds), split by repeat section." +
     "Cannot be used simultaneously with --passing-failing.");
+  
+  public static readonly Option<int?> Bva = new(
+    name: "--bva",
+    description: "Only for the Spec mode. Adds Boundary Value Analysis to test generation. Optionally accepts a numeric limit (default: 2147483647).",
+    parseArgument: result => {
+      if (result.Tokens.Count == 0) {
+        return int.MaxValue;
+      }
+
+      if (int.TryParse(result.Tokens[0].Value, out var customValue)) {
+        return customValue;
+      }
+
+      result.ErrorMessage = $"Cannot parse '{result.Tokens[0].Value}' as a valid integer for --bva.";
+      return null;
+    }
+  ) {
+    Arity = ArgumentArity.ZeroOrOne
+  };
   
   static GenerateTestsCommand() {
     DafnyOptions.RegisterLegacyBinding(Simplify, (options, value) => {

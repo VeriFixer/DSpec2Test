@@ -14,7 +14,7 @@ namespace Microsoft.Dafny {
     public Stopwatch StopWatch;
     public bool Time = false;
     public bool Fdnf = false;
-    public bool Bva = false;
+    public int? Bva;
     public bool Simplify = false;
     public bool IgnoreWarnings = false;
     public bool PassingFailing = false;

@@ -359,7 +359,7 @@ namespace DafnyTestGeneration {
     /// </summary>
     private static async Task<Program> UpdateProgram(Program program, List<TestMethod> testMethods) {
       // Turn off BVA so it does not attempt the same values
-      program.Options.TestGenOptions.Bva = false;
+      program.Options.TestGenOptions.Bva = null;
       
       // Delete method duplicates of functions
       foreach (var module in program.Modules()) {

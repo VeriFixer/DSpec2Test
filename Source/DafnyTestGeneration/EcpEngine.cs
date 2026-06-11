@@ -144,7 +144,7 @@ namespace DafnyTestGeneration {
     /// <summary>
     /// Calculates Boundary Value Analysis (BVA) for each parameter based on extracted constraints.
     /// </summary>
-    public static List<Expr> CalculateBva(List<Variable> variables, Dictionary<string, VariableConstraint> constraints, Program program) {
+    public static List<Expr> CalculateBva(List<Variable> variables, Dictionary<string, VariableConstraint> constraints, Program program, int bvaValue) {
       var result = new List<Expr>();
 
       foreach (var variable in variables) {
@@ -168,12 +168,12 @@ namespace DafnyTestGeneration {
           var bounds = constraint.Bounds;
           double offset = (type.IsReal || type.IsFloat) ? 0.0001 : 1.0;
 
-          double fallbackLower = -100;
-          double fallbackUpper = 100;
+          double fallbackLower = -bvaValue;
+          double fallbackUpper = bvaValue;
 
           if (type.IsBv && type is BvType bvType) {
             fallbackLower = 0;
-            fallbackUpper = bvType.Bits < 31 ? (1 << bvType.Bits) - 1 : 100;
+            fallbackUpper = bvType.Bits < 31 ? (1 << bvType.Bits) - 1 : bvaValue;
           }
 
           if (!double.IsNegativeInfinity(bounds.LowerLimit)) {
