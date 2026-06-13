@@ -267,8 +267,24 @@ namespace DafnyTestGeneration {
           break;
         }
         case DatatypeValue tupleDisplay when tupleDisplay.DatatypeName.StartsWith("_tuple#"): {
-          for (int i = 0; i < tupleDisplay.Arguments.Count; i++) {
-            var innerExpr = tupleDisplay.Arguments[i]; 
+          var innerExpressions = new List<Expression>();
+
+          if (tupleDisplay.Arguments != null) {
+            innerExpressions.AddRange(tupleDisplay.Arguments);
+          } 
+          else if (tupleDisplay.Bindings != null) {
+            var bindingsList = tupleDisplay.Bindings.ArgumentBindings;
+      
+            foreach (var binding in bindingsList) {
+              if (binding.Actual != null) {
+                innerExpressions.Add(binding.Actual);
+              }
+            }
+          }
+          
+          
+          for (int i = 0; i < innerExpressions.Count; i++) {
+            var innerExpr = innerExpressions[i]; 
       
             if (IsCollectionOrTuple(innerExpr)) {
               var tupleFieldName = new Name(validTok, i.ToString());
