@@ -243,6 +243,9 @@ namespace DafnyTestGeneration {
 
         if (i < options.TestGenOptions.Repeat - 1) {
           program = await UpdateProgram(program, testMethods);
+          if (!Utils.AllMemberDeclarations(program.DefaultModule).Any()) {
+            break;
+          }
         }
       }
     }
