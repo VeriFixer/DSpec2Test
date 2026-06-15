@@ -231,6 +231,10 @@ namespace DafnyTestGeneration {
           yield return testMethod;
           testMethods.Add(testMethod);
         }
+        
+        if (testMethods.Count == 0) {
+          break;
+        }
 
         if (options.TestGenOptions.Time) {
           await options.OutputWriter.Status(

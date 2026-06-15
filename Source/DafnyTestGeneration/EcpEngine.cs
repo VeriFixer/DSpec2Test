@@ -173,25 +173,25 @@ namespace DafnyTestGeneration {
 
           if (type.IsBv && type is BvType bvType) {
             fallbackLower = 0;
-            fallbackUpper = bvType.Bits < 31 ? (1 << bvType.Bits) - 1 : bvaValue;
+            fallbackUpper = bvType.Bits < 64 ? ((1UL << bvType.Bits) - 1) : bvaValue;
           }
 
           if (!double.IsNegativeInfinity(bounds.LowerLimit)) {
             double val = bounds.IncludeLower ? bounds.LowerLimit : bounds.LowerLimit + offset;
             if (!constraint.Exclusions.Contains(val)) {
-              result.Add(CreateEqExpr(idExpr, CreateNumericLiteral(val, type)));
+              result.Add(CreateEqExpr(idExpr, CreateNumericLiteral(val, type, program)));
             }
           } else if (!constraint.Exclusions.Contains(fallbackLower)) {
-              result.Add(CreateEqExpr(idExpr, CreateNumericLiteral(fallbackLower, type)));
+              result.Add(CreateEqExpr(idExpr, CreateNumericLiteral(fallbackLower, type, program)));
           }
 
           if (!double.IsPositiveInfinity(bounds.UpperLimit)) {
             double val = bounds.IncludeUpper ? bounds.UpperLimit : bounds.UpperLimit - offset;
             if (!constraint.Exclusions.Contains(val)) {
-              result.Add(CreateEqExpr(idExpr, CreateNumericLiteral(val, type)));
+              result.Add(CreateEqExpr(idExpr, CreateNumericLiteral(val, type, program)));
             }
           } else if (!constraint.Exclusions.Contains(fallbackUpper)){
-            result.Add(CreateEqExpr(idExpr, CreateNumericLiteral(fallbackUpper, type)));
+            result.Add(CreateEqExpr(idExpr, CreateNumericLiteral(fallbackUpper, type, program)));
           }
         } else if (type.IsSeq || type.IsString || type.IsMap || stringType.Equals("Seq") || stringType.Equals("Map") || stringType.Equals("Set")) {
           var cardinalityName = "|" + variable.Name + "|";
@@ -213,12 +213,12 @@ namespace DafnyTestGeneration {
           
           // Length == 0
           if (bounds.IncludesValue(0) && !exclusions.Contains(0)) {
-            result.Add(CreateEqExpr(cardExpr, CreateNumericLiteral(0, Type.Int)));
+            result.Add(CreateEqExpr(cardExpr, CreateNumericLiteral(0, Type.Int, program)));
           }
 
           // Length == 1
           if (bounds.IncludesValue(1) && !exclusions.Contains(1)) {
-            result.Add(CreateEqExpr(cardExpr, CreateNumericLiteral(1, Type.Int)));
+            result.Add(CreateEqExpr(cardExpr, CreateNumericLiteral(1, Type.Int, program)));
           }
 
           // Length > 1
@@ -226,7 +226,7 @@ namespace DafnyTestGeneration {
             var gtExpr = new NAryExpr(
               new Token(), 
               new BinaryOperator(new Token(), BinaryOperator.Opcode.Gt), 
-              new List<Expr> { cardExpr, CreateNumericLiteral(1, Type.Int) }
+              new List<Expr> { cardExpr, CreateNumericLiteral(1, Type.Int, program) }
             ) { Type = Type.Bool };
             
             result.Add(gtExpr);
@@ -291,18 +291,35 @@ namespace DafnyTestGeneration {
     }
     
     /// <summary>
-    /// Safely converts a double boundary value into the correct Boogie LiteralExpr (Int, Real, or Bitvector)
+    /// Safely converts a numeric value into the correct Boogie Expr (Int, Real, or Bitvector)
     /// </summary>
-    private static LiteralExpr CreateNumericLiteral(double value, Type type) {
+    private static Expr CreateNumericLiteral(double value, Type type, Program program) {
+  
       if (type.IsBv) {
         int bvVal = Math.Max(0, (int)value);
-        return new LiteralExpr(new Token(), BigNum.FromInt(bvVal)) { Type = type };
+        var rawLiteral = new LiteralExpr(new Token(), BigNum.FromInt(bvVal)) { Type = type };
+
+        var litFunc = program.TopLevelDeclarations.OfType<Function>().FirstOrDefault(f => f.Name == "Lit");
+
+        if (litFunc != null) {
+          var funcCall = new FunctionCall(litFunc);
+          var naryExpr = new NAryExpr(new Token(), funcCall, new List<Expr> { rawLiteral }) {
+            Type = type
+          };
+
+          if (litFunc.TypeParameters.Count > 0) {
+            naryExpr.TypeParameters = SimpleTypeParamInstantiation.From(litFunc.TypeParameters, new List<Type> { type });
+          }
+          return naryExpr;
+        }
+        return rawLiteral;
       }
+
       if (type.IsReal || type.IsFloat) {
         string strVal = value.ToString("0.0#######", System.Globalization.CultureInfo.InvariantCulture);
         return new LiteralExpr(new Token(), BigDec.FromString(strVal)) { Type = type };
       }
-  
+
       return new LiteralExpr(new Token(), BigNum.FromInt((int)value)) { Type = type };
     }
 
