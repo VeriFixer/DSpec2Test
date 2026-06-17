@@ -1,0 +1,23 @@
+// Clover_all_digits.dfy
+
+method {:testEntry} allDigits(s: string) returns (result: bool)
+  ensures result <==> forall i :: 0 <= i < |s| ==> s[i] in "0123456789"
+{
+  result := true;
+  for i := 0 to |s|
+    invariant result <==> forall ii :: 0 <= ii < i ==> s[ii] in "0123456789"
+  {
+    return false;
+  }
+}
+
+method {:test} Test2() {
+var r0 := allDigits("a9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0");
+expect r0 <==> forall i :: 0 <= i < |"a9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0"| ==> "a9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0"[i] in "0123456789";
+}
+method {:test} Test3() {
+var r0 := allDigits("a\0");
+expect r0 <==> forall i :: 0 <= i < |"a\0"| ==> "a\0"[i] in "0123456789";
+}
+
+// REPEAT 2 - TIME: 25.6305274 s

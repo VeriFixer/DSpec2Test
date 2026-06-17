@@ -19,8 +19,8 @@ namespace DafnyTestGeneration {
     public static bool SetNonZeroExitCode = false;
     private const string PassingMethodName = "Passing";
     private const string FailingMethodName = "Failing";
-    private static readonly List<string> IgnoreNames = [];
-    private static readonly List<string> LengthNames = [];
+    private static readonly Dictionary<string, List<string>> IgnoreNames = [];
+    private static readonly Dictionary<string, List<string>> LengthNames = [];
     private static readonly Dictionary<string, BlockStmt> OriginalBodies = [];
     private static readonly Dictionary<string, (List<AttributedExpression>, List<AttributedExpression>)> OriginalSpec = [];
 
@@ -231,6 +231,10 @@ namespace DafnyTestGeneration {
           yield return testMethod;
           testMethods.Add(testMethod);
         }
+        
+        if (testMethods.Count == 0) {
+          break;
+        }
 
         if (options.TestGenOptions.Time) {
           await options.OutputWriter.Status(
@@ -239,6 +243,9 @@ namespace DafnyTestGeneration {
 
         if (i < options.TestGenOptions.Repeat - 1) {
           program = await UpdateProgram(program, testMethods);
+          if (!Utils.AllMemberDeclarations(program.DefaultModule).Any()) {
+            break;
+          }
         }
       }
     }
@@ -359,7 +366,7 @@ namespace DafnyTestGeneration {
     /// </summary>
     private static async Task<Program> UpdateProgram(Program program, List<TestMethod> testMethods) {
       // Turn off BVA so it does not attempt the same values
-      program.Options.TestGenOptions.Bva = false;
+      program.Options.TestGenOptions.Bva = null;
       
       // Delete method duplicates of functions
       foreach (var module in program.Modules()) {
@@ -390,8 +397,12 @@ namespace DafnyTestGeneration {
         }
       }
       
+      var entryPointsToDelete = new HashSet<MemberDecl>();
+      
       foreach (var entryPoint in Utils.AllMemberDeclarationsWithAttribute(program.DefaultModule,
                  TestGenerationOptions.TestEntryAttribute)) {
+        bool insertedAssume = false;
+        
         for (var i = testMethods.Count - 1; i >= 0; i--) {
           var testMethod = testMethods[i];
           var shortName = testMethod.MethodName.Contains('.')
@@ -416,39 +427,57 @@ namespace DafnyTestGeneration {
           
           
           foreach (var formal in argFormals) {
-            if (!IgnoreNames.Contains(formal.Name) && testMethod.ArgExpressions.TryGetValue(formal.Name, out var argExpr) && argExpr != null) {
+            if ((!IgnoreNames.TryGetValue(entryPoint.Name, out var ignoredForEntry) || !ignoredForEntry.Contains(formal.Name)) && testMethod.ArgExpressions.TryGetValue(formal.Name, out var argExpr) && argExpr != null) {
               var validTok = entryPoint.StartToken;
               
               var nameSegment = new NameSegment(validTok, formal.Name, null);
               
-              BinaryExpr equalityExpr;
-              if (LengthNames.Contains(formal.Name)) {
+              List<Expression> allConstraints = [];
+              
+              if (LengthNames.TryGetValue(entryPoint.Name, out var lengthEntry) && lengthEntry.Contains(formal.Name)) {
                 var cardinality = new UnaryOpExpr(validTok, UnaryOpExpr.Opcode.Cardinality, nameSegment);
                 var literalExpr = new LiteralExpr(validTok, argExpr.Children.Count());
-                equalityExpr = new BinaryExpr(validTok, BinaryExpr.Opcode.Neq, cardinality, literalExpr);
+                allConstraints.Add(new BinaryExpr(validTok, BinaryExpr.Opcode.Neq, cardinality, literalExpr));
               } else {
-                equalityExpr = new BinaryExpr(validTok, BinaryExpr.Opcode.Neq, nameSegment, argExpr);
+                allConstraints.Add(new BinaryExpr(validTok, BinaryExpr.Opcode.Neq, nameSegment, argExpr));
+                allConstraints.AddRange(Utils.GetNestedConstraints(nameSegment, argExpr, validTok));
               }
 
               var axiomAttr = new Attributes(Attributes.AxiomAttributeName, [], null);
-              var assumeStmt = new AssumeStmt(validTok, equalityExpr, axiomAttr);
-              if (entryPoint is Method method) {
-                if (method.Body != null) {
-                  method.Body.Body.Insert(0, assumeStmt);
-                  if (OriginalBodies.TryGetValue(method.Name, out var body)) {
-                    body.Body.Insert(0, assumeStmt);
+
+              foreach (var constraint in allConstraints) {
+                var assumeStmt = new AssumeStmt(validTok, constraint, axiomAttr);
+                insertedAssume = true;
+                if (entryPoint is Method method) {
+                  if (method.Body != null) {
+                    method.Body.Body.Insert(0, assumeStmt);
+                    if (OriginalBodies.TryGetValue(method.Name, out var body)) {
+                      body.Body.Insert(0, assumeStmt);
+                    }
+                  } else {
+                    method.SetBody(new BlockStmt(validTok, [assumeStmt]));
                   }
-                } else {
-                  method.SetBody(new BlockStmt(validTok, [assumeStmt]));
+                } else if (entryPoint is Function function) {
+                  function.Body = new StmtExpr(validTok, assumeStmt, function.Body);
                 }
-              } else if (entryPoint is Function function) {
-                function.Body = new StmtExpr(validTok, assumeStmt, function.Body);
               }
             }
           }
           testMethods.RemoveAt(i);
         }
+        if (!insertedAssume) {
+          entryPointsToDelete.Add(entryPoint);
+        }
       }
+      
+      if (entryPointsToDelete.Count > 0) {
+        foreach (var module in program.Modules()) {
+          foreach (var decl in module.TopLevelDecls.OfType<TopLevelDeclWithMembers>()) {
+            decl.Members.RemoveAll(member => entryPointsToDelete.Contains(member));
+          }
+        }
+      }
+      
       return await Utils.GetFreshProgram(program);
     }
 
@@ -508,29 +537,50 @@ namespace DafnyTestGeneration {
                 break;
               case UserDefinedType tupleType when tupleType.Name.StartsWith("_tuple#"):
                 var tupleArgs = tupleType.TypeArgs;
-                if (tupleArgs.Any(arg => arg is UserDefinedType)) {
-                  IgnoreNames.Add(formal.Name);
+                if (tupleArgs.Any(arg => arg is UserDefinedType { Name: not "string" and not "nat" } udt && 
+                                         !udt.Name.StartsWith("_tuple#"))) {
+                  if (IgnoreNames.TryGetValue(method.Name, out var ignoreTupleList)) {
+                    ignoreTupleList.Add(formal.Name);
+                  } else {
+                    IgnoreNames[method.Name] = [formal.Name];
+                  }
                 }
                 break;
               case UserDefinedType:
-                IgnoreNames.Add(formal.Name);
+                if (IgnoreNames.TryGetValue(method.Name, out var ignoreList)) {
+                  ignoreList.Add(formal.Name);
+                } else {
+                  IgnoreNames[method.Name] = [formal.Name];
+                }
                 break;
               case SeqType seqType:
                 var seqArg = seqType.Arg;
                 if (seqArg is UserDefinedType) {
-                  LengthNames.Add(formal.Name);
+                  if (LengthNames.TryGetValue(method.Name, out var lengthList)) {
+                    lengthList.Add(formal.Name);
+                  } else {
+                    LengthNames[method.Name] = [formal.Name];
+                  }
                 }
                 break;
               case SetType setType:
                 var setArg = setType.Arg;
                 if (setArg is UserDefinedType) {
-                  LengthNames.Add(formal.Name);
+                  if (LengthNames.TryGetValue(method.Name, out var lengthList)) {
+                    lengthList.Add(formal.Name);
+                  } else {
+                    LengthNames[method.Name] = [formal.Name];
+                  }
                 }
                 break;
               case MapType mapType:
                 var mapArg = mapType.Arg;
                 if (mapArg is UserDefinedType) {
-                  LengthNames.Add(formal.Name);
+                  if (LengthNames.TryGetValue(method.Name, out var lengthList)) {
+                    lengthList.Add(formal.Name);
+                  } else {
+                    LengthNames[method.Name] = [formal.Name];
+                  }
                 }
                 break;
             }

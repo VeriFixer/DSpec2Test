@@ -91,12 +91,13 @@ def run_safety_check(
     try:
         result = run_with_cleanup(cmd_exec, timeout=timeout, cwd=work_dir)
         elapsed = time.monotonic() - start
-        # Copy artifact to permanent location regardless of outcome
-        permanent_path.write_text(combined)
 
         if result.returncode == 0:
-            return SafetyCheckResult(passed=True, command=cmd_str, safety_file=str(permanent_path),
+            return SafetyCheckResult(passed=True, command=cmd_str, safety_file="",
                                      execution_time=elapsed)
+        
+        # Copy artifact to permanent location only on a bad outcome
+        permanent_path.write_text(combined)
         return SafetyCheckResult(
             passed=False,
             command=cmd_str,

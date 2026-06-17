@@ -1,8 +1,0 @@
-
-method {:test} Test13() {
-expect 108.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := SphereVolume(108.0);
-expect r0 == 4.0 / 3.0 * 3.1415926535 * 108.0 * 108.0 * 108.0;
-}
-
-// REPEAT 9 - TIME: 11.1088384 s

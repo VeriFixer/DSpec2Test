@@ -1,8 +1,0 @@
-
-method {:test} Test14() {
-expect 1 <= 9, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ComputeFactorial(9);
-expect r0 == Factorial(9);
-}
-
-// REPEAT 8 - TIME: 10.5574881 s

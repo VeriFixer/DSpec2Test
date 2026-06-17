@@ -1,9 +1,0 @@
-
-method {:test} Test6() {
-expect 7724 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-expect 7 == 1 || 7 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0, r1 := main(7724, 7);
-expect 7 + r0 + r1 >= 2 * 7724;
-}
-
-// REPEAT 6 - TIME: 5.8230679 s
