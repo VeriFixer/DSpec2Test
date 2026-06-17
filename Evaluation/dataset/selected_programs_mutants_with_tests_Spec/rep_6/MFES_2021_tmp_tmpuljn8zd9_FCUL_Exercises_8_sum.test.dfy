@@ -1,7 +1,0 @@
-
-method {:test} Test5() {
-var r0 := sum(5);
-expect r0 == calcSum(5 + 1);
-}
-
-// REPEAT 6 - TIME: 7.257786 s

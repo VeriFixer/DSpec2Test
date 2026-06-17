@@ -1,8 +1,0 @@
-
-method {:test} Test16() {
-var r0 := CountCharacters("\0\U{0002}");
-expect r0 >= 0;
-expect r0 == |"\0\U{0002}"|;
-}
-
-// REPEAT 10 - TIME: 12.6757309 s

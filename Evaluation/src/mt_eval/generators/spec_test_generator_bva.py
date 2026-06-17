@@ -20,7 +20,7 @@ class SpecBvaTestGenerator(DafnyTestGenerator):
             "generate-tests",
             "Spec",
             str(dafny_file.resolve()),
-            "--bva",
+            "--bva", "100",
             "--repeat", f"{repeat}",
             "--length-limit", "50",
             "--time",

@@ -1,9 +1,0 @@
-
-method {:test} Test8() {
-var seqint0 : seq<int> := [9];
-var r0 := InsertionSort(seqint0);
-expect multiset(r0) == multiset(seqint0);
-expect IsSorted(r0);
-}
-
-// REPEAT 9 - TIME: 640.5701365 s

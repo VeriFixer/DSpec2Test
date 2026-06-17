@@ -1,8 +1,0 @@
-
-method {:test} Test1() {
-expect 2 >= 0 && 1 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := IsBreakEven(2, 1);
-expect r0 <==> 2 == 1;
-}
-
-// REPEAT 2 - TIME: 4.5747476 s

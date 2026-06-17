@@ -2,6 +2,7 @@ import os
 import json
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import seaborn as sns
 import statistics
 
@@ -25,14 +26,14 @@ STRATEGY_COLORS = {
     "Block": "#1f77b4",
     "Path": "#ff7f0e",
     "Spec": "#2ca02c",
-    "Spec_bva": "#d62728"
+    "SpecBva": "#d62728"
 }
 
 STRATEGY_MARKERS = {
     "Block": "o",
     "Path": "s",
     "Spec": "^",
-    "Spec_bva": "D"
+    "SpecBva": "D"
 }
 
 # ==========================================
@@ -160,7 +161,7 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
 
             records.append({
                 "X": x,
-                "Strategy": strategy,
+                "Strategy": "SpecBva" if strategy == "Spec_bva" else strategy,
                 "Kill Rate": common_kill_rate,
                 "Killed": killed,
                 "Survived": survived,
@@ -178,10 +179,48 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
             
     return pd.DataFrame(records)
 
+
+def load_mutant_level_timing_data(base_dir, valid_programs, combo_strategies, target_x):
+    """
+    Builds a DataFrame where each row represents a single mutant, containing its specific
+    Execution Time, alongside the Test Gen Time and Safety Check Time of its parent program.
+    """
+    records = []
+    
+    for strategy in combo_strategies:
+        strat_path = os.path.join(base_dir, f"results_{strategy}", f"results_{strategy}_rep_{target_x}.json")
+        if not os.path.exists(strat_path):
+            continue
+            
+        with open(strat_path, 'r') as sf:
+            data = json.load(sf)
+            
+        timing_data = data.get("timing", {}).get("per_program", {})
+        
+        for res in data.get("results", []):
+            prog_name_raw = res.get("original_name", "")
+            prog_name = prog_name_raw.replace(".dfy", "")
+            
+            if prog_name in valid_programs:
+                prog_key = prog_name if prog_name in timing_data else f"{prog_name}.dfy"
+                
+                test_gen_time = timing_data.get(prog_key, {}).get("test_gen_time", 0.0)
+                safety_check_time = timing_data.get(prog_key, {}).get("safety_check_time", 0.0)
+                execution_time = res.get("execution_time", 0.0)
+                
+                records.append({
+                    "Strategy": "SpecBva" if strategy == "Spec_bva" else strategy,
+                    "Program": prog_name,
+                    "Test Gen Time": test_gen_time,
+                    "Safety Check Time": safety_check_time,
+                    "Execution Time": execution_time
+                })
+                
+    return pd.DataFrame(records)
+
 # ==========================================
 # Plotting Functions
 # ==========================================
-# Note: Dynamic X-axis adjustments made to accommodate variable max_x
 
 def plot_kill_rate_vs_x(df, out_dir, suffix=""):
     max_x = int(df["X"].max())
@@ -191,8 +230,8 @@ def plot_kill_rate_vs_x(df, out_dir, suffix=""):
         style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
         dashes=False, linewidth=2, markersize=8
     )
-    plt.title("Mutant Kill Rate by Repeat Factor (X)")
-    plt.xlabel("Repeat Factor (X)")
+    plt.title(r"Mutant Kill Rate by $\mathtt{--repeat}$ Flag Value")
+    plt.xlabel(r"$\mathtt{--repeat}$ Flag Value")
     plt.ylabel("Kill Rate")
     plt.xticks(range(1, max_x + 1))
     
@@ -211,8 +250,8 @@ def plot_time_vs_x(df, out_dir, suffix=""):
         style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
         dashes=False, linewidth=2, markersize=8
     )
-    plt.title("Average Cost per Mutant by Repeat Factor (X)")
-    plt.xlabel("Repeat Factor (X)")
+    plt.title(r"Average Cost per Mutant by $\mathtt{--repeat}$ Flag Value")
+    plt.xlabel(r"$\mathtt{--repeat}$ Flag Value")
     plt.ylabel("Total Execution Time (seconds)")
     plt.xticks(range(1, max_x + 1))
     
@@ -225,7 +264,7 @@ def plot_efficiency_tradeoff(df, out_dir, suffix=""):
     ax = sns.scatterplot(
         data=df, x="Avg Total Time (s)", y="Kill Rate", hue="Strategy", 
         style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
-        size="X", sizes=(50, 200)
+        size="X", sizes=(50, 200), legend="full"
     )
     plt.title("Efficiency Trade-off: Avg Time vs. Kill Rate")
     plt.xlabel("Avg Total Time (seconds)")
@@ -235,6 +274,14 @@ def plot_efficiency_tradeoff(df, out_dir, suffix=""):
     ax.set_yticks(vals)
     ax.set_yticklabels(['{:,.1%}'.format(x) for x in vals])
     h, l = ax.get_legend_handles_labels()
+    target_label = '--repeat' if '--repeat' in l else ('X' if 'X' in l else None)
+    
+    if target_label:
+        idx = l.index(target_label)
+        l[idx] = r"$\mathtt{--repeat}$"
+        blank_handle = mpatches.Patch(color='none', label='')
+        h.insert(idx, blank_handle)
+        l.insert(idx, "")
     plt.legend(h, l, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     plt.savefig(os.path.join(out_dir, f"plot_3_efficiency_tradeoff{suffix}.png"), bbox_inches='tight')
     plt.close()
@@ -266,8 +313,8 @@ def plot_total_tests_vs_x(df, out_dir, suffix=""):
         style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
         dashes=False, linewidth=2, markersize=8
     )
-    plt.title("Total Number of Tests by Repeat Factor (X)")
-    plt.xlabel("Repeat Factor (X)")
+    plt.title(r"Total Number of Tests by $\mathtt{--repeat}$ Flag Value")
+    plt.xlabel(r"$\mathtt{--repeat}$ Flag Value")
     plt.ylabel("Total Tests Generated")
     plt.xticks(range(1, max_x + 1))
     
@@ -280,7 +327,7 @@ def plot_test_efficiency_tradeoff(df, out_dir, suffix=""):
     ax = sns.scatterplot(
         data=df, x="Total Number of Tests", y="Kill Rate", hue="Strategy", 
         style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
-        size="X", sizes=(50, 200)
+        size="X", sizes=(50, 200), legend="full"
     )
     plt.title("Test Efficiency: Volume vs. Kill Rate")
     plt.xlabel("Total Number of Tests")
@@ -290,6 +337,15 @@ def plot_test_efficiency_tradeoff(df, out_dir, suffix=""):
     ax.set_yticks(vals)
     ax.set_yticklabels(['{:,.1%}'.format(x) for x in vals])
     h, l = ax.get_legend_handles_labels()
+    h, l = ax.get_legend_handles_labels()
+    target_label = '--repeat' if '--repeat' in l else ('X' if 'X' in l else None)
+    
+    if target_label:
+        idx = l.index(target_label)
+        l[idx] = r"$\mathtt{--repeat}$"
+        blank_handle = mpatches.Patch(color='none', label='')
+        h.insert(idx, blank_handle)
+        l.insert(idx, "")
     plt.legend(h, l, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     plt.savefig(os.path.join(out_dir, f"plot_6_test_efficiency_tradeoff{suffix}.png"), bbox_inches='tight')
     plt.close()
@@ -299,7 +355,7 @@ def plot_avg_tests_vs_mutation_score(df, out_dir, suffix=""):
     ax = sns.scatterplot(
         data=df, x="Average Number of Tests", y="Kill Rate", hue="Strategy", 
         style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
-        size="X", sizes=(50, 200)
+        size="X", sizes=(50, 200), legend="full"
     )
     plt.title("Kill Rate vs. Avg Tests per Mutant")
     plt.xlabel("Average Number of Tests per Mutant")
@@ -309,21 +365,27 @@ def plot_avg_tests_vs_mutation_score(df, out_dir, suffix=""):
     ax.set_yticks(vals)
     ax.set_yticklabels(['{:,.1%}'.format(x) for x in vals])
     h, l = ax.get_legend_handles_labels()
+    h, l = ax.get_legend_handles_labels()
+    target_label = '--repeat' if '--repeat' in l else ('X' if 'X' in l else None)
+    
+    if target_label:
+        idx = l.index(target_label)
+        l[idx] = r"$\mathtt{--repeat}$"
+        blank_handle = mpatches.Patch(color='none', label='')
+        h.insert(idx, blank_handle)
+        l.insert(idx, "")
     plt.legend(h, l, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     plt.savefig(os.path.join(out_dir, f"plot_7_avg_tests_vs_mutation_score{suffix}.png"), bbox_inches='tight')
     plt.close()
 
 
 def plot_time_breakdown_bar(df, out_dir, target_x, suffix=""):
-    # Filter for the target repeat factor
     df_x = df[df["X"] == target_x]
     if df_x.empty:
         return
         
     df_x = df_x.set_index("Strategy")
     time_df = df_x[["Avg Test Gen Time (s)", "Avg Safety Check Time (s)", "Avg Execution Time (s)"]]
-    
-    # Using distinct colors for different time phases
     colors = ["#4C72B0", "#55A868", "#C44E52"] 
     
     ax = time_df.plot(kind="bar", stacked=True, figsize=(8, 6), color=colors, edgecolor='black')
@@ -340,34 +402,36 @@ def plot_time_breakdown_bar(df, out_dir, target_x, suffix=""):
     plt.savefig(os.path.join(out_dir, f"plot_8_time_breakdown_x{target_x}{suffix}.png"), bbox_inches='tight')
     plt.close()
 
+def plot_mutant_time_boxplots(df, out_dir, target_x, suffix=""):
+    if df.empty:
+        return
+        
+    metrics = ["Test Gen Time", "Safety Check Time", "Execution Time"]
+    
+    fig, axes = plt.subplots(1, 3, figsize=(16, 6), sharey=False)
+    
+    for i, metric in enumerate(metrics):
+        sns.boxplot(
+            data=df, 
+            x="Strategy", 
+            y=metric, 
+            hue="Strategy",
+            legend=False,
+            ax=axes[i],
+            palette=STRATEGY_COLORS,
+            linewidth=1.5,
+            fliersize=3
+        )
+        
+        axes[i].set_title(f"{metric}")
+        axes[i].set_xlabel("Strategy")
+        axes[i].set_ylabel("Time (seconds)")
+        axes[i].set_yscale("log") 
 
-def plot_time_components_growth(df, out_dir, suffix=""):
-    max_x = int(df["X"].max())
+    plt.suptitle(f"Time Distributions per Mutant by Strategy (Rep={target_x})", y=1.05, fontsize=16, fontweight='bold')
     
-    # Restructure the dataframe for seaborn's hue mapping
-    melted_df = df.melt(
-        id_vars=["X", "Strategy"], 
-        value_vars=["Avg Test Gen Time (s)", "Avg Safety Check Time (s)", "Avg Execution Time (s)"],
-        var_name="Time Phase", 
-        value_name="Seconds"
-    )
-    
-    melted_df["Time Phase"] = melted_df["Time Phase"].str.replace("Avg ", "").str.replace(" (s)", "", regex=False)
-    # Create a grid of plots, one for each strategy
-    g = sns.FacetGrid(melted_df, col="Strategy", col_wrap=2, height=4, aspect=1.2)
-    g.map_dataframe(
-        sns.lineplot, x="X", y="Seconds", hue="Time Phase", 
-        style="Time Phase", markers=True, dashes=False, linewidth=2, markersize=8
-    )
-    
-    g.add_legend(title="Time Phase", bbox_to_anchor=(1.05, 0.5), loc='center left')
-    g.fig.subplots_adjust(top=0.88)
-    g.fig.suptitle("Growth of Time Components by Repeat Factor (X)")
-    
-    # Ensure X-axis only shows integer repeat factors
-    g.set(xticks=range(1, max_x + 1))
-    
-    plt.savefig(os.path.join(out_dir, f"plot_9_time_components_growth{suffix}.png"), bbox_inches='tight')
+    plt.tight_layout()
+    plt.savefig(os.path.join(out_dir, f"plot_9_mutant_time_subplots_x{target_x}{suffix}.png"), bbox_inches='tight')
     plt.close()
 
 
@@ -378,15 +442,13 @@ if __name__ == "__main__":
     os.makedirs(output_directory, exist_ok=True)
     os.makedirs(graphs_directory, exist_ok=True)
 
-    # Detect the max X dynamically
     max_x = get_max_repetition(output_directory)
-    print(f"Dynamically detected Maximum Repetition (X) = {max_x}")
+    print(f"Dynamically detected Maximum Repetition = {max_x}")
 
     if max_x == 0:
         print("No valid repetition files found. Please check your results directory.")
         exit()
 
-    # 1. Define the combinations you want to analyze
     combinations_to_run = [
         {
             "name": "Block_Spec_SpecBva",
@@ -406,22 +468,21 @@ if __name__ == "__main__":
         print(f"Processing Combination: {combo_strats}")
         print("="*55)
         
-        # Pass the max_x to the data processor
         valid_programs = get_shared_programs_for_combo(output_directory, combo_strats, max_x)
         print(f"-> Found {len(valid_programs)} commonly supported programs.")
         
         if len(valid_programs) == 0:
             print(f"-> Skipping {combo_name} due to 0 shared programs.")
             continue
-            
-        # Build DataFrame explicitly for these strategies and this subset of programs
+
         df_combo = load_data_for_subset(output_directory, valid_programs, combo_strats, max_x)
         
         if df_combo.empty:
             print(f"-> Error: No data could be loaded for {combo_name}.")
             continue
+
+        df_mutants = load_mutant_level_timing_data(output_directory, valid_programs, combo_strats, target_x=max_x)
             
-        # Plotting
         suffix = f"_{combo_name}"
         print(f"-> Generating plots with suffix '{suffix}'...")
         plot_kill_rate_vs_x(df_combo, graphs_directory, suffix)
@@ -432,6 +493,6 @@ if __name__ == "__main__":
         plot_test_efficiency_tradeoff(df_combo, graphs_directory, suffix)
         plot_avg_tests_vs_mutation_score(df_combo, graphs_directory, suffix)
         plot_time_breakdown_bar(df_combo, graphs_directory, target_x=max_x, suffix=suffix)
-        plot_time_components_growth(df_combo, graphs_directory, suffix)
+        plot_mutant_time_boxplots(df_mutants, graphs_directory, target_x=max_x, suffix=suffix)
         
     print(f"\nDone! Check the '{graphs_directory}' directory for all generated files.")

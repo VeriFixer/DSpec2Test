@@ -1,8 +1,0 @@
-
-method {:test} Test10() {
-expect -99 != 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Quotient(771902, -99);
-expect r0 == 771902 / -99;
-}
-
-// REPEAT 2 - TIME: 6.8319356 s

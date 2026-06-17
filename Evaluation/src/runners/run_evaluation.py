@@ -27,8 +27,15 @@ from src.mt_eval.execution.parallel_executor import run_parallel_or_seq, shutdow
 from src.mt_eval.execution.safety_check import run_safety_check, SafetyCheckResult
 from src.mt_eval.generators import STRATEGY_REGISTRY, resolve_strategies
 from src.mt_eval.metrics.pipeline_stats import PipelineStats
-from src.mt_eval.paths import get_strategy_combined_dir, get_strategy_results_path
 from src.mt_eval.reporting.comparison import print_comparison_table, write_comparison_json
+from src.mt_eval.paths import (
+    get_strategy_combined_dir, 
+    get_strategy_tests_dir,
+    get_strategy_results_path,
+    get_strategy_tmp_exec_dir,
+    get_strategy_debug_dir,
+    get_strategy_all_dir
+)
 
 logger = get_logger(__name__)
 
@@ -40,7 +47,7 @@ def _get_test_count(dfy_file: Path) -> int:
     pattern = re.compile(r'method\s+\{\s*:test\}\s+([a-zA-Z0-9_]+)')
     return len(set(pattern.findall(content)))
 
-def _split_tests(test_file: Path, total_reps: int, base_tests_dir: Path, fallback_time: float) -> dict[int, tuple[Path, float]]:
+def _split_tests(test_file: Path, total_reps: int, base_tests_dir: Path, fallback_time: float) -> dict[int, tuple[Path, float, bool]]:
     """Parses the generated test file, splits by // REPEAT comments, and creates isolated files per rep."""
     if not test_file.exists():
         return {}
@@ -63,10 +70,22 @@ def _split_tests(test_file: Path, total_reps: int, base_tests_dir: Path, fallbac
             parsed_time = float(match.group(2))
             reps_time[current_rep] = parsed_time
             current_rep = min(parsed_rep + 1, total_reps)
-        
+            
+    last_valid_content = []
+    last_valid_time = avg_fallback
+    
     accumulated_paths = {}
     
     for r in range(1, total_reps + 1):
+        is_forward_filled = False
+        if any(line.strip() for line in reps_content[r]):
+            last_valid_content = reps_content[r]
+            last_valid_time = reps_time[r]
+        else:
+            reps_content[r] = last_valid_content.copy()
+            reps_time[r] = last_valid_time
+            is_forward_filled = True
+            
         rep_time = reps_time[r]
         
         rep_dir = base_tests_dir / f"rep_{r}"
@@ -74,7 +93,8 @@ def _split_tests(test_file: Path, total_reps: int, base_tests_dir: Path, fallbac
         
         out_path = rep_dir / test_file.name
         out_path.write_text("\n".join(reps_content[r]), encoding='utf-8')
-        accumulated_paths[r] = (out_path, rep_time)
+        
+        accumulated_paths[r] = (out_path, rep_time, is_forward_filled)
         
     return accumulated_paths
 
@@ -112,9 +132,13 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
         for strategy in strategies:
             mode = strategy.mode
             # Delete per-strategy combined dir
-            combined = _base / "dataset" / f"selected_programs_mutants_with_tests_{mode}"
+            combined = _base / "dataset_output" / f"selected_programs_mutants_with_tests_{mode}"
             if combined.exists():
                 shutil.rmtree(combined)
+            # Delete per-strategy tests dir
+            tests = _base / "dataset_output" / f"tests_{mode}"
+            if tests.exists():
+                shutil.rmtree(tests)
             # Delete per-strategy results dir
             strategy_results_dir = output_dir / f"results_{mode}"
             if strategy_results_dir.exists():
@@ -159,9 +183,10 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             continue
 
         # 3a. Generate tests for each original
-        tests_dir = SELECTED_PROGRAMS_DIR.parent / f"tests_{strategy.mode}"
-        tests_dir.mkdir(parents=True, exist_ok=True)
+        tests_dir = get_strategy_tests_dir(strategy.mode)
         strategy_combined_dir = get_strategy_combined_dir(strategy.mode)
+        tmp_exec_dir = get_strategy_tmp_exec_dir(strategy_combined_dir)
+        debug_dir = get_strategy_debug_dir(strategy_combined_dir)
 
         def _gen_test(orig: Path) -> tuple[str, Path | None, str, float]:
             test_file = tests_dir / f"{orig.stem}.test.dfy"
@@ -187,13 +212,13 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 test_map[stem] = test_file
 
         # 3b. Split tests (isolate reps into combined dir)
-        split_data: dict[str, dict[int, tuple[Path, float]]] = {}
+        split_data: dict[str, dict[int, tuple[Path, float, bool]]] = {}
         originals_with_tests = [o for o in originals if o.stem in test_map]
         originals_without_tests = [o for o in originals if o.stem not in test_map]
 
         for orig in originals_with_tests:
             total_time = test_gen_time_map.get(orig.stem, 0.0)
-            split_data[orig.stem] = _split_tests(test_map[orig.stem], repeat, strategy_combined_dir, total_time)
+            split_data[orig.stem] = _split_tests(test_map[orig.stem], repeat, tmp_exec_dir, total_time)
 
         # Initialize tracking variables across reps
         supported_originals = originals_with_tests.copy()
@@ -229,17 +254,24 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 orig.stem: split_data.get(orig.stem, {}).get(rep, (None, 0.0))[1]
                 for orig in originals
             }
+
+            rep_debug_dir = debug_dir / f"rep_{rep}"
+            rep_debug_dir.mkdir(parents=True, exist_ok=True)
             
-            strategy_combined_rep_dir = strategy_combined_dir / f"rep_{rep}"
 
             # 3c. Safety check per original using isolated rep tests
+            safety_tasks = [
+                orig for orig in supported_originals
+                if not split_data[orig.stem][rep][2] 
+            ]
+
             def _safety_check(orig: Path) -> tuple[Path, SafetyCheckResult]:
                 rep_test_file = split_data[orig.stem][rep][0]
-                result = run_safety_check(orig, rep_test_file, artifacts_dir=strategy_combined_rep_dir)
+                result = run_safety_check(orig, rep_test_file, artifacts_dir=rep_debug_dir)
                 return (orig, result)
 
             safety_results: list[tuple[Path, SafetyCheckResult]] = run_parallel_or_seq(
-                supported_originals, _safety_check, f"Safety check (Rep {rep})", parallel=parallel,
+                safety_tasks, _safety_check, f"Safety check (Rep {rep})", parallel=parallel,
             )
 
             newly_failed_originals = []
@@ -284,7 +316,11 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             # 3d. Kill check supported mutants
             kill_tasks: list[tuple[Path, Path]] = []
             for orig in supported_originals:
-                rep_test_file = split_data[orig.stem][rep][0]
+                rep_test_file, _, is_forward_filled = split_data[orig.stem][rep]
+
+                if is_forward_filled:
+                    continue
+
                 for mutant in mutant_map.get(orig.stem, []):
                     m_name = mutant.name
                     prev_res = mutant_status_tracker.get(m_name)
@@ -295,7 +331,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
 
             if kill_tasks:
                 checker = KillChecker(
-                    output_dir=strategy_combined_rep_dir,
+                    output_dir=rep_debug_dir,
                     originals_dir=SELECTED_PROGRAMS_DIR,
                 )
 
@@ -470,6 +506,33 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
             results_file.write_text(json.dumps(output_data, indent=2) + "\n")
             print(f"[run_evaluation] Results written to {results_file}")
             all_strategy_results[rep_strategy_key] = output_data
+
+        
+        # --- Step 3.j: Generate the "all" folder for clean artifacts ---
+        print(f"\n[run_evaluation] Generating all supported combined files for {strategy.mode}...")
+        all_dir = get_strategy_all_dir(strategy_combined_dir)
+
+        for orig in originals:
+            full_test_file = test_map.get(orig.stem)
+            if not full_test_file or not full_test_file.exists():
+                continue
+            
+            full_test_content = full_test_file.read_text(encoding='utf-8')
+            
+            for mutant in mutant_map.get(orig.stem, []):
+                if mutant.name not in mutant_status_tracker:
+                    continue
+                
+                mutant_content = mutant.read_text(encoding='utf-8')
+                combined_content = f"{mutant_content}\n\n{full_test_content}"
+                
+                out_path = all_dir / f"{mutant.stem}.test.dfy"
+                out_path.write_text(combined_content, encoding='utf-8')
+
+        # --- Step 3.k: Clean up temporary files ---
+        print(f"[run_evaluation] Cleaning up temporary execution files for {strategy.mode}...")
+        if tmp_exec_dir.exists():
+            shutil.rmtree(tmp_exec_dir)
 
     # --- Step 4: Comparison summary ---
     print_comparison_table(all_strategy_results)

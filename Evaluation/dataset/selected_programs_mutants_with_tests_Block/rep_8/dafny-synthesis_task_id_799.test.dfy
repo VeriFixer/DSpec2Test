@@ -1,8 +1,0 @@
-
-method {:test} Test7() {
-expect 0 <= 7 < 32, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := RotateLeftBits((3758096384 as bv32), 7);
-expect r0 == ((3758096384 as bv32) << 7 as bv6) | ((3758096384 as bv32) >> (32 - 7) as bv6);
-}
-
-// REPEAT 8 - TIME: 7.0704544 s

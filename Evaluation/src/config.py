@@ -47,6 +47,7 @@ CSV_ROOT: Path = BASE_PATH / "dataset" / "csv"
 EXTERNAL_ROOT: Path = BASE_PATH / "external"
 TMP_ROOT: Path = BASE_PATH / "tmp"
 ARTIFACTS_ROOT: Path = TMP_ROOT / "run_artifacts"
+DATASET_OUTPUT_DIR: Path = BASE_PATH / "dataset_output"
 SELECTED_PROGRAMS_DIR: Path = BASE_PATH / "dataset" / "selected_programs"
 SELECTED_PROGRAMS_FORMATTED_DIR: Path = BASE_PATH / "dataset" / "selected_programs_formatted"
 SELECTED_PROGRAMS_MUTANTS_DIR: Path = BASE_PATH / "dataset" / "selected_programs_mutants"
@@ -77,12 +78,12 @@ SAMPLE_COUNT: int = int(os.environ.get("MT_SAMPLE_COUNT", "120"))
 VERIFY_TIMEOUT: int = int(os.environ.get("MT_VERIFY_TIMEOUT", "300"))
 TESTGEN_TIMEOUT: int = int(os.environ.get("MT_TESTGEN_TIMEOUT", "3600"))
 EXECUTION_TIMEOUT: int = int(os.environ.get("MT_EXECUTION_TIMEOUT", "120"))
-MAX_JOBS: int = max(1, int(os.environ.get("MT_MAX_JOBS", str(max(cpu_count() - 1, 1)))))
+MAX_JOBS: int = max(1, int(os.environ.get("MT_MAX_JOBS", str(max(int(cpu_count() / 2), 1)))))
 
 # === Memory Limit for Dafny/Z3 solver (MB) ===
 # Default: 75% of total system RAM. Override with MT_MAX_MEMORY_MB env var.
 _total_ram_mb = psutil.virtual_memory().total // (1024 * 1024)
 DAFNY_MAX_MEMORY_MB: int = int(os.environ.get(
     "MT_MAX_MEMORY_MB",
-    str(int(_total_ram_mb * 0.75)),
+    str(int(_total_ram_mb * 0.75/ MAX_JOBS)),
 ))

@@ -3,16 +3,6 @@ import json
 import statistics
 import pandas as pd
 
-# ==========================================
-# Configuration for Scientific Paper Style
-# ==========================================
-# Note: Since this script purely generates CSV/TeX files, 
-# seaborn/matplotlib styling is removed to keep it lightweight.
-
-# ==========================================
-# Helper Functions
-# ==========================================
-
 def get_max_repetition(base_dir):
     """Dynamically detects the maximum X by scanning the folder structure."""
     max_x = 0
@@ -84,7 +74,6 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
             timing_data = data.get("timing", {}).get("per_program", {})
             test_counts_data = data.get("test_counts", {}).get("per_program", {})
             
-            # 1. Recalculate Time and Test Counts
             for prog in valid_programs:
                 prog_key = prog if prog in timing_data else f"{prog}.dfy"
                 if prog_key in timing_data:
@@ -93,7 +82,6 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
                 if prog_key in test_counts_data:
                     common_test_counts.append(test_counts_data[prog_key])
                     
-            # 2. Recalculate Mutant Statuses and Execution Times
             killed, survived, timeout, error = 0, 0, 0, 0
             for res in data.get("results", []):
                 prog_name = res.get("original_name", "").replace(".dfy", "")
@@ -105,13 +93,11 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
                     elif st == "error" or st == "": error += 1
                     common_execution_time += res.get("execution_time", 0.0)
                     
-            # 3. Final calculations for this X and Strategy
             total_common_mutants = killed + survived + timeout + error
             num_programs = len(valid_programs)
 
             common_kill_rate = (killed + timeout) / total_common_mutants if total_common_mutants > 0 else 0
             
-            # Typical Single Mutant Pipeline Costs
             avg_test_gen_time = common_test_gen_time / num_programs if num_programs > 0 else 0.0
             avg_safety_check_time = common_safety_check_time / num_programs if num_programs > 0 else 0.0
             avg_execution_time = common_execution_time / total_common_mutants if total_common_mutants > 0 else 0.0
@@ -122,7 +108,7 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
             
             records.append({
                 "X": x,
-                "Strategy": strategy,
+                "Strategy": "SpecBva" if strategy == "Spec_bva" else strategy,
                 "Kill Rate": common_kill_rate,
                 "Killed": killed,
                 "Survived": survived,
@@ -152,8 +138,7 @@ def generate_tables(df, out_dir, target_x, suffix=""):
     def save_table(table_df, name):
         table_df.to_csv(os.path.join(tables_dir, f"{name}{suffix}.csv"))
         with open(os.path.join(tables_dir, f"{name}{suffix}.tex"), "w") as f:
-            # Using float_format to ensure standard scientific styling
-            f.write(table_df.to_latex(float_format="%.2f"))
+            f.write(table_df.to_latex(float_format="%.2f", escape=True))
 
     # ---------------------------------------------------------
     # Table 1: Overall Performance Summary at max X
@@ -176,7 +161,7 @@ def generate_tables(df, out_dir, target_x, suffix=""):
     # ---------------------------------------------------------
     table2 = df.pivot(index="Strategy", columns="X", values="Kill Rate")
     table2 = (table2 * 100).round(2)
-    table2.columns = [f"X={col}" for col in table2.columns]
+    table2.columns = [f"Rep={col}" for col in table2.columns]
     save_table(table2, "table_2_kill_rate_progression")
 
     # ---------------------------------------------------------
@@ -184,7 +169,7 @@ def generate_tables(df, out_dir, target_x, suffix=""):
     # ---------------------------------------------------------
     table3 = df.pivot(index="Strategy", columns="X", values="Expected Pipeline Time (s)")
     table3 = table3.round(2)
-    table3.columns = [f"X={col}" for col in table3.columns]
+    table3.columns = [f"Rep={col}" for col in table3.columns]
     save_table(table3, "table_3_time_progression")
 
     # ---------------------------------------------------------
@@ -203,7 +188,7 @@ def generate_tables(df, out_dir, target_x, suffix=""):
     save_table(table5, "table_5_status_evolution")
 
     # ---------------------------------------------------------
-    # NEW Table 6: Time Cost Breakdown per Mutant at Max X
+    # Table 6: Time Cost Breakdown per Mutant at Max X
     # ---------------------------------------------------------
     if not df_max_x.empty:
         time_cols = ["Strategy", "Avg Test Gen Time (s)", "Avg Safety Check Time (s)", "Avg Execution Time (s)"]
@@ -215,12 +200,10 @@ def generate_tables(df, out_dir, target_x, suffix=""):
 if __name__ == "__main__":
     output_directory = "results"
     
-    # Ensure base directory exists before running
     if not os.path.exists(output_directory):
         print(f"Error: Directory '{output_directory}' not found.")
         exit()
 
-    # Detect the max X dynamically
     max_x = get_max_repetition(output_directory)
     print(f"Dynamically detected Maximum Repetition (X) = {max_x}")
 
@@ -228,7 +211,6 @@ if __name__ == "__main__":
         print("No valid repetition files found. Please check your results directory.")
         exit()
 
-    # Define the combinations you want to analyze (mirrors your graph script)
     combinations_to_run = [
         {
             "name": "Block_Spec_SpecBva",

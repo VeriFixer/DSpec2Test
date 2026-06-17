@@ -1,8 +1,0 @@
-
-method {:test} Test1() {
-var r0 := CountCharacters("a");
-expect r0 >= 0;
-expect r0 == |"a"|;
-}
-
-// REPEAT 2 - TIME: 2.8295711 s

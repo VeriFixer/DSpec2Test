@@ -1,8 +1,0 @@
-
-method {:test} Test13() {
-expect 108 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := CenteredHexagonalNumber(108);
-expect r0 == 3 * 108 * (108 - 1) + 1;
-}
-
-// REPEAT 9 - TIME: 10.338879 s

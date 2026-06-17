@@ -1,273 +1,114 @@
-"""Dataset generation runner — sample, verify, mutate, diff.
-
-CLI entry point for generating a mutant dataset from DafnyBench.
-
-Usage:
-    python -m src.runners.generate_dataset [--n-mutants N] [--output-dir DIR] [--sequential]
-"""
-
-import argparse
-import logging
-import shutil
+import csv
 import sys
+import re
+import argparse
 import time
 from pathlib import Path
 
-from src.config import EXTERNAL_ROOT, SAMPLE_COUNT
-from src.mt_eval.core.mutation import apply_mutation, generate_diff
-from src.mt_eval.core.sampler import sample_programs, DEFAULT_SEED
-from src.mt_eval.core.verification import verify_program, filter_verified
+from src.config import CSV_ROOT, EXTERNAL_ROOT, SELECTED_PROGRAMS_DIR
+from src.logging_config import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
-DAFNYBENCH_DIR: Path = EXTERNAL_ROOT / "bench" / "dafnybench"
+KEYWORDS = {"array", "array2", "class", "->", "-->", "~>"}
 
+def filter_and_copy_dafny_programs(csv_name: str):
+    csv_path = Path(CSV_ROOT) / csv_name
+    ground_truth_dir = Path(EXTERNAL_ROOT) / "bench" / "dafnybench" / "DafnyBench" / "dataset" / "ground_truth"
+    
+    if not csv_path.exists():
+        logger.error(f"CSV file not found at {csv_path}")
+        return
 
-# --- ANSI Colors ---
-class C:
-    BOLD = "\033[1m"
-    GREEN = "\033[32m"
-    RED = "\033[31m"
-    YELLOW = "\033[33m"
-    CYAN = "\033[36m"
-    DIM = "\033[2m"
-    RESET = "\033[0m"
+    SELECTED_PROGRAMS_DIR.mkdir(parents=True, exist_ok=True)
 
+    total_csv_files = 0
+    dafnybench_files = 0
+    methods_files = 0
+    copied_files = 0
 
-def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
-    """Parse CLI arguments."""
-    parser = argparse.ArgumentParser(
-        description="Generate a mutant dataset from DafnyBench."
-    )
-    parser.add_argument(
-        "--n-programs",
-        type=int,
-        default=SAMPLE_COUNT,
-        help=f"Number of programs to sample from DafnyBench (default: {SAMPLE_COUNT})",
-    )
-    parser.add_argument(
-        "--n-mutants-per-program",
-        type=int,
-        default=1,
-        help="Number of mutants to generate per program (default: 1)",
-    )
-    parser.add_argument(
-        "--output-dir",
-        type=str,
-        default=None,
-        help="Output directory for the dataset",
-    )
-    parser.add_argument(
-        "--sequential",
-        action="store_true",
-        default=False,
-        help="Run in sequential mode with per-file debug info",
-    )
-    parser.add_argument(
-        "--seed",
-        type=int,
-        default=DEFAULT_SEED,
-        help=f"RNG seed for reproducible sampling (default: {DEFAULT_SEED})",
-    )
-    args = parser.parse_args(argv)
-    return args
+    keyword_patterns = [re.compile(rf'\b{re.escape(kw)}\b') for kw in KEYWORDS]
+    method_pattern = re.compile(r'\bmethod\b')
 
+    logger.info(f"Starting to process {csv_name}...")
+    
+    with open(csv_path, mode='r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        
+        for row in reader:
+            total_csv_files += 1
+            benchmark_name = row.get("benchmark_name", "").strip()
+            program_name = row.get("program_name", "").strip()
 
-def run_pipeline(n_programs: int, n_mutants_per_program: int, output_dir: Path,
-                 sequential: bool, seed: int = DEFAULT_SEED) -> int:
-    """Execute the dataset generation pipeline.
+            if benchmark_name == "DafnyBench":
+                dafnybench_files += 1
 
-    Returns 0 on success, 1 on critical failure.
-    """
-    parallel = not sequential
-    t_start = time.time()
+                matched_files = list(ground_truth_dir.glob(f"{program_name}.dfy"))
+                
+                if not matched_files:
+                    logger.warning(f"Source file for '{program_name}' not found in ground_truth dir.")
+                    continue
 
-    # --- Step 1: Sample programs ---
-    if sequential:
-        print(f"[generate_dataset] Sampling {n_programs} programs from DafnyBench (seed={seed})...")
-    logger.info("Sampling %d programs from %s (seed=%d)", n_programs, DAFNYBENCH_DIR, seed)
+                src_file = matched_files[0] 
 
-    sampled = sample_programs(DAFNYBENCH_DIR, n_programs, seed=seed)
-    if not sampled:
-        logger.error("No programs sampled — aborting.")
-        return 1
+                try:
+                    with open(src_file, 'r', encoding='utf-8') as src_f:
+                        content = src_f.read()
 
-    if sequential:
-        print(f"[generate_dataset] Sampled {len(sampled)} programs")
+                    has_method = bool(method_pattern.search(content))
 
-    # --- Step 2: Filter verified originals ---
-    if sequential:
-        print("[generate_dataset] Verifying originals...")
-    logger.info("Verifying %d originals", len(sampled))
+                    if not has_method:
+                        continue
 
-    verified, pass_count, fail_count = filter_verified(sampled, parallel=parallel)
+                    methods_files += 1
 
-    if sequential:
-        print(
-            f"[generate_dataset] Verification: {pass_count} passed, {fail_count} failed"
-        )
-    logger.info("Verification: %d passed, %d failed", pass_count, fail_count)
+                    contains_keyword = any(pattern.search(content) for pattern in keyword_patterns)
 
-    if not verified:
-        logger.error("No programs passed verification — aborting.")
-        return 1
+                    if not contains_keyword:
 
-    # --- Step 3: Prepare output dirs ---
-    original_dir = output_dir / "original"
-    killed_dir = output_dir / "killed"
-    original_dir.mkdir(parents=True, exist_ok=True)
-    killed_dir.mkdir(parents=True, exist_ok=True)
+                        dest_file = SELECTED_PROGRAMS_DIR / src_file.name
 
-    # --- Step 4: Mutate and verify mutants (parallel or sequential) ---
-    def _mutate_and_check(orig_file: Path) -> tuple[Path, list[Path]]:
-        """Apply mutation(s) and verify mutants fail. Returns (orig, [valid_mutant_paths])."""
-        stem = orig_file.stem
-        mutant_work_dir = output_dir / "_tmp_mutants" / stem
-        mutant_paths = apply_mutation(orig_file, mutant_work_dir, max_mutants=n_mutants_per_program)
+                        modified_content = re.sub(r'\bmethod\b', 'method {:testEntry}', content)
 
-        if not mutant_paths:
-            logger.warning("Mutation failed for %s", orig_file.name)
-            return (orig_file, [])
+                        with open(dest_file, 'w', encoding='utf-8') as dest_f:
+                            dest_f.write(modified_content)
 
-        # Filter: keep only mutants that FAIL verification (actually buggy)
-        valid = []
-        for mp in mutant_paths:
-            if not verify_program(mp):
-                valid.append(mp)
-            else:
-                logger.info("Mutant still verifies for %s — not a real bug", mp.name)
+                        copied_files += 1
 
-        return (orig_file, valid)
+                except Exception as e:
+                    logger.error(f"Error reading or copying {src_file.name}: {e}")
 
-    from src.mt_eval.execution.parallel_executor import run_parallel_or_seq
-
-    mutation_results: list[tuple[Path, list[Path]]] = run_parallel_or_seq(
-        verified, _mutate_and_check, "Mutating & checking", parallel=parallel
-    )
-
-    # --- Step 5: Collect valid mutants ---
-    valid_count = 0
-    skip_count = 0
-    generated_paths: list[Path] = []
-
-    for orig_file, mutant_paths in mutation_results:
-        if not mutant_paths:
-            skip_count += 1
-            if sequential:
-                print(f"[generate_dataset]   Skipped {orig_file.name}")
-            continue
-
-        if sequential:
-            print(f"[generate_dataset]   {len(mutant_paths)} mutant(s) confirmed buggy for {orig_file.name}")
-
-        # Copy original
-        shutil.copy2(orig_file, original_dir / orig_file.name)
-
-        # Copy mutants
-        for mutant_path in mutant_paths:
-            mutant_dest = killed_dir / mutant_path.name
-            shutil.copy2(mutant_path, mutant_dest)
-
-            # Generate diff
-            diff_path = killed_dir / (mutant_path.stem + ".txt")
-            generate_diff(orig_file, mutant_path, diff_path)
-
-            generated_paths.append(mutant_dest)
-            valid_count += 1
-
-    # --- Step 6: Cleanup temp dir ---
-    tmp_mutants = output_dir / "_tmp_mutants"
-    if tmp_mutants.exists():
-        shutil.rmtree(tmp_mutants)
-
-    t_elapsed = time.time() - t_start
-
-    # --- Step 7: Summary ---
-    _print_summary(
-        n_sampled=len(sampled),
-        n_verified=len(verified),
-        n_failed_verify=fail_count,
-        n_valid_mutants=valid_count,
-        n_skipped=skip_count,
-        generated_paths=generated_paths,
-        output_dir=output_dir,
-        elapsed=t_elapsed,
-        seed=seed,
-    )
-
-    logger.info("Dataset complete: %d valid, %d skipped", valid_count, skip_count)
-
-    if valid_count == 0:
-        logger.error("No valid mutants produced — aborting.")
-        return 1
-
+    logger.info("=== Execution Summary ===")
+    logger.info(f"Total files in CSV:           {total_csv_files}")
+    logger.info(f"Files from DafnyBench:        {dafnybench_files}")
+    logger.info(f"Files with methods:           {methods_files}")
+    logger.info(f"Files copied (no keywords):   {copied_files}")
+    logger.info("=========================")
     return 0
 
 
-def _print_summary(
-    n_sampled: int,
-    n_verified: int,
-    n_failed_verify: int,
-    n_valid_mutants: int,
-    n_skipped: int,
-    generated_paths: list[Path],
-    output_dir: Path,
-    elapsed: float,
-    seed: int,
-) -> None:
-    """Print colored summary to stdout."""
-    mins, secs = divmod(int(elapsed), 60)
-
-    print()
-    print(f"{C.BOLD}{'═' * 60}{C.RESET}")
-    print(f"{C.BOLD}{C.CYAN}  DATASET GENERATION SUMMARY{C.RESET}")
-    print(f"{C.BOLD}{'═' * 60}{C.RESET}")
-    print()
-    print(f"  {C.BOLD}Sampling{C.RESET}")
-    print(f"    Programs sampled:      {C.CYAN}{n_sampled}{C.RESET}")
-    print(f"    Seed:                  {C.DIM}{seed}{C.RESET}")
-    print()
-    print(f"  {C.BOLD}Verification (originals){C.RESET}")
-    print(f"    Passed:                {C.GREEN}{n_verified}{C.RESET}")
-    print(f"    Failed:                {C.RED}{n_failed_verify}{C.RESET}")
-    print()
-    print(f"  {C.BOLD}Mutation{C.RESET}")
-    print(f"    Valid mutants:         {C.GREEN}{n_valid_mutants}{C.RESET}")
-    print(f"    Skipped:               {C.YELLOW}{n_skipped}{C.RESET}")
-    yield_pct = (n_valid_mutants / n_verified * 100) if n_verified else 0
-    print(f"    Yield:                 {C.BOLD}{yield_pct:.1f}%{C.RESET}")
-    print()
-    print(f"  {C.BOLD}Output{C.RESET}")
-    print(f"    Directory:             {C.DIM}{output_dir}{C.RESET}")
-    print(f"    Time:                  {mins}m {secs}s")
-    print()
-
-    if generated_paths:
-        print(f"  {C.BOLD}Generated mutants:{C.RESET}")
-        for p in generated_paths:
-            print(f"    {C.GREEN}✓{C.RESET} {p}")
-    else:
-        print(f"  {C.RED}No mutants generated.{C.RESET}")
-
-    print()
-    print(f"{C.BOLD}{'═' * 60}{C.RESET}")
-    print()
-
-
-def main(argv: list[str] | None = None) -> None:
-    """Entry point."""
-    args = parse_args(argv)
-
-    output_dir = Path(args.output_dir) if args.output_dir else Path("dataset_output")
-
-    exit_code = run_pipeline(
-        n_programs=args.n_programs,
-        n_mutants_per_program=args.n_mutants_per_program,
-        output_dir=output_dir,
-        sequential=args.sequential,
-        seed=args.seed,
+def parse_args(argv=None):
+    """Parse CLI arguments for dataset filtering."""
+    parser = argparse.ArgumentParser(description="Filter and copy Dafny programs.")
+    parser.add_argument(
+        "--file", 
+        required=True, 
+        help="The name of the CSV file (located in CSV_ROOT) to process."
     )
-    sys.exit(exit_code)
+    return parser.parse_args(argv)
+
+
+def main(argv=None):
+    start_time = time.time()
+
+    args = parse_args(argv)
+    
+    r = filter_and_copy_dafny_programs(args.file)
+
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    logger.info(f"Total execution time: {elapsed_time:.4f} seconds")
+    sys.exit(r)
 
 
 if __name__ == "__main__":

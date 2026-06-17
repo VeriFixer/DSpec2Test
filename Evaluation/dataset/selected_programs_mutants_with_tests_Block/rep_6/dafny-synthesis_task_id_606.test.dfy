@@ -1,7 +1,0 @@
-
-method {:test} Test5() {
-var r0 := DegreesToRadians(5.0);
-expect r0 == 5.0 * 3.14159265358979323846 / 180.0;
-}
-
-// REPEAT 6 - TIME: 5.3549237 s
