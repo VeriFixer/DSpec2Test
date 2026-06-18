@@ -17,14 +17,14 @@ method {:testEntry} IsDecimalWithTwoPrecision(s: string) returns (result: bool)
 }
 
 method {:test} Test8() {
-var r0 := IsDecimalWithTwoPrecision("\U{0004}a\0aaaaaaaaaaa\U{0002}");
-expect r0 ==> exists i :: 0 <= i < |"\U{0004}a\0aaaaaaaaaaa\U{0002}"| && "\U{0004}a\0aaaaaaaaaaa\U{0002}"[i] == '.' && |"\U{0004}a\0aaaaaaaaaaa\U{0002}"| - i - 1 == 2;
-expect !r0 ==> !exists i :: 0 <= i < |"\U{0004}a\0aaaaaaaaaaa\U{0002}"| && "\U{0004}a\0aaaaaaaaaaa\U{0002}"[i] == '.' && |"\U{0004}a\0aaaaaaaaaaa\U{0002}"| - i - 1 == 2;
+var r0 := IsDecimalWithTwoPrecision("aa\0\U{0004}\U{0002}");
+expect r0 ==> exists i :: 0 <= i < |"aa\0\U{0004}\U{0002}"| && "aa\0\U{0004}\U{0002}"[i] == '.' && |"aa\0\U{0004}\U{0002}"| - i - 1 == 2;
+expect !r0 ==> !exists i :: 0 <= i < |"aa\0\U{0004}\U{0002}"| && "aa\0\U{0004}\U{0002}"[i] == '.' && |"aa\0\U{0004}\U{0002}"| - i - 1 == 2;
 }
 method {:test} Test9() {
-var r0 := IsDecimalWithTwoPrecision("aaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0002}\U{0004}");
-expect r0 ==> exists i :: 0 <= i < |"aaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0002}\U{0004}"| && "aaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0002}\U{0004}"[i] == '.' && |"aaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0002}\U{0004}"| - i - 1 == 2;
-expect !r0 ==> !exists i :: 0 <= i < |"aaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0002}\U{0004}"| && "aaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0002}\U{0004}"[i] == '.' && |"aaaaaaaaa\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.\U{0002}\U{0004}"| - i - 1 == 2;
+var r0 := IsDecimalWithTwoPrecision("\U{0003}aaaaaaaaaaaa\U{0005}\U{0001}aaaaa.\U{0007}\t");
+expect r0 ==> exists i :: 0 <= i < |"\U{0003}aaaaaaaaaaaa\U{0005}\U{0001}aaaaa.\U{0007}\t"| && "\U{0003}aaaaaaaaaaaa\U{0005}\U{0001}aaaaa.\U{0007}\t"[i] == '.' && |"\U{0003}aaaaaaaaaaaa\U{0005}\U{0001}aaaaa.\U{0007}\t"| - i - 1 == 2;
+expect !r0 ==> !exists i :: 0 <= i < |"\U{0003}aaaaaaaaaaaa\U{0005}\U{0001}aaaaa.\U{0007}\t"| && "\U{0003}aaaaaaaaaaaa\U{0005}\U{0001}aaaaa.\U{0007}\t"[i] == '.' && |"\U{0003}aaaaaaaaaaaa\U{0005}\U{0001}aaaaa.\U{0007}\t"| - i - 1 == 2;
 }
 
-// REPEAT 5 - TIME: 8.7500792 s
+// REPEAT 5 - TIME: 9.0569913 s

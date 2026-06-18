@@ -23,4 +23,4 @@ var r0, r1 := Quotient(4, 5);
 expect r1 * 5 + r0 == 4 && 0 <= r0 < 5 && 0 <= r1;
 }
 
-// REPEAT 5 - TIME: 6.7066079 s
+// REPEAT 5 - TIME: 6.8386196 s

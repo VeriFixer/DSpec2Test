@@ -22,4 +22,4 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 1 - TIME: 12.9106245 s
+// REPEAT 1 - TIME: 20.9091232 s

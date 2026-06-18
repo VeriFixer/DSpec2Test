@@ -30,16 +30,16 @@ method {:testEntry} has_close_elements(numbers: seq<real>, threshold: real) retu
 }
 
 method {:test} Test8() {
-var seqreal0 : seq<real> := [7629.0, 7578.0, 2379.0, 2211.0, 0.0, 0.0, 1108.0, 582.0, 0.0, 7065.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
-var r0 := has_close_elements(seqreal0, 10541.0);
-expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && abs(seqreal0[i] - seqreal0[j]) < 10541.0;
+var seqreal0 : seq<real> := [2112.0, 4135.0, 1102.0, -(213.0 / 2.0), 2331.0, 9263.0, 6926.0, 1650.0];
+var r0 := has_close_elements(seqreal0, 31545.0/2.0);
+expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && abs(seqreal0[i] - seqreal0[j]) < 31545.0/2.0;
 expect r0 ==> |seqreal0| > 1;
 }
 method {:test} Test9() {
-var seqreal0 : seq<real> := [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 55955.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 44932.0, 33909.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 22886.0, 11863.0, 840.0, 0.0];
-var r0 := has_close_elements(seqreal0, 11023.0);
-expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && abs(seqreal0[i] - seqreal0[j]) < 11023.0;
+var seqreal0 : seq<real> := [-(74142321440551800878713251850257.0 / 3906250000000000000000000000.0), 42445992621498379244249133467.0 / 1953125000000000000000000.0, 8221.0, -(52168925356381991101589081861221.0 / 9765625000000000000000000000.0), -(718220321630506779039235757643727.0 / 19531250000000000000000000000.0), -(1013287629808254553684905256036169.0 / 19531250000000000000000000000.0)];
+var r0 := has_close_elements(seqreal0, 131420372838873887322834749196221.0/9765625000000000000000000000.0);
+expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && abs(seqreal0[i] - seqreal0[j]) < 131420372838873887322834749196221.0/9765625000000000000000000000.0;
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 5 - TIME: 8.9881474 s
+// REPEAT 5 - TIME: 8.7428705 s

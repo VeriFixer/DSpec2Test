@@ -30,7 +30,7 @@ method {:testEntry} has_close_elements(numbers: seq<real>, threshold: real) retu
 }
 
 method {:test} Test2() {
-var seqreal0 : seq<real> := [8098.0, 1796.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2195613.0 / 1000.0];
+var seqreal0 : seq<real> := [8098.0, 1796.0, 0.0, 2195613.0 / 1000.0];
 var r0 := has_close_elements(seqreal0, 2440.0);
 expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && abs(seqreal0[i] - seqreal0[j]) < 2440.0;
 expect r0 ==> |seqreal0| > 1;
@@ -42,4 +42,4 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 2 - TIME: 4.1662992 s
+// REPEAT 2 - TIME: 4.439968 s

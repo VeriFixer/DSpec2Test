@@ -41,4 +41,4 @@ method {:test} Test7() {
 var r0 := problem5(1809);
 }
 
-// REPEAT 8 - TIME: 42.5481798 s
+// REPEAT 8 - TIME: 37.1398784 s

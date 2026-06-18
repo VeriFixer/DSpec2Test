@@ -57,4 +57,4 @@ expect |r0| == |""|;
 expect forall i :: 0 <= i < |""| ==> if IsLowerCase(""[i]) then IsLowerUpperPair(""[i], r0[i]) else if IsUpperCase(""[i]) then IsUpperLowerPair(""[i], r0[i]) else r0[i] == ""[i];
 }
 
-// REPEAT 1 - TIME: 3.5082851 s
+// REPEAT 1 - TIME: 3.7006212 s

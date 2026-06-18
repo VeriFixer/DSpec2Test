@@ -34,4 +34,4 @@ expect forall l :: l in seqseqint0 ==> |l| <= |r0|;
 expect r0 in seqseqint0;
 }
 
-// REPEAT 9 - TIME: 9.7545602 s
+// REPEAT 9 - TIME: 9.7911351 s

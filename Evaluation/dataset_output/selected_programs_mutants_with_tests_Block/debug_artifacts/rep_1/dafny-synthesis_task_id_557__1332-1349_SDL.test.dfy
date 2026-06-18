@@ -63,4 +63,4 @@ expect |r0| == |"a`"|;
 expect forall i :: 0 <= i < |"a`"| ==> if IsLowerCase("a`"[i]) then IsLowerUpperPair("a`"[i], r0[i]) else if IsUpperCase("a`"[i]) then IsUpperLowerPair("a`"[i], r0[i]) else r0[i] == "a`"[i];
 }
 
-// REPEAT 1 - TIME: 5.4057073 s
+// REPEAT 1 - TIME: 5.840807 s

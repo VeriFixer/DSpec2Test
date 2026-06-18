@@ -22,9 +22,9 @@ expect r0 ==> exists i :: 0 <= i < |"\U{0002}\0"| && "\U{0002}\0"[i] == '.' && |
 expect !r0 ==> !exists i :: 0 <= i < |"\U{0002}\0"| && "\U{0002}\0"[i] == '.' && |"\U{0002}\0"| - i - 1 == 2;
 }
 method {:test} Test7() {
-var r0 := IsDecimalWithTwoPrecision(".\U{0001}\U{0003}");
-expect r0 ==> exists i :: 0 <= i < |".\U{0001}\U{0003}"| && ".\U{0001}\U{0003}"[i] == '.' && |".\U{0001}\U{0003}"| - i - 1 == 2;
-expect !r0 ==> !exists i :: 0 <= i < |".\U{0001}\U{0003}"| && ".\U{0001}\U{0003}"[i] == '.' && |".\U{0001}\U{0003}"| - i - 1 == 2;
+var r0 := IsDecimalWithTwoPrecision("\U{0001}aaa\U{0003}aaaaaaaaaaaa.aa");
+expect r0 ==> exists i :: 0 <= i < |"\U{0001}aaa\U{0003}aaaaaaaaaaaa.aa"| && "\U{0001}aaa\U{0003}aaaaaaaaaaaa.aa"[i] == '.' && |"\U{0001}aaa\U{0003}aaaaaaaaaaaa.aa"| - i - 1 == 2;
+expect !r0 ==> !exists i :: 0 <= i < |"\U{0001}aaa\U{0003}aaaaaaaaaaaa.aa"| && "\U{0001}aaa\U{0003}aaaaaaaaaaaa.aa"[i] == '.' && |"\U{0001}aaa\U{0003}aaaaaaaaaaaa.aa"| - i - 1 == 2;
 }
 
-// REPEAT 4 - TIME: 7.5535103 s
+// REPEAT 4 - TIME: 7.7371708 s

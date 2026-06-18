@@ -19,4 +19,4 @@ var r0 := M(100);
 expect r0 == 7;
 }
 
-// REPEAT 1 - TIME: 5.0966157 s
+// REPEAT 1 - TIME: 4.508053 s

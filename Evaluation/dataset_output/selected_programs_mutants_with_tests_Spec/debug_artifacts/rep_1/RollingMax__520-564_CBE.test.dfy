@@ -40,7 +40,7 @@ method {:testEntry} RollingMax(numbers: seq<int>) returns (result: seq<int>)
 }
 
 method {:test} Test0() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1236];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 1236];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := max(seqint0);
 expect isMax(r0, seqint0);
@@ -53,4 +53,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 1 - TIME: 6.1443385 s
+// REPEAT 1 - TIME: 5.9674869 s

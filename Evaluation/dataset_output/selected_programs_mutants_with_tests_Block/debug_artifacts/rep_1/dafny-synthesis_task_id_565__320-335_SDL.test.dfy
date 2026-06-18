@@ -19,4 +19,4 @@ expect |r0| == |"\0"|;
 expect forall i :: 0 <= i < |"\0"| ==> r0[i] == "\0"[i];
 }
 
-// REPEAT 1 - TIME: 2.481627 s
+// REPEAT 1 - TIME: 2.6214945 s

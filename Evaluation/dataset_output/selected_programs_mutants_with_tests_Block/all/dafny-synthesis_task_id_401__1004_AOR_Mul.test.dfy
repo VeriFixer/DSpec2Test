@@ -69,7 +69,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 1 - TIME: 3.1988247 s
+// REPEAT 1 - TIME: 3.3945466 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [0, 0];
@@ -87,7 +87,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 2 - TIME: 4.5889904 s
+// REPEAT 2 - TIME: 5.3454766 s
 
 method {:test} Test4() {
 var seqint0 : seq<int> := [0, 0, 0];
@@ -107,14 +107,14 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 3 - TIME: 6.0504183 s
+// REPEAT 3 - TIME: 6.8089411 s
 
 method {:test} Test6() {
 var seqint0 : seq<int> := [0, 0, 0, 0];
 var seqint1 : seq<int> := [0, 0];
 var seqint2 : seq<int> := [0];
 var seqint3 : seq<int> := [];
-var seqint4 : seq<int> := [0];
+var seqint4 : seq<int> := [];
 var seqint5 : seq<int> := [];
 var seqint6 : seq<int> := [];
 var seqint7 : seq<int> := [];
@@ -124,13 +124,12 @@ var seqint10 : seq<int> := [];
 var seqint11 : seq<int> := [];
 var seqint12 : seq<int> := [];
 var seqint13 : seq<int> := [];
-var seqint14 : seq<int> := [0];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14];
-var seqint15 : seq<int> := [0, 0, 0, 0];
-var seqint16 : seq<int> := [0, 0];
-var seqint17 : seq<int> := [0];
+var seqint14 : seq<int> := [];
+var seqint15 : seq<int> := [0];
+var seqint16 : seq<int> := [];
+var seqint17 : seq<int> := [];
 var seqint18 : seq<int> := [];
-var seqint19 : seq<int> := [0];
+var seqint19 : seq<int> := [];
 var seqint20 : seq<int> := [];
 var seqint21 : seq<int> := [];
 var seqint22 : seq<int> := [];
@@ -138,10 +137,37 @@ var seqint23 : seq<int> := [];
 var seqint24 : seq<int> := [];
 var seqint25 : seq<int> := [];
 var seqint26 : seq<int> := [];
-var seqint27 : seq<int> := [];
-var seqint28 : seq<int> := [];
-var seqint29 : seq<int> := [0];
-var seqseqint1 : seq<seq<int>> := [seqint15, seqint16, seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29];
+var seqint27 : seq<int> := [0];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27];
+var seqint28 : seq<int> := [0, 0, 0, 0];
+var seqint29 : seq<int> := [0, 0];
+var seqint30 : seq<int> := [0];
+var seqint31 : seq<int> := [];
+var seqint32 : seq<int> := [];
+var seqint33 : seq<int> := [];
+var seqint34 : seq<int> := [];
+var seqint35 : seq<int> := [];
+var seqint36 : seq<int> := [];
+var seqint37 : seq<int> := [];
+var seqint38 : seq<int> := [];
+var seqint39 : seq<int> := [];
+var seqint40 : seq<int> := [];
+var seqint41 : seq<int> := [];
+var seqint42 : seq<int> := [];
+var seqint43 : seq<int> := [0];
+var seqint44 : seq<int> := [];
+var seqint45 : seq<int> := [];
+var seqint46 : seq<int> := [];
+var seqint47 : seq<int> := [];
+var seqint48 : seq<int> := [];
+var seqint49 : seq<int> := [];
+var seqint50 : seq<int> := [];
+var seqint51 : seq<int> := [];
+var seqint52 : seq<int> := [];
+var seqint53 : seq<int> := [];
+var seqint54 : seq<int> := [];
+var seqint55 : seq<int> := [0];
+var seqseqint1 : seq<seq<int>> := [seqint28, seqint29, seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37, seqint38, seqint39, seqint40, seqint41, seqint42, seqint43, seqint44, seqint45, seqint46, seqint47, seqint48, seqint49, seqint50, seqint51, seqint52, seqint53, seqint54, seqint55];
 expect |seqseqint0| > 0 && |seqseqint1| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect |seqseqint0| == |seqseqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint1[i]|, "If this check fails at runtime, the test does not meet the preconditions";
@@ -170,14 +196,14 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 4 - TIME: 7.4824927 s
+// REPEAT 4 - TIME: 8.1416862 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0];
 var seqint1 : seq<int> := [0, 0, 0];
 var seqint2 : seq<int> := [0, 0];
 var seqint3 : seq<int> := [0];
-var seqint4 : seq<int> := [];
+var seqint4 : seq<int> := [0];
 var seqint5 : seq<int> := [0];
 var seqint6 : seq<int> := [0];
 var seqint7 : seq<int> := [0];
@@ -187,26 +213,52 @@ var seqint10 : seq<int> := [0];
 var seqint11 : seq<int> := [0];
 var seqint12 : seq<int> := [0];
 var seqint13 : seq<int> := [0];
-var seqint14 : seq<int> := [];
+var seqint14 : seq<int> := [0];
 var seqint15 : seq<int> := [];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15];
-var seqint16 : seq<int> := [0, 0, 0, 0, 0];
-var seqint17 : seq<int> := [0, 0, 0];
-var seqint18 : seq<int> := [0, 0];
+var seqint16 : seq<int> := [0];
+var seqint17 : seq<int> := [0];
+var seqint18 : seq<int> := [0];
 var seqint19 : seq<int> := [0];
-var seqint20 : seq<int> := [];
+var seqint20 : seq<int> := [0];
 var seqint21 : seq<int> := [0];
 var seqint22 : seq<int> := [0];
 var seqint23 : seq<int> := [0];
 var seqint24 : seq<int> := [0];
 var seqint25 : seq<int> := [0];
 var seqint26 : seq<int> := [0];
-var seqint27 : seq<int> := [0];
-var seqint28 : seq<int> := [0];
-var seqint29 : seq<int> := [0];
-var seqint30 : seq<int> := [];
-var seqint31 : seq<int> := [];
-var seqseqint1 : seq<seq<int>> := [seqint16, seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29, seqint30, seqint31];
+var seqint27 : seq<int> := [];
+var seqint28 : seq<int> := [];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28];
+var seqint29 : seq<int> := [0, 0, 0, 0, 0];
+var seqint30 : seq<int> := [0, 0, 0];
+var seqint31 : seq<int> := [0, 0];
+var seqint32 : seq<int> := [0];
+var seqint33 : seq<int> := [0];
+var seqint34 : seq<int> := [0];
+var seqint35 : seq<int> := [0];
+var seqint36 : seq<int> := [0];
+var seqint37 : seq<int> := [0];
+var seqint38 : seq<int> := [0];
+var seqint39 : seq<int> := [0];
+var seqint40 : seq<int> := [0];
+var seqint41 : seq<int> := [0];
+var seqint42 : seq<int> := [0];
+var seqint43 : seq<int> := [0];
+var seqint44 : seq<int> := [];
+var seqint45 : seq<int> := [0];
+var seqint46 : seq<int> := [0];
+var seqint47 : seq<int> := [0];
+var seqint48 : seq<int> := [0];
+var seqint49 : seq<int> := [0];
+var seqint50 : seq<int> := [0];
+var seqint51 : seq<int> := [0];
+var seqint52 : seq<int> := [0];
+var seqint53 : seq<int> := [0];
+var seqint54 : seq<int> := [0];
+var seqint55 : seq<int> := [0];
+var seqint56 : seq<int> := [];
+var seqint57 : seq<int> := [];
+var seqseqint1 : seq<seq<int>> := [seqint29, seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37, seqint38, seqint39, seqint40, seqint41, seqint42, seqint43, seqint44, seqint45, seqint46, seqint47, seqint48, seqint49, seqint50, seqint51, seqint52, seqint53, seqint54, seqint55, seqint56, seqint57];
 expect |seqseqint0| > 0 && |seqseqint1| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect |seqseqint0| == |seqseqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint1[i]|, "If this check fails at runtime, the test does not meet the preconditions";
@@ -216,7 +268,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 5 - TIME: 9.0352053 s
+// REPEAT 5 - TIME: 9.8907726 s
 
 method {:test} Test10() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0];
@@ -234,12 +286,11 @@ var seqint11 : seq<int> := [0, 0];
 var seqint12 : seq<int> := [0, 0];
 var seqint13 : seq<int> := [0, 0];
 var seqint14 : seq<int> := [0, 0];
-var seqint15 : seq<int> := [0];
-var seqint16 : seq<int> := [];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16];
-var seqint17 : seq<int> := [0, 0, 0, 0, 0, 0];
-var seqint18 : seq<int> := [0, 0, 0, 0];
-var seqint19 : seq<int> := [0, 0, 0];
+var seqint15 : seq<int> := [0, 0];
+var seqint16 : seq<int> := [0, 0];
+var seqint17 : seq<int> := [0, 0];
+var seqint18 : seq<int> := [0, 0];
+var seqint19 : seq<int> := [0, 0];
 var seqint20 : seq<int> := [0, 0];
 var seqint21 : seq<int> := [0, 0];
 var seqint22 : seq<int> := [0, 0];
@@ -248,13 +299,40 @@ var seqint24 : seq<int> := [0, 0];
 var seqint25 : seq<int> := [0, 0];
 var seqint26 : seq<int> := [0, 0];
 var seqint27 : seq<int> := [0, 0];
-var seqint28 : seq<int> := [0, 0];
-var seqint29 : seq<int> := [0, 0];
-var seqint30 : seq<int> := [0, 0];
-var seqint31 : seq<int> := [0, 0];
-var seqint32 : seq<int> := [0];
-var seqint33 : seq<int> := [];
-var seqseqint1 : seq<seq<int>> := [seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29, seqint30, seqint31, seqint32, seqint33];
+var seqint28 : seq<int> := [0];
+var seqint29 : seq<int> := [];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29];
+var seqint30 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint31 : seq<int> := [0, 0, 0, 0];
+var seqint32 : seq<int> := [0, 0, 0];
+var seqint33 : seq<int> := [0, 0];
+var seqint34 : seq<int> := [0, 0];
+var seqint35 : seq<int> := [0, 0];
+var seqint36 : seq<int> := [0, 0];
+var seqint37 : seq<int> := [0, 0];
+var seqint38 : seq<int> := [0, 0];
+var seqint39 : seq<int> := [0, 0];
+var seqint40 : seq<int> := [0, 0];
+var seqint41 : seq<int> := [0, 0];
+var seqint42 : seq<int> := [0, 0];
+var seqint43 : seq<int> := [0, 0];
+var seqint44 : seq<int> := [0, 0];
+var seqint45 : seq<int> := [0, 0];
+var seqint46 : seq<int> := [0, 0];
+var seqint47 : seq<int> := [0, 0];
+var seqint48 : seq<int> := [0, 0];
+var seqint49 : seq<int> := [0, 0];
+var seqint50 : seq<int> := [0, 0];
+var seqint51 : seq<int> := [0, 0];
+var seqint52 : seq<int> := [0, 0];
+var seqint53 : seq<int> := [0, 0];
+var seqint54 : seq<int> := [0, 0];
+var seqint55 : seq<int> := [0, 0];
+var seqint56 : seq<int> := [0, 0];
+var seqint57 : seq<int> := [0, 0];
+var seqint58 : seq<int> := [0];
+var seqint59 : seq<int> := [];
+var seqseqint1 : seq<seq<int>> := [seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37, seqint38, seqint39, seqint40, seqint41, seqint42, seqint43, seqint44, seqint45, seqint46, seqint47, seqint48, seqint49, seqint50, seqint51, seqint52, seqint53, seqint54, seqint55, seqint56, seqint57, seqint58, seqint59];
 expect |seqseqint0| > 0 && |seqseqint1| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect |seqseqint0| == |seqseqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint1[i]|, "If this check fails at runtime, the test does not meet the preconditions";
@@ -264,7 +342,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 6 - TIME: 10.9099802 s
+// REPEAT 6 - TIME: 12.5833687 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
@@ -282,13 +360,12 @@ var seqint11 : seq<int> := [0, 0, 0];
 var seqint12 : seq<int> := [0, 0, 0];
 var seqint13 : seq<int> := [0, 0, 0];
 var seqint14 : seq<int> := [0, 0, 0];
-var seqint15 : seq<int> := [0, 0];
-var seqint16 : seq<int> := [0];
-var seqint17 : seq<int> := [];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17];
-var seqint18 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
-var seqint19 : seq<int> := [0, 0, 0, 0, 0];
-var seqint20 : seq<int> := [0, 0, 0, 0];
+var seqint15 : seq<int> := [0, 0, 0];
+var seqint16 : seq<int> := [0, 0, 0];
+var seqint17 : seq<int> := [0, 0, 0];
+var seqint18 : seq<int> := [0, 0, 0];
+var seqint19 : seq<int> := [0, 0, 0];
+var seqint20 : seq<int> := [0, 0, 0];
 var seqint21 : seq<int> := [0, 0, 0];
 var seqint22 : seq<int> := [0, 0, 0];
 var seqint23 : seq<int> := [0, 0, 0];
@@ -296,15 +373,40 @@ var seqint24 : seq<int> := [0, 0, 0];
 var seqint25 : seq<int> := [0, 0, 0];
 var seqint26 : seq<int> := [0, 0, 0];
 var seqint27 : seq<int> := [0, 0, 0];
-var seqint28 : seq<int> := [0, 0, 0];
-var seqint29 : seq<int> := [0, 0, 0];
-var seqint30 : seq<int> := [0, 0, 0];
-var seqint31 : seq<int> := [0, 0, 0];
-var seqint32 : seq<int> := [0, 0, 0];
-var seqint33 : seq<int> := [0, 0];
-var seqint34 : seq<int> := [0];
-var seqint35 : seq<int> := [];
-var seqseqint1 : seq<seq<int>> := [seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29, seqint30, seqint31, seqint32, seqint33, seqint34, seqint35];
+var seqint28 : seq<int> := [0, 0];
+var seqint29 : seq<int> := [0];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29];
+var seqint30 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
+var seqint31 : seq<int> := [0, 0, 0, 0, 0];
+var seqint32 : seq<int> := [0, 0, 0, 0];
+var seqint33 : seq<int> := [0, 0, 0];
+var seqint34 : seq<int> := [0, 0, 0];
+var seqint35 : seq<int> := [0, 0, 0];
+var seqint36 : seq<int> := [0, 0, 0];
+var seqint37 : seq<int> := [0, 0, 0];
+var seqint38 : seq<int> := [0, 0, 0];
+var seqint39 : seq<int> := [0, 0, 0];
+var seqint40 : seq<int> := [0, 0, 0];
+var seqint41 : seq<int> := [0, 0, 0];
+var seqint42 : seq<int> := [0, 0, 0];
+var seqint43 : seq<int> := [0, 0, 0];
+var seqint44 : seq<int> := [0, 0, 0];
+var seqint45 : seq<int> := [0, 0, 0];
+var seqint46 : seq<int> := [0, 0, 0];
+var seqint47 : seq<int> := [0, 0, 0];
+var seqint48 : seq<int> := [0, 0, 0];
+var seqint49 : seq<int> := [0, 0, 0];
+var seqint50 : seq<int> := [0, 0, 0];
+var seqint51 : seq<int> := [0, 0, 0];
+var seqint52 : seq<int> := [0, 0, 0];
+var seqint53 : seq<int> := [0, 0, 0];
+var seqint54 : seq<int> := [0, 0, 0];
+var seqint55 : seq<int> := [0, 0, 0];
+var seqint56 : seq<int> := [0, 0, 0];
+var seqint57 : seq<int> := [0, 0, 0];
+var seqint58 : seq<int> := [0, 0];
+var seqint59 : seq<int> := [0];
+var seqseqint1 : seq<seq<int>> := [seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37, seqint38, seqint39, seqint40, seqint41, seqint42, seqint43, seqint44, seqint45, seqint46, seqint47, seqint48, seqint49, seqint50, seqint51, seqint52, seqint53, seqint54, seqint55, seqint56, seqint57, seqint58, seqint59];
 expect |seqseqint0| > 0 && |seqseqint1| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect |seqseqint0| == |seqseqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint1[i]|, "If this check fails at runtime, the test does not meet the preconditions";
@@ -314,7 +416,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 7 - TIME: 13.2079675 s
+// REPEAT 7 - TIME: 16.2745533 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0];
@@ -332,31 +434,53 @@ var seqint11 : seq<int> := [0, 0, 0, 0];
 var seqint12 : seq<int> := [0, 0, 0, 0];
 var seqint13 : seq<int> := [0, 0, 0, 0];
 var seqint14 : seq<int> := [0, 0, 0, 0];
-var seqint15 : seq<int> := [0, 0, 0];
-var seqint16 : seq<int> := [0, 0];
-var seqint17 : seq<int> := [0];
-var seqint18 : seq<int> := [];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18];
-var seqint19 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0];
-var seqint20 : seq<int> := [0, 0, 0, 0, 0, 0];
-var seqint21 : seq<int> := [0, 0, 0, 0, 0];
+var seqint15 : seq<int> := [0, 0, 0, 0];
+var seqint16 : seq<int> := [0, 0, 0, 0];
+var seqint17 : seq<int> := [0, 0, 0, 0];
+var seqint18 : seq<int> := [0, 0, 0, 0];
+var seqint19 : seq<int> := [0, 0, 0, 0];
+var seqint20 : seq<int> := [0, 0, 0, 0];
+var seqint21 : seq<int> := [0, 0, 0, 0];
 var seqint22 : seq<int> := [0, 0, 0, 0];
 var seqint23 : seq<int> := [0, 0, 0, 0];
 var seqint24 : seq<int> := [0, 0, 0, 0];
 var seqint25 : seq<int> := [0, 0, 0, 0];
 var seqint26 : seq<int> := [0, 0, 0, 0];
 var seqint27 : seq<int> := [0, 0, 0, 0];
-var seqint28 : seq<int> := [0, 0, 0, 0];
-var seqint29 : seq<int> := [0, 0, 0, 0];
-var seqint30 : seq<int> := [0, 0, 0, 0];
-var seqint31 : seq<int> := [0, 0, 0, 0];
-var seqint32 : seq<int> := [0, 0, 0, 0];
+var seqint28 : seq<int> := [0, 0, 0];
+var seqint29 : seq<int> := [0, 0];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29];
+var seqint30 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0];
+var seqint31 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint32 : seq<int> := [0, 0, 0, 0, 0];
 var seqint33 : seq<int> := [0, 0, 0, 0];
-var seqint34 : seq<int> := [0, 0, 0];
-var seqint35 : seq<int> := [0, 0];
-var seqint36 : seq<int> := [0];
-var seqint37 : seq<int> := [];
-var seqseqint1 : seq<seq<int>> := [seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29, seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37];
+var seqint34 : seq<int> := [0, 0, 0, 0];
+var seqint35 : seq<int> := [0, 0, 0, 0];
+var seqint36 : seq<int> := [0, 0, 0, 0];
+var seqint37 : seq<int> := [0, 0, 0, 0];
+var seqint38 : seq<int> := [0, 0, 0, 0];
+var seqint39 : seq<int> := [0, 0, 0, 0];
+var seqint40 : seq<int> := [0, 0, 0, 0];
+var seqint41 : seq<int> := [0, 0, 0, 0];
+var seqint42 : seq<int> := [0, 0, 0, 0];
+var seqint43 : seq<int> := [0, 0, 0, 0];
+var seqint44 : seq<int> := [0, 0, 0, 0];
+var seqint45 : seq<int> := [0, 0, 0, 0];
+var seqint46 : seq<int> := [0, 0, 0, 0];
+var seqint47 : seq<int> := [0, 0, 0, 0];
+var seqint48 : seq<int> := [0, 0, 0, 0];
+var seqint49 : seq<int> := [0, 0, 0, 0];
+var seqint50 : seq<int> := [0, 0, 0, 0];
+var seqint51 : seq<int> := [0, 0, 0, 0];
+var seqint52 : seq<int> := [0, 0, 0, 0];
+var seqint53 : seq<int> := [0, 0, 0, 0];
+var seqint54 : seq<int> := [0, 0, 0, 0];
+var seqint55 : seq<int> := [0, 0, 0, 0];
+var seqint56 : seq<int> := [0, 0, 0, 0];
+var seqint57 : seq<int> := [0, 0, 0, 0];
+var seqint58 : seq<int> := [0, 0, 0];
+var seqint59 : seq<int> := [0, 0];
+var seqseqint1 : seq<seq<int>> := [seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37, seqint38, seqint39, seqint40, seqint41, seqint42, seqint43, seqint44, seqint45, seqint46, seqint47, seqint48, seqint49, seqint50, seqint51, seqint52, seqint53, seqint54, seqint55, seqint56, seqint57, seqint58, seqint59];
 expect |seqseqint0| > 0 && |seqseqint1| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect |seqseqint0| == |seqseqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint1[i]|, "If this check fails at runtime, the test does not meet the preconditions";
@@ -366,7 +490,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 8 - TIME: 15.8177538 s
+// REPEAT 8 - TIME: 21.1796452 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -384,33 +508,53 @@ var seqint11 : seq<int> := [0, 0, 0, 0, 0];
 var seqint12 : seq<int> := [0, 0, 0, 0, 0];
 var seqint13 : seq<int> := [0, 0, 0, 0, 0];
 var seqint14 : seq<int> := [0, 0, 0, 0, 0];
-var seqint15 : seq<int> := [0, 0, 0, 0];
-var seqint16 : seq<int> := [0, 0, 0];
-var seqint17 : seq<int> := [0, 0];
-var seqint18 : seq<int> := [0];
-var seqint19 : seq<int> := [];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18, seqint19];
-var seqint20 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint21 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
-var seqint22 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint15 : seq<int> := [0, 0, 0, 0, 0];
+var seqint16 : seq<int> := [0, 0, 0, 0, 0];
+var seqint17 : seq<int> := [0, 0, 0, 0, 0];
+var seqint18 : seq<int> := [0, 0, 0, 0, 0];
+var seqint19 : seq<int> := [0, 0, 0, 0, 0];
+var seqint20 : seq<int> := [0, 0, 0, 0, 0];
+var seqint21 : seq<int> := [0, 0, 0, 0, 0];
+var seqint22 : seq<int> := [0, 0, 0, 0, 0];
 var seqint23 : seq<int> := [0, 0, 0, 0, 0];
 var seqint24 : seq<int> := [0, 0, 0, 0, 0];
 var seqint25 : seq<int> := [0, 0, 0, 0, 0];
 var seqint26 : seq<int> := [0, 0, 0, 0, 0];
 var seqint27 : seq<int> := [0, 0, 0, 0, 0];
-var seqint28 : seq<int> := [0, 0, 0, 0, 0];
-var seqint29 : seq<int> := [0, 0, 0, 0, 0];
-var seqint30 : seq<int> := [0, 0, 0, 0, 0];
-var seqint31 : seq<int> := [0, 0, 0, 0, 0];
-var seqint32 : seq<int> := [0, 0, 0, 0, 0];
+var seqint28 : seq<int> := [0, 0, 0, 0];
+var seqint29 : seq<int> := [0, 0, 0];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29];
+var seqint30 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint31 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
+var seqint32 : seq<int> := [0, 0, 0, 0, 0, 0];
 var seqint33 : seq<int> := [0, 0, 0, 0, 0];
 var seqint34 : seq<int> := [0, 0, 0, 0, 0];
-var seqint35 : seq<int> := [0, 0, 0, 0];
-var seqint36 : seq<int> := [0, 0, 0];
-var seqint37 : seq<int> := [0, 0];
-var seqint38 : seq<int> := [0];
-var seqint39 : seq<int> := [];
-var seqseqint1 : seq<seq<int>> := [seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29, seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37, seqint38, seqint39];
+var seqint35 : seq<int> := [0, 0, 0, 0, 0];
+var seqint36 : seq<int> := [0, 0, 0, 0, 0];
+var seqint37 : seq<int> := [0, 0, 0, 0, 0];
+var seqint38 : seq<int> := [0, 0, 0, 0, 0];
+var seqint39 : seq<int> := [0, 0, 0, 0, 0];
+var seqint40 : seq<int> := [0, 0, 0, 0, 0];
+var seqint41 : seq<int> := [0, 0, 0, 0, 0];
+var seqint42 : seq<int> := [0, 0, 0, 0, 0];
+var seqint43 : seq<int> := [0, 0, 0, 0, 0];
+var seqint44 : seq<int> := [0, 0, 0, 0, 0];
+var seqint45 : seq<int> := [0, 0, 0, 0, 0];
+var seqint46 : seq<int> := [0, 0, 0, 0, 0];
+var seqint47 : seq<int> := [0, 0, 0, 0, 0];
+var seqint48 : seq<int> := [0, 0, 0, 0, 0];
+var seqint49 : seq<int> := [0, 0, 0, 0, 0];
+var seqint50 : seq<int> := [0, 0, 0, 0, 0];
+var seqint51 : seq<int> := [0, 0, 0, 0, 0];
+var seqint52 : seq<int> := [0, 0, 0, 0, 0];
+var seqint53 : seq<int> := [0, 0, 0, 0, 0];
+var seqint54 : seq<int> := [0, 0, 0, 0, 0];
+var seqint55 : seq<int> := [0, 0, 0, 0, 0];
+var seqint56 : seq<int> := [0, 0, 0, 0, 0];
+var seqint57 : seq<int> := [0, 0, 0, 0, 0];
+var seqint58 : seq<int> := [0, 0, 0, 0];
+var seqint59 : seq<int> := [0, 0, 0];
+var seqseqint1 : seq<seq<int>> := [seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37, seqint38, seqint39, seqint40, seqint41, seqint42, seqint43, seqint44, seqint45, seqint46, seqint47, seqint48, seqint49, seqint50, seqint51, seqint52, seqint53, seqint54, seqint55, seqint56, seqint57, seqint58, seqint59];
 expect |seqseqint0| > 0 && |seqseqint1| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect |seqseqint0| == |seqseqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint1[i]|, "If this check fails at runtime, the test does not meet the preconditions";
@@ -420,7 +564,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 9 - TIME: 19.0951783 s
+// REPEAT 9 - TIME: 28.0030029 s
 
 method {:test} Test18() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -438,35 +582,53 @@ var seqint11 : seq<int> := [0, 0, 0, 0, 0, 0];
 var seqint12 : seq<int> := [0, 0, 0, 0, 0, 0];
 var seqint13 : seq<int> := [0, 0, 0, 0, 0, 0];
 var seqint14 : seq<int> := [0, 0, 0, 0, 0, 0];
-var seqint15 : seq<int> := [0, 0, 0, 0, 0];
-var seqint16 : seq<int> := [0, 0, 0, 0];
-var seqint17 : seq<int> := [0, 0, 0];
-var seqint18 : seq<int> := [0, 0];
-var seqint19 : seq<int> := [0];
-var seqint20 : seq<int> := [];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18, seqint19, seqint20];
-var seqint21 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint22 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0];
-var seqint23 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
+var seqint15 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint16 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint17 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint18 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint19 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint20 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint21 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint22 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint23 : seq<int> := [0, 0, 0, 0, 0, 0];
 var seqint24 : seq<int> := [0, 0, 0, 0, 0, 0];
 var seqint25 : seq<int> := [0, 0, 0, 0, 0, 0];
 var seqint26 : seq<int> := [0, 0, 0, 0, 0, 0];
 var seqint27 : seq<int> := [0, 0, 0, 0, 0, 0];
-var seqint28 : seq<int> := [0, 0, 0, 0, 0, 0];
-var seqint29 : seq<int> := [0, 0, 0, 0, 0, 0];
-var seqint30 : seq<int> := [0, 0, 0, 0, 0, 0];
-var seqint31 : seq<int> := [0, 0, 0, 0, 0, 0];
-var seqint32 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint28 : seq<int> := [0, 0, 0, 0, 0];
+var seqint29 : seq<int> := [0, 0, 0, 0];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6, seqint7, seqint8, seqint9, seqint10, seqint11, seqint12, seqint13, seqint14, seqint15, seqint16, seqint17, seqint18, seqint19, seqint20, seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29];
+var seqint30 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint31 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0];
+var seqint32 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
 var seqint33 : seq<int> := [0, 0, 0, 0, 0, 0];
 var seqint34 : seq<int> := [0, 0, 0, 0, 0, 0];
 var seqint35 : seq<int> := [0, 0, 0, 0, 0, 0];
-var seqint36 : seq<int> := [0, 0, 0, 0, 0];
-var seqint37 : seq<int> := [0, 0, 0, 0];
-var seqint38 : seq<int> := [0, 0, 0];
-var seqint39 : seq<int> := [0, 0];
-var seqint40 : seq<int> := [0];
-var seqint41 : seq<int> := [];
-var seqseqint1 : seq<seq<int>> := [seqint21, seqint22, seqint23, seqint24, seqint25, seqint26, seqint27, seqint28, seqint29, seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37, seqint38, seqint39, seqint40, seqint41];
+var seqint36 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint37 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint38 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint39 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint40 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint41 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint42 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint43 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint44 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint45 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint46 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint47 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint48 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint49 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint50 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint51 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint52 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint53 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint54 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint55 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint56 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint57 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint58 : seq<int> := [0, 0, 0, 0, 0];
+var seqint59 : seq<int> := [0, 0, 0, 0];
+var seqseqint1 : seq<seq<int>> := [seqint30, seqint31, seqint32, seqint33, seqint34, seqint35, seqint36, seqint37, seqint38, seqint39, seqint40, seqint41, seqint42, seqint43, seqint44, seqint45, seqint46, seqint47, seqint48, seqint49, seqint50, seqint51, seqint52, seqint53, seqint54, seqint55, seqint56, seqint57, seqint58, seqint59];
 expect |seqseqint0| > 0 && |seqseqint1| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect |seqseqint0| == |seqseqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint1[i]|, "If this check fails at runtime, the test does not meet the preconditions";
@@ -476,4 +638,4 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 10 - TIME: 23.8657402 s
+// REPEAT 10 - TIME: 37.1665797 s

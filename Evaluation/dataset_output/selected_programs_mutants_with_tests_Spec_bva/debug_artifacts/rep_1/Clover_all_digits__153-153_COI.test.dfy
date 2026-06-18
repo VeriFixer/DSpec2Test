@@ -26,8 +26,8 @@ var r0 := allDigits("aa");
 expect r0 <==> forall i :: 0 <= i < |"aa"| ==> "aa"[i] in "0123456789";
 }
 method {:test} Test8() {
-var r0 := allDigits("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0");
-expect r0 <==> forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"| ==> "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"[i] in "0123456789";
+var r0 := allDigits("aaaaaaaa\0");
+expect r0 <==> forall i :: 0 <= i < |"aaaaaaaa\0"| ==> "aaaaaaaa\0"[i] in "0123456789";
 }
 method {:test} Test9() {
 var r0 := allDigits("\0");
@@ -38,4 +38,4 @@ var r0 := allDigits("\0a");
 expect r0 <==> forall i :: 0 <= i < |"\0a"| ==> "\0a"[i] in "0123456789";
 }
 
-// REPEAT 1 - TIME: 9.8555926 s
+// REPEAT 1 - TIME: 10.1302037 s

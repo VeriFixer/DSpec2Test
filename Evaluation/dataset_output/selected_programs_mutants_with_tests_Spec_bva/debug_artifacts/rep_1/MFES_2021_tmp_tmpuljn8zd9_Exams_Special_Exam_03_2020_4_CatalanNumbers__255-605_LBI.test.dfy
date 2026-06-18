@@ -38,4 +38,4 @@ var r0 := calcC(100);
 expect r0 == C(100);
 }
 
-// REPEAT 1 - TIME: 6.2081888 s
+// REPEAT 1 - TIME: 7.0693672 s

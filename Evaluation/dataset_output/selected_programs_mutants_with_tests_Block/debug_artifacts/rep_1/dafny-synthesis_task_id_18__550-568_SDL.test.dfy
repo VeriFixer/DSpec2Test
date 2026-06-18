@@ -19,10 +19,10 @@ method {:testEntry} RemoveChars(s1: string, s2: string) returns (v: string)
 }
 
 method {:test} Test0() {
-var r0 := RemoveChars("a", "");
-expect |r0| <= |"a"|;
-expect forall i :: 0 <= i < |r0| ==> r0[i] in "a" && !(r0[i] in "");
-expect forall i :: 0 <= i < |"a"| ==> "a"[i] in "" || "a"[i] in r0;
+var r0 := RemoveChars("", "");
+expect |r0| <= |""|;
+expect forall i :: 0 <= i < |r0| ==> r0[i] in "" && !(r0[i] in "");
+expect forall i :: 0 <= i < |""| ==> ""[i] in "" || ""[i] in r0;
 }
 method {:test} Test1() {
 var r0 := RemoveChars("a\0", "");
@@ -31,4 +31,4 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "a\0" && !(r0[i] in "");
 expect forall i :: 0 <= i < |"a\0"| ==> "a\0"[i] in "" || "a\0"[i] in r0;
 }
 
-// REPEAT 1 - TIME: 2.5513376 s
+// REPEAT 1 - TIME: 2.9803002 s

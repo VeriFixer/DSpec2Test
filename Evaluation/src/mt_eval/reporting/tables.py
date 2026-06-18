@@ -205,7 +205,7 @@ if __name__ == "__main__":
         exit()
 
     max_x = get_max_repetition(output_directory)
-    print(f"Dynamically detected Maximum Repetition (X) = {max_x}")
+    print(f"Dynamically detected Maximum Repetition = {max_x}")
 
     if max_x == 0:
         print("No valid repetition files found. Please check your results directory.")

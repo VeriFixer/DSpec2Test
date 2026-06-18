@@ -18,4 +18,4 @@ expect 0 < 3 <= 42, "If this check fails at runtime, the test does not meet the 
 BigFoot(3);
 }
 
-// REPEAT 4 - TIME: 5.5078941 s
+// REPEAT 4 - TIME: 5.3439765 s

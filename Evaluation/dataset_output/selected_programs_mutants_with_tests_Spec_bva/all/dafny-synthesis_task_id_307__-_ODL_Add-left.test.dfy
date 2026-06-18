@@ -50,85 +50,85 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 1 - TIME: 6.9698392 s
+// REPEAT 1 - TIME: 6.632368 s
 
 method {:test} Test10() {
-var seqint0 : seq<int> := [0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29];
+var seqint0 : seq<int> := [0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 2 - TIME: 7.774517 s
+// REPEAT 2 - TIME: 7.45545 s
 
 method {:test} Test11() {
-var seqint0 : seq<int> := [83, 79, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80];
+var seqint0 : seq<int> := [44, 42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 3 - TIME: 8.5857673 s
+// REPEAT 3 - TIME: 8.250355 s
 
 method {:test} Test12() {
-var seqint0 : seq<int> := [123, 122, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 124];
+var seqint0 : seq<int> := [55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 4 - TIME: 9.3743079 s
+// REPEAT 4 - TIME: 8.968858 s
 
 method {:test} Test13() {
-var seqint0 : seq<int> := [175, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 178, 0, 176];
+var seqint0 : seq<int> := [66, 0, 0];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 5 - TIME: 10.4512511 s
+// REPEAT 5 - TIME: 9.7151425 s
 
 method {:test} Test14() {
-var seqint0 : seq<int> := [223, 218, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220, 221];
+var seqint0 : seq<int> := [71, 68, 0, 0];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 6 - TIME: 11.4360754 s
+// REPEAT 6 - TIME: 10.4672819 s
 
 method {:test} Test15() {
-var seqint0 : seq<int> := [0, 261, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 263, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 267, 0, 265, 269];
+var seqint0 : seq<int> := [84, 77, 0, 0, 79, 0, 0, 0, 0, 0, 0, 0, 0, 81];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 7 - TIME: 12.3942642 s
+// REPEAT 7 - TIME: 11.1361402 s
 
 method {:test} Test16() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 312, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 317, 319, 0, 315, 321];
+var seqint0 : seq<int> := [96, 0, 0, 97, 0];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 8 - TIME: 13.4542194 s
+// REPEAT 8 - TIME: 11.8142137 s
 
 method {:test} Test17() {
-var seqint0 : seq<int> := [368, 367, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 370];
+var seqint0 : seq<int> := [100, 0, 0, 0, 103, 0, 0, 0, 101, 0, 0, 0, 0, 105];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 9 - TIME: 14.3161094 s
+// REPEAT 9 - TIME: 12.5582791 s
 
 method {:test} Test18() {
-var seqint0 : seq<int> := [411, 406, 408];
+var seqint0 : seq<int> := [126, 116, 0, 0, 120, 122];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 10 - TIME: 15.2281392 s
+// REPEAT 10 - TIME: 13.2815475 s

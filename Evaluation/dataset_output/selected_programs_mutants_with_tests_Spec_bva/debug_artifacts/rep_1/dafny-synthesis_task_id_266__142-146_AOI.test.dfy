@@ -18,4 +18,4 @@ var r0 := LateralSurfaceArea(100);
 expect r0 == 4 * 100 * 100;
 }
 
-// REPEAT 1 - TIME: 5.253338 s
+// REPEAT 1 - TIME: 5.4300125 s

@@ -68,9 +68,9 @@ expect |r0| == |"afc"|;
 expect forall i :: 0 <= i < |"afc"| ==> if IsLowerCase("afc"[i]) then IsLowerUpperPair("afc"[i], r0[i]) else if IsUpperCase("afc"[i]) then IsUpperLowerPair("afc"[i], r0[i]) else r0[i] == "afc"[i];
 }
 method {:test} Test9() {
-var r0 := ToggleCase("a{\U{000F}");
-expect |r0| == |"a{\U{000F}"|;
-expect forall i :: 0 <= i < |"a{\U{000F}"| ==> if IsLowerCase("a{\U{000F}"[i]) then IsLowerUpperPair("a{\U{000F}"[i], r0[i]) else if IsUpperCase("a{\U{000F}"[i]) then IsUpperLowerPair("a{\U{000F}"[i], r0[i]) else r0[i] == "a{\U{000F}"[i];
+var r0 := ToggleCase("a\U{000F} ");
+expect |r0| == |"a\U{000F} "|;
+expect forall i :: 0 <= i < |"a\U{000F} "| ==> if IsLowerCase("a\U{000F} "[i]) then IsLowerUpperPair("a\U{000F} "[i], r0[i]) else if IsUpperCase("a\U{000F} "[i]) then IsUpperLowerPair("a\U{000F} "[i], r0[i]) else r0[i] == "a\U{000F} "[i];
 }
 method {:test} Test10() {
 var r0 := ToggleCase("k");
@@ -83,4 +83,4 @@ expect |r0| == |"C{"|;
 expect forall i :: 0 <= i < |"C{"| ==> if IsLowerCase("C{"[i]) then IsLowerUpperPair("C{"[i], r0[i]) else if IsUpperCase("C{"[i]) then IsUpperLowerPair("C{"[i], r0[i]) else r0[i] == "C{"[i];
 }
 
-// REPEAT 2 - TIME: 9.4921245 s
+// REPEAT 2 - TIME: 9.3559105 s

@@ -39,7 +39,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(21);
 expect r0 == 21 * (2 * 21 + 1) * (24 * 21 * 21 * 21 - 12 * 21 * 21 - 14 * 21 + 7) / 15;
 }
 
-// REPEAT 1 - TIME: 6.9073207 s
+// REPEAT 1 - TIME: 4.6596373 s
 
 method {:test} Test1() {
 expect 58 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -47,4 +47,4 @@ var r0 := SumOfFourthPowerOfOddNumbers(58);
 expect r0 == 58 * (2 * 58 + 1) * (24 * 58 * 58 * 58 - 12 * 58 * 58 - 14 * 58 + 7) / 15;
 }
 
-// REPEAT 2 - TIME: 9.5601054 s
+// REPEAT 2 - TIME: 7.1777212 s

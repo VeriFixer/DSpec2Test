@@ -20,7 +20,7 @@ expect r0 == 1 * (1 + 1) / 2;
 expect r1 == r0 as real / 1 as real;
 }
 
-// REPEAT 1 - TIME: 2.4677676 s
+// REPEAT 1 - TIME: 2.7317489 s
 
 method {:test} Test1() {
 expect 2 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -29,7 +29,7 @@ expect r0 == 2 * (2 + 1) / 2;
 expect r1 == r0 as real / 2 as real;
 }
 
-// REPEAT 2 - TIME: 3.3071431 s
+// REPEAT 2 - TIME: 3.610784 s
 
 method {:test} Test2() {
 expect 3 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -38,7 +38,7 @@ expect r0 == 3 * (3 + 1) / 2;
 expect r1 == r0 as real / 3 as real;
 }
 
-// REPEAT 3 - TIME: 4.2359862 s
+// REPEAT 3 - TIME: 4.4092576 s
 
 method {:test} Test3() {
 expect 4 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -47,7 +47,7 @@ expect r0 == 4 * (4 + 1) / 2;
 expect r1 == r0 as real / 4 as real;
 }
 
-// REPEAT 4 - TIME: 5.1106234 s
+// REPEAT 4 - TIME: 5.3040005 s
 
 method {:test} Test4() {
 expect 5 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -56,7 +56,7 @@ expect r0 == 5 * (5 + 1) / 2;
 expect r1 == r0 as real / 5 as real;
 }
 
-// REPEAT 5 - TIME: 5.9552328 s
+// REPEAT 5 - TIME: 6.1128524 s
 
 method {:test} Test5() {
 expect 6 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -65,7 +65,7 @@ expect r0 == 6 * (6 + 1) / 2;
 expect r1 == r0 as real / 6 as real;
 }
 
-// REPEAT 6 - TIME: 6.763107 s
+// REPEAT 6 - TIME: 6.9854925 s
 
 method {:test} Test6() {
 expect 7 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -74,7 +74,7 @@ expect r0 == 7 * (7 + 1) / 2;
 expect r1 == r0 as real / 7 as real;
 }
 
-// REPEAT 7 - TIME: 7.5105089 s
+// REPEAT 7 - TIME: 7.7881103 s
 
 method {:test} Test7() {
 expect 8 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -83,7 +83,7 @@ expect r0 == 8 * (8 + 1) / 2;
 expect r1 == r0 as real / 8 as real;
 }
 
-// REPEAT 8 - TIME: 8.2855248 s
+// REPEAT 8 - TIME: 8.5796462 s
 
 method {:test} Test8() {
 expect 9 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -92,7 +92,7 @@ expect r0 == 9 * (9 + 1) / 2;
 expect r1 == r0 as real / 9 as real;
 }
 
-// REPEAT 9 - TIME: 9.0506582 s
+// REPEAT 9 - TIME: 9.4380922 s
 
 method {:test} Test9() {
 expect 10 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -101,4 +101,4 @@ expect r0 == 10 * (10 + 1) / 2;
 expect r1 == r0 as real / 10 as real;
 }
 
-// REPEAT 10 - TIME: 9.7407337 s
+// REPEAT 10 - TIME: 10.3769757 s

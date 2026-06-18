@@ -26,7 +26,7 @@ var r0 := CubeSurfaceArea(100);
 expect r0 == 6 * 100 * 100;
 }
 
-// REPEAT 1 - TIME: 4.6895781 s
+// REPEAT 1 - TIME: 5.0681883 s
 
 method {:test} Test6() {
 expect 101 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -34,7 +34,7 @@ var r0 := CubeSurfaceArea(101);
 expect r0 == 6 * 101 * 101;
 }
 
-// REPEAT 2 - TIME: 5.7547932 s
+// REPEAT 2 - TIME: 6.2320935 s
 
 method {:test} Test7() {
 expect 102 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -42,7 +42,7 @@ var r0 := CubeSurfaceArea(102);
 expect r0 == 6 * 102 * 102;
 }
 
-// REPEAT 3 - TIME: 6.6211869 s
+// REPEAT 3 - TIME: 7.2611648 s
 
 method {:test} Test8() {
 expect 103 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -50,7 +50,7 @@ var r0 := CubeSurfaceArea(103);
 expect r0 == 6 * 103 * 103;
 }
 
-// REPEAT 4 - TIME: 7.4847939 s
+// REPEAT 4 - TIME: 8.2281741 s
 
 method {:test} Test9() {
 expect 104 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -58,7 +58,7 @@ var r0 := CubeSurfaceArea(104);
 expect r0 == 6 * 104 * 104;
 }
 
-// REPEAT 5 - TIME: 8.3617349 s
+// REPEAT 5 - TIME: 8.9932275 s
 
 method {:test} Test10() {
 expect 105 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -66,7 +66,7 @@ var r0 := CubeSurfaceArea(105);
 expect r0 == 6 * 105 * 105;
 }
 
-// REPEAT 6 - TIME: 9.0132229 s
+// REPEAT 6 - TIME: 9.7077897 s
 
 method {:test} Test11() {
 expect 106 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -74,7 +74,7 @@ var r0 := CubeSurfaceArea(106);
 expect r0 == 6 * 106 * 106;
 }
 
-// REPEAT 7 - TIME: 9.742707 s
+// REPEAT 7 - TIME: 10.1945454 s
 
 method {:test} Test12() {
 expect 107 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -82,7 +82,7 @@ var r0 := CubeSurfaceArea(107);
 expect r0 == 6 * 107 * 107;
 }
 
-// REPEAT 8 - TIME: 10.4415662 s
+// REPEAT 8 - TIME: 10.8165122 s
 
 method {:test} Test13() {
 expect 108 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -90,7 +90,7 @@ var r0 := CubeSurfaceArea(108);
 expect r0 == 6 * 108 * 108;
 }
 
-// REPEAT 9 - TIME: 11.2208855 s
+// REPEAT 9 - TIME: 11.4061658 s
 
 method {:test} Test14() {
 expect 109 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -98,4 +98,4 @@ var r0 := CubeSurfaceArea(109);
 expect r0 == 6 * 109 * 109;
 }
 
-// REPEAT 10 - TIME: 11.9696888 s
+// REPEAT 10 - TIME: 11.8813623 s

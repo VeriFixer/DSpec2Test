@@ -90,58 +90,58 @@ method {:test} Test4() {
 var r0 := problem5(5332);
 }
 
-// REPEAT 1 - TIME: 6.4288247 s
+// REPEAT 1 - TIME: 6.7808694 s
 
 method {:test} Test7() {
 var r0 := problem5(5333);
 }
 
-// REPEAT 2 - TIME: 7.2300642 s
+// REPEAT 2 - TIME: 7.5672808 s
 
 method {:test} Test8() {
 var r0 := problem5(5334);
 }
 
-// REPEAT 3 - TIME: 7.8816403 s
+// REPEAT 3 - TIME: 8.3010837 s
 
 method {:test} Test9() {
 var r0 := problem5(5337);
 }
 
-// REPEAT 4 - TIME: 8.6054165 s
+// REPEAT 4 - TIME: 8.91714 s
 
 method {:test} Test10() {
 var r0 := problem5(5340);
 }
 
-// REPEAT 5 - TIME: 9.3127833 s
+// REPEAT 5 - TIME: 9.6972396 s
 
 method {:test} Test11() {
 var r0 := problem5(5343);
 }
 
-// REPEAT 6 - TIME: 10.1379667 s
+// REPEAT 6 - TIME: 10.4924467 s
 
 method {:test} Test12() {
 var r0 := problem5(5346);
 }
 
-// REPEAT 7 - TIME: 10.7871081 s
+// REPEAT 7 - TIME: 11.294371 s
 
 method {:test} Test13() {
 var r0 := problem5(5349);
 }
 
-// REPEAT 8 - TIME: 11.4805446 s
+// REPEAT 8 - TIME: 11.913621 s
 
 method {:test} Test14() {
 var r0 := problem5(5352);
 }
 
-// REPEAT 9 - TIME: 12.1531478 s
+// REPEAT 9 - TIME: 12.5063845 s
 
 method {:test} Test15() {
 var r0 := problem5(5355);
 }
 
-// REPEAT 10 - TIME: 12.8756065 s
+// REPEAT 10 - TIME: 13.2902224 s

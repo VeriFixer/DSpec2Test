@@ -18,4 +18,4 @@ expect 11 <= 11 ==> r0 == 11;
 expect 11 > 11 ==> r0 == 11;
 }
 
-// REPEAT 8 - TIME: 20.1275193 s
+// REPEAT 8 - TIME: 19.4906777 s

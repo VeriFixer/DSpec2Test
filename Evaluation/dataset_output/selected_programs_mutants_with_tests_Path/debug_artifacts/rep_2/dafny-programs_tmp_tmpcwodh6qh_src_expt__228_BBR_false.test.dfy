@@ -31,4 +31,4 @@ var r0 := expt(26, 283);
 expect r0 == Expt(26, 283);
 }
 
-// REPEAT 2 - TIME: 14.0659326 s
+// REPEAT 2 - TIME: 14.8412215 s

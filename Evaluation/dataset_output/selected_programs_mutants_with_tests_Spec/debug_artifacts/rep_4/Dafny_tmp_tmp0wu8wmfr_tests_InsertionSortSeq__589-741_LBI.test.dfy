@@ -34,10 +34,10 @@ method {:testEntry} InsertionSort(s: seq<int>) returns (r: seq<int>)
 }
 
 method {:test} Test3() {
-var seqint0 : seq<int> := [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4];
+var seqint0 : seq<int> := [3, 1];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 4 - TIME: 9.9502 s
+// REPEAT 4 - TIME: 10.1207819 s

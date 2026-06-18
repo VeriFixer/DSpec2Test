@@ -16,12 +16,12 @@ method {:testEntry} ContainsZ(s: string) returns (result: bool)
 }
 
 method {:test} Test6() {
-var r0 := ContainsZ("\U{0001}aZaaaaaaaaaaaaa\U{0003}");
-expect r0 <==> exists i :: 0 <= i < |"\U{0001}aZaaaaaaaaaaaaa\U{0003}"| && ("\U{0001}aZaaaaaaaaaaaaa\U{0003}"[i] == 'z' || "\U{0001}aZaaaaaaaaaaaaa\U{0003}"[i] == 'Z');
+var r0 := ContainsZ("za\0\U{0002}\U{0004}");
+expect r0 <==> exists i :: 0 <= i < |"za\0\U{0002}\U{0004}"| && ("za\0\U{0002}\U{0004}"[i] == 'z' || "za\0\U{0002}\U{0004}"[i] == 'Z');
 }
 method {:test} Test7() {
-var r0 := ContainsZ("\U{0001}za\U{0003}");
-expect r0 <==> exists i :: 0 <= i < |"\U{0001}za\U{0003}"| && ("\U{0001}za\U{0003}"[i] == 'z' || "\U{0001}za\U{0003}"[i] == 'Z');
+var r0 := ContainsZ("\0a\U{0002}\U{0004}\U{0006}");
+expect r0 <==> exists i :: 0 <= i < |"\0a\U{0002}\U{0004}\U{0006}"| && ("\0a\U{0002}\U{0004}\U{0006}"[i] == 'z' || "\0a\U{0002}\U{0004}\U{0006}"[i] == 'Z');
 }
 
-// REPEAT 4 - TIME: 7.0426659 s
+// REPEAT 4 - TIME: 7.799926 s

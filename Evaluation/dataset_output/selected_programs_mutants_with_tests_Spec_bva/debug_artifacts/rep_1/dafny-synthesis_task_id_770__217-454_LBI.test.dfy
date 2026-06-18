@@ -18,9 +18,9 @@ method {:testEntry} SumOfFourthPowerOfOddNumbers(n: int) returns (sum: int)
 }
 
 method {:test} Test0() {
-expect 25 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := SumOfFourthPowerOfOddNumbers(25);
-expect r0 == 25 * (2 * 25 + 1) * (24 * 25 * 25 * 25 - 12 * 25 * 25 - 14 * 25 + 7) / 15;
+expect 27 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := SumOfFourthPowerOfOddNumbers(27);
+expect r0 == 27 * (2 * 27 + 1) * (24 * 27 * 27 * 27 - 12 * 27 * 27 - 14 * 27 + 7) / 15;
 }
 method {:test} Test1() {
 expect 1 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -37,10 +37,5 @@ expect 33 > 0, "If this check fails at runtime, the test does not meet the preco
 var r0 := SumOfFourthPowerOfOddNumbers(33);
 expect r0 == 33 * (2 * 33 + 1) * (24 * 33 * 33 * 33 - 12 * 33 * 33 - 14 * 33 + 7) / 15;
 }
-method {:test} Test4() {
-expect 27 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := SumOfFourthPowerOfOddNumbers(27);
-expect r0 == 27 * (2 * 27 + 1) * (24 * 27 * 27 * 27 - 12 * 27 * 27 - 14 * 27 + 7) / 15;
-}
 
-// REPEAT 1 - TIME: 55.0562257 s
+// REPEAT 1 - TIME: 55.044735 s

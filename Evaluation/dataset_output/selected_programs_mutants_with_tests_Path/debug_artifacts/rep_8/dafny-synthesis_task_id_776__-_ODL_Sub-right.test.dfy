@@ -14,24 +14,16 @@ method {:testEntry} CountVowelNeighbors(s: string) returns (count: int)
 }
 
 method {:test} Test35() {
-var r0 := CountVowelNeighbors("a\U{0001}a");
+var r0 := CountVowelNeighbors("a\0a\U{0001}aaaaaaaaaaaaaaa");
 expect r0 >= 0;
 }
 method {:test} Test36() {
-var r0 := CountVowelNeighbors("a\U{0001}a\U{0002}aaaaaaaaaaaaaaaaaaaa\0aaaaaaaaaaaaaaaa");
-expect r0 >= 0;
-}
-method {:test} Test37() {
-var r0 := CountVowelNeighbors("a\U{0001}a\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0aaaa");
-expect r0 >= 0;
-}
-method {:test} Test38() {
-var r0 := CountVowelNeighbors("a\0a\U{0001}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+var r0 := CountVowelNeighbors("a\U{0001}a\U{0002}aaa\0aaaaaaaaaaa");
 expect r0 >= 0;
 }
 method {:test} Test39() {
-var r0 := CountVowelNeighbors("a\0a\U{0001}\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+var r0 := CountVowelNeighbors("aaaaaaaaaaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 8 - TIME: 89.3895492 s
+// REPEAT 8 - TIME: 53.7993302 s

@@ -52,9 +52,9 @@ method {:testEntry} ToggleCase(s: string) returns (v: string)
 }
 
 method {:test} Test14() {
-var r0 := ToggleCase("!aaaaaaaaaaaaaa-");
-expect |r0| == |"!aaaaaaaaaaaaaa-"|;
-expect forall i :: 0 <= i < |"!aaaaaaaaaaaaaa-"| ==> if IsLowerCase("!aaaaaaaaaaaaaa-"[i]) then IsLowerUpperPair("!aaaaaaaaaaaaaa-"[i], r0[i]) else if IsUpperCase("!aaaaaaaaaaaaaa-"[i]) then IsUpperLowerPair("!aaaaaaaaaaaaaa-"[i], r0[i]) else r0[i] == "!aaaaaaaaaaaaaa-"[i];
+var r0 := ToggleCase(" \U{000F}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{000F}");
+expect |r0| == |" \U{000F}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{000F}"|;
+expect forall i :: 0 <= i < |" \U{000F}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{000F}"| ==> if IsLowerCase(" \U{000F}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{000F}"[i]) then IsLowerUpperPair(" \U{000F}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{000F}"[i], r0[i]) else if IsUpperCase(" \U{000F}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{000F}"[i]) then IsUpperLowerPair(" \U{000F}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{000F}"[i], r0[i]) else r0[i] == " \U{000F}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{000F}"[i];
 }
 
-// REPEAT 6 - TIME: 12.4605895 s
+// REPEAT 6 - TIME: 12.2132348 s

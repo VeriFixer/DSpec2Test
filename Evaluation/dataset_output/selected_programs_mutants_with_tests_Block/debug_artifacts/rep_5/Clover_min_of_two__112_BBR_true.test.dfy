@@ -22,4 +22,4 @@ expect 6 <= 7 ==> r0 == 6;
 expect 6 > 7 ==> r0 == 7;
 }
 
-// REPEAT 5 - TIME: 6.797635 s
+// REPEAT 5 - TIME: 6.2401991 s

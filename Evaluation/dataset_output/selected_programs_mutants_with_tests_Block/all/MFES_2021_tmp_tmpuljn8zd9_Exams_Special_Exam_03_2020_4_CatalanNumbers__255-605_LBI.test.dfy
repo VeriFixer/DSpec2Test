@@ -61,71 +61,75 @@ var r0 := calcC(2);
 expect r0 == C(2);
 }
 method {:test} Test1() {
-var r0 := calcC(12);
-expect r0 == C(12);
+var r0 := calcC(3);
+expect r0 == C(3);
 }
 
-// REPEAT 1 - TIME: 3.9765093 s
+// REPEAT 1 - TIME: 33.2096277 s
 
 method {:test} Test2() {
-var r0 := calcC(13);
-expect r0 == C(13);
+var r0 := calcC(4);
+expect r0 == C(4);
 }
 
-// REPEAT 2 - TIME: 5.5458793 s
+// REPEAT 2 - TIME: 34.6818551 s
 
 method {:test} Test4() {
-var r0 := calcC(14);
-expect r0 == C(14);
+var r0 := calcC(43);
+expect r0 == C(43);
+}
+method {:test} Test5() {
+var r0 := calcC(5);
+expect r0 == C(5);
 }
 
-// REPEAT 3 - TIME: 6.7772399 s
+// REPEAT 3 - TIME: 35.816754 s
 
 method {:test} Test6() {
-var r0 := calcC(15);
-expect r0 == C(15);
+var r0 := calcC(44);
+expect r0 == C(44);
 }
 
-// REPEAT 4 - TIME: 8.015699 s
+// REPEAT 4 - TIME: 36.945953 s
 
 method {:test} Test8() {
-var r0 := calcC(16);
-expect r0 == C(16);
+var r0 := calcC(45);
+expect r0 == C(45);
 }
 
-// REPEAT 5 - TIME: 9.3863233 s
+// REPEAT 5 - TIME: 37.8233814 s
 
 method {:test} Test10() {
-var r0 := calcC(17);
-expect r0 == C(17);
+var r0 := calcC(46);
+expect r0 == C(46);
 }
 
-// REPEAT 6 - TIME: 10.4263858 s
+// REPEAT 6 - TIME: 38.7901647 s
 
 method {:test} Test12() {
-var r0 := calcC(18);
-expect r0 == C(18);
+var r0 := calcC(47);
+expect r0 == C(47);
 }
 
-// REPEAT 7 - TIME: 11.4739005 s
+// REPEAT 7 - TIME: 39.7551327 s
 
 method {:test} Test14() {
-var r0 := calcC(19);
-expect r0 == C(19);
+var r0 := calcC(48);
+expect r0 == C(48);
 }
 
-// REPEAT 8 - TIME: 12.41118 s
+// REPEAT 8 - TIME: 40.9069119 s
 
 method {:test} Test16() {
-var r0 := calcC(20);
-expect r0 == C(20);
+var r0 := calcC(49);
+expect r0 == C(49);
 }
 
-// REPEAT 9 - TIME: 13.5071924 s
+// REPEAT 9 - TIME: 42.1243163 s
 
 method {:test} Test18() {
-var r0 := calcC(21);
-expect r0 == C(21);
+var r0 := calcC(50);
+expect r0 == C(50);
 }
 
-// REPEAT 10 - TIME: 14.4667366 s
+// REPEAT 10 - TIME: 43.4137203 s

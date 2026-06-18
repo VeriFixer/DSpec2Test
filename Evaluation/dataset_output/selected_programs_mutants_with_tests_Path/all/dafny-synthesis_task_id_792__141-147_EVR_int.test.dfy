@@ -22,7 +22,7 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 1 - TIME: 2.5328245 s
+// REPEAT 1 - TIME: 1.4921125 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [];
@@ -32,7 +32,7 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 2 - TIME: 3.3772249 s
+// REPEAT 2 - TIME: 2.0461521 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [0];
@@ -42,7 +42,7 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 3 - TIME: 4.2141396 s
+// REPEAT 3 - TIME: 2.6795467 s
 
 method {:test} Test3() {
 var seqint0 : seq<int> := [0, 0];
@@ -53,7 +53,7 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 4 - TIME: 5.1654273 s
+// REPEAT 4 - TIME: 3.3481447 s
 
 method {:test} Test4() {
 var seqint0 : seq<int> := [0, 0, 0];
@@ -65,7 +65,7 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 5 - TIME: 6.0205602 s
+// REPEAT 5 - TIME: 4.0273926 s
 
 method {:test} Test5() {
 var seqint0 : seq<int> := [0, 0, 0, 0];
@@ -77,7 +77,7 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 6 - TIME: 6.8744387 s
+// REPEAT 6 - TIME: 4.6406877 s
 
 method {:test} Test6() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0];
@@ -90,7 +90,7 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 7 - TIME: 7.6390413 s
+// REPEAT 7 - TIME: 5.3101683 s
 
 method {:test} Test7() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0];
@@ -104,7 +104,7 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 8 - TIME: 8.5064425 s
+// REPEAT 8 - TIME: 5.9707811 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
@@ -119,7 +119,7 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 9 - TIME: 9.4175835 s
+// REPEAT 9 - TIME: 6.5958117 s
 
 method {:test} Test9() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0];
@@ -135,4 +135,4 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 10 - TIME: 10.3983211 s
+// REPEAT 10 - TIME: 7.2617248 s

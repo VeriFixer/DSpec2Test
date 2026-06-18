@@ -13,7 +13,7 @@ var r0 := CylinderVolume(1.0, 1.0);
 expect r0 == 3.14159265359 * 1.0 * 1.0 * 1.0;
 }
 
-// REPEAT 1 - TIME: 2.172987 s
+// REPEAT 1 - TIME: 2.0363342 s
 
 method {:test} Test1() {
 expect 2.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -22,7 +22,7 @@ var r0 := CylinderVolume(2.0, 2.0);
 expect r0 == 3.14159265359 * 2.0 * 2.0 * 2.0;
 }
 
-// REPEAT 2 - TIME: 2.9862887 s
+// REPEAT 2 - TIME: 2.8689741 s
 
 method {:test} Test2() {
 expect 3.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -31,7 +31,7 @@ var r0 := CylinderVolume(3.0, 3.0);
 expect r0 == 3.14159265359 * 3.0 * 3.0 * 3.0;
 }
 
-// REPEAT 3 - TIME: 3.7393773 s
+// REPEAT 3 - TIME: 3.6738739 s
 
 method {:test} Test3() {
 expect 4.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -40,7 +40,7 @@ var r0 := CylinderVolume(4.0, 4.0);
 expect r0 == 3.14159265359 * 4.0 * 4.0 * 4.0;
 }
 
-// REPEAT 4 - TIME: 4.3605645 s
+// REPEAT 4 - TIME: 4.387566 s
 
 method {:test} Test4() {
 expect 5.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -49,7 +49,7 @@ var r0 := CylinderVolume(5.0, 5.0);
 expect r0 == 3.14159265359 * 5.0 * 5.0 * 5.0;
 }
 
-// REPEAT 5 - TIME: 5.1104484 s
+// REPEAT 5 - TIME: 5.0773485 s
 
 method {:test} Test5() {
 expect 6.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -58,7 +58,7 @@ var r0 := CylinderVolume(6.0, 6.0);
 expect r0 == 3.14159265359 * 6.0 * 6.0 * 6.0;
 }
 
-// REPEAT 6 - TIME: 5.8015667 s
+// REPEAT 6 - TIME: 5.8271735 s
 
 method {:test} Test6() {
 expect 7.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -67,7 +67,7 @@ var r0 := CylinderVolume(7.0, 7.0);
 expect r0 == 3.14159265359 * 7.0 * 7.0 * 7.0;
 }
 
-// REPEAT 7 - TIME: 6.4657804 s
+// REPEAT 7 - TIME: 6.5038307 s
 
 method {:test} Test7() {
 expect 8.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -76,7 +76,7 @@ var r0 := CylinderVolume(8.0, 8.0);
 expect r0 == 3.14159265359 * 8.0 * 8.0 * 8.0;
 }
 
-// REPEAT 8 - TIME: 7.0459637 s
+// REPEAT 8 - TIME: 7.2372076 s
 
 method {:test} Test8() {
 expect 9.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -85,7 +85,7 @@ var r0 := CylinderVolume(9.0, 9.0);
 expect r0 == 3.14159265359 * 9.0 * 9.0 * 9.0;
 }
 
-// REPEAT 9 - TIME: 7.4969874 s
+// REPEAT 9 - TIME: 7.9394718 s
 
 method {:test} Test9() {
 expect 10.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -94,4 +94,4 @@ var r0 := CylinderVolume(10.0, 10.0);
 expect r0 == 3.14159265359 * 10.0 * 10.0 * 10.0;
 }
 
-// REPEAT 10 - TIME: 8.1094087 s
+// REPEAT 10 - TIME: 8.5224316 s

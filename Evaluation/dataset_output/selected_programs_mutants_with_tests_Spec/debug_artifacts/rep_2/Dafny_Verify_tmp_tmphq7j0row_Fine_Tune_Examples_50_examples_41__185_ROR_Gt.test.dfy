@@ -24,4 +24,4 @@ var r0, r1 := main(1, 3);
 expect 3 + r0 + r1 >= 2 * 1;
 }
 
-// REPEAT 2 - TIME: 4.1713585 s
+// REPEAT 2 - TIME: 4.3991336 s

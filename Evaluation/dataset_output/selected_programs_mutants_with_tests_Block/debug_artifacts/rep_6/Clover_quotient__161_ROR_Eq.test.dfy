@@ -22,4 +22,4 @@ var r0, r1 := Quotient(7725, 7725);
 expect r1 * 7725 + r0 == 7725 && 0 <= r0 < 7725 && 0 <= r1;
 }
 
-// REPEAT 6 - TIME: 6.521601 s
+// REPEAT 6 - TIME: 5.3717459 s

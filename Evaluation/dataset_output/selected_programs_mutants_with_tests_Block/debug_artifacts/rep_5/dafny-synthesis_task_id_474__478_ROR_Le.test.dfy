@@ -21,19 +21,19 @@ method {:testEntry} ReplaceChars(s: string, oldChar: char, newChar: char)
 }
 
 method {:test} Test12() {
-var r0 := ReplaceChars("\U{0006}aa\U{0002}\U{0004}", '\U{0001}', '\0');
-expect |r0| == |"\U{0006}aa\U{0002}\U{0004}"|;
-expect forall i :: 0 <= i < |"\U{0006}aa\U{0002}\U{0004}"| ==> ("\U{0006}aa\U{0002}\U{0004}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0006}aa\U{0002}\U{0004}"[i] != '\U{0001}' ==> r0[i] == "\U{0006}aa\U{0002}\U{0004}"[i]);
+var r0 := ReplaceChars("aa\0aaaaaaaaa\0aaaaaaa\0", '\U{0001}', '\0');
+expect |r0| == |"aa\0aaaaaaaaa\0aaaaaaa\0"|;
+expect forall i :: 0 <= i < |"aa\0aaaaaaaaa\0aaaaaaa\0"| ==> ("aa\0aaaaaaaaa\0aaaaaaa\0"[i] == '\U{0001}' ==> r0[i] == '\0') && ("aa\0aaaaaaaaa\0aaaaaaa\0"[i] != '\U{0001}' ==> r0[i] == "aa\0aaaaaaaaa\0aaaaaaa\0"[i]);
 }
 method {:test} Test13() {
-var r0 := ReplaceChars("\U{0004}\U{0006}\U{0002}", '\U{0001}', '\0');
-expect |r0| == |"\U{0004}\U{0006}\U{0002}"|;
-expect forall i :: 0 <= i < |"\U{0004}\U{0006}\U{0002}"| ==> ("\U{0004}\U{0006}\U{0002}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0004}\U{0006}\U{0002}"[i] != '\U{0001}' ==> r0[i] == "\U{0004}\U{0006}\U{0002}"[i]);
+var r0 := ReplaceChars("\U{0002}aaaaaaaaaaaaa", '\U{0001}', '\0');
+expect |r0| == |"\U{0002}aaaaaaaaaaaaa"|;
+expect forall i :: 0 <= i < |"\U{0002}aaaaaaaaaaaaa"| ==> ("\U{0002}aaaaaaaaaaaaa"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0002}aaaaaaaaaaaaa"[i] != '\U{0001}' ==> r0[i] == "\U{0002}aaaaaaaaaaaaa"[i]);
 }
 method {:test} Test14() {
-var r0 := ReplaceChars("\U{0001}aaaaaaaaaaaa\U{0006}aaaa\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaa\U{0008}aa", '\U{0001}', '\0');
-expect |r0| == |"\U{0001}aaaaaaaaaaaa\U{0006}aaaa\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaa\U{0008}aa"|;
-expect forall i :: 0 <= i < |"\U{0001}aaaaaaaaaaaa\U{0006}aaaa\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaa\U{0008}aa"| ==> ("\U{0001}aaaaaaaaaaaa\U{0006}aaaa\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaa\U{0008}aa"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}aaaaaaaaaaaa\U{0006}aaaa\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaa\U{0008}aa"[i] != '\U{0001}' ==> r0[i] == "\U{0001}aaaaaaaaaaaa\U{0006}aaaa\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaa\U{0008}aa"[i]);
+var r0 := ReplaceChars("\U{0001}aaaaaaaaaaaaa", '\U{0001}', '\0');
+expect |r0| == |"\U{0001}aaaaaaaaaaaaa"|;
+expect forall i :: 0 <= i < |"\U{0001}aaaaaaaaaaaaa"| ==> ("\U{0001}aaaaaaaaaaaaa"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}aaaaaaaaaaaaa"[i] != '\U{0001}' ==> r0[i] == "\U{0001}aaaaaaaaaaaaa"[i]);
 }
 
-// REPEAT 5 - TIME: 10.0336748 s
+// REPEAT 5 - TIME: 9.8396724 s

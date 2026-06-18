@@ -1,4 +1,4 @@
 Strategy,Avg Test Gen Time (s),Avg Safety Check Time (s),Avg Execution Time (s)
-Block,12.146,48.456,16.966
-Spec,12.604,37.429,15.84
-SpecBva,18.279,38.725,14.866
+Block,11.116,48.766,17.468
+Spec,12.108,38.299,16.351
+SpecBva,18.386,38.957,14.84

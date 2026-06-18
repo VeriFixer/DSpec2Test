@@ -11,7 +11,7 @@ var r0 := SphereVolume(1.0);
 expect r0 == 4.0 / 3.0 * 3.1415926535 * 1.0 * 1.0 * 1.0;
 }
 
-// REPEAT 1 - TIME: 2.4565916 s
+// REPEAT 1 - TIME: 2.6655642 s
 
 method {:test} Test1() {
 expect 2.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -19,7 +19,7 @@ var r0 := SphereVolume(2.0);
 expect r0 == 4.0 / 3.0 * 3.1415926535 * 2.0 * 2.0 * 2.0;
 }
 
-// REPEAT 2 - TIME: 3.246434 s
+// REPEAT 2 - TIME: 3.6024356 s
 
 method {:test} Test2() {
 expect 3.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -27,7 +27,7 @@ var r0 := SphereVolume(3.0);
 expect r0 == 4.0 / 3.0 * 3.1415926535 * 3.0 * 3.0 * 3.0;
 }
 
-// REPEAT 3 - TIME: 4.0562967 s
+// REPEAT 3 - TIME: 4.5164303 s
 
 method {:test} Test3() {
 expect 4.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -35,7 +35,7 @@ var r0 := SphereVolume(4.0);
 expect r0 == 4.0 / 3.0 * 3.1415926535 * 4.0 * 4.0 * 4.0;
 }
 
-// REPEAT 4 - TIME: 4.8949246 s
+// REPEAT 4 - TIME: 5.4170497 s
 
 method {:test} Test4() {
 expect 5.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -43,7 +43,7 @@ var r0 := SphereVolume(5.0);
 expect r0 == 4.0 / 3.0 * 3.1415926535 * 5.0 * 5.0 * 5.0;
 }
 
-// REPEAT 5 - TIME: 5.742637 s
+// REPEAT 5 - TIME: 6.3000047 s
 
 method {:test} Test5() {
 expect 6.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -51,7 +51,7 @@ var r0 := SphereVolume(6.0);
 expect r0 == 4.0 / 3.0 * 3.1415926535 * 6.0 * 6.0 * 6.0;
 }
 
-// REPEAT 6 - TIME: 6.626094 s
+// REPEAT 6 - TIME: 6.980663 s
 
 method {:test} Test6() {
 expect 7.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -59,7 +59,7 @@ var r0 := SphereVolume(7.0);
 expect r0 == 4.0 / 3.0 * 3.1415926535 * 7.0 * 7.0 * 7.0;
 }
 
-// REPEAT 7 - TIME: 7.6159925 s
+// REPEAT 7 - TIME: 7.6904228 s
 
 method {:test} Test7() {
 expect 8.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -67,7 +67,7 @@ var r0 := SphereVolume(8.0);
 expect r0 == 4.0 / 3.0 * 3.1415926535 * 8.0 * 8.0 * 8.0;
 }
 
-// REPEAT 8 - TIME: 8.3509011 s
+// REPEAT 8 - TIME: 8.3447327 s
 
 method {:test} Test8() {
 expect 9.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -75,7 +75,7 @@ var r0 := SphereVolume(9.0);
 expect r0 == 4.0 / 3.0 * 3.1415926535 * 9.0 * 9.0 * 9.0;
 }
 
-// REPEAT 9 - TIME: 9.163368 s
+// REPEAT 9 - TIME: 9.016518 s
 
 method {:test} Test9() {
 expect 10.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -83,4 +83,4 @@ var r0 := SphereVolume(10.0);
 expect r0 == 4.0 / 3.0 * 3.1415926535 * 10.0 * 10.0 * 10.0;
 }
 
-// REPEAT 10 - TIME: 9.7807772 s
+// REPEAT 10 - TIME: 9.8330801 s

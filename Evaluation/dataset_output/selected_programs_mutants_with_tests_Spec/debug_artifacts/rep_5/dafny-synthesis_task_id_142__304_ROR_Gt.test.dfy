@@ -11,12 +11,12 @@ method {:testEntry} CountIdenticalPositions(a: seq<int>, b: seq<int>, c: seq<int
 }
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [0, 0, 0, 0];
-var seqint1 : seq<int> := [0, 0, 0, 0];
-var seqint2 : seq<int> := [0, 0, 0, 0];
+var seqint0 : seq<int> := [13, 9];
+var seqint1 : seq<int> := [11, 7];
+var seqint2 : seq<int> := [0, 4];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 5 - TIME: 6.7647381 s
+// REPEAT 5 - TIME: 6.7514525 s

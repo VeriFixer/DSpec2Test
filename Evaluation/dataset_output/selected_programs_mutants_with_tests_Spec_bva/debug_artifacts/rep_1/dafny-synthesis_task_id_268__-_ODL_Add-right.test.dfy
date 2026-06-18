@@ -18,4 +18,4 @@ var r0 := StarNumber(100);
 expect r0 == 6 * 100 * (100 - 1) + 1;
 }
 
-// REPEAT 1 - TIME: 5.1526949 s
+// REPEAT 1 - TIME: 5.2618199 s

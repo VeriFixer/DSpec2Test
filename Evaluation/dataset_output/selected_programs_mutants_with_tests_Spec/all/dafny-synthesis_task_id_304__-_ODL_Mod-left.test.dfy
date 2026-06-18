@@ -26,94 +26,94 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 2282, 0);
 expect r0 == seqint0[(0 - 2282 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 1 - TIME: 2.226317 s
+// REPEAT 1 - TIME: 2.6495163 s
 
 method {:test} Test1() {
-var seqint0 : seq<int> := [27, 1];
-expect 2283 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var seqint0 : seq<int> := [0, 27];
+expect 2284 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect 0 <= 1 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ElementAtIndexAfterRotation(seqint0, 2283, 1);
-expect r0 == seqint0[(1 - 2283 + |seqint0|) % |seqint0|];
+var r0 := ElementAtIndexAfterRotation(seqint0, 2284, 1);
+expect r0 == seqint0[(1 - 2284 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 2 - TIME: 3.1998002 s
+// REPEAT 2 - TIME: 3.5151606 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [28, 0, 0];
-expect 2288 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+expect 2285 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect 0 <= 2 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ElementAtIndexAfterRotation(seqint0, 2288, 2);
-expect r0 == seqint0[(2 - 2288 + |seqint0|) % |seqint0|];
+var r0 := ElementAtIndexAfterRotation(seqint0, 2285, 2);
+expect r0 == seqint0[(2 - 2285 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 3 - TIME: 4.193989 s
+// REPEAT 3 - TIME: 4.3483207 s
 
 method {:test} Test3() {
-var seqint0 : seq<int> := [5, 3, 29, 0];
-expect 2289 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var seqint0 : seq<int> := [4, 2, 0, 29];
+expect 2288 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect 0 <= 3 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ElementAtIndexAfterRotation(seqint0, 2289, 3);
-expect r0 == seqint0[(3 - 2289 + |seqint0|) % |seqint0|];
+var r0 := ElementAtIndexAfterRotation(seqint0, 2288, 3);
+expect r0 == seqint0[(3 - 2288 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 4 - TIME: 5.0933548 s
+// REPEAT 4 - TIME: 5.180437 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [7, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0];
-expect 2315 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-expect 0 <= 25 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ElementAtIndexAfterRotation(seqint0, 2315, 25);
-expect r0 == seqint0[(25 - 2315 + |seqint0|) % |seqint0|];
+var seqint0 : seq<int> := [8, 6, 0, 30, 3];
+expect 2291 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+expect 0 <= 4 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ElementAtIndexAfterRotation(seqint0, 2291, 4);
+expect r0 == seqint0[(4 - 2291 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 5 - TIME: 6.009338 s
+// REPEAT 5 - TIME: 5.9665687 s
 
 method {:test} Test5() {
-var seqint0 : seq<int> := [6, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9];
-expect 2350 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-expect 0 <= 27 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ElementAtIndexAfterRotation(seqint0, 2350, 27);
-expect r0 == seqint0[(27 - 2350 + |seqint0|) % |seqint0|];
+var seqint0 : seq<int> := [5, 9, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0];
+expect 2324 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+expect 0 <= 28 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ElementAtIndexAfterRotation(seqint0, 2324, 28);
+expect r0 == seqint0[(28 - 2324 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 6 - TIME: 6.8421723 s
+// REPEAT 6 - TIME: 6.7840902 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [11, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-expect 2394 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-expect 0 <= 32 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ElementAtIndexAfterRotation(seqint0, 2394, 32);
-expect r0 == seqint0[(32 - 2394 + |seqint0|) % |seqint0|];
+var seqint0 : seq<int> := [7, 12, 0, 0, 0, 0, 0, 0, 0, 0, 34, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16];
+expect 2359 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+expect 0 <= 29 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ElementAtIndexAfterRotation(seqint0, 2359, 29);
+expect r0 == seqint0[(29 - 2359 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 7 - TIME: 7.6713066 s
+// REPEAT 7 - TIME: 7.7728902 s
 
 method {:test} Test7() {
-var seqint0 : seq<int> := [10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 38];
-expect 2415 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-expect 0 <= 34 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ElementAtIndexAfterRotation(seqint0, 2415, 34);
-expect r0 == seqint0[(34 - 2415 + |seqint0|) % |seqint0|];
+var seqint0 : seq<int> := [20, 0, 35, 10, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 15];
+expect 2382 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+expect 0 <= 14 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ElementAtIndexAfterRotation(seqint0, 2382, 14);
+expect r0 == seqint0[(14 - 2382 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 8 - TIME: 8.6392321 s
+// REPEAT 8 - TIME: 8.5651231 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [14, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-expect 2479 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-expect 0 <= 35 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ElementAtIndexAfterRotation(seqint0, 2479, 35);
-expect r0 == seqint0[(35 - 2479 + |seqint0|) % |seqint0|];
+var seqint0 : seq<int> := [31, 13, 0, 0, 0, 0, 0, 0, 0, 0, 36, 0, 22, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 19];
+expect 2397 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+expect 0 <= 15 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ElementAtIndexAfterRotation(seqint0, 2397, 15);
+expect r0 == seqint0[(15 - 2397 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 9 - TIME: 9.9659674 s
+// REPEAT 9 - TIME: 9.341321 s
 
 method {:test} Test9() {
-var seqint0 : seq<int> := [16, 0, 0, 0, 42, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-expect 2548 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-expect 0 <= 36 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ElementAtIndexAfterRotation(seqint0, 2548, 36);
-expect r0 == seqint0[(36 - 2548 + |seqint0|) % |seqint0|];
+var seqint0 : seq<int> := [41, 0, 0, 0, 0, 0, 0, 38, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 33, 0, 0, 0, 0, 39];
+expect 2409 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+expect 0 <= 16 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ElementAtIndexAfterRotation(seqint0, 2409, 16);
+expect r0 == seqint0[(16 - 2409 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 10 - TIME: 11.7189791 s
+// REPEAT 10 - TIME: 10.2376931 s

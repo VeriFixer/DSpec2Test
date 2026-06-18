@@ -23,4 +23,4 @@ var r0 := SumOfFourthPowerOfOddNumbers(21);
 expect r0 == 21 * (2 * 21 + 1) * (24 * 21 * 21 * 21 - 12 * 21 * 21 - 14 * 21 + 7) / 15;
 }
 
-// REPEAT 1 - TIME: 6.9073207 s
+// REPEAT 1 - TIME: 4.6596373 s

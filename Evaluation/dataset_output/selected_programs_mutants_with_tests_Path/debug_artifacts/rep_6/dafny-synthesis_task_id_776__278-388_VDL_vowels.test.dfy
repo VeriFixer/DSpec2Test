@@ -12,20 +12,20 @@ method {:testEntry} CountVowelNeighbors(s: string) returns (count: int)
 }
 
 method {:test} Test25() {
-var r0 := CountVowelNeighbors("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+var r0 := CountVowelNeighbors("\U{0004}\0a\U{0001}aaaaaaaaaaaaaaaaaa");
 expect r0 >= 0;
 }
 method {:test} Test26() {
-var r0 := CountVowelNeighbors("aaa\0aaaaaaaaaaaaaaaaaaa");
+var r0 := CountVowelNeighbors("\U{0006}\U{0001}a\U{0002}aaaaaaaaaaaaaaaa\0a");
 expect r0 >= 0;
 }
 method {:test} Test27() {
-var r0 := CountVowelNeighbors("aaaaaaa\0aaaaaaaaaaaaaaaaaa");
+var r0 := CountVowelNeighbors("\U{0006}\U{0001}a\U{0002}aaaaaaaaaaaaaaa\0aa");
 expect r0 >= 0;
 }
-method {:test} Test28() {
-var r0 := CountVowelNeighbors("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0001}aaaaaaaaaaaaaaaa");
+method {:test} Test29() {
+var r0 := CountVowelNeighbors("\0aaaaaaaaaaaaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 6 - TIME: 61.2433864 s
+// REPEAT 6 - TIME: 38.1763065 s

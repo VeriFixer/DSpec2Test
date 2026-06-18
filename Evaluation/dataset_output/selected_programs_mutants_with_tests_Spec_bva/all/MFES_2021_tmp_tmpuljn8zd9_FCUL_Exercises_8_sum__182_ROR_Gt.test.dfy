@@ -50,67 +50,67 @@ var r0 := sum(100);
 expect r0 == calcSum(100 + 1);
 }
 
-// REPEAT 1 - TIME: 6.0127809 s
+// REPEAT 1 - TIME: 6.259495 s
 
 method {:test} Test5() {
 var r0 := sum(101);
 expect r0 == calcSum(101 + 1);
 }
 
-// REPEAT 2 - TIME: 6.9056538 s
+// REPEAT 2 - TIME: 7.2174938 s
 
 method {:test} Test6() {
 var r0 := sum(102);
 expect r0 == calcSum(102 + 1);
 }
 
-// REPEAT 3 - TIME: 7.8614732 s
+// REPEAT 3 - TIME: 8.0132547 s
 
 method {:test} Test7() {
 var r0 := sum(103);
 expect r0 == calcSum(103 + 1);
 }
 
-// REPEAT 4 - TIME: 8.6124372 s
+// REPEAT 4 - TIME: 8.9109873 s
 
 method {:test} Test8() {
 var r0 := sum(104);
 expect r0 == calcSum(104 + 1);
 }
 
-// REPEAT 5 - TIME: 9.4154682 s
+// REPEAT 5 - TIME: 9.7134513 s
 
 method {:test} Test9() {
 var r0 := sum(105);
 expect r0 == calcSum(105 + 1);
 }
 
-// REPEAT 6 - TIME: 10.2319909 s
+// REPEAT 6 - TIME: 10.7180971 s
 
 method {:test} Test10() {
 var r0 := sum(106);
 expect r0 == calcSum(106 + 1);
 }
 
-// REPEAT 7 - TIME: 11.0028785 s
+// REPEAT 7 - TIME: 11.6517246 s
 
 method {:test} Test11() {
 var r0 := sum(107);
 expect r0 == calcSum(107 + 1);
 }
 
-// REPEAT 8 - TIME: 11.6187666 s
+// REPEAT 8 - TIME: 12.4823011 s
 
 method {:test} Test12() {
 var r0 := sum(108);
 expect r0 == calcSum(108 + 1);
 }
 
-// REPEAT 9 - TIME: 12.264223 s
+// REPEAT 9 - TIME: 13.2783964 s
 
 method {:test} Test13() {
 var r0 := sum(109);
 expect r0 == calcSum(109 + 1);
 }
 
-// REPEAT 10 - TIME: 12.8609868 s
+// REPEAT 10 - TIME: 14.023424 s

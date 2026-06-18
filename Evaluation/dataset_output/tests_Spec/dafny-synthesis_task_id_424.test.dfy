@@ -22,7 +22,7 @@ expect |r0| == |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[i] == seqstring0[i][|seqstring0[i]| - 1];
 }
 
-// REPEAT 1 - TIME: 2.5758872 s
+// REPEAT 1 - TIME: 2.766733 s
 
 method {:test} Test1() {
 var seqstring0 : seq<string> := ["", ""];
@@ -32,7 +32,7 @@ expect |r0| == |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[i] == seqstring0[i][|seqstring0[i]| - 1];
 }
 
-// REPEAT 2 - TIME: 3.5601545 s
+// REPEAT 2 - TIME: 3.6825362 s
 
 method {:test} Test2() {
 var seqstring0 : seq<string> := ["", "", ""];
@@ -42,7 +42,7 @@ expect |r0| == |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[i] == seqstring0[i][|seqstring0[i]| - 1];
 }
 
-// REPEAT 3 - TIME: 4.5413991 s
+// REPEAT 3 - TIME: 4.742073 s
 
 method {:test} Test3() {
 var seqstring0 : seq<string> := ["", "", "", ""];
@@ -52,7 +52,7 @@ expect |r0| == |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[i] == seqstring0[i][|seqstring0[i]| - 1];
 }
 
-// REPEAT 4 - TIME: 5.5569488 s
+// REPEAT 4 - TIME: 5.5728763 s
 
 method {:test} Test4() {
 expect forall i :: 0 <= i < |""| ==> |""[i]| > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -61,7 +61,7 @@ expect |r0| == |""|;
 expect forall i :: 0 <= i < |""| ==> r0[i] == ""[i][|""[i]| - 1];
 }
 
-// REPEAT 5 - TIME: 6.6175035 s
+// REPEAT 5 - TIME: 6.4788472 s
 
 method {:test} Test5() {
 var seqstring0 : seq<string> := ["", "", "", "", ""];
@@ -71,7 +71,7 @@ expect |r0| == |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[i] == seqstring0[i][|seqstring0[i]| - 1];
 }
 
-// REPEAT 6 - TIME: 7.5908583 s
+// REPEAT 6 - TIME: 7.2667957 s
 
 method {:test} Test6() {
 var seqstring0 : seq<string> := ["", "", "", "", "", ""];
@@ -81,7 +81,7 @@ expect |r0| == |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[i] == seqstring0[i][|seqstring0[i]| - 1];
 }
 
-// REPEAT 7 - TIME: 8.3412822 s
+// REPEAT 7 - TIME: 7.9716601 s
 
 method {:test} Test7() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", ""];
@@ -91,7 +91,7 @@ expect |r0| == |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[i] == seqstring0[i][|seqstring0[i]| - 1];
 }
 
-// REPEAT 8 - TIME: 9.0033105 s
+// REPEAT 8 - TIME: 8.6536819 s
 
 method {:test} Test8() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", ""];
@@ -101,7 +101,7 @@ expect |r0| == |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[i] == seqstring0[i][|seqstring0[i]| - 1];
 }
 
-// REPEAT 9 - TIME: 9.6570731 s
+// REPEAT 9 - TIME: 9.3100747 s
 
 method {:test} Test9() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", ""];
@@ -111,4 +111,4 @@ expect |r0| == |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[i] == seqstring0[i][|seqstring0[i]| - 1];
 }
 
-// REPEAT 10 - TIME: 10.3283986 s
+// REPEAT 10 - TIME: 10.1502878 s

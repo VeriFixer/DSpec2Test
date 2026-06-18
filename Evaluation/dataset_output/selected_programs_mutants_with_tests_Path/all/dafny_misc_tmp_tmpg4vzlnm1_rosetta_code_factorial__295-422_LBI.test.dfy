@@ -49,67 +49,67 @@ var r0 := IterativeFactorial(0);
 expect r0 == Factorial(0);
 }
 
-// REPEAT 1 - TIME: 4.2004764 s
+// REPEAT 1 - TIME: 2.0893745 s
 
 method {:test} Test1() {
 var r0 := IterativeFactorial(2);
 expect r0 == Factorial(2);
 }
 
-// REPEAT 2 - TIME: 6.8896321 s
+// REPEAT 2 - TIME: 3.4461056 s
 
 method {:test} Test2() {
 var r0 := IterativeFactorial(3);
 expect r0 == Factorial(3);
 }
 
-// REPEAT 3 - TIME: 9.2384888 s
+// REPEAT 3 - TIME: 4.8590507 s
 
 method {:test} Test3() {
 var r0 := IterativeFactorial(4);
 expect r0 == Factorial(4);
 }
 
-// REPEAT 4 - TIME: 11.1153245 s
+// REPEAT 4 - TIME: 6.1170509 s
 
 method {:test} Test4() {
 var r0 := IterativeFactorial(5);
 expect r0 == Factorial(5);
 }
 
-// REPEAT 5 - TIME: 13.0026959 s
+// REPEAT 5 - TIME: 7.1656249 s
 
 method {:test} Test5() {
 var r0 := IterativeFactorial(6);
 expect r0 == Factorial(6);
 }
 
-// REPEAT 6 - TIME: 14.8801915 s
+// REPEAT 6 - TIME: 8.1740155 s
 
 method {:test} Test6() {
 var r0 := IterativeFactorial(7);
 expect r0 == Factorial(7);
 }
 
-// REPEAT 7 - TIME: 16.9839197 s
+// REPEAT 7 - TIME: 9.2061831 s
 
 method {:test} Test7() {
 var r0 := IterativeFactorial(8);
 expect r0 == Factorial(8);
 }
 
-// REPEAT 8 - TIME: 19.050524 s
+// REPEAT 8 - TIME: 10.187632 s
 
 method {:test} Test8() {
 var r0 := IterativeFactorial(9);
 expect r0 == Factorial(9);
 }
 
-// REPEAT 9 - TIME: 21.6019355 s
+// REPEAT 9 - TIME: 11.4131167 s
 
 method {:test} Test9() {
 var r0 := IterativeFactorial(10);
 expect r0 == Factorial(10);
 }
 
-// REPEAT 10 - TIME: 23.7819065 s
+// REPEAT 10 - TIME: 12.5017767 s

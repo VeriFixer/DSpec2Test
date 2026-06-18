@@ -39,7 +39,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 1 - TIME: 2.9442612 s
+// REPEAT 1 - TIME: 2.5481452 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [0];
@@ -48,7 +48,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 2 - TIME: 3.9919244 s
+// REPEAT 2 - TIME: 3.6703354 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [28];
@@ -57,7 +57,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 3 - TIME: 5.1002847 s
+// REPEAT 3 - TIME: 4.7161589 s
 
 method {:test} Test3() {
 var seqint0 : seq<int> := [30];
@@ -66,58 +66,58 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 4 - TIME: 6.3675983 s
+// REPEAT 4 - TIME: 5.6983744 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [0, 0];
+var seqint0 : seq<int> := [32, 0];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 5 - TIME: 7.5143087 s
+// REPEAT 5 - TIME: 6.5579644 s
 
 method {:test} Test5() {
-var seqint0 : seq<int> := [35, 0];
-var r0 := DeepCopySeq(seqint0);
-expect |r0| == |seqint0|;
-expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
-}
-
-// REPEAT 6 - TIME: 8.3596335 s
-
-method {:test} Test6() {
 var seqint0 : seq<int> := [38];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 7 - TIME: 9.1724107 s
+// REPEAT 6 - TIME: 7.4494805 s
+
+method {:test} Test6() {
+var seqint0 : seq<int> := [37, 0];
+var r0 := DeepCopySeq(seqint0);
+expect |r0| == |seqint0|;
+expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
+}
+
+// REPEAT 7 - TIME: 8.3644911 s
 
 method {:test} Test7() {
-var seqint0 : seq<int> := [39, 0, 40];
+var seqint0 : seq<int> := [40, 0, 0];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 8 - TIME: 9.9319771 s
+// REPEAT 8 - TIME: 9.3052475 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [44, 0, 43];
+var seqint0 : seq<int> := [43, 0, 45];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 9 - TIME: 10.6177567 s
+// REPEAT 9 - TIME: 10.3688618 s
 
 method {:test} Test9() {
-var seqint0 : seq<int> := [48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50];
+var seqint0 : seq<int> := [48, 0, 0];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 10 - TIME: 11.3355948 s
+// REPEAT 10 - TIME: 11.3640105 s

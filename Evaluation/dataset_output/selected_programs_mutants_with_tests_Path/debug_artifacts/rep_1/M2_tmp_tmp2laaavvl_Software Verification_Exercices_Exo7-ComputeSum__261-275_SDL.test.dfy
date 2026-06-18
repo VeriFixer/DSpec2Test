@@ -26,4 +26,4 @@ var r0 := ComputeSum(40);
 expect r0 == Sum(40);
 }
 
-// REPEAT 1 - TIME: 7.1650796 s
+// REPEAT 1 - TIME: 7.4361481 s

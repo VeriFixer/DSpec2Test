@@ -21,9 +21,9 @@ method {:testEntry} ReplaceWithColon(s: string) returns (v: string)
 }
 
 method {:test} Test11() {
-var r0 := ReplaceWithColon(" a ");
-expect |r0| == |" a "|;
-expect forall i :: 0 <= i < |" a "| ==> (IsSpaceCommaDot(" a "[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot(" a "[i]) ==> r0[i] == " a "[i]);
+var r0 := ReplaceWithColon("\0a aaaaaaaaaaa\U{0001}");
+expect |r0| == |"\0a aaaaaaaaaaa\U{0001}"|;
+expect forall i :: 0 <= i < |"\0a aaaaaaaaaaa\U{0001}"| ==> (IsSpaceCommaDot("\0a aaaaaaaaaaa\U{0001}"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("\0a aaaaaaaaaaa\U{0001}"[i]) ==> r0[i] == "\0a aaaaaaaaaaa\U{0001}"[i]);
 }
 
-// REPEAT 3 - TIME: 8.5390791 s
+// REPEAT 3 - TIME: 8.468687 s

@@ -26,7 +26,7 @@ var r0 := CenteredHexagonalNumber(100);
 expect r0 == 3 * 100 * (100 - 1) + 1;
 }
 
-// REPEAT 1 - TIME: 5.0198176 s
+// REPEAT 1 - TIME: 4.8874418 s
 
 method {:test} Test6() {
 expect 101 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -34,7 +34,7 @@ var r0 := CenteredHexagonalNumber(101);
 expect r0 == 3 * 101 * (101 - 1) + 1;
 }
 
-// REPEAT 2 - TIME: 5.9115724 s
+// REPEAT 2 - TIME: 5.7958681 s
 
 method {:test} Test7() {
 expect 102 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -42,7 +42,7 @@ var r0 := CenteredHexagonalNumber(102);
 expect r0 == 3 * 102 * (102 - 1) + 1;
 }
 
-// REPEAT 3 - TIME: 6.8540647 s
+// REPEAT 3 - TIME: 6.7489549 s
 
 method {:test} Test8() {
 expect 103 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -50,7 +50,7 @@ var r0 := CenteredHexagonalNumber(103);
 expect r0 == 3 * 103 * (103 - 1) + 1;
 }
 
-// REPEAT 4 - TIME: 7.5677153 s
+// REPEAT 4 - TIME: 7.6802522 s
 
 method {:test} Test9() {
 expect 104 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -58,7 +58,7 @@ var r0 := CenteredHexagonalNumber(104);
 expect r0 == 3 * 104 * (104 - 1) + 1;
 }
 
-// REPEAT 5 - TIME: 8.2247197 s
+// REPEAT 5 - TIME: 8.3862944 s
 
 method {:test} Test10() {
 expect 105 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -66,7 +66,7 @@ var r0 := CenteredHexagonalNumber(105);
 expect r0 == 3 * 105 * (105 - 1) + 1;
 }
 
-// REPEAT 6 - TIME: 8.8564004 s
+// REPEAT 6 - TIME: 9.0950885 s
 
 method {:test} Test11() {
 expect 106 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -74,7 +74,7 @@ var r0 := CenteredHexagonalNumber(106);
 expect r0 == 3 * 106 * (106 - 1) + 1;
 }
 
-// REPEAT 7 - TIME: 9.5661702 s
+// REPEAT 7 - TIME: 9.7988741 s
 
 method {:test} Test12() {
 expect 107 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -82,7 +82,7 @@ var r0 := CenteredHexagonalNumber(107);
 expect r0 == 3 * 107 * (107 - 1) + 1;
 }
 
-// REPEAT 8 - TIME: 10.1952367 s
+// REPEAT 8 - TIME: 10.4613207 s
 
 method {:test} Test13() {
 expect 108 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -90,7 +90,7 @@ var r0 := CenteredHexagonalNumber(108);
 expect r0 == 3 * 108 * (108 - 1) + 1;
 }
 
-// REPEAT 9 - TIME: 10.8309292 s
+// REPEAT 9 - TIME: 11.0617408 s
 
 method {:test} Test14() {
 expect 109 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -98,4 +98,4 @@ var r0 := CenteredHexagonalNumber(109);
 expect r0 == 3 * 109 * (109 - 1) + 1;
 }
 
-// REPEAT 10 - TIME: 11.4362812 s
+// REPEAT 10 - TIME: 11.7347909 s

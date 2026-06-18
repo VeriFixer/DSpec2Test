@@ -18,4 +18,4 @@ var r0 := CubeVolume(100);
 expect r0 == 100 * 100 * 100;
 }
 
-// REPEAT 1 - TIME: 5.3887601 s
+// REPEAT 1 - TIME: 5.5026192 s

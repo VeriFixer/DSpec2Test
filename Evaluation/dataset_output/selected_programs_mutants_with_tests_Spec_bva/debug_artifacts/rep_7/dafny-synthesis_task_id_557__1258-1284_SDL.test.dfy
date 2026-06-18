@@ -53,9 +53,9 @@ method {:testEntry} ToggleCase(s: string) returns (v: string)
 }
 
 method {:test} Test15() {
-var r0 := ToggleCase("a\U{001A}a1");
-expect |r0| == |"a\U{001A}a1"|;
-expect forall i :: 0 <= i < |"a\U{001A}a1"| ==> if IsLowerCase("a\U{001A}a1"[i]) then IsLowerUpperPair("a\U{001A}a1"[i], r0[i]) else if IsUpperCase("a\U{001A}a1"[i]) then IsUpperLowerPair("a\U{001A}a1"[i], r0[i]) else r0[i] == "a\U{001A}a1"[i];
+var r0 := ToggleCase("!>aaaaa\U{0013}aaaaaa2");
+expect |r0| == |"!>aaaaa\U{0013}aaaaaa2"|;
+expect forall i :: 0 <= i < |"!>aaaaa\U{0013}aaaaaa2"| ==> if IsLowerCase("!>aaaaa\U{0013}aaaaaa2"[i]) then IsLowerUpperPair("!>aaaaa\U{0013}aaaaaa2"[i], r0[i]) else if IsUpperCase("!>aaaaa\U{0013}aaaaaa2"[i]) then IsUpperLowerPair("!>aaaaa\U{0013}aaaaaa2"[i], r0[i]) else r0[i] == "!>aaaaa\U{0013}aaaaaa2"[i];
 }
 
-// REPEAT 7 - TIME: 13.4633336 s
+// REPEAT 7 - TIME: 13.3479521 s

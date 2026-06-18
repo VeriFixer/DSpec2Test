@@ -48,7 +48,7 @@ var r0 := RectangleArea(1, 100);
 expect r0 == 1 * 100;
 }
 
-// REPEAT 1 - TIME: 6.4724987 s
+// REPEAT 1 - TIME: 6.2483307 s
 
 method {:test} Test9() {
 expect 7721 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -57,7 +57,7 @@ var r0 := RectangleArea(7721, 7721);
 expect r0 == 7721 * 7721;
 }
 
-// REPEAT 2 - TIME: 7.486587 s
+// REPEAT 2 - TIME: 7.1282698 s
 
 method {:test} Test10() {
 expect 7722 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -66,7 +66,7 @@ var r0 := RectangleArea(7722, 7722);
 expect r0 == 7722 * 7722;
 }
 
-// REPEAT 3 - TIME: 8.1978726 s
+// REPEAT 3 - TIME: 7.9061546 s
 
 method {:test} Test11() {
 expect 7723 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -75,7 +75,7 @@ var r0 := RectangleArea(7723, 7723);
 expect r0 == 7723 * 7723;
 }
 
-// REPEAT 4 - TIME: 9.0233968 s
+// REPEAT 4 - TIME: 8.5675691 s
 
 method {:test} Test12() {
 expect 7724 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -84,7 +84,7 @@ var r0 := RectangleArea(7724, 7724);
 expect r0 == 7724 * 7724;
 }
 
-// REPEAT 5 - TIME: 9.6673824 s
+// REPEAT 5 - TIME: 9.2190283 s
 
 method {:test} Test13() {
 expect 7725 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -93,7 +93,7 @@ var r0 := RectangleArea(7725, 7725);
 expect r0 == 7725 * 7725;
 }
 
-// REPEAT 6 - TIME: 10.394178 s
+// REPEAT 6 - TIME: 9.935859 s
 
 method {:test} Test14() {
 expect 7726 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -102,7 +102,7 @@ var r0 := RectangleArea(7726, 7726);
 expect r0 == 7726 * 7726;
 }
 
-// REPEAT 7 - TIME: 10.9655323 s
+// REPEAT 7 - TIME: 10.6917394 s
 
 method {:test} Test15() {
 expect 7727 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -111,7 +111,7 @@ var r0 := RectangleArea(7727, 7727);
 expect r0 == 7727 * 7727;
 }
 
-// REPEAT 8 - TIME: 11.6306955 s
+// REPEAT 8 - TIME: 11.3300717 s
 
 method {:test} Test16() {
 expect 7728 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -120,7 +120,7 @@ var r0 := RectangleArea(7728, 7728);
 expect r0 == 7728 * 7728;
 }
 
-// REPEAT 9 - TIME: 12.2236896 s
+// REPEAT 9 - TIME: 12.089528 s
 
 method {:test} Test17() {
 expect 7729 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -129,4 +129,4 @@ var r0 := RectangleArea(7729, 7729);
 expect r0 == 7729 * 7729;
 }
 
-// REPEAT 10 - TIME: 12.7672449 s
+// REPEAT 10 - TIME: 12.7419245 s

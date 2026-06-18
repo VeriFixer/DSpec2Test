@@ -38,10 +38,15 @@ var r0 := ToUppercase("a");
 expect |r0| == |"a"|;
 expect forall i :: 0 <= i < |"a"| ==> if IsLowerCase("a"[i]) then IsLowerUpperPair("a"[i], r0[i]) else r0[i] == "a"[i];
 }
+method {:test} Test2() {
+var r0 := ToUppercase("");
+expect |r0| == |""|;
+expect forall i :: 0 <= i < |""| ==> if IsLowerCase(""[i]) then IsLowerUpperPair(""[i], r0[i]) else r0[i] == ""[i];
+}
 method {:test} Test3() {
-var r0 := ToUppercase("`");
-expect |r0| == |"`"|;
-expect forall i :: 0 <= i < |"`"| ==> if IsLowerCase("`"[i]) then IsLowerUpperPair("`"[i], r0[i]) else r0[i] == "`"[i];
+var r0 := ToUppercase("a`");
+expect |r0| == |"a`"|;
+expect forall i :: 0 <= i < |"a`"| ==> if IsLowerCase("a`"[i]) then IsLowerUpperPair("a`"[i], r0[i]) else r0[i] == "a`"[i];
 }
 
-// REPEAT 1 - TIME: 4.1054645 s
+// REPEAT 1 - TIME: 4.328744 s

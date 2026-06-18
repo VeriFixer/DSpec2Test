@@ -32,8 +32,8 @@ var r0 := calcC(2);
 expect r0 == C(2);
 }
 method {:test} Test1() {
-var r0 := calcC(12);
-expect r0 == C(12);
+var r0 := calcC(3);
+expect r0 == C(3);
 }
 
-// REPEAT 1 - TIME: 3.9765093 s
+// REPEAT 1 - TIME: 33.2096277 s

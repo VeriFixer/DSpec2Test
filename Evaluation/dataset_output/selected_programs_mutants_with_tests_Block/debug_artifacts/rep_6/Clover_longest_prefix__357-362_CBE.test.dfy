@@ -18,14 +18,14 @@ method {:testEntry} LongestCommonPrefix(str1: seq<char>, str2: seq<char>) return
 }
 
 method {:test} Test10() {
-var r0 := LongestCommonPrefix("\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-expect |r0| <= |"\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| && r0 == "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[0 .. |r0|] && |r0| <= |"\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| && r0 == "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[0 .. |r0|];
-expect |r0| == |"\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| || |r0| == |"\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| || "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[|r0|] != "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[|r0|];
+var r0 := LongestCommonPrefix("\U{0002}aaaaa\0a", "\U{0002}aaaaaaaa");
+expect |r0| <= |"\U{0002}aaaaa\0a"| && r0 == "\U{0002}aaaaa\0a"[0 .. |r0|] && |r0| <= |"\U{0002}aaaaaaaa"| && r0 == "\U{0002}aaaaaaaa"[0 .. |r0|];
+expect |r0| == |"\U{0002}aaaaa\0a"| || |r0| == |"\U{0002}aaaaaaaa"| || "\U{0002}aaaaa\0a"[|r0|] != "\U{0002}aaaaaaaa"[|r0|];
 }
 method {:test} Test11() {
-var r0 := LongestCommonPrefix("\0aaaa", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-expect |r0| <= |"\0aaaa"| && r0 == "\0aaaa"[0 .. |r0|] && |r0| <= |"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| && r0 == "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[0 .. |r0|];
-expect |r0| == |"\0aaaa"| || |r0| == |"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| || "\0aaaa"[|r0|] != "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[|r0|];
+var r0 := LongestCommonPrefix("\U{0004}aaaaaa\U{0002}aaaaa", "\0");
+expect |r0| <= |"\U{0004}aaaaaa\U{0002}aaaaa"| && r0 == "\U{0004}aaaaaa\U{0002}aaaaa"[0 .. |r0|] && |r0| <= |"\0"| && r0 == "\0"[0 .. |r0|];
+expect |r0| == |"\U{0004}aaaaaa\U{0002}aaaaa"| || |r0| == |"\0"| || "\U{0004}aaaaaa\U{0002}aaaaa"[|r0|] != "\0"[|r0|];
 }
 
-// REPEAT 6 - TIME: 9.4834743 s
+// REPEAT 6 - TIME: 8.4043005 s

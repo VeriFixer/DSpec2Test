@@ -8,14 +8,14 @@ method {:testEntry} StartAndEndWithSameChar(s: string) returns (result: bool)
 }
 
 method {:test} Test13() {
-expect |"\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaa\U{0002}aaaaaaaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaa\U{0002}aaaaaaaa\0");
-expect r0 <==> "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaa\U{0002}aaaaaaaa\0"[0] == "\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaa\U{0002}aaaaaaaa\0"[|"\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\U{0004}aaa\U{0002}aaaaaaaa\0"| - 1];
+expect |"\U{0002}\U{0004}aaaaaaaaaaaaaaa\U{0006}\0\U{0002}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\U{0002}\U{0004}aaaaaaaaaaaaaaa\U{0006}\0\U{0002}");
+expect r0 <==> "\U{0002}\U{0004}aaaaaaaaaaaaaaa\U{0006}\0\U{0002}"[0] == "\U{0002}\U{0004}aaaaaaaaaaaaaaa\U{0006}\0\U{0002}"[|"\U{0002}\U{0004}aaaaaaaaaaaaaaa\U{0006}\0\U{0002}"| - 1];
 }
 method {:test} Test14() {
-expect |"\U{0002}\0aaaaaaaaa\U{0004}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\U{0002}\0aaaaaaaaa\U{0004}");
-expect r0 <==> "\U{0002}\0aaaaaaaaa\U{0004}"[0] == "\U{0002}\0aaaaaaaaa\U{0004}"[|"\U{0002}\0aaaaaaaaa\U{0004}"| - 1];
+expect |"\0\U{0004}aaaaaaaa\U{0006}aaaaaaaaaaaaaaaa\U{0002}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\0\U{0004}aaaaaaaa\U{0006}aaaaaaaaaaaaaaaa\U{0002}");
+expect r0 <==> "\0\U{0004}aaaaaaaa\U{0006}aaaaaaaaaaaaaaaa\U{0002}"[0] == "\0\U{0004}aaaaaaaa\U{0006}aaaaaaaaaaaaaaaa\U{0002}"[|"\0\U{0004}aaaaaaaa\U{0006}aaaaaaaaaaaaaaaa\U{0002}"| - 1];
 }
 
-// REPEAT 2 - TIME: 10.4056048 s
+// REPEAT 2 - TIME: 10.2878052 s

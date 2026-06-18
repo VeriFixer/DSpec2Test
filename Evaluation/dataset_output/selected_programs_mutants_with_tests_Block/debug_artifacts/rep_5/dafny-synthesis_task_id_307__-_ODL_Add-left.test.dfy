@@ -16,10 +16,10 @@ method {:testEntry} DeepCopySeq(s: seq<int>) returns (copy: seq<int>)
 }
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [0, 0];
+var seqint0 : seq<int> := [32, 0];
 var r0 := DeepCopySeq(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 5 - TIME: 7.5143087 s
+// REPEAT 5 - TIME: 6.5579644 s

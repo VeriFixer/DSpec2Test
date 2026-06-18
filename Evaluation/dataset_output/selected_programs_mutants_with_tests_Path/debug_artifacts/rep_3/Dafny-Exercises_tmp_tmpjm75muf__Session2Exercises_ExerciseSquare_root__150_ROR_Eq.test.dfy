@@ -64,4 +64,4 @@ var r0 := mroot3(2);
 expect r0 >= 0 && r0 * r0 <= 2 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 3 - TIME: 71.4143987 s
+// REPEAT 3 - TIME: 78.0352725 s

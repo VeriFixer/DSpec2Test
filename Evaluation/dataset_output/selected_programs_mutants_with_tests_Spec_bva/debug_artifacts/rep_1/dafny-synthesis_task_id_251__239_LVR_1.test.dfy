@@ -27,7 +27,7 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "" && r0[2 * i + 1] == seqstring0[i];
 }
 method {:test} Test3() {
-var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", ""];
 var r0 := InsertBeforeEach(seqstring0, "");
 expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "" && r0[2 * i + 1] == seqstring0[i];
@@ -45,4 +45,4 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "aa" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 1 - TIME: 7.3697434 s
+// REPEAT 1 - TIME: 7.1822067 s

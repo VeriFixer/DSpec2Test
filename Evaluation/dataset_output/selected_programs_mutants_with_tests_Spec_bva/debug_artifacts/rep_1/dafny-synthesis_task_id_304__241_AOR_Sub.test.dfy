@@ -31,7 +31,7 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 1218, 0);
 expect r0 == seqint0[(0 - 1218 + |seqint0|) % |seqint0|];
 }
 method {:test} Test3() {
-var seqint0 : seq<int> := [25, 0, 0, 0];
+var seqint0 : seq<int> := [25];
 expect 0 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect 0 <= 0 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ElementAtIndexAfterRotation(seqint0, 0, 0);
@@ -66,4 +66,4 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 2282, 0);
 expect r0 == seqint0[(0 - 2282 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 1 - TIME: 8.097626 s
+// REPEAT 1 - TIME: 7.7481469 s

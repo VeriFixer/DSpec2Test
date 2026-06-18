@@ -18,4 +18,4 @@ var r0 := TriangularPrismVolume(3, 2, 2);
 expect r0 == 3 * 2 * 2 / 2;
 }
 
-// REPEAT 2 - TIME: 4.8763542 s
+// REPEAT 2 - TIME: 5.7565514 s

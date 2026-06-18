@@ -11,11 +11,11 @@ method {:testEntry} SplitAndAppend(l: seq<int>, n: int) returns (r: seq<int>)
 }
 
 method {:test} Test15() {
-var seqint0 : seq<int> := [19, 0, 0, 0, 0, 0, 0, 13];
+var seqint0 : seq<int> := [17, 0, 0, 0, 10, 13, 15, 0];
 expect 7 >= 0 && 7 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := SplitAndAppend(seqint0, 7);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i + 7) % |seqint0|];
 }
 
-// REPEAT 8 - TIME: 13.3441514 s
+// REPEAT 8 - TIME: 12.548278 s

@@ -21,7 +21,7 @@ var r0 := AreaOfLargestTriangleInSemicircle(10);
 expect r0 == 10 * 10;
 }
 
-// REPEAT 1 - TIME: 6.2144162 s
+// REPEAT 1 - TIME: 5.8220847 s
 
 method {:test} Test7() {
 expect 101 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -29,7 +29,7 @@ var r0 := AreaOfLargestTriangleInSemicircle(101);
 expect r0 == 101 * 101;
 }
 
-// REPEAT 2 - TIME: 7.3019496 s
+// REPEAT 2 - TIME: 6.8684449 s
 
 method {:test} Test8() {
 expect 102 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -37,7 +37,7 @@ var r0 := AreaOfLargestTriangleInSemicircle(102);
 expect r0 == 102 * 102;
 }
 
-// REPEAT 3 - TIME: 8.0908331 s
+// REPEAT 3 - TIME: 7.6998313 s
 
 method {:test} Test9() {
 expect 103 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -45,7 +45,7 @@ var r0 := AreaOfLargestTriangleInSemicircle(103);
 expect r0 == 103 * 103;
 }
 
-// REPEAT 4 - TIME: 8.6524091 s
+// REPEAT 4 - TIME: 8.4138334 s
 
 method {:test} Test10() {
 expect 104 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -53,7 +53,7 @@ var r0 := AreaOfLargestTriangleInSemicircle(104);
 expect r0 == 104 * 104;
 }
 
-// REPEAT 5 - TIME: 9.197167 s
+// REPEAT 5 - TIME: 9.0705757 s
 
 method {:test} Test11() {
 expect 105 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -61,7 +61,7 @@ var r0 := AreaOfLargestTriangleInSemicircle(105);
 expect r0 == 105 * 105;
 }
 
-// REPEAT 6 - TIME: 9.7267696 s
+// REPEAT 6 - TIME: 9.7432166 s
 
 method {:test} Test12() {
 expect 106 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -69,7 +69,7 @@ var r0 := AreaOfLargestTriangleInSemicircle(106);
 expect r0 == 106 * 106;
 }
 
-// REPEAT 7 - TIME: 10.3841571 s
+// REPEAT 7 - TIME: 10.3230744 s
 
 method {:test} Test13() {
 expect 107 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -77,7 +77,7 @@ var r0 := AreaOfLargestTriangleInSemicircle(107);
 expect r0 == 107 * 107;
 }
 
-// REPEAT 8 - TIME: 10.9832516 s
+// REPEAT 8 - TIME: 10.8442697 s
 
 method {:test} Test14() {
 expect 108 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -85,7 +85,7 @@ var r0 := AreaOfLargestTriangleInSemicircle(108);
 expect r0 == 108 * 108;
 }
 
-// REPEAT 9 - TIME: 11.6479119 s
+// REPEAT 9 - TIME: 11.3677437 s
 
 method {:test} Test15() {
 expect 109 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -93,4 +93,4 @@ var r0 := AreaOfLargestTriangleInSemicircle(109);
 expect r0 == 109 * 109;
 }
 
-// REPEAT 10 - TIME: 12.4078932 s
+// REPEAT 10 - TIME: 11.8971117 s

@@ -31,18 +31,18 @@ method {:testEntry} has_close_elements(numbers: seq<real>, threshold: real) retu
 }
 
 method {:test} Test18() {
-var seqreal0 : seq<real> := [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5853.0, 0.0];
-expect 29463.0/2.0 >= 0.0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := has_close_elements(seqreal0, 29463.0/2.0);
-expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) < 29463.0/2.0;
-expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 29463.0/2.0;
+var seqreal0 : seq<real> := [67077.0 / 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 8456.0, 0.0];
+expect 50165.0/2.0 >= 0.0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := has_close_elements(seqreal0, 50165.0/2.0);
+expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) < 50165.0/2.0;
+expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 50165.0/2.0;
 }
 method {:test} Test19() {
-var seqreal0 : seq<real> := [7719.0, 20313.0 / 2.0, 0.0, 0.0, 21.0, 19.0, 0.0, 11.0, 23.0, 15.0, 0.0, 0.0];
-expect 17168.0 >= 0.0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := has_close_elements(seqreal0, 17168.0);
-expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) < 17168.0;
-expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 17168.0;
+var seqreal0 : seq<real> := [30875.0 / 4.0, 7719.0, 0.0, 0.0, 19.0, 0.0, 0.0, 21.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 17.0, 0.0, 8.0, 14.0, 0.0, 0.0, 0.0];
+expect 64811.0/4.0 >= 0.0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := has_close_elements(seqreal0, 64811.0/4.0);
+expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i != j && (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) < 64811.0/4.0;
+expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 64811.0/4.0;
 }
 
-// REPEAT 10 - TIME: 16.0353649 s
+// REPEAT 10 - TIME: 15.3895447 s

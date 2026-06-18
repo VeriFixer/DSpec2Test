@@ -52,9 +52,9 @@ method {:testEntry} ToggleCase(s: string) returns (v: string)
 }
 
 method {:test} Test8() {
-var r0 := ToggleCase("\U{000F}\U{000F}aa");
-expect |r0| == |"\U{000F}\U{000F}aa"|;
-expect forall i :: 0 <= i < |"\U{000F}\U{000F}aa"| ==> if IsLowerCase("\U{000F}\U{000F}aa"[i]) then IsLowerUpperPair("\U{000F}\U{000F}aa"[i], r0[i]) else if IsUpperCase("\U{000F}\U{000F}aa"[i]) then IsUpperLowerPair("\U{000F}\U{000F}aa"[i], r0[i]) else r0[i] == "\U{000F}\U{000F}aa"[i];
+var r0 := ToggleCase(" \U{001A}aa");
+expect |r0| == |" \U{001A}aa"|;
+expect forall i :: 0 <= i < |" \U{001A}aa"| ==> if IsLowerCase(" \U{001A}aa"[i]) then IsLowerUpperPair(" \U{001A}aa"[i], r0[i]) else if IsUpperCase(" \U{001A}aa"[i]) then IsUpperLowerPair(" \U{001A}aa"[i], r0[i]) else r0[i] == " \U{001A}aa"[i];
 }
 
-// REPEAT 9 - TIME: 11.2640716 s
+// REPEAT 9 - TIME: 10.8729317 s

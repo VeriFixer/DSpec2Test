@@ -102,7 +102,7 @@ var r0 := sumOdds(0);
 expect r0 == 0 * 0;
 }
 
-// REPEAT 1 - TIME: 3.0304895 s
+// REPEAT 1 - TIME: 3.1857749 s
 
 method {:test} Test2() {
 expect 1 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -114,7 +114,7 @@ var r0 := sumOdds(1);
 expect r0 == 1 * 1;
 }
 
-// REPEAT 2 - TIME: 4.1040253 s
+// REPEAT 2 - TIME: 4.5687291 s
 
 method {:test} Test4() {
 expect 2 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -126,7 +126,7 @@ var r0 := sumOdds(2);
 expect r0 == 2 * 2;
 }
 
-// REPEAT 3 - TIME: 5.252195 s
+// REPEAT 3 - TIME: 6.0886993 s
 
 method {:test} Test6() {
 expect 3 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -138,7 +138,7 @@ var r0 := sumOdds(3);
 expect r0 == 3 * 3;
 }
 
-// REPEAT 4 - TIME: 6.6025905 s
+// REPEAT 4 - TIME: 7.2225559 s
 
 method {:test} Test8() {
 expect 4 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -150,7 +150,7 @@ var r0 := sumOdds(4);
 expect r0 == 4 * 4;
 }
 
-// REPEAT 5 - TIME: 7.8657748 s
+// REPEAT 5 - TIME: 8.2993781 s
 
 method {:test} Test10() {
 expect 5 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -162,7 +162,7 @@ var r0 := sumOdds(5);
 expect r0 == 5 * 5;
 }
 
-// REPEAT 6 - TIME: 8.8675848 s
+// REPEAT 6 - TIME: 9.4173572 s
 
 method {:test} Test12() {
 expect 6 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -174,7 +174,7 @@ var r0 := sumOdds(6);
 expect r0 == 6 * 6;
 }
 
-// REPEAT 7 - TIME: 9.8100874 s
+// REPEAT 7 - TIME: 10.2843055 s
 
 method {:test} Test14() {
 expect 7 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -186,7 +186,7 @@ var r0 := sumOdds(7);
 expect r0 == 7 * 7;
 }
 
-// REPEAT 8 - TIME: 10.699304 s
+// REPEAT 8 - TIME: 11.0631112 s
 
 method {:test} Test16() {
 expect 8 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -198,7 +198,7 @@ var r0 := sumOdds(8);
 expect r0 == 8 * 8;
 }
 
-// REPEAT 9 - TIME: 11.5902462 s
+// REPEAT 9 - TIME: 11.8994747 s
 
 method {:test} Test18() {
 expect 9 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -210,4 +210,4 @@ var r0 := sumOdds(9);
 expect r0 == 9 * 9;
 }
 
-// REPEAT 10 - TIME: 12.4120247 s
+// REPEAT 10 - TIME: 12.9250955 s

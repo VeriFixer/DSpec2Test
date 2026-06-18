@@ -52,9 +52,9 @@ method {:testEntry} ToggleCase(s: string) returns (v: string)
 }
 
 method {:test} Test18() {
-var r0 := ToggleCase("\U{001A}aaaa");
-expect |r0| == |"\U{001A}aaaa"|;
-expect forall i :: 0 <= i < |"\U{001A}aaaa"| ==> if IsLowerCase("\U{001A}aaaa"[i]) then IsLowerUpperPair("\U{001A}aaaa"[i], r0[i]) else if IsUpperCase("\U{001A}aaaa"[i]) then IsUpperLowerPair("\U{001A}aaaa"[i], r0[i]) else r0[i] == "\U{001A}aaaa"[i];
+var r0 := ToggleCase("\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}");
+expect |r0| == |"\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"|;
+expect forall i :: 0 <= i < |"\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"| ==> if IsLowerCase("\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"[i]) then IsLowerUpperPair("\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"[i], r0[i]) else if IsUpperCase("\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"[i]) then IsUpperLowerPair("\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"[i], r0[i]) else r0[i] == "\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"[i];
 }
 
-// REPEAT 10 - TIME: 16.1090632 s
+// REPEAT 10 - TIME: 15.6859566 s

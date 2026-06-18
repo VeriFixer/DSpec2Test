@@ -22,7 +22,7 @@ var r0 := ComputePower(1798);
 expect r0 == Power(1798);
 }
 
-// REPEAT 1 - TIME: 8.0609382 s
+// REPEAT 1 - TIME: 8.4348595 s
 
 method {:test} Test1() {
 expect 1799 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -30,7 +30,7 @@ var r0 := ComputePower(1799);
 expect r0 == Power(1799);
 }
 
-// REPEAT 2 - TIME: 13.1315587 s
+// REPEAT 2 - TIME: 13.561687 s
 
 method {:test} Test2() {
 expect 1800 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -38,7 +38,7 @@ var r0 := ComputePower(1800);
 expect r0 == Power(1800);
 }
 
-// REPEAT 3 - TIME: 17.1225347 s
+// REPEAT 3 - TIME: 18.0574213 s
 
 method {:test} Test3() {
 expect 1801 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -46,7 +46,7 @@ var r0 := ComputePower(1801);
 expect r0 == Power(1801);
 }
 
-// REPEAT 4 - TIME: 21.2874894 s
+// REPEAT 4 - TIME: 22.5289895 s
 
 method {:test} Test4() {
 expect 1802 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -54,7 +54,7 @@ var r0 := ComputePower(1802);
 expect r0 == Power(1802);
 }
 
-// REPEAT 5 - TIME: 25.1485173 s
+// REPEAT 5 - TIME: 26.7312685 s
 
 method {:test} Test5() {
 expect 1803 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -62,7 +62,7 @@ var r0 := ComputePower(1803);
 expect r0 == Power(1803);
 }
 
-// REPEAT 6 - TIME: 29.1301722 s
+// REPEAT 6 - TIME: 31.7925781 s
 
 method {:test} Test6() {
 expect 1804 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -70,7 +70,7 @@ var r0 := ComputePower(1804);
 expect r0 == Power(1804);
 }
 
-// REPEAT 7 - TIME: 33.2790378 s
+// REPEAT 7 - TIME: 36.1438438 s
 
 method {:test} Test7() {
 expect 1805 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -78,7 +78,7 @@ var r0 := ComputePower(1805);
 expect r0 == Power(1805);
 }
 
-// REPEAT 8 - TIME: 36.6510805 s
+// REPEAT 8 - TIME: 40.3234927 s
 
 method {:test} Test8() {
 expect 1806 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -86,7 +86,7 @@ var r0 := ComputePower(1806);
 expect r0 == Power(1806);
 }
 
-// REPEAT 9 - TIME: 40.587528 s
+// REPEAT 9 - TIME: 44.6581585 s
 
 method {:test} Test9() {
 expect 1807 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -94,4 +94,4 @@ var r0 := ComputePower(1807);
 expect r0 == Power(1807);
 }
 
-// REPEAT 10 - TIME: 44.742322 s
+// REPEAT 10 - TIME: 48.9723219 s

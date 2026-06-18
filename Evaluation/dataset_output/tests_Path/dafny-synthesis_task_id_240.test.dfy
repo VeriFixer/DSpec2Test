@@ -17,7 +17,7 @@ expect forall i :: 0 <= i < |seqint0| - 1 ==> r0[i] == seqint0[i];
 expect forall i :: |seqint0| - 1 <= i < |r0| ==> r0[i] == seqint1[i - |seqint0| + 1];
 }
 
-// REPEAT 1 - TIME: 2.3946809 s
+// REPEAT 1 - TIME: 4.3128966 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [1, 0];
@@ -29,11 +29,11 @@ expect forall i :: 0 <= i < |seqint0| - 1 ==> r0[i] == seqint0[i];
 expect forall i :: |seqint0| - 1 <= i < |r0| ==> r0[i] == seqint1[i - |seqint0| + 1];
 }
 
-// REPEAT 2 - TIME: 3.3637677 s
+// REPEAT 2 - TIME: 6.0581552 s
 
 method {:test} Test2() {
-var seqint0 : seq<int> := [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6];
-var seqint1 : seq<int> := [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4];
+var seqint0 : seq<int> := [6, 0, 0, 4];
+var seqint1 : seq<int> := [0, 0, 0, 2];
 expect |seqint0| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ReplaceLastElement(seqint0, seqint1);
 expect |r0| == |seqint0| - 1 + |seqint1|;
@@ -41,11 +41,11 @@ expect forall i :: 0 <= i < |seqint0| - 1 ==> r0[i] == seqint0[i];
 expect forall i :: |seqint0| - 1 <= i < |r0| ==> r0[i] == seqint1[i - |seqint0| + 1];
 }
 
-// REPEAT 3 - TIME: 4.5267785 s
+// REPEAT 3 - TIME: 7.887364 s
 
 method {:test} Test3() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10];
-var seqint1 : seq<int> := [12, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7];
+var seqint0 : seq<int> := [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 7];
+var seqint1 : seq<int> := [11, 3];
 expect |seqint0| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ReplaceLastElement(seqint0, seqint1);
 expect |r0| == |seqint0| - 1 + |seqint1|;
@@ -53,11 +53,11 @@ expect forall i :: 0 <= i < |seqint0| - 1 ==> r0[i] == seqint0[i];
 expect forall i :: |seqint0| - 1 <= i < |r0| ==> r0[i] == seqint1[i - |seqint0| + 1];
 }
 
-// REPEAT 4 - TIME: 5.6106441 s
+// REPEAT 4 - TIME: 9.5089617 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18];
-var seqint1 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20];
+var seqint0 : seq<int> := [14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0];
+var seqint1 : seq<int> := [0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16];
 expect |seqint0| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ReplaceLastElement(seqint0, seqint1);
 expect |r0| == |seqint0| - 1 + |seqint1|;
@@ -65,11 +65,11 @@ expect forall i :: 0 <= i < |seqint0| - 1 ==> r0[i] == seqint0[i];
 expect forall i :: |seqint0| - 1 <= i < |r0| ==> r0[i] == seqint1[i - |seqint0| + 1];
 }
 
-// REPEAT 5 - TIME: 6.6143144 s
+// REPEAT 5 - TIME: 10.930502 s
 
 method {:test} Test5() {
-var seqint0 : seq<int> := [15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0];
+var seqint0 : seq<int> := [18, 0, 8];
+var seqint1 : seq<int> := [15, 0, 0];
 expect |seqint0| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ReplaceLastElement(seqint0, seqint1);
 expect |r0| == |seqint0| - 1 + |seqint1|;
@@ -77,11 +77,11 @@ expect forall i :: 0 <= i < |seqint0| - 1 ==> r0[i] == seqint0[i];
 expect forall i :: |seqint0| - 1 <= i < |r0| ==> r0[i] == seqint1[i - |seqint0| + 1];
 }
 
-// REPEAT 6 - TIME: 7.6424107 s
+// REPEAT 6 - TIME: 12.479176 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [13, 0, 0, 0, 0];
-var seqint1 : seq<int> := [21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 27, 0, 0, 0, 0, 31];
+var seqint1 : seq<int> := [21, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 19, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 29];
 expect |seqint0| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ReplaceLastElement(seqint0, seqint1);
 expect |r0| == |seqint0| - 1 + |seqint1|;
@@ -89,11 +89,11 @@ expect forall i :: 0 <= i < |seqint0| - 1 ==> r0[i] == seqint0[i];
 expect forall i :: |seqint0| - 1 <= i < |r0| ==> r0[i] == seqint1[i - |seqint0| + 1];
 }
 
-// REPEAT 7 - TIME: 8.5590527 s
+// REPEAT 7 - TIME: 13.9725096 s
 
 method {:test} Test7() {
-var seqint0 : seq<int> := [17, 0, 0, 0];
-var seqint1 : seq<int> := [23, 0];
+var seqint0 : seq<int> := [45, 0, 0, 0, 33, 0, 0, 0, 0, 0, 0, 39, 0, 0, 0, 26, 41, 0];
+var seqint1 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 37, 17, 0, 35, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 43, 30];
 expect |seqint0| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ReplaceLastElement(seqint0, seqint1);
 expect |r0| == |seqint0| - 1 + |seqint1|;
@@ -101,11 +101,11 @@ expect forall i :: 0 <= i < |seqint0| - 1 ==> r0[i] == seqint0[i];
 expect forall i :: |seqint0| - 1 <= i < |r0| ==> r0[i] == seqint1[i - |seqint0| + 1];
 }
 
-// REPEAT 8 - TIME: 9.4563555 s
+// REPEAT 8 - TIME: 16.1901552 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [31, 0, 0, 0, 0, 29, 0, 0];
-var seqint1 : seq<int> := [33, 0, 0, 0, 27, 0, 0, 22, 0, 0, 0, 0, 0, 0, 25];
+var seqint0 : seq<int> := [28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 38, 0, 0, 48, 0, 0, 0, 0, 0, 0, 46, 0];
+var seqint1 : seq<int> := [50, 0, 0, 34, 0, 0, 0, 20, 0, 42];
 expect |seqint0| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ReplaceLastElement(seqint0, seqint1);
 expect |r0| == |seqint0| - 1 + |seqint1|;
@@ -113,11 +113,11 @@ expect forall i :: 0 <= i < |seqint0| - 1 ==> r0[i] == seqint0[i];
 expect forall i :: |seqint0| - 1 <= i < |r0| ==> r0[i] == seqint1[i - |seqint0| + 1];
 }
 
-// REPEAT 9 - TIME: 10.6083702 s
+// REPEAT 9 - TIME: 18.4349609 s
 
 method {:test} Test9() {
-var seqint0 : seq<int> := [45, 0, 0, 0, 0, 0, 0, 28, 37, 0, 0, 0, 0, 39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [43, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 41, 0, 0];
+var seqint0 : seq<int> := [54, 0, 44, 0, 0, 0, 0, 24, 0, 0, 0, 0, 49];
+var seqint1 : seq<int> := [52, 0, 0, 36, 0];
 expect |seqint0| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ReplaceLastElement(seqint0, seqint1);
 expect |r0| == |seqint0| - 1 + |seqint1|;
@@ -125,4 +125,4 @@ expect forall i :: 0 <= i < |seqint0| - 1 ==> r0[i] == seqint0[i];
 expect forall i :: |seqint0| - 1 <= i < |r0| ==> r0[i] == seqint1[i - |seqint0| + 1];
 }
 
-// REPEAT 10 - TIME: 11.6880334 s
+// REPEAT 10 - TIME: 20.8060807 s

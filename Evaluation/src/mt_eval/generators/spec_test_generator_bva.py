@@ -22,7 +22,7 @@ class SpecBvaTestGenerator(DafnyTestGenerator):
             str(dafny_file.resolve()),
             "--bva", "100",
             "--repeat", f"{repeat}",
-            "--length-limit", "50",
+            "--length-limit", "30",
             "--time",
             "--ignore-warnings",
             f"--solver-option:O:memory_max_size={config.DAFNY_MAX_MEMORY_MB}",

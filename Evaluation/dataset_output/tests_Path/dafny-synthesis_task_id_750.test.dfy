@@ -15,7 +15,7 @@ expect r0[|r0| - 1] == int0;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 1 - TIME: 1.5394965 s
+// REPEAT 1 - TIME: 2.3085191 s
 
 method {:test} Test1() {
 var int0 : (int, int) := (0,0);
@@ -27,7 +27,7 @@ expect r0[|r0| - 1] == int1;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 2 - TIME: 2.0046026 s
+// REPEAT 2 - TIME: 3.2280414 s
 
 method {:test} Test2() {
 var int0 : (int, int) := (0,0);
@@ -40,7 +40,7 @@ expect r0[|r0| - 1] == int2;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 3 - TIME: 2.4866307 s
+// REPEAT 3 - TIME: 4.0859417 s
 
 method {:test} Test3() {
 var int0 : (int, int) := (0,0);
@@ -54,7 +54,7 @@ expect r0[|r0| - 1] == int3;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 4 - TIME: 3.0801309 s
+// REPEAT 4 - TIME: 4.8535492 s
 
 method {:test} Test4() {
 var int0 : (int, int) := (0,0);
@@ -69,7 +69,7 @@ expect r0[|r0| - 1] == int4;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 5 - TIME: 3.7266285 s
+// REPEAT 5 - TIME: 5.5815987 s
 
 method {:test} Test5() {
 var int0 : (int, int) := (0,0);
@@ -85,7 +85,7 @@ expect r0[|r0| - 1] == int5;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 6 - TIME: 4.3404905 s
+// REPEAT 6 - TIME: 6.2203596 s
 
 method {:test} Test6() {
 var int0 : (int, int) := (0,0);
@@ -102,7 +102,7 @@ expect r0[|r0| - 1] == int6;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 7 - TIME: 4.9616501 s
+// REPEAT 7 - TIME: 6.9074347 s
 
 method {:test} Test7() {
 var int0 : (int, int) := (0,0);
@@ -120,7 +120,7 @@ expect r0[|r0| - 1] == int7;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 8 - TIME: 5.5585013 s
+// REPEAT 8 - TIME: 7.5738435 s
 
 method {:test} Test8() {
 var int0 : (int, int) := (0,0);
@@ -139,7 +139,7 @@ expect r0[|r0| - 1] == int8;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 9 - TIME: 6.0382104 s
+// REPEAT 9 - TIME: 8.1837198 s
 
 method {:test} Test9() {
 var int0 : (int, int) := (0,0);
@@ -159,4 +159,4 @@ expect r0[|r0| - 1] == int9;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 10 - TIME: 6.5114738 s
+// REPEAT 10 - TIME: 8.7913266 s

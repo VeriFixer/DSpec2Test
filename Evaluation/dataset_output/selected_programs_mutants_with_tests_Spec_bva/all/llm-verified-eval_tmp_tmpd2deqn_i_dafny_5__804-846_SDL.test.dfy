@@ -41,7 +41,7 @@ method {:testEntry} intersperse(numbers: seq<int>, delimiter: int) returns (inte
 }
 
 method {:test} Test0() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := intersperse(seqint0, 0);
 expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
@@ -62,115 +62,115 @@ expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 0;
 }
 method {:test} Test3() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0];
 var r0 := intersperse(seqint0, 0);
 expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 0;
 }
 method {:test} Test4() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := intersperse(seqint0, -100);
 expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == -100;
 }
 method {:test} Test5() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := intersperse(seqint0, 100);
 expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 100;
 }
 
-// REPEAT 1 - TIME: 7.7956415 s
+// REPEAT 1 - TIME: 8.088174 s
 
 method {:test} Test12() {
-var seqint0 : seq<int> := [3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [3, 1, 0, 0];
+var r0 := intersperse(seqint0, 24);
+expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
+expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
+expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 24;
+}
+
+// REPEAT 2 - TIME: 8.7174579 s
+
+method {:test} Test13() {
+var seqint0 : seq<int> := [7, 2, 0, 0, 5, 0, 0, 0];
 var r0 := intersperse(seqint0, 25);
 expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 25;
 }
 
-// REPEAT 2 - TIME: 8.6467938 s
+// REPEAT 3 - TIME: 9.5279099 s
 
-method {:test} Test13() {
-var seqint0 : seq<int> := [5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0];
+method {:test} Test14() {
+var seqint0 : seq<int> := [4, 0, 0, 0, 0, 0, 0, 0, 8];
 var r0 := intersperse(seqint0, 26);
 expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 26;
 }
 
-// REPEAT 3 - TIME: 9.3688649 s
+// REPEAT 4 - TIME: 10.0902854 s
 
-method {:test} Test14() {
-var seqint0 : seq<int> := [7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4];
+method {:test} Test15() {
+var seqint0 : seq<int> := [6, 0, 0, 0, 0, 10];
 var r0 := intersperse(seqint0, 27);
 expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 27;
 }
 
-// REPEAT 4 - TIME: 10.1555901 s
+// REPEAT 5 - TIME: 10.7662685 s
 
-method {:test} Test15() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0];
+method {:test} Test16() {
+var seqint0 : seq<int> := [9, 0, 0];
 var r0 := intersperse(seqint0, 28);
 expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 28;
 }
 
-// REPEAT 5 - TIME: 10.8222806 s
+// REPEAT 6 - TIME: 11.4411785 s
 
-method {:test} Test16() {
-var seqint0 : seq<int> := [10, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0];
+method {:test} Test17() {
+var seqint0 : seq<int> := [0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := intersperse(seqint0, 29);
 expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 29;
 }
 
-// REPEAT 6 - TIME: 11.6442102 s
+// REPEAT 7 - TIME: 12.0388944 s
 
-method {:test} Test17() {
-var seqint0 : seq<int> := [14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 12, 0];
+method {:test} Test18() {
+var seqint0 : seq<int> := [14, 0, 0, 0, 0, 12, 16];
 var r0 := intersperse(seqint0, 30);
 expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 30;
 }
 
-// REPEAT 7 - TIME: 12.432134 s
+// REPEAT 8 - TIME: 12.646611 s
 
-method {:test} Test18() {
-var seqint0 : seq<int> := [21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 15, 17, 19];
+method {:test} Test19() {
+var seqint0 : seq<int> := [23, 0, 13, 0, 0, 19, 17, 21];
 var r0 := intersperse(seqint0, 31);
 expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 31;
 }
 
-// REPEAT 8 - TIME: 13.1986238 s
+// REPEAT 9 - TIME: 13.4637665 s
 
-method {:test} Test19() {
-var seqint0 : seq<int> := [24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 22, 18];
+method {:test} Test20() {
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 15, 0, 0, 24, 20, 26, 0];
 var r0 := intersperse(seqint0, 32);
 expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
 expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 32;
 }
 
-// REPEAT 9 - TIME: 13.9524477 s
-
-method {:test} Test20() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 30, 0, 28, 23, 16];
-var r0 := intersperse(seqint0, 33);
-expect |r0| == if |seqint0| > 0 then 2 * |seqint0| - 1 else 0;
-expect forall i :: 0 <= i < |r0| ==> i % 2 == 0 ==> r0[i] == seqint0[i / 2];
-expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 33;
-}
-
-// REPEAT 10 - TIME: 14.7568734 s
+// REPEAT 10 - TIME: 14.1494334 s

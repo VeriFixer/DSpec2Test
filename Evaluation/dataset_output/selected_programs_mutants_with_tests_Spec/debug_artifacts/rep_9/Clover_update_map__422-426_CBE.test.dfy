@@ -11,8 +11,8 @@ method {:testEntry} update_map<K(!new), V>(m1: map<K, V>, m2: map<K, V>) returns
 }
 
 method {:test} Test8() {
-var mapint0 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
-var mapint1 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
+var mapint0 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
+var mapint1 : map<int, int> := map[0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0, 0 := 0];
 var r0 := update_map<int,int>(mapint0, mapint1);
 expect forall k :: k in mapint1 ==> k in r0;
 expect forall k :: k in mapint0 ==> k in r0;
@@ -21,4 +21,4 @@ expect forall k :: !(k in mapint1) && k in mapint0 ==> r0[k] == mapint0[k];
 expect forall k :: !(k in mapint1) && !(k in mapint0) ==> !(k in r0);
 }
 
-// REPEAT 9 - TIME: 10.0671471 s
+// REPEAT 9 - TIME: 9.8972181 s

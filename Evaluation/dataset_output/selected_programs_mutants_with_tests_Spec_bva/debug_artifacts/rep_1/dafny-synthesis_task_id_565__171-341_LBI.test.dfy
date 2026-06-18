@@ -31,4 +31,4 @@ expect |r0| == |"aa"|;
 expect forall i :: 0 <= i < |"aa"| ==> r0[i] == "aa"[i];
 }
 
-// REPEAT 1 - TIME: 6.40598 s
+// REPEAT 1 - TIME: 6.1998399 s

@@ -57,4 +57,4 @@ expect |r0| == |"`{"|;
 expect forall i :: 0 <= i < |"`{"| ==> if IsLowerCase("`{"[i]) then IsLowerUpperPair("`{"[i], r0[i]) else if IsUpperCase("`{"[i]) then IsUpperLowerPair("`{"[i], r0[i]) else r0[i] == "`{"[i];
 }
 
-// REPEAT 7 - TIME: 9.5716083 s
+// REPEAT 7 - TIME: 9.1184731 s

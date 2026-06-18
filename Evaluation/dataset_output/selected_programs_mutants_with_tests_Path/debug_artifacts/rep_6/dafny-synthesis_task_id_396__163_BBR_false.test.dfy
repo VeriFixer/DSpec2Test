@@ -8,9 +8,9 @@ method {:testEntry} StartAndEndWithSameChar(s: string) returns (result: bool)
 }
 
 method {:test} Test5() {
-expect |"\0aa\naaaaaaaa\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0006}aaaaaa\U{0004}a\U{0008}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\0aa\naaaaaaaa\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0006}aaaaaa\U{0004}a\U{0008}");
-expect r0 <==> "\0aa\naaaaaaaa\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0006}aaaaaa\U{0004}a\U{0008}"[0] == "\0aa\naaaaaaaa\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0006}aaaaaa\U{0004}a\U{0008}"[|"\0aa\naaaaaaaa\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0006}aaaaaa\U{0004}a\U{0008}"| - 1];
+expect |"\U{0002}aaaaaaaa\0aaaaaaaaaaaaaaaaaa\U{0004}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\U{0002}aaaaaaaa\0aaaaaaaaaaaaaaaaaa\U{0004}");
+expect r0 <==> "\U{0002}aaaaaaaa\0aaaaaaaaaaaaaaaaaa\U{0004}"[0] == "\U{0002}aaaaaaaa\0aaaaaaaaaaaaaaaaaa\U{0004}"[|"\U{0002}aaaaaaaa\0aaaaaaaaaaaaaaaaaa\U{0004}"| - 1];
 }
 
-// REPEAT 6 - TIME: 3.7187312 s
+// REPEAT 6 - TIME: 5.7407841 s

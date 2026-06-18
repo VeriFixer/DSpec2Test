@@ -19,4 +19,4 @@ var r0 := Carre(0);
 expect r0 == 0 * 0;
 }
 
-// REPEAT 1 - TIME: 2.7341075 s
+// REPEAT 1 - TIME: 2.4459849 s

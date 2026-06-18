@@ -39,7 +39,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] + seqint1[i];
 }
 
-// REPEAT 1 - TIME: 2.6640898 s
+// REPEAT 1 - TIME: 2.3011748 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [-5282, 0];
@@ -50,7 +50,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] + seqint1[i];
 }
 
-// REPEAT 2 - TIME: 3.5291544 s
+// REPEAT 2 - TIME: 3.1949612 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [2437, 0, 5];
@@ -61,81 +61,81 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] + seqint1[i];
 }
 
-// REPEAT 3 - TIME: 4.3608626 s
+// REPEAT 3 - TIME: 4.2229772 s
 
 method {:test} Test3() {
-var seqint0 : seq<int> := [7719, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [646, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9];
+var seqint0 : seq<int> := [7719, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [646, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := AddLists(seqint0, seqint1);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] + seqint1[i];
 }
 
-// REPEAT 4 - TIME: 5.2812608 s
+// REPEAT 4 - TIME: 5.1003818 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [-5282, 0, 0, 0];
-var seqint1 : seq<int> := [7719, 0, 0, 0];
+var seqint0 : seq<int> := [449, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [160, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := AddLists(seqint0, seqint1);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] + seqint1[i];
 }
 
-// REPEAT 5 - TIME: 6.2964827 s
+// REPEAT 5 - TIME: 5.9119922 s
 
 method {:test} Test5() {
-var seqint0 : seq<int> := [-5282, 0, 0, 0, 0];
-var seqint1 : seq<int> := [7719, 0, 0, 0, 0];
+var seqint0 : seq<int> := [7719, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 14, 18];
+var seqint1 : seq<int> := [646, 6, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 20];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := AddLists(seqint0, seqint1);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] + seqint1[i];
 }
 
-// REPEAT 6 - TIME: 7.2488074 s
+// REPEAT 6 - TIME: 6.8992625 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [1236, 0, 0, 10, 0, 14];
-var seqint1 : seq<int> := [6862, 16, 0, 6, 0, 12];
+var seqint0 : seq<int> := [8945, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2446, 8586, 582];
+var seqint1 : seq<int> := [-2662, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 590, 6906, 2211];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := AddLists(seqint0, seqint1);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] + seqint1[i];
 }
 
-// REPEAT 7 - TIME: 8.1123212 s
+// REPEAT 7 - TIME: 7.9004924 s
 
 method {:test} Test7() {
-var seqint0 : seq<int> := [1236, 0, 0, 0, 0];
-var seqint1 : seq<int> := [7619, 0, 0, 0, 0];
+var seqint0 : seq<int> := [7719, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [-5282, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := AddLists(seqint0, seqint1);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] + seqint1[i];
 }
 
-// REPEAT 8 - TIME: 9.1075147 s
+// REPEAT 8 - TIME: 8.8179296 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [-5244];
-var seqint1 : seq<int> := [5853];
+var seqint0 : seq<int> := [1236, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 22, 27, 31];
+var seqint1 : seq<int> := [4617, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 17, 0, 29, 25];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := AddLists(seqint0, seqint1);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] + seqint1[i];
 }
 
-// REPEAT 9 - TIME: 9.9723265 s
+// REPEAT 9 - TIME: 9.5898703 s
 
 method {:test} Test9() {
-var seqint0 : seq<int> := [1236, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 19];
-var seqint1 : seq<int> := [1046, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [1236, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 0, 30];
+var seqint1 : seq<int> := [-627, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 26];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := AddLists(seqint0, seqint1);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] + seqint1[i];
 }
 
-// REPEAT 10 - TIME: 10.9030543 s
+// REPEAT 10 - TIME: 10.4193301 s

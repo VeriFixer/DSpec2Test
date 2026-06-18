@@ -40,4 +40,4 @@ method {:test} Test7() {
 var r0 := mod2(775148);
 }
 
-// REPEAT 4 - TIME: 11.890136 s
+// REPEAT 4 - TIME: 11.7132382 s

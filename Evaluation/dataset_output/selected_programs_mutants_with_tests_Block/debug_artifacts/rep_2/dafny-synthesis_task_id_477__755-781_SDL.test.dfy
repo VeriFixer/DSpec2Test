@@ -35,24 +35,24 @@ method {:testEntry} ToLowercase(s: string) returns (v: string)
 }
 
 method {:test} Test4() {
-var r0 := ToLowercase("&");
-expect |r0| == |"&"|;
-expect forall i :: 0 <= i < |"&"| ==> if IsUpperCase("&"[i]) then IsUpperLowerPair("&"[i], r0[i]) else r0[i] == "&"[i];
+var r0 := ToLowercase("M");
+expect |r0| == |"M"|;
+expect forall i :: 0 <= i < |"M"| ==> if IsUpperCase("M"[i]) then IsUpperLowerPair("M"[i], r0[i]) else r0[i] == "M"[i];
 }
 method {:test} Test5() {
-var r0 := ToLowercase("aa");
-expect |r0| == |"aa"|;
-expect forall i :: 0 <= i < |"aa"| ==> if IsUpperCase("aa"[i]) then IsUpperLowerPair("aa"[i], r0[i]) else r0[i] == "aa"[i];
+var r0 := ToLowercase("[");
+expect |r0| == |"["|;
+expect forall i :: 0 <= i < |"["| ==> if IsUpperCase("["[i]) then IsUpperLowerPair("["[i], r0[i]) else r0[i] == "["[i];
 }
 method {:test} Test6() {
-var r0 := ToLowercase("aa\U{0014}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaW");
-expect |r0| == |"aa\U{0014}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaW"|;
-expect forall i :: 0 <= i < |"aa\U{0014}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaW"| ==> if IsUpperCase("aa\U{0014}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaW"[i]) then IsUpperLowerPair("aa\U{0014}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaW"[i], r0[i]) else r0[i] == "aa\U{0014}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaW"[i];
+var r0 := ToLowercase("\U{0015}aaaaaaaaaaaaaa%");
+expect |r0| == |"\U{0015}aaaaaaaaaaaaaa%"|;
+expect forall i :: 0 <= i < |"\U{0015}aaaaaaaaaaaaaa%"| ==> if IsUpperCase("\U{0015}aaaaaaaaaaaaaa%"[i]) then IsUpperLowerPair("\U{0015}aaaaaaaaaaaaaa%"[i], r0[i]) else r0[i] == "\U{0015}aaaaaaaaaaaaaa%"[i];
 }
 method {:test} Test7() {
-var r0 := ToLowercase("\U{001A}a");
-expect |r0| == |"\U{001A}a"|;
-expect forall i :: 0 <= i < |"\U{001A}a"| ==> if IsUpperCase("\U{001A}a"[i]) then IsUpperLowerPair("\U{001A}a"[i], r0[i]) else r0[i] == "\U{001A}a"[i];
+var r0 := ToLowercase("\U{001A}CD");
+expect |r0| == |"\U{001A}CD"|;
+expect forall i :: 0 <= i < |"\U{001A}CD"| ==> if IsUpperCase("\U{001A}CD"[i]) then IsUpperLowerPair("\U{001A}CD"[i], r0[i]) else r0[i] == "\U{001A}CD"[i];
 }
 
-// REPEAT 2 - TIME: 6.6043239 s
+// REPEAT 2 - TIME: 7.8627402 s

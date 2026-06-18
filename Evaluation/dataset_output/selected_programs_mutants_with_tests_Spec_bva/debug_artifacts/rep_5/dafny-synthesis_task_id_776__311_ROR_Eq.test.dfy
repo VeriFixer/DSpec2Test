@@ -14,8 +14,8 @@ method {:testEntry} CountVowelNeighbors(s: string) returns (count: int)
 }
 
 method {:test} Test12() {
-var r0 := CountVowelNeighbors("\U{0002}\0");
+var r0 := CountVowelNeighbors("\U{0002}a\0aaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 5 - TIME: 9.6130643 s
+// REPEAT 5 - TIME: 9.4977643 s

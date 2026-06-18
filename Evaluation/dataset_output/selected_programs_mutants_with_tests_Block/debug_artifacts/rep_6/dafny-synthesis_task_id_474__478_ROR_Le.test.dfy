@@ -21,19 +21,19 @@ method {:testEntry} ReplaceChars(s: string, oldChar: char, newChar: char)
 }
 
 method {:test} Test15() {
-var r0 := ReplaceChars("aaa\U{0001}aaaaaaaaa\U{0001}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", '\U{0001}', '\0');
-expect |r0| == |"aaa\U{0001}aaaaaaaaa\U{0001}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"|;
-expect forall i :: 0 <= i < |"aaa\U{0001}aaaaaaaaa\U{0001}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| ==> ("aaa\U{0001}aaaaaaaaa\U{0001}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[i] == '\U{0001}' ==> r0[i] == '\0') && ("aaa\U{0001}aaaaaaaaa\U{0001}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[i] != '\U{0001}' ==> r0[i] == "aaa\U{0001}aaaaaaaaa\U{0001}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[i]);
+var r0 := ReplaceChars("aaaaaaaaaaaa\U{0001}aaaa\U{0001}aaaaaaaa\U{0001}a", '\U{0001}', '\0');
+expect |r0| == |"aaaaaaaaaaaa\U{0001}aaaa\U{0001}aaaaaaaa\U{0001}a"|;
+expect forall i :: 0 <= i < |"aaaaaaaaaaaa\U{0001}aaaa\U{0001}aaaaaaaa\U{0001}a"| ==> ("aaaaaaaaaaaa\U{0001}aaaa\U{0001}aaaaaaaa\U{0001}a"[i] == '\U{0001}' ==> r0[i] == '\0') && ("aaaaaaaaaaaa\U{0001}aaaa\U{0001}aaaaaaaa\U{0001}a"[i] != '\U{0001}' ==> r0[i] == "aaaaaaaaaaaa\U{0001}aaaa\U{0001}aaaaaaaa\U{0001}a"[i]);
 }
 method {:test} Test16() {
-var r0 := ReplaceChars("\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", '\U{0001}', '\0');
-expect |r0| == |"\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"|;
-expect forall i :: 0 <= i < |"\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| ==> ("\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[i] != '\U{0001}' ==> r0[i] == "\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"[i]);
+var r0 := ReplaceChars("\U{0002}aaaaaaaaaaaaaaaaaaaaa", '\U{0001}', '\0');
+expect |r0| == |"\U{0002}aaaaaaaaaaaaaaaaaaaaa"|;
+expect forall i :: 0 <= i < |"\U{0002}aaaaaaaaaaaaaaaaaaaaa"| ==> ("\U{0002}aaaaaaaaaaaaaaaaaaaaa"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0002}aaaaaaaaaaaaaaaaaaaaa"[i] != '\U{0001}' ==> r0[i] == "\U{0002}aaaaaaaaaaaaaaaaaaaaa"[i]);
 }
 method {:test} Test17() {
-var r0 := ReplaceChars("aaaa\U{0001}a", '\U{0001}', '\0');
-expect |r0| == |"aaaa\U{0001}a"|;
-expect forall i :: 0 <= i < |"aaaa\U{0001}a"| ==> ("aaaa\U{0001}a"[i] == '\U{0001}' ==> r0[i] == '\0') && ("aaaa\U{0001}a"[i] != '\U{0001}' ==> r0[i] == "aaaa\U{0001}a"[i]);
+var r0 := ReplaceChars("\0", '\0', '\0');
+expect |r0| == |"\0"|;
+expect forall i :: 0 <= i < |"\0"| ==> ("\0"[i] == '\0' ==> r0[i] == '\0') && ("\0"[i] != '\0' ==> r0[i] == "\0"[i]);
 }
 
-// REPEAT 6 - TIME: 11.7199989 s
+// REPEAT 6 - TIME: 11.5159753 s

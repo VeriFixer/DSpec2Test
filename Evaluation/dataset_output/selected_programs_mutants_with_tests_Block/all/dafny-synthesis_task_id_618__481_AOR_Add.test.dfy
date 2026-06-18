@@ -43,7 +43,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 1 - TIME: 2.4206201 s
+// REPEAT 1 - TIME: 2.443043 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [4339, 3];
@@ -55,7 +55,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 2 - TIME: 3.2556011 s
+// REPEAT 2 - TIME: 3.296674 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [535];
@@ -67,11 +67,11 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 3 - TIME: 3.9506407 s
+// REPEAT 3 - TIME: 4.112107 s
 
 method {:test} Test3() {
-var seqint0 : seq<int> := [-15307825, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [-6284, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50];
+var seqint0 : seq<int> := [-15307825, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [-6284, 0, 0, 0, 0, 0, 0, 0, 0, 0, 47];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint1| ==> seqint1[i] != 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ElementWiseDivide(seqint0, seqint1);
@@ -79,11 +79,11 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 4 - TIME: 4.8074413 s
+// REPEAT 4 - TIME: 4.932291 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [1142, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4];
-var seqint1 : seq<int> := [-1143, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [-21792457, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [-8946, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 66];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint1| ==> seqint1[i] != 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ElementWiseDivide(seqint0, seqint1);
@@ -91,11 +91,11 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 5 - TIME: 5.7989354 s
+// REPEAT 5 - TIME: 5.8304457 s
 
 method {:test} Test5() {
-var seqint0 : seq<int> := [1142, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [-1143, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [-686953, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0];
+var seqint1 : seq<int> := [-282, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 93, 0];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint1| ==> seqint1[i] != 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ElementWiseDivide(seqint0, seqint1);
@@ -103,11 +103,11 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 6 - TIME: 6.7582604 s
+// REPEAT 6 - TIME: 6.6627162 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [609, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 11];
-var seqint1 : seq<int> := [-1, 244, 0, 0, 0, 0, 0, 0, 0, 239, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 240, 241, 0];
+var seqint0 : seq<int> := [-2437, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11];
+var seqint1 : seq<int> := [-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 111, 113, 0, 115];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint1| ==> seqint1[i] != 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ElementWiseDivide(seqint0, seqint1);
@@ -115,11 +115,11 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 7 - TIME: 7.7536632 s
+// REPEAT 7 - TIME: 7.4698776 s
 
 method {:test} Test7() {
-var seqint0 : seq<int> := [1142, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6];
-var seqint1 : seq<int> := [-1143, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 335, 0];
+var seqint0 : seq<int> := [1142, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [-1143, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint1| ==> seqint1[i] != 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ElementWiseDivide(seqint0, seqint1);
@@ -127,11 +127,11 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 8 - TIME: 9.1579099 s
+// REPEAT 8 - TIME: 8.175813 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [6283, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0];
-var seqint1 : seq<int> := [-6284, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 337, 339, 0, 0, 0];
+var seqint0 : seq<int> := [1142, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [-1143, 0, 0, 0, 0, 0, 0, 0, 0];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint1| ==> seqint1[i] != 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ElementWiseDivide(seqint0, seqint1);
@@ -139,11 +139,11 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 9 - TIME: 10.402361 s
+// REPEAT 9 - TIME: 8.973818 s
 
 method {:test} Test9() {
-var seqint0 : seq<int> := [8945, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0];
-var seqint1 : seq<int> := [-8946, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 394, 0, 0, 400];
+var seqint0 : seq<int> := [1142, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 13, 15, 17];
+var seqint1 : seq<int> := [-1143, 0, 0, 0, 0, 160, 0, 0, 0, 0, 0, 0, 164, 0, 163];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint1| ==> seqint1[i] != 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ElementWiseDivide(seqint0, seqint1);
@@ -151,4 +151,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 10 - TIME: 11.9464752 s
+// REPEAT 10 - TIME: 9.6498365 s

@@ -36,10 +36,15 @@ var r0 := ToLowercase("a");
 expect |r0| == |"a"|;
 expect forall i :: 0 <= i < |"a"| ==> if IsUpperCase("a"[i]) then IsUpperLowerPair("a"[i], r0[i]) else r0[i] == "a"[i];
 }
+method {:test} Test2() {
+var r0 := ToLowercase("");
+expect |r0| == |""|;
+expect forall i :: 0 <= i < |""| ==> if IsUpperCase(""[i]) then IsUpperLowerPair(""[i], r0[i]) else r0[i] == ""[i];
+}
 method {:test} Test3() {
-var r0 := ToLowercase("@");
-expect |r0| == |"@"|;
-expect forall i :: 0 <= i < |"@"| ==> if IsUpperCase("@"[i]) then IsUpperLowerPair("@"[i], r0[i]) else r0[i] == "@"[i];
+var r0 := ToLowercase("a@");
+expect |r0| == |"a@"|;
+expect forall i :: 0 <= i < |"a@"| ==> if IsUpperCase("a@"[i]) then IsUpperLowerPair("a@"[i], r0[i]) else r0[i] == "a@"[i];
 }
 
-// REPEAT 1 - TIME: 4.0261888 s
+// REPEAT 1 - TIME: 4.8449913 s

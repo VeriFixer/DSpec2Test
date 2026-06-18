@@ -18,14 +18,14 @@ method {:testEntry} Match(s: string, p: string) returns (b: bool)
 }
 
 method {:test} Test8() {
-expect |"aaaa\0aaaaaaaaaa\U{0004}aaaaaaaaaa\U{0002}aaaaaaaaaaaa\U{0006}"| == |"aaaa\0aaaaaaaaaa\U{0004}aaaaaaaaaa\U{0002}aaaaaaaaaaaa\U{0006}"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Match("aaaa\0aaaaaaaaaa\U{0004}aaaaaaaaaa\U{0002}aaaaaaaaaaaa\U{0006}", "aaaa\0aaaaaaaaaa\U{0004}aaaaaaaaaa\U{0002}aaaaaaaaaaaa\U{0006}");
-expect r0 <==> forall n :: 0 <= n < |"aaaa\0aaaaaaaaaa\U{0004}aaaaaaaaaa\U{0002}aaaaaaaaaaaa\U{0006}"| ==> "aaaa\0aaaaaaaaaa\U{0004}aaaaaaaaaa\U{0002}aaaaaaaaaaaa\U{0006}"[n] == "aaaa\0aaaaaaaaaa\U{0004}aaaaaaaaaa\U{0002}aaaaaaaaaaaa\U{0006}"[n] || "aaaa\0aaaaaaaaaa\U{0004}aaaaaaaaaa\U{0002}aaaaaaaaaaaa\U{0006}"[n] == '?';
+expect |"\U{0004}\U{0002}\0"| == |"\U{0004}\U{0002}\0"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := Match("\U{0004}\U{0002}\0", "\U{0004}\U{0002}\0");
+expect r0 <==> forall n :: 0 <= n < |"\U{0004}\U{0002}\0"| ==> "\U{0004}\U{0002}\0"[n] == "\U{0004}\U{0002}\0"[n] || "\U{0004}\U{0002}\0"[n] == '?';
 }
 method {:test} Test9() {
-expect |"a\0\U{0002}\U{0006}"| == |"\na\U{0004}\U{0008}"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Match("a\0\U{0002}\U{0006}", "\na\U{0004}\U{0008}");
-expect r0 <==> forall n :: 0 <= n < |"a\0\U{0002}\U{0006}"| ==> "a\0\U{0002}\U{0006}"[n] == "\na\U{0004}\U{0008}"[n] || "\na\U{0004}\U{0008}"[n] == '?';
+expect |"\U{000C}aaaa\0aaa\U{0006}\n"| == |"\U{0004}aaaa\U{0002}aaa\U{0008}a"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := Match("\U{000C}aaaa\0aaa\U{0006}\n", "\U{0004}aaaa\U{0002}aaa\U{0008}a");
+expect r0 <==> forall n :: 0 <= n < |"\U{000C}aaaa\0aaa\U{0006}\n"| ==> "\U{000C}aaaa\0aaa\U{0006}\n"[n] == "\U{0004}aaaa\U{0002}aaa\U{0008}a"[n] || "\U{0004}aaaa\U{0002}aaa\U{0008}a"[n] == '?';
 }
 
-// REPEAT 5 - TIME: 9.6080875 s
+// REPEAT 5 - TIME: 8.6662892 s

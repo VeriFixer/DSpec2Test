@@ -23,4 +23,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] + seqint1[i];
 }
 
-// REPEAT 2 - TIME: 16.7308946 s
+// REPEAT 2 - TIME: 18.5052964 s

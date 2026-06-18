@@ -28,67 +28,67 @@ var r0, r1 := DoubleQuadruple(100);
 expect r0 == 2 * 100 && r1 == 4 * 100;
 }
 
-// REPEAT 1 - TIME: 5.2623587 s
+// REPEAT 1 - TIME: 5.3164899 s
 
 method {:test} Test7() {
 var r0, r1 := DoubleQuadruple(101);
 expect r0 == 2 * 101 && r1 == 4 * 101;
 }
 
-// REPEAT 2 - TIME: 6.1647433 s
+// REPEAT 2 - TIME: 6.2049855 s
 
 method {:test} Test8() {
 var r0, r1 := DoubleQuadruple(102);
 expect r0 == 2 * 102 && r1 == 4 * 102;
 }
 
-// REPEAT 3 - TIME: 7.0557088 s
+// REPEAT 3 - TIME: 7.0313267 s
 
 method {:test} Test9() {
 var r0, r1 := DoubleQuadruple(103);
 expect r0 == 2 * 103 && r1 == 4 * 103;
 }
 
-// REPEAT 4 - TIME: 7.9015895 s
+// REPEAT 4 - TIME: 7.8303737 s
 
 method {:test} Test10() {
 var r0, r1 := DoubleQuadruple(104);
 expect r0 == 2 * 104 && r1 == 4 * 104;
 }
 
-// REPEAT 5 - TIME: 8.7541818 s
+// REPEAT 5 - TIME: 8.4575741 s
 
 method {:test} Test11() {
 var r0, r1 := DoubleQuadruple(105);
 expect r0 == 2 * 105 && r1 == 4 * 105;
 }
 
-// REPEAT 6 - TIME: 9.6514041 s
+// REPEAT 6 - TIME: 9.05412 s
 
 method {:test} Test12() {
 var r0, r1 := DoubleQuadruple(106);
 expect r0 == 2 * 106 && r1 == 4 * 106;
 }
 
-// REPEAT 7 - TIME: 10.5355235 s
+// REPEAT 7 - TIME: 9.6484143 s
 
 method {:test} Test13() {
 var r0, r1 := DoubleQuadruple(107);
 expect r0 == 2 * 107 && r1 == 4 * 107;
 }
 
-// REPEAT 8 - TIME: 11.3184462 s
+// REPEAT 8 - TIME: 10.2882553 s
 
 method {:test} Test14() {
 var r0, r1 := DoubleQuadruple(108);
 expect r0 == 2 * 108 && r1 == 4 * 108;
 }
 
-// REPEAT 9 - TIME: 12.1119958 s
+// REPEAT 9 - TIME: 10.9412271 s
 
 method {:test} Test15() {
 var r0, r1 := DoubleQuadruple(109);
 expect r0 == 2 * 109 && r1 == 4 * 109;
 }
 
-// REPEAT 10 - TIME: 12.8133114 s
+// REPEAT 10 - TIME: 11.5267651 s

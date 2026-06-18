@@ -56,7 +56,7 @@ expect |r0| == |"a"|;
 expect forall i :: 0 <= i < |"a"| ==> (IsSpaceCommaDot("a"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("a"[i]) ==> r0[i] == "a"[i]);
 }
 
-// REPEAT 1 - TIME: 2.9098639 s
+// REPEAT 1 - TIME: 2.9067893 s
 
 method {:test} Test1() {
 var r0 := ReplaceWithColon("a\0");
@@ -64,7 +64,7 @@ expect |r0| == |"a\0"|;
 expect forall i :: 0 <= i < |"a\0"| ==> (IsSpaceCommaDot("a\0"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("a\0"[i]) ==> r0[i] == "a\0"[i]);
 }
 
-// REPEAT 2 - TIME: 3.9817982 s
+// REPEAT 2 - TIME: 3.7235485 s
 
 method {:test} Test2() {
 var r0 := ReplaceWithColon("");
@@ -72,60 +72,60 @@ expect |r0| == |""|;
 expect forall i :: 0 <= i < |""| ==> (IsSpaceCommaDot(""[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot(""[i]) ==> r0[i] == ""[i]);
 }
 
-// REPEAT 3 - TIME: 4.8512738 s
+// REPEAT 3 - TIME: 4.5731012 s
 
 method {:test} Test3() {
-var r0 := ReplaceWithColon("a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0");
-expect |r0| == |"a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"|;
-expect forall i :: 0 <= i < |"a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"| ==> (IsSpaceCommaDot("a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"[i]) ==> r0[i] == "a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0"[i]);
+var r0 := ReplaceWithColon("a aaaaaaaaaa\0");
+expect |r0| == |"a aaaaaaaaaa\0"|;
+expect forall i :: 0 <= i < |"a aaaaaaaaaa\0"| ==> (IsSpaceCommaDot("a aaaaaaaaaa\0"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("a aaaaaaaaaa\0"[i]) ==> r0[i] == "a aaaaaaaaaa\0"[i]);
 }
 
-// REPEAT 4 - TIME: 5.670808 s
+// REPEAT 4 - TIME: 5.4850131 s
 
 method {:test} Test4() {
-var r0 := ReplaceWithColon(" a");
-expect |r0| == |" a"|;
-expect forall i :: 0 <= i < |" a"| ==> (IsSpaceCommaDot(" a"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot(" a"[i]) ==> r0[i] == " a"[i]);
+var r0 := ReplaceWithColon("::");
+expect |r0| == |"::"|;
+expect forall i :: 0 <= i < |"::"| ==> (IsSpaceCommaDot("::"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("::"[i]) ==> r0[i] == "::"[i]);
 }
 
-// REPEAT 5 - TIME: 6.588061 s
+// REPEAT 5 - TIME: 6.3262836 s
 
 method {:test} Test5() {
-var r0 := ReplaceWithColon(",  a");
-expect |r0| == |",  a"|;
-expect forall i :: 0 <= i < |",  a"| ==> (IsSpaceCommaDot(",  a"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot(",  a"[i]) ==> r0[i] == ",  a"[i]);
+var r0 := ReplaceWithColon(" aa");
+expect |r0| == |" aa"|;
+expect forall i :: 0 <= i < |" aa"| ==> (IsSpaceCommaDot(" aa"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot(" aa"[i]) ==> r0[i] == " aa"[i]);
 }
 
-// REPEAT 6 - TIME: 7.4136372 s
+// REPEAT 6 - TIME: 7.56807 s
 
 method {:test} Test6() {
-var r0 := ReplaceWithColon(",  a  a");
-expect |r0| == |",  a  a"|;
-expect forall i :: 0 <= i < |",  a  a"| ==> (IsSpaceCommaDot(",  a  a"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot(",  a  a"[i]) ==> r0[i] == ",  a  a"[i]);
-}
-
-// REPEAT 7 - TIME: 8.2549601 s
-
-method {:test} Test7() {
-var r0 := ReplaceWithColon(" ,a ");
-expect |r0| == |" ,a "|;
-expect forall i :: 0 <= i < |" ,a "| ==> (IsSpaceCommaDot(" ,a "[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot(" ,a "[i]) ==> r0[i] == " ,a "[i]);
-}
-
-// REPEAT 8 - TIME: 9.025724 s
-
-method {:test} Test8() {
-var r0 := ReplaceWithColon("  a");
-expect |r0| == |"  a"|;
-expect forall i :: 0 <= i < |"  a"| ==> (IsSpaceCommaDot("  a"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("  a"[i]) ==> r0[i] == "  a"[i]);
-}
-
-// REPEAT 9 - TIME: 9.8815622 s
-
-method {:test} Test9() {
 var r0 := ReplaceWithColon(",  ");
 expect |r0| == |",  "|;
 expect forall i :: 0 <= i < |",  "| ==> (IsSpaceCommaDot(",  "[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot(",  "[i]) ==> r0[i] == ",  "[i]);
 }
 
-// REPEAT 10 - TIME: 10.6512611 s
+// REPEAT 7 - TIME: 8.4682955 s
+
+method {:test} Test7() {
+var r0 := ReplaceWithColon("  aaaaaa aa a ");
+expect |r0| == |"  aaaaaa aa a "|;
+expect forall i :: 0 <= i < |"  aaaaaa aa a "| ==> (IsSpaceCommaDot("  aaaaaa aa a "[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("  aaaaaa aa a "[i]) ==> r0[i] == "  aaaaaa aa a "[i]);
+}
+
+// REPEAT 8 - TIME: 9.1233078 s
+
+method {:test} Test8() {
+var r0 := ReplaceWithColon("    aaaaaa ");
+expect |r0| == |"    aaaaaa "|;
+expect forall i :: 0 <= i < |"    aaaaaa "| ==> (IsSpaceCommaDot("    aaaaaa "[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("    aaaaaa "[i]) ==> r0[i] == "    aaaaaa "[i]);
+}
+
+// REPEAT 9 - TIME: 9.8243724 s
+
+method {:test} Test9() {
+var r0 := ReplaceWithColon("\U{0001}\0aaaaaaaaaa");
+expect |r0| == |"\U{0001}\0aaaaaaaaaa"|;
+expect forall i :: 0 <= i < |"\U{0001}\0aaaaaaaaaa"| ==> (IsSpaceCommaDot("\U{0001}\0aaaaaaaaaa"[i]) ==> r0[i] == ':') && (!IsSpaceCommaDot("\U{0001}\0aaaaaaaaaa"[i]) ==> r0[i] == "\U{0001}\0aaaaaaaaaa"[i]);
+}
+
+// REPEAT 10 - TIME: 10.5083915 s
