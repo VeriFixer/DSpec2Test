@@ -518,13 +518,15 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
                 continue
             
             full_test_content = full_test_file.read_text(encoding='utf-8')
+            match = re.search(r'method\s+\{\s*:test\}\s+([a-zA-Z0-9_]+)', full_test_content)
+            tests_only_content = full_test_content[match.start():] if match else full_test_content
             
             for mutant in mutant_map.get(orig.stem, []):
                 if mutant.name not in mutant_status_tracker:
                     continue
                 
                 mutant_content = mutant.read_text(encoding='utf-8')
-                combined_content = f"{mutant_content}\n\n{full_test_content}"
+                combined_content = f"{mutant_content}\n\n{tests_only_content}"
                 
                 out_path = all_dir / f"{mutant.stem}.test.dfy"
                 out_path.write_text(combined_content, encoding='utf-8')
