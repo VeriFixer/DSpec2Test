@@ -494,5 +494,3 @@ if __name__ == "__main__":
         plot_avg_tests_vs_mutation_score(df_combo, graphs_directory, suffix)
         plot_time_breakdown_bar(df_combo, graphs_directory, target_x=max_x, suffix=suffix)
         plot_mutant_time_boxplots(df_mutants, graphs_directory, target_x=max_x, suffix=suffix)
-        
-    print(f"\nDone! Check the '{graphs_directory}' directory for all generated files.")

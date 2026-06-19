@@ -245,5 +245,4 @@ if __name__ == "__main__":
             
         suffix = f"_{combo_name}"
         generate_tables(df_combo, output_directory, target_x=max_x, suffix=suffix)
-        
-    print(f"\nDone! Check the 'results/tables' directory for all generated CSV and LaTeX files.")
+    

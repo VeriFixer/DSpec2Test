@@ -18,4 +18,4 @@ var r0 := CountVowelNeighbors("\U{0002}\0");
 expect r0 >= 0;
 }
 
-// REPEAT 10 - TIME: 13.0571575 s
+// REPEAT 10 - TIME: 13.3424047 s

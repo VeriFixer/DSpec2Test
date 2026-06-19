@@ -18,4 +18,4 @@ var r0 := allDigits("\09aa");
 expect r0 <==> forall i :: 0 <= i < |"\09aa"| ==> "\09aa"[i] in "0123456789";
 }
 
-// REPEAT 10 - TIME: 8.2522326 s
+// REPEAT 10 - TIME: 8.4684952 s

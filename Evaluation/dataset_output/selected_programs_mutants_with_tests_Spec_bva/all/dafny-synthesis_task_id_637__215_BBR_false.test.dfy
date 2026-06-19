@@ -8,13 +8,6 @@ method {:testEntry} IsBreakEven(costPrice: int, sellingPrice: int) returns (resu
 }
 
 
-method {:testEntry} IsBreakEven(costPrice: int, sellingPrice: int) returns (result: bool)
-    requires costPrice >= 0 && sellingPrice >= 0
-    ensures result <==> costPrice == sellingPrice
-{
-    result := costPrice == sellingPrice;
-}
-
 method {:test} Test0() {
 expect 0 >= 0 && 0 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := IsBreakEven(0, 0);
@@ -46,7 +39,7 @@ var r0 := IsBreakEven(101, 100);
 expect r0 <==> 101 == 100;
 }
 
-// REPEAT 1 - TIME: 10.4638296 s
+// REPEAT 1 - TIME: 9.800477 s
 
 method {:test} Test18() {
 expect 102 >= 0 && 102 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -59,7 +52,7 @@ var r0 := IsBreakEven(103, 102);
 expect r0 <==> 103 == 102;
 }
 
-// REPEAT 2 - TIME: 11.3752372 s
+// REPEAT 2 - TIME: 10.7799332 s
 
 method {:test} Test20() {
 expect 104 >= 0 && 104 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -72,7 +65,7 @@ var r0 := IsBreakEven(104, 103);
 expect r0 <==> 104 == 103;
 }
 
-// REPEAT 3 - TIME: 12.3500419 s
+// REPEAT 3 - TIME: 11.903811 s
 
 method {:test} Test22() {
 expect 105 >= 0 && 105 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -85,7 +78,7 @@ var r0 := IsBreakEven(106, 105);
 expect r0 <==> 106 == 105;
 }
 
-// REPEAT 4 - TIME: 13.2616852 s
+// REPEAT 4 - TIME: 12.6951814 s
 
 method {:test} Test24() {
 expect 107 >= 0 && 107 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -98,7 +91,7 @@ var r0 := IsBreakEven(107, 106);
 expect r0 <==> 107 == 106;
 }
 
-// REPEAT 5 - TIME: 14.3571175 s
+// REPEAT 5 - TIME: 13.3959834 s
 
 method {:test} Test26() {
 expect 108 >= 0 && 108 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -111,7 +104,7 @@ var r0 := IsBreakEven(109, 108);
 expect r0 <==> 109 == 108;
 }
 
-// REPEAT 6 - TIME: 15.3811713 s
+// REPEAT 6 - TIME: 14.1671035 s
 
 method {:test} Test28() {
 expect 110 >= 0 && 110 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -124,7 +117,7 @@ var r0 := IsBreakEven(110, 109);
 expect r0 <==> 110 == 109;
 }
 
-// REPEAT 7 - TIME: 16.3704413 s
+// REPEAT 7 - TIME: 14.9182732 s
 
 method {:test} Test30() {
 expect 111 >= 0 && 111 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -137,7 +130,7 @@ var r0 := IsBreakEven(112, 111);
 expect r0 <==> 112 == 111;
 }
 
-// REPEAT 8 - TIME: 17.2021304 s
+// REPEAT 8 - TIME: 15.6479732 s
 
 method {:test} Test32() {
 expect 113 >= 0 && 113 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -150,7 +143,7 @@ var r0 := IsBreakEven(113, 112);
 expect r0 <==> 113 == 112;
 }
 
-// REPEAT 9 - TIME: 18.036909 s
+// REPEAT 9 - TIME: 16.3153797 s
 
 method {:test} Test34() {
 expect 114 >= 0 && 114 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -163,4 +156,4 @@ var r0 := IsBreakEven(115, 114);
 expect r0 <==> 115 == 114;
 }
 
-// REPEAT 10 - TIME: 18.908432 s
+// REPEAT 10 - TIME: 17.1799862 s

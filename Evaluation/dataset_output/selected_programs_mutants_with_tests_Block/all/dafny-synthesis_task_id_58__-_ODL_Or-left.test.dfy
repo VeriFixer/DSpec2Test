@@ -7,12 +7,6 @@ method {:testEntry} HasOppositeSign(a: int, b: int) returns (result: bool)
 }
 
 
-method {:testEntry} HasOppositeSign(a: int, b: int) returns (result: bool)
-  ensures result <==> (a < 0 && b > 0) || (a > 0 && b < 0)
-{
-  result := (a < 0 && b > 0) || (a > 0 && b < 0);
-}
-
 method {:test} Test0() {
 var r0 := HasOppositeSign(0, 0);
 expect r0 <==> (0 < 0 && 0 > 0) || (0 > 0 && 0 < 0);
@@ -26,7 +20,7 @@ var r0 := HasOppositeSign(1, 0);
 expect r0 <==> (1 < 0 && 0 > 0) || (1 > 0 && 0 < 0);
 }
 
-// REPEAT 1 - TIME: 3.1761028 s
+// REPEAT 1 - TIME: 2.7024586 s
 
 method {:test} Test3() {
 var r0 := HasOppositeSign(-2, 2);
@@ -41,7 +35,7 @@ var r0 := HasOppositeSign(2, 2);
 expect r0 <==> (2 < 0 && 2 > 0) || (2 > 0 && 2 < 0);
 }
 
-// REPEAT 2 - TIME: 5.4002478 s
+// REPEAT 2 - TIME: 5.2295442 s
 
 method {:test} Test7() {
 var r0 := HasOppositeSign(3, 3);
@@ -56,7 +50,7 @@ var r0 := HasOppositeSign(-3, -2);
 expect r0 <==> (-3 < 0 && -2 > 0) || (-3 > 0 && -2 < 0);
 }
 
-// REPEAT 3 - TIME: 6.9389531 s
+// REPEAT 3 - TIME: 6.9302467 s
 
 method {:test} Test10() {
 var r0 := HasOppositeSign(4, 4);
@@ -71,7 +65,7 @@ var r0 := HasOppositeSign(-4, -3);
 expect r0 <==> (-4 < 0 && -3 > 0) || (-4 > 0 && -3 < 0);
 }
 
-// REPEAT 4 - TIME: 8.4971732 s
+// REPEAT 4 - TIME: 8.5226088 s
 
 method {:test} Test13() {
 var r0 := HasOppositeSign(-5, -4);
@@ -86,7 +80,7 @@ var r0 := HasOppositeSign(5, 5);
 expect r0 <==> (5 < 0 && 5 > 0) || (5 > 0 && 5 < 0);
 }
 
-// REPEAT 5 - TIME: 10.2751109 s
+// REPEAT 5 - TIME: 10.1636298 s
 
 method {:test} Test17() {
 var r0 := HasOppositeSign(-6, -5);
@@ -101,7 +95,7 @@ var r0 := HasOppositeSign(6, -5);
 expect r0 <==> (6 < 0 && -5 > 0) || (6 > 0 && -5 < 0);
 }
 
-// REPEAT 6 - TIME: 11.4690332 s
+// REPEAT 6 - TIME: 11.3966332 s
 
 method {:test} Test20() {
 var r0 := HasOppositeSign(-7, 7);
@@ -116,7 +110,7 @@ var r0 := HasOppositeSign(7, 7);
 expect r0 <==> (7 < 0 && 7 > 0) || (7 > 0 && 7 < 0);
 }
 
-// REPEAT 7 - TIME: 13.6078699 s
+// REPEAT 7 - TIME: 13.1877722 s
 
 method {:test} Test25() {
 var r0 := HasOppositeSign(8, 8);
@@ -131,7 +125,7 @@ var r0 := HasOppositeSign(-8, -7);
 expect r0 <==> (-8 < 0 && -7 > 0) || (-8 > 0 && -7 < 0);
 }
 
-// REPEAT 8 - TIME: 14.8998268 s
+// REPEAT 8 - TIME: 14.3400948 s
 
 method {:test} Test28() {
 var r0 := HasOppositeSign(-9, -8);
@@ -146,7 +140,7 @@ var r0 := HasOppositeSign(9, 9);
 expect r0 <==> (9 < 0 && 9 > 0) || (9 > 0 && 9 < 0);
 }
 
-// REPEAT 9 - TIME: 16.4257835 s
+// REPEAT 9 - TIME: 16.022257 s
 
 method {:test} Test32() {
 var r0 := HasOppositeSign(10, 10);
@@ -161,4 +155,4 @@ var r0 := HasOppositeSign(-10, -9);
 expect r0 <==> (-10 < 0 && -9 > 0) || (-10 > 0 && -9 < 0);
 }
 
-// REPEAT 10 - TIME: 17.6404721 s
+// REPEAT 10 - TIME: 17.3870626 s

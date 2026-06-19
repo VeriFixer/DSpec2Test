@@ -37,4 +37,4 @@ expect |r0| == |".-"|;
 expect forall i :: 0 <= i < |".-"| ==> if IsUpperCase(".-"[i]) then IsUpperLowerPair(".-"[i], r0[i]) else r0[i] == ".-"[i];
 }
 
-// REPEAT 9 - TIME: 11.1312425 s
+// REPEAT 9 - TIME: 10.9935375 s

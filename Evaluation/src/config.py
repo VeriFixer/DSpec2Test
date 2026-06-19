@@ -52,6 +52,7 @@ SELECTED_PROGRAMS_DIR: Path = BASE_PATH / "dataset" / "selected_programs"
 SELECTED_PROGRAMS_FORMATTED_DIR: Path = BASE_PATH / "dataset" / "selected_programs_formatted"
 SELECTED_PROGRAMS_MUTANTS_DIR: Path = BASE_PATH / "dataset" / "selected_programs_mutants"
 SELECTED_PROGRAMS_MUTANTS_WITH_TESTS_DIR: Path = BASE_PATH / "dataset" / "selected_programs_mutants_with_tests"
+RESULTS_DIR: Path = BASE_PATH / "results"
 
 # === Dafny Binary ===
 _DAFNY_BINARY_LOCAL: Path = BASE_PATH.parent / "Binaries" / "Dafny"

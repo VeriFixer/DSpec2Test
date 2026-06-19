@@ -42,51 +42,6 @@ method {:testEntry} RollingMax(numbers: seq<int>) returns (result: seq<int>)
 }
 
 
-/*
-HumanEvalX 9
-From a given list of integers, generate a list of rolling maximum element found until given moment in the sequence.
-*/
-
-function isMax(m: int, numbers: seq<int>): bool
-{
-    m in numbers &&
-    forall i :: 0 <= i < |numbers| ==> numbers[i] <= m
-
-}
-
-method {:testEntry} max(numbers: seq<int>) returns (result: int)
-requires numbers != []
-ensures isMax(result, numbers)
-{
-    result := numbers[0];
-    for i := 1 to |numbers|
-    invariant isMax(result, numbers[0..i])
-    {
-        if numbers[i] > result {
-            result := numbers[i];
-        }
-    }
-}
-
-method {:testEntry} RollingMax(numbers: seq<int>) returns (result: seq<int>)
-requires numbers != []
-ensures |result| == |numbers|
-ensures forall i :: 0 < i < |result| ==> isMax(result[i], numbers[0..(i+1)])
-{
-    var m := numbers[0];
-    result := [m];
-    for i := 1 to |numbers|
-    invariant |result| == i
-    invariant m == result[i-1]
-    invariant forall j :: 0 <= j < i ==> isMax(result[j], numbers[0..(j+1)])
-    {
-        if numbers[i] > m {
-            m := numbers[i];
-        }
-        result := result + [m];
-    }
-}
-
 method {:test} Test0() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 1236];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
@@ -101,7 +56,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 1 - TIME: 5.9674869 s
+// REPEAT 1 - TIME: 6.5360302 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [7719];
@@ -117,7 +72,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 2 - TIME: 9.2407402 s
+// REPEAT 2 - TIME: 10.1024705 s
 
 method {:test} Test4() {
 var seqint0 : seq<int> := [0, -1201, 0, 0, 0, 0, 0, 0, 1236, 0, -7619];
@@ -133,7 +88,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 3 - TIME: 12.4552067 s
+// REPEAT 3 - TIME: 13.5749069 s
 
 method {:test} Test6() {
 var seqint0 : seq<int> := [-7129, 1236];
@@ -149,7 +104,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 4 - TIME: 15.4834985 s
+// REPEAT 4 - TIME: 16.5990355 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [-560, 1236, 0];
@@ -165,7 +120,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 5 - TIME: 18.3296421 s
+// REPEAT 5 - TIME: 19.7450003 s
 
 method {:test} Test10() {
 var seqint0 : seq<int> := [-7129, -1201, 0, 0, 0, 0, 0, 0, 1236, 0, -560];
@@ -181,7 +136,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 6 - TIME: 21.0724874 s
+// REPEAT 6 - TIME: 23.137516 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [1828, -6418, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2437, 641];
@@ -197,7 +152,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 7 - TIME: 24.1937583 s
+// REPEAT 7 - TIME: 25.9404503 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [787, -1201, 0, 0, 0, 0, 0, 0, 1236, 0, -7129];
@@ -213,7 +168,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 8 - TIME: 27.338993 s
+// REPEAT 8 - TIME: 28.8136516 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [7720];
@@ -229,7 +184,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 9 - TIME: 30.1622512 s
+// REPEAT 9 - TIME: 32.294725 s
 
 method {:test} Test18() {
 var seqint0 : seq<int> := [-1046, -1201, 0, 1236];
@@ -245,4 +200,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 10 - TIME: 33.2169908 s
+// REPEAT 10 - TIME: 35.2807101 s

@@ -14,19 +14,6 @@ method {:testEntry} CountVowelNeighbors(s: string) returns (count: int)
 }
 
 
-predicate IsVowel(c: char)
-{
-    c in {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
-}
-
-method {:testEntry} CountVowelNeighbors(s: string) returns (count: int)
-    ensures count >= 0
-    ensures count == | set i: int | 1 <= i < |s|-1 && IsVowel(s[i-1]) && IsVowel(s[i+1]) |
-{
-    var vowels := set i: int | 1 <= i < |s|-1 && IsVowel(s[i-1]) && IsVowel(s[i+1]);
-    count := |vowels|;
-}
-
 method {:test} Test0() {
 var r0 := CountVowelNeighbors("aaaaaOUOaaaaaaaaaaaaaaaaaa");
 expect r0 >= 0;
@@ -48,7 +35,7 @@ var r0 := CountVowelNeighbors("aaaaaaoaIaaaaaaaaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 1 - TIME: 6.6924502 s
+// REPEAT 1 - TIME: 5.5369109 s
 
 method {:test} Test5() {
 var r0 := CountVowelNeighbors("\U{0006}aaaaaaaaaaaaaaaaaaaaaa\0\U{0002}aa\U{0004}");
@@ -71,7 +58,7 @@ var r0 := CountVowelNeighbors("\0aaa");
 expect r0 >= 0;
 }
 
-// REPEAT 2 - TIME: 11.2226006 s
+// REPEAT 2 - TIME: 9.5560485 s
 
 method {:test} Test10() {
 var r0 := CountVowelNeighbors("eaa");
@@ -94,7 +81,7 @@ var r0 := CountVowelNeighbors("\U{0004}\0a\U{0001}aaaaa\U{0002}a");
 expect r0 >= 0;
 }
 
-// REPEAT 3 - TIME: 16.3854965 s
+// REPEAT 3 - TIME: 13.560099 s
 
 method {:test} Test15() {
 var r0 := CountVowelNeighbors("\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaa");
@@ -117,7 +104,7 @@ var r0 := CountVowelNeighbors("\U{0006}\0a\U{0001}aaaaaa\U{0002}\U{0004}");
 expect r0 >= 0;
 }
 
-// REPEAT 4 - TIME: 22.3796315 s
+// REPEAT 4 - TIME: 18.5115714 s
 
 method {:test} Test20() {
 var r0 := CountVowelNeighbors("a\0a\U{0001}aaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -140,7 +127,7 @@ var r0 := CountVowelNeighbors("a\0aaaaaaaaaaaaaa\U{0003}aaaaaa\U{0001}aaa\U{0005
 expect r0 >= 0;
 }
 
-// REPEAT 5 - TIME: 29.5996872 s
+// REPEAT 5 - TIME: 24.1284694 s
 
 method {:test} Test25() {
 var r0 := CountVowelNeighbors("\U{0004}\0a\U{0001}aaaaaaaaaaaaaaaaaa");
@@ -159,7 +146,7 @@ var r0 := CountVowelNeighbors("\0aaaaaaaaaaaaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 6 - TIME: 38.1763065 s
+// REPEAT 6 - TIME: 29.5662498 s
 
 method {:test} Test30() {
 var r0 := CountVowelNeighbors("\U{0006}aaaaaaaaaaaaa\0aaa\U{0004}\U{0002}a");
@@ -182,7 +169,7 @@ var r0 := CountVowelNeighbors("a\0aaaaaaaaaaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 7 - TIME: 46.4671498 s
+// REPEAT 7 - TIME: 35.6086397 s
 
 method {:test} Test35() {
 var r0 := CountVowelNeighbors("a\0a\U{0001}aaaaaaaaaaaaaaa");
@@ -197,7 +184,7 @@ var r0 := CountVowelNeighbors("aaaaaaaaaaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 8 - TIME: 53.7993302 s
+// REPEAT 8 - TIME: 43.3013905 s
 
 method {:test} Test40() {
 var r0 := CountVowelNeighbors("a\0a\U{0001}aaaaaaaaaaaaaa");
@@ -212,7 +199,7 @@ var r0 := CountVowelNeighbors("a\U{0001}a\U{0002}aa\0aaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 9 - TIME: 63.5905793 s
+// REPEAT 9 - TIME: 51.7990032 s
 
 method {:test} Test45() {
 var r0 := CountVowelNeighbors("\U{0005}\0a\U{0001}aaaaaaaaaaaaa");
@@ -235,4 +222,4 @@ var r0 := CountVowelNeighbors("a\0a\U{0001}aaaaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 10 - TIME: 76.3830275 s
+// REPEAT 10 - TIME: 59.7698035 s

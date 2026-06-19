@@ -24,4 +24,4 @@ var r0 := FactorialOfLastDigit(8);
 expect r0 == Factorial(8 % 10);
 }
 
-// REPEAT 5 - TIME: 5.8316197 s
+// REPEAT 5 - TIME: 6.1504424 s

@@ -16,22 +16,6 @@ method {:testEntry} ElementWiseDivide(a: seq<int>, b: seq<int>) returns (result:
 }
 
 
-method {:testEntry} ElementWiseDivide(a: seq<int>, b: seq<int>) returns (result: seq<int>)
-    requires |a| == |b|
-    requires forall i :: 0 <= i < |b| ==> b[i] != 0
-    ensures |result| == |a|
-    ensures forall i :: 0 <= i < |result| ==> result[i] == a[i] / b[i]
-{
-    result := [];
-    for i := 0 to |a|
-        invariant 0 <= i <= |a|
-        invariant |result| == i
-        invariant forall k :: 0 <= k < i ==> result[k] == a[k] / b[k]
-    {
-        result := result + [a[i] / b[i]];
-    }
-}
-
 method {:test} Test0() {
 var seqint0 : seq<int> := [];
 var seqint1 : seq<int> := [];
@@ -42,7 +26,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 1 - TIME: 2.6738323 s
+// REPEAT 1 - TIME: 2.6552231 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [0];
@@ -54,7 +38,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 2 - TIME: 3.6860987 s
+// REPEAT 2 - TIME: 3.6013154 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [0, 0];
@@ -66,7 +50,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 3 - TIME: 4.5481467 s
+// REPEAT 3 - TIME: 4.7663364 s
 
 method {:test} Test3() {
 var seqint0 : seq<int> := [0, 0, 281, 0, 0, 0, 0, -2437];
@@ -78,7 +62,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 4 - TIME: 5.2731334 s
+// REPEAT 4 - TIME: 5.7314552 s
 
 method {:test} Test4() {
 var seqint0 : seq<int> := [6890, 1062, 2240, -209161, 0, 0, 0, 0, 3609];
@@ -90,7 +74,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 5 - TIME: 6.1210444 s
+// REPEAT 5 - TIME: 6.6413101 s
 
 method {:test} Test5() {
 var seqint0 : seq<int> := [8945, 0, 0, 0, 0, 0, 2282];
@@ -102,7 +86,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 6 - TIME: 7.0483577 s
+// REPEAT 6 - TIME: 7.7389089 s
 
 method {:test} Test6() {
 var seqint0 : seq<int> := [6758, 0, 0, 0, 0, 0, 0, 1768];
@@ -114,7 +98,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 7 - TIME: 7.9149877 s
+// REPEAT 7 - TIME: 8.5888417 s
 
 method {:test} Test7() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 4335, 0, 0];
@@ -126,7 +110,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 8 - TIME: 8.8631752 s
+// REPEAT 8 - TIME: 9.2890003 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [5968, 0, 1323];
@@ -138,7 +122,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 9 - TIME: 9.6236767 s
+// REPEAT 9 - TIME: 10.025823 s
 
 method {:test} Test9() {
 var seqint0 : seq<int> := [690, 0, 0, 0, 0, 0, 0, 609, 5598];
@@ -150,4 +134,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] / seqint1[i];
 }
 
-// REPEAT 10 - TIME: 10.4188512 s
+// REPEAT 10 - TIME: 10.8561 s

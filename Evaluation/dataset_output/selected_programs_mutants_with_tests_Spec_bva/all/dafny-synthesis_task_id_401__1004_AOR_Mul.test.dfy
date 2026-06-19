@@ -28,33 +28,6 @@ method {:testEntry} IndexWiseAddition(a: seq<seq<int>>, b: seq<seq<int>>) return
 }
 
 
-method {:testEntry} IndexWiseAddition(a: seq<seq<int>>, b: seq<seq<int>>) returns (result: seq<seq<int>>)
-    requires |a| > 0 && |b| > 0
-    requires |a| == |b|
-    requires forall i :: 0 <= i < |a| ==> |a[i]| == |b[i]|
-    ensures |result| == |a|
-    ensures forall i :: 0 <= i < |result| ==> |result[i]| == |a[i]|
-    ensures forall i :: 0 <= i < |result| ==> forall j :: 0 <= j < |result[i]| ==> result[i][j] == a[i][j] + b[i][j]
-{
-    result := [];
-    for i := 0 to |a|
-        invariant 0 <= i <= |a|
-        invariant |result| == i
-        invariant forall k :: 0 <= k < i ==> |result[k]| == |a[k]|
-        invariant forall k :: 0 <= k < i ==> forall j :: 0 <= j < |result[k]| ==> result[k][j] == a[k][j] + b[k][j]
-    {
-        var subResult := [];
-        for j := 0 to |a[i]|
-            invariant 0 <= j <= |a[i]|
-            invariant |subResult| == j
-            invariant forall k :: 0 <= k < j ==> subResult[k] == a[i][k] + b[i][k]
-        {
-            subResult := subResult + [a[i][j] + b[i][j]];
-        }
-        result := result + [subResult];
-    }
-}
-
 method {:test} Test0() {
 var seqint0 : seq<int> := [];
 var seqseqint0 : seq<seq<int>> := [seqint0];
@@ -84,7 +57,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 1 - TIME: 7.5980167 s
+// REPEAT 1 - TIME: 7.6318832 s
 
 method {:test} Test10() {
 var seqint0 : seq<int> := [0];
@@ -102,7 +75,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 2 - TIME: 8.4772447 s
+// REPEAT 2 - TIME: 8.6088879 s
 
 method {:test} Test11() {
 var seqint0 : seq<int> := [0, 0];
@@ -122,7 +95,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 3 - TIME: 9.3211311 s
+// REPEAT 3 - TIME: 9.4626464 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [0, 0, 0];
@@ -174,7 +147,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 4 - TIME: 10.0765524 s
+// REPEAT 4 - TIME: 10.2777257 s
 
 method {:test} Test13() {
 var seqint0 : seq<int> := [0, 0, 0, 0];
@@ -228,7 +201,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 5 - TIME: 11.1627338 s
+// REPEAT 5 - TIME: 11.2740367 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0];
@@ -284,7 +257,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 6 - TIME: 12.307775 s
+// REPEAT 6 - TIME: 12.4301032 s
 
 method {:test} Test15() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0];
@@ -342,7 +315,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 7 - TIME: 14.0650532 s
+// REPEAT 7 - TIME: 13.7351505 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
@@ -402,7 +375,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 8 - TIME: 15.8390553 s
+// REPEAT 8 - TIME: 15.3580284 s
 
 method {:test} Test17() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0];
@@ -464,7 +437,7 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 9 - TIME: 17.8753551 s
+// REPEAT 9 - TIME: 17.3728409 s
 
 method {:test} Test18() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -528,4 +501,4 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 10 - TIME: 20.0221162 s
+// REPEAT 10 - TIME: 19.8303022 s

@@ -31,4 +31,4 @@ expect |r0| == |"aaaaaaaaaaa\U{0001}"|;
 expect forall i :: 0 <= i < |"aaaaaaaaaaa\U{0001}"| ==> ("aaaaaaaaaaa\U{0001}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("aaaaaaaaaaa\U{0001}"[i] != '\U{0001}' ==> r0[i] == "aaaaaaaaaaa\U{0001}"[i]);
 }
 
-// REPEAT 2 - TIME: 4.7226102 s
+// REPEAT 2 - TIME: 4.4964167 s

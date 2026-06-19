@@ -21,4 +21,4 @@ expect r0 == 1 || r0 == 2;
 expect r0 >= 1 && r0 >= 2;
 }
 
-// REPEAT 2 - TIME: 2.7972655 s
+// REPEAT 2 - TIME: 5.8127717 s

@@ -49,4 +49,4 @@ expect 7724 > 0 && 2 > 0, "If this check fails at runtime, the test does not mee
 var r0 := gcdI(7724, 2);
 }
 
-// REPEAT 2 - TIME: 13.8298051 s
+// REPEAT 2 - TIME: 15.6198625 s

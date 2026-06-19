@@ -32,43 +32,13 @@ method {:testEntry} ComputeFactorial(n: int) returns (u: int)
 }
 
 
-// RUN: %dafny /compile:0 /dprint:"%t.dprint" "%s" > "%t"
-// RUN: %diff "%s.expect" "%t"
-
-function Factorial(n: nat): nat
-{
-  if n == 0 then 1 else n * Factorial(n-1)
-}
-
-method {:testEntry} ComputeFactorial(n: int) returns (u: int)
-  requires 1 <= n;
-  ensures u == Factorial(n);
-{
-  var r := 1;
-  u := 1;
-  while (r < n)
-    invariant r <= n;
-    invariant u == Factorial(r);
-  {
-    var v, s := u, 1;
-    while (s < r + 1)
-      invariant s <= r + 1;
-      invariant v == Factorial(r) && u == s * Factorial(r);
-    {
-      u := u + v;
-      s := s + 1;
-    }
-    r := r + 1;
-  }
-}
-
 method {:test} Test0() {
 expect 1 <= 2, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ComputeFactorial(2);
 expect r0 == Factorial(2);
 }
 
-// REPEAT 1 - TIME: 14.438308 s
+// REPEAT 1 - TIME: 15.6923004 s
 
 method {:test} Test1() {
 expect 1 <= 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -76,7 +46,7 @@ var r0 := ComputeFactorial(3);
 expect r0 == Factorial(3);
 }
 
-// REPEAT 2 - TIME: 24.6735077 s
+// REPEAT 2 - TIME: 26.5436705 s
 
 method {:test} Test2() {
 expect 1 <= 4, "If this check fails at runtime, the test does not meet the preconditions";
@@ -84,7 +54,7 @@ var r0 := ComputeFactorial(4);
 expect r0 == Factorial(4);
 }
 
-// REPEAT 3 - TIME: 35.580859 s
+// REPEAT 3 - TIME: 39.1683891 s
 
 method {:test} Test3() {
 expect 1 <= 5, "If this check fails at runtime, the test does not meet the preconditions";
@@ -92,7 +62,7 @@ var r0 := ComputeFactorial(5);
 expect r0 == Factorial(5);
 }
 
-// REPEAT 4 - TIME: 46.7060309 s
+// REPEAT 4 - TIME: 52.2705095 s
 
 method {:test} Test4() {
 expect 1 <= 6, "If this check fails at runtime, the test does not meet the preconditions";
@@ -100,7 +70,7 @@ var r0 := ComputeFactorial(6);
 expect r0 == Factorial(6);
 }
 
-// REPEAT 5 - TIME: 61.556291 s
+// REPEAT 5 - TIME: 67.0371267 s
 
 method {:test} Test5() {
 expect 1 <= 7, "If this check fails at runtime, the test does not meet the preconditions";
@@ -108,7 +78,7 @@ var r0 := ComputeFactorial(7);
 expect r0 == Factorial(7);
 }
 
-// REPEAT 6 - TIME: 75.4328348 s
+// REPEAT 6 - TIME: 81.0682271 s
 
 method {:test} Test6() {
 expect 1 <= 8, "If this check fails at runtime, the test does not meet the preconditions";
@@ -116,7 +86,7 @@ var r0 := ComputeFactorial(8);
 expect r0 == Factorial(8);
 }
 
-// REPEAT 7 - TIME: 89.0673275 s
+// REPEAT 7 - TIME: 99.2077676 s
 
 method {:test} Test7() {
 expect 1 <= 9, "If this check fails at runtime, the test does not meet the preconditions";
@@ -124,7 +94,7 @@ var r0 := ComputeFactorial(9);
 expect r0 == Factorial(9);
 }
 
-// REPEAT 8 - TIME: 103.8562951 s
+// REPEAT 8 - TIME: 114.6324348 s
 
 method {:test} Test8() {
 expect 1 <= 10, "If this check fails at runtime, the test does not meet the preconditions";
@@ -132,7 +102,7 @@ var r0 := ComputeFactorial(10);
 expect r0 == Factorial(10);
 }
 
-// REPEAT 9 - TIME: 117.053105 s
+// REPEAT 9 - TIME: 134.8781267 s
 
 method {:test} Test9() {
 expect 1 <= 11, "If this check fails at runtime, the test does not meet the preconditions";
@@ -140,4 +110,4 @@ var r0 := ComputeFactorial(11);
 expect r0 == Factorial(11);
 }
 
-// REPEAT 10 - TIME: 134.4703833 s
+// REPEAT 10 - TIME: 154.3973461 s

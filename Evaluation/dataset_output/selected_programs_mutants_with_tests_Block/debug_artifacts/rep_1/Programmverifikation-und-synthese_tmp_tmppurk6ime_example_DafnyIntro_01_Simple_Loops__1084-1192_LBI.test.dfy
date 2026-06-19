@@ -40,4 +40,4 @@ var r0 := sumOdds(1);
 expect r0 == 1 * 1;
 }
 
-// REPEAT 1 - TIME: 2.2401481 s
+// REPEAT 1 - TIME: 2.1819812 s

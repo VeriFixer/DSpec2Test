@@ -8,20 +8,13 @@ method {:testEntry} PentagonPerimeter(side: int) returns (perimeter: int)
 }
 
 
-method {:testEntry} PentagonPerimeter(side: int) returns (perimeter: int)
-    requires side > 0
-    ensures perimeter == 5 * side
-{
-    perimeter := 5 * side;
-}
-
 method {:test} Test0() {
 expect 1 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := PentagonPerimeter(1);
 expect r0 == 5 * 1;
 }
 
-// REPEAT 1 - TIME: 2.3274505 s
+// REPEAT 1 - TIME: 2.541105 s
 
 method {:test} Test1() {
 expect 40 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -29,7 +22,7 @@ var r0 := PentagonPerimeter(40);
 expect r0 == 5 * 40;
 }
 
-// REPEAT 2 - TIME: 3.2577791 s
+// REPEAT 2 - TIME: 3.3150346 s
 
 method {:test} Test2() {
 expect 41 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -37,7 +30,7 @@ var r0 := PentagonPerimeter(41);
 expect r0 == 5 * 41;
 }
 
-// REPEAT 3 - TIME: 4.1904569 s
+// REPEAT 3 - TIME: 4.0415521 s
 
 method {:test} Test3() {
 expect 42 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -45,7 +38,7 @@ var r0 := PentagonPerimeter(42);
 expect r0 == 5 * 42;
 }
 
-// REPEAT 4 - TIME: 5.2066521 s
+// REPEAT 4 - TIME: 4.839374 s
 
 method {:test} Test4() {
 expect 43 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -53,7 +46,7 @@ var r0 := PentagonPerimeter(43);
 expect r0 == 5 * 43;
 }
 
-// REPEAT 5 - TIME: 6.1826339 s
+// REPEAT 5 - TIME: 5.6776388 s
 
 method {:test} Test5() {
 expect 44 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -61,7 +54,7 @@ var r0 := PentagonPerimeter(44);
 expect r0 == 5 * 44;
 }
 
-// REPEAT 6 - TIME: 6.9531885 s
+// REPEAT 6 - TIME: 6.4655705 s
 
 method {:test} Test6() {
 expect 45 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -69,7 +62,7 @@ var r0 := PentagonPerimeter(45);
 expect r0 == 5 * 45;
 }
 
-// REPEAT 7 - TIME: 7.5825472 s
+// REPEAT 7 - TIME: 7.1648892 s
 
 method {:test} Test7() {
 expect 46 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -77,7 +70,7 @@ var r0 := PentagonPerimeter(46);
 expect r0 == 5 * 46;
 }
 
-// REPEAT 8 - TIME: 8.1511845 s
+// REPEAT 8 - TIME: 7.8262434 s
 
 method {:test} Test8() {
 expect 47 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -85,7 +78,7 @@ var r0 := PentagonPerimeter(47);
 expect r0 == 5 * 47;
 }
 
-// REPEAT 9 - TIME: 8.7851199 s
+// REPEAT 9 - TIME: 8.5738883 s
 
 method {:test} Test9() {
 expect 48 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -93,4 +86,4 @@ var r0 := PentagonPerimeter(48);
 expect r0 == 5 * 48;
 }
 
-// REPEAT 10 - TIME: 9.4183071 s
+// REPEAT 10 - TIME: 9.2546531 s

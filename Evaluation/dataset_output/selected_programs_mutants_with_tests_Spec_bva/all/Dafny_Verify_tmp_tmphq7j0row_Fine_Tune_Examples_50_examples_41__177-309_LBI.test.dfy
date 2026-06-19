@@ -19,22 +19,6 @@ method {:testEntry} main(n: int, k: int)
 }
 
 
-method {:testEntry} main(n: int, k: int) returns (i :int, j: int)
-    requires n >= 0
-    requires k == 1 || k >= 0
-    ensures k + i + j >= 2 * n
-{
-    i := 0;
-    j := 0;
-    while(i < n)
-        invariant 0 <= i <= n
-        invariant j == i * (i + 1) / 2
-    {
-        i := i + 1;
-        j := j + i;
-    }
-}
-
 method {:test} Test0() {
 expect 0 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect 1 == 1 || 1 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -96,7 +80,7 @@ var r0, r1 := main(38, 2);
 expect 2 + r0 + r1 >= 2 * 38;
 }
 
-// REPEAT 1 - TIME: 11.8541255 s
+// REPEAT 1 - TIME: 13.2454864 s
 
 method {:test} Test24() {
 expect 7720 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -105,7 +89,7 @@ var r0, r1 := main(7720, 101);
 expect 101 + r0 + r1 >= 2 * 7720;
 }
 
-// REPEAT 2 - TIME: 12.8729791 s
+// REPEAT 2 - TIME: 14.1474422 s
 
 method {:test} Test25() {
 expect 7721 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -114,7 +98,7 @@ var r0, r1 := main(7721, 102);
 expect 102 + r0 + r1 >= 2 * 7721;
 }
 
-// REPEAT 3 - TIME: 13.7579535 s
+// REPEAT 3 - TIME: 14.9472957 s
 
 method {:test} Test26() {
 expect 7722 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -123,7 +107,7 @@ var r0, r1 := main(7722, 103);
 expect 103 + r0 + r1 >= 2 * 7722;
 }
 
-// REPEAT 4 - TIME: 14.7273623 s
+// REPEAT 4 - TIME: 15.94226 s
 
 method {:test} Test27() {
 expect 7723 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -132,7 +116,7 @@ var r0, r1 := main(7723, 104);
 expect 104 + r0 + r1 >= 2 * 7723;
 }
 
-// REPEAT 5 - TIME: 15.6020648 s
+// REPEAT 5 - TIME: 16.8266087 s
 
 method {:test} Test28() {
 expect 7724 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -141,7 +125,7 @@ var r0, r1 := main(7724, 105);
 expect 105 + r0 + r1 >= 2 * 7724;
 }
 
-// REPEAT 6 - TIME: 16.3508617 s
+// REPEAT 6 - TIME: 17.6756507 s
 
 method {:test} Test29() {
 expect 7725 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -150,7 +134,7 @@ var r0, r1 := main(7725, 106);
 expect 106 + r0 + r1 >= 2 * 7725;
 }
 
-// REPEAT 7 - TIME: 17.3032417 s
+// REPEAT 7 - TIME: 18.6028952 s
 
 method {:test} Test30() {
 expect 7726 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -159,7 +143,7 @@ var r0, r1 := main(7726, 107);
 expect 107 + r0 + r1 >= 2 * 7726;
 }
 
-// REPEAT 8 - TIME: 18.0798099 s
+// REPEAT 8 - TIME: 19.4740706 s
 
 method {:test} Test31() {
 expect 7727 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -168,7 +152,7 @@ var r0, r1 := main(7727, 108);
 expect 108 + r0 + r1 >= 2 * 7727;
 }
 
-// REPEAT 9 - TIME: 18.972372 s
+// REPEAT 9 - TIME: 20.1719803 s
 
 method {:test} Test32() {
 expect 7728 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -177,4 +161,4 @@ var r0, r1 := main(7728, 109);
 expect 109 + r0 + r1 >= 2 * 7728;
 }
 
-// REPEAT 10 - TIME: 19.7872581 s
+// REPEAT 10 - TIME: 21.0514193 s

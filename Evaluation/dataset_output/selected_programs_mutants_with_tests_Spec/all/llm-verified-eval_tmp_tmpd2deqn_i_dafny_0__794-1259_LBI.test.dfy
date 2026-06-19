@@ -31,47 +31,6 @@ method {:testEntry} has_close_elements(numbers: seq<real>, threshold: real) retu
 }
 
 
-function abs(x: real): real
-{
-  if x < 0.0 then -x else x
-}
-
-method {:testEntry} has_close_elements(numbers: seq<real>, threshold: real) returns (result: bool)
-    ensures result <==> exists i, j ::
-      0 <= i < |numbers| &&
-      0 <= j < |numbers| &&
-      i != j &&
-      abs(numbers[i] - numbers[j]) < threshold
-    ensures result ==> |numbers| > 1
-{
-    result := false;
-
-    assert (forall i0 :: (0 <= i0 < 0 ==>
-                   forall j0 :: (0 <= j0 < |numbers| ==>
-                   abs(numbers[i0] - numbers[j0]) >= threshold)));
-
-    for i := 0 to |numbers|
-        invariant (forall i0 :: (0 <= i0 < i ==>
-                   forall j0 :: (0 <= j0 < |numbers| ==>
-                   (i0 != j0 ==>
-                   abs(numbers[i0] - numbers[j0]) >= threshold))))
-    {
-        for j := 0 to |numbers|
-             invariant (forall i0 :: (0 <= i0 <= i ==>
-                        forall j0 :: (0 <= j0 < j ==>
-                        (i0 != j0 ==>
-                        abs(numbers[i0] - numbers[j0]) >= threshold))))
-        {
-            if i != j && abs(numbers[i] - numbers[j]) < threshold {
-                assert abs(numbers[i] - numbers[j]) < threshold;
-                result := true;
-                return;
-            }
-
-        }
-    }
-}
-
 method {:test} Test0() {
 var seqreal0 : seq<real> := [-2438.0, 0.0];
 var r0 := has_close_elements(seqreal0, 2439.0);
@@ -85,7 +44,7 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 1 - TIME: 3.2081537 s
+// REPEAT 1 - TIME: 3.3499456 s
 
 method {:test} Test2() {
 var seqreal0 : seq<real> := [8098.0, 1796.0, 0.0, 2195613.0 / 1000.0];
@@ -100,7 +59,7 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 2 - TIME: 4.439968 s
+// REPEAT 2 - TIME: 4.7823231 s
 
 method {:test} Test4() {
 var seqreal0 : seq<real> := [27142389.0 / 2500.0, 8855.0, 2997.0, 0.0, 0.0, 0.0, 0.0, 8098.0];
@@ -115,7 +74,7 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 3 - TIME: 5.8650578 s
+// REPEAT 3 - TIME: 6.1446472 s
 
 method {:test} Test6() {
 var seqreal0 : seq<real> := [2997.0, 579.0, 6283.0, 8945.0];
@@ -130,7 +89,7 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 4 - TIME: 7.1966182 s
+// REPEAT 4 - TIME: 7.4452965 s
 
 method {:test} Test8() {
 var seqreal0 : seq<real> := [2112.0, 4135.0, 1102.0, -(213.0 / 2.0), 2331.0, 9263.0, 6926.0, 1650.0];
@@ -145,7 +104,7 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 5 - TIME: 8.7428705 s
+// REPEAT 5 - TIME: 8.5986201 s
 
 method {:test} Test10() {
 var seqreal0 : seq<real> := [94219693.0 / 5000.0, 5904.0, 0.0, 1323.0, 8456.0, 8879.0, 0.0];
@@ -160,7 +119,7 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 6 - TIME: 10.6346926 s
+// REPEAT 6 - TIME: 10.2502435 s
 
 method {:test} Test12() {
 var seqreal0 : seq<real> := [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 7578.0, 7065.0, 32679756621447261916897279823890092740905622055163867882696617320437680597487457537641729560830348026980265708629775299829.0 / 2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0, 582.0, 1108.0, 7629.0, 2211.0];
@@ -175,7 +134,7 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 7 - TIME: 11.8366505 s
+// REPEAT 7 - TIME: 11.3675158 s
 
 method {:test} Test14() {
 var seqreal0 : seq<real> := [449.0, -(36199426069064166620008572680696906018597687303605660663215850450753355601243436030796442248771597443092174826905573893709.0 / 1907348632812500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0), 609.0, 0.0, 0.0];
@@ -190,7 +149,7 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 8 - TIME: 12.8422917 s
+// REPEAT 8 - TIME: 12.5915813 s
 
 method {:test} Test16() {
 var seqreal0 : seq<real> := [62854908446398433791897279823890092740905622055163867882696617320437680597487457537641729560830348026980265708629775299829.0 / 2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0, 5904.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 8879.0, 1323.0, 8456.0];
@@ -205,7 +164,7 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 9 - TIME: 13.7064832 s
+// REPEAT 9 - TIME: 13.7064255 s
 
 method {:test} Test18() {
 var seqreal0 : seq<real> := [72087187270250972854397279823890092740905622055163867882696617320437680597487457537641729560830348026980265708629775299829.0 / 2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0, 2437.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
@@ -220,4 +179,4 @@ expect r0 <==> exists i, j :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0| && i !=
 expect r0 ==> |seqreal0| > 1;
 }
 
-// REPEAT 10 - TIME: 14.6186783 s
+// REPEAT 10 - TIME: 14.9507098 s

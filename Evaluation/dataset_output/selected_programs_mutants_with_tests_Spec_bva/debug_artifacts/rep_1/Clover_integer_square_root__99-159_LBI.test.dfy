@@ -25,4 +25,4 @@ var r0 := SquareRoot(10000);
 expect r0 * r0 <= 10000 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 1 - TIME: 5.429978 s
+// REPEAT 1 - TIME: 6.1331365 s

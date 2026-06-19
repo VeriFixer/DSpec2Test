@@ -81,92 +81,6 @@ method {:testEntry} gcdI(m: int, n: int) returns (g: int)
 }
 
 
-
-//Problem01
-function fib(n: nat):nat
-{
-    if n < 2 then n else fib(n-2)+fib(n-1)
-}
-
-method {:testEntry} fibIter(n:nat) returns (a:nat)
-requires n > 0
-ensures a == fib(n)
-{
-    a := 0;
-    var b,x := 1,0;
-    while x < n 
-        invariant 0 <= x <= n
-        invariant a == fib(x)
-        invariant b == fib(x+1)
-        {
-            a,b := b,a+b;
-            //why a,b := b,a+b is okay
-            //but when I write  a := b;      //# Because this  
-            //                  b := a+b;    //# is not the same  !! 
-            //is error?                      //# {a = 1 , b = 2 } a := b ; b := a+b { b = 4 }, but 
-            x := x+1;                        //# {a = 1 , b = 2 }   a, b := b,a+b  { b = 3 }
-        }
-    assert a == fib(n);     
-}
-//# 2 pts
-
-//Problem02
-function fact(n:nat):nat
-{if n==0 then 1 else n*fact(n-1)}
-
-method {:testEntry} factIter(n:nat) returns (a:nat)
-requires n >= 0;
-ensures a == fact(n)
-{
-    a := 1;
-    var i := 1;
-    while i <= n
-        invariant 1 <= i <= n+1
-        invariant a == fact(i-1)
-    {
-        a := a * i;
-        i := i + 1;
-    }
-    assert a == fact(n);
-} 
-//# 3 pts
-//Problem03
-function gcd(m: nat, n: nat): nat
-    requires m > 0 && n > 0
-{
-    if m == n then m
-    else if m > n then gcd(m - n, n)
-    else gcd(m, n - m)
-}
-
-method {:testEntry} gcdI(m: int, n: int) returns (g: int)
-    requires  m > 0 && n > 0 
-    ensures g == gcd(m, n);
-    {
-        var x: int;
-        g := m;
-        x := n;
-        while (g != x)
-        invariant x > 0;
-        invariant g > 0;
-        invariant gcd(g, x) == gcd(m, n);
-        decreases x+g;
-        {
-          if (g > x)
-          {
-             g := g - x;
-          }
-          else
-          {
-             x := x - g;
-          }
-        }
-    }
-//# 3 pts
-
-
-// # sum: 9 pts
-
 method {:test} Test0() {
 expect 1 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := fibIter(1);
@@ -188,7 +102,7 @@ var r0 := gcdI(16476, 18386);
 expect r0 == gcd(16476, 18386);
 }
 
-// REPEAT 1 - TIME: 4.1428615 s
+// REPEAT 1 - TIME: 4.3396174 s
 
 method {:test} Test4() {
 expect 2 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -211,7 +125,7 @@ var r0 := gcdI(42628, 18387);
 expect r0 == gcd(42628, 18387);
 }
 
-// REPEAT 2 - TIME: 6.5128841 s
+// REPEAT 2 - TIME: 6.6836737 s
 
 method {:test} Test8() {
 expect 3 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -229,7 +143,7 @@ var r0 := gcdI(42629, 18388);
 expect r0 == gcd(42629, 18388);
 }
 
-// REPEAT 3 - TIME: 8.7181075 s
+// REPEAT 3 - TIME: 8.5959795 s
 
 method {:test} Test12() {
 expect 8949 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -247,7 +161,7 @@ var r0 := gcdI(42630, 18389);
 expect r0 == gcd(42630, 18389);
 }
 
-// REPEAT 4 - TIME: 11.2775401 s
+// REPEAT 4 - TIME: 10.613196 s
 
 method {:test} Test16() {
 expect 8950 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -270,7 +184,7 @@ var r0 := gcdI(44916, 22458);
 expect r0 == gcd(44916, 22458);
 }
 
-// REPEAT 5 - TIME: 12.9832147 s
+// REPEAT 5 - TIME: 12.7609218 s
 
 method {:test} Test20() {
 expect 8951 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -288,7 +202,7 @@ var r0 := gcdI(46155, 22459);
 expect r0 == gcd(46155, 22459);
 }
 
-// REPEAT 6 - TIME: 14.7202857 s
+// REPEAT 6 - TIME: 14.8654297 s
 
 method {:test} Test24() {
 expect 8952 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -311,7 +225,7 @@ var r0 := gcdI(48440, 24220);
 expect r0 == gcd(48440, 24220);
 }
 
-// REPEAT 7 - TIME: 16.3432361 s
+// REPEAT 7 - TIME: 16.7664275 s
 
 method {:test} Test28() {
 expect 8953 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -334,7 +248,7 @@ var r0 := gcdI(50880, 24221);
 expect r0 == gcd(50880, 24221);
 }
 
-// REPEAT 8 - TIME: 17.7997419 s
+// REPEAT 8 - TIME: 18.5111095 s
 
 method {:test} Test32() {
 expect 8954 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -357,7 +271,7 @@ var r0 := gcdI(50881, 101226);
 expect r0 == gcd(50881, 101226);
 }
 
-// REPEAT 9 - TIME: 19.756568 s
+// REPEAT 9 - TIME: 20.1902664 s
 
 method {:test} Test36() {
 expect 8955 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -380,4 +294,4 @@ var r0 := gcdI(202454, 101227);
 expect r0 == gcd(202454, 101227);
 }
 
-// REPEAT 10 - TIME: 21.6600626 s
+// REPEAT 10 - TIME: 21.9924939 s

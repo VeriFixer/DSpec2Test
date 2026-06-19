@@ -18,4 +18,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i + 9) % |seqint0|];
 }
 
-// REPEAT 10 - TIME: 14.0194551 s
+// REPEAT 10 - TIME: 14.4227022 s

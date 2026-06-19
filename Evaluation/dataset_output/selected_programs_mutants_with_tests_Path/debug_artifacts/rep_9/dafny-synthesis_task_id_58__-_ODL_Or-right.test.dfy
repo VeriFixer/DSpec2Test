@@ -19,4 +19,4 @@ var r0 := HasOppositeSign(9, 9);
 expect r0 <==> (9 < 0 && 9 > 0) || (9 > 0 && 9 < 0);
 }
 
-// REPEAT 9 - TIME: 25.4878337 s
+// REPEAT 9 - TIME: 24.5941254 s

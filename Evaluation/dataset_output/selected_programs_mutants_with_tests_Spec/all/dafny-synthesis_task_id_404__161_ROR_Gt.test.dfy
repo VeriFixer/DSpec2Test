@@ -12,17 +12,6 @@ method {:testEntry} Min(a: int, b: int) returns (minValue: int)
 }
 
 
-method {:testEntry} Min(a: int, b: int) returns (minValue: int)
-    ensures minValue == a || minValue == b
-    ensures minValue <= a && minValue <= b
-{
-    if a <= b {
-        minValue := a;
-    } else {
-        minValue := b;
-    }
-}
-
 method {:test} Test0() {
 var r0 := Min(0, 0);
 expect r0 == 0 || r0 == 0;
@@ -34,7 +23,7 @@ expect r0 == 1 || r0 == 0;
 expect r0 <= 1 && r0 <= 0;
 }
 
-// REPEAT 1 - TIME: 2.8134953 s
+// REPEAT 1 - TIME: 2.5956549 s
 
 method {:test} Test2() {
 var r0 := Min(2, 2);
@@ -47,7 +36,7 @@ expect r0 == 2 || r0 == 1;
 expect r0 <= 2 && r0 <= 1;
 }
 
-// REPEAT 2 - TIME: 4.2557792 s
+// REPEAT 2 - TIME: 3.7776737 s
 
 method {:test} Test4() {
 var r0 := Min(3, 3);
@@ -60,7 +49,7 @@ expect r0 == 4 || r0 == 3;
 expect r0 <= 4 && r0 <= 3;
 }
 
-// REPEAT 3 - TIME: 5.480458 s
+// REPEAT 3 - TIME: 4.9321909 s
 
 method {:test} Test6() {
 var r0 := Min(5, 5);
@@ -73,7 +62,7 @@ expect r0 == 5 || r0 == 4;
 expect r0 <= 5 && r0 <= 4;
 }
 
-// REPEAT 4 - TIME: 7.0769151 s
+// REPEAT 4 - TIME: 6.2228745 s
 
 method {:test} Test8() {
 var r0 := Min(6, 6);
@@ -86,7 +75,7 @@ expect r0 == 7 || r0 == 6;
 expect r0 <= 7 && r0 <= 6;
 }
 
-// REPEAT 5 - TIME: 8.3307177 s
+// REPEAT 5 - TIME: 7.6147193 s
 
 method {:test} Test10() {
 var r0 := Min(8, 8);
@@ -99,7 +88,7 @@ expect r0 == 8 || r0 == 7;
 expect r0 <= 8 && r0 <= 7;
 }
 
-// REPEAT 6 - TIME: 9.6010882 s
+// REPEAT 6 - TIME: 9.0242662 s
 
 method {:test} Test12() {
 var r0 := Min(9, 9);
@@ -112,7 +101,7 @@ expect r0 == 10 || r0 == 9;
 expect r0 <= 10 && r0 <= 9;
 }
 
-// REPEAT 7 - TIME: 10.730829 s
+// REPEAT 7 - TIME: 9.8932541 s
 
 method {:test} Test14() {
 var r0 := Min(11, 11);
@@ -125,7 +114,7 @@ expect r0 == 11 || r0 == 10;
 expect r0 <= 11 && r0 <= 10;
 }
 
-// REPEAT 8 - TIME: 11.6541805 s
+// REPEAT 8 - TIME: 10.8762256 s
 
 method {:test} Test16() {
 var r0 := Min(12, 12);
@@ -138,7 +127,7 @@ expect r0 == 13 || r0 == 12;
 expect r0 <= 13 && r0 <= 12;
 }
 
-// REPEAT 9 - TIME: 12.6063812 s
+// REPEAT 9 - TIME: 11.6992043 s
 
 method {:test} Test18() {
 var r0 := Min(14, 14);
@@ -151,4 +140,4 @@ expect r0 == 14 || r0 == 13;
 expect r0 <= 14 && r0 <= 13;
 }
 
-// REPEAT 10 - TIME: 13.435991 s
+// REPEAT 10 - TIME: 12.6079863 s

@@ -29,67 +29,6 @@ method {:testEntry} sumOdds(n: nat) returns (sum: nat)
 }
 
 
-// ****************************************************************************************
-//                              DafnyIntro.dfy
-// ****************************************************************************************
-// We write a program to sum all numbers from 1 to n
-// 
-//  Gauss' formula states that 1 + 2 + 3 + ... + (n-1) + n == n*(n+1)/2 
-//
-// We take this a specification, thus in effect we use Dafny to prove Gauss' formula: 
-
-// In essence Dafny does an inductive proof. It needs help with a loop "invariant".
-// This is a condition which is 
-
-// - true at the beginning of the loop
-// - maintained with each passage through the loop body.
-
-// These requirements correspond to an inductive proof
-
-// - the invariant is the inductive hypothesis H(i)
-// - it must be true for i=0
-// - it must remain true when stepping from i to i+1,    
-
-// Here we use two invariants I1 and I2, which amounts to the same as using I1 && I2:   
-
-method {:testEntry} Gauss(n:int) returns (sum:int)
-requires n >= 0
-ensures sum == n*(n+1)/2     // 
-{
-  sum := 0; 
-  var i := 0;
-  while i < n
-    invariant sum == i*(i+1)/2  
-    invariant i <= n
-  {
-      i := i+1;
-    sum := sum + i;
-  }
-}
-
-// As a second example, we add the first n odd numbers 
-// This yields n*n, i.e.
-//
-//      1 + 3 + 5 + 7 + 9 + 11 + ... 2n+1 == n*n
-//
-// Here is the proof using Dafny:
-
-method {:testEntry} sumOdds(n:nat) returns (sum:nat)
-ensures sum == n*n;
-{
-     sum := 0; 
-  var  i := 0;
-  while i < n
-    invariant sum == i*i   // the inductive hypothesis
-    invariant i <= n
-  {
-    sum := sum + 2*i+1;
-      i := i+1;            // the step from i to i+1
-  }
-}
-
-// This verifies, so the proof is complete !!
-
 method {:test} Test0() {
 expect 0 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Gauss(0);
@@ -100,7 +39,7 @@ var r0 := sumOdds(0);
 expect r0 == 0 * 0;
 }
 
-// REPEAT 1 - TIME: 3.1857749 s
+// REPEAT 1 - TIME: 3.4607251 s
 
 method {:test} Test2() {
 expect 1 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -112,7 +51,7 @@ var r0 := sumOdds(1);
 expect r0 == 1 * 1;
 }
 
-// REPEAT 2 - TIME: 4.5687291 s
+// REPEAT 2 - TIME: 4.7971095 s
 
 method {:test} Test4() {
 expect 2 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -124,7 +63,7 @@ var r0 := sumOdds(2);
 expect r0 == 2 * 2;
 }
 
-// REPEAT 3 - TIME: 6.0886993 s
+// REPEAT 3 - TIME: 6.1497514 s
 
 method {:test} Test6() {
 expect 3 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -136,7 +75,7 @@ var r0 := sumOdds(3);
 expect r0 == 3 * 3;
 }
 
-// REPEAT 4 - TIME: 7.2225559 s
+// REPEAT 4 - TIME: 7.5492782 s
 
 method {:test} Test8() {
 expect 4 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -148,7 +87,7 @@ var r0 := sumOdds(4);
 expect r0 == 4 * 4;
 }
 
-// REPEAT 5 - TIME: 8.2993781 s
+// REPEAT 5 - TIME: 8.8878361 s
 
 method {:test} Test10() {
 expect 5 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -160,7 +99,7 @@ var r0 := sumOdds(5);
 expect r0 == 5 * 5;
 }
 
-// REPEAT 6 - TIME: 9.4173572 s
+// REPEAT 6 - TIME: 10.1676093 s
 
 method {:test} Test12() {
 expect 6 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -172,7 +111,7 @@ var r0 := sumOdds(6);
 expect r0 == 6 * 6;
 }
 
-// REPEAT 7 - TIME: 10.2843055 s
+// REPEAT 7 - TIME: 11.2400045 s
 
 method {:test} Test14() {
 expect 7 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -184,7 +123,7 @@ var r0 := sumOdds(7);
 expect r0 == 7 * 7;
 }
 
-// REPEAT 8 - TIME: 11.0631112 s
+// REPEAT 8 - TIME: 12.3787171 s
 
 method {:test} Test16() {
 expect 8 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -196,7 +135,7 @@ var r0 := sumOdds(8);
 expect r0 == 8 * 8;
 }
 
-// REPEAT 9 - TIME: 11.8994747 s
+// REPEAT 9 - TIME: 13.3608568 s
 
 method {:test} Test18() {
 expect 9 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -208,4 +147,4 @@ var r0 := sumOdds(9);
 expect r0 == 9 * 9;
 }
 
-// REPEAT 10 - TIME: 12.9250955 s
+// REPEAT 10 - TIME: 14.1566048 s

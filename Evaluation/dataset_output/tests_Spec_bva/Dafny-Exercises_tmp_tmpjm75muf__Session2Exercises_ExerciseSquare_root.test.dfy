@@ -98,7 +98,7 @@ var r0 := mroot3(10000);
 expect r0 >= 0 && r0 * r0 <= 10000 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 1 - TIME: 12.294808 s
+// REPEAT 1 - TIME: 13.4753371 s
 
 method {:test} Test24() {
 expect 10001 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -116,7 +116,7 @@ var r0 := mroot3(10001);
 expect r0 >= 0 && r0 * r0 <= 10001 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 2 - TIME: 13.7051184 s
+// REPEAT 2 - TIME: 14.9094171 s
 
 method {:test} Test27() {
 expect 10200 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -134,7 +134,7 @@ var r0 := mroot3(10200);
 expect r0 >= 0 && r0 * r0 <= 10200 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 3 - TIME: 15.3111509 s
+// REPEAT 3 - TIME: 16.3206394 s
 
 method {:test} Test30() {
 expect 10403 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -152,7 +152,7 @@ var r0 := mroot3(10403);
 expect r0 >= 0 && r0 * r0 <= 10403 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 4 - TIME: 16.921072 s
+// REPEAT 4 - TIME: 17.7024261 s
 
 method {:test} Test33() {
 expect 10404 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -170,7 +170,7 @@ var r0 := mroot3(10404);
 expect r0 >= 0 && r0 * r0 <= 10404 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 5 - TIME: 18.0957345 s
+// REPEAT 5 - TIME: 18.9684046 s
 
 method {:test} Test36() {
 expect 10608 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -188,7 +188,7 @@ var r0 := mroot3(10608);
 expect r0 >= 0 && r0 * r0 <= 10608 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 6 - TIME: 19.4012055 s
+// REPEAT 6 - TIME: 20.2993655 s
 
 method {:test} Test39() {
 expect 10815 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -206,7 +206,7 @@ var r0 := mroot3(10815);
 expect r0 >= 0 && r0 * r0 <= 10815 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 7 - TIME: 20.6890605 s
+// REPEAT 7 - TIME: 21.672691 s
 
 method {:test} Test42() {
 expect 10816 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -224,7 +224,7 @@ var r0 := mroot3(10816);
 expect r0 >= 0 && r0 * r0 <= 10816 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 8 - TIME: 21.9023228 s
+// REPEAT 8 - TIME: 23.150954 s
 
 method {:test} Test45() {
 expect 10817 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -242,7 +242,7 @@ var r0 := mroot3(10817);
 expect r0 >= 0 && r0 * r0 <= 10817 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 9 - TIME: 23.1524245 s
+// REPEAT 9 - TIME: 24.3031146 s
 
 method {:test} Test48() {
 expect 10818 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -260,4 +260,4 @@ var r0 := mroot3(10818);
 expect r0 >= 0 && r0 * r0 <= 10818 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 10 - TIME: 24.6035163 s
+// REPEAT 10 - TIME: 25.5428839 s

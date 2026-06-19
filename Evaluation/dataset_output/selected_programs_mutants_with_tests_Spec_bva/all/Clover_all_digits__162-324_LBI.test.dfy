@@ -15,19 +15,6 @@ method {:testEntry} allDigits(s: string) returns (result: bool)
 }
 
 
-  method {:testEntry} allDigits(s: string) returns (result: bool)
-  ensures  result <==> (forall i :: 0 <= i < |s| ==> s[i] in "0123456789")
-{
-  result:=true ;
-  for i := 0 to |s|
-    invariant result <==> (forall ii :: 0 <= ii < i ==> s[ii] in "0123456789")
-  {
-    if ! (s[i] in "0123456789"){
-      return false;
-    }
-  }
-}
-
 method {:test} Test0() {
 var r0 := allDigits("");
 expect r0 <==> forall i :: 0 <= i < |""| ==> ""[i] in "0123456789";
@@ -53,7 +40,7 @@ var r0 := allDigits("\0a");
 expect r0 <==> forall i :: 0 <= i < |"\0a"| ==> "\0a"[i] in "0123456789";
 }
 
-// REPEAT 1 - TIME: 10.1302037 s
+// REPEAT 1 - TIME: 10.1744232 s
 
 method {:test} Test15() {
 var r0 := allDigits("0aaaaaaaaaaaa9aa");
@@ -64,7 +51,7 @@ var r0 := allDigits("a\0\U{0002}");
 expect r0 <==> forall i :: 0 <= i < |"a\0\U{0002}"| ==> "a\0\U{0002}"[i] in "0123456789";
 }
 
-// REPEAT 2 - TIME: 11.1770873 s
+// REPEAT 2 - TIME: 11.2881327 s
 
 method {:test} Test17() {
 var r0 := allDigits("1090aaaaaaa");
@@ -75,7 +62,7 @@ var r0 := allDigits("\U{0004}\0\U{0002}");
 expect r0 <==> forall i :: 0 <= i < |"\U{0004}\0\U{0002}"| ==> "\U{0004}\0\U{0002}"[i] in "0123456789";
 }
 
-// REPEAT 3 - TIME: 12.3482072 s
+// REPEAT 3 - TIME: 12.4814386 s
 
 method {:test} Test19() {
 var r0 := allDigits("1210");
@@ -86,7 +73,7 @@ var r0 := allDigits("\U{0004}\0\U{0006}\U{0002}");
 expect r0 <==> forall i :: 0 <= i < |"\U{0004}\0\U{0006}\U{0002}"| ==> "\U{0004}\0\U{0006}\U{0002}"[i] in "0123456789";
 }
 
-// REPEAT 4 - TIME: 13.703013 s
+// REPEAT 4 - TIME: 13.9714381 s
 
 method {:test} Test21() {
 var r0 := allDigits("210");
@@ -97,7 +84,7 @@ var r0 := allDigits("\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaaaaaaa\0");
 expect r0 <==> forall i :: 0 <= i < |"\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaaaaaaa\0"| ==> "\U{0004}a\U{0002}aaaaaaaaaaaaaaaaaaaaaaaa\0"[i] in "0123456789";
 }
 
-// REPEAT 5 - TIME: 15.3387151 s
+// REPEAT 5 - TIME: 15.6957661 s
 
 method {:test} Test23() {
 var r0 := allDigits("3aaaa0aaa1aaaaaaa");
@@ -108,7 +95,7 @@ var r0 := allDigits("\n\0aaaaaaa\U{0008}aaaaaa\U{0006}aaaaaaaa\U{0002}\U{0004}aa
 expect r0 <==> forall i :: 0 <= i < |"\n\0aaaaaaa\U{0008}aaaaaa\U{0006}aaaaaaaa\U{0002}\U{0004}aa"| ==> "\n\0aaaaaaa\U{0008}aaaaaa\U{0006}aaaaaaaa\U{0002}\U{0004}aa"[i] in "0123456789";
 }
 
-// REPEAT 6 - TIME: 16.5736395 s
+// REPEAT 6 - TIME: 16.898544 s
 
 method {:test} Test25() {
 var r0 := allDigits("2130a");
@@ -119,7 +106,7 @@ var r0 := allDigits("\U{0006}\0\U{0002}\U{0008}\U{0004}");
 expect r0 <==> forall i :: 0 <= i < |"\U{0006}\0\U{0002}\U{0008}\U{0004}"| ==> "\U{0006}\0\U{0002}\U{0008}\U{0004}"[i] in "0123456789";
 }
 
-// REPEAT 7 - TIME: 17.906023 s
+// REPEAT 7 - TIME: 18.1462504 s
 
 method {:test} Test27() {
 var r0 := allDigits("2021");
@@ -130,7 +117,7 @@ var r0 := allDigits("\U{0002}\0a\U{0006}\U{0004}");
 expect r0 <==> forall i :: 0 <= i < |"\U{0002}\0a\U{0006}\U{0004}"| ==> "\U{0002}\0a\U{0006}\U{0004}"[i] in "0123456789";
 }
 
-// REPEAT 8 - TIME: 19.196011 s
+// REPEAT 8 - TIME: 19.5573426 s
 
 method {:test} Test29() {
 var r0 := allDigits("201");
@@ -141,7 +128,7 @@ var r0 := allDigits("\U{000E}aaa\U{0010}\U{0006}aa\0\U{0008}\U{0004}\na\U{0002}a
 expect r0 <==> forall i :: 0 <= i < |"\U{000E}aaa\U{0010}\U{0006}aa\0\U{0008}\U{0004}\na\U{0002}aa\U{000C}"| ==> "\U{000E}aaa\U{0010}\U{0006}aa\0\U{0008}\U{0004}\na\U{0002}aa\U{000C}"[i] in "0123456789";
 }
 
-// REPEAT 9 - TIME: 20.8233838 s
+// REPEAT 9 - TIME: 21.1590514 s
 
 method {:test} Test31() {
 var r0 := allDigits("410");
@@ -152,4 +139,4 @@ var r0 := allDigits("\0\U{0018}aaa\naaa\U{000E}\U{0002}\U{0010}aa\U{0004}aaa\U{0
 expect r0 <==> forall i :: 0 <= i < |"\0\U{0018}aaa\naaa\U{000E}\U{0002}\U{0010}aa\U{0004}aaa\U{000C}\U{0006}aaaa\U{0008}\U{0012}aa\U{0014}\U{0016}"| ==> "\0\U{0018}aaa\naaa\U{000E}\U{0002}\U{0010}aa\U{0004}aaa\U{000C}\U{0006}aaaa\U{0008}\U{0012}aa\U{0014}\U{0016}"[i] in "0123456789";
 }
 
-// REPEAT 10 - TIME: 22.2313358 s
+// REPEAT 10 - TIME: 22.7047005 s

@@ -26,7 +26,7 @@ expect |r0| == |"a"|;
 expect forall i :: 0 <= i < |"a"| ==> ("a"[i] == '\U{0001}' ==> r0[i] == '\0') && ("a"[i] != '\U{0001}' ==> r0[i] == "a"[i]);
 }
 
-// REPEAT 1 - TIME: 2.7488928 s
+// REPEAT 1 - TIME: 2.6677216 s
 
 method {:test} Test1() {
 var r0 := ReplaceChars("aaaaaaaaaaaaaaaaaaaa\0", '\U{0001}', '\0');
@@ -34,7 +34,7 @@ expect |r0| == |"aaaaaaaaaaaaaaaaaaaa\0"|;
 expect forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaa\0"| ==> ("aaaaaaaaaaaaaaaaaaaa\0"[i] == '\U{0001}' ==> r0[i] == '\0') && ("aaaaaaaaaaaaaaaaaaaa\0"[i] != '\U{0001}' ==> r0[i] == "aaaaaaaaaaaaaaaaaaaa\0"[i]);
 }
 
-// REPEAT 2 - TIME: 3.7122951 s
+// REPEAT 2 - TIME: 3.5985718 s
 
 method {:test} Test2() {
 var r0 := ReplaceChars("aaaa\0aaaaaaaaaaaaaaaa\U{0001}", '\U{0001}', '\0');
@@ -42,7 +42,7 @@ expect |r0| == |"aaaa\0aaaaaaaaaaaaaaaa\U{0001}"|;
 expect forall i :: 0 <= i < |"aaaa\0aaaaaaaaaaaaaaaa\U{0001}"| ==> ("aaaa\0aaaaaaaaaaaaaaaa\U{0001}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("aaaa\0aaaaaaaaaaaaaaaa\U{0001}"[i] != '\U{0001}' ==> r0[i] == "aaaa\0aaaaaaaaaaaaaaaa\U{0001}"[i]);
 }
 
-// REPEAT 3 - TIME: 4.6724511 s
+// REPEAT 3 - TIME: 4.5108265 s
 
 method {:test} Test3() {
 var r0 := ReplaceChars("\U{0001}\U{0001}", '\U{0001}', '\0');
@@ -50,7 +50,7 @@ expect |r0| == |"\U{0001}\U{0001}"|;
 expect forall i :: 0 <= i < |"\U{0001}\U{0001}"| ==> ("\U{0001}\U{0001}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}\U{0001}"[i] != '\U{0001}' ==> r0[i] == "\U{0001}\U{0001}"[i]);
 }
 
-// REPEAT 4 - TIME: 5.6230757 s
+// REPEAT 4 - TIME: 5.3151585 s
 
 method {:test} Test4() {
 var r0 := ReplaceChars("\U{0001}\U{0001}", '\U{0001}', '\0');
@@ -58,7 +58,7 @@ expect |r0| == |"\U{0001}\U{0001}"|;
 expect forall i :: 0 <= i < |"\U{0001}\U{0001}"| ==> ("\U{0001}\U{0001}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}\U{0001}"[i] != '\U{0001}' ==> r0[i] == "\U{0001}\U{0001}"[i]);
 }
 
-// REPEAT 5 - TIME: 6.6790623 s
+// REPEAT 5 - TIME: 6.1882389 s
 
 method {:test} Test5() {
 var r0 := ReplaceChars("\U{0001}aa", '\U{0001}', '\0');
@@ -66,7 +66,7 @@ expect |r0| == |"\U{0001}aa"|;
 expect forall i :: 0 <= i < |"\U{0001}aa"| ==> ("\U{0001}aa"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}aa"[i] != '\U{0001}' ==> r0[i] == "\U{0001}aa"[i]);
 }
 
-// REPEAT 6 - TIME: 7.6844921 s
+// REPEAT 6 - TIME: 7.1116728 s
 
 method {:test} Test6() {
 var r0 := ReplaceChars("\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}", '\U{0001}', '\0');
@@ -74,7 +74,7 @@ expect |r0| == |"\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"|;
 expect forall i :: 0 <= i < |"\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"| ==> ("\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"[i] != '\U{0001}' ==> r0[i] == "\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"[i]);
 }
 
-// REPEAT 7 - TIME: 8.6516207 s
+// REPEAT 7 - TIME: 7.9391205 s
 
 method {:test} Test7() {
 var r0 := ReplaceChars("\U{0001}\U{0001}\U{0001}a", '\U{0001}', '\0');
@@ -82,7 +82,7 @@ expect |r0| == |"\U{0001}\U{0001}\U{0001}a"|;
 expect forall i :: 0 <= i < |"\U{0001}\U{0001}\U{0001}a"| ==> ("\U{0001}\U{0001}\U{0001}a"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}\U{0001}\U{0001}a"[i] != '\U{0001}' ==> r0[i] == "\U{0001}\U{0001}\U{0001}a"[i]);
 }
 
-// REPEAT 8 - TIME: 9.4400233 s
+// REPEAT 8 - TIME: 8.6949931 s
 
 method {:test} Test8() {
 var r0 := ReplaceChars("\U{0001}\U{0001}", '\U{0001}', '\0');
@@ -90,7 +90,7 @@ expect |r0| == |"\U{0001}\U{0001}"|;
 expect forall i :: 0 <= i < |"\U{0001}\U{0001}"| ==> ("\U{0001}\U{0001}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}\U{0001}"[i] != '\U{0001}' ==> r0[i] == "\U{0001}\U{0001}"[i]);
 }
 
-// REPEAT 9 - TIME: 10.2853867 s
+// REPEAT 9 - TIME: 9.3862382 s
 
 method {:test} Test9() {
 var r0 := ReplaceChars("\U{0001}aaaaaaaa\U{0001}aaaaaaaaaa\U{0001}\U{0001}", '\U{0001}', '\0');
@@ -98,4 +98,4 @@ expect |r0| == |"\U{0001}aaaaaaaa\U{0001}aaaaaaaaaa\U{0001}\U{0001}"|;
 expect forall i :: 0 <= i < |"\U{0001}aaaaaaaa\U{0001}aaaaaaaaaa\U{0001}\U{0001}"| ==> ("\U{0001}aaaaaaaa\U{0001}aaaaaaaaaa\U{0001}\U{0001}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}aaaaaaaa\U{0001}aaaaaaaaaa\U{0001}\U{0001}"[i] != '\U{0001}' ==> r0[i] == "\U{0001}aaaaaaaa\U{0001}aaaaaaaaaa\U{0001}\U{0001}"[i]);
 }
 
-// REPEAT 10 - TIME: 10.8738368 s
+// REPEAT 10 - TIME: 10.0883827 s

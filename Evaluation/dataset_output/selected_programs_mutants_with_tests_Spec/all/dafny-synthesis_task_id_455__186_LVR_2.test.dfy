@@ -8,13 +8,6 @@ method {:testEntry} MonthHas31Days(month: int) returns (result: bool)
 }
 
 
-method {:testEntry} MonthHas31Days(month: int) returns (result: bool)
-    requires 1 <= month <= 12
-    ensures result <==> month in {1, 3, 5, 7, 8, 10, 12}
-{
-    result := month in {1, 3, 5, 7, 8, 10, 12};
-}
-
 method {:test} Test0() {
 expect 1 <= 1 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := MonthHas31Days(1);
@@ -56,7 +49,7 @@ var r0 := MonthHas31Days(11);
 expect r0 <==> 11 in {1, 3, 5, 7, 8, 10, 12};
 }
 
-// REPEAT 1 - TIME: 5.3251398 s
+// REPEAT 1 - TIME: 5.1269248 s
 
 method {:test} Test8() {
 expect 1 <= 9 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
@@ -64,7 +57,7 @@ var r0 := MonthHas31Days(9);
 expect r0 <==> 9 in {1, 3, 5, 7, 8, 10, 12};
 }
 
-// REPEAT 2 - TIME: 7.8206964 s
+// REPEAT 2 - TIME: 8.1953769 s
 
 method {:test} Test9() {
 expect 1 <= 6 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
@@ -72,7 +65,7 @@ var r0 := MonthHas31Days(6);
 expect r0 <==> 6 in {1, 3, 5, 7, 8, 10, 12};
 }
 
-// REPEAT 3 - TIME: 10.1198044 s
+// REPEAT 3 - TIME: 10.6800125 s
 
 method {:test} Test10() {
 expect 1 <= 4 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
@@ -80,7 +73,7 @@ var r0 := MonthHas31Days(4);
 expect r0 <==> 4 in {1, 3, 5, 7, 8, 10, 12};
 }
 
-// REPEAT 4 - TIME: 12.3780329 s
+// REPEAT 4 - TIME: 13.0698854 s
 
 method {:test} Test11() {
 expect 1 <= 2 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
@@ -88,4 +81,4 @@ var r0 := MonthHas31Days(2);
 expect r0 <==> 2 in {1, 3, 5, 7, 8, 10, 12};
 }
 
-// REPEAT 5 - TIME: 14.4008939 s
+// REPEAT 5 - TIME: 15.2012645 s

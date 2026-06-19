@@ -10,17 +10,10 @@ method {:testEntry} Compare<T(==)>(a: T, b: T) returns (eq: bool)
 }
 
 
-method {:testEntry} Compare<T(==)>(a: T, b: T) returns (eq: bool)
-  ensures a==b ==> eq==true
-  ensures a!=b ==> eq==false
-{
-  if a == b { eq := true; } else { eq := false; }
-}
-
 method {:test} Test0() {
 var r0 := Compare<int>(0, 0);
 expect 0 == 0 ==> r0 == true;
 expect 0 != 0 ==> r0 == false;
 }
 
-// REPEAT 1 - TIME: 15.7510327 s
+// REPEAT 1 - TIME: 16.5389617 s

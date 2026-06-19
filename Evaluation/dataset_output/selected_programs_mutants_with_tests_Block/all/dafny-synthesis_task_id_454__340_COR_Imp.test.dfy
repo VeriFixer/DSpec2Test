@@ -16,21 +16,6 @@ method {:testEntry} ContainsZ(s: string) returns (result: bool)
 }
 
 
-method {:testEntry} ContainsZ(s: string) returns (result: bool)
-    ensures result <==> (exists i :: 0 <= i < |s| && (s[i] == 'z' || s[i] == 'Z'))
-{
-    result := false;
-    for i := 0 to |s|
-        invariant 0 <= i <= |s|
-        invariant result <==> (exists k :: 0 <= k < i && (s[k] == 'z' || s[k] == 'Z'))
-    {
-        if s[i] == 'z' || s[i] == 'Z' {
-            result := true;
-            break;
-        }
-    }
-}
-
 method {:test} Test0() {
 var r0 := ContainsZ("aaaaaaaaZ");
 expect r0 <==> exists i :: 0 <= i < |"aaaaaaaaZ"| && ("aaaaaaaaZ"[i] == 'z' || "aaaaaaaaZ"[i] == 'Z');
@@ -40,7 +25,7 @@ var r0 := ContainsZ("aaaaaaaz");
 expect r0 <==> exists i :: 0 <= i < |"aaaaaaaz"| && ("aaaaaaaz"[i] == 'z' || "aaaaaaaz"[i] == 'Z');
 }
 
-// REPEAT 1 - TIME: 3.4204972 s
+// REPEAT 1 - TIME: 2.7724035 s
 
 method {:test} Test2() {
 var r0 := ContainsZ("\U{0001}Z");
@@ -51,7 +36,7 @@ var r0 := ContainsZ("a\U{0001}z");
 expect r0 <==> exists i :: 0 <= i < |"a\U{0001}z"| && ("a\U{0001}z"[i] == 'z' || "a\U{0001}z"[i] == 'Z');
 }
 
-// REPEAT 2 - TIME: 5.0211322 s
+// REPEAT 2 - TIME: 4.039283 s
 
 method {:test} Test4() {
 var r0 := ContainsZ("Z");
@@ -62,7 +47,7 @@ var r0 := ContainsZ("\U{0002}a\0z");
 expect r0 <==> exists i :: 0 <= i < |"\U{0002}a\0z"| && ("\U{0002}a\0z"[i] == 'z' || "\U{0002}a\0z"[i] == 'Z');
 }
 
-// REPEAT 3 - TIME: 6.5918238 s
+// REPEAT 3 - TIME: 5.5187327 s
 
 method {:test} Test6() {
 var r0 := ContainsZ("za\0\U{0002}\U{0004}");
@@ -73,7 +58,7 @@ var r0 := ContainsZ("\0a\U{0002}\U{0004}\U{0006}");
 expect r0 <==> exists i :: 0 <= i < |"\0a\U{0002}\U{0004}\U{0006}"| && ("\0a\U{0002}\U{0004}\U{0006}"[i] == 'z' || "\0a\U{0002}\U{0004}\U{0006}"[i] == 'Z');
 }
 
-// REPEAT 4 - TIME: 7.799926 s
+// REPEAT 4 - TIME: 7.077787 s
 
 method {:test} Test8() {
 var r0 := ContainsZ("\0Z");
@@ -84,7 +69,7 @@ var r0 := ContainsZ("\U{0002}\0za");
 expect r0 <==> exists i :: 0 <= i < |"\U{0002}\0za"| && ("\U{0002}\0za"[i] == 'z' || "\U{0002}\0za"[i] == 'Z');
 }
 
-// REPEAT 5 - TIME: 9.0002711 s
+// REPEAT 5 - TIME: 8.3006331 s
 
 method {:test} Test10() {
 var r0 := ContainsZ("\0Z");
@@ -95,7 +80,7 @@ var r0 := ContainsZ("\U{0004}\U{0002}\0zaaa");
 expect r0 <==> exists i :: 0 <= i < |"\U{0004}\U{0002}\0zaaa"| && ("\U{0004}\U{0002}\0zaaa"[i] == 'z' || "\U{0004}\U{0002}\0zaaa"[i] == 'Z');
 }
 
-// REPEAT 6 - TIME: 10.125363 s
+// REPEAT 6 - TIME: 9.7208175 s
 
 method {:test} Test12() {
 var r0 := ContainsZ("\0Za\U{0002}\U{0004}\U{0006}");
@@ -106,7 +91,7 @@ var r0 := ContainsZ("\U{0002}z\0");
 expect r0 <==> exists i :: 0 <= i < |"\U{0002}z\0"| && ("\U{0002}z\0"[i] == 'z' || "\U{0002}z\0"[i] == 'Z');
 }
 
-// REPEAT 7 - TIME: 11.4212722 s
+// REPEAT 7 - TIME: 10.792079 s
 
 method {:test} Test14() {
 var r0 := ContainsZ("\0aa\U{0004}a\na\U{0006}\U{0008}\U{0002}a\U{000C}aaaaaaaaa\U{000E}aaZ\U{0010}");
@@ -117,7 +102,7 @@ var r0 := ContainsZ("\0z");
 expect r0 <==> exists i :: 0 <= i < |"\0z"| && ("\0z"[i] == 'z' || "\0z"[i] == 'Z');
 }
 
-// REPEAT 8 - TIME: 12.558756 s
+// REPEAT 8 - TIME: 11.8491987 s
 
 method {:test} Test16() {
 var r0 := ContainsZ("Za\U{0001}\U{0007}\t\U{000B}a\r\U{0003}\U{0005}");
@@ -128,7 +113,7 @@ var r0 := ContainsZ("\U{0002}aa\U{0006}aaa\0aaaaaaaaaaaaa\U{0004}\U{0008}aaz\n")
 expect r0 <==> exists i :: 0 <= i < |"\U{0002}aa\U{0006}aaa\0aaaaaaaaaaaaa\U{0004}\U{0008}aaz\n"| && ("\U{0002}aa\U{0006}aaa\0aaaaaaaaaaaaa\U{0004}\U{0008}aaz\n"[i] == 'z' || "\U{0002}aa\U{0006}aaa\0aaaaaaaaaaaaa\U{0004}\U{0008}aaz\n"[i] == 'Z');
 }
 
-// REPEAT 9 - TIME: 13.8265048 s
+// REPEAT 9 - TIME: 12.8342805 s
 
 method {:test} Test18() {
 var r0 := ContainsZ("zaaaa\0a\U{0002}\U{0006}\U{0004}\U{0008}");
@@ -139,4 +124,4 @@ var r0 := ContainsZ("\U{0006}\0\U{0002}\U{0004}");
 expect r0 <==> exists i :: 0 <= i < |"\U{0006}\0\U{0002}\U{0004}"| && ("\U{0006}\0\U{0002}\U{0004}"[i] == 'z' || "\U{0006}\0\U{0002}\U{0004}"[i] == 'Z');
 }
 
-// REPEAT 10 - TIME: 14.9912282 s
+// REPEAT 10 - TIME: 14.0391819 s

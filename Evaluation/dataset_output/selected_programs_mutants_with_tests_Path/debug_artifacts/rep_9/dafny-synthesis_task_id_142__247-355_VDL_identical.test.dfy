@@ -49,4 +49,4 @@ var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 9 - TIME: 319.482088 s
+// REPEAT 9 - TIME: 322.3152444 s

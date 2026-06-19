@@ -13,4 +13,4 @@ var r0 := SquarePerimeter(1);
 expect r0 == 4 * 1;
 }
 
-// REPEAT 1 - TIME: 1.8629878 s
+// REPEAT 1 - TIME: 1.8607197 s

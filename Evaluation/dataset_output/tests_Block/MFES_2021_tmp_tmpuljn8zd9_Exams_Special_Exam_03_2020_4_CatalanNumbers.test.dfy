@@ -33,14 +33,14 @@ var r0 := calcC(3);
 expect r0 == C(3);
 }
 
-// REPEAT 1 - TIME: 33.2096277 s
+// REPEAT 1 - TIME: 33.2456808 s
 
 method {:test} Test2() {
 var r0 := calcC(4);
 expect r0 == C(4);
 }
 
-// REPEAT 2 - TIME: 34.6818551 s
+// REPEAT 2 - TIME: 34.7477211 s
 
 method {:test} Test4() {
 var r0 := calcC(43);
@@ -51,53 +51,53 @@ var r0 := calcC(5);
 expect r0 == C(5);
 }
 
-// REPEAT 3 - TIME: 35.816754 s
+// REPEAT 3 - TIME: 36.1676092 s
 
 method {:test} Test6() {
 var r0 := calcC(44);
 expect r0 == C(44);
 }
 
-// REPEAT 4 - TIME: 36.945953 s
+// REPEAT 4 - TIME: 37.4504654 s
 
 method {:test} Test8() {
 var r0 := calcC(45);
 expect r0 == C(45);
 }
 
-// REPEAT 5 - TIME: 37.8233814 s
+// REPEAT 5 - TIME: 38.5551931 s
 
 method {:test} Test10() {
 var r0 := calcC(46);
 expect r0 == C(46);
 }
 
-// REPEAT 6 - TIME: 38.7901647 s
+// REPEAT 6 - TIME: 39.4808071 s
 
 method {:test} Test12() {
 var r0 := calcC(47);
 expect r0 == C(47);
 }
 
-// REPEAT 7 - TIME: 39.7551327 s
+// REPEAT 7 - TIME: 40.3192725 s
 
 method {:test} Test14() {
 var r0 := calcC(48);
 expect r0 == C(48);
 }
 
-// REPEAT 8 - TIME: 40.9069119 s
+// REPEAT 8 - TIME: 41.2337271 s
 
 method {:test} Test16() {
 var r0 := calcC(49);
 expect r0 == C(49);
 }
 
-// REPEAT 9 - TIME: 42.1243163 s
+// REPEAT 9 - TIME: 42.155645 s
 
 method {:test} Test18() {
 var r0 := calcC(50);
 expect r0 == C(50);
 }
 
-// REPEAT 10 - TIME: 43.4137203 s
+// REPEAT 10 - TIME: 43.0479757 s

@@ -13,4 +13,4 @@ var r0 := RotateLeftBits((1073741824 as bv32), 1);
 expect r0 == ((1073741824 as bv32) << 1 as bv6) | ((1073741824 as bv32) >> (32 - 1) as bv6);
 }
 
-// REPEAT 3 - TIME: 4.3126315 s
+// REPEAT 3 - TIME: 4.7689701 s

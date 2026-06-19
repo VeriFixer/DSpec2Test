@@ -22,4 +22,4 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(0);
 expect r0 == 0 * (2 * 0 - 1) * (2 * 0 + 1) / 3;
 }
 
-// REPEAT 1 - TIME: 2.6468129 s
+// REPEAT 1 - TIME: 2.5016642 s

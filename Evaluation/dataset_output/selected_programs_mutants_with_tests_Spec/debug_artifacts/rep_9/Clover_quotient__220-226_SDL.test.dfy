@@ -21,4 +21,4 @@ var r0, r1 := Quotient(8, 9);
 expect r1 * 9 + r0 == 8 && 0 <= r0 < 9 && 0 <= r1;
 }
 
-// REPEAT 9 - TIME: 10.047535 s
+// REPEAT 9 - TIME: 9.1001761 s

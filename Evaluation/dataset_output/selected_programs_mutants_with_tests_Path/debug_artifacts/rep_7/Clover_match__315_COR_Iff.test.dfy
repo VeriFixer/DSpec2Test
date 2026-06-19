@@ -28,4 +28,4 @@ var r0 := Match("\U{0004}aaaa\0a", "\U{0002}aaaaaa");
 expect r0 <==> forall n :: 0 <= n < |"\U{0004}aaaa\0a"| ==> "\U{0004}aaaa\0a"[n] == "\U{0002}aaaaaa"[n] || "\U{0002}aaaaaa"[n] == '?';
 }
 
-// REPEAT 7 - TIME: 348.7564799 s
+// REPEAT 7 - TIME: 447.8801039 s

@@ -28,4 +28,4 @@ var r0 := factorial(2);
 expect r0 == fact(2);
 }
 
-// REPEAT 1 - TIME: 9.8893325 s
+// REPEAT 1 - TIME: 10.6063722 s

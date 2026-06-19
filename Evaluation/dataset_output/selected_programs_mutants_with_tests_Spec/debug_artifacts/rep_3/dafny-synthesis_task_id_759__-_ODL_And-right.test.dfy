@@ -27,4 +27,4 @@ expect r0 ==> exists i :: 0 <= i < |".aa"| && ".aa"[i] == '.' && |".aa"| - i - 1
 expect !r0 ==> !exists i :: 0 <= i < |".aa"| && ".aa"[i] == '.' && |".aa"| - i - 1 == 2;
 }
 
-// REPEAT 3 - TIME: 6.3953141 s
+// REPEAT 3 - TIME: 6.0308797 s

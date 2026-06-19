@@ -45,4 +45,4 @@ expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0
 expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 303213.0/8.0;
 }
 
-// REPEAT 8 - TIME: 12.0038247 s
+// REPEAT 8 - TIME: 21.3060729 s

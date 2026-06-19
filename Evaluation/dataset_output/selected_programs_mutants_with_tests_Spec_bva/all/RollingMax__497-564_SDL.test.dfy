@@ -39,51 +39,6 @@ method {:testEntry} RollingMax(numbers: seq<int>) returns (result: seq<int>)
 }
 
 
-/*
-HumanEvalX 9
-From a given list of integers, generate a list of rolling maximum element found until given moment in the sequence.
-*/
-
-function isMax(m: int, numbers: seq<int>): bool
-{
-    m in numbers &&
-    forall i :: 0 <= i < |numbers| ==> numbers[i] <= m
-
-}
-
-method {:testEntry} max(numbers: seq<int>) returns (result: int)
-requires numbers != []
-ensures isMax(result, numbers)
-{
-    result := numbers[0];
-    for i := 1 to |numbers|
-    invariant isMax(result, numbers[0..i])
-    {
-        if numbers[i] > result {
-            result := numbers[i];
-        }
-    }
-}
-
-method {:testEntry} RollingMax(numbers: seq<int>) returns (result: seq<int>)
-requires numbers != []
-ensures |result| == |numbers|
-ensures forall i :: 0 < i < |result| ==> isMax(result[i], numbers[0..(i+1)])
-{
-    var m := numbers[0];
-    result := [m];
-    for i := 1 to |numbers|
-    invariant |result| == i
-    invariant m == result[i-1]
-    invariant forall j :: 0 <= j < i ==> isMax(result[j], numbers[0..(j+1)])
-    {
-        if numbers[i] > m {
-            m := numbers[i];
-        }
-        result := result + [m];
-    }
-}
-
 method {:test} Test0() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 1236];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
@@ -136,7 +91,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 1 - TIME: 30.4868566 s
+// REPEAT 1 - TIME: 30.0918548 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [-7129, -1201, 0, 0, 0, 0, 0, 0, 1236, -560, -1046];
@@ -152,7 +107,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 2 - TIME: 33.7937533 s
+// REPEAT 2 - TIME: 33.163967 s
 
 method {:test} Test18() {
 var seqint0 : seq<int> := [787, -1201, 0, 0, 0, 0, 0, 0, 0, 1236];
@@ -168,7 +123,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 3 - TIME: 36.9376865 s
+// REPEAT 3 - TIME: 36.2155065 s
 
 method {:test} Test20() {
 var seqint0 : seq<int> := [787, -1201, 0, 0, 0, 0, 0, 0, 1236, 0, 0];
@@ -184,7 +139,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 4 - TIME: 39.7446682 s
+// REPEAT 4 - TIME: 39.3446492 s
 
 method {:test} Test22() {
 var seqint0 : seq<int> := [7720];
@@ -200,7 +155,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 5 - TIME: 42.8695945 s
+// REPEAT 5 - TIME: 42.3311795 s
 
 method {:test} Test24() {
 var seqint0 : seq<int> := [1236, -1201, 0];
@@ -216,7 +171,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 6 - TIME: 46.075207 s
+// REPEAT 6 - TIME: 44.9732367 s
 
 method {:test} Test26() {
 var seqint0 : seq<int> := [2437, 0, 0, 0, 0, 0, 641];
@@ -232,7 +187,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 7 - TIME: 49.0928403 s
+// REPEAT 7 - TIME: 47.7052652 s
 
 method {:test} Test28() {
 var seqint0 : seq<int> := [8574, 7059, 0, 0, 490, 8855, 0, 8406];
@@ -248,7 +203,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 8 - TIME: 52.0497978 s
+// REPEAT 8 - TIME: 50.9619534 s
 
 method {:test} Test30() {
 var seqint0 : seq<int> := [788, -1201, 0, 1236];
@@ -264,7 +219,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 9 - TIME: 55.7103347 s
+// REPEAT 9 - TIME: 54.0182489 s
 
 method {:test} Test32() {
 var seqint0 : seq<int> := [1796, 0, 0, 0, 1347, 0, 0, 1187, -4057, -6302, 654];
@@ -280,4 +235,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 10 - TIME: 58.6734532 s
+// REPEAT 10 - TIME: 56.7631064 s

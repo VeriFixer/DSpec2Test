@@ -16,24 +16,6 @@ method {:testEntry} MaxLengthList(lists: seq<seq<int>>) returns (maxList: seq<in
 }
 
 
-method {:testEntry} MaxLengthList(lists: seq<seq<int>>) returns (maxList: seq<int>)
-    requires |lists| > 0
-    ensures forall l :: l in lists ==> |l| <= |maxList|
-    ensures maxList in lists
-{
-    maxList := lists[0];
-
-    for i := 1 to |lists|
-        invariant 1 <= i <= |lists|
-        invariant forall l :: l in lists[..i] ==> |l| <= |maxList|
-        invariant maxList in lists[..i]
-    {
-        if |lists[i]| > |maxList| {
-            maxList := lists[i];
-        }
-    }
-}
-
 method {:test} Test0() {
 var seqint0 : seq<int> := [];
 var seqint1 : seq<int> := [];
@@ -67,7 +49,7 @@ expect forall l :: l in seqseqint0 ==> |l| <= |r0|;
 expect r0 in seqseqint0;
 }
 
-// REPEAT 1 - TIME: 8.976266 s
+// REPEAT 1 - TIME: 15.8824957 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [0];
@@ -107,7 +89,7 @@ expect forall l :: l in seqseqint0 ==> |l| <= |r0|;
 expect r0 in seqseqint0;
 }
 
-// REPEAT 2 - TIME: 16.3103027 s
+// REPEAT 2 - TIME: 27.3836376 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [0, 0];
@@ -147,7 +129,7 @@ expect forall l :: l in seqseqint0 ==> |l| <= |r0|;
 expect r0 in seqseqint0;
 }
 
-// REPEAT 3 - TIME: 27.2922841 s
+// REPEAT 3 - TIME: 44.9383202 s
 
 method {:test} Test3() {
 var seqint0 : seq<int> := [0, 0, 0];
@@ -187,7 +169,7 @@ expect forall l :: l in seqseqint0 ==> |l| <= |r0|;
 expect r0 in seqseqint0;
 }
 
-// REPEAT 4 - TIME: 41.4956132 s
+// REPEAT 4 - TIME: 66.255291 s
 
 method {:test} Test4() {
 var seqint0 : seq<int> := [0, 0, 0, 0];
@@ -227,7 +209,7 @@ expect forall l :: l in seqseqint0 ==> |l| <= |r0|;
 expect r0 in seqseqint0;
 }
 
-// REPEAT 5 - TIME: 59.3376744 s
+// REPEAT 5 - TIME: 92.4791135 s
 
 method {:test} Test5() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0];
@@ -267,7 +249,7 @@ expect forall l :: l in seqseqint0 ==> |l| <= |r0|;
 expect r0 in seqseqint0;
 }
 
-// REPEAT 6 - TIME: 77.8669089 s
+// REPEAT 6 - TIME: 132.8379345 s
 
 method {:test} Test6() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0];
@@ -307,7 +289,7 @@ expect forall l :: l in seqseqint0 ==> |l| <= |r0|;
 expect r0 in seqseqint0;
 }
 
-// REPEAT 7 - TIME: 106.1920408 s
+// REPEAT 7 - TIME: 186.327141 s
 
 method {:test} Test7() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
@@ -347,7 +329,7 @@ expect forall l :: l in seqseqint0 ==> |l| <= |r0|;
 expect r0 in seqseqint0;
 }
 
-// REPEAT 8 - TIME: 161.6249824 s
+// REPEAT 8 - TIME: 269.1307425 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0];
@@ -387,7 +369,7 @@ expect forall l :: l in seqseqint0 ==> |l| <= |r0|;
 expect r0 in seqseqint0;
 }
 
-// REPEAT 9 - TIME: 227.1124292 s
+// REPEAT 9 - TIME: 355.9158176 s
 
 method {:test} Test9() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -427,4 +409,4 @@ expect forall l :: l in seqseqint0 ==> |l| <= |r0|;
 expect r0 in seqseqint0;
 }
 
-// REPEAT 10 - TIME: 342.0250304 s
+// REPEAT 10 - TIME: 474.5800994 s

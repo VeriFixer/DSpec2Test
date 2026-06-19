@@ -35,4 +35,4 @@ var r0 := Multiply(100, 1);
 expect r0 == 100 * 1;
 }
 
-// REPEAT 1 - TIME: 6.4174869 s
+// REPEAT 1 - TIME: 6.4691195 s

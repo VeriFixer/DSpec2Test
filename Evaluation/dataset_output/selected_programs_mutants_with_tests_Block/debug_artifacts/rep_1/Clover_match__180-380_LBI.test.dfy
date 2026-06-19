@@ -34,4 +34,4 @@ var r0 := Match("aaaaaaaaa\0", "aaaaaaaaa\0");
 expect r0 <==> forall n :: 0 <= n < |"aaaaaaaaa\0"| ==> "aaaaaaaaa\0"[n] == "aaaaaaaaa\0"[n] || "aaaaaaaaa\0"[n] == '?';
 }
 
-// REPEAT 1 - TIME: 2.9100925 s
+// REPEAT 1 - TIME: 3.1081475 s

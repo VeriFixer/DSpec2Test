@@ -37,4 +37,4 @@ var r0 := SumOfFourthPowerOfOddNumbers(33);
 expect r0 == 33 * (2 * 33 + 1) * (24 * 33 * 33 * 33 - 12 * 33 * 33 - 14 * 33 + 7) / 15;
 }
 
-// REPEAT 1 - TIME: 55.044735 s
+// REPEAT 1 - TIME: 55.4612354 s

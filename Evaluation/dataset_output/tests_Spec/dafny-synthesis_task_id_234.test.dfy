@@ -11,7 +11,7 @@ var r0 := CubeVolume(1);
 expect r0 == 1 * 1 * 1;
 }
 
-// REPEAT 1 - TIME: 2.5069852 s
+// REPEAT 1 - TIME: 2.6130145 s
 
 method {:test} Test1() {
 expect 2 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -19,7 +19,7 @@ var r0 := CubeVolume(2);
 expect r0 == 2 * 2 * 2;
 }
 
-// REPEAT 2 - TIME: 3.4770082 s
+// REPEAT 2 - TIME: 3.6356931 s
 
 method {:test} Test2() {
 expect 3 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -27,7 +27,7 @@ var r0 := CubeVolume(3);
 expect r0 == 3 * 3 * 3;
 }
 
-// REPEAT 3 - TIME: 4.1587791 s
+// REPEAT 3 - TIME: 4.6833543 s
 
 method {:test} Test3() {
 expect 4 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -35,7 +35,7 @@ var r0 := CubeVolume(4);
 expect r0 == 4 * 4 * 4;
 }
 
-// REPEAT 4 - TIME: 4.8109027 s
+// REPEAT 4 - TIME: 5.7163803 s
 
 method {:test} Test4() {
 expect 5 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -43,7 +43,7 @@ var r0 := CubeVolume(5);
 expect r0 == 5 * 5 * 5;
 }
 
-// REPEAT 5 - TIME: 5.5218582 s
+// REPEAT 5 - TIME: 6.4711207 s
 
 method {:test} Test5() {
 expect 6 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -51,7 +51,7 @@ var r0 := CubeVolume(6);
 expect r0 == 6 * 6 * 6;
 }
 
-// REPEAT 6 - TIME: 6.1810495 s
+// REPEAT 6 - TIME: 7.2791247 s
 
 method {:test} Test6() {
 expect 7 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -59,7 +59,7 @@ var r0 := CubeVolume(7);
 expect r0 == 7 * 7 * 7;
 }
 
-// REPEAT 7 - TIME: 6.875235 s
+// REPEAT 7 - TIME: 7.9874641 s
 
 method {:test} Test7() {
 expect 8 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -67,7 +67,7 @@ var r0 := CubeVolume(8);
 expect r0 == 8 * 8 * 8;
 }
 
-// REPEAT 8 - TIME: 7.6903992 s
+// REPEAT 8 - TIME: 8.5507259 s
 
 method {:test} Test8() {
 expect 9 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -75,7 +75,7 @@ var r0 := CubeVolume(9);
 expect r0 == 9 * 9 * 9;
 }
 
-// REPEAT 9 - TIME: 8.4422496 s
+// REPEAT 9 - TIME: 9.0887422 s
 
 method {:test} Test9() {
 expect 10 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -83,4 +83,4 @@ var r0 := CubeVolume(10);
 expect r0 == 10 * 10 * 10;
 }
 
-// REPEAT 10 - TIME: 9.1344246 s
+// REPEAT 10 - TIME: 9.6548139 s

@@ -27,4 +27,4 @@ expect r0 ==> exists i :: 0 <= i < |"aaaaa\0"| && "aaaaa\0"[i] == '.' && |"aaaaa
 expect !r0 ==> !exists i :: 0 <= i < |"aaaaa\0"| && "aaaaa\0"[i] == '.' && |"aaaaa\0"| - i - 1 == 2;
 }
 
-// REPEAT 2 - TIME: 3.9919446 s
+// REPEAT 2 - TIME: 4.1491531 s

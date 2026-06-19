@@ -28,7 +28,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 0);
 }
 
-// REPEAT 1 - TIME: 2.6967692 s
+// REPEAT 1 - TIME: 2.4936369 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2];
@@ -38,7 +38,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 5854);
 }
 
-// REPEAT 2 - TIME: 3.7231757 s
+// REPEAT 2 - TIME: 3.3954666 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [1236, 0];
@@ -48,7 +48,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 5855);
 }
 
-// REPEAT 3 - TIME: 4.7449704 s
+// REPEAT 3 - TIME: 4.3324316 s
 
 method {:test} Test3() {
 var seqint0 : seq<int> := [0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5];
@@ -58,7 +58,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 5856);
 }
 
-// REPEAT 4 - TIME: 5.601353 s
+// REPEAT 4 - TIME: 5.181108 s
 
 method {:test} Test4() {
 var seqint0 : seq<int> := [1236, 0, 0];
@@ -68,7 +68,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 5857);
 }
 
-// REPEAT 5 - TIME: 6.5735836 s
+// REPEAT 5 - TIME: 6.0357202 s
 
 method {:test} Test5() {
 var seqint0 : seq<int> := [0, 7, 0, 4];
@@ -78,7 +78,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 5858);
 }
 
-// REPEAT 6 - TIME: 7.2782511 s
+// REPEAT 6 - TIME: 6.963023 s
 
 method {:test} Test6() {
 var seqint0 : seq<int> := [1236];
@@ -88,7 +88,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 5859);
 }
 
-// REPEAT 7 - TIME: 8.0388479 s
+// REPEAT 7 - TIME: 7.8076645 s
 
 method {:test} Test7() {
 var seqint0 : seq<int> := [0, 9, 6];
@@ -98,7 +98,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 5860);
 }
 
-// REPEAT 8 - TIME: 8.7508701 s
+// REPEAT 8 - TIME: 8.4519111 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [0, 13, 0, 8, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 15];
@@ -108,7 +108,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 5861);
 }
 
-// REPEAT 9 - TIME: 9.4878344 s
+// REPEAT 9 - TIME: 9.3284569 s
 
 method {:test} Test9() {
 var seqint0 : seq<int> := [2282, 17, 10, 0, 0, 0, 21, 0, 19, 0, 0, 0, 0, 14, 23];
@@ -118,4 +118,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 5862);
 }
 
-// REPEAT 10 - TIME: 10.1130723 s
+// REPEAT 10 - TIME: 10.0053059 s

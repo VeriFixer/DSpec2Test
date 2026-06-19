@@ -11,15 +11,6 @@ method {:testEntry} TriangularPrismVolume(base: int, height: int, length: int)
 }
 
 
-method {:testEntry} TriangularPrismVolume(base: int, height: int, length: int) returns (volume: int)
-    requires base > 0
-    requires height > 0
-    requires length > 0
-    ensures volume == (base * height * length) / 2
-{
-    volume := (base * height * length) / 2;
-}
-
 method {:test} Test0() {
 expect 2 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect 1 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -28,7 +19,7 @@ var r0 := TriangularPrismVolume(2, 1, 1);
 expect r0 == 2 * 1 * 1 / 2;
 }
 
-// REPEAT 1 - TIME: 1.802828 s
+// REPEAT 1 - TIME: 1.8846507 s
 
 method {:test} Test1() {
 expect 3 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -38,7 +29,7 @@ var r0 := TriangularPrismVolume(3, 2, 2);
 expect r0 == 3 * 2 * 2 / 2;
 }
 
-// REPEAT 2 - TIME: 2.3893577 s
+// REPEAT 2 - TIME: 2.4952078 s
 
 method {:test} Test2() {
 expect 4 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -48,7 +39,7 @@ var r0 := TriangularPrismVolume(4, 3, 3);
 expect r0 == 4 * 3 * 3 / 2;
 }
 
-// REPEAT 3 - TIME: 3.0595743 s
+// REPEAT 3 - TIME: 3.1985194 s
 
 method {:test} Test3() {
 expect 5 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -58,7 +49,7 @@ var r0 := TriangularPrismVolume(5, 4, 4);
 expect r0 == 5 * 4 * 4 / 2;
 }
 
-// REPEAT 4 - TIME: 3.6904576 s
+// REPEAT 4 - TIME: 3.9111077 s
 
 method {:test} Test4() {
 expect 6 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -68,7 +59,7 @@ var r0 := TriangularPrismVolume(6, 5, 5);
 expect r0 == 6 * 5 * 5 / 2;
 }
 
-// REPEAT 5 - TIME: 4.3765471 s
+// REPEAT 5 - TIME: 4.5878972 s
 
 method {:test} Test5() {
 expect 7 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -78,7 +69,7 @@ var r0 := TriangularPrismVolume(7, 6, 6);
 expect r0 == 7 * 6 * 6 / 2;
 }
 
-// REPEAT 6 - TIME: 5.1253456 s
+// REPEAT 6 - TIME: 5.279724 s
 
 method {:test} Test6() {
 expect 8 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -88,7 +79,7 @@ var r0 := TriangularPrismVolume(8, 7, 7);
 expect r0 == 8 * 7 * 7 / 2;
 }
 
-// REPEAT 7 - TIME: 5.9131922 s
+// REPEAT 7 - TIME: 6.0180225 s
 
 method {:test} Test7() {
 expect 9 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -98,7 +89,7 @@ var r0 := TriangularPrismVolume(9, 8, 5928);
 expect r0 == 9 * 8 * 5928 / 2;
 }
 
-// REPEAT 8 - TIME: 6.5605216 s
+// REPEAT 8 - TIME: 6.7321702 s
 
 method {:test} Test8() {
 expect 10 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -108,7 +99,7 @@ var r0 := TriangularPrismVolume(10, 9, 5929);
 expect r0 == 10 * 9 * 5929 / 2;
 }
 
-// REPEAT 9 - TIME: 7.2372315 s
+// REPEAT 9 - TIME: 7.3016568 s
 
 method {:test} Test9() {
 expect 11 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -118,4 +109,4 @@ var r0 := TriangularPrismVolume(11, 10, 5930);
 expect r0 == 11 * 10 * 5930 / 2;
 }
 
-// REPEAT 10 - TIME: 7.8142427 s
+// REPEAT 10 - TIME: 7.9199652 s

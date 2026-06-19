@@ -10,17 +10,6 @@ method {:testEntry} Min(x: int, y: int) returns (z: int)
 }
 
 
-method {:testEntry} Min(x: int, y:int) returns (z: int)
-  ensures x<=y ==> z==x
-  ensures x>y ==> z==y
-{
-  if x < y {
-    return x;
-  } else {
-    return y;
-  }
-}
-
 method {:test} Test0() {
 var r0 := Min(1, 0);
 expect 1 <= 0 ==> r0 == 1;
@@ -72,7 +61,7 @@ expect 0 <= 100 ==> r0 == 0;
 expect 0 > 100 ==> r0 == 100;
 }
 
-// REPEAT 1 - TIME: 15.8793803 s
+// REPEAT 1 - TIME: 16.8978675 s
 
 method {:test} Test20() {
 var r0 := Min(102, 101);
@@ -85,7 +74,7 @@ expect 102 <= 102 ==> r0 == 102;
 expect 102 > 102 ==> r0 == 102;
 }
 
-// REPEAT 2 - TIME: 17.4663292 s
+// REPEAT 2 - TIME: 18.3701047 s
 
 method {:test} Test22() {
 var r0 := Min(104, 103);
@@ -98,7 +87,7 @@ expect 103 <= 103 ==> r0 == 103;
 expect 103 > 103 ==> r0 == 103;
 }
 
-// REPEAT 3 - TIME: 18.9528156 s
+// REPEAT 3 - TIME: 19.7911415 s
 
 method {:test} Test24() {
 var r0 := Min(105, 104);
@@ -111,7 +100,7 @@ expect 105 <= 105 ==> r0 == 105;
 expect 105 > 105 ==> r0 == 105;
 }
 
-// REPEAT 4 - TIME: 20.3314451 s
+// REPEAT 4 - TIME: 21.2989146 s
 
 method {:test} Test26() {
 var r0 := Min(107, 106);
@@ -124,7 +113,7 @@ expect 106 <= 106 ==> r0 == 106;
 expect 106 > 106 ==> r0 == 106;
 }
 
-// REPEAT 5 - TIME: 21.6641906 s
+// REPEAT 5 - TIME: 22.8455822 s
 
 method {:test} Test28() {
 var r0 := Min(108, 107);
@@ -137,7 +126,7 @@ expect 108 <= 108 ==> r0 == 108;
 expect 108 > 108 ==> r0 == 108;
 }
 
-// REPEAT 6 - TIME: 23.0297955 s
+// REPEAT 6 - TIME: 24.4482915 s
 
 method {:test} Test30() {
 var r0 := Min(110, 109);
@@ -150,7 +139,7 @@ expect 109 <= 109 ==> r0 == 109;
 expect 109 > 109 ==> r0 == 109;
 }
 
-// REPEAT 7 - TIME: 24.5458046 s
+// REPEAT 7 - TIME: 25.866403 s
 
 method {:test} Test32() {
 var r0 := Min(111, 110);
@@ -163,7 +152,7 @@ expect 111 <= 111 ==> r0 == 111;
 expect 111 > 111 ==> r0 == 111;
 }
 
-// REPEAT 8 - TIME: 26.0117115 s
+// REPEAT 8 - TIME: 27.3549825 s
 
 method {:test} Test34() {
 var r0 := Min(113, 112);
@@ -176,7 +165,7 @@ expect 112 <= 112 ==> r0 == 112;
 expect 112 > 112 ==> r0 == 112;
 }
 
-// REPEAT 9 - TIME: 27.6356105 s
+// REPEAT 9 - TIME: 28.7242476 s
 
 method {:test} Test36() {
 var r0 := Min(114, 113);
@@ -189,4 +178,4 @@ expect 114 <= 114 ==> r0 == 114;
 expect 114 > 114 ==> r0 == 114;
 }
 
-// REPEAT 10 - TIME: 28.9986559 s
+// REPEAT 10 - TIME: 29.9945471 s

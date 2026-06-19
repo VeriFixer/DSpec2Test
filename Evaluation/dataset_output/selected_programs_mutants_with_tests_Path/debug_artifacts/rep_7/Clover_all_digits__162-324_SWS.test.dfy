@@ -22,4 +22,4 @@ var r0 := allDigits("99a\0");
 expect r0 <==> forall i :: 0 <= i < |"99a\0"| ==> "99a\0"[i] in "0123456789";
 }
 
-// REPEAT 7 - TIME: 77.3570254 s
+// REPEAT 7 - TIME: 78.7762549 s

@@ -15,4 +15,4 @@ var r0 := AsciiValue('d');
 expect r0 == 'd' as int;
 }
 
-// REPEAT 1 - TIME: 4.6121526 s
+// REPEAT 1 - TIME: 5.4437563 s

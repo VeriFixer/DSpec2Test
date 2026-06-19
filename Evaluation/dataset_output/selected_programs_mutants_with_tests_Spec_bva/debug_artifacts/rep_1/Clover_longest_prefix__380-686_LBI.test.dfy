@@ -74,4 +74,4 @@ expect |r0| <= |"aaaaaaaaaaa\0"| && r0 == "aaaaaaaaaaa\0"[0 .. |r0|] && |r0| <= 
 expect |r0| == |"aaaaaaaaaaa\0"| || |r0| == |"aaaaaaaaaaa\U{0002}"| || "aaaaaaaaaaa\0"[|r0|] != "aaaaaaaaaaa\U{0002}"[|r0|];
 }
 
-// REPEAT 1 - TIME: 17.8899075 s
+// REPEAT 1 - TIME: 18.4601116 s

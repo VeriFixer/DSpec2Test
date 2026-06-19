@@ -16,4 +16,4 @@ method {:test} Test0() {
 M();
 }
 
-// REPEAT 1 - TIME: 2.7323067 s
+// REPEAT 1 - TIME: 2.5088209 s

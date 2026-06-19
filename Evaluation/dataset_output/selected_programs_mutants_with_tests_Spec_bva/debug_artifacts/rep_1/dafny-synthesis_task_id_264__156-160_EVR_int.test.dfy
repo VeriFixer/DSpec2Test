@@ -23,4 +23,4 @@ var r0 := DogYears(100);
 expect r0 == 7 * 100;
 }
 
-// REPEAT 1 - TIME: 4.6874186 s
+// REPEAT 1 - TIME: 5.2695764 s

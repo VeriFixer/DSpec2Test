@@ -20,28 +20,6 @@ method {:testEntry} ReplaceBlanksWithChar(s: string, ch: char) returns (v: strin
 }
 
 
-method {:testEntry} ReplaceBlanksWithChar(s: string, ch: char) returns (v: string)
-    ensures |v| == |s|
-    ensures forall i :: 0 <= i < |s| ==> (s[i] == ' ' ==> v[i] == ch) && (s[i] != ' ' ==> v[i] == s[i])
-{
-    var s' : string := [];
-    for i := 0 to |s|
-    invariant 0 <= i <= |s|
-    invariant |s'| == i
-    invariant forall k :: 0 <= k < i ==> (s[k] == ' ' ==> s'[k] == ch) && (s[k] != ' ' ==> s'[k] == s[k])
-    {
-        if s[i] == ' '
-        {
-            s' := s' + [ch];
-        }
-        else 
-        {
-            s' := s' + [s[i]];
-        }
-    }
-    return s';
-}
-
 method {:test} Test0() {
 var r0 := ReplaceBlanksWithChar("", '\0');
 expect |r0| == |""|;
@@ -58,7 +36,7 @@ expect |r0| == |" "|;
 expect forall i :: 0 <= i < |" "| ==> (" "[i] == ' ' ==> r0[i] == '\0') && (" "[i] != ' ' ==> r0[i] == " "[i]);
 }
 
-// REPEAT 1 - TIME: 3.1514082 s
+// REPEAT 1 - TIME: 3.1790899 s
 
 method {:test} Test3() {
 var r0 := ReplaceBlanksWithChar("\U{0001}", '\0');
@@ -76,7 +54,7 @@ expect |r0| == |"\U{0002}aaaaaaaaaa "|;
 expect forall i :: 0 <= i < |"\U{0002}aaaaaaaaaa "| ==> ("\U{0002}aaaaaaaaaa "[i] == ' ' ==> r0[i] == '\0') && ("\U{0002}aaaaaaaaaa "[i] != ' ' ==> r0[i] == "\U{0002}aaaaaaaaaa "[i]);
 }
 
-// REPEAT 2 - TIME: 4.5933672 s
+// REPEAT 2 - TIME: 5.1030191 s
 
 method {:test} Test6() {
 var r0 := ReplaceBlanksWithChar("\U{0001}aaaaaaaaa\U{0003}", '\0');
@@ -94,7 +72,7 @@ expect |r0| == |"\U{0002} "|;
 expect forall i :: 0 <= i < |"\U{0002} "| ==> ("\U{0002} "[i] == ' ' ==> r0[i] == '\0') && ("\U{0002} "[i] != ' ' ==> r0[i] == "\U{0002} "[i]);
 }
 
-// REPEAT 3 - TIME: 5.8217807 s
+// REPEAT 3 - TIME: 6.7470677 s
 
 method {:test} Test9() {
 var r0 := ReplaceBlanksWithChar("\U{0001}", '\0');
@@ -112,7 +90,7 @@ expect |r0| == |" aaa"|;
 expect forall i :: 0 <= i < |" aaa"| ==> (" aaa"[i] == ' ' ==> r0[i] == '\0') && (" aaa"[i] != ' ' ==> r0[i] == " aaa"[i]);
 }
 
-// REPEAT 4 - TIME: 7.1461611 s
+// REPEAT 4 - TIME: 8.1474872 s
 
 method {:test} Test12() {
 var r0 := ReplaceBlanksWithChar("aaaaaaaaaaa\U{0001}\U{0003}", '\0');
@@ -130,7 +108,7 @@ expect |r0| == |"\U{0003} aa\U{0007}aaaa\U{0001}aaaa\U{0005}aaaaaaaaaaa\t"|;
 expect forall i :: 0 <= i < |"\U{0003} aa\U{0007}aaaa\U{0001}aaaa\U{0005}aaaaaaaaaaa\t"| ==> ("\U{0003} aa\U{0007}aaaa\U{0001}aaaa\U{0005}aaaaaaaaaaa\t"[i] == ' ' ==> r0[i] == '\0') && ("\U{0003} aa\U{0007}aaaa\U{0001}aaaa\U{0005}aaaaaaaaaaa\t"[i] != ' ' ==> r0[i] == "\U{0003} aa\U{0007}aaaa\U{0001}aaaa\U{0005}aaaaaaaaaaa\t"[i]);
 }
 
-// REPEAT 5 - TIME: 8.5327635 s
+// REPEAT 5 - TIME: 9.3508681 s
 
 method {:test} Test15() {
 var r0 := ReplaceBlanksWithChar("\U{0001}aaaaaaaaaaa\U{0007}\ta\U{0005}aaaaaaaaa\U{0003}a\U{000B}", '\0');
@@ -148,7 +126,7 @@ expect |r0| == |" aa\U{0001}\U{0003}"|;
 expect forall i :: 0 <= i < |" aa\U{0001}\U{0003}"| ==> (" aa\U{0001}\U{0003}"[i] == ' ' ==> r0[i] == '\0') && (" aa\U{0001}\U{0003}"[i] != ' ' ==> r0[i] == " aa\U{0001}\U{0003}"[i]);
 }
 
-// REPEAT 6 - TIME: 10.0292523 s
+// REPEAT 6 - TIME: 10.7134662 s
 
 method {:test} Test18() {
 var r0 := ReplaceBlanksWithChar("\U{0001}aaaa\U{0003}", '\0');
@@ -166,7 +144,7 @@ expect |r0| == |"\U{0003} aa\U{0007}aaaaaa\U{0001}\U{000B}\raaaaaaaa\U{0005}aaa\
 expect forall i :: 0 <= i < |"\U{0003} aa\U{0007}aaaaaa\U{0001}\U{000B}\raaaaaaaa\U{0005}aaa\t\U{000F}a"| ==> ("\U{0003} aa\U{0007}aaaaaa\U{0001}\U{000B}\raaaaaaaa\U{0005}aaa\t\U{000F}a"[i] == ' ' ==> r0[i] == '\0') && ("\U{0003} aa\U{0007}aaaaaa\U{0001}\U{000B}\raaaaaaaa\U{0005}aaa\t\U{000F}a"[i] != ' ' ==> r0[i] == "\U{0003} aa\U{0007}aaaaaa\U{0001}\U{000B}\raaaaaaaa\U{0005}aaa\t\U{000F}a"[i]);
 }
 
-// REPEAT 7 - TIME: 11.7216465 s
+// REPEAT 7 - TIME: 12.1514975 s
 
 method {:test} Test21() {
 var r0 := ReplaceBlanksWithChar("\U{0001}aaaaaa\U{0003}aaaa\U{0005}\U{0007}", '\0');
@@ -184,7 +162,7 @@ expect |r0| == |"aaaa aaaaaa\U{0006}aaaaaaa\U{0004}aaa\U{0002}aaa\n\U{0008}a"|;
 expect forall i :: 0 <= i < |"aaaa aaaaaa\U{0006}aaaaaaa\U{0004}aaa\U{0002}aaa\n\U{0008}a"| ==> ("aaaa aaaaaa\U{0006}aaaaaaa\U{0004}aaa\U{0002}aaa\n\U{0008}a"[i] == ' ' ==> r0[i] == '\0') && ("aaaa aaaaaa\U{0006}aaaaaaa\U{0004}aaa\U{0002}aaa\n\U{0008}a"[i] != ' ' ==> r0[i] == "aaaa aaaaaa\U{0006}aaaaaaa\U{0004}aaa\U{0002}aaa\n\U{0008}a"[i]);
 }
 
-// REPEAT 8 - TIME: 13.0570537 s
+// REPEAT 8 - TIME: 13.8002295 s
 
 method {:test} Test24() {
 var r0 := ReplaceBlanksWithChar("\U{0001}aaaaa\U{0003}", '\0');
@@ -202,7 +180,7 @@ expect |r0| == |"\U{0002}aaaaaa aaaaaaaaaa"|;
 expect forall i :: 0 <= i < |"\U{0002}aaaaaa aaaaaaaaaa"| ==> ("\U{0002}aaaaaa aaaaaaaaaa"[i] == ' ' ==> r0[i] == '\0') && ("\U{0002}aaaaaa aaaaaaaaaa"[i] != ' ' ==> r0[i] == "\U{0002}aaaaaa aaaaaaaaaa"[i]);
 }
 
-// REPEAT 9 - TIME: 14.5555219 s
+// REPEAT 9 - TIME: 15.312313 s
 
 method {:test} Test27() {
 var r0 := ReplaceBlanksWithChar("\U{0001}aaaaaaaaaaaaaaa\U{0007}aaa\U{0003}\U{0005}aaaa", '\0');
@@ -220,4 +198,4 @@ expect |r0| == |"\U{0004}aaaaaaaaaaaaaaaaa\U{0002}a aaaaa"|;
 expect forall i :: 0 <= i < |"\U{0004}aaaaaaaaaaaaaaaaa\U{0002}a aaaaa"| ==> ("\U{0004}aaaaaaaaaaaaaaaaa\U{0002}a aaaaa"[i] == ' ' ==> r0[i] == '\0') && ("\U{0004}aaaaaaaaaaaaaaaaa\U{0002}a aaaaa"[i] != ' ' ==> r0[i] == "\U{0004}aaaaaaaaaaaaaaaaa\U{0002}a aaaaa"[i]);
 }
 
-// REPEAT 10 - TIME: 15.9559936 s
+// REPEAT 10 - TIME: 16.8917264 s

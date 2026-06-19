@@ -21,4 +21,4 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "a" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 2 - TIME: 3.6627202 s
+// REPEAT 2 - TIME: 3.4611845 s

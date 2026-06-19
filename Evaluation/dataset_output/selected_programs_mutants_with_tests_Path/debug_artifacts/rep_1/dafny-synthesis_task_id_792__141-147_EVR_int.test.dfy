@@ -14,4 +14,4 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 1 - TIME: 1.4921125 s
+// REPEAT 1 - TIME: 1.3767392 s

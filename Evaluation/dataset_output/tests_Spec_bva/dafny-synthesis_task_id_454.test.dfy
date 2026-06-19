@@ -50,7 +50,7 @@ var r0 := ContainsZ("aa");
 expect r0 <==> exists i :: 0 <= i < |"aa"| && ("aa"[i] == 'z' || "aa"[i] == 'Z');
 }
 
-// REPEAT 1 - TIME: 12.1779241 s
+// REPEAT 1 - TIME: 12.5228537 s
 
 method {:test} Test22() {
 var r0 := ContainsZ("\0aaaaaaaz\U{0003}");
@@ -65,7 +65,7 @@ var r0 := ContainsZ("\U{0006}\0\U{0002}aaaa\U{0004}a\U{0008}");
 expect r0 <==> exists i :: 0 <= i < |"\U{0006}\0\U{0002}aaaa\U{0004}a\U{0008}"| && ("\U{0006}\0\U{0002}aaaa\U{0004}a\U{0008}"[i] == 'z' || "\U{0006}\0\U{0002}aaaa\U{0004}a\U{0008}"[i] == 'Z');
 }
 
-// REPEAT 2 - TIME: 13.4446936 s
+// REPEAT 2 - TIME: 14.0699857 s
 
 method {:test} Test25() {
 var r0 := ContainsZ("\U{0002}\0z");
@@ -80,7 +80,7 @@ var r0 := ContainsZ("\U{0002}\0");
 expect r0 <==> exists i :: 0 <= i < |"\U{0002}\0"| && ("\U{0002}\0"[i] == 'z' || "\U{0002}\0"[i] == 'Z');
 }
 
-// REPEAT 3 - TIME: 14.9684936 s
+// REPEAT 3 - TIME: 15.6619612 s
 
 method {:test} Test28() {
 var r0 := ContainsZ("\U{0006}az\0a\U{0004}aaa\U{0008}\n\U{0002}");
@@ -95,7 +95,7 @@ var r0 := ContainsZ("\U{0002}a\0");
 expect r0 <==> exists i :: 0 <= i < |"\U{0002}a\0"| && ("\U{0002}a\0"[i] == 'z' || "\U{0002}a\0"[i] == 'Z');
 }
 
-// REPEAT 4 - TIME: 16.4220947 s
+// REPEAT 4 - TIME: 16.777292 s
 
 method {:test} Test31() {
 var r0 := ContainsZ("\U{0001}az");
@@ -110,7 +110,7 @@ var r0 := ContainsZ("\U{0008}\U{0002}\0\U{0004}\U{0006}");
 expect r0 <==> exists i :: 0 <= i < |"\U{0008}\U{0002}\0\U{0004}\U{0006}"| && ("\U{0008}\U{0002}\0\U{0004}\U{0006}"[i] == 'z' || "\U{0008}\U{0002}\0\U{0004}\U{0006}"[i] == 'Z');
 }
 
-// REPEAT 5 - TIME: 17.9974089 s
+// REPEAT 5 - TIME: 17.994503 s
 
 method {:test} Test34() {
 var r0 := ContainsZ("\U{0003}az\U{0001}a\U{0005}");
@@ -125,7 +125,7 @@ var r0 := ContainsZ("aa\U{0002}aaa\U{0008}a\0a\n\U{0006}\U{0004}");
 expect r0 <==> exists i :: 0 <= i < |"aa\U{0002}aaa\U{0008}a\0a\n\U{0006}\U{0004}"| && ("aa\U{0002}aaa\U{0008}a\0a\n\U{0006}\U{0004}"[i] == 'z' || "aa\U{0002}aaa\U{0008}a\0a\n\U{0006}\U{0004}"[i] == 'Z');
 }
 
-// REPEAT 6 - TIME: 19.3011226 s
+// REPEAT 6 - TIME: 19.1682442 s
 
 method {:test} Test37() {
 var r0 := ContainsZ("\U{0005}a\U{0003}aaaa\U{0001}aaz\U{0007}\U{000B}\t");
@@ -140,7 +140,7 @@ var r0 := ContainsZ("\U{0012}\0a\U{0002}\na\U{0004}\U{0008}\U{000C}\U{000E}\U{00
 expect r0 <==> exists i :: 0 <= i < |"\U{0012}\0a\U{0002}\na\U{0004}\U{0008}\U{000C}\U{000E}\U{0006}\U{0010}"| && ("\U{0012}\0a\U{0002}\na\U{0004}\U{0008}\U{000C}\U{000E}\U{0006}\U{0010}"[i] == 'z' || "\U{0012}\0a\U{0002}\na\U{0004}\U{0008}\U{000C}\U{000E}\U{0006}\U{0010}"[i] == 'Z');
 }
 
-// REPEAT 7 - TIME: 20.4699344 s
+// REPEAT 7 - TIME: 20.5300739 s
 
 method {:test} Test40() {
 var r0 := ContainsZ("\U{0005}a\U{0001}aaaaaz\U{0003}");
@@ -155,7 +155,7 @@ var r0 := ContainsZ("\n\U{0004}\U{0008}aaa\0aa\U{0002}\U{0006}\U{000C}a");
 expect r0 <==> exists i :: 0 <= i < |"\n\U{0004}\U{0008}aaa\0aa\U{0002}\U{0006}\U{000C}a"| && ("\n\U{0004}\U{0008}aaa\0aa\U{0002}\U{0006}\U{000C}a"[i] == 'z' || "\n\U{0004}\U{0008}aaa\0aa\U{0002}\U{0006}\U{000C}a"[i] == 'Z');
 }
 
-// REPEAT 8 - TIME: 21.7994002 s
+// REPEAT 8 - TIME: 21.9326459 s
 
 method {:test} Test43() {
 var r0 := ContainsZ("\U{0003}a\U{0001}z\U{0005}\t\U{0007}");
@@ -170,7 +170,7 @@ var r0 := ContainsZ("\U{0006}aaaaa\0a\U{0004}\n\U{0002}a\U{000C}a\U{0008}a");
 expect r0 <==> exists i :: 0 <= i < |"\U{0006}aaaaa\0a\U{0004}\n\U{0002}a\U{000C}a\U{0008}a"| && ("\U{0006}aaaaa\0a\U{0004}\n\U{0002}a\U{000C}a\U{0008}a"[i] == 'z' || "\U{0006}aaaaa\0a\U{0004}\n\U{0002}a\U{000C}a\U{0008}a"[i] == 'Z');
 }
 
-// REPEAT 9 - TIME: 23.1886908 s
+// REPEAT 9 - TIME: 23.406398 s
 
 method {:test} Test46() {
 var r0 := ContainsZ("aaaaz\U{0001}a\U{0003}aaa\U{0007}\taa\U{000B}\U{0005}");
@@ -185,4 +185,4 @@ var r0 := ContainsZ("\U{0002}aaaaaaaa\U{0004}a\0\U{0008}a\U{0006}\U{000C}\n");
 expect r0 <==> exists i :: 0 <= i < |"\U{0002}aaaaaaaa\U{0004}a\0\U{0008}a\U{0006}\U{000C}\n"| && ("\U{0002}aaaaaaaa\U{0004}a\0\U{0008}a\U{0006}\U{000C}\n"[i] == 'z' || "\U{0002}aaaaaaaa\U{0004}a\0\U{0008}a\U{0006}\U{000C}\n"[i] == 'Z');
 }
 
-// REPEAT 10 - TIME: 24.7314664 s
+// REPEAT 10 - TIME: 24.8348279 s

@@ -19,23 +19,6 @@ method {:testEntry} MinLengthSublist(s: seq<seq<int>>) returns (minSublist: seq<
 }
 
 
-method {:testEntry} MinLengthSublist(s: seq<seq<int>>) returns (minSublist: seq<int>)
-    requires |s| > 0
-    ensures minSublist in s
-    ensures forall sublist :: sublist in s ==> |minSublist| <= |sublist|
-{
-    minSublist := s[0];
-    for i := 1 to |s|
-        invariant 0 <= i <= |s|
-        invariant minSublist in s[..i]
-        invariant forall sublist :: sublist in s[..i] ==> |minSublist| <= |sublist|
-    {
-        if |s[i]| < |minSublist| {
-            minSublist := s[i];
-        }
-    }
-}
-
 method {:test} Test0() {
 var seqint0 : seq<int> := [];
 var seqseqint0 : seq<seq<int>> := [seqint0];
@@ -71,7 +54,7 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 1 - TIME: 6.3594026 s
+// REPEAT 1 - TIME: 6.3077236 s
 
 method {:test} Test9() {
 var seqint0 : seq<int> := [0, 0, 0];
@@ -109,7 +92,7 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 2 - TIME: 7.4779022 s
+// REPEAT 2 - TIME: 7.351315 s
 
 method {:test} Test10() {
 var seqint0 : seq<int> := [0, 0, 0, 0];
@@ -148,7 +131,7 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 3 - TIME: 8.5302967 s
+// REPEAT 3 - TIME: 8.2462691 s
 
 method {:test} Test11() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0];
@@ -188,7 +171,7 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 4 - TIME: 9.5926292 s
+// REPEAT 4 - TIME: 9.3295655 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0];
@@ -228,7 +211,7 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 5 - TIME: 11.0515981 s
+// REPEAT 5 - TIME: 10.9742289 s
 
 method {:test} Test13() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -268,7 +251,7 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 6 - TIME: 15.722227 s
+// REPEAT 6 - TIME: 15.651289 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -308,7 +291,7 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 7 - TIME: 24.3734017 s
+// REPEAT 7 - TIME: 23.8514945 s
 
 method {:test} Test15() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -348,7 +331,7 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 8 - TIME: 28.7396613 s
+// REPEAT 8 - TIME: 28.1132417 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -388,7 +371,7 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 9 - TIME: 33.7574732 s
+// REPEAT 9 - TIME: 33.2681614 s
 
 method {:test} Test17() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -428,4 +411,4 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 10 - TIME: 40.29093 s
+// REPEAT 10 - TIME: 40.3244232 s

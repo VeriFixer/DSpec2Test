@@ -13,4 +13,4 @@ var r0 := StartAndEndWithSameChar("\U{0002}aaaaaaa\0");
 expect r0 <==> "\U{0002}aaaaaaa\0"[0] == "\U{0002}aaaaaaa\0"[|"\U{0002}aaaaaaa\0"| - 1];
 }
 
-// REPEAT 2 - TIME: 2.6910152 s
+// REPEAT 2 - TIME: 4.0475599 s

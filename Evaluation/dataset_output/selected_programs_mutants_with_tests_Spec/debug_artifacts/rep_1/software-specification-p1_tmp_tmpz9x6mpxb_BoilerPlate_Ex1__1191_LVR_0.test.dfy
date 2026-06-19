@@ -195,4 +195,4 @@ method {:test} Test5() {
 testDeserialiseWithAllElements();
 }
 
-// REPEAT 1 - TIME: 7.2002434 s
+// REPEAT 1 - TIME: 7.016263 s

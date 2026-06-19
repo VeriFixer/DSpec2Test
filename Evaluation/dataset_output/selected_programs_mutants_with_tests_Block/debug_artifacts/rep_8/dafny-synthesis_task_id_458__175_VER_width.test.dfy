@@ -15,4 +15,4 @@ var r0 := RectangleArea(8, 8);
 expect r0 == 8 * 8;
 }
 
-// REPEAT 8 - TIME: 7.0488085 s
+// REPEAT 8 - TIME: 7.2082336 s

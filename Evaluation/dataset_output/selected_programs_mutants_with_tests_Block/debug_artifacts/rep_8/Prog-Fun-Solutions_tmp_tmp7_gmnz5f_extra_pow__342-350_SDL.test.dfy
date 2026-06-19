@@ -33,4 +33,4 @@ method {:test} Test7() {
 var r0 := Pow(5860, 1151);
 }
 
-// REPEAT 8 - TIME: 8.7190023 s
+// REPEAT 8 - TIME: 8.592158 s

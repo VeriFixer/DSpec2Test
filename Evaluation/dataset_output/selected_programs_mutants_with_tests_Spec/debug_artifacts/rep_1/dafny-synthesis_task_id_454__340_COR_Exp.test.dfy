@@ -28,4 +28,4 @@ var r0 := ContainsZ("");
 expect r0 <==> exists i :: 0 <= i < |""| && (""[i] == 'z' || ""[i] == 'Z');
 }
 
-// REPEAT 1 - TIME: 3.5060189 s
+// REPEAT 1 - TIME: 3.4769937 s

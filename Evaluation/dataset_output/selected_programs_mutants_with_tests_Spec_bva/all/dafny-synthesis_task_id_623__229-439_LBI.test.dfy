@@ -26,28 +26,6 @@ function Power(base: int, exponent: int): int
 }
 
 
-method {:testEntry} PowerOfListElements(l: seq<int>, n: int) returns (result: seq<int>)
-    requires n >= 0
-    ensures |result| == |l|
-    ensures forall i :: 0 <= i < |l| ==> result[i] == Power(l[i], n)
-{
-    result := [];
-    for i := 0 to |l|
-        invariant 0 <= i <= |l|
-        invariant |result| == i
-        invariant forall k :: 0 <= k < i ==> result[k] == Power(l[k], n)
-    {
-        result := result + [Power(l[i], n)];
-    }
-}
-
-function Power(base: int, exponent: int): int
-    requires exponent >= 0
-{
-    if exponent == 0 then 1
-    else base * Power(base, exponent-1)
-}
-
 method {:test} Test0() {
 var seqint0 : seq<int> := [];
 expect 0 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -77,7 +55,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 100);
 }
 
-// REPEAT 1 - TIME: 8.5942363 s
+// REPEAT 1 - TIME: 8.4052222 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [1, 0];
@@ -87,7 +65,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 101);
 }
 
-// REPEAT 2 - TIME: 9.3231202 s
+// REPEAT 2 - TIME: 9.3066718 s
 
 method {:test} Test13() {
 var seqint0 : seq<int> := [0, 2437, 0, 0, 0, 0, 609];
@@ -97,7 +75,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 102);
 }
 
-// REPEAT 3 - TIME: 10.1388338 s
+// REPEAT 3 - TIME: 10.071584 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [0, 0, 2437];
@@ -107,7 +85,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 103);
 }
 
-// REPEAT 4 - TIME: 10.9839809 s
+// REPEAT 4 - TIME: 10.8930875 s
 
 method {:test} Test15() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 609];
@@ -117,7 +95,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 104);
 }
 
-// REPEAT 5 - TIME: 12.0111797 s
+// REPEAT 5 - TIME: 11.629024 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [609, 0, 1236, 0, 0, 0, 0, 0, 0];
@@ -127,7 +105,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 105);
 }
 
-// REPEAT 6 - TIME: 12.8005704 s
+// REPEAT 6 - TIME: 12.3801327 s
 
 method {:test} Test17() {
 var seqint0 : seq<int> := [5904, 1236, 0, 0];
@@ -137,7 +115,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 106);
 }
 
-// REPEAT 7 - TIME: 13.4452005 s
+// REPEAT 7 - TIME: 13.244596 s
 
 method {:test} Test18() {
 var seqint0 : seq<int> := [582, 0, 5853, 0, 0];
@@ -147,7 +125,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 107);
 }
 
-// REPEAT 8 - TIME: 14.138613 s
+// REPEAT 8 - TIME: 14.0677835 s
 
 method {:test} Test19() {
 var seqint0 : seq<int> := [3961, 0, 0];
@@ -157,7 +135,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 108);
 }
 
-// REPEAT 9 - TIME: 14.8442209 s
+// REPEAT 9 - TIME: 14.9300142 s
 
 method {:test} Test20() {
 var seqint0 : seq<int> := [3504, 0, 1, 0];
@@ -167,4 +145,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 109);
 }
 
-// REPEAT 10 - TIME: 15.5476375 s
+// REPEAT 10 - TIME: 15.7861193 s

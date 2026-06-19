@@ -52,7 +52,7 @@ expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 1 - TIME: 14.999646 s
+// REPEAT 1 - TIME: 14.8989824 s
 
 method {:test} Test10() {
 var seqint0 : seq<int> := [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3];
@@ -61,7 +61,7 @@ expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 2 - TIME: 16.2980163 s
+// REPEAT 2 - TIME: 16.2250731 s
 
 method {:test} Test11() {
 var seqint0 : seq<int> := [5, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7];
@@ -70,7 +70,7 @@ expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 3 - TIME: 17.4751392 s
+// REPEAT 3 - TIME: 17.4371025 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [8, 0, 4];
@@ -79,7 +79,7 @@ expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 4 - TIME: 18.5613273 s
+// REPEAT 4 - TIME: 18.5832565 s
 
 method {:test} Test13() {
 var seqint0 : seq<int> := [12, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 14, 10];
@@ -88,7 +88,7 @@ expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 5 - TIME: 19.7021146 s
+// REPEAT 5 - TIME: 19.6068815 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9];
@@ -97,7 +97,7 @@ expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 6 - TIME: 21.011322 s
+// REPEAT 6 - TIME: 20.6167422 s
 
 method {:test} Test15() {
 var seqint0 : seq<int> := [18, 0, 16, 11];
@@ -106,7 +106,7 @@ expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 7 - TIME: 22.1568079 s
+// REPEAT 7 - TIME: 21.6988076 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -115,7 +115,7 @@ expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 8 - TIME: 23.4467618 s
+// REPEAT 8 - TIME: 22.6651211 s
 
 method {:test} Test17() {
 var seqint0 : seq<int> := [20, 0, 0, 17, 22];
@@ -124,7 +124,7 @@ expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 9 - TIME: 24.804688 s
+// REPEAT 9 - TIME: 23.7178699 s
 
 method {:test} Test18() {
 var seqint0 : seq<int> := [25, 0, 19, 23];
@@ -133,4 +133,4 @@ expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 10 - TIME: 25.9469408 s
+// REPEAT 10 - TIME: 24.7720334 s

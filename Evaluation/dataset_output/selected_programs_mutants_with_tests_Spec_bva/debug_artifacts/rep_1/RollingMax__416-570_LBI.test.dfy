@@ -94,4 +94,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 1 - TIME: 30.4868566 s
+// REPEAT 1 - TIME: 30.0918548 s

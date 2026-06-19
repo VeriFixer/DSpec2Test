@@ -10,17 +10,6 @@ method {:testEntry} Max(a: int, b: int) returns (maxValue: int)
 }
 
 
-method {:testEntry} Max(a: int, b: int) returns (maxValue: int)
-    ensures maxValue == a || maxValue == b
-    ensures maxValue >= a && maxValue >= b
-{
-    if a >= b {
-        maxValue := a;
-    } else {
-        maxValue := b;
-    }
-}
-
 method {:test} Test0() {
 var r0 := Max(0, 0);
 expect r0 == 0 || r0 == 0;
@@ -32,7 +21,7 @@ expect r0 == -1 || r0 == 0;
 expect r0 >= -1 && r0 >= 0;
 }
 
-// REPEAT 1 - TIME: 2.632147 s
+// REPEAT 1 - TIME: 2.8490019 s
 
 method {:test} Test2() {
 var r0 := Max(1, 1);
@@ -45,7 +34,7 @@ expect r0 == 1 || r0 == 2;
 expect r0 >= 1 && r0 >= 2;
 }
 
-// REPEAT 2 - TIME: 3.8417931 s
+// REPEAT 2 - TIME: 4.2165848 s
 
 method {:test} Test4() {
 var r0 := Max(3, 3);
@@ -58,7 +47,7 @@ expect r0 == 2 || r0 == 3;
 expect r0 >= 2 && r0 >= 3;
 }
 
-// REPEAT 3 - TIME: 5.1171344 s
+// REPEAT 3 - TIME: 5.5668678 s
 
 method {:test} Test6() {
 var r0 := Max(4, 4);
@@ -71,7 +60,7 @@ expect r0 == 4 || r0 == 5;
 expect r0 >= 4 && r0 >= 5;
 }
 
-// REPEAT 4 - TIME: 6.4805894 s
+// REPEAT 4 - TIME: 6.8791399 s
 
 method {:test} Test8() {
 var r0 := Max(6, 6);
@@ -84,7 +73,7 @@ expect r0 == 5 || r0 == 6;
 expect r0 >= 5 && r0 >= 6;
 }
 
-// REPEAT 5 - TIME: 7.8516835 s
+// REPEAT 5 - TIME: 8.0780251 s
 
 method {:test} Test10() {
 var r0 := Max(7, 7);
@@ -97,7 +86,7 @@ expect r0 == 7 || r0 == 8;
 expect r0 >= 7 && r0 >= 8;
 }
 
-// REPEAT 6 - TIME: 9.0358039 s
+// REPEAT 6 - TIME: 9.0068035 s
 
 method {:test} Test12() {
 var r0 := Max(9, 9);
@@ -110,7 +99,7 @@ expect r0 == 8 || r0 == 9;
 expect r0 >= 8 && r0 >= 9;
 }
 
-// REPEAT 7 - TIME: 10.1447365 s
+// REPEAT 7 - TIME: 9.964357 s
 
 method {:test} Test14() {
 var r0 := Max(10, 10);
@@ -123,7 +112,7 @@ expect r0 == 10 || r0 == 11;
 expect r0 >= 10 && r0 >= 11;
 }
 
-// REPEAT 8 - TIME: 11.0524 s
+// REPEAT 8 - TIME: 10.8589475 s
 
 method {:test} Test16() {
 var r0 := Max(12, 12);
@@ -136,7 +125,7 @@ expect r0 == 11 || r0 == 12;
 expect r0 >= 11 && r0 >= 12;
 }
 
-// REPEAT 9 - TIME: 12.0600434 s
+// REPEAT 9 - TIME: 11.8681972 s
 
 method {:test} Test18() {
 var r0 := Max(13, 13);
@@ -149,4 +138,4 @@ expect r0 == 13 || r0 == 14;
 expect r0 >= 13 && r0 >= 14;
 }
 
-// REPEAT 10 - TIME: 12.864953 s
+// REPEAT 10 - TIME: 12.8349777 s

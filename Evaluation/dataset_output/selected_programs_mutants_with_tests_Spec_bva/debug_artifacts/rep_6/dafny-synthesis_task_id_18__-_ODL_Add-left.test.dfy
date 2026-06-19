@@ -26,4 +26,4 @@ expect forall i :: 0 <= i < |r0| ==> r0[i] in "\0\0a\0aaaaaaa\0aaaa\0aaaaaaaaaaa
 expect forall i :: 0 <= i < |"\0\0a\0aaaaaaa\0aaaa\0aaaaaaaaaaaa\0"| ==> "\0\0a\0aaaaaaa\0aaaa\0aaaaaaaaaaaa\0"[i] in "\U{0006}aa\U{0004}\U{0002}" || "\0\0a\0aaaaaaa\0aaaa\0aaaaaaaaaaaa\0"[i] in r0;
 }
 
-// REPEAT 6 - TIME: 11.9544604 s
+// REPEAT 6 - TIME: 11.9747377 s

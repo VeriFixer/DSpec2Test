@@ -16,7 +16,7 @@ var r0 := NthHexagonalNumber(100);
 expect r0 == 100 * (2 * 100 - 1);
 }
 
-// REPEAT 1 - TIME: 5.8750417 s
+// REPEAT 1 - TIME: 5.4947674 s
 
 method {:test} Test6() {
 expect 101 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -24,7 +24,7 @@ var r0 := NthHexagonalNumber(101);
 expect r0 == 101 * (2 * 101 - 1);
 }
 
-// REPEAT 2 - TIME: 6.789719 s
+// REPEAT 2 - TIME: 6.3841033 s
 
 method {:test} Test7() {
 expect 102 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -32,7 +32,7 @@ var r0 := NthHexagonalNumber(102);
 expect r0 == 102 * (2 * 102 - 1);
 }
 
-// REPEAT 3 - TIME: 7.605011 s
+// REPEAT 3 - TIME: 7.1156014 s
 
 method {:test} Test8() {
 expect 103 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -40,7 +40,7 @@ var r0 := NthHexagonalNumber(103);
 expect r0 == 103 * (2 * 103 - 1);
 }
 
-// REPEAT 4 - TIME: 8.4093029 s
+// REPEAT 4 - TIME: 7.8847752 s
 
 method {:test} Test9() {
 expect 104 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -48,7 +48,7 @@ var r0 := NthHexagonalNumber(104);
 expect r0 == 104 * (2 * 104 - 1);
 }
 
-// REPEAT 5 - TIME: 9.1213292 s
+// REPEAT 5 - TIME: 8.6399404 s
 
 method {:test} Test10() {
 expect 105 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -56,7 +56,7 @@ var r0 := NthHexagonalNumber(105);
 expect r0 == 105 * (2 * 105 - 1);
 }
 
-// REPEAT 6 - TIME: 9.7908237 s
+// REPEAT 6 - TIME: 9.4133152 s
 
 method {:test} Test11() {
 expect 106 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -64,7 +64,7 @@ var r0 := NthHexagonalNumber(106);
 expect r0 == 106 * (2 * 106 - 1);
 }
 
-// REPEAT 7 - TIME: 10.4864338 s
+// REPEAT 7 - TIME: 10.2168288 s
 
 method {:test} Test12() {
 expect 107 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -72,7 +72,7 @@ var r0 := NthHexagonalNumber(107);
 expect r0 == 107 * (2 * 107 - 1);
 }
 
-// REPEAT 8 - TIME: 11.072243 s
+// REPEAT 8 - TIME: 10.9289775 s
 
 method {:test} Test13() {
 expect 108 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -80,7 +80,7 @@ var r0 := NthHexagonalNumber(108);
 expect r0 == 108 * (2 * 108 - 1);
 }
 
-// REPEAT 9 - TIME: 11.6698382 s
+// REPEAT 9 - TIME: 11.5843552 s
 
 method {:test} Test14() {
 expect 109 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -88,4 +88,4 @@ var r0 := NthHexagonalNumber(109);
 expect r0 == 109 * (2 * 109 - 1);
 }
 
-// REPEAT 10 - TIME: 12.3568411 s
+// REPEAT 10 - TIME: 12.145553 s

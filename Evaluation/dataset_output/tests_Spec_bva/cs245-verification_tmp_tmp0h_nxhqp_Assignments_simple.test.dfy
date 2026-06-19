@@ -25,4 +25,4 @@ var r0 := simple(6);
 expect r0 == 7;
 }
 
-// REPEAT 1 - TIME: 4.0279157 s
+// REPEAT 1 - TIME: 4.4945468 s

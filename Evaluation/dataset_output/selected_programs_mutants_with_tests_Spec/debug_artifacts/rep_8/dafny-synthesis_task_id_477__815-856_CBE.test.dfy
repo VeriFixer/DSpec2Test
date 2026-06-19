@@ -37,4 +37,4 @@ expect |r0| == |" aa\U{000F}"|;
 expect forall i :: 0 <= i < |" aa\U{000F}"| ==> if IsUpperCase(" aa\U{000F}"[i]) then IsUpperLowerPair(" aa\U{000F}"[i], r0[i]) else r0[i] == " aa\U{000F}"[i];
 }
 
-// REPEAT 8 - TIME: 10.4079464 s
+// REPEAT 8 - TIME: 10.2096617 s

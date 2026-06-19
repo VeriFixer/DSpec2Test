@@ -58,4 +58,4 @@ expect |r0| == |"!>aaaaa\U{0013}aaaaaa2"|;
 expect forall i :: 0 <= i < |"!>aaaaa\U{0013}aaaaaa2"| ==> if IsLowerCase("!>aaaaa\U{0013}aaaaaa2"[i]) then IsLowerUpperPair("!>aaaaa\U{0013}aaaaaa2"[i], r0[i]) else if IsUpperCase("!>aaaaa\U{0013}aaaaaa2"[i]) then IsUpperLowerPair("!>aaaaa\U{0013}aaaaaa2"[i], r0[i]) else r0[i] == "!>aaaaa\U{0013}aaaaaa2"[i];
 }
 
-// REPEAT 7 - TIME: 13.3479521 s
+// REPEAT 7 - TIME: 12.3643302 s

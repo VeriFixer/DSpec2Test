@@ -45,4 +45,4 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 10 - TIME: 20.2443017 s
+// REPEAT 10 - TIME: 19.913844 s

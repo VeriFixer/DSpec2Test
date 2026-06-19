@@ -9,67 +9,67 @@ var r0 := AsciiValue('&');
 expect r0 == '&' as int;
 }
 
-// REPEAT 1 - TIME: 2.1881509 s
+// REPEAT 1 - TIME: 3.0110814 s
 
 method {:test} Test1() {
 var r0 := AsciiValue('%');
 expect r0 == '%' as int;
 }
 
-// REPEAT 2 - TIME: 2.9520066 s
+// REPEAT 2 - TIME: 4.3282416 s
 
 method {:test} Test2() {
 var r0 := AsciiValue('\U{0005}');
 expect r0 == '\U{0005}' as int;
 }
 
-// REPEAT 3 - TIME: 3.763604 s
+// REPEAT 3 - TIME: 5.8891998 s
 
 method {:test} Test3() {
 var r0 := AsciiValue('\U{0004}');
 expect r0 == '\U{0004}' as int;
 }
 
-// REPEAT 4 - TIME: 4.5550581 s
+// REPEAT 4 - TIME: 7.5237051 s
 
 method {:test} Test4() {
 var r0 := AsciiValue('\U{0003}');
 expect r0 == '\U{0003}' as int;
 }
 
-// REPEAT 5 - TIME: 5.3885695 s
+// REPEAT 5 - TIME: 8.6884844 s
 
 method {:test} Test5() {
 var r0 := AsciiValue('\U{0001}');
 expect r0 == '\U{0001}' as int;
 }
 
-// REPEAT 6 - TIME: 6.1989845 s
+// REPEAT 6 - TIME: 9.7070726 s
 
 method {:test} Test6() {
 var r0 := AsciiValue('\0');
 expect r0 == '\0' as int;
 }
 
-// REPEAT 7 - TIME: 6.8343981 s
+// REPEAT 7 - TIME: 10.6231092 s
 
 method {:test} Test7() {
 var r0 := AsciiValue('\'');
 expect r0 == '\'' as int;
 }
 
-// REPEAT 8 - TIME: 7.4676495 s
+// REPEAT 8 - TIME: 11.625377 s
 
 method {:test} Test8() {
 var r0 := AsciiValue('\U{22BE}');
 expect r0 == '\U{22BE}' as int;
 }
 
-// REPEAT 9 - TIME: 8.1484622 s
+// REPEAT 9 - TIME: 12.8353271 s
 
 method {:test} Test9() {
 var r0 := AsciiValue('\U{22BD}');
 expect r0 == '\U{22BD}' as int;
 }
 
-// REPEAT 10 - TIME: 8.666469 s
+// REPEAT 10 - TIME: 13.8867254 s
