@@ -116,6 +116,7 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
             test_counts_data = data.get("test_counts", {}).get("per_program", {})
             
             # 1. Recalculate Time and Test Counts
+            prog_to_test_count = {}
             for prog in valid_programs:
                 prog_key = prog if prog in timing_data else f"{prog}.dfy"
                 
@@ -124,10 +125,16 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
                     common_safety_check_time += timing_data[prog_key].get("safety_check_time", 0.0)
                 
                 if prog_key in test_counts_data:
+                    prog_to_test_count[prog] = test_counts_data[prog_key]
                     common_test_counts.append(test_counts_data[prog_key])
+                else:
+                    prog_to_test_count[prog] = 0
+                    common_test_counts.append(0)
                     
             # 2. Recalculate Mutant Statuses
             killed, survived, timeout, error = 0, 0, 0, 0
+            total_tests_faced_by_mutants = 0
+
             for res in data.get("results", []):
                 prog_name = res.get("original_name", "").replace(".dfy", "")
                 if prog_name in valid_programs:
@@ -138,6 +145,7 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
                     elif st == "error" or st == "": error += 1
 
                     common_execution_time += res.get("execution_time", 0.0)
+                    total_tests_faced_by_mutants += prog_to_test_count[prog_name]
                     
             # 3. Final calculations for this X and Strategy
             total_common_mutants = killed + survived + timeout + error
@@ -145,11 +153,12 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
 
             # Change to (killed), if do not wish to count timeouts as kills
             common_kill_rate = (killed + timeout) / total_common_mutants if total_common_mutants > 0 else 0
-            
-            total_common_tests = sum(common_test_counts)
-            avg_common_tests = (total_common_tests / len(common_test_counts)) if common_test_counts else 0.0
-            median_common_tests = statistics.median(common_test_counts) if common_test_counts else 0
+            total_common_tests_generated = sum(common_test_counts)
 
+            total_common_tests = sum(common_test_counts)
+            avg_tests_per_program = (total_common_tests_generated / num_common_programs) if num_common_programs > 0 else 0.0
+            avg_tests_per_mutant = (total_tests_faced_by_mutants / total_common_mutants) if total_common_mutants > 0 else 0.0
+            median_common_tests = statistics.median(common_test_counts) if common_test_counts else 0
 
             avg_test_gen_time = common_test_gen_time / num_common_programs if num_common_programs > 0 else 0.0
             avg_safety_check_time = common_safety_check_time / num_common_programs if num_common_programs > 0 else 0.0
@@ -169,11 +178,12 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
                 "Error": error,
                 "Total Time (s)": total_time,
                 "Avg Total Time (s)": avg_total_time,
-                "Avg Test Gen Time (s)": avg_test_gen_time,
+                "Avg Test Generation Time (s)": avg_test_gen_time,
                 "Avg Safety Check Time (s)": avg_safety_check_time,
-                "Avg Execution Time (s)": avg_execution_time,
+                "Avg Kill Check Time (s)": avg_execution_time,
                 "Total Number of Tests": total_common_tests,
-                "Average Number of Tests": avg_common_tests,
+                "Average Tests per Program": avg_tests_per_program,
+                "Average Tests per Mutant": avg_tests_per_mutant,
                 "Median Number of Tests": median_common_tests
             })
             
@@ -183,7 +193,7 @@ def load_data_for_subset(base_dir, valid_programs, combo_strategies, max_x):
 def load_mutant_level_timing_data(base_dir, valid_programs, combo_strategies, target_x):
     """
     Builds a DataFrame where each row represents a single mutant, containing its specific
-    Execution Time, alongside the Test Gen Time and Safety Check Time of its parent program.
+    Kill Check Time, alongside the Test Generation Time and Safety Check Time of its parent program.
     """
     records = []
     
@@ -211,9 +221,9 @@ def load_mutant_level_timing_data(base_dir, valid_programs, combo_strategies, ta
                 records.append({
                     "Strategy": "SpecBva" if strategy == "Spec_bva" else strategy,
                     "Program": prog_name,
-                    "Test Gen Time": test_gen_time,
+                    "Test Generation Time": test_gen_time,
                     "Safety Check Time": safety_check_time,
-                    "Execution Time": execution_time
+                    "Kill Check Time": execution_time
                 })
                 
     return pd.DataFrame(records)
@@ -252,7 +262,7 @@ def plot_time_vs_x(df, out_dir, suffix=""):
     )
     plt.title(r"Average Cost per Mutant by $\mathtt{--repeat}$ Flag Value")
     plt.xlabel(r"$\mathtt{--repeat}$ Flag Value")
-    plt.ylabel("Total Execution Time (seconds)")
+    plt.ylabel("Total Kill Check Time (seconds)")
     plt.xticks(range(1, max_x + 1))
     
     plt.legend(title="Strategy")
@@ -353,11 +363,11 @@ def plot_test_efficiency_tradeoff(df, out_dir, suffix=""):
 def plot_avg_tests_vs_mutation_score(df, out_dir, suffix=""):
     plt.figure(figsize=(7, 5))
     ax = sns.scatterplot(
-        data=df, x="Average Number of Tests", y="Kill Rate", hue="Strategy", 
+        data=df, x="Average Tests per Mutant", y="Kill Rate", hue="Strategy", 
         style="Strategy", palette=STRATEGY_COLORS, markers=STRATEGY_MARKERS, 
         size="X", sizes=(50, 200), legend="full"
     )
-    plt.title("Kill Rate vs. Avg Tests per Mutant")
+    plt.title("Mutant Kill Rate by Average Tests per Mutant")
     plt.xlabel("Average Number of Tests per Mutant")
     plt.ylabel("Kill Rate")
     
@@ -385,7 +395,7 @@ def plot_time_breakdown_bar(df, out_dir, target_x, suffix=""):
         return
         
     df_x = df_x.set_index("Strategy")
-    time_df = df_x[["Avg Test Gen Time (s)", "Avg Safety Check Time (s)", "Avg Execution Time (s)"]]
+    time_df = df_x[["Avg Test Generation Time (s)", "Avg Safety Check Time (s)", "Avg Kill Check Time (s)"]]
     colors = ["#4C72B0", "#55A868", "#C44E52"] 
     
     ax = time_df.plot(kind="bar", stacked=True, figsize=(8, 6), color=colors, edgecolor='black')
@@ -406,7 +416,7 @@ def plot_mutant_time_boxplots(df, out_dir, target_x, suffix=""):
     if df.empty:
         return
         
-    metrics = ["Test Gen Time", "Safety Check Time", "Execution Time"]
+    metrics = ["Test Generation Time", "Safety Check Time", "Kill Check Time"]
     
     fig, axes = plt.subplots(1, 3, figsize=(16, 6), sharey=False)
     
@@ -428,8 +438,6 @@ def plot_mutant_time_boxplots(df, out_dir, target_x, suffix=""):
         axes[i].set_ylabel("Time (seconds)")
         axes[i].set_yscale("log") 
 
-    plt.suptitle(f"Time Distributions per Mutant by Strategy (Rep={target_x})", y=1.05, fontsize=16, fontweight='bold')
-    
     plt.tight_layout()
     plt.savefig(os.path.join(out_dir, f"plot_9_mutant_time_subplots_x{target_x}{suffix}.png"), bbox_inches='tight')
     plt.close()
