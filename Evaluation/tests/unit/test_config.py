@@ -42,7 +42,7 @@ class TestPathConstants:
 
     def test_dataset_root(self):
         from src.config import BASE_PATH, DATASET_ROOT
-        assert DATASET_ROOT == BASE_PATH / "dataset" / "data"
+        assert DATASET_ROOT == BASE_PATH / "dataset"
 
     def test_external_root(self):
         from src.config import BASE_PATH, EXTERNAL_ROOT

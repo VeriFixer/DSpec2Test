@@ -1,8 +1,0 @@
-// dafny-synthesis_task_id_266.dfy
-
-method {:testEntry} LateralSurfaceArea(size: int) returns (area: int)
-  requires size > 0
-  ensures area == 4 * size * size
-{
-  area := size;
-}

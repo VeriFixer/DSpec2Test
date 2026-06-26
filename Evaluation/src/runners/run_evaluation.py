@@ -20,6 +20,7 @@ from src.logging_config import get_logger
 from src.config import (
     SELECTED_PROGRAMS_DIR,
     SELECTED_PROGRAMS_MUTANTS_DIR,
+    RESULTS_DIR
 )
 from src.mt_eval.core.models import MutantResult, MutantStatus
 from src.mt_eval.execution.kill_checker import KillChecker
@@ -122,7 +123,7 @@ def run_pipeline(sequential: bool = False, output_dir: Path | None = None,
     Returns 0 on success, 1 on critical failure.
     """
     if output_dir is None:
-        output_dir = Path("results")
+        output_dir = RESULTS_DIR
 
     if strategies is None:
         strategies = resolve_strategies(list(STRATEGY_REGISTRY.keys()))
