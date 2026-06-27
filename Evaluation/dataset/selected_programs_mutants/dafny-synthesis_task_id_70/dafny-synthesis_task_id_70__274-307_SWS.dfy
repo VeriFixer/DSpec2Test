@@ -1,0 +1,20 @@
+// dafny-synthesis_task_id_70.dfy
+
+method {:testEntry} AllSequencesEqualLength(sequences: seq<seq<int>>) returns (result: bool)
+  ensures result <==> forall i, j :: 0 <= i < |sequences| && 0 <= j < |sequences| ==> |sequences[i]| == |sequences[j]|
+{
+  var firstLength := |sequences[0]|;
+  if |sequences| == 0 {
+    return true;
+  }
+  result := true;
+  for i := 1 to |sequences|
+    invariant 1 <= i <= |sequences|
+    invariant result <==> forall k :: 0 <= k < i ==> |sequences[k]| == firstLength
+  {
+    if |sequences[i]| != firstLength {
+      result := false;
+      break;
+    }
+  }
+}

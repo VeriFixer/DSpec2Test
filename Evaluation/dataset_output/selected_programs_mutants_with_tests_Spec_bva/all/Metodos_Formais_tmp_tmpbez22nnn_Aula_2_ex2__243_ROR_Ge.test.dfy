@@ -1,0 +1,107 @@
+// Metodos_Formais_tmp_tmpbez22nnn_Aula_2_ex2.dfy
+
+function Potencia(x: nat, y: nat): nat
+{
+  if y == 0 then
+    1
+  else
+    x * Potencia(x, y - 1)
+}
+
+method {:testEntry} Pot(x: nat, y: nat) returns (r: nat)
+  ensures r == Potencia(x, y)
+{
+  var b := x;
+  var e := y;
+  r := 1;
+  while e >= 0
+    invariant Potencia(b, e) * r == Potencia(x, y)
+  {
+    r := b * r;
+    e := e - 1;
+  }
+  return r;
+}
+
+
+method {:test} Test0() {
+var r0 := Pot(0, 2);
+expect r0 == Potencia(0, 2);
+}
+method {:test} Test1() {
+var r0 := Pot(100, 2439);
+expect r0 == Potencia(100, 2439);
+}
+method {:test} Test2() {
+var r0 := Pot(0, 100);
+expect r0 == Potencia(0, 100);
+}
+method {:test} Test4() {
+var r0 := Pot(1, 592);
+expect r0 == Potencia(1, 592);
+}
+
+// REPEAT 1 - TIME: 7.6306733 s
+
+method {:test} Test7() {
+var r0 := Pot(101, 2440);
+expect r0 == Potencia(101, 2440);
+}
+
+// REPEAT 2 - TIME: 8.4297232 s
+
+method {:test} Test8() {
+var r0 := Pot(102, 2441);
+expect r0 == Potencia(102, 2441);
+}
+
+// REPEAT 3 - TIME: 9.1677318 s
+
+method {:test} Test9() {
+var r0 := Pot(103, 2442);
+expect r0 == Potencia(103, 2442);
+}
+
+// REPEAT 4 - TIME: 9.9466038 s
+
+method {:test} Test10() {
+var r0 := Pot(104, 2443);
+expect r0 == Potencia(104, 2443);
+}
+
+// REPEAT 5 - TIME: 10.7025484 s
+
+method {:test} Test11() {
+var r0 := Pot(105, 2444);
+expect r0 == Potencia(105, 2444);
+}
+
+// REPEAT 6 - TIME: 11.443683 s
+
+method {:test} Test12() {
+var r0 := Pot(106, 2445);
+expect r0 == Potencia(106, 2445);
+}
+
+// REPEAT 7 - TIME: 12.2312342 s
+
+method {:test} Test13() {
+var r0 := Pot(107, 2446);
+expect r0 == Potencia(107, 2446);
+}
+
+// REPEAT 8 - TIME: 12.9204872 s
+
+method {:test} Test14() {
+var r0 := Pot(108, 2447);
+expect r0 == Potencia(108, 2447);
+}
+
+// REPEAT 9 - TIME: 13.6207912 s
+
+method {:test} Test15() {
+var r0 := Pot(109, 2448);
+expect r0 == Potencia(109, 2448);
+}
+
+// REPEAT 10 - TIME: 14.2490783 s

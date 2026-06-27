@@ -1,0 +1,100 @@
+method {:testEntry} Main() {
+   var i := 2;
+   var s := [1, i, 3, 4, 5];
+   print |s|; //size
+   assert s[|s|-1] == 5; //access the last element
+   assert s[|s|-1..|s|] == [5]; //slice just the last element, as a singleton
+   assert s[1..] == [2, 3, 4, 5]; // everything but the first
+   assert s[..|s|-1] == [1, 2, 3, 4]; // everything but the last
+   assert s == s[0..] == s[..|s|] == s[0..|s|] == s[..]; // the whole sequence
+
+}
+
+method {:testEntry} foo (s: seq<int>)
+requires |s| > 1
+{
+    print s[1];
+}
+
+method {:test} Test0() {
+Main();
+}
+method {:test} Test1() {
+var seqint0 : seq<int> := [0, 0];
+expect |seqint0| > 1, "If this check fails at runtime, the test does not meet the preconditions";
+foo(seqint0);
+}
+
+// REPEAT 1 - TIME: 3.2286896 s
+
+method {:test} Test2() {
+var seqint0 : seq<int> := [1, 0];
+expect |seqint0| > 1, "If this check fails at runtime, the test does not meet the preconditions";
+foo(seqint0);
+}
+
+// REPEAT 2 - TIME: 4.1785529 s
+
+method {:test} Test3() {
+var seqint0 : seq<int> := [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2];
+expect |seqint0| > 1, "If this check fails at runtime, the test does not meet the preconditions";
+foo(seqint0);
+}
+
+// REPEAT 3 - TIME: 5.1551822 s
+
+method {:test} Test4() {
+var seqint0 : seq<int> := [3, 0];
+expect |seqint0| > 1, "If this check fails at runtime, the test does not meet the preconditions";
+foo(seqint0);
+}
+
+// REPEAT 4 - TIME: 6.1121972 s
+
+method {:test} Test5() {
+var seqint0 : seq<int> := [5, 0, 0];
+expect |seqint0| > 1, "If this check fails at runtime, the test does not meet the preconditions";
+foo(seqint0);
+}
+
+// REPEAT 5 - TIME: 6.9529812 s
+
+method {:test} Test6() {
+var seqint0 : seq<int> := [6, 0, 0, 0];
+expect |seqint0| > 1, "If this check fails at runtime, the test does not meet the preconditions";
+foo(seqint0);
+}
+
+// REPEAT 6 - TIME: 7.8075285 s
+
+method {:test} Test7() {
+var seqint0 : seq<int> := [7, 0, 0, 0, 0, 9];
+expect |seqint0| > 1, "If this check fails at runtime, the test does not meet the preconditions";
+foo(seqint0);
+}
+
+// REPEAT 7 - TIME: 8.5581705 s
+
+method {:test} Test8() {
+var seqint0 : seq<int> := [8, 0];
+expect |seqint0| > 1, "If this check fails at runtime, the test does not meet the preconditions";
+foo(seqint0);
+}
+
+// REPEAT 8 - TIME: 9.3525552 s
+
+method {:test} Test9() {
+var seqint0 : seq<int> := [10, 0, 0, 0, 12];
+expect |seqint0| > 1, "If this check fails at runtime, the test does not meet the preconditions";
+foo(seqint0);
+}
+
+// REPEAT 9 - TIME: 10.0802488 s
+
+method {:test} Test10() {
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 11, 16];
+expect |seqint0| > 1, "If this check fails at runtime, the test does not meet the preconditions";
+foo(seqint0);
+}
+
+// REPEAT 10 - TIME: 10.8060937 s

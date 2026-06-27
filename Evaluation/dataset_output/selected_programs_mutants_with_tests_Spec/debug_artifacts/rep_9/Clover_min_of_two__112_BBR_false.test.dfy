@@ -1,0 +1,25 @@
+// Clover_min_of_two.dfy
+
+method {:testEntry} Min(x: int, y: int) returns (z: int)
+  ensures x <= y ==> z == x
+  ensures x > y ==> z == y
+{
+  if false {
+    return x;
+  } else {
+    return y;
+  }
+}
+
+method {:test} Test16() {
+var r0 := Min(13, 12);
+expect 13 <= 12 ==> r0 == 13;
+expect 13 > 12 ==> r0 == 12;
+}
+method {:test} Test17() {
+var r0 := Min(12, 12);
+expect 12 <= 12 ==> r0 == 12;
+expect 12 > 12 ==> r0 == 12;
+}
+
+// REPEAT 9 - TIME: 17.8059171 s

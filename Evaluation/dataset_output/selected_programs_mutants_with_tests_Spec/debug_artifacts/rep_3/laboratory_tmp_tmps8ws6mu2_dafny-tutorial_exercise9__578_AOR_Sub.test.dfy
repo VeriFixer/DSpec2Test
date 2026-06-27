@@ -1,0 +1,34 @@
+// laboratory_tmp_tmps8ws6mu2_dafny-tutorial_exercise9.dfy
+
+function fib(n: nat): nat
+{
+  if n == 0 then
+    0
+  else if n == 1 then
+    1
+  else
+    fib(n - 1) + fib(n - 2)
+}
+
+method {:testEntry} ComputeFib(n: nat) returns (b: nat)
+  ensures b == fib(n)
+{
+  var i: int := 0;
+  b := 0;
+  var c := 1;
+  while i < n
+    invariant 0 <= i <= n
+    invariant b == fib(i)
+    invariant c == fib(i + 1)
+  {
+    b, c := c, c - b;
+    i := i + 1;
+  }
+}
+
+method {:test} Test2() {
+var r0 := ComputeFib(3);
+expect r0 == fib(3);
+}
+
+// REPEAT 3 - TIME: 4.7157888 s

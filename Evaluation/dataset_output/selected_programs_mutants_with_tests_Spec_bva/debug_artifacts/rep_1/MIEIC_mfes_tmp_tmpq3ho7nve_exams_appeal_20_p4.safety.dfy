@@ -1,0 +1,36 @@
+function F(n: nat): nat { if n <= 2 then n else F(n-1) + F(n-3)}
+
+method {:testEntry} calcF(n: nat) returns (res: nat)  
+ ensures res == F(n) 
+{
+  var a, b, c := 0, 1, 2;
+  var i := 0;
+  while i < n
+    decreases n-i
+    invariant 0 <= i <= n
+    invariant a == F(i) && b == F(i+1) && c == F(i+2)
+   {
+    a, b, c := b, c, a + c;        
+    i := i + 1;
+  }
+  res := a;
+}
+
+method {:test} Test0() {
+var r0 := calcF(2);
+expect r0 == F(2);
+}
+method {:test} Test1() {
+var r0 := calcF(100);
+expect r0 == F(100);
+}
+method {:test} Test3() {
+var r0 := calcF(1802);
+expect r0 == F(1802);
+}
+method {:test} Test4() {
+var r0 := calcF(1242);
+expect r0 == F(1242);
+}
+
+// REPEAT 1 - TIME: 6.1429552 s

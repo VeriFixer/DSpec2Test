@@ -1,0 +1,130 @@
+// dafny-synthesis_task_id_435.dfy
+
+method {:testEntry} LastDigit(n: int) returns (d: int)
+  requires n >= 0
+  ensures 0 <= d < 10
+  ensures n % 10 == d
+{
+  d := 0;
+}
+
+
+method {:test} Test0() {
+expect 8 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(8);
+expect 0 <= r0 < 10;
+expect 8 % 10 == r0;
+}
+method {:test} Test1() {
+expect 0 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(0);
+expect 0 <= r0 < 10;
+expect 0 % 10 == r0;
+}
+method {:test} Test2() {
+expect 100 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(100);
+expect 0 <= r0 < 10;
+expect 100 % 10 == r0;
+}
+method {:test} Test4() {
+expect 12360 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(12360);
+expect 0 <= r0 < 10;
+expect 12360 % 10 == r0;
+}
+method {:test} Test5() {
+expect 9 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(9);
+expect 0 <= r0 < 10;
+expect 9 % 10 == r0;
+}
+method {:test} Test6() {
+expect 12369 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(12369);
+expect 0 <= r0 < 10;
+expect 12369 % 10 == r0;
+}
+
+// REPEAT 1 - TIME: 6.0639101 s
+
+method {:test} Test8() {
+expect 12370 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(12370);
+expect 0 <= r0 < 10;
+expect 12370 % 10 == r0;
+}
+
+// REPEAT 2 - TIME: 7.0397667 s
+
+method {:test} Test9() {
+expect 12380 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(12380);
+expect 0 <= r0 < 10;
+expect 12380 % 10 == r0;
+}
+
+// REPEAT 3 - TIME: 7.7769055 s
+
+method {:test} Test10() {
+expect 12390 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(12390);
+expect 0 <= r0 < 10;
+expect 12390 % 10 == r0;
+}
+
+// REPEAT 4 - TIME: 8.7917792 s
+
+method {:test} Test11() {
+expect 12400 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(12400);
+expect 0 <= r0 < 10;
+expect 12400 % 10 == r0;
+}
+
+// REPEAT 5 - TIME: 9.6233691 s
+
+method {:test} Test12() {
+expect 12410 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(12410);
+expect 0 <= r0 < 10;
+expect 12410 % 10 == r0;
+}
+
+// REPEAT 6 - TIME: 10.5171167 s
+
+method {:test} Test13() {
+expect 12420 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(12420);
+expect 0 <= r0 < 10;
+expect 12420 % 10 == r0;
+}
+
+// REPEAT 7 - TIME: 11.359525 s
+
+method {:test} Test14() {
+expect 12430 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(12430);
+expect 0 <= r0 < 10;
+expect 12430 % 10 == r0;
+}
+
+// REPEAT 8 - TIME: 12.0828535 s
+
+method {:test} Test15() {
+expect 12440 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(12440);
+expect 0 <= r0 < 10;
+expect 12440 % 10 == r0;
+}
+
+// REPEAT 9 - TIME: 12.8429645 s
+
+method {:test} Test16() {
+expect 12450 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := LastDigit(12450);
+expect 0 <= r0 < 10;
+expect 12450 % 10 == r0;
+}
+
+// REPEAT 10 - TIME: 13.4852265 s

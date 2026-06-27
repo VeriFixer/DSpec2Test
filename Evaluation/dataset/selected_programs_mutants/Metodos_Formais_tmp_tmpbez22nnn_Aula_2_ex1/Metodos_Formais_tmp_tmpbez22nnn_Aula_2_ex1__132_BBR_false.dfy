@@ -1,0 +1,17 @@
+// Metodos_Formais_tmp_tmpbez22nnn_Aula_2_ex1.dfy
+
+method {:testEntry} Mult(x: nat, y: nat) returns (r: nat)
+  ensures r == x * y
+{
+  var m := x;
+  var n := y;
+  r := 0;
+  while false
+    invariant m >= 0
+    invariant m * n + r == x * y
+  {
+    r := r + n;
+    m := m - 1;
+  }
+  return r;
+}

@@ -1,0 +1,67 @@
+// Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root.dfy
+
+method {:testEntry} mroot1(n: int) returns (r: int)
+  requires n >= 0
+  ensures r >= 0 && r * r <= n < (r + 1) * (r + 1)
+{
+  r := 0;
+  while r + 1 + (r + 1) <= n
+    invariant r >= 0 && r * r <= n
+    decreases n - r * r
+  {
+    r := r + 1;
+  }
+}
+
+method {:testEntry} mroot2(n: int) returns (r: int)
+  requires n >= 0
+  ensures r >= 0 && r * r <= n < (r + 1) * (r + 1)
+{
+  r := n;
+  while n < r * r
+    invariant 0 <= r <= n && n < (r + 1) * (r + 1)
+    invariant r * r <= n ==> n < (r + 1) * (r + 1)
+    decreases r
+  {
+    r := r - 1;
+  }
+}
+
+method {:testEntry} mroot3(n: int) returns (r: int)
+  requires n >= 0
+  ensures r >= 0 && r * r <= n < (r + 1) * (r + 1)
+{
+  var y: int;
+  var h: int;
+  r := 0;
+  y := n + 1;
+  while y != r + 1
+    invariant r >= 0 && r * r <= n < y * y && y >= r + 1
+    decreases y - r
+  {
+    h := (r + y) / 2;
+    if h * h <= n {
+      r := h;
+    } else {
+      y := h;
+    }
+  }
+}
+
+method {:test} Test9() {
+expect 5 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := mroot1(5);
+expect r0 >= 0 && r0 * r0 <= 5 < (r0 + 1) * (r0 + 1);
+}
+method {:test} Test10() {
+expect 5 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := mroot2(5);
+expect r0 >= 0 && r0 * r0 <= 5 < (r0 + 1) * (r0 + 1);
+}
+method {:test} Test11() {
+expect 5 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := mroot3(5);
+expect r0 >= 0 && r0 * r0 <= 5 < (r0 + 1) * (r0 + 1);
+}
+
+// REPEAT 4 - TIME: 9.7690635 s

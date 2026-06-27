@@ -1,0 +1,87 @@
+// Clover_triple3.dfy
+
+method {:testEntry} Triple(x: int) returns (r: int)
+  ensures r == 3 * x
+{
+  if x != 0 {
+    r := 0;
+  } else {
+    var y := 2 * x;
+    r := x + y;
+  }
+}
+
+
+method {:test} Test0() {
+var r0 := Triple(1);
+expect r0 == 3 * 1;
+}
+method {:test} Test1() {
+var r0 := Triple(0);
+expect r0 == 3 * 0;
+}
+
+// REPEAT 1 - TIME: 3.0269035 s
+
+method {:test} Test2() {
+var r0 := Triple(40);
+expect r0 == 3 * 40;
+}
+
+// REPEAT 2 - TIME: 4.1058922 s
+
+method {:test} Test4() {
+var r0 := Triple(41);
+expect r0 == 3 * 41;
+}
+
+// REPEAT 3 - TIME: 4.9725844 s
+
+method {:test} Test6() {
+var r0 := Triple(42);
+expect r0 == 3 * 42;
+}
+
+// REPEAT 4 - TIME: 5.9402947 s
+
+method {:test} Test8() {
+var r0 := Triple(43);
+expect r0 == 3 * 43;
+}
+
+// REPEAT 5 - TIME: 6.9491795 s
+
+method {:test} Test10() {
+var r0 := Triple(44);
+expect r0 == 3 * 44;
+}
+
+// REPEAT 6 - TIME: 7.8291875 s
+
+method {:test} Test12() {
+var r0 := Triple(45);
+expect r0 == 3 * 45;
+}
+
+// REPEAT 7 - TIME: 8.8138617 s
+
+method {:test} Test14() {
+var r0 := Triple(46);
+expect r0 == 3 * 46;
+}
+
+// REPEAT 8 - TIME: 9.5423884 s
+
+method {:test} Test16() {
+var r0 := Triple(47);
+expect r0 == 3 * 47;
+}
+
+// REPEAT 9 - TIME: 10.1477533 s
+
+method {:test} Test18() {
+var r0 := Triple(48);
+expect r0 == 3 * 48;
+}
+
+// REPEAT 10 - TIME: 10.8531815 s

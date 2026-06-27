@@ -22,6 +22,14 @@
 
 ---
 
+## Generating dataset
+
+Pass to the file flag one of the csv files in dataset/csv
+
+```bash
+python -m src.runners.generate_mutants --file 90-mutation-score.csv
+```
+
 ## Generating mutatns
 need to change directoy to the Evaluation repo
 

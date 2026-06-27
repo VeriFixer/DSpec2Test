@@ -1,2 +1,10 @@
-filter_dataset.py: 0.0975 seconds
-generate_mutants.py: 912.2810 seconds || 15.2046833 minutes
+filter_dataset.py: 0.1181 seconds
+
+=== Execution Summary ===
+Total files in CSV:           432
+Files from DafnyBench:        430
+Files with methods:           426
+Files copied (no keywords):   220
+=========================
+
+generate_mutants.py: 1895.4777 seconds | 21.5 minutes

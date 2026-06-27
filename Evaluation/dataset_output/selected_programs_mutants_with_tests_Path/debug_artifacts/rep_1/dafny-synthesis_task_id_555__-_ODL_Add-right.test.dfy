@@ -1,0 +1,26 @@
+// dafny-synthesis_task_id_555.dfy
+
+method {:testEntry} DifferenceSumCubesAndSumNumbers(n: int) returns (diff: int)
+  requires n >= 0
+  ensures diff == n * n * (n + 1) * (n + 1) / 4 - n * (n + 1) / 2
+{
+  var sumCubes := 0;
+  var sumNumbers := 0;
+  for i := 1 to n
+    invariant 0 <= i <= n + 1
+    invariant sumCubes == (i - 1) * (i - 1) * i * i / 4
+    invariant sumNumbers == (i - 1) * i / 2
+  {
+    sumCubes := sumCubes;
+    sumNumbers := sumNumbers;
+  }
+  diff := sumCubes - sumNumbers;
+}
+
+method {:test} Test0() {
+expect 63 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(63);
+expect r0 == 63 * 63 * (63 + 1) * (63 + 1) / 4 - 63 * (63 + 1) / 2;
+}
+
+// REPEAT 1 - TIME: 5.9122467 s
