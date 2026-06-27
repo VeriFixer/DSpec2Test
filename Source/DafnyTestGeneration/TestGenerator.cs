@@ -527,7 +527,7 @@ namespace DafnyTestGeneration {
             if (isSpecMode) {
               method.SetBody(new BlockStmt(method.Body.Origin, []));
             } else {
-              OriginalBodies[method.Name] = method.Body;
+              OriginalBodies[method.Name] = cloner.CloneBlockStmt(method.Body);
             }
           }
 

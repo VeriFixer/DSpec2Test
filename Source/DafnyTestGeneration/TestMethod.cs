@@ -641,6 +641,7 @@ namespace DafnyTestGeneration {
     private Expression GetDefaultExpression(Type type) {
       return type switch {
         _ when type.IsBoolType => new LiteralExpr(new Token(), false),
+        _ when type.IsCharType => new CharLiteralExpr(new Token(), "a"),
         _ when type.IsIntegerType || type.IsBigOrdinalType || type.IsBitVectorType => new LiteralExpr(new Token(), 0),
         _ when type.IsRealType => GetRealExpr("0.0", type, type),
         _ when type.IsStringType => new StringLiteralExpr(new Token(), "", false),
@@ -984,7 +985,18 @@ namespace DafnyTestGeneration {
             string extractedString = "";
             for (var i = 0; i < variable?.Cardinality(); i++) {
               var el = variable?[i];
-              extractedString += el == null ? "\0" : StripString(el.PrimitiveLiteral);
+              if (el == null) {
+                extractedString += "a";
+                continue;
+              }
+
+              var elementExpr = ExtractExpression(el, seqElementType);
+              
+              if (elementExpr is CharLiteralExpr charExpr) {
+                extractedString += charExpr.Value;
+              } else {
+                extractedString += "a";
+              }
             }
             return new StringLiteralExpr(new Token(), extractedString, false);
           }
