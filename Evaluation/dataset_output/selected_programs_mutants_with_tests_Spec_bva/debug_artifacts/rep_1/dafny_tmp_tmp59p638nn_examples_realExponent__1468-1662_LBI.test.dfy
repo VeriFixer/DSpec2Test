@@ -88,4 +88,4 @@ expect 100.0 > 0.0, "If this check fails at runtime, the test does not meet the 
 var r0 := pow(1, 100.0);
 }
 
-// REPEAT 1 - TIME: 8.0181863 s
+// REPEAT 1 - TIME: 10.4604203 s

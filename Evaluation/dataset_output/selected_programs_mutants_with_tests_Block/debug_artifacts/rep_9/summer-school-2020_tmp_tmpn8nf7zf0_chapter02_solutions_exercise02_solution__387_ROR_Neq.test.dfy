@@ -43,14 +43,14 @@ method {:testEntry} Main()
 }
 
 method {:test} Test17() {
-expect 1 < 63, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := test_prime(63);
-expect r0 == IsPrime(63);
+expect 1 < 79, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := test_prime(79);
+expect r0 == IsPrime(79);
 }
 method {:test} Test18() {
-expect 1 < 70, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := test_prime(70);
-expect r0 == IsPrime(70);
+expect 1 < 80, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := test_prime(80);
+expect r0 == IsPrime(80);
 }
 
-// REPEAT 9 - TIME: 14.316778 s
+// REPEAT 9 - TIME: 14.4612649 s

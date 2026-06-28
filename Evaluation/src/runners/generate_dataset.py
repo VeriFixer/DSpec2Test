@@ -27,7 +27,10 @@ def filter_and_copy_dafny_programs(csv_name: str):
     methods_files = 0
     copied_files = 0
 
-    keyword_patterns = [re.compile(rf'\b{re.escape(kw)}\b') for kw in KEYWORDS]
+    keyword_patterns = [
+        re.compile(rf'\b{re.escape(kw)}\b') if kw.isalnum() else re.compile(re.escape(kw))
+        for kw in KEYWORDS
+    ]
     method_pattern = re.compile(r'\bmethod\b')
 
     logger.info(f"Starting to process {csv_name}...")
@@ -65,15 +68,26 @@ def filter_and_copy_dafny_programs(csv_name: str):
                     contains_keyword = any(pattern.search(content) for pattern in keyword_patterns)
 
                     if not contains_keyword:
+                        
+                        methods_added = 0
+                        
+                        def replace_method(match):
+                            nonlocal methods_added
+                            if match.group(1): 
+                                return match.group(0) 
+                            
+                            methods_added += 1
+                            return 'method {:testEntry}'
 
-                        dest_file = SELECTED_PROGRAMS_DIR / src_file.name
+                        modified_content = re.sub(r'(\bghost\s+)?\bmethod\b', replace_method, content)
 
-                        modified_content = re.sub(r'\bmethod\b', 'method {:testEntry}', content)
+                        if methods_added > 0:
+                            dest_file = SELECTED_PROGRAMS_DIR / src_file.name
 
-                        with open(dest_file, 'w', encoding='utf-8') as dest_f:
-                            dest_f.write(modified_content)
+                            with open(dest_file, 'w', encoding='utf-8') as dest_f:
+                                dest_f.write(modified_content)
 
-                        copied_files += 1
+                            copied_files += 1
 
                 except Exception as e:
                     logger.error(f"Error reading or copying {src_file.name}: {e}")

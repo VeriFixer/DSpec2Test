@@ -34,4 +34,4 @@ var r0 := IsInteger("");
 expect r0 <==> |""| > 0 && forall i :: 0 <= i < |""| ==> IsDigit(""[i]);
 }
 
-// REPEAT 1 - TIME: 2.644552 s
+// REPEAT 1 - TIME: 2.9452858 s

@@ -32,7 +32,7 @@ method {:testEntry} Pow(a: nat, n: nat) returns (y: nat)
 }
 
 method {:test} Test8() {
-var r0 := Pow(289, 8108);
+var r0 := Pow(8, 8108);
 }
 
-// REPEAT 9 - TIME: 31.8775531 s
+// REPEAT 9 - TIME: 36.1572939 s

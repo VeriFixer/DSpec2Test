@@ -16,4 +16,4 @@ expect r0 == 1;
 expect r1 == 1;
 }
 
-// REPEAT 2 - TIME: 4.1972773 s
+// REPEAT 2 - TIME: 5.9392271 s

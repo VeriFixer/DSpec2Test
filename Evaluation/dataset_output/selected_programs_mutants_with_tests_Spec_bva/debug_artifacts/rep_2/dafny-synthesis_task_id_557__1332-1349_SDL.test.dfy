@@ -58,4 +58,4 @@ expect |r0| == |"d&"|;
 expect forall i :: 0 <= i < |"d&"| ==> if IsLowerCase("d&"[i]) then IsLowerUpperPair("d&"[i], r0[i]) else if IsUpperCase("d&"[i]) then IsUpperLowerPair("d&"[i], r0[i]) else r0[i] == "d&"[i];
 }
 
-// REPEAT 2 - TIME: 9.1549206 s
+// REPEAT 2 - TIME: 11.3071673 s

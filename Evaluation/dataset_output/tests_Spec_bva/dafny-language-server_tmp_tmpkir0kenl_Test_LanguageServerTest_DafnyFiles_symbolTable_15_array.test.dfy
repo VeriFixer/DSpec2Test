@@ -25,7 +25,7 @@ expect |seqint0| > 1, "If this check fails at runtime, the test does not meet th
 foo(seqint0);
 }
 
-// REPEAT 1 - TIME: 5.2575558 s
+// REPEAT 1 - TIME: 6.809659 s
 
 method {:test} Test7() {
 var seqint0 : seq<int> := [1, 0];
@@ -33,7 +33,7 @@ expect |seqint0| > 1, "If this check fails at runtime, the test does not meet th
 foo(seqint0);
 }
 
-// REPEAT 2 - TIME: 6.3548185 s
+// REPEAT 2 - TIME: 7.983646 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2];
@@ -41,7 +41,7 @@ expect |seqint0| > 1, "If this check fails at runtime, the test does not meet th
 foo(seqint0);
 }
 
-// REPEAT 3 - TIME: 7.2721093 s
+// REPEAT 3 - TIME: 9.1322587 s
 
 method {:test} Test9() {
 var seqint0 : seq<int> := [3, 0];
@@ -49,7 +49,7 @@ expect |seqint0| > 1, "If this check fails at runtime, the test does not meet th
 foo(seqint0);
 }
 
-// REPEAT 4 - TIME: 8.1004661 s
+// REPEAT 4 - TIME: 10.5496289 s
 
 method {:test} Test10() {
 var seqint0 : seq<int> := [5, 0, 0];
@@ -57,7 +57,7 @@ expect |seqint0| > 1, "If this check fails at runtime, the test does not meet th
 foo(seqint0);
 }
 
-// REPEAT 5 - TIME: 9.0329004 s
+// REPEAT 5 - TIME: 11.5008394 s
 
 method {:test} Test11() {
 var seqint0 : seq<int> := [6, 0, 0, 0];
@@ -65,7 +65,7 @@ expect |seqint0| > 1, "If this check fails at runtime, the test does not meet th
 foo(seqint0);
 }
 
-// REPEAT 6 - TIME: 9.7783717 s
+// REPEAT 6 - TIME: 12.4581029 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [7, 0, 0, 0, 0, 9];
@@ -73,7 +73,7 @@ expect |seqint0| > 1, "If this check fails at runtime, the test does not meet th
 foo(seqint0);
 }
 
-// REPEAT 7 - TIME: 10.5887359 s
+// REPEAT 7 - TIME: 13.1875151 s
 
 method {:test} Test13() {
 var seqint0 : seq<int> := [8, 0];
@@ -81,7 +81,7 @@ expect |seqint0| > 1, "If this check fails at runtime, the test does not meet th
 foo(seqint0);
 }
 
-// REPEAT 8 - TIME: 11.2875187 s
+// REPEAT 8 - TIME: 13.979877 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [10, 0, 0, 0, 12];
@@ -89,7 +89,7 @@ expect |seqint0| > 1, "If this check fails at runtime, the test does not meet th
 foo(seqint0);
 }
 
-// REPEAT 9 - TIME: 11.9347363 s
+// REPEAT 9 - TIME: 14.7399975 s
 
 method {:test} Test15() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 11, 16];
@@ -97,4 +97,4 @@ expect |seqint0| > 1, "If this check fails at runtime, the test does not meet th
 foo(seqint0);
 }
 
-// REPEAT 10 - TIME: 12.6652424 s
+// REPEAT 10 - TIME: 15.3837175 s

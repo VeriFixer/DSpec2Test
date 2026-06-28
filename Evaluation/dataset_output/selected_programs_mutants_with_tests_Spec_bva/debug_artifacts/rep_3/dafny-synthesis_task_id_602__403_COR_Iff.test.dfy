@@ -32,14 +32,14 @@ method {:testEntry} FindFirstRepeatedChar(s: string) returns (found: bool, c: ch
 }
 
 method {:test} Test18() {
-var r0, r1 := FindFirstRepeatedChar("\U{0005}aa\U{0003}aaa\U{0001}");
-expect r0 ==> exists i, j :: 0 <= i < j < |"\U{0005}aa\U{0003}aaa\U{0001}"| && "\U{0005}aa\U{0003}aaa\U{0001}"[i] == "\U{0005}aa\U{0003}aaa\U{0001}"[j] && "\U{0005}aa\U{0003}aaa\U{0001}"[i] == r1 && forall k, l :: 0 <= k < l < j && "\U{0005}aa\U{0003}aaa\U{0001}"[k] == "\U{0005}aa\U{0003}aaa\U{0001}"[l] ==> k >= i;
-expect !r0 ==> forall i, j :: 0 <= i < j < |"\U{0005}aa\U{0003}aaa\U{0001}"| ==> "\U{0005}aa\U{0003}aaa\U{0001}"[i] != "\U{0005}aa\U{0003}aaa\U{0001}"[j];
+var r0, r1 := FindFirstRepeatedChar("\U{0003}\U{0007}\U{0005}\U{0001}");
+expect r0 ==> exists i, j :: 0 <= i < j < |"\U{0003}\U{0007}\U{0005}\U{0001}"| && "\U{0003}\U{0007}\U{0005}\U{0001}"[i] == "\U{0003}\U{0007}\U{0005}\U{0001}"[j] && "\U{0003}\U{0007}\U{0005}\U{0001}"[i] == r1 && forall k, l :: 0 <= k < l < j && "\U{0003}\U{0007}\U{0005}\U{0001}"[k] == "\U{0003}\U{0007}\U{0005}\U{0001}"[l] ==> k >= i;
+expect !r0 ==> forall i, j :: 0 <= i < j < |"\U{0003}\U{0007}\U{0005}\U{0001}"| ==> "\U{0003}\U{0007}\U{0005}\U{0001}"[i] != "\U{0003}\U{0007}\U{0005}\U{0001}"[j];
 }
 method {:test} Test19() {
-var r0, r1 := FindFirstRepeatedChar("\0a\0");
-expect r0 ==> exists i, j :: 0 <= i < j < |"\0a\0"| && "\0a\0"[i] == "\0a\0"[j] && "\0a\0"[i] == r1 && forall k, l :: 0 <= k < l < j && "\0a\0"[k] == "\0a\0"[l] ==> k >= i;
-expect !r0 ==> forall i, j :: 0 <= i < j < |"\0a\0"| ==> "\0a\0"[i] != "\0a\0"[j];
+var r0, r1 := FindFirstRepeatedChar("\0a\U{0001}aa\0aaaaaaaaaaa\U{0004}");
+expect r0 ==> exists i, j :: 0 <= i < j < |"\0a\U{0001}aa\0aaaaaaaaaaa\U{0004}"| && "\0a\U{0001}aa\0aaaaaaaaaaa\U{0004}"[i] == "\0a\U{0001}aa\0aaaaaaaaaaa\U{0004}"[j] && "\0a\U{0001}aa\0aaaaaaaaaaa\U{0004}"[i] == r1 && forall k, l :: 0 <= k < l < j && "\0a\U{0001}aa\0aaaaaaaaaaa\U{0004}"[k] == "\0a\U{0001}aa\0aaaaaaaaaaa\U{0004}"[l] ==> k >= i;
+expect !r0 ==> forall i, j :: 0 <= i < j < |"\0a\U{0001}aa\0aaaaaaaaaaa\U{0004}"| ==> "\0a\U{0001}aa\0aaaaaaaaaaa\U{0004}"[i] != "\0a\U{0001}aa\0aaaaaaaaaaa\U{0004}"[j];
 }
 
-// REPEAT 3 - TIME: 13.3042392 s
+// REPEAT 3 - TIME: 17.6205071 s

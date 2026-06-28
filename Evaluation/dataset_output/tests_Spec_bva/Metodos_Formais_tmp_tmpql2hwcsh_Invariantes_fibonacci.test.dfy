@@ -55,67 +55,67 @@ var r0 := ComputeFib(3);
 expect r0 == Fib(3);
 }
 
-// REPEAT 1 - TIME: 5.8758509 s
+// REPEAT 1 - TIME: 8.1763853 s
 
 method {:test} Test6() {
 var r0 := ComputeFib(101);
 expect r0 == Fib(101);
 }
 
-// REPEAT 2 - TIME: 6.7564757 s
+// REPEAT 2 - TIME: 9.2625001 s
 
 method {:test} Test7() {
 var r0 := ComputeFib(102);
 expect r0 == Fib(102);
 }
 
-// REPEAT 3 - TIME: 7.6335502 s
+// REPEAT 3 - TIME: 10.2316757 s
 
 method {:test} Test8() {
 var r0 := ComputeFib(103);
 expect r0 == Fib(103);
 }
 
-// REPEAT 4 - TIME: 8.4147032 s
+// REPEAT 4 - TIME: 11.0289215 s
 
 method {:test} Test9() {
 var r0 := ComputeFib(104);
 expect r0 == Fib(104);
 }
 
-// REPEAT 5 - TIME: 9.1353835 s
+// REPEAT 5 - TIME: 11.9637317 s
 
 method {:test} Test10() {
 var r0 := ComputeFib(105);
 expect r0 == Fib(105);
 }
 
-// REPEAT 6 - TIME: 9.9123442 s
+// REPEAT 6 - TIME: 12.8042175 s
 
 method {:test} Test11() {
 var r0 := ComputeFib(106);
 expect r0 == Fib(106);
 }
 
-// REPEAT 7 - TIME: 10.6952577 s
+// REPEAT 7 - TIME: 13.578696 s
 
 method {:test} Test12() {
 var r0 := ComputeFib(107);
 expect r0 == Fib(107);
 }
 
-// REPEAT 8 - TIME: 11.3966732 s
+// REPEAT 8 - TIME: 14.6554425 s
 
 method {:test} Test13() {
 var r0 := ComputeFib(108);
 expect r0 == Fib(108);
 }
 
-// REPEAT 9 - TIME: 12.1319878 s
+// REPEAT 9 - TIME: 15.5800638 s
 
 method {:test} Test14() {
 var r0 := ComputeFib(109);
 expect r0 == Fib(109);
 }
 
-// REPEAT 10 - TIME: 12.7665433 s
+// REPEAT 10 - TIME: 16.4590624 s

@@ -55,7 +55,7 @@ var r0 := A8Q1(1, 1, 0);
 expect r0 <= 1 && r0 <= 1 && r0 <= 0;
 }
 
-// REPEAT 1 - TIME: 3.0335757 s
+// REPEAT 1 - TIME: 2.8569559 s
 
 method {:test} Test3() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
@@ -73,7 +73,7 @@ var r0 := A8Q1(2, 2, 1);
 expect r0 <= 2 && r0 <= 2 && r0 <= 1;
 }
 
-// REPEAT 2 - TIME: 4.554363 s
+// REPEAT 2 - TIME: 4.3769512 s
 
 method {:test} Test6() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
@@ -82,8 +82,8 @@ expect r0 <= 3 && r0 <= 4 && r0 <= 4;
 }
 method {:test} Test7() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := A8Q1(3, 5, 4);
-expect r0 <= 3 && r0 <= 5 && r0 <= 4;
+var r0 := A8Q1(4, 5, 4);
+expect r0 <= 4 && r0 <= 5 && r0 <= 4;
 }
 method {:test} Test8() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
@@ -91,7 +91,7 @@ var r0 := A8Q1(5, 5, 4);
 expect r0 <= 5 && r0 <= 5 && r0 <= 4;
 }
 
-// REPEAT 3 - TIME: 5.8471666 s
+// REPEAT 3 - TIME: 5.8422059 s
 
 method {:test} Test9() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
@@ -109,7 +109,7 @@ var r0 := A8Q1(6, 6, 5);
 expect r0 <= 6 && r0 <= 6 && r0 <= 5;
 }
 
-// REPEAT 4 - TIME: 7.434097 s
+// REPEAT 4 - TIME: 7.4332249 s
 
 method {:test} Test12() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
@@ -118,8 +118,8 @@ expect r0 <= 7 && r0 <= 8 && r0 <= 8;
 }
 method {:test} Test13() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := A8Q1(7, 9, 8);
-expect r0 <= 7 && r0 <= 9 && r0 <= 8;
+var r0 := A8Q1(8, 9, 8);
+expect r0 <= 8 && r0 <= 9 && r0 <= 8;
 }
 method {:test} Test14() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
@@ -127,7 +127,7 @@ var r0 := A8Q1(9, 9, 8);
 expect r0 <= 9 && r0 <= 9 && r0 <= 8;
 }
 
-// REPEAT 5 - TIME: 8.7978548 s
+// REPEAT 5 - TIME: 8.9628961 s
 
 method {:test} Test15() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
@@ -145,7 +145,7 @@ var r0 := A8Q1(10, 10, 9);
 expect r0 <= 10 && r0 <= 10 && r0 <= 9;
 }
 
-// REPEAT 6 - TIME: 10.2262577 s
+// REPEAT 6 - TIME: 10.1605032 s
 
 method {:test} Test18() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
@@ -163,7 +163,7 @@ var r0 := A8Q1(13, 13, 12);
 expect r0 <= 13 && r0 <= 13 && r0 <= 12;
 }
 
-// REPEAT 7 - TIME: 11.8280486 s
+// REPEAT 7 - TIME: 11.3717772 s
 
 method {:test} Test21() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
@@ -181,7 +181,7 @@ var r0 := A8Q1(14, 14, 13);
 expect r0 <= 14 && r0 <= 14 && r0 <= 13;
 }
 
-// REPEAT 8 - TIME: 13.1709811 s
+// REPEAT 8 - TIME: 12.4578915 s
 
 method {:test} Test24() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
@@ -199,7 +199,7 @@ var r0 := A8Q1(17, 17, 16);
 expect r0 <= 17 && r0 <= 17 && r0 <= 16;
 }
 
-// REPEAT 9 - TIME: 14.3403084 s
+// REPEAT 9 - TIME: 13.5605907 s
 
 method {:test} Test27() {
 expect true, "If this check fails at runtime, the test does not meet the preconditions";
@@ -217,4 +217,4 @@ var r0 := A8Q1(18, 18, 17);
 expect r0 <= 18 && r0 <= 18 && r0 <= 17;
 }
 
-// REPEAT 10 - TIME: 15.3747699 s
+// REPEAT 10 - TIME: 14.6869988 s

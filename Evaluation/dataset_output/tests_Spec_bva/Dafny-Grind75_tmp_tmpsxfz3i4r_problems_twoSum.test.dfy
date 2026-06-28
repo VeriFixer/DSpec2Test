@@ -73,7 +73,7 @@ expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 
 var r0 := twoSum(seqint0, 1796);
 }
 
-// REPEAT 1 - TIME: 97.329823 s
+// REPEAT 1 - TIME: 142.671456 s
 
 method {:test} Test7() {
 var seqint0 : seq<int> := [8852, 1796, 2283, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 10, 0, 2283, 8365];
@@ -81,7 +81,7 @@ expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 
 var r0 := twoSum(seqint0, 10648);
 }
 
-// REPEAT 2 - TIME: 107.1081943 s
+// REPEAT 2 - TIME: 156.4880975 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [5, 0, 0, 18138, 18138, 0, 0, 609, 0, 0, 0, 0, 0, 0, 0, 12894, 5853];
@@ -89,7 +89,7 @@ expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 
 var r0 := twoSum(seqint0, 18747);
 }
 
-// REPEAT 3 - TIME: 116.5532089 s
+// REPEAT 3 - TIME: 170.7346932 s
 
 method {:test} Test9() {
 var seqint0 : seq<int> := [8855, 11689, 12179, 12179, 8365];
@@ -97,7 +97,7 @@ expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 
 var r0 := twoSum(seqint0, 20544);
 }
 
-// REPEAT 4 - TIME: 126.9480549 s
+// REPEAT 4 - TIME: 184.8553905 s
 
 method {:test} Test10() {
 var seqint0 : seq<int> := [449, 25949, 609, 0, 0, 0, 0, 0, 0, 0, 25789, 25789, 0, 0, 0, 0, 9, 12];
@@ -105,7 +105,7 @@ expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 
 var r0 := twoSum(seqint0, 26398);
 }
 
-// REPEAT 5 - TIME: 136.4924837 s
+// REPEAT 5 - TIME: 199.8389058 s
 
 method {:test} Test11() {
 var seqint0 : seq<int> := [13, 0, 18483, 8365, 26239, 26239, 609, 0, 0];
@@ -113,7 +113,7 @@ expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 
 var r0 := twoSum(seqint0, 26848);
 }
 
-// REPEAT 6 - TIME: 146.1496673 s
+// REPEAT 6 - TIME: 213.7697638 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [32093, 609, 0, 0, 0, 0, 0, 0, 0, 32253, 0, 0, 0, 11, 0, 32253, 449, 15];
@@ -121,7 +121,7 @@ expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 
 var r0 := twoSum(seqint0, 32702);
 }
 
-// REPEAT 7 - TIME: 156.3499189 s
+// REPEAT 7 - TIME: 227.3030292 s
 
 method {:test} Test13() {
 var seqint0 : seq<int> := [27459, 27459, 0, 0, 5853, 5853];
@@ -129,7 +129,7 @@ expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 
 var r0 := twoSum(seqint0, 33312);
 }
 
-// REPEAT 8 - TIME: 166.3980295 s
+// REPEAT 8 - TIME: 240.2785229 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [38557, 38557, 609, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 18, 0, 0, 20, 0, 0, 22, 24, 449, 38717, 0, 28, 0];
@@ -137,7 +137,7 @@ expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 
 var r0 := twoSum(seqint0, 39166);
 }
 
-// REPEAT 9 - TIME: 176.3685524 s
+// REPEAT 9 - TIME: 253.1433387 s
 
 method {:test} Test15() {
 var seqint0 : seq<int> := [32598, 8365, 32598, 8365];
@@ -145,4 +145,4 @@ expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 
 var r0 := twoSum(seqint0, 40963);
 }
 
-// REPEAT 10 - TIME: 186.003129 s
+// REPEAT 10 - TIME: 266.9225342 s

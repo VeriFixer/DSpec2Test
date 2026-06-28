@@ -40,4 +40,4 @@ expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 3 - TIME: 5.5482451 s
+// REPEAT 3 - TIME: 5.7975 s

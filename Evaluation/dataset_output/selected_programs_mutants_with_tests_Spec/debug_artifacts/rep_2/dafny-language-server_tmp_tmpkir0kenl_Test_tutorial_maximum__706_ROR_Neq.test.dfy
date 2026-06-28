@@ -34,4 +34,4 @@ expect r0 in seqint0;
 expect forall i | 0 <= i < |seqint0| :: seqint0[i] <= r0;
 }
 
-// REPEAT 2 - TIME: 4.2130457 s
+// REPEAT 2 - TIME: 4.0830759 s

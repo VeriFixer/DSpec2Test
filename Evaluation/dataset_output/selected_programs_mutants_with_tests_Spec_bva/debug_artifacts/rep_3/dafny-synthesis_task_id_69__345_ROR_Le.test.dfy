@@ -52,4 +52,4 @@ var r0 := ContainsSequence(seqseqint0, seqint12);
 expect r0 <==> exists i :: 0 <= i < |seqseqint0| && seqint12 == seqseqint0[i];
 }
 
-// REPEAT 3 - TIME: 13.8746853 s
+// REPEAT 3 - TIME: 18.9210005 s

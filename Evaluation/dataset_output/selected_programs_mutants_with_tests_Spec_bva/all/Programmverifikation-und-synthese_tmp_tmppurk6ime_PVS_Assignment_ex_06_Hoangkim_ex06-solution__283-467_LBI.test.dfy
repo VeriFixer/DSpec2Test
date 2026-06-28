@@ -66,67 +66,67 @@ expect 201 > 0 && 100 > 0, "If this check fails at runtime, the test does not me
 var r0 := gcdI(201, 100);
 }
 
-// REPEAT 1 - TIME: 8.0739983 s
+// REPEAT 1 - TIME: 10.948922 s
 
 method {:test} Test10() {
 expect 16754 > 0 && 8377 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := gcdI(16754, 8377);
 }
 
-// REPEAT 2 - TIME: 9.0492452 s
+// REPEAT 2 - TIME: 12.0524166 s
 
 method {:test} Test11() {
 expect 16757 > 0 && 8378 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := gcdI(16757, 8378);
 }
 
-// REPEAT 3 - TIME: 9.9410313 s
+// REPEAT 3 - TIME: 13.1687974 s
 
 method {:test} Test12() {
 expect 16759 > 0 && 8379 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := gcdI(16759, 8379);
 }
 
-// REPEAT 4 - TIME: 10.7475855 s
+// REPEAT 4 - TIME: 14.0954455 s
 
 method {:test} Test13() {
 expect 16836 > 0 && 8418 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := gcdI(16836, 8418);
 }
 
-// REPEAT 5 - TIME: 11.5785915 s
+// REPEAT 5 - TIME: 15.1717623 s
 
 method {:test} Test14() {
 expect 16838 > 0 && 8419 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := gcdI(16838, 8419);
 }
 
-// REPEAT 6 - TIME: 12.3695997 s
+// REPEAT 6 - TIME: 16.2970445 s
 
 method {:test} Test15() {
 expect 16840 > 0 && 8420 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := gcdI(16840, 8420);
 }
 
-// REPEAT 7 - TIME: 13.0628439 s
+// REPEAT 7 - TIME: 17.418267 s
 
 method {:test} Test16() {
 expect 16843 > 0 && 8421 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := gcdI(16843, 8421);
 }
 
-// REPEAT 8 - TIME: 13.6654251 s
+// REPEAT 8 - TIME: 18.6413103 s
 
 method {:test} Test17() {
 expect 16845 > 0 && 8422 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := gcdI(16845, 8422);
 }
 
-// REPEAT 9 - TIME: 14.5482322 s
+// REPEAT 9 - TIME: 19.5528487 s
 
 method {:test} Test18() {
 expect 16847 > 0 && 8423 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := gcdI(16847, 8423);
 }
 
-// REPEAT 10 - TIME: 15.2527535 s
+// REPEAT 10 - TIME: 20.7124897 s

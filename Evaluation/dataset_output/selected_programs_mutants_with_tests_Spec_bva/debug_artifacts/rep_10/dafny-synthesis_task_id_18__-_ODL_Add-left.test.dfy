@@ -20,10 +20,10 @@ method {:testEntry} RemoveChars(s1: string, s2: string) returns (v: string)
 }
 
 method {:test} Test21() {
-var r0 := RemoveChars("\U{0002}\U{0002}aaaaaaaaaaaaaa\U{0004}aaaaaaaaaa\U{0004}a\n", "\U{0008}\na\U{0006}\U{0004}\U{0002}a\0");
-expect |r0| <= |"\U{0002}\U{0002}aaaaaaaaaaaaaa\U{0004}aaaaaaaaaa\U{0004}a\n"|;
-expect forall i :: 0 <= i < |r0| ==> r0[i] in "\U{0002}\U{0002}aaaaaaaaaaaaaa\U{0004}aaaaaaaaaa\U{0004}a\n" && !(r0[i] in "\U{0008}\na\U{0006}\U{0004}\U{0002}a\0");
-expect forall i :: 0 <= i < |"\U{0002}\U{0002}aaaaaaaaaaaaaa\U{0004}aaaaaaaaaa\U{0004}a\n"| ==> "\U{0002}\U{0002}aaaaaaaaaaaaaa\U{0004}aaaaaaaaaa\U{0004}a\n"[i] in "\U{0008}\na\U{0006}\U{0004}\U{0002}a\0" || "\U{0002}\U{0002}aaaaaaaaaaaaaa\U{0004}aaaaaaaaaa\U{0004}a\n"[i] in r0;
+var r0 := RemoveChars("\U{0004}\U{0002}aaa\U{0006}\U{0006}aaaa\U{0004}", "\n\0\U{0006}\U{0002}\U{0008}\U{0004}");
+expect |r0| <= |"\U{0004}\U{0002}aaa\U{0006}\U{0006}aaaa\U{0004}"|;
+expect forall i :: 0 <= i < |r0| ==> r0[i] in "\U{0004}\U{0002}aaa\U{0006}\U{0006}aaaa\U{0004}" && !(r0[i] in "\n\0\U{0006}\U{0002}\U{0008}\U{0004}");
+expect forall i :: 0 <= i < |"\U{0004}\U{0002}aaa\U{0006}\U{0006}aaaa\U{0004}"| ==> "\U{0004}\U{0002}aaa\U{0006}\U{0006}aaaa\U{0004}"[i] in "\n\0\U{0006}\U{0002}\U{0008}\U{0004}" || "\U{0004}\U{0002}aaa\U{0006}\U{0006}aaaa\U{0004}"[i] in r0;
 }
 
-// REPEAT 10 - TIME: 15.0405143 s
+// REPEAT 10 - TIME: 20.1649208 s

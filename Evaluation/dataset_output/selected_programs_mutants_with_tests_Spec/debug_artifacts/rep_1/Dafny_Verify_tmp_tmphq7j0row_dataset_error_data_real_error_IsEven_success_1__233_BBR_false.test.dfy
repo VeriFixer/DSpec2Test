@@ -30,4 +30,4 @@ var r0 := is_even(7721);
 expect r0 <==> even(7721);
 }
 
-// REPEAT 1 - TIME: 3.5153025 s
+// REPEAT 1 - TIME: 3.803145 s

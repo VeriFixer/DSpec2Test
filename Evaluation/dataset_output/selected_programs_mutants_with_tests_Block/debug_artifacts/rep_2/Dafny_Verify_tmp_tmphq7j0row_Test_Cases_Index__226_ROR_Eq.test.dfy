@@ -75,20 +75,20 @@ var r0 := Index(2474);
 expect 0 <= r0 < 2474;
 }
 method {:test} Test11() {
-var r0 := Min(1, 1);
-expect r0 <= 1 && r0 <= 1;
-expect r0 == 1 || r0 == 1;
-}
-method {:test} Test12() {
 var r0 := Min(1, 2);
 expect r0 <= 1 && r0 <= 2;
 expect r0 == 1 || r0 == 2;
 }
+method {:test} Test12() {
+var r0 := Min(1, 1);
+expect r0 <= 1 && r0 <= 1;
+expect r0 == 1 || r0 == 1;
+}
 method {:test} Test13() {
-var r0 := Max(1, 2);
+var r0 := Max(1, 1);
 }
 method {:test} Test14() {
-var r0 := Max(1, 1);
+var r0 := Max(1, 2);
 }
 method {:test} Test15() {
 var r0, r1 := MaxSum(1, 2);
@@ -110,4 +110,4 @@ method {:test} Test18() {
 TestMaxSum(8855, 8856);
 }
 
-// REPEAT 2 - TIME: 8.5739189 s
+// REPEAT 2 - TIME: 8.199037 s

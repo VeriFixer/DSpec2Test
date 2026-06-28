@@ -16,16 +16,16 @@ method {:testEntry} AnyValueExists(seq1: seq<int>, seq2: seq<int>) returns (resu
 }
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [9, 0, 0, 0, 15, 0, 0, 0, 13, 0, 17];
-var seqint1 : seq<int> := [0, 4, 0];
+var seqint0 : seq<int> := [16, 9, 13];
+var seqint1 : seq<int> := [18, 4];
 var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 method {:test} Test7() {
-var seqint0 : seq<int> := [0, 0, 9, 17, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 19];
-var seqint1 : seq<int> := [15, 0, 4, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21];
+var seqint0 : seq<int> := [20, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 18, 4, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 4 - TIME: 46.891837 s
+// REPEAT 4 - TIME: 63.756156 s

@@ -12,12 +12,12 @@ method {:testEntry} allDigits(s: string) returns (result: bool)
 }
 
 method {:test} Test12() {
-var r0 := allDigits("120aa");
-expect r0 <==> forall i :: 0 <= i < |"120aa"| ==> "120aa"[i] in "0123456789";
+var r0 := allDigits("1a0");
+expect r0 <==> forall i :: 0 <= i < |"1a0"| ==> "1a0"[i] in "0123456789";
 }
 method {:test} Test13() {
-var r0 := allDigits("\U{0002}a\U{000E}aaa\0\U{0004}\U{0006}\U{0008}\n\U{000C}");
-expect r0 <==> forall i :: 0 <= i < |"\U{0002}a\U{000E}aaa\0\U{0004}\U{0006}\U{0008}\n\U{000C}"| ==> "\U{0002}a\U{000E}aaa\0\U{0004}\U{0006}\U{0008}\n\U{000C}"[i] in "0123456789";
+var r0 := allDigits("a\0aaa\U{0004}a\U{0006}a\U{0008}\n\U{000C}aa\U{0002}\U{0010}aaaaaa\U{000E}");
+expect r0 <==> forall i :: 0 <= i < |"a\0aaa\U{0004}a\U{0006}a\U{0008}\n\U{000C}aa\U{0002}\U{0010}aaaaaa\U{000E}"| ==> "a\0aaa\U{0004}a\U{0006}a\U{0008}\n\U{000C}aa\U{0002}\U{0010}aaaaaa\U{000E}"[i] in "0123456789";
 }
 
-// REPEAT 7 - TIME: 12.3265965 s
+// REPEAT 7 - TIME: 11.9860942 s

@@ -42,17 +42,17 @@ method {:testEntry} RollingMax(numbers: seq<int>) returns (result: seq<int>)
 }
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [7718, 7719];
+var seqint0 : seq<int> := [7717, 7719];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := max(seqint0);
 expect isMax(r0, seqint0);
 }
 method {:test} Test5() {
-var seqint0 : seq<int> := [5920, 0, 0, 0, 0, 0, 5920, 5921];
+var seqint0 : seq<int> := [5920, 0, 0, 0, 0, 0, 5920, 14776];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := RollingMax(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 3 - TIME: 6.0067659 s
+// REPEAT 3 - TIME: 6.4229722 s

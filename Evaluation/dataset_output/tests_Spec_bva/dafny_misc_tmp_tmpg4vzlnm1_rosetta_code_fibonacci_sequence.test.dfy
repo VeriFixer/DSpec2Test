@@ -46,67 +46,67 @@ var r0 := FibonacciIterative(2441);
 expect r0 == Fibonacci(2441);
 }
 
-// REPEAT 1 - TIME: 5.981176 s
+// REPEAT 1 - TIME: 8.0816072 s
 
 method {:test} Test6() {
 var r0 := FibonacciIterative(2442);
 expect r0 == Fibonacci(2442);
 }
 
-// REPEAT 2 - TIME: 6.8923998 s
+// REPEAT 2 - TIME: 9.2300391 s
 
 method {:test} Test7() {
 var r0 := FibonacciIterative(2443);
 expect r0 == Fibonacci(2443);
 }
 
-// REPEAT 3 - TIME: 7.6788218 s
+// REPEAT 3 - TIME: 10.159349 s
 
 method {:test} Test8() {
 var r0 := FibonacciIterative(2444);
 expect r0 == Fibonacci(2444);
 }
 
-// REPEAT 4 - TIME: 8.3842622 s
+// REPEAT 4 - TIME: 10.9989012 s
 
 method {:test} Test9() {
 var r0 := FibonacciIterative(2445);
 expect r0 == Fibonacci(2445);
 }
 
-// REPEAT 5 - TIME: 9.006128 s
+// REPEAT 5 - TIME: 11.8198758 s
 
 method {:test} Test10() {
 var r0 := FibonacciIterative(2446);
 expect r0 == Fibonacci(2446);
 }
 
-// REPEAT 6 - TIME: 9.7396895 s
+// REPEAT 6 - TIME: 12.640993 s
 
 method {:test} Test11() {
 var r0 := FibonacciIterative(2447);
 expect r0 == Fibonacci(2447);
 }
 
-// REPEAT 7 - TIME: 10.4370385 s
+// REPEAT 7 - TIME: 13.4107268 s
 
 method {:test} Test12() {
 var r0 := FibonacciIterative(2448);
 expect r0 == Fibonacci(2448);
 }
 
-// REPEAT 8 - TIME: 11.0591724 s
+// REPEAT 8 - TIME: 14.2608918 s
 
 method {:test} Test13() {
 var r0 := FibonacciIterative(2449);
 expect r0 == Fibonacci(2449);
 }
 
-// REPEAT 9 - TIME: 11.6880672 s
+// REPEAT 9 - TIME: 14.9832717 s
 
 method {:test} Test14() {
 var r0 := FibonacciIterative(2450);
 expect r0 == Fibonacci(2450);
 }
 
-// REPEAT 10 - TIME: 12.2770847 s
+// REPEAT 10 - TIME: 15.6917035 s

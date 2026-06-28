@@ -39,7 +39,7 @@ var r0 := ComputePower(2439);
 expect r0 == Power(2439);
 }
 
-// REPEAT 1 - TIME: 3.2183455 s
+// REPEAT 1 - TIME: 3.1917225 s
 
 method {:test} Test2() {
 var r0 := CalcPower(39);
@@ -50,7 +50,7 @@ var r0 := ComputePower(2440);
 expect r0 == Power(2440);
 }
 
-// REPEAT 2 - TIME: 4.5929294 s
+// REPEAT 2 - TIME: 4.6307941 s
 
 method {:test} Test4() {
 var r0 := CalcPower(40);
@@ -61,7 +61,7 @@ var r0 := ComputePower(2441);
 expect r0 == Power(2441);
 }
 
-// REPEAT 3 - TIME: 6.0676983 s
+// REPEAT 3 - TIME: 6.02805 s
 
 method {:test} Test6() {
 var r0 := CalcPower(41);
@@ -72,7 +72,7 @@ var r0 := ComputePower(2442);
 expect r0 == Power(2442);
 }
 
-// REPEAT 4 - TIME: 7.7864552 s
+// REPEAT 4 - TIME: 7.5032772 s
 
 method {:test} Test8() {
 var r0 := CalcPower(42);
@@ -83,7 +83,7 @@ var r0 := ComputePower(2443);
 expect r0 == Power(2443);
 }
 
-// REPEAT 5 - TIME: 9.0588033 s
+// REPEAT 5 - TIME: 9.2253876 s
 
 method {:test} Test10() {
 var r0 := CalcPower(43);
@@ -94,7 +94,7 @@ var r0 := ComputePower(2444);
 expect r0 == Power(2444);
 }
 
-// REPEAT 6 - TIME: 10.287477 s
+// REPEAT 6 - TIME: 10.5392326 s
 
 method {:test} Test12() {
 var r0 := CalcPower(44);
@@ -105,7 +105,7 @@ var r0 := ComputePower(2445);
 expect r0 == Power(2445);
 }
 
-// REPEAT 7 - TIME: 11.5092922 s
+// REPEAT 7 - TIME: 11.6642524 s
 
 method {:test} Test14() {
 var r0 := CalcPower(45);
@@ -116,7 +116,7 @@ var r0 := ComputePower(2446);
 expect r0 == Power(2446);
 }
 
-// REPEAT 8 - TIME: 12.8294763 s
+// REPEAT 8 - TIME: 12.8744606 s
 
 method {:test} Test16() {
 var r0 := CalcPower(46);
@@ -127,7 +127,7 @@ var r0 := ComputePower(2447);
 expect r0 == Power(2447);
 }
 
-// REPEAT 9 - TIME: 13.9390051 s
+// REPEAT 9 - TIME: 13.9717997 s
 
 method {:test} Test18() {
 var r0 := CalcPower(47);
@@ -138,4 +138,4 @@ var r0 := ComputePower(2448);
 expect r0 == Power(2448);
 }
 
-// REPEAT 10 - TIME: 14.8744605 s
+// REPEAT 10 - TIME: 14.8856041 s

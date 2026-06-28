@@ -36,4 +36,4 @@ var r0 := calcC(3);
 expect r0 == C(3);
 }
 
-// REPEAT 1 - TIME: 33.2423385 s
+// REPEAT 1 - TIME: 33.4389651 s

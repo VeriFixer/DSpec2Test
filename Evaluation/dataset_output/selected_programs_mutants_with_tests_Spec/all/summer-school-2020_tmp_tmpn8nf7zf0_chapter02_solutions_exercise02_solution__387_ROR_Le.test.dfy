@@ -57,7 +57,7 @@ method {:test} Test2() {
 Main();
 }
 
-// REPEAT 1 - TIME: 4.2097012 s
+// REPEAT 1 - TIME: 4.4763914 s
 
 method {:test} Test3() {
 expect 1 < 41, "If this check fails at runtime, the test does not meet the preconditions";
@@ -70,7 +70,7 @@ var r0 := test_prime(42);
 expect r0 == IsPrime(42);
 }
 
-// REPEAT 2 - TIME: 5.9466873 s
+// REPEAT 2 - TIME: 6.1857197 s
 
 method {:test} Test5() {
 expect 1 < 43, "If this check fails at runtime, the test does not meet the preconditions";
@@ -83,7 +83,7 @@ var r0 := test_prime(44);
 expect r0 == IsPrime(44);
 }
 
-// REPEAT 3 - TIME: 7.5663798 s
+// REPEAT 3 - TIME: 7.8699533 s
 
 method {:test} Test7() {
 expect 1 < 45, "If this check fails at runtime, the test does not meet the preconditions";
@@ -96,7 +96,7 @@ var r0 := test_prime(46);
 expect r0 == IsPrime(46);
 }
 
-// REPEAT 4 - TIME: 8.8229838 s
+// REPEAT 4 - TIME: 9.2570479 s
 
 method {:test} Test9() {
 expect 1 < 47, "If this check fails at runtime, the test does not meet the preconditions";
@@ -109,7 +109,7 @@ var r0 := test_prime(48);
 expect r0 == IsPrime(48);
 }
 
-// REPEAT 5 - TIME: 9.7937352 s
+// REPEAT 5 - TIME: 10.2663577 s
 
 method {:test} Test11() {
 expect 1 < 49, "If this check fails at runtime, the test does not meet the preconditions";
@@ -122,7 +122,7 @@ var r0 := test_prime(50);
 expect r0 == IsPrime(50);
 }
 
-// REPEAT 6 - TIME: 10.9958039 s
+// REPEAT 6 - TIME: 11.1342617 s
 
 method {:test} Test13() {
 expect 1 < 51, "If this check fails at runtime, the test does not meet the preconditions";
@@ -135,7 +135,7 @@ var r0 := test_prime(52);
 expect r0 == IsPrime(52);
 }
 
-// REPEAT 7 - TIME: 12.0538189 s
+// REPEAT 7 - TIME: 12.0171572 s
 
 method {:test} Test15() {
 expect 1 < 53, "If this check fails at runtime, the test does not meet the preconditions";
@@ -148,7 +148,7 @@ var r0 := test_prime(54);
 expect r0 == IsPrime(54);
 }
 
-// REPEAT 8 - TIME: 13.158649 s
+// REPEAT 8 - TIME: 13.1717144 s
 
 method {:test} Test17() {
 expect 1 < 55, "If this check fails at runtime, the test does not meet the preconditions";
@@ -161,7 +161,7 @@ var r0 := test_prime(56);
 expect r0 == IsPrime(56);
 }
 
-// REPEAT 9 - TIME: 14.1704695 s
+// REPEAT 9 - TIME: 14.2890177 s
 
 method {:test} Test19() {
 expect 1 < 57, "If this check fails at runtime, the test does not meet the preconditions";
@@ -174,4 +174,4 @@ var r0 := test_prime(58);
 expect r0 == IsPrime(58);
 }
 
-// REPEAT 10 - TIME: 15.3137198 s
+// REPEAT 10 - TIME: 15.3752709 s

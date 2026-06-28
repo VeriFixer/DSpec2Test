@@ -41,58 +41,58 @@ method {:test} Test0() {
 var r0 := mod2(108);
 }
 
-// REPEAT 1 - TIME: 4.726304 s
+// REPEAT 1 - TIME: 4.7331863 s
 
 method {:test} Test1() {
 var r0 := mod2(109);
 }
 
-// REPEAT 2 - TIME: 5.76135 s
+// REPEAT 2 - TIME: 5.8566027 s
 
 method {:test} Test2() {
 var r0 := mod2(110);
 }
 
-// REPEAT 3 - TIME: 6.7773512 s
+// REPEAT 3 - TIME: 7.13822 s
 
 method {:test} Test3() {
 var r0 := mod2(136);
 }
 
-// REPEAT 4 - TIME: 8.0212655 s
+// REPEAT 4 - TIME: 8.3607685 s
 
 method {:test} Test4() {
 var r0 := mod2(137);
 }
 
-// REPEAT 5 - TIME: 9.1591224 s
+// REPEAT 5 - TIME: 9.4066759 s
 
 method {:test} Test5() {
-var r0 := mod2(138);
-}
-
-// REPEAT 6 - TIME: 10.3663317 s
-
-method {:test} Test6() {
 var r0 := mod2(140);
 }
 
-// REPEAT 7 - TIME: 11.2420497 s
+// REPEAT 6 - TIME: 10.5263704 s
 
-method {:test} Test7() {
+method {:test} Test6() {
 var r0 := mod2(141);
 }
 
-// REPEAT 8 - TIME: 12.1589738 s
+// REPEAT 7 - TIME: 11.447976 s
 
-method {:test} Test8() {
+method {:test} Test7() {
 var r0 := mod2(142);
 }
 
-// REPEAT 9 - TIME: 12.9157891 s
+// REPEAT 8 - TIME: 12.3731292 s
 
-method {:test} Test9() {
-var r0 := mod2(147);
+method {:test} Test8() {
+var r0 := mod2(143);
 }
 
-// REPEAT 10 - TIME: 13.6978208 s
+// REPEAT 9 - TIME: 13.3307725 s
+
+method {:test} Test9() {
+var r0 := mod2(144);
+}
+
+// REPEAT 10 - TIME: 14.0149413 s

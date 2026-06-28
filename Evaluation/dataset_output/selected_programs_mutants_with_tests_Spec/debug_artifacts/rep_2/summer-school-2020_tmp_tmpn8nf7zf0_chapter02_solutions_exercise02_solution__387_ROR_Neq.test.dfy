@@ -53,4 +53,4 @@ var r0 := test_prime(42);
 expect r0 == IsPrime(42);
 }
 
-// REPEAT 2 - TIME: 5.9466873 s
+// REPEAT 2 - TIME: 6.1857197 s

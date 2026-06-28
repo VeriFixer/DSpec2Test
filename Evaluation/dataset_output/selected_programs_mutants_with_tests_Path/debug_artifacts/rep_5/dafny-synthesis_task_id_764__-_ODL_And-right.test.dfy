@@ -14,20 +14,20 @@ method {:testEntry} CountDigits(s: string) returns (count: int)
 }
 
 method {:test} Test16() {
-var r0 := CountDigits("aaa\0aaaa4a7aaaaaaaa\U{0003}\U{0004}a\U{0005}\U{0006}a\U{0007}\U{0002}\U{0001}\U{0008}\t");
+var r0 := CountDigits("\U{0005}a\0aaaa\U{0001}\U{0004}\U{0003}a\U{0007}7a\U{0006}aaaaa\U{0002}");
 expect r0 >= 0;
 }
 method {:test} Test17() {
-var r0 := CountDigits("aaa9\0aaa\U{0012}aaaaaaaaaa\U{0004}aa\U{0005}\U{0006}aa\U{0003}\U{0002}\U{0007}\U{0001}");
+var r0 := CountDigits("\U{0006}\0aa\U{0003}aaa\U{0004}\ta2aaaaaaa\U{0007}\U{0008}aa\U{0001}\U{0002}\taaa\U{0005}");
 expect r0 >= 0;
 }
 method {:test} Test18() {
-var r0 := CountDigits("\U{0008}aaaaaaaaaaa\U{0001}aaaaa\U{0002}\U{0003}\U{0004}a\U{0005}\U{0006}\0a\U{0007}");
+var r0 := CountDigits("\U{0008}a\0aaa\U{0003}\U{0002}\U{0005}\U{0004}\U{0006}aaaaaaaa\U{0001}\U{0007}");
 expect r0 >= 0;
 }
 method {:test} Test19() {
-var r0 := CountDigits("aaaaaaaa\U{0001}aaaaaa\0aaa4\U{0002}a\U{0003}\U{0004}a\U{0005}");
+var r0 := CountDigits("\t\0a\U{0001}aaa\U{0006}aa\U{0002}aaa\U{0007}\U{0004}aa\U{0005}\U{0003}\U{0008}");
 expect r0 >= 0;
 }
 
-// REPEAT 5 - TIME: 19.6269405 s
+// REPEAT 5 - TIME: 14.5093681 s

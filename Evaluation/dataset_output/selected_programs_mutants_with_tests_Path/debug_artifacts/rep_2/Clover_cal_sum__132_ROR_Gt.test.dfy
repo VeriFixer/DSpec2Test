@@ -21,4 +21,4 @@ var r0 := Sum(1);
 expect r0 == 1 * (1 + 1) / 2;
 }
 
-// REPEAT 2 - TIME: 12.8380197 s
+// REPEAT 2 - TIME: 17.093312 s

@@ -34,14 +34,19 @@ method {:testEntry} twoSum(nums: seq<int>, target: int) returns (pair: (nat, nat
 }
 
 method {:test} Test21() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2437, 54288, 0];
-expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 56725) && forall l: nat, m: nat :: l < m < |seqint0| && l != i && m != j ==> !summingPair(l, m, seqint0, 56725), "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := twoSum(seqint0, 56725);
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 0, 1796, 68071, 0, 0, 0, 0, 0, 0, 0, 22, 0, 0];
+expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 69867) && forall l: nat, m: nat :: l < m < |seqint0| && l != i && m != j ==> !summingPair(l, m, seqint0, 69867), "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := twoSum(seqint0, 69867);
+}
+method {:test} Test22() {
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2437, 67920, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 70357) && forall l: nat, m: nat :: l < m < |seqint0| && l != i && m != j ==> !summingPair(l, m, seqint0, 70357), "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := twoSum(seqint0, 70357);
 }
 method {:test} Test23() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8365, 41787, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 50152) && forall l: nat, m: nat :: l < m < |seqint0| && l != i && m != j ==> !summingPair(l, m, seqint0, 50152), "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := twoSum(seqint0, 50152);
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 8855, 54443, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 63298) && forall l: nat, m: nat :: l < m < |seqint0| && l != i && m != j ==> !summingPair(l, m, seqint0, 63298), "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := twoSum(seqint0, 63298);
 }
 
-// REPEAT 8 - TIME: 17.1205323 s
+// REPEAT 8 - TIME: 17.4576841 s

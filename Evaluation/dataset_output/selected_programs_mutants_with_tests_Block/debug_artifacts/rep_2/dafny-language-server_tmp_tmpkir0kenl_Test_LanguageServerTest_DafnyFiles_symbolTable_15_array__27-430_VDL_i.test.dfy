@@ -23,4 +23,4 @@ expect |seqint0| > 1, "If this check fails at runtime, the test does not meet th
 foo(seqint0);
 }
 
-// REPEAT 2 - TIME: 3.5790489 s
+// REPEAT 2 - TIME: 3.6141023 s

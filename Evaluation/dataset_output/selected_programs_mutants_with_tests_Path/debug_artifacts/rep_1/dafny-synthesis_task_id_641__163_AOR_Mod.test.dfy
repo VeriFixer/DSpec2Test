@@ -13,4 +13,4 @@ var r0 := NthNonagonalNumber(0);
 expect r0 == 0 * (7 * 0 - 5) / 2;
 }
 
-// REPEAT 1 - TIME: 1.4473387 s
+// REPEAT 1 - TIME: 3.3185992 s

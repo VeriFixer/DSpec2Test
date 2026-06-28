@@ -28,4 +28,4 @@ var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 6 - TIME: 11.1224227 s
+// REPEAT 6 - TIME: 11.2691802 s

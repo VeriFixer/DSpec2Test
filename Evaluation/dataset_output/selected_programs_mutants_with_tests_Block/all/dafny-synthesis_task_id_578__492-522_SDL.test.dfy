@@ -26,112 +26,112 @@ expect |r0| == 3 * |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[3 * i] == seqint0[i] && r0[3 * i + 1] == seqint1[i] && r0[3 * i + 2] == seqint2[i];
 }
 
-// REPEAT 1 - TIME: 2.6494687 s
+// REPEAT 1 - TIME: 2.4642943 s
 
 method {:test} Test1() {
-var seqint0 : seq<int> := [1, 0];
-var seqint1 : seq<int> := [5, 0];
-var seqint2 : seq<int> := [7, 0];
+var seqint0 : seq<int> := [1];
+var seqint1 : seq<int> := [5];
+var seqint2 : seq<int> := [7];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Interleave(seqint0, seqint1, seqint2);
 expect |r0| == 3 * |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[3 * i] == seqint0[i] && r0[3 * i + 1] == seqint1[i] && r0[3 * i + 2] == seqint2[i];
 }
 
-// REPEAT 2 - TIME: 3.5542171 s
+// REPEAT 2 - TIME: 3.5222985 s
 
 method {:test} Test2() {
-var seqint0 : seq<int> := [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint2 : seq<int> := [10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12];
+var seqint0 : seq<int> := [10, 0];
+var seqint1 : seq<int> := [8, 0];
+var seqint2 : seq<int> := [3, 0];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Interleave(seqint0, seqint1, seqint2);
 expect |r0| == 3 * |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[3 * i] == seqint0[i] && r0[3 * i + 1] == seqint1[i] && r0[3 * i + 2] == seqint2[i];
 }
 
-// REPEAT 3 - TIME: 4.3761627 s
+// REPEAT 3 - TIME: 4.5945716 s
 
 method {:test} Test3() {
-var seqint0 : seq<int> := [6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18];
-var seqint1 : seq<int> := [14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 22];
-var seqint2 : seq<int> := [11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20];
+var seqint0 : seq<int> := [13, 0, 0];
+var seqint1 : seq<int> := [6, 0, 0];
+var seqint2 : seq<int> := [11, 0, 0];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Interleave(seqint0, seqint1, seqint2);
 expect |r0| == 3 * |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[3 * i] == seqint0[i] && r0[3 * i + 1] == seqint1[i] && r0[3 * i + 2] == seqint2[i];
 }
 
-// REPEAT 4 - TIME: 5.4406329 s
+// REPEAT 4 - TIME: 5.3361872 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [19, 0, 0];
-var seqint1 : seq<int> := [9, 0, 0];
-var seqint2 : seq<int> := [15, 0, 0];
+var seqint0 : seq<int> := [16, 0, 0, 0];
+var seqint1 : seq<int> := [14, 0, 0, 0];
+var seqint2 : seq<int> := [9, 0, 0, 0];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Interleave(seqint0, seqint1, seqint2);
 expect |r0| == 3 * |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[3 * i] == seqint0[i] && r0[3 * i + 1] == seqint1[i] && r0[3 * i + 2] == seqint2[i];
 }
 
-// REPEAT 5 - TIME: 6.5558491 s
+// REPEAT 5 - TIME: 6.1881052 s
 
 method {:test} Test5() {
-var seqint0 : seq<int> := [21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint2 : seq<int> := [24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [19, 0, 0, 0, 0];
+var seqint1 : seq<int> := [12, 0, 0, 0, 0];
+var seqint2 : seq<int> := [17, 0, 0, 0, 0];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Interleave(seqint0, seqint1, seqint2);
 expect |r0| == 3 * |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[3 * i] == seqint0[i] && r0[3 * i + 1] == seqint1[i] && r0[3 * i + 2] == seqint2[i];
 }
 
-// REPEAT 6 - TIME: 7.5035781 s
+// REPEAT 6 - TIME: 7.0519515 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [17, 0, 0, 0, 0, 0, 0, 0, 0, 29, 0, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint2 : seq<int> := [27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31];
+var seqint0 : seq<int> := [15, 0, 0];
+var seqint1 : seq<int> := [20, 0, 0];
+var seqint2 : seq<int> := [22, 0, 0];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Interleave(seqint0, seqint1, seqint2);
 expect |r0| == 3 * |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[3 * i] == seqint0[i] && r0[3 * i + 1] == seqint1[i] && r0[3 * i + 2] == seqint2[i];
 }
 
-// REPEAT 7 - TIME: 8.4436767 s
+// REPEAT 7 - TIME: 7.759133 s
 
 method {:test} Test7() {
-var seqint0 : seq<int> := [23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 0, 0, 0];
-var seqint1 : seq<int> := [32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint2 : seq<int> := [28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [25, 0, 0, 29, 0, 0];
+var seqint1 : seq<int> := [18, 0, 0, 0, 31, 0];
+var seqint2 : seq<int> := [23, 0, 0, 0, 0, 27];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Interleave(seqint0, seqint1, seqint2);
 expect |r0| == 3 * |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[3 * i] == seqint0[i] && r0[3 * i + 1] == seqint1[i] && r0[3 * i + 2] == seqint2[i];
 }
 
-// REPEAT 8 - TIME: 9.3529475 s
+// REPEAT 8 - TIME: 8.5519966 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint2 : seq<int> := [36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [21, 0, 0, 0, 37, 0, 43];
+var seqint1 : seq<int> := [30, 0, 0, 0, 0, 41, 0];
+var seqint2 : seq<int> := [26, 0, 0, 0, 33, 39, 35];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Interleave(seqint0, seqint1, seqint2);
 expect |r0| == 3 * |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[3 * i] == seqint0[i] && r0[3 * i + 1] == seqint1[i] && r0[3 * i + 2] == seqint2[i];
 }
 
-// REPEAT 9 - TIME: 10.2523702 s
+// REPEAT 9 - TIME: 9.3776299 s
 
 method {:test} Test9() {
-var seqint0 : seq<int> := [30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint2 : seq<int> := [37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [24, 0, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [32, 0, 0, 0, 0, 0, 0, 0];
+var seqint2 : seq<int> := [36, 0, 0, 0, 0, 0, 0, 0];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Interleave(seqint0, seqint1, seqint2);
 expect |r0| == 3 * |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[3 * i] == seqint0[i] && r0[3 * i + 1] == seqint1[i] && r0[3 * i + 2] == seqint2[i];
 }
 
-// REPEAT 10 - TIME: 11.1331387 s
+// REPEAT 10 - TIME: 10.244664 s

@@ -13,4 +13,4 @@ var r0 := MonthHas31Days(9);
 expect r0 <==> 9 in {1, 3, 5, 7, 8, 10, 12};
 }
 
-// REPEAT 2 - TIME: 2.8675432 s
+// REPEAT 2 - TIME: 3.0188248 s

@@ -87,4 +87,4 @@ expect forall i :: 0 <= i < |r0| ==> |r0[i]| == |seqseqint0[i]|;
 expect forall i :: 0 <= i < |r0| ==> forall j :: 0 <= j < |r0[i]| ==> r0[i][j] == seqseqint0[i][j] + seqseqint1[i][j];
 }
 
-// REPEAT 9 - TIME: 17.6101131 s
+// REPEAT 9 - TIME: 23.0656492 s

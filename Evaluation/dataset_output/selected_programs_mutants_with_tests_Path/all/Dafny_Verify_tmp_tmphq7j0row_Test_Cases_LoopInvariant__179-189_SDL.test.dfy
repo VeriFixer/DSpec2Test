@@ -102,7 +102,7 @@ method {:test} Test5() {
 Quotient1();
 }
 
-// REPEAT 1 - TIME: 35.1910815 s
+// REPEAT 1 - TIME: 45.2444614 s
 
 method {:test} Test6() {
 expect 0 <= 1, "If this check fails at runtime, the test does not meet the preconditions";
@@ -125,7 +125,7 @@ var r0 := DownWhileGreater(1);
 expect r0 == 0;
 }
 
-// REPEAT 2 - TIME: 51.4515587 s
+// REPEAT 2 - TIME: 67.6625065 s
 
 method {:test} Test10() {
 expect 0 <= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -148,7 +148,7 @@ var r0 := DownWhileGreater(2);
 expect r0 == 0;
 }
 
-// REPEAT 3 - TIME: 67.9855012 s
+// REPEAT 3 - TIME: 90.554555 s
 
 method {:test} Test14() {
 expect 0 <= 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -171,7 +171,7 @@ var r0 := DownWhileGreater(3);
 expect r0 == 0;
 }
 
-// REPEAT 4 - TIME: 87.402676 s
+// REPEAT 4 - TIME: 113.8009156 s
 
 method {:test} Test18() {
 expect 0 <= 4, "If this check fails at runtime, the test does not meet the preconditions";
@@ -194,7 +194,7 @@ var r0 := DownWhileGreater(4);
 expect r0 == 0;
 }
 
-// REPEAT 5 - TIME: 107.3140299 s
+// REPEAT 5 - TIME: 137.6310432 s
 
 method {:test} Test22() {
 expect 0 <= 5, "If this check fails at runtime, the test does not meet the preconditions";
@@ -217,7 +217,7 @@ var r0 := DownWhileGreater(5);
 expect r0 == 0;
 }
 
-// REPEAT 6 - TIME: 129.2537803 s
+// REPEAT 6 - TIME: 160.2610445 s
 
 method {:test} Test26() {
 expect 0 <= 6, "If this check fails at runtime, the test does not meet the preconditions";
@@ -240,7 +240,7 @@ var r0 := DownWhileGreater(6);
 expect r0 == 0;
 }
 
-// REPEAT 7 - TIME: 154.2278586 s
+// REPEAT 7 - TIME: 189.4150715 s
 
 method {:test} Test30() {
 expect 0 <= 7, "If this check fails at runtime, the test does not meet the preconditions";
@@ -263,7 +263,7 @@ var r0 := DownWhileGreater(7);
 expect r0 == 0;
 }
 
-// REPEAT 8 - TIME: 178.8140616 s
+// REPEAT 8 - TIME: 224.0098589 s
 
 method {:test} Test34() {
 expect 0 <= 8, "If this check fails at runtime, the test does not meet the preconditions";
@@ -286,7 +286,7 @@ var r0 := DownWhileGreater(8);
 expect r0 == 0;
 }
 
-// REPEAT 9 - TIME: 209.3893167 s
+// REPEAT 9 - TIME: 266.9574428 s
 
 method {:test} Test38() {
 expect 0 <= 9, "If this check fails at runtime, the test does not meet the preconditions";
@@ -309,4 +309,4 @@ var r0 := DownWhileGreater(9);
 expect r0 == 0;
 }
 
-// REPEAT 10 - TIME: 240.5002929 s
+// REPEAT 10 - TIME: 313.127373 s

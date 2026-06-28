@@ -53,9 +53,9 @@ method {:testEntry} ToggleCase(s: string) returns (v: string)
 }
 
 method {:test} Test6() {
-var r0 := ToggleCase("`{");
-expect |r0| == |"`{"|;
-expect forall i :: 0 <= i < |"`{"| ==> if IsLowerCase("`{"[i]) then IsLowerUpperPair("`{"[i], r0[i]) else if IsUpperCase("`{"[i]) then IsUpperLowerPair("`{"[i], r0[i]) else r0[i] == "`{"[i];
+var r0 := ToggleCase("1g[");
+expect |r0| == |"1g["|;
+expect forall i :: 0 <= i < |"1g["| ==> if IsLowerCase("1g["[i]) then IsLowerUpperPair("1g["[i], r0[i]) else if IsUpperCase("1g["[i]) then IsUpperLowerPair("1g["[i], r0[i]) else r0[i] == "1g["[i];
 }
 
-// REPEAT 7 - TIME: 10.5377273 s
+// REPEAT 7 - TIME: 9.7732025 s

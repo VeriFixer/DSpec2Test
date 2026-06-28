@@ -48,12 +48,12 @@ expect 8723 > 0 && 25166 > 0, "If this check fails at runtime, the test does not
 var r0 := gcdI(8723, 25166);
 }
 method {:test} Test10() {
-expect 8723 > 0 && 17446 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := gcdI(8723, 17446);
-}
-method {:test} Test11() {
 expect 16442 > 0 && 32884 > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := gcdI(16442, 32884);
 }
+method {:test} Test11() {
+expect 8723 > 0 && 17446 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := gcdI(8723, 17446);
+}
 
-// REPEAT 4 - TIME: 9.0106497 s
+// REPEAT 4 - TIME: 8.9638735 s

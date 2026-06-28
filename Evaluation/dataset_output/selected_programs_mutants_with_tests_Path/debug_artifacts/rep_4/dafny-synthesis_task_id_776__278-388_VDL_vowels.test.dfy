@@ -12,24 +12,24 @@ method {:testEntry} CountVowelNeighbors(s: string) returns (count: int)
 }
 
 method {:test} Test15() {
-var r0 := CountVowelNeighbors("\U{0002}\0aaaaaaaaaaaaaaaaaaaaaaa");
+var r0 := CountVowelNeighbors("\U{0002}aaaaaaaaaaaaaaaaaaaaaaaa\0aa");
 expect r0 >= 0;
 }
 method {:test} Test16() {
-var r0 := CountVowelNeighbors("\U{0005}\U{0001}a\U{0002}aaaaaaa\0aaaaaaaaaaaaa");
+var r0 := CountVowelNeighbors("\taa\0aaaaaaaaaa\U{0005}aaaaaaaaaa\U{0007}aa\U{0003}\U{0001}");
 expect r0 >= 0;
 }
 method {:test} Test17() {
-var r0 := CountVowelNeighbors("\U{0005}\U{0001}a\U{0002}aaaaaaaaaaaaaaa\0aaaaaaa");
+var r0 := CountVowelNeighbors("\taaaaaaaaa\U{0001}aaa\0aaaaaaaaaa\U{0005}aa\U{0007}\U{0003}");
 expect r0 >= 0;
 }
 method {:test} Test18() {
-var r0 := CountVowelNeighbors("\U{0004}\0a\U{0001}aaaaaaaaaaaaaaaaaaaaa");
+var r0 := CountVowelNeighbors("\U{0008}aaaaaaaaaaaaaaa\U{0002}\U{0004}aaaa\0aa\U{0006}aa");
 expect r0 >= 0;
 }
 method {:test} Test19() {
-var r0 := CountVowelNeighbors("\U{0006}\0a\U{0001}aaaaaa\U{0002}\U{0004}");
+var r0 := CountVowelNeighbors("\U{000C}aaaaaaaaaaaaaaaaaa\U{0002}aaa\U{0004}a\U{0006}a\0\n\U{0008}");
 expect r0 >= 0;
 }
 
-// REPEAT 4 - TIME: 29.1332122 s
+// REPEAT 4 - TIME: 31.0065628 s

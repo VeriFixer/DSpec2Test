@@ -16,4 +16,4 @@ var r0 := SquareRoot(2);
 expect r0 * r0 <= 2 < (r0 + 1) * (r0 + 1);
 }
 
-// REPEAT 2 - TIME: 2.6044087 s
+// REPEAT 2 - TIME: 2.3304885 s

@@ -14,20 +14,20 @@ method {:testEntry} CountUppercase(s: string) returns (count: int)
 }
 
 method {:test} Test24() {
-var r0 := CountUppercase("Paaaaaa\0aaaa\U{0002}\U{0001}\U{0003}a\U{0006}S\U{0007}a\U{0005}\U{0004}");
+var r0 := CountUppercase("aCaaaaaaaaB\U{0003}aaa\0aa\U{0004}aaaa\U{0002}\U{0005}a\U{0006}\U{0001}");
 expect r0 >= 0;
 }
 method {:test} Test25() {
-var r0 := CountUppercase("aaaS\U{0002}aa\0\U{0002}aaaa\U{0001}\U{0003}\U{0004}\U{0005}");
+var r0 := CountUppercase("\U{0001}a\0aaaaaaaaa\U{0010}");
 expect r0 >= 0;
 }
 method {:test} Test26() {
-var r0 := CountUppercase("aaaaaFaaa\U{0002}a\0a\U{0005}\U{0003}\U{0004}\U{0001}");
+var r0 := CountUppercase("\U{0002}aaaaaa\0aaaa\U{0001}");
 expect r0 >= 0;
 }
 method {:test} Test27() {
-var r0 := CountUppercase("aaaaaaaa\U{0003}aaaa\U{0001}\U{0004}a\U{0002}a\U{0005}\0A");
+var r0 := CountUppercase("\U{0002}aaaaaaaaa\0a\U{0001}");
 expect r0 >= 0;
 }
 
-// REPEAT 7 - TIME: 29.4419479 s
+// REPEAT 7 - TIME: 34.4244572 s

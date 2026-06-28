@@ -16,14 +16,14 @@ method {:testEntry} ContainsK(s: seq<int>, k: int) returns (result: bool)
 }
 
 method {:test} Test2() {
-var seqint0 : seq<int> := [0];
+var seqint0 : seq<int> := [38];
 var r0 := ContainsK(seqint0, 27);
 expect r0 <==> 27 in seqint0;
 }
 method {:test} Test3() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 37];
-var r0 := ContainsK(seqint0, 29);
-expect r0 <==> 29 in seqint0;
+var seqint0 : seq<int> := [39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27];
+var r0 := ContainsK(seqint0, 27);
+expect r0 <==> 27 in seqint0;
 }
 
-// REPEAT 2 - TIME: 18.2337152 s
+// REPEAT 2 - TIME: 18.7193377 s

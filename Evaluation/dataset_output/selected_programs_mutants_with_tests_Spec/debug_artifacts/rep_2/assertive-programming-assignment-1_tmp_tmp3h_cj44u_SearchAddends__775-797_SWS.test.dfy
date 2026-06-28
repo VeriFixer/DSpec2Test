@@ -103,4 +103,4 @@ var r0, r1 := FindAddends(seqint0, 11842);
 expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 11842;
 }
 
-// REPEAT 2 - TIME: 7.1120935 s
+// REPEAT 2 - TIME: 7.3294842 s

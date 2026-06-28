@@ -24,15 +24,15 @@ module RussianMultiplication {
 }
 
 method {:test} Test18() {
-var r0 := RussianMultiplication.mult(-10, 6916636);
-expect r0 == -10 * 6916636;
+var r0 := RussianMultiplication.mult(-10, 32404);
+expect r0 == -10 * 32404;
 }
 method {:test} Test19() {
-var r0 := RussianMultiplication.mult(1144, -26199);
-expect r0 == 1144 * -26199;
+var r0 := RussianMultiplication.mult(1144, -2);
+expect r0 == 1144 * -2;
 }
 
-// REPEAT 10 - TIME: 7.9565205 s
+// REPEAT 10 - TIME: 8.4881965 s
 
 
 }

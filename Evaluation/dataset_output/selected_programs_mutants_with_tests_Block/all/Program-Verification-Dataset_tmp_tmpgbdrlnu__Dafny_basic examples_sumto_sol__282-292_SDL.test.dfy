@@ -73,112 +73,112 @@ var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 1 - TIME: 3.5305097 s
+// REPEAT 1 - TIME: 3.3191533 s
 
 method {:test} Test2() {
 var r0 := SumUpTo(2);
 expect r0 == sum_up_to(2);
 }
 method {:test} Test3() {
-var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (83 as nat), (619 as nat), (1275 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
+var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (0 as nat), (1142 as nat), (4711 as nat), (5439 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
 var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 2 - TIME: 4.7097053 s
+// REPEAT 2 - TIME: 4.8397976 s
 
 method {:test} Test4() {
 var r0 := SumUpTo(3);
 expect r0 == sum_up_to(3);
 }
 method {:test} Test5() {
-var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (7387 as nat), (1146 as nat), (281 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
+var seqnat0 : seq<nat> := [(0 as nat), (1142 as nat), (4711 as nat), (5439 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
 var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 3 - TIME: 6.1555646 s
+// REPEAT 3 - TIME: 6.1203941 s
 
 method {:test} Test6() {
 var r0 := SumUpTo(4);
 expect r0 == sum_up_to(4);
 }
 method {:test} Test7() {
-var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (0 as nat), (1142 as nat), (4711 as nat), (5439 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
+var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (0 as nat), (0 as nat), (2756 as nat), (340 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
 var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 4 - TIME: 7.430874 s
+// REPEAT 4 - TIME: 7.4003917 s
 
 method {:test} Test8() {
 var r0 := SumUpTo(5);
 expect r0 == sum_up_to(5);
 }
 method {:test} Test9() {
-var seqnat0 : seq<nat> := [(0 as nat), (2872 as nat), (4705 as nat), (658 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
+var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (0 as nat), (1142 as nat), (4711 as nat), (449 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
 var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 5 - TIME: 8.7261593 s
+// REPEAT 5 - TIME: 8.7056296 s
 
 method {:test} Test10() {
 var r0 := SumUpTo(6);
 expect r0 == sum_up_to(6);
 }
 method {:test} Test11() {
-var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (7 as nat), (158 as nat), (1794 as nat), (0 as nat), (0 as nat)];
+var seqnat0 : seq<nat> := [(0 as nat), (2872 as nat), (4705 as nat), (658 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
 var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 6 - TIME: 9.8550177 s
+// REPEAT 6 - TIME: 10.0173637 s
 
 method {:test} Test12() {
 var r0 := SumUpTo(7);
 expect r0 == sum_up_to(7);
 }
 method {:test} Test13() {
-var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (1142 as nat), (3452 as nat), (629 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
+var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (1142 as nat), (4711 as nat), (5439 as nat), (0 as nat), (0 as nat)];
 var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 7 - TIME: 11.2074633 s
+// REPEAT 7 - TIME: 11.0186032 s
 
 method {:test} Test14() {
 var r0 := SumUpTo(8);
 expect r0 == sum_up_to(8);
 }
 method {:test} Test15() {
-var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (1142 as nat), (2512 as nat), (449 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
+var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (281 as nat), (7323 as nat), (609 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
 var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 8 - TIME: 12.4343674 s
+// REPEAT 8 - TIME: 12.4412516 s
 
 method {:test} Test16() {
 var r0 := SumUpTo(9);
 expect r0 == sum_up_to(9);
 }
 method {:test} Test17() {
-var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (7 as nat), (158 as nat), (1794 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
+var seqnat0 : seq<nat> := [(0 as nat), (2872 as nat), (4705 as nat), (658 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
 var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 9 - TIME: 13.4802357 s
+// REPEAT 9 - TIME: 13.8485478 s
 
 method {:test} Test18() {
 var r0 := SumUpTo(10);
 expect r0 == sum_up_to(10);
 }
 method {:test} Test19() {
-var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (2 as nat), (446 as nat), (10843 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
+var seqnat0 : seq<nat> := [(0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (2997 as nat), (5948 as nat), (84 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat), (0 as nat)];
 var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 10 - TIME: 14.6335827 s
+// REPEAT 10 - TIME: 15.0381808 s

@@ -35,9 +35,9 @@ method {:testEntry} ToLowercase(s: string) returns (v: string)
 }
 
 method {:test} Test2() {
-var r0 := ToLowercase("a@aaaaaaaaaaaaaaaaaaa0");
-expect |r0| == |"a@aaaaaaaaaaaaaaaaaaa0"|;
-expect forall i :: 0 <= i < |"a@aaaaaaaaaaaaaaaaaaa0"| ==> if IsUpperCase("a@aaaaaaaaaaaaaaaaaaa0"[i]) then IsUpperLowerPair("a@aaaaaaaaaaaaaaaaaaa0"[i], r0[i]) else r0[i] == "a@aaaaaaaaaaaaaaaaaaa0"[i];
+var r0 := ToLowercase("a@a");
+expect |r0| == |"a@a"|;
+expect forall i :: 0 <= i < |"a@a"| ==> if IsUpperCase("a@a"[i]) then IsUpperLowerPair("a@a"[i], r0[i]) else r0[i] == "a@a"[i];
 }
 
-// REPEAT 3 - TIME: 5.2772059 s
+// REPEAT 3 - TIME: 5.9855271 s

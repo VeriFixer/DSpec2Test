@@ -39,4 +39,4 @@ var r0 := IsNonPrime(2);
 expect r0 <==> exists k :: 2 <= k < 2 && 2 % k == 0;
 }
 
-// REPEAT 1 - TIME: 9.521649 s
+// REPEAT 1 - TIME: 12.2332537 s

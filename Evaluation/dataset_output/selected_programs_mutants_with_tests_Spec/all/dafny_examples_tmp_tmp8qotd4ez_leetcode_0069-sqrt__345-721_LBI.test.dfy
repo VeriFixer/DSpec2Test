@@ -43,7 +43,7 @@ var r0 := mySqrt(2);
 expect sqrt(2, r0);
 }
 
-// REPEAT 1 - TIME: 5.5444855 s
+// REPEAT 1 - TIME: 5.8300226 s
 
 method {:test} Test1() {
 expect 0 <= 4, "If this check fails at runtime, the test does not meet the preconditions";
@@ -51,7 +51,7 @@ var r0 := mySqrt(4);
 expect sqrt(4, r0);
 }
 
-// REPEAT 2 - TIME: 8.7580299 s
+// REPEAT 2 - TIME: 9.3069799 s
 
 method {:test} Test2() {
 expect 0 <= 9, "If this check fails at runtime, the test does not meet the preconditions";
@@ -59,7 +59,7 @@ var r0 := mySqrt(9);
 expect sqrt(9, r0);
 }
 
-// REPEAT 3 - TIME: 11.4966443 s
+// REPEAT 3 - TIME: 12.0017736 s
 
 method {:test} Test3() {
 expect 0 <= 15, "If this check fails at runtime, the test does not meet the preconditions";
@@ -67,7 +67,7 @@ var r0 := mySqrt(15);
 expect sqrt(15, r0);
 }
 
-// REPEAT 4 - TIME: 14.1427504 s
+// REPEAT 4 - TIME: 14.9289895 s
 
 method {:test} Test4() {
 expect 0 <= 16, "If this check fails at runtime, the test does not meet the preconditions";
@@ -75,7 +75,7 @@ var r0 := mySqrt(16);
 expect sqrt(16, r0);
 }
 
-// REPEAT 5 - TIME: 17.1863627 s
+// REPEAT 5 - TIME: 17.8226565 s
 
 method {:test} Test5() {
 expect 0 <= 24, "If this check fails at runtime, the test does not meet the preconditions";
@@ -83,7 +83,7 @@ var r0 := mySqrt(24);
 expect sqrt(24, r0);
 }
 
-// REPEAT 6 - TIME: 19.8746476 s
+// REPEAT 6 - TIME: 20.2815266 s
 
 method {:test} Test6() {
 expect 0 <= 25, "If this check fails at runtime, the test does not meet the preconditions";
@@ -91,7 +91,7 @@ var r0 := mySqrt(25);
 expect sqrt(25, r0);
 }
 
-// REPEAT 7 - TIME: 22.4878892 s
+// REPEAT 7 - TIME: 22.7627335 s
 
 method {:test} Test7() {
 expect 0 <= 35, "If this check fails at runtime, the test does not meet the preconditions";
@@ -99,7 +99,7 @@ var r0 := mySqrt(35);
 expect sqrt(35, r0);
 }
 
-// REPEAT 8 - TIME: 25.0824807 s
+// REPEAT 8 - TIME: 25.7957256 s
 
 method {:test} Test8() {
 expect 0 <= 48, "If this check fails at runtime, the test does not meet the preconditions";
@@ -107,7 +107,7 @@ var r0 := mySqrt(48);
 expect sqrt(48, r0);
 }
 
-// REPEAT 9 - TIME: 28.2311102 s
+// REPEAT 9 - TIME: 28.437789 s
 
 method {:test} Test9() {
 expect 0 <= 63, "If this check fails at runtime, the test does not meet the preconditions";
@@ -115,4 +115,4 @@ var r0 := mySqrt(63);
 expect sqrt(63, r0);
 }
 
-// REPEAT 10 - TIME: 31.003198 s
+// REPEAT 10 - TIME: 31.0239535 s

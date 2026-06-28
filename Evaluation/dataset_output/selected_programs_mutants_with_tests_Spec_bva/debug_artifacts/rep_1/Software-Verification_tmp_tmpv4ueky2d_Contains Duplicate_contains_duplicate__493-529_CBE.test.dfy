@@ -56,4 +56,4 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 1 - TIME: 9.06764 s
+// REPEAT 1 - TIME: 13.3679655 s

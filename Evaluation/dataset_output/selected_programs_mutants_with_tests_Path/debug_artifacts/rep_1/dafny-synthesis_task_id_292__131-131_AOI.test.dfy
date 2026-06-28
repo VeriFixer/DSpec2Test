@@ -13,4 +13,4 @@ var r0 := Quotient(-8365, -1);
 expect r0 == -8365 / -1;
 }
 
-// REPEAT 1 - TIME: 2.4250305 s
+// REPEAT 1 - TIME: 1.9556798 s

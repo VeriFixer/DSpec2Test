@@ -12,8 +12,8 @@ method {:testEntry} allDigits(s: string) returns (result: bool)
 }
 
 method {:test} Test6() {
-var r0 := allDigits("\0aaaaa\U{0002}\U{0004}");
-expect r0 <==> forall i :: 0 <= i < |"\0aaaaa\U{0002}\U{0004}"| ==> "\0aaaaa\U{0002}\U{0004}"[i] in "0123456789";
+var r0 := allDigits("a\0aaaaaaaa");
+expect r0 <==> forall i :: 0 <= i < |"a\0aaaaaaaa"| ==> "a\0aaaaaaaa"[i] in "0123456789";
 }
 
-// REPEAT 7 - TIME: 6.4901087 s
+// REPEAT 7 - TIME: 6.5071174 s

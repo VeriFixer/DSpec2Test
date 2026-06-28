@@ -30,4 +30,4 @@ var r0 := calcF(0);
 expect r0 == F(0);
 }
 
-// REPEAT 1 - TIME: 7.9044377 s
+// REPEAT 1 - TIME: 11.5530916 s

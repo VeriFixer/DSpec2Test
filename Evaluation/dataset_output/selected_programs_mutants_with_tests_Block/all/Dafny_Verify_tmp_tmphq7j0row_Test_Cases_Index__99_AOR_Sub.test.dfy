@@ -114,7 +114,7 @@ method {:test} Test9() {
 TestMaxSum(8854, 8855);
 }
 
-// REPEAT 1 - TIME: 5.2408354 s
+// REPEAT 1 - TIME: 5.2256515 s
 
 method {:test} Test10() {
 expect 1 <= 2474, "If this check fails at runtime, the test does not meet the preconditions";
@@ -122,20 +122,20 @@ var r0 := Index(2474);
 expect 0 <= r0 < 2474;
 }
 method {:test} Test11() {
-var r0 := Min(1, 1);
-expect r0 <= 1 && r0 <= 1;
-expect r0 == 1 || r0 == 1;
-}
-method {:test} Test12() {
 var r0 := Min(1, 2);
 expect r0 <= 1 && r0 <= 2;
 expect r0 == 1 || r0 == 2;
 }
+method {:test} Test12() {
+var r0 := Min(1, 1);
+expect r0 <= 1 && r0 <= 1;
+expect r0 == 1 || r0 == 1;
+}
 method {:test} Test13() {
-var r0 := Max(1, 2);
+var r0 := Max(1, 1);
 }
 method {:test} Test14() {
-var r0 := Max(1, 1);
+var r0 := Max(1, 2);
 }
 method {:test} Test15() {
 var r0, r1 := MaxSum(1, 2);
@@ -157,7 +157,7 @@ method {:test} Test18() {
 TestMaxSum(8855, 8856);
 }
 
-// REPEAT 2 - TIME: 8.5739189 s
+// REPEAT 2 - TIME: 8.199037 s
 
 method {:test} Test19() {
 expect 1 <= 2476, "If this check fails at runtime, the test does not meet the preconditions";
@@ -165,14 +165,14 @@ var r0 := Index(2476);
 expect 0 <= r0 < 2476;
 }
 method {:test} Test20() {
-var r0 := Min(2, 3);
-expect r0 <= 2 && r0 <= 3;
-expect r0 == 2 || r0 == 3;
-}
-method {:test} Test21() {
 var r0 := Min(3, 3);
 expect r0 <= 3 && r0 <= 3;
 expect r0 == 3 || r0 == 3;
+}
+method {:test} Test21() {
+var r0 := Min(2, 3);
+expect r0 <= 2 && r0 <= 3;
+expect r0 == 2 || r0 == 3;
 }
 method {:test} Test22() {
 var r0 := Max(2, 3);
@@ -200,7 +200,7 @@ method {:test} Test27() {
 TestMaxSum(8856, 8857);
 }
 
-// REPEAT 3 - TIME: 11.8469412 s
+// REPEAT 3 - TIME: 10.9865491 s
 
 method {:test} Test28() {
 expect 1 <= 2478, "If this check fails at runtime, the test does not meet the preconditions";
@@ -243,7 +243,7 @@ method {:test} Test36() {
 TestMaxSum(8857, 8858);
 }
 
-// REPEAT 4 - TIME: 14.4963276 s
+// REPEAT 4 - TIME: 13.621675 s
 
 method {:test} Test37() {
 expect 1 <= 2480, "If this check fails at runtime, the test does not meet the preconditions";
@@ -251,14 +251,14 @@ var r0 := Index(2480);
 expect 0 <= r0 < 2480;
 }
 method {:test} Test38() {
-var r0 := Min(6, 6);
-expect r0 <= 6 && r0 <= 6;
-expect r0 == 6 || r0 == 6;
-}
-method {:test} Test39() {
 var r0 := Min(5, 6);
 expect r0 <= 5 && r0 <= 6;
 expect r0 == 5 || r0 == 6;
+}
+method {:test} Test39() {
+var r0 := Min(6, 6);
+expect r0 <= 6 && r0 <= 6;
+expect r0 == 6 || r0 == 6;
 }
 method {:test} Test40() {
 var r0 := Max(6, 6);
@@ -286,7 +286,7 @@ method {:test} Test45() {
 TestMaxSum(8858, 8859);
 }
 
-// REPEAT 5 - TIME: 17.2988209 s
+// REPEAT 5 - TIME: 16.5490683 s
 
 method {:test} Test46() {
 expect 1 <= 2482, "If this check fails at runtime, the test does not meet the preconditions";
@@ -294,14 +294,14 @@ var r0 := Index(2482);
 expect 0 <= r0 < 2482;
 }
 method {:test} Test47() {
-var r0 := Min(8, 7);
-expect r0 <= 8 && r0 <= 7;
-expect r0 == 8 || r0 == 7;
-}
-method {:test} Test48() {
 var r0 := Min(7, 8);
 expect r0 <= 7 && r0 <= 8;
 expect r0 == 7 || r0 == 8;
+}
+method {:test} Test48() {
+var r0 := Min(7, 7);
+expect r0 <= 7 && r0 <= 7;
+expect r0 == 7 || r0 == 7;
 }
 method {:test} Test49() {
 var r0 := Max(7, 8);
@@ -329,7 +329,7 @@ method {:test} Test54() {
 TestMaxSum(8859, 8860);
 }
 
-// REPEAT 6 - TIME: 20.3002638 s
+// REPEAT 6 - TIME: 19.1565049 s
 
 method {:test} Test55() {
 expect 1 <= 2484, "If this check fails at runtime, the test does not meet the preconditions";
@@ -337,9 +337,9 @@ var r0 := Index(2484);
 expect 0 <= r0 < 2484;
 }
 method {:test} Test56() {
-var r0 := Min(9, 10);
-expect r0 <= 9 && r0 <= 10;
-expect r0 == 9 || r0 == 10;
+var r0 := Min(8, 9);
+expect r0 <= 8 && r0 <= 9;
+expect r0 == 8 || r0 == 9;
 }
 method {:test} Test57() {
 var r0 := Min(9, 9);
@@ -347,10 +347,10 @@ expect r0 <= 9 && r0 <= 9;
 expect r0 == 9 || r0 == 9;
 }
 method {:test} Test58() {
-var r0 := Max(9, 9);
+var r0 := Max(8, 9);
 }
 method {:test} Test59() {
-var r0 := Max(8, 9);
+var r0 := Max(9, 9);
 }
 method {:test} Test60() {
 var r0, r1 := MaxSum(8, 9);
@@ -372,7 +372,7 @@ method {:test} Test63() {
 TestMaxSum(8860, 8861);
 }
 
-// REPEAT 7 - TIME: 22.872038 s
+// REPEAT 7 - TIME: 21.896651 s
 
 method {:test} Test64() {
 expect 1 <= 2486, "If this check fails at runtime, the test does not meet the preconditions";
@@ -385,9 +385,9 @@ expect r0 <= 10 && r0 <= 11;
 expect r0 == 10 || r0 == 11;
 }
 method {:test} Test66() {
-var r0 := Min(11, 11);
-expect r0 <= 11 && r0 <= 11;
-expect r0 == 11 || r0 == 11;
+var r0 := Min(10, 10);
+expect r0 <= 10 && r0 <= 10;
+expect r0 == 10 || r0 == 10;
 }
 method {:test} Test67() {
 var r0 := Max(10, 11);
@@ -415,7 +415,7 @@ method {:test} Test72() {
 TestMaxSum(8861, 8862);
 }
 
-// REPEAT 8 - TIME: 25.3566782 s
+// REPEAT 8 - TIME: 24.6576939 s
 
 method {:test} Test73() {
 expect 1 <= 2488, "If this check fails at runtime, the test does not meet the preconditions";
@@ -423,9 +423,9 @@ var r0 := Index(2488);
 expect 0 <= r0 < 2488;
 }
 method {:test} Test74() {
-var r0 := Min(12, 13);
-expect r0 <= 12 && r0 <= 13;
-expect r0 == 12 || r0 == 13;
+var r0 := Min(11, 12);
+expect r0 <= 11 && r0 <= 12;
+expect r0 == 11 || r0 == 12;
 }
 method {:test} Test75() {
 var r0 := Min(12, 12);
@@ -433,10 +433,10 @@ expect r0 <= 12 && r0 <= 12;
 expect r0 == 12 || r0 == 12;
 }
 method {:test} Test76() {
-var r0 := Max(11, 12);
+var r0 := Max(12, 12);
 }
 method {:test} Test77() {
-var r0 := Max(12, 12);
+var r0 := Max(11, 12);
 }
 method {:test} Test78() {
 var r0, r1 := MaxSum(11, 12);
@@ -458,7 +458,7 @@ method {:test} Test81() {
 TestMaxSum(8862, 8863);
 }
 
-// REPEAT 9 - TIME: 27.7386405 s
+// REPEAT 9 - TIME: 27.8059117 s
 
 method {:test} Test82() {
 expect 1 <= 2490, "If this check fails at runtime, the test does not meet the preconditions";
@@ -466,9 +466,9 @@ var r0 := Index(2490);
 expect 0 <= r0 < 2490;
 }
 method {:test} Test83() {
-var r0 := Min(14, 14);
-expect r0 <= 14 && r0 <= 14;
-expect r0 == 14 || r0 == 14;
+var r0 := Min(14, 13);
+expect r0 <= 14 && r0 <= 13;
+expect r0 == 14 || r0 == 13;
 }
 method {:test} Test84() {
 var r0 := Min(13, 14);
@@ -501,4 +501,4 @@ method {:test} Test90() {
 TestMaxSum(8863, 8864);
 }
 
-// REPEAT 10 - TIME: 30.4207737 s
+// REPEAT 10 - TIME: 30.1910574 s

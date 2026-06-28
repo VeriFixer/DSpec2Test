@@ -31,25 +31,20 @@ method {:testEntry} FindFirstRepeatedChar(s: string) returns (found: bool, c: ch
   }
 }
 
-method {:test} Test35() {
+method {:test} Test34() {
 var r0, r1 := FindFirstRepeatedChar("\U{0002}");
 expect r0 ==> exists i, j :: 0 <= i < j < |"\U{0002}"| && "\U{0002}"[i] == "\U{0002}"[j] && "\U{0002}"[i] == r1 && forall k, l :: 0 <= k < l < j && "\U{0002}"[k] == "\U{0002}"[l] ==> k >= i;
 expect !r0 ==> forall i, j :: 0 <= i < j < |"\U{0002}"| ==> "\U{0002}"[i] != "\U{0002}"[j];
 }
-method {:test} Test36() {
+method {:test} Test35() {
 var r0, r1 := FindFirstRepeatedChar("aaaaaaaaa");
 expect r0 ==> exists i, j :: 0 <= i < j < |"aaaaaaaaa"| && "aaaaaaaaa"[i] == "aaaaaaaaa"[j] && "aaaaaaaaa"[i] == r1 && forall k, l :: 0 <= k < l < j && "aaaaaaaaa"[k] == "aaaaaaaaa"[l] ==> k >= i;
 expect !r0 ==> forall i, j :: 0 <= i < j < |"aaaaaaaaa"| ==> "aaaaaaaaa"[i] != "aaaaaaaaa"[j];
 }
-method {:test} Test37() {
-var r0, r1 := FindFirstRepeatedChar("\U{0002}\U{0004}");
-expect r0 ==> exists i, j :: 0 <= i < j < |"\U{0002}\U{0004}"| && "\U{0002}\U{0004}"[i] == "\U{0002}\U{0004}"[j] && "\U{0002}\U{0004}"[i] == r1 && forall k, l :: 0 <= k < l < j && "\U{0002}\U{0004}"[k] == "\U{0002}\U{0004}"[l] ==> k >= i;
-expect !r0 ==> forall i, j :: 0 <= i < j < |"\U{0002}\U{0004}"| ==> "\U{0002}\U{0004}"[i] != "\U{0002}\U{0004}"[j];
-}
-method {:test} Test38() {
-var r0, r1 := FindFirstRepeatedChar("\U{0002}\U{0002}aaaaaaa");
-expect r0 ==> exists i, j :: 0 <= i < j < |"\U{0002}\U{0002}aaaaaaa"| && "\U{0002}\U{0002}aaaaaaa"[i] == "\U{0002}\U{0002}aaaaaaa"[j] && "\U{0002}\U{0002}aaaaaaa"[i] == r1 && forall k, l :: 0 <= k < l < j && "\U{0002}\U{0002}aaaaaaa"[k] == "\U{0002}\U{0002}aaaaaaa"[l] ==> k >= i;
-expect !r0 ==> forall i, j :: 0 <= i < j < |"\U{0002}\U{0002}aaaaaaa"| ==> "\U{0002}\U{0002}aaaaaaa"[i] != "\U{0002}\U{0002}aaaaaaa"[j];
+method {:test} Test36() {
+var r0, r1 := FindFirstRepeatedChar("\U{0002}\U{0002}");
+expect r0 ==> exists i, j :: 0 <= i < j < |"\U{0002}\U{0002}"| && "\U{0002}\U{0002}"[i] == "\U{0002}\U{0002}"[j] && "\U{0002}\U{0002}"[i] == r1 && forall k, l :: 0 <= k < l < j && "\U{0002}\U{0002}"[k] == "\U{0002}\U{0002}"[l] ==> k >= i;
+expect !r0 ==> forall i, j :: 0 <= i < j < |"\U{0002}\U{0002}"| ==> "\U{0002}\U{0002}"[i] != "\U{0002}\U{0002}"[j];
 }
 
-// REPEAT 9 - TIME: 21.0128888 s
+// REPEAT 9 - TIME: 20.6586336 s

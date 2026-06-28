@@ -21,19 +21,19 @@ method {:testEntry} ReplaceChars(s: string, oldChar: char, newChar: char)
 }
 
 method {:test} Test12() {
-var r0 := ReplaceChars("aa\0aaaaaaaaa\0aaaaaaa\0", '\U{0001}', '\0');
-expect |r0| == |"aa\0aaaaaaaaa\0aaaaaaa\0"|;
-expect forall i :: 0 <= i < |"aa\0aaaaaaaaa\0aaaaaaa\0"| ==> ("aa\0aaaaaaaaa\0aaaaaaa\0"[i] == '\U{0001}' ==> r0[i] == '\0') && ("aa\0aaaaaaaaa\0aaaaaaa\0"[i] != '\U{0001}' ==> r0[i] == "aa\0aaaaaaaaa\0aaaaaaa\0"[i]);
+var r0 := ReplaceChars("\U{0001}aaaaa\U{0001}\U{0001}aaaaaaa\U{0001}", '\U{0001}', '\0');
+expect |r0| == |"\U{0001}aaaaa\U{0001}\U{0001}aaaaaaa\U{0001}"|;
+expect forall i :: 0 <= i < |"\U{0001}aaaaa\U{0001}\U{0001}aaaaaaa\U{0001}"| ==> ("\U{0001}aaaaa\U{0001}\U{0001}aaaaaaa\U{0001}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}aaaaa\U{0001}\U{0001}aaaaaaa\U{0001}"[i] != '\U{0001}' ==> r0[i] == "\U{0001}aaaaa\U{0001}\U{0001}aaaaaaa\U{0001}"[i]);
 }
 method {:test} Test13() {
-var r0 := ReplaceChars("\U{0002}aaaaaaaaaaaaa", '\U{0001}', '\0');
-expect |r0| == |"\U{0002}aaaaaaaaaaaaa"|;
-expect forall i :: 0 <= i < |"\U{0002}aaaaaaaaaaaaa"| ==> ("\U{0002}aaaaaaaaaaaaa"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0002}aaaaaaaaaaaaa"[i] != '\U{0001}' ==> r0[i] == "\U{0002}aaaaaaaaaaaaa"[i]);
+var r0 := ReplaceChars("aaaa\U{0002}a", '\U{0001}', '\0');
+expect |r0| == |"aaaa\U{0002}a"|;
+expect forall i :: 0 <= i < |"aaaa\U{0002}a"| ==> ("aaaa\U{0002}a"[i] == '\U{0001}' ==> r0[i] == '\0') && ("aaaa\U{0002}a"[i] != '\U{0001}' ==> r0[i] == "aaaa\U{0002}a"[i]);
 }
 method {:test} Test14() {
-var r0 := ReplaceChars("\U{0001}aaaaaaaaaaaaa", '\U{0001}', '\0');
-expect |r0| == |"\U{0001}aaaaaaaaaaaaa"|;
-expect forall i :: 0 <= i < |"\U{0001}aaaaaaaaaaaaa"| ==> ("\U{0001}aaaaaaaaaaaaa"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}aaaaaaaaaaaaa"[i] != '\U{0001}' ==> r0[i] == "\U{0001}aaaaaaaaaaaaa"[i]);
+var r0 := ReplaceChars("\0a\U{0001}\U{0002}a\U{0004}a\0", '\U{0001}', '\0');
+expect |r0| == |"\0a\U{0001}\U{0002}a\U{0004}a\0"|;
+expect forall i :: 0 <= i < |"\0a\U{0001}\U{0002}a\U{0004}a\0"| ==> ("\0a\U{0001}\U{0002}a\U{0004}a\0"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\0a\U{0001}\U{0002}a\U{0004}a\0"[i] != '\U{0001}' ==> r0[i] == "\0a\U{0001}\U{0002}a\U{0004}a\0"[i]);
 }
 
-// REPEAT 5 - TIME: 9.9432396 s
+// REPEAT 5 - TIME: 10.1766674 s

@@ -45,7 +45,7 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 1 - TIME: 3.1386448 s
+// REPEAT 1 - TIME: 3.0723833 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [-999998764, 0, 0, 0, 0, 0];
@@ -55,142 +55,125 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 method {:test} Test3() {
-var seqint0 : seq<int> := [0, -999991635, 0, 0, -999991635, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999991636, -999998204];
+var seqint0 : seq<int> := [0, 0, 0, 0, -999991635, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999998204, -999991635];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 2 - TIME: 4.8596928 s
+// REPEAT 2 - TIME: 4.5881271 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [-999991145, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [-999998764, 0, 0, 0, 0];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 method {:test} Test5() {
-var seqint0 : seq<int> := [-999999391, 0, -999994147, 0, -999994147, 0, -999997718];
+var seqint0 : seq<int> := [0, 0, 0, -999999551, -999999551];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 3 - TIME: 6.5494222 s
+// REPEAT 3 - TIME: 6.2383701 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [-999991635, 0, 0, 0, 0, 0, -999991634, -999991633];
+var seqint0 : seq<int> := [-999998204];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 method {:test} Test7() {
-var seqint0 : seq<int> := [-999994147, 0, 0, -999993717, 0, 0, 0, -999993717, -999999391, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999998858, 0, -999994080, -999993718];
+var seqint0 : seq<int> := [0, -999999465, -999999523, -999999522, 0, 0, -999999536, 0, 0, 0, 0, 0, 0, 0, -999999537, 0, 0, 0, 0, 0, -999999465, -999999719, -999999524];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 4 - TIME: 8.1080974 s
+// REPEAT 4 - TIME: 7.7972984 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [-999994079, 0, 0, 0, 0, 0, 0, -999994080, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [-999997563, -999997562];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 method {:test} Test9() {
-var seqint0 : seq<int> := [0, -999991635, -999991635, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [-999998858, 0, 0, 0, 0, 0, 0, -999997003, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999997003, 0, -999997004, -999999465, -999993717];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 5 - TIME: 9.8009944 s
+// REPEAT 5 - TIME: 9.1789942 s
 
 method {:test} Test10() {
-var seqint0 : seq<int> := [-999999963, 0, 0, 0, 0, 0, -999999962, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [-999997725, 0, -999991145, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 method {:test} Test11() {
-var seqint0 : seq<int> := [-999997003, 0, 0, 0, 0, -999995321, 0, 0, 0, 0, -999995321, -999999551, -999999391];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999998347, 0, 0, 0, -999998347, -999999141, -999999719, -999998348, -999999465, -999999026, -999993717];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 6 - TIME: 11.4847068 s
+// REPEAT 6 - TIME: 11.0155199 s
 
 method {:test} Test12() {
-var seqint0 : seq<int> := [-999999719, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999992281, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [-999999391, 0, -999992281, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 method {:test} Test13() {
-var seqint0 : seq<int> := [-999991635, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999991635, 0];
+var seqint0 : seq<int> := [-999994147, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999994147, -999999551];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 7 - TIME: 12.9243411 s
+// REPEAT 7 - TIME: 12.5689677 s
 
 method {:test} Test14() {
-var seqint0 : seq<int> := [-999997760, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999991902, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [-999998203, 0, -999998204];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 method {:test} Test15() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999995611, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999995611, -999998857, -999997466, -999997466, 0, -999999390];
+var seqint0 : seq<int> := [-999997718, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999997718, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 8 - TIME: 14.4644251 s
+// REPEAT 8 - TIME: 14.0703855 s
 
 method {:test} Test16() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
-expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := contains_duplicate(seqint0);
-expect r0 <==> distinct(seqint0);
-}
-method {:test} Test17() {
-var seqint0 : seq<int> := [-999991635, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999991635, 0, 0, 0, 0, 0];
-expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
-expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := contains_duplicate(seqint0);
-expect r0 <==> distinct(seqint0);
-}
-
-// REPEAT 9 - TIME: 15.882686 s
-
-method {:test} Test18() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
-method {:test} Test19() {
+method {:test} Test17() {
 var seqint0 : seq<int> := [-999999551, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999999551, 0, 0, 0];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
@@ -198,4 +181,21 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 10 - TIME: 17.3941429 s
+// REPEAT 9 - TIME: 15.3767012 s
+
+method {:test} Test18() {
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
+expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := contains_duplicate(seqint0);
+expect r0 <==> distinct(seqint0);
+}
+method {:test} Test19() {
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, -999999551, 0, 0, 0, 0, -999999551, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
+expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := contains_duplicate(seqint0);
+expect r0 <==> distinct(seqint0);
+}
+
+// REPEAT 10 - TIME: 16.764076 s

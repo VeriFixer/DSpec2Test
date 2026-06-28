@@ -242,4 +242,4 @@ expect r0 != -1 ==> forall r | r0 < r < 0 :: seqint0[r] != 100;
 expect r0 == -1 ==> forall r | 0 <= r < 0 :: seqint0[r] != 100;
 }
 
-// REPEAT 1 - TIME: 25.2915843 s
+// REPEAT 1 - TIME: 41.3625872 s

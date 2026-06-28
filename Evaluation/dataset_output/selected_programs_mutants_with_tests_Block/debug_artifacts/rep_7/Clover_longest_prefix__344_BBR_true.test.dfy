@@ -18,14 +18,14 @@ method {:testEntry} LongestCommonPrefix(str1: seq<char>, str2: seq<char>) return
 }
 
 method {:test} Test12() {
-var r0 := LongestCommonPrefix("\0aaaaaaaaaaaaa", "\0aaaaaaaaa");
-expect |r0| <= |"\0aaaaaaaaaaaaa"| && r0 == "\0aaaaaaaaaaaaa"[0 .. |r0|] && |r0| <= |"\0aaaaaaaaa"| && r0 == "\0aaaaaaaaa"[0 .. |r0|];
-expect |r0| == |"\0aaaaaaaaaaaaa"| || |r0| == |"\0aaaaaaaaa"| || "\0aaaaaaaaaaaaa"[|r0|] != "\0aaaaaaaaa"[|r0|];
+var r0 := LongestCommonPrefix("\0aaaaaaaaa", "\0aaaaaaaa");
+expect |r0| <= |"\0aaaaaaaaa"| && r0 == "\0aaaaaaaaa"[0 .. |r0|] && |r0| <= |"\0aaaaaaaa"| && r0 == "\0aaaaaaaa"[0 .. |r0|];
+expect |r0| == |"\0aaaaaaaaa"| || |r0| == |"\0aaaaaaaa"| || "\0aaaaaaaaa"[|r0|] != "\0aaaaaaaa"[|r0|];
 }
 method {:test} Test13() {
-var r0 := LongestCommonPrefix("\U{0004}aaa", "\U{0002}\0aaaaaaaa");
-expect |r0| <= |"\U{0004}aaa"| && r0 == "\U{0004}aaa"[0 .. |r0|] && |r0| <= |"\U{0002}\0aaaaaaaa"| && r0 == "\U{0002}\0aaaaaaaa"[0 .. |r0|];
-expect |r0| == |"\U{0004}aaa"| || |r0| == |"\U{0002}\0aaaaaaaa"| || "\U{0004}aaa"[|r0|] != "\U{0002}\0aaaaaaaa"[|r0|];
+var r0 := LongestCommonPrefix("\U{0002}\U{0006}", "\U{0004}aaa\0a");
+expect |r0| <= |"\U{0002}\U{0006}"| && r0 == "\U{0002}\U{0006}"[0 .. |r0|] && |r0| <= |"\U{0004}aaa\0a"| && r0 == "\U{0004}aaa\0a"[0 .. |r0|];
+expect |r0| == |"\U{0002}\U{0006}"| || |r0| == |"\U{0004}aaa\0a"| || "\U{0002}\U{0006}"[|r0|] != "\U{0004}aaa\0a"[|r0|];
 }
 
-// REPEAT 7 - TIME: 9.5907232 s
+// REPEAT 7 - TIME: 8.7790258 s

@@ -111,4 +111,4 @@ method {:test} Test8() {
 TestMaxSum(0, 0);
 }
 
-// REPEAT 1 - TIME: 7.0654536 s
+// REPEAT 1 - TIME: 6.46346 s

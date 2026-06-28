@@ -22,4 +22,4 @@ var r0, r1 := problem2(4868, 2437, 2434, 0);
 expect r0 == 2434 && r1 == 0;
 }
 
-// REPEAT 1 - TIME: 2.1660156 s
+// REPEAT 1 - TIME: 2.4519575 s

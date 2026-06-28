@@ -145,4 +145,4 @@ var r0 := exp_by_sqr(77.0/2.0, 1238);
 expect r0 == exp(77.0/2.0, 1238);
 }
 
-// REPEAT 1 - TIME: 41.5874445 s
+// REPEAT 1 - TIME: 49.1907992 s

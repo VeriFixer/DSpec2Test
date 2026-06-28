@@ -34,4 +34,4 @@ var r0 := ComputePower(7721);
 expect r0 == Power(7721);
 }
 
-// REPEAT 1 - TIME: 6.8449243 s
+// REPEAT 1 - TIME: 8.5091435 s

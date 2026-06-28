@@ -45,139 +45,139 @@ expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 1 - TIME: 3.3493729 s
+// REPEAT 1 - TIME: 3.5105057 s
 
 method {:test} Test2() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 8365, 8855, 7720, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5];
+var seqint0 : seq<int> := [5, 0, 0, 0, 0, 0, 0, 0, 0, 8365, 8855, 7720];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 method {:test} Test3() {
-var seqint0 : seq<int> := [-1236, 1236, -7720];
+var seqint0 : seq<int> := [5, 0, 0, 0, 0, 0, 0, 0, 0, 8365, 8855, -1237];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 2 - TIME: 4.8345595 s
+// REPEAT 2 - TIME: 5.2845867 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [6, 8365, 8855, 1237, 0];
+var seqint0 : seq<int> := [-1236, 1236, 7720];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 method {:test} Test5() {
-var seqint0 : seq<int> := [8, 2282, 1796, -1237, 6];
+var seqint0 : seq<int> := [8, 8365, 8855, -1237, 6];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 3 - TIME: 6.3980996 s
+// REPEAT 3 - TIME: 6.7356379 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [7, 8365, 8855, 1237, 0];
+var seqint0 : seq<int> := [7, 8365, 8855, 7720];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 method {:test} Test7() {
-var seqint0 : seq<int> := [10, 0, 0, 0, 7, 2282, 1796, -7720, 0, 0, 0, 12];
+var seqint0 : seq<int> := [7, 8365, 8855, -1237];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 4 - TIME: 7.8859603 s
+// REPEAT 4 - TIME: 8.2295665 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [0, 0, 0, 9, 0, 8098, 8855, 1237, 0, 0, 0, 15, 17, 0, 13, 0, 0, 19, 21];
+var seqint0 : seq<int> := [0, 0, 609, 8855, 1237, 0, 0, 0, 0, 0, 0, 9, 0, 11, 0, 13, 0, 15];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 method {:test} Test9() {
-var seqint0 : seq<int> := [13, 8365, 8855, -7720, 9];
+var seqint0 : seq<int> := [9, 8365, 8855, -7720];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 5 - TIME: 9.2806497 s
+// REPEAT 5 - TIME: 10.0104078 s
 
 method {:test} Test10() {
-var seqint0 : seq<int> := [11, 8365, 8855, 1237, 0, 0];
+var seqint0 : seq<int> := [-609, 609, 8856];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 method {:test} Test11() {
-var seqint0 : seq<int> := [0, 2282, 8855, -7720, 11, 16];
+var seqint0 : seq<int> := [-450, 0];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 6 - TIME: 10.9586637 s
+// REPEAT 6 - TIME: 11.6320439 s
 
 method {:test} Test12() {
-var seqint0 : seq<int> := [0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 449, 8855, 1237, 0, 0, 0, 20, 23, 0];
+var seqint0 : seq<int> := [-608, 608, 5854];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 method {:test} Test13() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 14, 0, 609, 8855, -7720, 0, 0, 0, 0, 20, 0, 0];
+var seqint0 : seq<int> := [0, 2282, 8855, -7720, 10, 0, 0, 0, 0, 0, 0, 0, 17, 0, 14, 0, 0, 0, 19];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 7 - TIME: 12.3147302 s
+// REPEAT 7 - TIME: 12.89744 s
 
 method {:test} Test14() {
-var seqint0 : seq<int> := [0, 8098, 609, 1237, 0, 0, 0, 0, 0, 0, 0, 18, 0, 24, 26, 0, 0, 0, 0, 0, 28];
+var seqint0 : seq<int> := [0, 0, 0, 12, 0, 0, 0, 0, 0, 21, 609, 2282, 1237, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 method {:test} Test15() {
-var seqint0 : seq<int> := [-5854, 0];
+var seqint0 : seq<int> := [-5854];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 8 - TIME: 13.812652 s
+// REPEAT 8 - TIME: 14.2027107 s
 
 method {:test} Test16() {
-var seqint0 : seq<int> := [-5853, 5853, 1237, 22, 0, 0, 32, 0, 0, 0, 0, 27, 0, 0, 34, 0, 0, 0, 0, 36, 30, 0];
+var seqint0 : seq<int> := [0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 449, 8365, 1237, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 method {:test} Test17() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 27, 0, 0, 0, 5853, 449, -1237, 0, 0, 0, 0, 30, 0, 22];
+var seqint0 : seq<int> := [0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2282, 1796, -1237, 0, 22, 0, 0, 0, 0, 0, 0, 0];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 9 - TIME: 15.1454761 s
+// REPEAT 9 - TIME: 15.4737295 s
 
 method {:test} Test18() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 449, 8365, 1237, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 31];
+var seqint0 : seq<int> := [0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 28, 0, 0, 0, 0, 0, 0, 609, 2282, 1237, 0];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 method {:test} Test19() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8365, 8855, -1237, 0, 0, 0, 0];
+var seqint0 : seq<int> := [20, 0, 0, 0, 0, 0, 0, 8365, 8855, -1237, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0, r1 := MaxSegSum(seqint0);
 expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 10 - TIME: 16.5888169 s
+// REPEAT 10 - TIME: 16.7966649 s

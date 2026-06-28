@@ -16,16 +16,16 @@ method {:testEntry} ContainsZ(s: string) returns (result: bool)
 }
 
 method {:test} Test3() {
-var r0 := ContainsZ("aaaaaaaaz\U{0003}aaaaaaaaaaa\U{0001}");
-expect r0 <==> exists i :: 0 <= i < |"aaaaaaaaz\U{0003}aaaaaaaaaaa\U{0001}"| && ("aaaaaaaaz\U{0003}aaaaaaaaaaa\U{0001}"[i] == 'z' || "aaaaaaaaz\U{0003}aaaaaaaaaaa\U{0001}"[i] == 'Z');
+var r0 := ContainsZ("z");
+expect r0 <==> exists i :: 0 <= i < |"z"| && ("z"[i] == 'z' || "z"[i] == 'Z');
 }
 method {:test} Test4() {
 var r0 := ContainsZ("Z");
 expect r0 <==> exists i :: 0 <= i < |"Z"| && ("Z"[i] == 'z' || "Z"[i] == 'Z');
 }
 method {:test} Test5() {
-var r0 := ContainsZ("\0");
-expect r0 <==> exists i :: 0 <= i < |"\0"| && ("\0"[i] == 'z' || "\0"[i] == 'Z');
+var r0 := ContainsZ("a\0");
+expect r0 <==> exists i :: 0 <= i < |"a\0"| && ("a\0"[i] == 'z' || "a\0"[i] == 'Z');
 }
 
-// REPEAT 2 - TIME: 5.9673095 s
+// REPEAT 2 - TIME: 5.7155719 s

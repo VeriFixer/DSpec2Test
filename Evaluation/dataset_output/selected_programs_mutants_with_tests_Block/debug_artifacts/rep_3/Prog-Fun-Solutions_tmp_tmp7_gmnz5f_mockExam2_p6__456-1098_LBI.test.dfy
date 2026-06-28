@@ -44,10 +44,10 @@ method {:testEntry} problem6(n: nat) returns (a: int)
 }
 
 method {:test} Test4() {
-var r0 := problem6(6);
+var r0 := problem6(9);
 }
 method {:test} Test5() {
-var r0 := problem6(3);
+var r0 := problem6(7);
 }
 
-// REPEAT 3 - TIME: 7.151406 s
+// REPEAT 3 - TIME: 7.1397708 s

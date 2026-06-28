@@ -18,19 +18,19 @@ method {:testEntry} Match(s: string, p: string) returns (b: bool)
 }
 
 method {:test} Test12() {
-expect |"aaaaa\U{0002}a\U{0004}aaa\U{0008}aa\U{000E}aa\U{000C}\U{0006}a\n\0\U{0010}"| == |"aaaaa\U{0002}a\U{0004}aaa\U{0008}aa\U{000E}aa\U{000C}\U{0006}a\n\0\U{0010}"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Match("aaaaa\U{0002}a\U{0004}aaa\U{0008}aa\U{000E}aa\U{000C}\U{0006}a\n\0\U{0010}", "aaaaa\U{0002}a\U{0004}aaa\U{0008}aa\U{000E}aa\U{000C}\U{0006}a\n\0\U{0010}");
-expect r0 <==> forall n :: 0 <= n < |"aaaaa\U{0002}a\U{0004}aaa\U{0008}aa\U{000E}aa\U{000C}\U{0006}a\n\0\U{0010}"| ==> "aaaaa\U{0002}a\U{0004}aaa\U{0008}aa\U{000E}aa\U{000C}\U{0006}a\n\0\U{0010}"[n] == "aaaaa\U{0002}a\U{0004}aaa\U{0008}aa\U{000E}aa\U{000C}\U{0006}a\n\0\U{0010}"[n] || "aaaaa\U{0002}a\U{0004}aaa\U{0008}aa\U{000E}aa\U{000C}\U{0006}a\n\0\U{0010}"[n] == '?';
+expect |"\U{0002}\0aaaaaaa\U{0006}aaaaaaaaaaa\U{0004}aaaaaa\U{0008}\n"| == |"\U{0002}\0aaaaaaa\U{0006}aaaaaaaaaaa\U{0004}aaaaaa\U{0008}\n"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := Match("\U{0002}\0aaaaaaa\U{0006}aaaaaaaaaaa\U{0004}aaaaaa\U{0008}\n", "\U{0002}\0aaaaaaa\U{0006}aaaaaaaaaaa\U{0004}aaaaaa\U{0008}\n");
+expect r0 <==> forall n :: 0 <= n < |"\U{0002}\0aaaaaaa\U{0006}aaaaaaaaaaa\U{0004}aaaaaa\U{0008}\n"| ==> "\U{0002}\0aaaaaaa\U{0006}aaaaaaaaaaa\U{0004}aaaaaa\U{0008}\n"[n] == "\U{0002}\0aaaaaaa\U{0006}aaaaaaaaaaa\U{0004}aaaaaa\U{0008}\n"[n] || "\U{0002}\0aaaaaaa\U{0006}aaaaaaaaaaa\U{0004}aaaaaa\U{0008}\n"[n] == '?';
 }
 method {:test} Test13() {
-expect |"\U{0002}aaaaaaaa\U{0006}aaaaaa\U{0012}\U{000C}aa"| == |"\0\U{0004}aaaaaaa\na\U{000E}aaaaa\U{0010}\U{0008}a"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Match("\U{0002}aaaaaaaa\U{0006}aaaaaa\U{0012}\U{000C}aa", "\0\U{0004}aaaaaaa\na\U{000E}aaaaa\U{0010}\U{0008}a");
-expect r0 <==> forall n :: 0 <= n < |"\U{0002}aaaaaaaa\U{0006}aaaaaa\U{0012}\U{000C}aa"| ==> "\U{0002}aaaaaaaa\U{0006}aaaaaa\U{0012}\U{000C}aa"[n] == "\0\U{0004}aaaaaaa\na\U{000E}aaaaa\U{0010}\U{0008}a"[n] || "\0\U{0004}aaaaaaa\na\U{000E}aaaaa\U{0010}\U{0008}a"[n] == '?';
+expect |"\U{0004}aaaa\U{0002}aaaaa"| == |"\U{0004}aaaa\0aaaaa"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := Match("\U{0004}aaaa\U{0002}aaaaa", "\U{0004}aaaa\0aaaaa");
+expect r0 <==> forall n :: 0 <= n < |"\U{0004}aaaa\U{0002}aaaaa"| ==> "\U{0004}aaaa\U{0002}aaaaa"[n] == "\U{0004}aaaa\0aaaaa"[n] || "\U{0004}aaaa\0aaaaa"[n] == '?';
 }
 method {:test} Test14() {
-expect |"\0aaaaaaaa\U{0006}aaaaa\na\U{0016}\U{0012}\U{001C}"| == |"\0\U{0002}aaaaa\U{0004}aa\U{000C}\U{0010}a\U{0018}a\U{000E}\U{0014}a\U{0008}\U{001A}"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Match("\0aaaaaaaa\U{0006}aaaaa\na\U{0016}\U{0012}\U{001C}", "\0\U{0002}aaaaa\U{0004}aa\U{000C}\U{0010}a\U{0018}a\U{000E}\U{0014}a\U{0008}\U{001A}");
-expect r0 <==> forall n :: 0 <= n < |"\0aaaaaaaa\U{0006}aaaaa\na\U{0016}\U{0012}\U{001C}"| ==> "\0aaaaaaaa\U{0006}aaaaa\na\U{0016}\U{0012}\U{001C}"[n] == "\0\U{0002}aaaaa\U{0004}aa\U{000C}\U{0010}a\U{0018}a\U{000E}\U{0014}a\U{0008}\U{001A}"[n] || "\0\U{0002}aaaaa\U{0004}aa\U{000C}\U{0010}a\U{0018}a\U{000E}\U{0014}a\U{0008}\U{001A}"[n] == '?';
+expect |"\0aa\U{0008}aaaaa\U{0002}a\U{0004}aaa\U{000E}\U{0006}aaa\na\U{000C}aaaa\U{0010}a\U{0012}"| == |"\0aa\U{0008}aaaaa\U{0002}a\U{0004}aaa\U{000E}\U{0006}aaa\na\U{000C}aaaa\U{0010}a\U{0012}"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := Match("\0aa\U{0008}aaaaa\U{0002}a\U{0004}aaa\U{000E}\U{0006}aaa\na\U{000C}aaaa\U{0010}a\U{0012}", "\0aa\U{0008}aaaaa\U{0002}a\U{0004}aaa\U{000E}\U{0006}aaa\na\U{000C}aaaa\U{0010}a\U{0012}");
+expect r0 <==> forall n :: 0 <= n < |"\0aa\U{0008}aaaaa\U{0002}a\U{0004}aaa\U{000E}\U{0006}aaa\na\U{000C}aaaa\U{0010}a\U{0012}"| ==> "\0aa\U{0008}aaaaa\U{0002}a\U{0004}aaa\U{000E}\U{0006}aaa\na\U{000C}aaaa\U{0010}a\U{0012}"[n] == "\0aa\U{0008}aaaaa\U{0002}a\U{0004}aaa\U{000E}\U{0006}aaa\na\U{000C}aaaa\U{0010}a\U{0012}"[n] || "\0aa\U{0008}aaaaa\U{0002}a\U{0004}aaa\U{000E}\U{0006}aaa\na\U{000C}aaaa\U{0010}a\U{0012}"[n] == '?';
 }
 
-// REPEAT 5 - TIME: 10.6892975 s
+// REPEAT 5 - TIME: 9.0560942 s

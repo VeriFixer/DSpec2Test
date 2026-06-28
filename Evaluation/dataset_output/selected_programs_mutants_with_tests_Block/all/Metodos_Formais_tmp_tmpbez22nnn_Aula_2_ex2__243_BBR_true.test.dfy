@@ -29,67 +29,67 @@ var r0 := Pot(0, 2);
 expect r0 == Potencia(0, 2);
 }
 
-// REPEAT 1 - TIME: 2.7324639 s
+// REPEAT 1 - TIME: 2.8300993 s
 
 method {:test} Test1() {
 var r0 := Pot(1, 3);
 expect r0 == Potencia(1, 3);
 }
 
-// REPEAT 2 - TIME: 4.0123027 s
+// REPEAT 2 - TIME: 4.0118471 s
 
 method {:test} Test2() {
 var r0 := Pot(2, 4);
 expect r0 == Potencia(2, 4);
 }
 
-// REPEAT 3 - TIME: 5.137196 s
+// REPEAT 3 - TIME: 5.0906325 s
 
 method {:test} Test3() {
 var r0 := Pot(3, 5);
 expect r0 == Potencia(3, 5);
 }
 
-// REPEAT 4 - TIME: 6.2134575 s
+// REPEAT 4 - TIME: 6.1210027 s
 
 method {:test} Test4() {
 var r0 := Pot(4, 6);
 expect r0 == Potencia(4, 6);
 }
 
-// REPEAT 5 - TIME: 7.3417053 s
+// REPEAT 5 - TIME: 7.1611706 s
 
 method {:test} Test5() {
 var r0 := Pot(5, 7);
 expect r0 == Potencia(5, 7);
 }
 
-// REPEAT 6 - TIME: 8.3339035 s
+// REPEAT 6 - TIME: 8.2921071 s
 
 method {:test} Test6() {
 var r0 := Pot(6, 8);
 expect r0 == Potencia(6, 8);
 }
 
-// REPEAT 7 - TIME: 9.4632237 s
+// REPEAT 7 - TIME: 9.4190553 s
 
 method {:test} Test7() {
 var r0 := Pot(7, 9);
 expect r0 == Potencia(7, 9);
 }
 
-// REPEAT 8 - TIME: 10.3480368 s
+// REPEAT 8 - TIME: 10.3392154 s
 
 method {:test} Test8() {
 var r0 := Pot(8, 10);
 expect r0 == Potencia(8, 10);
 }
 
-// REPEAT 9 - TIME: 11.108559 s
+// REPEAT 9 - TIME: 11.4070847 s
 
 method {:test} Test9() {
 var r0 := Pot(9, 11);
 expect r0 == Potencia(9, 11);
 }
 
-// REPEAT 10 - TIME: 12.0148887 s
+// REPEAT 10 - TIME: 12.3492515 s

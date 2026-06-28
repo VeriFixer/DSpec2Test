@@ -33,4 +33,4 @@ var r0 := calcF(1242);
 expect r0 == F(1242);
 }
 
-// REPEAT 1 - TIME: 6.1429552 s
+// REPEAT 1 - TIME: 8.551345 s

@@ -25,12 +25,12 @@ method {:testEntry} IsInteger(s: string) returns (result: bool)
 }
 
 method {:test} Test17() {
-var r0 := IsInteger("4aa474a7aaaaaaaa828aa");
-expect r0 <==> |"4aa474a7aaaaaaaa828aa"| > 0 && forall i :: 0 <= i < |"4aa474a7aaaaaaaa828aa"| ==> IsDigit("4aa474a7aaaaaaaa828aa"[i]);
+var r0 := IsInteger("7aaaaaaaaaaa9aaaa76aaaaaaa");
+expect r0 <==> |"7aaaaaaaaaaa9aaaa76aaaaaaa"| > 0 && forall i :: 0 <= i < |"7aaaaaaaaaaa9aaaa76aaaaaaa"| ==> IsDigit("7aaaaaaaaaaa9aaaa76aaaaaaa"[i]);
 }
 method {:test} Test18() {
-var r0 := IsInteger("\U{0001}aa\U{0019}aa\0");
-expect r0 <==> |"\U{0001}aa\U{0019}aa\0"| > 0 && forall i :: 0 <= i < |"\U{0001}aa\U{0019}aa\0"| ==> IsDigit("\U{0001}aa\U{0019}aa\0"[i]);
+var r0 := IsInteger("\U{0001}a\U{0018}aa\0");
+expect r0 <==> |"\U{0001}a\U{0018}aa\0"| > 0 && forall i :: 0 <= i < |"\U{0001}a\U{0018}aa\0"| ==> IsDigit("\U{0001}a\U{0018}aa\0"[i]);
 }
 
-// REPEAT 9 - TIME: 18.5012359 s
+// REPEAT 9 - TIME: 19.2909107 s

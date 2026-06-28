@@ -163,7 +163,7 @@ var r0 := Sqare2(1);
 expect r0 == 1 * 1;
 }
 
-// REPEAT 1 - TIME: 5.2133415 s
+// REPEAT 1 - TIME: 4.9758574 s
 
 method {:test} Test4() {
 expect 5924 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -186,7 +186,7 @@ var r0 := Sqare2(2);
 expect r0 == 2 * 2;
 }
 
-// REPEAT 2 - TIME: 7.5578799 s
+// REPEAT 2 - TIME: 7.7467397 s
 
 method {:test} Test8() {
 expect 5925 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -209,7 +209,7 @@ var r0 := Sqare2(3);
 expect r0 == 3 * 3;
 }
 
-// REPEAT 3 - TIME: 9.8128164 s
+// REPEAT 3 - TIME: 10.1772119 s
 
 method {:test} Test12() {
 expect 5926 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -232,7 +232,7 @@ var r0 := Sqare2(4);
 expect r0 == 4 * 4;
 }
 
-// REPEAT 4 - TIME: 11.9913707 s
+// REPEAT 4 - TIME: 12.230038 s
 
 method {:test} Test16() {
 expect 5927 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -255,7 +255,7 @@ var r0 := Sqare2(5);
 expect r0 == 5 * 5;
 }
 
-// REPEAT 5 - TIME: 13.8356842 s
+// REPEAT 5 - TIME: 14.0759106 s
 
 method {:test} Test20() {
 expect 5928 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -278,7 +278,7 @@ var r0 := Sqare2(6);
 expect r0 == 6 * 6;
 }
 
-// REPEAT 6 - TIME: 15.4586381 s
+// REPEAT 6 - TIME: 15.9218054 s
 
 method {:test} Test24() {
 expect 5929 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -301,7 +301,7 @@ var r0 := Sqare2(7);
 expect r0 == 7 * 7;
 }
 
-// REPEAT 7 - TIME: 16.9508313 s
+// REPEAT 7 - TIME: 17.7624497 s
 
 method {:test} Test28() {
 expect 5930 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -324,7 +324,7 @@ var r0 := Sqare2(8);
 expect r0 == 8 * 8;
 }
 
-// REPEAT 8 - TIME: 18.5529516 s
+// REPEAT 8 - TIME: 19.8684395 s
 
 method {:test} Test32() {
 expect 5931 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -347,7 +347,7 @@ var r0 := Sqare2(9);
 expect r0 == 9 * 9;
 }
 
-// REPEAT 9 - TIME: 19.9104438 s
+// REPEAT 9 - TIME: 21.7294872 s
 
 method {:test} Test36() {
 expect 5932 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -370,4 +370,4 @@ var r0 := Sqare2(10);
 expect r0 == 10 * 10;
 }
 
-// REPEAT 10 - TIME: 21.53353 s
+// REPEAT 10 - TIME: 23.3219333 s

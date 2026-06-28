@@ -90,7 +90,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 1 - TIME: 31.5275543 s
+// REPEAT 1 - TIME: 38.9848236 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [-7129, -1201, 0, 0, 0, 0, 0, 0, 1236, -560, -1046];
@@ -106,7 +106,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 2 - TIME: 34.558525 s
+// REPEAT 2 - TIME: 42.6714074 s
 
 method {:test} Test18() {
 var seqint0 : seq<int> := [787, -1201, 0, 0, 0, 0, 0, 0, 0, 1236];
@@ -122,7 +122,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 3 - TIME: 37.517322 s
+// REPEAT 3 - TIME: 46.3383865 s
 
 method {:test} Test20() {
 var seqint0 : seq<int> := [787, -1201, 0, 0, 0, 0, 0, 0, 1236, 0, 0];
@@ -138,7 +138,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 4 - TIME: 40.9057119 s
+// REPEAT 4 - TIME: 50.1082622 s
 
 method {:test} Test22() {
 var seqint0 : seq<int> := [7720];
@@ -154,7 +154,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 5 - TIME: 44.3004008 s
+// REPEAT 5 - TIME: 53.6557401 s
 
 method {:test} Test24() {
 var seqint0 : seq<int> := [1236, -1201, 0];
@@ -170,7 +170,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 6 - TIME: 47.2984345 s
+// REPEAT 6 - TIME: 57.3689363 s
 
 method {:test} Test26() {
 var seqint0 : seq<int> := [2437, 0, 0, 0, 0, 0, 641];
@@ -186,7 +186,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 7 - TIME: 50.3207435 s
+// REPEAT 7 - TIME: 61.035483 s
 
 method {:test} Test28() {
 var seqint0 : seq<int> := [8574, 7059, 0, 0, 490, 8855, 0, 8406];
@@ -202,7 +202,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 8 - TIME: 53.3281037 s
+// REPEAT 8 - TIME: 64.4567158 s
 
 method {:test} Test30() {
 var seqint0 : seq<int> := [788, -1201, 0, 1236];
@@ -218,7 +218,7 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 9 - TIME: 56.0774872 s
+// REPEAT 9 - TIME: 68.2437853 s
 
 method {:test} Test32() {
 var seqint0 : seq<int> := [1796, 0, 0, 0, 1347, 0, 0, 1187, -4057, -6302, 654];
@@ -234,4 +234,4 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 10 - TIME: 58.771466 s
+// REPEAT 10 - TIME: 71.9752133 s

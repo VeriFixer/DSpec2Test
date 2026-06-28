@@ -35,7 +35,7 @@ var r0 := RussianMultiplication.mult(-1, -449);
 expect r0 == -1 * -449;
 }
 
-// REPEAT 1 - TIME: 4.7505919 s
+// REPEAT 1 - TIME: 6.6429503 s
 
 method {:test} Test2() {
 var r0 := RussianMultiplication.mult(1, 2438);
@@ -46,7 +46,7 @@ var r0 := RussianMultiplication.mult(-2, 2438);
 expect r0 == -2 * 2438;
 }
 
-// REPEAT 2 - TIME: 7.9036253 s
+// REPEAT 2 - TIME: 10.6573445 s
 
 method {:test} Test4() {
 var r0 := RussianMultiplication.mult(2, 2439);
@@ -57,7 +57,7 @@ var r0 := RussianMultiplication.mult(-3, 2439);
 expect r0 == -3 * 2439;
 }
 
-// REPEAT 3 - TIME: 10.852264 s
+// REPEAT 3 - TIME: 14.827186 s
 
 method {:test} Test6() {
 var r0 := RussianMultiplication.mult(3, 2440);
@@ -68,7 +68,7 @@ var r0 := RussianMultiplication.mult(-4, 2440);
 expect r0 == -4 * 2440;
 }
 
-// REPEAT 4 - TIME: 13.4659846 s
+// REPEAT 4 - TIME: 19.0371451 s
 
 method {:test} Test8() {
 var r0 := RussianMultiplication.mult(4, 2441);
@@ -79,7 +79,7 @@ var r0 := RussianMultiplication.mult(-5, 2441);
 expect r0 == -5 * 2441;
 }
 
-// REPEAT 5 - TIME: 16.387792 s
+// REPEAT 5 - TIME: 22.6949434 s
 
 method {:test} Test10() {
 var r0 := RussianMultiplication.mult(5, 2442);
@@ -90,7 +90,7 @@ var r0 := RussianMultiplication.mult(-6, 2442);
 expect r0 == -6 * 2442;
 }
 
-// REPEAT 6 - TIME: 19.7982289 s
+// REPEAT 6 - TIME: 26.8685838 s
 
 method {:test} Test12() {
 var r0 := RussianMultiplication.mult(6, 2443);
@@ -101,7 +101,7 @@ var r0 := RussianMultiplication.mult(-7, 2443);
 expect r0 == -7 * 2443;
 }
 
-// REPEAT 7 - TIME: 23.2181641 s
+// REPEAT 7 - TIME: 31.6149901 s
 
 method {:test} Test14() {
 var r0 := RussianMultiplication.mult(7, 2444);
@@ -112,7 +112,7 @@ var r0 := RussianMultiplication.mult(-8, 2444);
 expect r0 == -8 * 2444;
 }
 
-// REPEAT 8 - TIME: 26.1913329 s
+// REPEAT 8 - TIME: 37.1773177 s
 
 method {:test} Test16() {
 var r0 := RussianMultiplication.mult(8, 2445);
@@ -123,7 +123,7 @@ var r0 := RussianMultiplication.mult(-9, 2445);
 expect r0 == -9 * 2445;
 }
 
-// REPEAT 9 - TIME: 28.5616522 s
+// REPEAT 9 - TIME: 41.9269631 s
 
 method {:test} Test18() {
 var r0 := RussianMultiplication.mult(9, 2446);
@@ -134,7 +134,7 @@ var r0 := RussianMultiplication.mult(-10, 2446);
 expect r0 == -10 * 2446;
 }
 
-// REPEAT 10 - TIME: 31.1651807 s
+// REPEAT 10 - TIME: 46.0750602 s
 
 
 }

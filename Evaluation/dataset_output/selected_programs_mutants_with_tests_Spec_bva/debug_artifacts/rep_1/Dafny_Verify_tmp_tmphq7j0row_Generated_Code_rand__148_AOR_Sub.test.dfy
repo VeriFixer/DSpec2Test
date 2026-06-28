@@ -36,4 +36,4 @@ var r0 := Main(0, 100);
 expect r0 == 0;
 }
 
-// REPEAT 1 - TIME: 6.1753692 s
+// REPEAT 1 - TIME: 7.995105 s

@@ -73,7 +73,7 @@ var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 1 - TIME: 3.6520262 s
+// REPEAT 1 - TIME: 3.8314789 s
 
 method {:test} Test2() {
 var r0 := SumUpTo(7722);
@@ -85,7 +85,7 @@ var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 2 - TIME: 5.2803011 s
+// REPEAT 2 - TIME: 4.9745385 s
 
 method {:test} Test4() {
 var r0 := SumUpTo(7723);
@@ -97,7 +97,7 @@ var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 3 - TIME: 6.8777801 s
+// REPEAT 3 - TIME: 6.3041317 s
 
 method {:test} Test6() {
 var r0 := SumUpTo(7724);
@@ -109,7 +109,7 @@ var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 4 - TIME: 8.5248846 s
+// REPEAT 4 - TIME: 7.7131176 s
 
 method {:test} Test8() {
 var r0 := SumUpTo(7725);
@@ -121,7 +121,7 @@ var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 5 - TIME: 9.7834925 s
+// REPEAT 5 - TIME: 9.1919998 s
 
 method {:test} Test10() {
 var r0 := SumUpTo(7726);
@@ -133,7 +133,7 @@ var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 6 - TIME: 10.9761693 s
+// REPEAT 6 - TIME: 10.5538551 s
 
 method {:test} Test12() {
 var r0 := SumUpTo(7727);
@@ -145,7 +145,7 @@ var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 7 - TIME: 12.2937735 s
+// REPEAT 7 - TIME: 11.7163624 s
 
 method {:test} Test14() {
 var r0 := SumUpTo(7728);
@@ -157,7 +157,7 @@ var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 8 - TIME: 13.4355694 s
+// REPEAT 8 - TIME: 12.859656 s
 
 method {:test} Test16() {
 var r0 := SumUpTo(7729);
@@ -169,7 +169,7 @@ var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 9 - TIME: 14.5587207 s
+// REPEAT 9 - TIME: 14.1753715 s
 
 method {:test} Test18() {
 var r0 := SumUpTo(7730);
@@ -181,4 +181,4 @@ var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 10 - TIME: 15.8446395 s
+// REPEAT 10 - TIME: 15.1840249 s

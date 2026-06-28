@@ -15,4 +15,4 @@ expect 0 <= r0 < 10;
 expect 12370 % 10 == r0;
 }
 
-// REPEAT 2 - TIME: 2.8540557 s
+// REPEAT 2 - TIME: 3.422015 s

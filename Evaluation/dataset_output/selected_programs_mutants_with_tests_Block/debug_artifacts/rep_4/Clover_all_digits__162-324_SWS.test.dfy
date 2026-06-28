@@ -14,8 +14,8 @@ method {:testEntry} allDigits(s: string) returns (result: bool)
 }
 
 method {:test} Test3() {
-var r0 := allDigits("9\0");
-expect r0 <==> forall i :: 0 <= i < |"9\0"| ==> "9\0"[i] in "0123456789";
+var r0 := allDigits("9\U{0001}");
+expect r0 <==> forall i :: 0 <= i < |"9\U{0001}"| ==> "9\U{0001}"[i] in "0123456789";
 }
 
-// REPEAT 4 - TIME: 4.2081044 s
+// REPEAT 4 - TIME: 4.4816659 s

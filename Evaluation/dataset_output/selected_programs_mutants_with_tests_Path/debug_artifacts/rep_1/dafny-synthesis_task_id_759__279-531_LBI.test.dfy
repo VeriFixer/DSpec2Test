@@ -28,4 +28,4 @@ expect r0 ==> exists i :: 0 <= i < |"aaaaaaaaaa.aa"| && "aaaaaaaaaa.aa"[i] == '.
 expect !r0 ==> !exists i :: 0 <= i < |"aaaaaaaaaa.aa"| && "aaaaaaaaaa.aa"[i] == '.' && |"aaaaaaaaaa.aa"| - i - 1 == 2;
 }
 
-// REPEAT 1 - TIME: 30.6216606 s
+// REPEAT 1 - TIME: 23.8892387 s

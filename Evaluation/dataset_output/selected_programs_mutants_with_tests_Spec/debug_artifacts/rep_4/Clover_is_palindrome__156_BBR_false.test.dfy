@@ -24,12 +24,12 @@ method {:testEntry} IsPalindrome(x: seq<char>) returns (result: bool)
 }
 
 method {:test} Test6() {
-var r0 := IsPalindrome("\0aaaaaa\0a\0aaaaa\0aa");
-expect r0 <==> forall i :: 0 <= i < |"\0aaaaaa\0a\0aaaaa\0aa"| ==> "\0aaaaaa\0a\0aaaaa\0aa"[i] == "\0aaaaaa\0a\0aaaaa\0aa"[|"\0aaaaaa\0a\0aaaaa\0aa"| - i - 1];
+var r0 := IsPalindrome("a\U{0002}\0");
+expect r0 <==> forall i :: 0 <= i < |"a\U{0002}\0"| ==> "a\U{0002}\0"[i] == "a\U{0002}\0"[|"a\U{0002}\0"| - i - 1];
 }
 method {:test} Test7() {
-var r0 := IsPalindrome("\U{0002}aaaaa\0\U{0004}");
-expect r0 <==> forall i :: 0 <= i < |"\U{0002}aaaaa\0\U{0004}"| ==> "\U{0002}aaaaa\0\U{0004}"[i] == "\U{0002}aaaaa\0\U{0004}"[|"\U{0002}aaaaa\0\U{0004}"| - i - 1];
+var r0 := IsPalindrome("\U{0004}\0\U{0002}");
+expect r0 <==> forall i :: 0 <= i < |"\U{0004}\0\U{0002}"| ==> "\U{0004}\0\U{0002}"[i] == "\U{0004}\0\U{0002}"[|"\U{0004}\0\U{0002}"| - i - 1];
 }
 
-// REPEAT 4 - TIME: 7.8796447 s
+// REPEAT 4 - TIME: 8.2026961 s

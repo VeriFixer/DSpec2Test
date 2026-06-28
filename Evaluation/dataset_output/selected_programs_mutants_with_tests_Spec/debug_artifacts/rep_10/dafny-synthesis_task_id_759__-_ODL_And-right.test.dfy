@@ -17,14 +17,14 @@ method {:testEntry} IsDecimalWithTwoPrecision(s: string) returns (result: bool)
 }
 
 method {:test} Test18() {
-var r0 := IsDecimalWithTwoPrecision("\U{0002}\0\U{0004}a");
-expect r0 ==> exists i :: 0 <= i < |"\U{0002}\0\U{0004}a"| && "\U{0002}\0\U{0004}a"[i] == '.' && |"\U{0002}\0\U{0004}a"| - i - 1 == 2;
-expect !r0 ==> !exists i :: 0 <= i < |"\U{0002}\0\U{0004}a"| && "\U{0002}\0\U{0004}a"[i] == '.' && |"\U{0002}\0\U{0004}a"| - i - 1 == 2;
+var r0 := IsDecimalWithTwoPrecision("aaaaa\U{0004}aaaa\U{000C}a\0aa\naa\U{0008}\U{0002}aa\U{000E}\U{0006}\U{0010}\U{0012}");
+expect r0 ==> exists i :: 0 <= i < |"aaaaa\U{0004}aaaa\U{000C}a\0aa\naa\U{0008}\U{0002}aa\U{000E}\U{0006}\U{0010}\U{0012}"| && "aaaaa\U{0004}aaaa\U{000C}a\0aa\naa\U{0008}\U{0002}aa\U{000E}\U{0006}\U{0010}\U{0012}"[i] == '.' && |"aaaaa\U{0004}aaaa\U{000C}a\0aa\naa\U{0008}\U{0002}aa\U{000E}\U{0006}\U{0010}\U{0012}"| - i - 1 == 2;
+expect !r0 ==> !exists i :: 0 <= i < |"aaaaa\U{0004}aaaa\U{000C}a\0aa\naa\U{0008}\U{0002}aa\U{000E}\U{0006}\U{0010}\U{0012}"| && "aaaaa\U{0004}aaaa\U{000C}a\0aa\naa\U{0008}\U{0002}aa\U{000E}\U{0006}\U{0010}\U{0012}"[i] == '.' && |"aaaaa\U{0004}aaaa\U{000C}a\0aa\naa\U{0008}\U{0002}aa\U{000E}\U{0006}\U{0010}\U{0012}"| - i - 1 == 2;
 }
 method {:test} Test19() {
-var r0 := IsDecimalWithTwoPrecision("aa\U{0003}aaaaa\U{0005}\U{0001}\U{0007}aaa\U{000B}aaa\ra\U{000F}\t.a\U{0011}");
-expect r0 ==> exists i :: 0 <= i < |"aa\U{0003}aaaaa\U{0005}\U{0001}\U{0007}aaa\U{000B}aaa\ra\U{000F}\t.a\U{0011}"| && "aa\U{0003}aaaaa\U{0005}\U{0001}\U{0007}aaa\U{000B}aaa\ra\U{000F}\t.a\U{0011}"[i] == '.' && |"aa\U{0003}aaaaa\U{0005}\U{0001}\U{0007}aaa\U{000B}aaa\ra\U{000F}\t.a\U{0011}"| - i - 1 == 2;
-expect !r0 ==> !exists i :: 0 <= i < |"aa\U{0003}aaaaa\U{0005}\U{0001}\U{0007}aaa\U{000B}aaa\ra\U{000F}\t.a\U{0011}"| && "aa\U{0003}aaaaa\U{0005}\U{0001}\U{0007}aaa\U{000B}aaa\ra\U{000F}\t.a\U{0011}"[i] == '.' && |"aa\U{0003}aaaaa\U{0005}\U{0001}\U{0007}aaa\U{000B}aaa\ra\U{000F}\t.a\U{0011}"| - i - 1 == 2;
+var r0 := IsDecimalWithTwoPrecision("\U{0005}a\U{0001}.a\U{0003}");
+expect r0 ==> exists i :: 0 <= i < |"\U{0005}a\U{0001}.a\U{0003}"| && "\U{0005}a\U{0001}.a\U{0003}"[i] == '.' && |"\U{0005}a\U{0001}.a\U{0003}"| - i - 1 == 2;
+expect !r0 ==> !exists i :: 0 <= i < |"\U{0005}a\U{0001}.a\U{0003}"| && "\U{0005}a\U{0001}.a\U{0003}"[i] == '.' && |"\U{0005}a\U{0001}.a\U{0003}"| - i - 1 == 2;
 }
 
-// REPEAT 10 - TIME: 15.2846417 s
+// REPEAT 10 - TIME: 15.8728067 s

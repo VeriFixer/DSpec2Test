@@ -23,4 +23,4 @@ var r0 := Eval(1);
 expect r0 == 1 * 1;
 }
 
-// REPEAT 2 - TIME: 8.4862639 s
+// REPEAT 2 - TIME: 9.2192539 s

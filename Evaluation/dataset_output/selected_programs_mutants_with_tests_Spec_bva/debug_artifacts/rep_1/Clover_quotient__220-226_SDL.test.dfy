@@ -36,4 +36,4 @@ var r0, r1 := Quotient(246237, 101);
 expect r1 * 101 + r0 == 246237 && 0 <= r0 < 101 && 0 <= r1;
 }
 
-// REPEAT 1 - TIME: 8.6040425 s
+// REPEAT 1 - TIME: 10.179589 s

@@ -389,4 +389,4 @@ expect forall k :: r0 < k <= |"aaaaaaaaaa"| ==> !haveCommonKSubstringPred(k, "aa
 expect haveCommonKSubstringPred(r0, "aaaaaaaaaa", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 }
 
-// REPEAT 1 - TIME: 85.4563745 s
+// REPEAT 1 - TIME: 113.404792 s

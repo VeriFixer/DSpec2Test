@@ -35,7 +35,7 @@ var r0, r1 := Quotient(246237, 101);
 expect r1 * 101 + r0 == 246237 && 0 <= r0 < 101 && 0 <= r1;
 }
 
-// REPEAT 1 - TIME: 8.6040425 s
+// REPEAT 1 - TIME: 10.179589 s
 
 method {:test} Test11() {
 expect 102 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -43,7 +43,7 @@ var r0, r1 := Quotient(246330, 102);
 expect r1 * 102 + r0 == 246330 && 0 <= r0 < 102 && 0 <= r1;
 }
 
-// REPEAT 2 - TIME: 9.5082236 s
+// REPEAT 2 - TIME: 11.1741066 s
 
 method {:test} Test12() {
 expect 246332 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -51,7 +51,7 @@ var r0, r1 := Quotient(246331, 246332);
 expect r1 * 246332 + r0 == 246331 && 0 <= r0 < 246332 && 0 <= r1;
 }
 
-// REPEAT 3 - TIME: 10.3671626 s
+// REPEAT 3 - TIME: 12.1351505 s
 
 method {:test} Test13() {
 expect 246333 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -59,7 +59,7 @@ var r0, r1 := Quotient(246332, 246333);
 expect r1 * 246333 + r0 == 246332 && 0 <= r0 < 246333 && 0 <= r1;
 }
 
-// REPEAT 4 - TIME: 11.1278225 s
+// REPEAT 4 - TIME: 12.885015 s
 
 method {:test} Test14() {
 expect 246334 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -67,7 +67,7 @@ var r0, r1 := Quotient(246333, 246334);
 expect r1 * 246334 + r0 == 246333 && 0 <= r0 < 246334 && 0 <= r1;
 }
 
-// REPEAT 5 - TIME: 12.0476387 s
+// REPEAT 5 - TIME: 13.8144097 s
 
 method {:test} Test15() {
 expect 246335 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -75,7 +75,7 @@ var r0, r1 := Quotient(246334, 246335);
 expect r1 * 246335 + r0 == 246334 && 0 <= r0 < 246335 && 0 <= r1;
 }
 
-// REPEAT 6 - TIME: 12.8034909 s
+// REPEAT 6 - TIME: 14.6847772 s
 
 method {:test} Test16() {
 expect 246336 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -83,7 +83,7 @@ var r0, r1 := Quotient(246335, 246336);
 expect r1 * 246336 + r0 == 246335 && 0 <= r0 < 246336 && 0 <= r1;
 }
 
-// REPEAT 7 - TIME: 13.7210543 s
+// REPEAT 7 - TIME: 15.4538537 s
 
 method {:test} Test17() {
 expect 246337 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -91,7 +91,7 @@ var r0, r1 := Quotient(246336, 246337);
 expect r1 * 246337 + r0 == 246336 && 0 <= r0 < 246337 && 0 <= r1;
 }
 
-// REPEAT 8 - TIME: 14.4995495 s
+// REPEAT 8 - TIME: 16.1711433 s
 
 method {:test} Test18() {
 expect 246338 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -99,7 +99,7 @@ var r0, r1 := Quotient(246337, 246338);
 expect r1 * 246338 + r0 == 246337 && 0 <= r0 < 246338 && 0 <= r1;
 }
 
-// REPEAT 9 - TIME: 15.1622232 s
+// REPEAT 9 - TIME: 16.7904552 s
 
 method {:test} Test19() {
 expect 246339 != 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -107,4 +107,4 @@ var r0, r1 := Quotient(246338, 246339);
 expect r1 * 246339 + r0 == 246338 && 0 <= r0 < 246339 && 0 <= r1;
 }
 
-// REPEAT 10 - TIME: 15.9051286 s
+// REPEAT 10 - TIME: 17.3869085 s

@@ -31,4 +31,4 @@ var r0 := ComputeFib(0);
 expect r0 == Fib(0);
 }
 
-// REPEAT 1 - TIME: 3.3774506 s
+// REPEAT 1 - TIME: 5.8046936 s

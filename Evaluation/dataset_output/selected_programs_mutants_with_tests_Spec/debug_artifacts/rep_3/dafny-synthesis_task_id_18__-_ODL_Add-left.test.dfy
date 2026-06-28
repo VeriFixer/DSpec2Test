@@ -20,10 +20,10 @@ method {:testEntry} RemoveChars(s1: string, s2: string) returns (v: string)
 }
 
 method {:test} Test2() {
-var r0 := RemoveChars("aaa", "\0");
-expect |r0| <= |"aaa"|;
-expect forall i :: 0 <= i < |r0| ==> r0[i] in "aaa" && !(r0[i] in "\0");
-expect forall i :: 0 <= i < |"aaa"| ==> "aaa"[i] in "\0" || "aaa"[i] in r0;
+var r0 := RemoveChars("aaaaaaaaaaaaaaaaaaaa\U{0002}\U{0002}", "\0\U{0002}");
+expect |r0| <= |"aaaaaaaaaaaaaaaaaaaa\U{0002}\U{0002}"|;
+expect forall i :: 0 <= i < |r0| ==> r0[i] in "aaaaaaaaaaaaaaaaaaaa\U{0002}\U{0002}" && !(r0[i] in "\0\U{0002}");
+expect forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaa\U{0002}\U{0002}"| ==> "aaaaaaaaaaaaaaaaaaaa\U{0002}\U{0002}"[i] in "\0\U{0002}" || "aaaaaaaaaaaaaaaaaaaa\U{0002}\U{0002}"[i] in r0;
 }
 
-// REPEAT 3 - TIME: 4.7844794 s
+// REPEAT 3 - TIME: 5.3615135 s

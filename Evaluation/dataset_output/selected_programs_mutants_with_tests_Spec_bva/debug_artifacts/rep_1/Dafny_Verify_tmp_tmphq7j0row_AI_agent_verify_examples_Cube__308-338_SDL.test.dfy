@@ -26,4 +26,4 @@ var r0 := Cube(100);
 expect r0 == 100 * 100 * 100;
 }
 
-// REPEAT 1 - TIME: 6.2046754 s
+// REPEAT 1 - TIME: 8.3806654 s

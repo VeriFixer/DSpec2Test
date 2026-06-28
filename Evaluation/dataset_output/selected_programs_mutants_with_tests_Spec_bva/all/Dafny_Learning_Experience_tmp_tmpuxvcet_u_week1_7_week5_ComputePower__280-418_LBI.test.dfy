@@ -51,7 +51,7 @@ var r0 := ComputePower(7721);
 expect r0 == Power(7721);
 }
 
-// REPEAT 1 - TIME: 9.6878152 s
+// REPEAT 1 - TIME: 12.8929185 s
 
 method {:test} Test11() {
 var r0 := CalcPower(101);
@@ -62,7 +62,7 @@ var r0 := ComputePower(7722);
 expect r0 == Power(7722);
 }
 
-// REPEAT 2 - TIME: 10.884695 s
+// REPEAT 2 - TIME: 14.4411108 s
 
 method {:test} Test13() {
 var r0 := CalcPower(102);
@@ -73,7 +73,7 @@ var r0 := ComputePower(7723);
 expect r0 == Power(7723);
 }
 
-// REPEAT 3 - TIME: 11.9276479 s
+// REPEAT 3 - TIME: 15.8280025 s
 
 method {:test} Test15() {
 var r0 := CalcPower(103);
@@ -84,7 +84,7 @@ var r0 := ComputePower(7724);
 expect r0 == Power(7724);
 }
 
-// REPEAT 4 - TIME: 13.2206435 s
+// REPEAT 4 - TIME: 17.2595175 s
 
 method {:test} Test17() {
 var r0 := CalcPower(104);
@@ -95,7 +95,7 @@ var r0 := ComputePower(7725);
 expect r0 == Power(7725);
 }
 
-// REPEAT 5 - TIME: 14.3953718 s
+// REPEAT 5 - TIME: 18.6384113 s
 
 method {:test} Test19() {
 var r0 := CalcPower(105);
@@ -106,7 +106,7 @@ var r0 := ComputePower(7726);
 expect r0 == Power(7726);
 }
 
-// REPEAT 6 - TIME: 15.2784879 s
+// REPEAT 6 - TIME: 19.8185571 s
 
 method {:test} Test21() {
 var r0 := CalcPower(106);
@@ -117,7 +117,7 @@ var r0 := ComputePower(7727);
 expect r0 == Power(7727);
 }
 
-// REPEAT 7 - TIME: 16.1895692 s
+// REPEAT 7 - TIME: 21.3343762 s
 
 method {:test} Test23() {
 var r0 := CalcPower(107);
@@ -128,7 +128,7 @@ var r0 := ComputePower(7728);
 expect r0 == Power(7728);
 }
 
-// REPEAT 8 - TIME: 17.1979745 s
+// REPEAT 8 - TIME: 22.5436785 s
 
 method {:test} Test25() {
 var r0 := CalcPower(108);
@@ -139,7 +139,7 @@ var r0 := ComputePower(7729);
 expect r0 == Power(7729);
 }
 
-// REPEAT 9 - TIME: 18.322776 s
+// REPEAT 9 - TIME: 23.9488497 s
 
 method {:test} Test27() {
 var r0 := CalcPower(109);
@@ -150,4 +150,4 @@ var r0 := ComputePower(7730);
 expect r0 == Power(7730);
 }
 
-// REPEAT 10 - TIME: 19.3070091 s
+// REPEAT 10 - TIME: 25.262292 s

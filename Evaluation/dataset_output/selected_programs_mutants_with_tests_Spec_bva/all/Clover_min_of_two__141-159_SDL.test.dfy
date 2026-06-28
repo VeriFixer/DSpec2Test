@@ -61,7 +61,7 @@ expect 0 <= 100 ==> r0 == 0;
 expect 0 > 100 ==> r0 == 100;
 }
 
-// REPEAT 1 - TIME: 16.4390431 s
+// REPEAT 1 - TIME: 21.4670951 s
 
 method {:test} Test20() {
 var r0 := Min(102, 101);
@@ -74,7 +74,7 @@ expect 102 <= 102 ==> r0 == 102;
 expect 102 > 102 ==> r0 == 102;
 }
 
-// REPEAT 2 - TIME: 17.9346117 s
+// REPEAT 2 - TIME: 23.7753065 s
 
 method {:test} Test22() {
 var r0 := Min(104, 103);
@@ -87,7 +87,7 @@ expect 103 <= 103 ==> r0 == 103;
 expect 103 > 103 ==> r0 == 103;
 }
 
-// REPEAT 3 - TIME: 19.4831832 s
+// REPEAT 3 - TIME: 25.8232654 s
 
 method {:test} Test24() {
 var r0 := Min(105, 104);
@@ -100,7 +100,7 @@ expect 105 <= 105 ==> r0 == 105;
 expect 105 > 105 ==> r0 == 105;
 }
 
-// REPEAT 4 - TIME: 20.8416083 s
+// REPEAT 4 - TIME: 27.7573394 s
 
 method {:test} Test26() {
 var r0 := Min(107, 106);
@@ -113,7 +113,7 @@ expect 106 <= 106 ==> r0 == 106;
 expect 106 > 106 ==> r0 == 106;
 }
 
-// REPEAT 5 - TIME: 22.1138223 s
+// REPEAT 5 - TIME: 29.7720265 s
 
 method {:test} Test28() {
 var r0 := Min(108, 107);
@@ -126,7 +126,7 @@ expect 108 <= 108 ==> r0 == 108;
 expect 108 > 108 ==> r0 == 108;
 }
 
-// REPEAT 6 - TIME: 23.6739602 s
+// REPEAT 6 - TIME: 31.7566385 s
 
 method {:test} Test30() {
 var r0 := Min(110, 109);
@@ -139,7 +139,7 @@ expect 109 <= 109 ==> r0 == 109;
 expect 109 > 109 ==> r0 == 109;
 }
 
-// REPEAT 7 - TIME: 25.0555218 s
+// REPEAT 7 - TIME: 33.6287292 s
 
 method {:test} Test32() {
 var r0 := Min(111, 110);
@@ -152,7 +152,7 @@ expect 111 <= 111 ==> r0 == 111;
 expect 111 > 111 ==> r0 == 111;
 }
 
-// REPEAT 8 - TIME: 26.541375 s
+// REPEAT 8 - TIME: 35.6034685 s
 
 method {:test} Test34() {
 var r0 := Min(113, 112);
@@ -165,7 +165,7 @@ expect 112 <= 112 ==> r0 == 112;
 expect 112 > 112 ==> r0 == 112;
 }
 
-// REPEAT 9 - TIME: 27.9036381 s
+// REPEAT 9 - TIME: 37.2017914 s
 
 method {:test} Test36() {
 var r0 := Min(114, 113);
@@ -178,4 +178,4 @@ expect 114 <= 114 ==> r0 == 114;
 expect 114 > 114 ==> r0 == 114;
 }
 
-// REPEAT 10 - TIME: 29.2860016 s
+// REPEAT 10 - TIME: 38.9385912 s

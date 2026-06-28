@@ -158,4 +158,4 @@ expect r0 >= 0;
 expect maxCommonSubstringPredicate("a", "a", r0);
 }
 
-// REPEAT 1 - TIME: 8.8295699 s
+// REPEAT 1 - TIME: 8.0626224 s

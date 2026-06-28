@@ -87,4 +87,4 @@ var r0 := ProductEvenOdd(seqint0);
 expect exists i, j :: 0 <= i < |seqint0| && IsEven(seqint0[i]) && IsFirstEven(i, seqint0) && 0 <= j < |seqint0| && IsOdd(seqint0[j]) && IsFirstOdd(j, seqint0) && r0 == seqint0[i] * seqint0[j];
 }
 
-// REPEAT 1 - TIME: 25.1164942 s
+// REPEAT 1 - TIME: 27.449893 s

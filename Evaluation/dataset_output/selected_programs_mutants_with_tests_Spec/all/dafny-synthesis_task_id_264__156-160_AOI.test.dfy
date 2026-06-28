@@ -14,7 +14,7 @@ var r0 := DogYears(38);
 expect r0 == 7 * 38;
 }
 
-// REPEAT 1 - TIME: 2.8294467 s
+// REPEAT 1 - TIME: 2.525573 s
 
 method {:test} Test1() {
 expect 39 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -22,7 +22,7 @@ var r0 := DogYears(39);
 expect r0 == 7 * 39;
 }
 
-// REPEAT 2 - TIME: 3.8239377 s
+// REPEAT 2 - TIME: 3.4087895 s
 
 method {:test} Test2() {
 expect 40 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -30,7 +30,7 @@ var r0 := DogYears(40);
 expect r0 == 7 * 40;
 }
 
-// REPEAT 3 - TIME: 4.7847573 s
+// REPEAT 3 - TIME: 4.2887229 s
 
 method {:test} Test3() {
 expect 41 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -38,7 +38,7 @@ var r0 := DogYears(41);
 expect r0 == 7 * 41;
 }
 
-// REPEAT 4 - TIME: 5.760627 s
+// REPEAT 4 - TIME: 5.0773967 s
 
 method {:test} Test4() {
 expect 42 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -46,7 +46,7 @@ var r0 := DogYears(42);
 expect r0 == 7 * 42;
 }
 
-// REPEAT 5 - TIME: 6.667845 s
+// REPEAT 5 - TIME: 6.0172445 s
 
 method {:test} Test5() {
 expect 43 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -54,7 +54,7 @@ var r0 := DogYears(43);
 expect r0 == 7 * 43;
 }
 
-// REPEAT 6 - TIME: 7.3610915 s
+// REPEAT 6 - TIME: 6.8397228 s
 
 method {:test} Test6() {
 expect 44 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -62,7 +62,7 @@ var r0 := DogYears(44);
 expect r0 == 7 * 44;
 }
 
-// REPEAT 7 - TIME: 8.1840452 s
+// REPEAT 7 - TIME: 7.7311942 s
 
 method {:test} Test7() {
 expect 45 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -70,7 +70,7 @@ var r0 := DogYears(45);
 expect r0 == 7 * 45;
 }
 
-// REPEAT 8 - TIME: 8.9129895 s
+// REPEAT 8 - TIME: 8.5419457 s
 
 method {:test} Test8() {
 expect 46 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -78,7 +78,7 @@ var r0 := DogYears(46);
 expect r0 == 7 * 46;
 }
 
-// REPEAT 9 - TIME: 9.6085259 s
+// REPEAT 9 - TIME: 9.3786828 s
 
 method {:test} Test9() {
 expect 47 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -86,4 +86,4 @@ var r0 := DogYears(47);
 expect r0 == 7 * 47;
 }
 
-// REPEAT 10 - TIME: 10.4563069 s
+// REPEAT 10 - TIME: 10.0174552 s

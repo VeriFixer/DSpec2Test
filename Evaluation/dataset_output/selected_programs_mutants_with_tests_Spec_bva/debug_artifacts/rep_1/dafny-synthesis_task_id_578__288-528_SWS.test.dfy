@@ -44,4 +44,4 @@ expect |r0| == 3 * |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[3 * i] == seqint0[i] && r0[3 * i + 1] == seqint1[i] && r0[3 * i + 2] == seqint2[i];
 }
 
-// REPEAT 1 - TIME: 8.0107363 s
+// REPEAT 1 - TIME: 10.5858823 s

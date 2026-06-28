@@ -22,7 +22,7 @@ var r0 := CountToAndReturnN(100);
 expect r0 == 100;
 }
 
-// REPEAT 1 - TIME: 5.7703825 s
+// REPEAT 1 - TIME: 8.8599081 s
 
 method {:test} Test7() {
 expect 101 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -30,7 +30,7 @@ var r0 := CountToAndReturnN(101);
 expect r0 == 101;
 }
 
-// REPEAT 2 - TIME: 6.7220435 s
+// REPEAT 2 - TIME: 10.2042579 s
 
 method {:test} Test8() {
 expect 102 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -38,7 +38,7 @@ var r0 := CountToAndReturnN(102);
 expect r0 == 102;
 }
 
-// REPEAT 3 - TIME: 7.516902 s
+// REPEAT 3 - TIME: 11.4750804 s
 
 method {:test} Test9() {
 expect 103 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -46,7 +46,7 @@ var r0 := CountToAndReturnN(103);
 expect r0 == 103;
 }
 
-// REPEAT 4 - TIME: 8.223543 s
+// REPEAT 4 - TIME: 12.8424656 s
 
 method {:test} Test10() {
 expect 104 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -54,7 +54,7 @@ var r0 := CountToAndReturnN(104);
 expect r0 == 104;
 }
 
-// REPEAT 5 - TIME: 8.9632621 s
+// REPEAT 5 - TIME: 13.8578817 s
 
 method {:test} Test11() {
 expect 105 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -62,7 +62,7 @@ var r0 := CountToAndReturnN(105);
 expect r0 == 105;
 }
 
-// REPEAT 6 - TIME: 9.5758528 s
+// REPEAT 6 - TIME: 14.9681985 s
 
 method {:test} Test12() {
 expect 106 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -70,7 +70,7 @@ var r0 := CountToAndReturnN(106);
 expect r0 == 106;
 }
 
-// REPEAT 7 - TIME: 10.2452803 s
+// REPEAT 7 - TIME: 16.0959613 s
 
 method {:test} Test13() {
 expect 107 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -78,7 +78,7 @@ var r0 := CountToAndReturnN(107);
 expect r0 == 107;
 }
 
-// REPEAT 8 - TIME: 10.9035422 s
+// REPEAT 8 - TIME: 16.8850384 s
 
 method {:test} Test14() {
 expect 108 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -86,7 +86,7 @@ var r0 := CountToAndReturnN(108);
 expect r0 == 108;
 }
 
-// REPEAT 9 - TIME: 11.5126832 s
+// REPEAT 9 - TIME: 17.5927485 s
 
 method {:test} Test15() {
 expect 109 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -94,4 +94,4 @@ var r0 := CountToAndReturnN(109);
 expect r0 == 109;
 }
 
-// REPEAT 10 - TIME: 12.159913 s
+// REPEAT 10 - TIME: 18.4630065 s

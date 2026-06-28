@@ -19,12 +19,12 @@ method {:testEntry} IsSmaller(a: seq<int>, b: seq<int>) returns (result: bool)
 }
 
 method {:test} Test5() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8879, 2446, 0, 0, 0, 4680, 840, -2245, 6907];
-var seqint1 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1653, 2445, 0, 0, 0, 4679, 839, 5853, 6906];
+var seqint0 : seq<int> := [-2811, 5904];
+var seqint1 : seq<int> := [4669, 4668];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := IsSmaller(seqint0, seqint1);
 expect r0 <==> forall i :: 0 <= i < |seqint0| ==> seqint0[i] > seqint1[i];
 expect !r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] <= seqint1[i];
 }
 
-// REPEAT 6 - TIME: 8.4622052 s
+// REPEAT 6 - TIME: 9.5222907 s

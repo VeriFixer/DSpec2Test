@@ -27,7 +27,7 @@ expect r0 <= 1 && r0 <= 1 && r0 <= 0;
 expect r0 == 1 || r0 == 1 || r0 == 0;
 }
 
-// REPEAT 1 - TIME: 3.3898504 s
+// REPEAT 1 - TIME: 3.3359905 s
 
 method {:test} Test3() {
 var r0 := MinOfThree(2, 2, 2);
@@ -45,7 +45,7 @@ expect r0 <= 2 && r0 <= 2 && r0 <= 1;
 expect r0 == 2 || r0 == 2 || r0 == 1;
 }
 
-// REPEAT 2 - TIME: 5.1945659 s
+// REPEAT 2 - TIME: 5.401624 s
 
 method {:test} Test6() {
 var r0 := MinOfThree(4, 4, 4);
@@ -63,7 +63,7 @@ expect r0 <= 4 && r0 <= 4 && r0 <= 3;
 expect r0 == 4 || r0 == 4 || r0 == 3;
 }
 
-// REPEAT 3 - TIME: 7.0718126 s
+// REPEAT 3 - TIME: 7.0020688 s
 
 method {:test} Test9() {
 var r0 := MinOfThree(5, 5, 5);
@@ -81,7 +81,7 @@ expect r0 <= 6 && r0 <= 6 && r0 <= 5;
 expect r0 == 6 || r0 == 6 || r0 == 5;
 }
 
-// REPEAT 4 - TIME: 8.7822601 s
+// REPEAT 4 - TIME: 8.3408139 s
 
 method {:test} Test12() {
 var r0 := MinOfThree(7, 7, 7);
@@ -99,7 +99,7 @@ expect r0 <= 7 && r0 <= 7 && r0 <= 6;
 expect r0 == 7 || r0 == 7 || r0 == 6;
 }
 
-// REPEAT 5 - TIME: 10.4142506 s
+// REPEAT 5 - TIME: 9.4392381 s
 
 method {:test} Test15() {
 var r0 := MinOfThree(9, 9, 9);
@@ -117,7 +117,7 @@ expect r0 <= 9 && r0 <= 9 && r0 <= 8;
 expect r0 == 9 || r0 == 9 || r0 == 8;
 }
 
-// REPEAT 6 - TIME: 11.7447495 s
+// REPEAT 6 - TIME: 10.611729 s
 
 method {:test} Test18() {
 var r0 := MinOfThree(10, 10, 10);
@@ -135,7 +135,7 @@ expect r0 <= 11 && r0 <= 11 && r0 <= 10;
 expect r0 == 11 || r0 == 11 || r0 == 10;
 }
 
-// REPEAT 7 - TIME: 12.7902543 s
+// REPEAT 7 - TIME: 12.095231 s
 
 method {:test} Test21() {
 var r0 := MinOfThree(12, 12, 12);
@@ -153,7 +153,7 @@ expect r0 <= 12 && r0 <= 12 && r0 <= 11;
 expect r0 == 12 || r0 == 12 || r0 == 11;
 }
 
-// REPEAT 8 - TIME: 14.0215309 s
+// REPEAT 8 - TIME: 13.5181404 s
 
 method {:test} Test24() {
 var r0 := MinOfThree(14, 14, 14);
@@ -171,7 +171,7 @@ expect r0 <= 14 && r0 <= 14 && r0 <= 13;
 expect r0 == 14 || r0 == 14 || r0 == 13;
 }
 
-// REPEAT 9 - TIME: 15.2093832 s
+// REPEAT 9 - TIME: 14.8951461 s
 
 method {:test} Test27() {
 var r0 := MinOfThree(15, 15, 15);
@@ -189,4 +189,4 @@ expect r0 <= 16 && r0 <= 16 && r0 <= 15;
 expect r0 == 16 || r0 == 16 || r0 == 15;
 }
 
-// REPEAT 10 - TIME: 16.3931205 s
+// REPEAT 10 - TIME: 16.1499134 s

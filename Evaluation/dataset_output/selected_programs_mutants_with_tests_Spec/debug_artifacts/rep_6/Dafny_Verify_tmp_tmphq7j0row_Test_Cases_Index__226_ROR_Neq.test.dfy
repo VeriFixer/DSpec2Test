@@ -108,4 +108,4 @@ method {:test} Test48() {
 TestMaxSum(33, 32);
 }
 
-// REPEAT 6 - TIME: 22.54204 s
+// REPEAT 6 - TIME: 24.2166908 s

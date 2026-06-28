@@ -19,7 +19,7 @@ expect 0 <= 0 ==> r0 == 0;
 expect 0 > 0 ==> r0 == 0;
 }
 
-// REPEAT 1 - TIME: 4.4527864 s
+// REPEAT 1 - TIME: 2.9078267 s
 
 method {:test} Test2() {
 var r0 := Min(1, 2);
@@ -32,7 +32,7 @@ expect 2 <= 2 ==> r0 == 2;
 expect 2 > 2 ==> r0 == 2;
 }
 
-// REPEAT 2 - TIME: 6.7083334 s
+// REPEAT 2 - TIME: 4.224276 s
 
 method {:test} Test4() {
 var r0 := Min(3, 4);
@@ -45,7 +45,7 @@ expect 3 <= 3 ==> r0 == 3;
 expect 3 > 3 ==> r0 == 3;
 }
 
-// REPEAT 3 - TIME: 8.9712523 s
+// REPEAT 3 - TIME: 5.6124929 s
 
 method {:test} Test6() {
 var r0 := Min(4, 5);
@@ -58,7 +58,7 @@ expect 5 <= 5 ==> r0 == 5;
 expect 5 > 5 ==> r0 == 5;
 }
 
-// REPEAT 4 - TIME: 10.9667595 s
+// REPEAT 4 - TIME: 6.951299 s
 
 method {:test} Test8() {
 var r0 := Min(6, 7);
@@ -71,7 +71,7 @@ expect 6 <= 6 ==> r0 == 6;
 expect 6 > 6 ==> r0 == 6;
 }
 
-// REPEAT 5 - TIME: 12.7149882 s
+// REPEAT 5 - TIME: 8.2505965 s
 
 method {:test} Test10() {
 var r0 := Min(7, 8);
@@ -84,7 +84,7 @@ expect 8 <= 8 ==> r0 == 8;
 expect 8 > 8 ==> r0 == 8;
 }
 
-// REPEAT 6 - TIME: 14.111193 s
+// REPEAT 6 - TIME: 9.2074642 s
 
 method {:test} Test12() {
 var r0 := Min(9, 10);
@@ -97,7 +97,7 @@ expect 9 <= 9 ==> r0 == 9;
 expect 9 > 9 ==> r0 == 9;
 }
 
-// REPEAT 7 - TIME: 15.853558 s
+// REPEAT 7 - TIME: 10.3743973 s
 
 method {:test} Test14() {
 var r0 := Min(10, 11);
@@ -110,7 +110,7 @@ expect 11 <= 11 ==> r0 == 11;
 expect 11 > 11 ==> r0 == 11;
 }
 
-// REPEAT 8 - TIME: 17.6245401 s
+// REPEAT 8 - TIME: 11.6222335 s
 
 method {:test} Test16() {
 var r0 := Min(12, 13);
@@ -123,7 +123,7 @@ expect 12 <= 12 ==> r0 == 12;
 expect 12 > 12 ==> r0 == 12;
 }
 
-// REPEAT 9 - TIME: 18.9196236 s
+// REPEAT 9 - TIME: 12.7943769 s
 
 method {:test} Test18() {
 var r0 := Min(13, 14);
@@ -136,4 +136,4 @@ expect 14 <= 14 ==> r0 == 14;
 expect 14 > 14 ==> r0 == 14;
 }
 
-// REPEAT 10 - TIME: 20.6213793 s
+// REPEAT 10 - TIME: 13.8698377 s

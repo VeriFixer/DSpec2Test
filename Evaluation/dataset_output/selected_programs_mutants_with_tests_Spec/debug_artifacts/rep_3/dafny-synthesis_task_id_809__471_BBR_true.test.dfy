@@ -35,4 +35,4 @@ expect r0 <==> forall i :: 0 <= i < |seqint0| ==> seqint0[i] > seqint1[i];
 expect !r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] <= seqint1[i];
 }
 
-// REPEAT 3 - TIME: 5.7849577 s
+// REPEAT 3 - TIME: 5.8511111 s

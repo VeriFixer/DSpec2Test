@@ -11,4 +11,4 @@ var r0 := ComputeAvg(17712, 2);
 expect r0 == (17712 + 2) / 2;
 }
 
-// REPEAT 2 - TIME: 3.4635522 s
+// REPEAT 2 - TIME: 4.9955583 s

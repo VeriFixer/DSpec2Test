@@ -63,7 +63,7 @@ expect r0 == 101 || r0 == 100;
 expect r0 <= 101 && r0 <= 100;
 }
 
-// REPEAT 1 - TIME: 10.5569528 s
+// REPEAT 1 - TIME: 13.0459176 s
 
 method {:test} Test20() {
 var r0 := Min(102, 102);
@@ -76,7 +76,7 @@ expect r0 == 102 || r0 == 101;
 expect r0 <= 102 && r0 <= 101;
 }
 
-// REPEAT 2 - TIME: 11.6451762 s
+// REPEAT 2 - TIME: 14.3584123 s
 
 method {:test} Test22() {
 var r0 := Min(103, 103);
@@ -89,7 +89,7 @@ expect r0 == 104 || r0 == 103;
 expect r0 <= 104 && r0 <= 103;
 }
 
-// REPEAT 3 - TIME: 12.6113114 s
+// REPEAT 3 - TIME: 15.6908023 s
 
 method {:test} Test24() {
 var r0 := Min(105, 105);
@@ -102,7 +102,7 @@ expect r0 == 105 || r0 == 104;
 expect r0 <= 105 && r0 <= 104;
 }
 
-// REPEAT 4 - TIME: 13.578125 s
+// REPEAT 4 - TIME: 17.1835125 s
 
 method {:test} Test26() {
 var r0 := Min(106, 106);
@@ -115,7 +115,7 @@ expect r0 == 107 || r0 == 106;
 expect r0 <= 107 && r0 <= 106;
 }
 
-// REPEAT 5 - TIME: 14.3300658 s
+// REPEAT 5 - TIME: 18.5387641 s
 
 method {:test} Test28() {
 var r0 := Min(108, 108);
@@ -128,7 +128,7 @@ expect r0 == 108 || r0 == 107;
 expect r0 <= 108 && r0 <= 107;
 }
 
-// REPEAT 6 - TIME: 15.2320595 s
+// REPEAT 6 - TIME: 19.793198 s
 
 method {:test} Test30() {
 var r0 := Min(109, 109);
@@ -141,7 +141,7 @@ expect r0 == 110 || r0 == 109;
 expect r0 <= 110 && r0 <= 109;
 }
 
-// REPEAT 7 - TIME: 16.1451973 s
+// REPEAT 7 - TIME: 21.0119094 s
 
 method {:test} Test32() {
 var r0 := Min(111, 111);
@@ -154,7 +154,7 @@ expect r0 == 111 || r0 == 110;
 expect r0 <= 111 && r0 <= 110;
 }
 
-// REPEAT 8 - TIME: 16.9925419 s
+// REPEAT 8 - TIME: 22.1249786 s
 
 method {:test} Test34() {
 var r0 := Min(112, 112);
@@ -167,7 +167,7 @@ expect r0 == 113 || r0 == 112;
 expect r0 <= 113 && r0 <= 112;
 }
 
-// REPEAT 9 - TIME: 18.1026543 s
+// REPEAT 9 - TIME: 23.2883582 s
 
 method {:test} Test36() {
 var r0 := Min(114, 114);
@@ -180,4 +180,4 @@ expect r0 == 114 || r0 == 113;
 expect r0 <= 114 && r0 <= 113;
 }
 
-// REPEAT 10 - TIME: 18.9402048 s
+// REPEAT 10 - TIME: 24.2801292 s

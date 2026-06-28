@@ -45,85 +45,85 @@ expect |r0| == 2 * |seqstring0|;
 expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "aa" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 1 - TIME: 7.3859455 s
+// REPEAT 1 - TIME: 9.2748059 s
 
 method {:test} Test10() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", "", ""];
-var r0 := InsertBeforeEach(seqstring0, "\0\U{0002}a");
+var r0 := InsertBeforeEach(seqstring0, "\0\U{0002}aaaaaaaaaaaaaa\U{0004}");
 expect |r0| == 2 * |seqstring0|;
-expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\0\U{0002}a" && r0[2 * i + 1] == seqstring0[i];
+expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\0\U{0002}aaaaaaaaaaaaaa\U{0004}" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 2 - TIME: 8.3299928 s
+// REPEAT 2 - TIME: 10.2156833 s
 
 method {:test} Test11() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
-var r0 := InsertBeforeEach(seqstring0, "\U{0004}\0aaaaaaaaaa\U{0002}");
+var r0 := InsertBeforeEach(seqstring0, "aaaaaaaa\0aaaaaaaa\U{0002}");
 expect |r0| == 2 * |seqstring0|;
-expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0004}\0aaaaaaaaaa\U{0002}" && r0[2 * i + 1] == seqstring0[i];
+expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "aaaaaaaa\0aaaaaaaa\U{0002}" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 3 - TIME: 9.1003341 s
+// REPEAT 3 - TIME: 11.2289975 s
 
 method {:test} Test12() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
-var r0 := InsertBeforeEach(seqstring0, "\U{0006}\0\U{0002}\U{0004}");
+var r0 := InsertBeforeEach(seqstring0, "\U{0004}\0\U{0002}");
 expect |r0| == 2 * |seqstring0|;
-expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0006}\0\U{0002}\U{0004}" && r0[2 * i + 1] == seqstring0[i];
+expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0004}\0\U{0002}" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 4 - TIME: 9.8354137 s
+// REPEAT 4 - TIME: 12.1951105 s
 
 method {:test} Test13() {
-var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", ""];
-var r0 := InsertBeforeEach(seqstring0, "\U{0002}aa\0aaaaaaaaa\U{0004}");
+var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", ""];
+var r0 := InsertBeforeEach(seqstring0, "\U{0006}\U{0002}\U{0004}\0");
 expect |r0| == 2 * |seqstring0|;
-expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0002}aa\0aaaaaaaaa\U{0004}" && r0[2 * i + 1] == seqstring0[i];
+expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0006}\U{0002}\U{0004}\0" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 5 - TIME: 10.5753994 s
+// REPEAT 5 - TIME: 13.0239305 s
 
 method {:test} Test14() {
-var seqstring0 : seq<string> := ["", "", "", ""];
-var r0 := InsertBeforeEach(seqstring0, "\U{0002}\0aa\U{0004}");
+var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", ""];
+var r0 := InsertBeforeEach(seqstring0, "\U{0004}aa\0\U{0002}");
 expect |r0| == 2 * |seqstring0|;
-expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0002}\0aa\U{0004}" && r0[2 * i + 1] == seqstring0[i];
+expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0004}aa\0\U{0002}" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 6 - TIME: 11.3116531 s
+// REPEAT 6 - TIME: 14.2031906 s
 
 method {:test} Test15() {
-var seqstring0 : seq<string> := ["", "", "", "", ""];
-var r0 := InsertBeforeEach(seqstring0, "\U{0006}aaaaaa\0aa\U{0002}aaaaaaa\U{0004}");
+var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", "", ""];
+var r0 := InsertBeforeEach(seqstring0, "\U{0008}\U{0002}aaaaaaaaaaaa\0aaaaaa\U{0004}aaaaa\U{0006}");
 expect |r0| == 2 * |seqstring0|;
-expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0006}aaaaaa\0aa\U{0002}aaaaaaa\U{0004}" && r0[2 * i + 1] == seqstring0[i];
+expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0008}\U{0002}aaaaaaaaaaaa\0aaaaaa\U{0004}aaaaa\U{0006}" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 7 - TIME: 12.017901 s
+// REPEAT 7 - TIME: 15.3255712 s
 
 method {:test} Test16() {
-var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", "", ""];
-var r0 := InsertBeforeEach(seqstring0, "\U{0002}aaaaaaa\0aaaa\U{0004}");
+var seqstring0 : seq<string> := ["", ""];
+var r0 := InsertBeforeEach(seqstring0, "\U{0002}\0");
 expect |r0| == 2 * |seqstring0|;
-expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0002}aaaaaaa\0aaaa\U{0004}" && r0[2 * i + 1] == seqstring0[i];
+expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0002}\0" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 8 - TIME: 12.6232227 s
+// REPEAT 8 - TIME: 16.5252839 s
 
 method {:test} Test17() {
 var seqstring0 : seq<string> := ["", "", "", "", "", "", "", ""];
-var r0 := InsertBeforeEach(seqstring0, "\0aaa");
+var r0 := InsertBeforeEach(seqstring0, "\U{0006}\U{0004}aaa\naaa\U{0002}\0aaaaaaaaaaaaaaa\U{0008}a\U{000C}");
 expect |r0| == 2 * |seqstring0|;
-expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\0aaa" && r0[2 * i + 1] == seqstring0[i];
+expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0006}\U{0004}aaa\naaa\U{0002}\0aaaaaaaaaaaaaaa\U{0008}a\U{000C}" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 9 - TIME: 13.3565438 s
+// REPEAT 9 - TIME: 17.4055615 s
 
 method {:test} Test18() {
-var seqstring0 : seq<string> := ["", "", "", "", "", "", "", "", ""];
-var r0 := InsertBeforeEach(seqstring0, "\U{0002}aaaaaa\0aaaa\U{0006}\U{0004}\U{0008}");
+var seqstring0 : seq<string> := ["", "", "", "", "", "", ""];
+var r0 := InsertBeforeEach(seqstring0, "\U{0008}\U{0002}a\U{0006}aaa\0a\U{0004}");
 expect |r0| == 2 * |seqstring0|;
-expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0002}aaaaaa\0aaaa\U{0006}\U{0004}\U{0008}" && r0[2 * i + 1] == seqstring0[i];
+expect forall i :: 0 <= i < |seqstring0| ==> r0[2 * i] == "\U{0008}\U{0002}a\U{0006}aaa\0a\U{0004}" && r0[2 * i + 1] == seqstring0[i];
 }
 
-// REPEAT 10 - TIME: 13.9408126 s
+// REPEAT 10 - TIME: 18.2643137 s

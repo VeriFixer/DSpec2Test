@@ -28,4 +28,4 @@ var r0 := CountUppercase("N");
 expect r0 >= 0;
 }
 
-// REPEAT 1 - TIME: 5.6370469 s
+// REPEAT 1 - TIME: 6.2510973 s

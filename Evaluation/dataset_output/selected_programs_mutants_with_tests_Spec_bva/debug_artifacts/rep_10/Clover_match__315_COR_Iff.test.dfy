@@ -18,14 +18,14 @@ method {:testEntry} Match(s: string, p: string) returns (b: bool)
 }
 
 method {:test} Test36() {
-expect |"\U{0004}aaaaaa\U{0002}aa\0a"| == |"\U{0004}aaaaaa\U{0002}aa\0a"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Match("\U{0004}aaaaaa\U{0002}aa\0a", "\U{0004}aaaaaa\U{0002}aa\0a");
-expect r0 <==> forall n :: 0 <= n < |"\U{0004}aaaaaa\U{0002}aa\0a"| ==> "\U{0004}aaaaaa\U{0002}aa\0a"[n] == "\U{0004}aaaaaa\U{0002}aa\0a"[n] || "\U{0004}aaaaaa\U{0002}aa\0a"[n] == '?';
+expect |"aaaaaaaaaaaa\U{0003}a\U{0001}"| == |"?aaaaaaa?aaa???"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := Match("aaaaaaaaaaaa\U{0003}a\U{0001}", "?aaaaaaa?aaa???");
+expect r0 <==> forall n :: 0 <= n < |"aaaaaaaaaaaa\U{0003}a\U{0001}"| ==> "aaaaaaaaaaaa\U{0003}a\U{0001}"[n] == "?aaaaaaa?aaa???"[n] || "?aaaaaaa?aaa???"[n] == '?';
 }
 method {:test} Test37() {
-expect |"\U{0008}a\0aaaaaaaa\U{0004}"| == |"\na\U{0002}aaaaaaaa\U{0006}"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Match("\U{0008}a\0aaaaaaaa\U{0004}", "\na\U{0002}aaaaaaaa\U{0006}");
-expect r0 <==> forall n :: 0 <= n < |"\U{0008}a\0aaaaaaaa\U{0004}"| ==> "\U{0008}a\0aaaaaaaa\U{0004}"[n] == "\na\U{0002}aaaaaaaa\U{0006}"[n] || "\na\U{0002}aaaaaaaa\U{0006}"[n] == '?';
+expect |"\U{0012}aaaaaaaa\0a\U{0008}aaa\U{000C}aaa\U{0006}aaaa"| == |"\U{0010}aaaaaaaa\U{0002}aaa\U{000E}\naa\U{0004}aaaaaa"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := Match("\U{0012}aaaaaaaa\0a\U{0008}aaa\U{000C}aaa\U{0006}aaaa", "\U{0010}aaaaaaaa\U{0002}aaa\U{000E}\naa\U{0004}aaaaaa");
+expect r0 <==> forall n :: 0 <= n < |"\U{0012}aaaaaaaa\0a\U{0008}aaa\U{000C}aaa\U{0006}aaaa"| ==> "\U{0012}aaaaaaaa\0a\U{0008}aaa\U{000C}aaa\U{0006}aaaa"[n] == "\U{0010}aaaaaaaa\U{0002}aaa\U{000E}\naa\U{0004}aaaaaa"[n] || "\U{0010}aaaaaaaa\U{0002}aaa\U{000E}\naa\U{0004}aaaaaa"[n] == '?';
 }
 
-// REPEAT 10 - TIME: 23.6900669 s
+// REPEAT 10 - TIME: 26.9456509 s

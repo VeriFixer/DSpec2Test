@@ -18,14 +18,14 @@ method {:testEntry} Match(s: string, p: string) returns (b: bool)
 }
 
 method {:test} Test4() {
-expect |"\U{0001}"| == |"?"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Match("\U{0001}", "?");
-expect r0 <==> forall n :: 0 <= n < |"\U{0001}"| ==> "\U{0001}"[n] == "?"[n] || "?"[n] == '?';
+expect |"\U{0002}\0"| == |"\U{0002}\0"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := Match("\U{0002}\0", "\U{0002}\0");
+expect r0 <==> forall n :: 0 <= n < |"\U{0002}\0"| ==> "\U{0002}\0"[n] == "\U{0002}\0"[n] || "\U{0002}\0"[n] == '?';
 }
 method {:test} Test5() {
-expect |"\U{0004}aaaa\U{0006}aaaaa"| == |"\0aaaa\U{0008}aaaa\U{0002}"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Match("\U{0004}aaaa\U{0006}aaaaa", "\0aaaa\U{0008}aaaa\U{0002}");
-expect r0 <==> forall n :: 0 <= n < |"\U{0004}aaaa\U{0006}aaaaa"| ==> "\U{0004}aaaa\U{0006}aaaaa"[n] == "\0aaaa\U{0008}aaaa\U{0002}"[n] || "\0aaaa\U{0008}aaaa\U{0002}"[n] == '?';
+expect |"a\U{0004}aaaaaaa\U{0002}"| == |"a\U{0006}aaaaa\0aa"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := Match("a\U{0004}aaaaaaa\U{0002}", "a\U{0006}aaaaa\0aa");
+expect r0 <==> forall n :: 0 <= n < |"a\U{0004}aaaaaaa\U{0002}"| ==> "a\U{0004}aaaaaaa\U{0002}"[n] == "a\U{0006}aaaaa\0aa"[n] || "a\U{0006}aaaaa\0aa"[n] == '?';
 }
 
-// REPEAT 3 - TIME: 7.3361469 s
+// REPEAT 3 - TIME: 6.3681496 s

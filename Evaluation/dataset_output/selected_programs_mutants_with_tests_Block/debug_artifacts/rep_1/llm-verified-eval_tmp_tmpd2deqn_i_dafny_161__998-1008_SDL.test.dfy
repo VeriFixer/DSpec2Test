@@ -99,4 +99,4 @@ expect !NoLetters("at", |"at"|) ==> forall i :: 0 <= i < |"at"| && !IsLetter("at
 expect NoLetters("at", |"at"|) ==> isReverse(r0, "at");
 }
 
-// REPEAT 1 - TIME: 5.1823883 s
+// REPEAT 1 - TIME: 4.8505924 s

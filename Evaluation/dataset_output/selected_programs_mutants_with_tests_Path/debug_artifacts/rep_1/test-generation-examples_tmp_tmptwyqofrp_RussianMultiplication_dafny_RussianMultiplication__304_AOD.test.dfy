@@ -35,4 +35,4 @@ var r0 := RussianMultiplication.mult(-1, -449);
 expect r0 == -1 * -449;
 }
 
-// REPEAT 1 - TIME: 4.7505919 s
+// REPEAT 1 - TIME: 6.6429503 s

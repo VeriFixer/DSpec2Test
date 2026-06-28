@@ -31,121 +31,121 @@ var r0 := StartAndEndWithSameChar("\0\U{0002}");
 expect r0 <==> "\0\U{0002}"[0] == "\0\U{0002}"[|"\0\U{0002}"| - 1];
 }
 
-// REPEAT 1 - TIME: 9.8041577 s
+// REPEAT 1 - TIME: 12.1888433 s
 
 method {:test} Test13() {
-expect |"\U{0002}\U{0004}aaaaaaaaaaaaaaa\U{0006}\0\U{0002}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\U{0002}\U{0004}aaaaaaaaaaaaaaa\U{0006}\0\U{0002}");
-expect r0 <==> "\U{0002}\U{0004}aaaaaaaaaaaaaaa\U{0006}\0\U{0002}"[0] == "\U{0002}\U{0004}aaaaaaaaaaaaaaa\U{0006}\0\U{0002}"[|"\U{0002}\U{0004}aaaaaaaaaaaaaaa\U{0006}\0\U{0002}"| - 1];
+expect |"\U{0002}\U{0004}\0aa\U{0002}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\U{0002}\U{0004}\0aa\U{0002}");
+expect r0 <==> "\U{0002}\U{0004}\0aa\U{0002}"[0] == "\U{0002}\U{0004}\0aa\U{0002}"[|"\U{0002}\U{0004}\0aa\U{0002}"| - 1];
 }
 method {:test} Test14() {
-expect |"\0\U{0004}aaaaaaaa\U{0006}aaaaaaaaaaaaaaaa\U{0002}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\0\U{0004}aaaaaaaa\U{0006}aaaaaaaaaaaaaaaa\U{0002}");
-expect r0 <==> "\0\U{0004}aaaaaaaa\U{0006}aaaaaaaaaaaaaaaa\U{0002}"[0] == "\0\U{0004}aaaaaaaa\U{0006}aaaaaaaaaaaaaaaa\U{0002}"[|"\0\U{0004}aaaaaaaa\U{0006}aaaaaaaaaaaaaaaa\U{0002}"| - 1];
+expect |"\0aaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\0aaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}");
+expect r0 <==> "\0aaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}"[0] == "\0aaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}"[|"\0aaaaaaaaaaaaaaaaaaaaaaaaa\U{0002}"| - 1];
 }
 
-// REPEAT 2 - TIME: 11.0983807 s
+// REPEAT 2 - TIME: 13.669768 s
 
 method {:test} Test15() {
-expect |"\0aaaaaaaaaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\0aaaaaaaaaa\0");
-expect r0 <==> "\0aaaaaaaaaa\0"[0] == "\0aaaaaaaaaa\0"[|"\0aaaaaaaaaa\0"| - 1];
-}
-method {:test} Test16() {
-expect |"\U{0006}\0aaaaaa\U{0002}\U{0004}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\U{0006}\0aaaaaa\U{0002}\U{0004}");
-expect r0 <==> "\U{0006}\0aaaaaa\U{0002}\U{0004}"[0] == "\U{0006}\0aaaaaa\U{0002}\U{0004}"[|"\U{0006}\0aaaaaa\U{0002}\U{0004}"| - 1];
-}
-
-// REPEAT 3 - TIME: 12.2802027 s
-
-method {:test} Test17() {
-expect |"\U{0008}\0aaaaa\U{0002}a\U{0006}aa\U{0004}aaaaaaaaaaaaaaa\U{0008}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\U{0008}\0aaaaa\U{0002}a\U{0006}aa\U{0004}aaaaaaaaaaaaaaa\U{0008}");
-expect r0 <==> "\U{0008}\0aaaaa\U{0002}a\U{0006}aa\U{0004}aaaaaaaaaaaaaaa\U{0008}"[0] == "\U{0008}\0aaaaa\U{0002}a\U{0006}aa\U{0004}aaaaaaaaaaaaaaa\U{0008}"[|"\U{0008}\0aaaaa\U{0002}a\U{0006}aa\U{0004}aaaaaaaaaaaaaaa\U{0008}"| - 1];
-}
-method {:test} Test18() {
-expect |"\n\0aaaaa\U{0002}a\U{0006}\U{0004}aaaaaaaaaaaaaaaaa\U{0008}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\n\0aaaaa\U{0002}a\U{0006}\U{0004}aaaaaaaaaaaaaaaaa\U{0008}");
-expect r0 <==> "\n\0aaaaa\U{0002}a\U{0006}\U{0004}aaaaaaaaaaaaaaaaa\U{0008}"[0] == "\n\0aaaaa\U{0002}a\U{0006}\U{0004}aaaaaaaaaaaaaaaaa\U{0008}"[|"\n\0aaaaa\U{0002}a\U{0006}\U{0004}aaaaaaaaaaaaaaaaa\U{0008}"| - 1];
-}
-
-// REPEAT 4 - TIME: 13.2635826 s
-
-method {:test} Test19() {
-expect |"\U{0002}\0aaa\U{0002}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\U{0002}\0aaa\U{0002}");
-expect r0 <==> "\U{0002}\0aaa\U{0002}"[0] == "\U{0002}\0aaa\U{0002}"[|"\U{0002}\0aaa\U{0002}"| - 1];
-}
-method {:test} Test20() {
-expect |"\U{0004}\U{0002}aaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\U{0004}\U{0002}aaa\0");
-expect r0 <==> "\U{0004}\U{0002}aaa\0"[0] == "\U{0004}\U{0002}aaa\0"[|"\U{0004}\U{0002}aaa\0"| - 1];
-}
-
-// REPEAT 5 - TIME: 14.4894093 s
-
-method {:test} Test21() {
 expect |"\0aaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := StartAndEndWithSameChar("\0aaa\0");
 expect r0 <==> "\0aaa\0"[0] == "\0aaa\0"[|"\0aaa\0"| - 1];
 }
-method {:test} Test22() {
-expect |"\0aaaa\U{0002}\U{0006}\U{0004}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\0aaaa\U{0002}\U{0006}\U{0004}");
-expect r0 <==> "\0aaaa\U{0002}\U{0006}\U{0004}"[0] == "\0aaaa\U{0002}\U{0006}\U{0004}"[|"\0aaaa\U{0002}\U{0006}\U{0004}"| - 1];
+method {:test} Test16() {
+expect |"\U{0006}\0\U{0002}a\U{0004}\U{0008}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\U{0006}\0\U{0002}a\U{0004}\U{0008}");
+expect r0 <==> "\U{0006}\0\U{0002}a\U{0004}\U{0008}"[0] == "\U{0006}\0\U{0002}a\U{0004}\U{0008}"[|"\U{0006}\0\U{0002}a\U{0004}\U{0008}"| - 1];
 }
 
-// REPEAT 6 - TIME: 15.7316127 s
+// REPEAT 3 - TIME: 14.8963486 s
+
+method {:test} Test17() {
+expect |"\U{0002}aaaaaaaaa\0aaaaaaaaaaaaaaaa\U{0002}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\U{0002}aaaaaaaaa\0aaaaaaaaaaaaaaaa\U{0002}");
+expect r0 <==> "\U{0002}aaaaaaaaa\0aaaaaaaaaaaaaaaa\U{0002}"[0] == "\U{0002}aaaaaaaaa\0aaaaaaaaaaaaaaaa\U{0002}"[|"\U{0002}aaaaaaaaa\0aaaaaaaaaaaaaaaa\U{0002}"| - 1];
+}
+method {:test} Test18() {
+expect |"\U{0002}a\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\U{0002}a\0");
+expect r0 <==> "\U{0002}a\0"[0] == "\U{0002}a\0"[|"\U{0002}a\0"| - 1];
+}
+
+// REPEAT 4 - TIME: 16.5328736 s
+
+method {:test} Test19() {
+expect |"\0aa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\0aa\0");
+expect r0 <==> "\0aa\0"[0] == "\0aa\0"[|"\0aa\0"| - 1];
+}
+method {:test} Test20() {
+expect |"\U{0008}\U{0002}aaa\U{0006}\U{0004}\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\U{0008}\U{0002}aaa\U{0006}\U{0004}\0");
+expect r0 <==> "\U{0008}\U{0002}aaa\U{0006}\U{0004}\0"[0] == "\U{0008}\U{0002}aaa\U{0006}\U{0004}\0"[|"\U{0008}\U{0002}aaa\U{0006}\U{0004}\0"| - 1];
+}
+
+// REPEAT 5 - TIME: 18.0803386 s
+
+method {:test} Test21() {
+expect |"\0\U{0002}\U{0004}\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\0\U{0002}\U{0004}\0");
+expect r0 <==> "\0\U{0002}\U{0004}\0"[0] == "\0\U{0002}\U{0004}\0"[|"\0\U{0002}\U{0004}\0"| - 1];
+}
+method {:test} Test22() {
+expect |"\U{000C}\U{0002}aaa\U{0006}\0\U{0004}\U{0008}\n"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\U{000C}\U{0002}aaa\U{0006}\0\U{0004}\U{0008}\n");
+expect r0 <==> "\U{000C}\U{0002}aaa\U{0006}\0\U{0004}\U{0008}\n"[0] == "\U{000C}\U{0002}aaa\U{0006}\0\U{0004}\U{0008}\n"[|"\U{000C}\U{0002}aaa\U{0006}\0\U{0004}\U{0008}\n"| - 1];
+}
+
+// REPEAT 6 - TIME: 19.6685523 s
 
 method {:test} Test23() {
-expect |"\0\U{0002}\U{0004}aaaaaa\U{0006}\U{0008}a\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\0\U{0002}\U{0004}aaaaaa\U{0006}\U{0008}a\0");
-expect r0 <==> "\0\U{0002}\U{0004}aaaaaa\U{0006}\U{0008}a\0"[0] == "\0\U{0002}\U{0004}aaaaaa\U{0006}\U{0008}a\0"[|"\0\U{0002}\U{0004}aaaaaa\U{0006}\U{0008}a\0"| - 1];
+expect |"\0\U{0002}aaaaaa\U{0004}\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\0\U{0002}aaaaaa\U{0004}\0");
+expect r0 <==> "\0\U{0002}aaaaaa\U{0004}\0"[0] == "\0\U{0002}aaaaaa\U{0004}\0"[|"\0\U{0002}aaaaaa\U{0004}\0"| - 1];
 }
 method {:test} Test24() {
-expect |"\0\U{0002}aaa\U{0008}aaaaaaaaaa\U{0006}aa\n\U{0010}\U{0004}aaa\U{000C}aa\U{000E}\U{0012}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\0\U{0002}aaa\U{0008}aaaaaaaaaa\U{0006}aa\n\U{0010}\U{0004}aaa\U{000C}aa\U{000E}\U{0012}");
-expect r0 <==> "\0\U{0002}aaa\U{0008}aaaaaaaaaa\U{0006}aa\n\U{0010}\U{0004}aaa\U{000C}aa\U{000E}\U{0012}"[0] == "\0\U{0002}aaa\U{0008}aaaaaaaaaa\U{0006}aa\n\U{0010}\U{0004}aaa\U{000C}aa\U{000E}\U{0012}"[|"\0\U{0002}aaa\U{0008}aaaaaaaaaa\U{0006}aa\n\U{0010}\U{0004}aaa\U{000C}aa\U{000E}\U{0012}"| - 1];
+expect |"\U{0004}\0aaaa\U{0002}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\U{0004}\0aaaa\U{0002}");
+expect r0 <==> "\U{0004}\0aaaa\U{0002}"[0] == "\U{0004}\0aaaa\U{0002}"[|"\U{0004}\0aaaa\U{0002}"| - 1];
 }
 
-// REPEAT 7 - TIME: 16.791973 s
+// REPEAT 7 - TIME: 21.0798544 s
 
 method {:test} Test25() {
-expect |"\0\U{0002}aaa\U{0004}aaa\U{000C}aaa\U{0012}aaaaa\U{0010}\U{0014}\U{0008}a\U{000E}\naaa\U{0006}\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\0\U{0002}aaa\U{0004}aaa\U{000C}aaa\U{0012}aaaaa\U{0010}\U{0014}\U{0008}a\U{000E}\naaa\U{0006}\0");
-expect r0 <==> "\0\U{0002}aaa\U{0004}aaa\U{000C}aaa\U{0012}aaaaa\U{0010}\U{0014}\U{0008}a\U{000E}\naaa\U{0006}\0"[0] == "\0\U{0002}aaa\U{0004}aaa\U{000C}aaa\U{0012}aaaaa\U{0010}\U{0014}\U{0008}a\U{000E}\naaa\U{0006}\0"[|"\0\U{0002}aaa\U{0004}aaa\U{000C}aaa\U{0012}aaaaa\U{0010}\U{0014}\U{0008}a\U{000E}\naaa\U{0006}\0"| - 1];
+expect |"\0aaaa\U{0002}aaaaa\U{0004}aaaaaaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\0aaaa\U{0002}aaaaa\U{0004}aaaaaaa\0");
+expect r0 <==> "\0aaaa\U{0002}aaaaa\U{0004}aaaaaaa\0"[0] == "\0aaaa\U{0002}aaaaa\U{0004}aaaaaaa\0"[|"\0aaaa\U{0002}aaaaa\U{0004}aaaaaaa\0"| - 1];
 }
 method {:test} Test26() {
-expect |"\U{0008}\0aaa\U{0002}aaa\U{0004}\U{0006}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\U{0008}\0aaa\U{0002}aaa\U{0004}\U{0006}");
-expect r0 <==> "\U{0008}\0aaa\U{0002}aaa\U{0004}\U{0006}"[0] == "\U{0008}\0aaa\U{0002}aaa\U{0004}\U{0006}"[|"\U{0008}\0aaa\U{0002}aaa\U{0004}\U{0006}"| - 1];
+expect |"\U{0004}\0aaa\na\U{000E}a\U{0010}aaaaa\U{0006}aaa\U{0008}\U{000C}aaaaa\U{0012}\U{0014}\U{0002}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\U{0004}\0aaa\na\U{000E}a\U{0010}aaaaa\U{0006}aaa\U{0008}\U{000C}aaaaa\U{0012}\U{0014}\U{0002}");
+expect r0 <==> "\U{0004}\0aaa\na\U{000E}a\U{0010}aaaaa\U{0006}aaa\U{0008}\U{000C}aaaaa\U{0012}\U{0014}\U{0002}"[0] == "\U{0004}\0aaa\na\U{000E}a\U{0010}aaaaa\U{0006}aaa\U{0008}\U{000C}aaaaa\U{0012}\U{0014}\U{0002}"[|"\U{0004}\0aaa\na\U{000E}a\U{0010}aaaaa\U{0006}aaa\U{0008}\U{000C}aaaaa\U{0012}\U{0014}\U{0002}"| - 1];
 }
 
-// REPEAT 8 - TIME: 18.0962458 s
+// REPEAT 8 - TIME: 22.5118604 s
 
 method {:test} Test27() {
-expect |"\0\U{0002}aaa\U{0004}aaa\naaa\U{0010}aaaaaaa\U{0006}aa\U{0008}\U{000C}a\U{0012}\U{000E}\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\0\U{0002}aaa\U{0004}aaa\naaa\U{0010}aaaaaaa\U{0006}aa\U{0008}\U{000C}a\U{0012}\U{000E}\0");
-expect r0 <==> "\0\U{0002}aaa\U{0004}aaa\naaa\U{0010}aaaaaaa\U{0006}aa\U{0008}\U{000C}a\U{0012}\U{000E}\0"[0] == "\0\U{0002}aaa\U{0004}aaa\naaa\U{0010}aaaaaaa\U{0006}aa\U{0008}\U{000C}a\U{0012}\U{000E}\0"[|"\0\U{0002}aaa\U{0004}aaa\naaa\U{0010}aaaaaaa\U{0006}aa\U{0008}\U{000C}a\U{0012}\U{000E}\0"| - 1];
+expect |"\0\U{0002}aaa\U{0008}aaa\U{000C}\naaaaa\U{0006}aaaaaaaa\U{000E}a\U{0004}\U{0010}\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\0\U{0002}aaa\U{0008}aaa\U{000C}\naaaaa\U{0006}aaaaaaaa\U{000E}a\U{0004}\U{0010}\0");
+expect r0 <==> "\0\U{0002}aaa\U{0008}aaa\U{000C}\naaaaa\U{0006}aaaaaaaa\U{000E}a\U{0004}\U{0010}\0"[0] == "\0\U{0002}aaa\U{0008}aaa\U{000C}\naaaaa\U{0006}aaaaaaaa\U{000E}a\U{0004}\U{0010}\0"[|"\0\U{0002}aaa\U{0008}aaa\U{000C}\naaaaa\U{0006}aaaaaaaa\U{000E}a\U{0004}\U{0010}\0"| - 1];
 }
 method {:test} Test28() {
-expect |"\n\0aaa\U{0004}a\U{0002}\U{0006}\U{0008}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\n\0aaa\U{0004}a\U{0002}\U{0006}\U{0008}");
-expect r0 <==> "\n\0aaa\U{0004}a\U{0002}\U{0006}\U{0008}"[0] == "\n\0aaa\U{0004}a\U{0002}\U{0006}\U{0008}"[|"\n\0aaa\U{0004}a\U{0002}\U{0006}\U{0008}"| - 1];
+expect |"\0\U{0002}aaaaa\U{0008}a\n\U{000C}aaaaaaaa\U{0006}aaa\U{0004}aaa\U{000E}\U{0010}\U{0012}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\0\U{0002}aaaaa\U{0008}a\n\U{000C}aaaaaaaa\U{0006}aaa\U{0004}aaa\U{000E}\U{0010}\U{0012}");
+expect r0 <==> "\0\U{0002}aaaaa\U{0008}a\n\U{000C}aaaaaaaa\U{0006}aaa\U{0004}aaa\U{000E}\U{0010}\U{0012}"[0] == "\0\U{0002}aaaaa\U{0008}a\n\U{000C}aaaaaaaa\U{0006}aaa\U{0004}aaa\U{000E}\U{0010}\U{0012}"[|"\0\U{0002}aaaaa\U{0008}a\n\U{000C}aaaaaaaa\U{0006}aaa\U{0004}aaa\U{000E}\U{0010}\U{0012}"| - 1];
 }
 
-// REPEAT 9 - TIME: 19.4238371 s
+// REPEAT 9 - TIME: 23.9014286 s
 
 method {:test} Test29() {
-expect |"\0\U{0002}aaaaaaaaaaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\0\U{0002}aaaaaaaaaaa\0");
-expect r0 <==> "\0\U{0002}aaaaaaaaaaa\0"[0] == "\0\U{0002}aaaaaaaaaaa\0"[|"\0\U{0002}aaaaaaaaaaa\0"| - 1];
+expect |"\0aaaa\U{0006}a\naa\U{000C}\U{0008}\U{0002}a\U{0004}a\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\0aaaa\U{0006}a\naa\U{000C}\U{0008}\U{0002}a\U{0004}a\0");
+expect r0 <==> "\0aaaa\U{0006}a\naa\U{000C}\U{0008}\U{0002}a\U{0004}a\0"[0] == "\0aaaa\U{0006}a\naa\U{000C}\U{0008}\U{0002}a\U{0004}a\0"[|"\0aaaa\U{0006}a\naa\U{000C}\U{0008}\U{0002}a\U{0004}a\0"| - 1];
 }
 method {:test} Test30() {
-expect |"\U{000E}aaaa\U{0004}aaaaa\U{0008}a\U{0006}a\na\U{0002}aaa\U{000C}aaaaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\U{000E}aaaa\U{0004}aaaaa\U{0008}a\U{0006}a\na\U{0002}aaa\U{000C}aaaaa\0");
-expect r0 <==> "\U{000E}aaaa\U{0004}aaaaa\U{0008}a\U{0006}a\na\U{0002}aaa\U{000C}aaaaa\0"[0] == "\U{000E}aaaa\U{0004}aaaaa\U{0008}a\U{0006}a\na\U{0002}aaa\U{000C}aaaaa\0"[|"\U{000E}aaaa\U{0004}aaaaa\U{0008}a\U{0006}a\na\U{0002}aaa\U{000C}aaaaa\0"| - 1];
+expect |"\U{0014}\0aaa\U{0008}a\na\U{000E}aaaa\U{0010}\U{000C}aaa\U{0002}a\U{0006}\U{0004}\U{0012}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\U{0014}\0aaa\U{0008}a\na\U{000E}aaaa\U{0010}\U{000C}aaa\U{0002}a\U{0006}\U{0004}\U{0012}");
+expect r0 <==> "\U{0014}\0aaa\U{0008}a\na\U{000E}aaaa\U{0010}\U{000C}aaa\U{0002}a\U{0006}\U{0004}\U{0012}"[0] == "\U{0014}\0aaa\U{0008}a\na\U{000E}aaaa\U{0010}\U{000C}aaa\U{0002}a\U{0006}\U{0004}\U{0012}"[|"\U{0014}\0aaa\U{0008}a\na\U{000E}aaaa\U{0010}\U{000C}aaa\U{0002}a\U{0006}\U{0004}\U{0012}"| - 1];
 }
 
-// REPEAT 10 - TIME: 20.8655044 s
+// REPEAT 10 - TIME: 25.2624997 s

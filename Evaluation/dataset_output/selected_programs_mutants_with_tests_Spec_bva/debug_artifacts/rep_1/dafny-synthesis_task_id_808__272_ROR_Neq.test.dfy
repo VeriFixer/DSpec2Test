@@ -66,4 +66,4 @@ var r0 := ContainsK(seqint0, 100);
 expect r0 <==> 100 in seqint0;
 }
 
-// REPEAT 1 - TIME: 10.838119 s
+// REPEAT 1 - TIME: 14.4939929 s

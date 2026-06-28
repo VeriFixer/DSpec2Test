@@ -19,67 +19,67 @@ var r0 := CountDigits("1");
 expect r0 >= 0;
 }
 
-// REPEAT 1 - TIME: 2.6501357 s
+// REPEAT 1 - TIME: 2.4888062 s
 
 method {:test} Test1() {
-var r0 := CountDigits("aaaaaaaaaaaaa2aaaaaaaaaaa");
+var r0 := CountDigits("aaaaaaaaaaaa1aaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 2 - TIME: 3.5123461 s
+// REPEAT 2 - TIME: 3.3403184 s
 
 method {:test} Test2() {
-var r0 := CountDigits("a\0aaa1aaaaaaaaaaaaaaaaaaa\U{0001}aaa");
+var r0 := CountDigits("\0aaaaaaaaaaa1aaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 3 - TIME: 4.4170062 s
+// REPEAT 3 - TIME: 4.1584251 s
 
 method {:test} Test3() {
-var r0 := CountDigits("\U{0002}aaaaaaaaaaa\0aaaaaaaaaaaa\U{0001}");
+var r0 := CountDigits("\U{0002}\0aaaaaaaaaaaaaa0aaaa\U{0001}");
 expect r0 >= 0;
 }
 
-// REPEAT 4 - TIME: 5.2662082 s
+// REPEAT 4 - TIME: 4.9772832 s
 
 method {:test} Test4() {
-var r0 := CountDigits("aaaaaaaa0aaaaaaaaaaaaaaaa\0aaa\U{0001}");
+var r0 := CountDigits("\U{0003}aaaaaaaa\0aaaaaaaaaaa\U{0002}a\U{0001}");
 expect r0 >= 0;
 }
 
-// REPEAT 5 - TIME: 6.2982541 s
+// REPEAT 5 - TIME: 5.7549514 s
 
 method {:test} Test5() {
-var r0 := CountDigits("\U{0004}aaaaaaaaaaaaaaaaaaa\0aaaa\U{0001}\U{0002}aa\U{0003}");
+var r0 := CountDigits("aaaaaaaaa\0aaa2aaaaaaa\U{0003}\U{0002}\U{0001}\U{0004}");
 expect r0 >= 0;
 }
 
-// REPEAT 6 - TIME: 7.1096607 s
+// REPEAT 6 - TIME: 6.8519848 s
 
 method {:test} Test6() {
-var r0 := CountDigits("a1aaaaaaaaaaaaaaa");
+var r0 := CountDigits("\U{0002}aaaaaaaaaaa\0aaaaaaaa\U{0001}a1\U{0003}\U{0004}");
 expect r0 >= 0;
 }
 
-// REPEAT 7 - TIME: 8.1191365 s
+// REPEAT 7 - TIME: 7.8789662 s
 
 method {:test} Test7() {
-var r0 := CountDigits("\0aaaaaa");
+var r0 := CountDigits("a4aaaaaaaaa\0aaaaaaaaa\U{0002}\U{0003}a\U{0004}\U{0005}\U{0001}a");
 expect r0 >= 0;
 }
 
-// REPEAT 8 - TIME: 8.9675372 s
+// REPEAT 8 - TIME: 8.67931 s
 
 method {:test} Test8() {
-var r0 := CountDigits("\0aaaaaa");
+var r0 := CountDigits("\U{0001}aaaaaaaaaaaaa\0");
 expect r0 >= 0;
 }
 
-// REPEAT 9 - TIME: 9.8537217 s
+// REPEAT 9 - TIME: 9.615135 s
 
 method {:test} Test9() {
-var r0 := CountDigits("\U{0001}\0");
+var r0 := CountDigits("\0aaaaaaaaaaaaaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 10 - TIME: 10.797014 s
+// REPEAT 10 - TIME: 10.3837881 s

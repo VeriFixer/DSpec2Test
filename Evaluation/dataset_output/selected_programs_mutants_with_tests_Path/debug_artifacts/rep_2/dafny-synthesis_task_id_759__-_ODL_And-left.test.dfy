@@ -17,14 +17,19 @@ method {:testEntry} IsDecimalWithTwoPrecision(s: string) returns (result: bool)
 }
 
 method {:test} Test3() {
-var r0 := IsDecimalWithTwoPrecision("a\0");
-expect r0 ==> exists i :: 0 <= i < |"a\0"| && "a\0"[i] == '.' && |"a\0"| - i - 1 == 2;
-expect !r0 ==> !exists i :: 0 <= i < |"a\0"| && "a\0"[i] == '.' && |"a\0"| - i - 1 == 2;
+var r0 := IsDecimalWithTwoPrecision("\0a");
+expect r0 ==> exists i :: 0 <= i < |"\0a"| && "\0a"[i] == '.' && |"\0a"| - i - 1 == 2;
+expect !r0 ==> !exists i :: 0 <= i < |"\0a"| && "\0a"[i] == '.' && |"\0a"| - i - 1 == 2;
 }
 method {:test} Test4() {
-var r0 := IsDecimalWithTwoPrecision("\U{0001}aaaaaaaaaaaaa.aa");
-expect r0 ==> exists i :: 0 <= i < |"\U{0001}aaaaaaaaaaaaa.aa"| && "\U{0001}aaaaaaaaaaaaa.aa"[i] == '.' && |"\U{0001}aaaaaaaaaaaaa.aa"| - i - 1 == 2;
-expect !r0 ==> !exists i :: 0 <= i < |"\U{0001}aaaaaaaaaaaaa.aa"| && "\U{0001}aaaaaaaaaaaaa.aa"[i] == '.' && |"\U{0001}aaaaaaaaaaaaa.aa"| - i - 1 == 2;
+var r0 := IsDecimalWithTwoPrecision("aaaaaaaaaaaaaaaa.a\U{0001}");
+expect r0 ==> exists i :: 0 <= i < |"aaaaaaaaaaaaaaaa.a\U{0001}"| && "aaaaaaaaaaaaaaaa.a\U{0001}"[i] == '.' && |"aaaaaaaaaaaaaaaa.a\U{0001}"| - i - 1 == 2;
+expect !r0 ==> !exists i :: 0 <= i < |"aaaaaaaaaaaaaaaa.a\U{0001}"| && "aaaaaaaaaaaaaaaa.a\U{0001}"[i] == '.' && |"aaaaaaaaaaaaaaaa.a\U{0001}"| - i - 1 == 2;
+}
+method {:test} Test5() {
+var r0 := IsDecimalWithTwoPrecision(".\U{0001}a");
+expect r0 ==> exists i :: 0 <= i < |".\U{0001}a"| && ".\U{0001}a"[i] == '.' && |".\U{0001}a"| - i - 1 == 2;
+expect !r0 ==> !exists i :: 0 <= i < |".\U{0001}a"| && ".\U{0001}a"[i] == '.' && |".\U{0001}a"| - i - 1 == 2;
 }
 
-// REPEAT 2 - TIME: 62.179696 s
+// REPEAT 2 - TIME: 47.2170224 s

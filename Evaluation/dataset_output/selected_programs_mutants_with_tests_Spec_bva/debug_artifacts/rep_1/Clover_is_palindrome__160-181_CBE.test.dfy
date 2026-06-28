@@ -54,4 +54,4 @@ var r0 := IsPalindrome("aa\U{0002}aaa\0aa");
 expect r0 <==> forall i :: 0 <= i < |"aa\U{0002}aaa\0aa"| ==> "aa\U{0002}aaa\0aa"[i] == "aa\U{0002}aaa\0aa"[|"aa\U{0002}aaa\0aa"| - i - 1];
 }
 
-// REPEAT 1 - TIME: 9.0194992 s
+// REPEAT 1 - TIME: 14.1660893 s

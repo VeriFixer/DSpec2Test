@@ -129,7 +129,7 @@ var r0, r1 := FindAddends(seqint0, 0);
 expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 0;
 }
 
-// REPEAT 1 - TIME: 13.6491835 s
+// REPEAT 1 - TIME: 17.7009217 s
 
 method {:test} Test11() {
 var seqint0 : seq<int> := [8996, 8996, 8996, 8996, 8996, 8996, 8996, 8996, 8996, 8996, 8996, 0, 0];
@@ -138,7 +138,7 @@ var r0, r1 := FindAddends(seqint0, 17992);
 expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 17992;
 }
 
-// REPEAT 2 - TIME: 14.9448671 s
+// REPEAT 2 - TIME: 19.5263157 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [17942, 17942, 17942, 17942, 17942, 17942, 17942, 17942];
@@ -147,7 +147,7 @@ var r0, r1 := FindAddends(seqint0, 35884);
 expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 35884;
 }
 
-// REPEAT 3 - TIME: 16.22734 s
+// REPEAT 3 - TIME: 21.1535466 s
 
 method {:test} Test13() {
 var seqint0 : seq<int> := [18917, 18917, 18917, 18917, 18917, 18917, 18917, 0, 18917, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18917, 20805, 0, 0, 0, 20805];
@@ -156,7 +156,7 @@ var r0, r1 := FindAddends(seqint0, 37834);
 expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 37834;
 }
 
-// REPEAT 4 - TIME: 17.2953322 s
+// REPEAT 4 - TIME: 22.6956345 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [23597, 23597, 23597, 23597, 23597, 23597, 23597, 23597, 23597, 23597, 0, 0, 0, 0, 0, 0, 0, 0, 23597, 23597, 0, 0, 0, 23597, 0, 23597, 24571, 0, 0, 0];
@@ -165,7 +165,7 @@ var r0, r1 := FindAddends(seqint0, 47194);
 expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 47194;
 }
 
-// REPEAT 5 - TIME: 18.4028911 s
+// REPEAT 5 - TIME: 24.2902025 s
 
 method {:test} Test15() {
 var seqint0 : seq<int> := [29518, 29518, 29518, 29518, 29518, 29518, 29518, 29518, 29518, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29518, 0, 0, 0, 0, 0, 38463, 0];
@@ -174,7 +174,7 @@ var r0, r1 := FindAddends(seqint0, 59036);
 expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 59036;
 }
 
-// REPEAT 6 - TIME: 19.5377107 s
+// REPEAT 6 - TIME: 25.7807967 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [31407, 31407, 31407, 31407, 31407, 31407, 31407, 31407, 0, 31407, 0, 0, 0, 31407, 0, 0, 0, 0, 31407, 31407, 0, 0, 0, 31407, 0, 31407, 33060, 0, 0];
@@ -183,7 +183,7 @@ var r0, r1 := FindAddends(seqint0, 62814);
 expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 62814;
 }
 
-// REPEAT 7 - TIME: 20.8659378 s
+// REPEAT 7 - TIME: 27.3006661 s
 
 method {:test} Test17() {
 var seqint0 : seq<int> := [0, 32731, 32731, 32731, 32731, 32731, 32731, 32731, 32731, 32731, 0, 0, 0, 32731, 0, 0, 0, 0, 32731, 32731, 32731, 41610];
@@ -192,7 +192,7 @@ var r0, r1 := FindAddends(seqint0, 65462);
 expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 65462;
 }
 
-// REPEAT 8 - TIME: 22.2465175 s
+// REPEAT 8 - TIME: 28.7892261 s
 
 method {:test} Test18() {
 var seqint0 : seq<int> := [38636, 38636, 38636, 38636, 38636, 38636, 38636, 38636, 38636, 38636, 38636, 40524];
@@ -201,7 +201,7 @@ var r0, r1 := FindAddends(seqint0, 77272);
 expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 77272;
 }
 
-// REPEAT 9 - TIME: 23.6053965 s
+// REPEAT 9 - TIME: 30.592689 s
 
 method {:test} Test19() {
 var seqint0 : seq<int> := [47093, 47093, 47093, 47093, 47093, 47093, 47093, 47093, 47093, 47093, 0, 0, 47093, 47093, 0, 0, 0, 0, 47093, 0, 0, 0, 47093, 0, 0, 47093, 47093, 48416];
@@ -210,4 +210,4 @@ var r0, r1 := FindAddends(seqint0, 94186);
 expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 94186;
 }
 
-// REPEAT 10 - TIME: 25.0934094 s
+// REPEAT 10 - TIME: 32.5998404 s

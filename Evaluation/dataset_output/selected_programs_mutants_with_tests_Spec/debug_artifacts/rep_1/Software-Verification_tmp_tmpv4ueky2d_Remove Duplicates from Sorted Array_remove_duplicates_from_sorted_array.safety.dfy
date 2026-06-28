@@ -49,4 +49,4 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 1 - TIME: 3.9664717 s
+// REPEAT 1 - TIME: 4.0117692 s

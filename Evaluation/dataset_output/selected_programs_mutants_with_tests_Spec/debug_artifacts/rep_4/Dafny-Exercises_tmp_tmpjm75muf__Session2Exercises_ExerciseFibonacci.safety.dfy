@@ -75,4 +75,4 @@ var r0 := fibonacci3(2441);
 expect r0 == fib(2441);
 }
 
-// REPEAT 4 - TIME: 10.385033 s
+// REPEAT 4 - TIME: 10.2384809 s

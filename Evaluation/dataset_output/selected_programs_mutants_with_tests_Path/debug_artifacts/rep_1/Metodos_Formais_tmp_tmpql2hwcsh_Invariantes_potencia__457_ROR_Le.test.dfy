@@ -28,4 +28,4 @@ var r0 := Pot(0, 2);
 expect r0 == Potencia(0, 2);
 }
 
-// REPEAT 1 - TIME: 4.6155062 s
+// REPEAT 1 - TIME: 4.5530016 s

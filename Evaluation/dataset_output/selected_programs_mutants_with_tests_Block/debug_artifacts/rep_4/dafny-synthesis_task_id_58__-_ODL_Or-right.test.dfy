@@ -7,10 +7,6 @@ method {:testEntry} HasOppositeSign(a: int, b: int) returns (result: bool)
 }
 
 method {:test} Test10() {
-var r0 := HasOppositeSign(4, 4);
-expect r0 <==> (4 < 0 && 4 > 0) || (4 > 0 && 4 < 0);
-}
-method {:test} Test11() {
 var r0 := HasOppositeSign(-4, 4);
 expect r0 <==> (-4 < 0 && 4 > 0) || (-4 > 0 && 4 < 0);
 }
@@ -18,5 +14,9 @@ method {:test} Test12() {
 var r0 := HasOppositeSign(-4, -3);
 expect r0 <==> (-4 < 0 && -3 > 0) || (-4 > 0 && -3 < 0);
 }
+method {:test} Test13() {
+var r0 := HasOppositeSign(4, 4);
+expect r0 <==> (4 < 0 && 4 > 0) || (4 > 0 && 4 < 0);
+}
 
-// REPEAT 4 - TIME: 9.003578 s
+// REPEAT 4 - TIME: 9.199275 s

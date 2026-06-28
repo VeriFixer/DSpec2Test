@@ -53,7 +53,7 @@ var r0 := AllSequencesEqualLength(seqseqint0);
 expect r0 <==> forall i, j :: 0 <= i < |seqseqint0| && 0 <= j < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint0[j]|;
 }
 
-// REPEAT 1 - TIME: 3.3576121 s
+// REPEAT 1 - TIME: 3.5959996 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [0, 0];
@@ -110,7 +110,7 @@ var r0 := AllSequencesEqualLength(seqseqint0);
 expect r0 <==> forall i, j :: 0 <= i < |seqseqint0| && 0 <= j < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint0[j]|;
 }
 
-// REPEAT 2 - TIME: 5.160834 s
+// REPEAT 2 - TIME: 5.4129799 s
 
 method {:test} Test4() {
 var seqint0 : seq<int> := [0, 0, 0];
@@ -169,7 +169,7 @@ var r0 := AllSequencesEqualLength(seqseqint0);
 expect r0 <==> forall i, j :: 0 <= i < |seqseqint0| && 0 <= j < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint0[j]|;
 }
 
-// REPEAT 3 - TIME: 7.2568082 s
+// REPEAT 3 - TIME: 7.4966226 s
 
 method {:test} Test6() {
 var seqint0 : seq<int> := [0, 0, 0, 0];
@@ -230,7 +230,7 @@ var r0 := AllSequencesEqualLength(seqseqint0);
 expect r0 <==> forall i, j :: 0 <= i < |seqseqint0| && 0 <= j < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint0[j]|;
 }
 
-// REPEAT 4 - TIME: 9.4530788 s
+// REPEAT 4 - TIME: 9.94651 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0];
@@ -293,7 +293,7 @@ var r0 := AllSequencesEqualLength(seqseqint0);
 expect r0 <==> forall i, j :: 0 <= i < |seqseqint0| && 0 <= j < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint0[j]|;
 }
 
-// REPEAT 5 - TIME: 11.9214404 s
+// REPEAT 5 - TIME: 12.4279871 s
 
 method {:test} Test10() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0];
@@ -358,7 +358,7 @@ var r0 := AllSequencesEqualLength(seqseqint0);
 expect r0 <==> forall i, j :: 0 <= i < |seqseqint0| && 0 <= j < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint0[j]|;
 }
 
-// REPEAT 6 - TIME: 14.3944233 s
+// REPEAT 6 - TIME: 14.8700596 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
@@ -425,7 +425,7 @@ var r0 := AllSequencesEqualLength(seqseqint0);
 expect r0 <==> forall i, j :: 0 <= i < |seqseqint0| && 0 <= j < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint0[j]|;
 }
 
-// REPEAT 7 - TIME: 17.2916325 s
+// REPEAT 7 - TIME: 17.813351 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0];
@@ -494,7 +494,7 @@ var r0 := AllSequencesEqualLength(seqseqint0);
 expect r0 <==> forall i, j :: 0 <= i < |seqseqint0| && 0 <= j < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint0[j]|;
 }
 
-// REPEAT 8 - TIME: 20.4520497 s
+// REPEAT 8 - TIME: 21.4647873 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -565,7 +565,7 @@ var r0 := AllSequencesEqualLength(seqseqint0);
 expect r0 <==> forall i, j :: 0 <= i < |seqseqint0| && 0 <= j < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint0[j]|;
 }
 
-// REPEAT 9 - TIME: 24.4457568 s
+// REPEAT 9 - TIME: 25.37204 s
 
 method {:test} Test18() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -638,4 +638,4 @@ var r0 := AllSequencesEqualLength(seqseqint0);
 expect r0 <==> forall i, j :: 0 <= i < |seqseqint0| && 0 <= j < |seqseqint0| ==> |seqseqint0[i]| == |seqseqint0[j]|;
 }
 
-// REPEAT 10 - TIME: 29.3699841 s
+// REPEAT 10 - TIME: 30.6283454 s

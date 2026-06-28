@@ -40,7 +40,7 @@ var r0 := CalculateLoss(101, 100);
 expect (101 > 100 ==> r0 == 101 - 100) && (101 <= 100 ==> r0 == 0);
 }
 
-// REPEAT 1 - TIME: 14.1755054 s
+// REPEAT 1 - TIME: 18.2024666 s
 
 method {:test} Test16() {
 expect 102 >= 0 && 102 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -53,7 +53,7 @@ var r0 := CalculateLoss(102, 101);
 expect (102 > 101 ==> r0 == 102 - 101) && (102 <= 101 ==> r0 == 0);
 }
 
-// REPEAT 2 - TIME: 15.8812502 s
+// REPEAT 2 - TIME: 19.8877654 s
 
 method {:test} Test18() {
 expect 103 >= 0 && 103 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -66,7 +66,7 @@ var r0 := CalculateLoss(104, 103);
 expect (104 > 103 ==> r0 == 104 - 103) && (104 <= 103 ==> r0 == 0);
 }
 
-// REPEAT 3 - TIME: 17.246873 s
+// REPEAT 3 - TIME: 21.563298 s
 
 method {:test} Test20() {
 expect 105 >= 0 && 105 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -79,7 +79,7 @@ var r0 := CalculateLoss(105, 104);
 expect (105 > 104 ==> r0 == 105 - 104) && (105 <= 104 ==> r0 == 0);
 }
 
-// REPEAT 4 - TIME: 18.5951814 s
+// REPEAT 4 - TIME: 23.227731 s
 
 method {:test} Test22() {
 expect 106 >= 0 && 106 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -92,7 +92,7 @@ var r0 := CalculateLoss(107, 106);
 expect (107 > 106 ==> r0 == 107 - 106) && (107 <= 106 ==> r0 == 0);
 }
 
-// REPEAT 5 - TIME: 19.9097565 s
+// REPEAT 5 - TIME: 25.241536 s
 
 method {:test} Test24() {
 expect 108 >= 0 && 108 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -105,7 +105,7 @@ var r0 := CalculateLoss(108, 107);
 expect (108 > 107 ==> r0 == 108 - 107) && (108 <= 107 ==> r0 == 0);
 }
 
-// REPEAT 6 - TIME: 21.1883046 s
+// REPEAT 6 - TIME: 26.9181326 s
 
 method {:test} Test26() {
 expect 109 >= 0 && 109 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -118,7 +118,7 @@ var r0 := CalculateLoss(110, 109);
 expect (110 > 109 ==> r0 == 110 - 109) && (110 <= 109 ==> r0 == 0);
 }
 
-// REPEAT 7 - TIME: 22.5613429 s
+// REPEAT 7 - TIME: 28.7731635 s
 
 method {:test} Test28() {
 expect 111 >= 0 && 111 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -131,7 +131,7 @@ var r0 := CalculateLoss(111, 110);
 expect (111 > 110 ==> r0 == 111 - 110) && (111 <= 110 ==> r0 == 0);
 }
 
-// REPEAT 8 - TIME: 24.1472645 s
+// REPEAT 8 - TIME: 30.3458688 s
 
 method {:test} Test30() {
 expect 112 >= 0 && 112 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -144,7 +144,7 @@ var r0 := CalculateLoss(113, 112);
 expect (113 > 112 ==> r0 == 113 - 112) && (113 <= 112 ==> r0 == 0);
 }
 
-// REPEAT 9 - TIME: 25.526185 s
+// REPEAT 9 - TIME: 31.8414218 s
 
 method {:test} Test32() {
 expect 114 >= 0 && 114 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -157,4 +157,4 @@ var r0 := CalculateLoss(114, 113);
 expect (114 > 113 ==> r0 == 114 - 113) && (114 <= 113 ==> r0 == 0);
 }
 
-// REPEAT 10 - TIME: 26.7718807 s
+// REPEAT 10 - TIME: 33.4744816 s

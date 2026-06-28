@@ -21,4 +21,4 @@ expect forall k :: !(k in mapint1) && k in mapint0 ==> r0[k] == mapint0[k];
 expect forall k :: !(k in mapint1) && !(k in mapint0) ==> !(k in r0);
 }
 
-// REPEAT 4 - TIME: 11.6306719 s
+// REPEAT 4 - TIME: 16.1229595 s

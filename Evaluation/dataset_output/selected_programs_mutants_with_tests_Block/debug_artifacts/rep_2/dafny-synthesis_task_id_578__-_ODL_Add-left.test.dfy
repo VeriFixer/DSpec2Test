@@ -17,13 +17,13 @@ method {:testEntry} Interleave(s1: seq<int>, s2: seq<int>, s3: seq<int>)
 }
 
 method {:test} Test1() {
-var seqint0 : seq<int> := [1, 0];
-var seqint1 : seq<int> := [5, 0];
-var seqint2 : seq<int> := [7, 0];
+var seqint0 : seq<int> := [1];
+var seqint1 : seq<int> := [5];
+var seqint2 : seq<int> := [7];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Interleave(seqint0, seqint1, seqint2);
 expect |r0| == 3 * |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[3 * i] == seqint0[i] && r0[3 * i + 1] == seqint1[i] && r0[3 * i + 2] == seqint2[i];
 }
 
-// REPEAT 2 - TIME: 3.5542171 s
+// REPEAT 2 - TIME: 3.5222985 s

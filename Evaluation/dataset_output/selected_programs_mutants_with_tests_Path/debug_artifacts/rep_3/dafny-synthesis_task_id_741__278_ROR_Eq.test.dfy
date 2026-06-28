@@ -26,14 +26,14 @@ expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}"| && 0 <= j < |"\U{0001}"| ==> 
 expect !r0 ==> |"\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}"| && 0 <= j < |"\U{0001}"| && i != j && "\U{0001}"[i] != "\U{0001}"[j];
 }
 method {:test} Test7() {
-var r0 := AllCharactersSame("\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}");
-expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"| && 0 <= j < |"\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"| ==> "\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"[i] == "\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"[j];
-expect !r0 ==> |"\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"| && 0 <= j < |"\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"| && i != j && "\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"[i] != "\U{0001}aaaaaaaaaaaaaaaaaaa\U{0001}"[j];
+var r0 := AllCharactersSame("\U{0001}aaaa\U{0001}");
+expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}aaaa\U{0001}"| && 0 <= j < |"\U{0001}aaaa\U{0001}"| ==> "\U{0001}aaaa\U{0001}"[i] == "\U{0001}aaaa\U{0001}"[j];
+expect !r0 ==> |"\U{0001}aaaa\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}aaaa\U{0001}"| && 0 <= j < |"\U{0001}aaaa\U{0001}"| && i != j && "\U{0001}aaaa\U{0001}"[i] != "\U{0001}aaaa\U{0001}"[j];
 }
 method {:test} Test8() {
-var r0 := AllCharactersSame("\U{0001}\U{0004}\U{0002}aaaaa\U{0006}");
-expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}\U{0004}\U{0002}aaaaa\U{0006}"| && 0 <= j < |"\U{0001}\U{0004}\U{0002}aaaaa\U{0006}"| ==> "\U{0001}\U{0004}\U{0002}aaaaa\U{0006}"[i] == "\U{0001}\U{0004}\U{0002}aaaaa\U{0006}"[j];
-expect !r0 ==> |"\U{0001}\U{0004}\U{0002}aaaaa\U{0006}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}\U{0004}\U{0002}aaaaa\U{0006}"| && 0 <= j < |"\U{0001}\U{0004}\U{0002}aaaaa\U{0006}"| && i != j && "\U{0001}\U{0004}\U{0002}aaaaa\U{0006}"[i] != "\U{0001}\U{0004}\U{0002}aaaaa\U{0006}"[j];
+var r0 := AllCharactersSame("\U{0001}\U{0001}a\U{0002}aaaaaaa\U{0001}aaaaaaaaaaaaaaa\U{0001}");
+expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}\U{0001}a\U{0002}aaaaaaa\U{0001}aaaaaaaaaaaaaaa\U{0001}"| && 0 <= j < |"\U{0001}\U{0001}a\U{0002}aaaaaaa\U{0001}aaaaaaaaaaaaaaa\U{0001}"| ==> "\U{0001}\U{0001}a\U{0002}aaaaaaa\U{0001}aaaaaaaaaaaaaaa\U{0001}"[i] == "\U{0001}\U{0001}a\U{0002}aaaaaaa\U{0001}aaaaaaaaaaaaaaa\U{0001}"[j];
+expect !r0 ==> |"\U{0001}\U{0001}a\U{0002}aaaaaaa\U{0001}aaaaaaaaaaaaaaa\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}\U{0001}a\U{0002}aaaaaaa\U{0001}aaaaaaaaaaaaaaa\U{0001}"| && 0 <= j < |"\U{0001}\U{0001}a\U{0002}aaaaaaa\U{0001}aaaaaaaaaaaaaaa\U{0001}"| && i != j && "\U{0001}\U{0001}a\U{0002}aaaaaaa\U{0001}aaaaaaaaaaaaaaa\U{0001}"[i] != "\U{0001}\U{0001}a\U{0002}aaaaaaa\U{0001}aaaaaaaaaaaaaaa\U{0001}"[j];
 }
 
-// REPEAT 3 - TIME: 30.9340311 s
+// REPEAT 3 - TIME: 24.3380257 s

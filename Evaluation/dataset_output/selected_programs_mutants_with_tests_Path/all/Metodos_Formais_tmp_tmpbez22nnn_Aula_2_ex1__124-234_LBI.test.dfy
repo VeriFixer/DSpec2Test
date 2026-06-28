@@ -23,67 +23,67 @@ var r0 := Mult(0, 0);
 expect r0 == 0 * 0;
 }
 
-// REPEAT 1 - TIME: 2.8201667 s
+// REPEAT 1 - TIME: 5.9921672 s
 
 method {:test} Test1() {
 var r0 := Mult(1, 1);
 expect r0 == 1 * 1;
 }
 
-// REPEAT 2 - TIME: 4.7801699 s
+// REPEAT 2 - TIME: 10.1640522 s
 
 method {:test} Test2() {
 var r0 := Mult(2, 2);
 expect r0 == 2 * 2;
 }
 
-// REPEAT 3 - TIME: 6.6980948 s
+// REPEAT 3 - TIME: 13.1961149 s
 
 method {:test} Test3() {
 var r0 := Mult(3, 3);
 expect r0 == 3 * 3;
 }
 
-// REPEAT 4 - TIME: 8.6494892 s
+// REPEAT 4 - TIME: 15.8296608 s
 
 method {:test} Test4() {
 var r0 := Mult(4, 4);
 expect r0 == 4 * 4;
 }
 
-// REPEAT 5 - TIME: 10.3845505 s
+// REPEAT 5 - TIME: 18.5827857 s
 
 method {:test} Test5() {
 var r0 := Mult(5, 5);
 expect r0 == 5 * 5;
 }
 
-// REPEAT 6 - TIME: 12.1818575 s
+// REPEAT 6 - TIME: 21.382316 s
 
 method {:test} Test6() {
 var r0 := Mult(6, 6);
 expect r0 == 6 * 6;
 }
 
-// REPEAT 7 - TIME: 13.6765101 s
+// REPEAT 7 - TIME: 24.0280297 s
 
 method {:test} Test7() {
 var r0 := Mult(7, 7);
 expect r0 == 7 * 7;
 }
 
-// REPEAT 8 - TIME: 15.1492655 s
+// REPEAT 8 - TIME: 26.6658411 s
 
 method {:test} Test8() {
 var r0 := Mult(8, 8);
 expect r0 == 8 * 8;
 }
 
-// REPEAT 9 - TIME: 16.8396917 s
+// REPEAT 9 - TIME: 29.3498937 s
 
 method {:test} Test9() {
 var r0 := Mult(9, 9);
 expect r0 == 9 * 9;
 }
 
-// REPEAT 10 - TIME: 18.4646762 s
+// REPEAT 10 - TIME: 32.2095197 s

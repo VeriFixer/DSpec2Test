@@ -21,4 +21,4 @@ var r0 := SumOfFourthPowerOfOddNumbers(27);
 expect r0 == 27 * (2 * 27 + 1) * (24 * 27 * 27 * 27 - 12 * 27 * 27 - 14 * 27 + 7) / 15;
 }
 
-// REPEAT 1 - TIME: 5.8290416 s
+// REPEAT 1 - TIME: 5.9160946 s

@@ -14,8 +14,8 @@ method {:testEntry} CountDigits(s: string) returns (count: int)
 }
 
 method {:test} Test3() {
-var r0 := CountDigits("\U{0002}\0aaaaaa\U{0001}");
+var r0 := CountDigits("a\0");
 expect r0 >= 0;
 }
 
-// REPEAT 4 - TIME: 5.8188286 s
+// REPEAT 4 - TIME: 6.4061123 s

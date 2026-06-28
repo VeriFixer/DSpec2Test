@@ -30,4 +30,4 @@ var r0 := IsNonPrime(4);
 expect r0 <==> exists k :: 2 <= k < 4 && 4 % k == 0;
 }
 
-// REPEAT 1 - TIME: 9.0046296 s
+// REPEAT 1 - TIME: 10.5786383 s

@@ -35,11 +35,11 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 method {:test} Test3() {
-var seqint0 : seq<int> := [0, -999991635, 0, 0, -999991635, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999991636, -999998204];
+var seqint0 : seq<int> := [0, 0, 0, 0, -999991635, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999998204, -999991635];
 expect 1 <= |seqint0| <= 100000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -1000000000 <= seqint0[i] <= 1000000000, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 2 - TIME: 4.8596928 s
+// REPEAT 2 - TIME: 4.5881271 s

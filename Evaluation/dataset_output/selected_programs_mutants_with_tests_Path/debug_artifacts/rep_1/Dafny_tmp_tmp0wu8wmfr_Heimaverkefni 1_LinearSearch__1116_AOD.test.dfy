@@ -102,4 +102,4 @@ expect r0 != -1 ==> forall r | r0 < r < 9 :: seqint0[r] != 29;
 expect r0 == -1 ==> forall r | 8 <= r < 9 :: seqint0[r] != 29;
 }
 
-// REPEAT 1 - TIME: 17.1446894 s
+// REPEAT 1 - TIME: 19.6260274 s

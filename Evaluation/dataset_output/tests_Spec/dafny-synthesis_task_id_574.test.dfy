@@ -11,7 +11,7 @@ var r0 := CylinderSurfaceArea(1.0, 1.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 1.0 * (1.0 + 1.0);
 }
 
-// REPEAT 1 - TIME: 2.7584777 s
+// REPEAT 1 - TIME: 2.5526935 s
 
 method {:test} Test1() {
 expect 2.0 > 0.0 && 2.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -19,7 +19,7 @@ var r0 := CylinderSurfaceArea(2.0, 2.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 2.0 * (2.0 + 2.0);
 }
 
-// REPEAT 2 - TIME: 3.7454299 s
+// REPEAT 2 - TIME: 3.4520142 s
 
 method {:test} Test2() {
 expect 3.0 > 0.0 && 3.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -27,7 +27,7 @@ var r0 := CylinderSurfaceArea(3.0, 3.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 3.0 * (3.0 + 3.0);
 }
 
-// REPEAT 3 - TIME: 4.7774968 s
+// REPEAT 3 - TIME: 4.389454 s
 
 method {:test} Test3() {
 expect 4.0 > 0.0 && 4.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -35,7 +35,7 @@ var r0 := CylinderSurfaceArea(4.0, 4.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 4.0 * (4.0 + 4.0);
 }
 
-// REPEAT 4 - TIME: 5.6686009 s
+// REPEAT 4 - TIME: 5.253414 s
 
 method {:test} Test4() {
 expect 5.0 > 0.0 && 5.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -43,7 +43,7 @@ var r0 := CylinderSurfaceArea(5.0, 5.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 5.0 * (5.0 + 5.0);
 }
 
-// REPEAT 5 - TIME: 6.5690471 s
+// REPEAT 5 - TIME: 6.3953139 s
 
 method {:test} Test5() {
 expect 6.0 > 0.0 && 6.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -51,7 +51,7 @@ var r0 := CylinderSurfaceArea(6.0, 6.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 6.0 * (6.0 + 6.0);
 }
 
-// REPEAT 6 - TIME: 7.4349747 s
+// REPEAT 6 - TIME: 7.4695842 s
 
 method {:test} Test6() {
 expect 7.0 > 0.0 && 7.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -59,7 +59,7 @@ var r0 := CylinderSurfaceArea(7.0, 7.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 7.0 * (7.0 + 7.0);
 }
 
-// REPEAT 7 - TIME: 8.2329993 s
+// REPEAT 7 - TIME: 8.512033 s
 
 method {:test} Test7() {
 expect 8.0 > 0.0 && 8.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -67,7 +67,7 @@ var r0 := CylinderSurfaceArea(8.0, 8.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 8.0 * (8.0 + 8.0);
 }
 
-// REPEAT 8 - TIME: 8.9375529 s
+// REPEAT 8 - TIME: 9.3491975 s
 
 method {:test} Test8() {
 expect 9.0 > 0.0 && 9.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -75,7 +75,7 @@ var r0 := CylinderSurfaceArea(9.0, 9.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 9.0 * (9.0 + 9.0);
 }
 
-// REPEAT 9 - TIME: 9.6098173 s
+// REPEAT 9 - TIME: 10.1143427 s
 
 method {:test} Test9() {
 expect 10.0 > 0.0 && 10.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -83,4 +83,4 @@ var r0 := CylinderSurfaceArea(10.0, 10.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 10.0 * (10.0 + 10.0);
 }
 
-// REPEAT 10 - TIME: 10.3050312 s
+// REPEAT 10 - TIME: 10.9075437 s

@@ -32,14 +32,14 @@ method {:testEntry} FindFirstRepeatedChar(s: string) returns (found: bool, c: ch
 }
 
 method {:test} Test6() {
-var r0, r1 := FindFirstRepeatedChar("\U{0003}a\U{0007}\U{0001}aaaaaaaaaaaa\U{0005}");
-expect r0 ==> exists i, j :: 0 <= i < j < |"\U{0003}a\U{0007}\U{0001}aaaaaaaaaaaa\U{0005}"| && "\U{0003}a\U{0007}\U{0001}aaaaaaaaaaaa\U{0005}"[i] == "\U{0003}a\U{0007}\U{0001}aaaaaaaaaaaa\U{0005}"[j] && "\U{0003}a\U{0007}\U{0001}aaaaaaaaaaaa\U{0005}"[i] == r1 && forall k, l :: 0 <= k < l < j && "\U{0003}a\U{0007}\U{0001}aaaaaaaaaaaa\U{0005}"[k] == "\U{0003}a\U{0007}\U{0001}aaaaaaaaaaaa\U{0005}"[l] ==> k >= i;
-expect !r0 ==> forall i, j :: 0 <= i < j < |"\U{0003}a\U{0007}\U{0001}aaaaaaaaaaaa\U{0005}"| ==> "\U{0003}a\U{0007}\U{0001}aaaaaaaaaaaa\U{0005}"[i] != "\U{0003}a\U{0007}\U{0001}aaaaaaaaaaaa\U{0005}"[j];
+var r0, r1 := FindFirstRepeatedChar("aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\U{0005}\U{0003}\U{0001}");
+expect r0 ==> exists i, j :: 0 <= i < j < |"aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\U{0005}\U{0003}\U{0001}"| && "aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\U{0005}\U{0003}\U{0001}"[i] == "aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\U{0005}\U{0003}\U{0001}"[j] && "aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\U{0005}\U{0003}\U{0001}"[i] == r1 && forall k, l :: 0 <= k < l < j && "aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\U{0005}\U{0003}\U{0001}"[k] == "aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\U{0005}\U{0003}\U{0001}"[l] ==> k >= i;
+expect !r0 ==> forall i, j :: 0 <= i < j < |"aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\U{0005}\U{0003}\U{0001}"| ==> "aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\U{0005}\U{0003}\U{0001}"[i] != "aaaaaaaaaaaaaaaaaaaaaaaaaa\U{0007}\U{0005}\U{0003}\U{0001}"[j];
 }
 method {:test} Test7() {
-var r0, r1 := FindFirstRepeatedChar("\0aaaa\U{0004}aaaaaa\U{0002}aaaaaaa\0aaaa\U{0006}");
-expect r0 ==> exists i, j :: 0 <= i < j < |"\0aaaa\U{0004}aaaaaa\U{0002}aaaaaaa\0aaaa\U{0006}"| && "\0aaaa\U{0004}aaaaaa\U{0002}aaaaaaa\0aaaa\U{0006}"[i] == "\0aaaa\U{0004}aaaaaa\U{0002}aaaaaaa\0aaaa\U{0006}"[j] && "\0aaaa\U{0004}aaaaaa\U{0002}aaaaaaa\0aaaa\U{0006}"[i] == r1 && forall k, l :: 0 <= k < l < j && "\0aaaa\U{0004}aaaaaa\U{0002}aaaaaaa\0aaaa\U{0006}"[k] == "\0aaaa\U{0004}aaaaaa\U{0002}aaaaaaa\0aaaa\U{0006}"[l] ==> k >= i;
-expect !r0 ==> forall i, j :: 0 <= i < j < |"\0aaaa\U{0004}aaaaaa\U{0002}aaaaaaa\0aaaa\U{0006}"| ==> "\0aaaa\U{0004}aaaaaa\U{0002}aaaaaaa\0aaaa\U{0006}"[i] != "\0aaaa\U{0004}aaaaaa\U{0002}aaaaaaa\0aaaa\U{0006}"[j];
+var r0, r1 := FindFirstRepeatedChar("\0\U{0004}aaaaaaa\0aaaaaaaaaaaa\U{0002}");
+expect r0 ==> exists i, j :: 0 <= i < j < |"\0\U{0004}aaaaaaa\0aaaaaaaaaaaa\U{0002}"| && "\0\U{0004}aaaaaaa\0aaaaaaaaaaaa\U{0002}"[i] == "\0\U{0004}aaaaaaa\0aaaaaaaaaaaa\U{0002}"[j] && "\0\U{0004}aaaaaaa\0aaaaaaaaaaaa\U{0002}"[i] == r1 && forall k, l :: 0 <= k < l < j && "\0\U{0004}aaaaaaa\0aaaaaaaaaaaa\U{0002}"[k] == "\0\U{0004}aaaaaaa\0aaaaaaaaaaaa\U{0002}"[l] ==> k >= i;
+expect !r0 ==> forall i, j :: 0 <= i < j < |"\0\U{0004}aaaaaaa\0aaaaaaaaaaaa\U{0002}"| ==> "\0\U{0004}aaaaaaa\0aaaaaaaaaaaa\U{0002}"[i] != "\0\U{0004}aaaaaaa\0aaaaaaaaaaaa\U{0002}"[j];
 }
 
-// REPEAT 4 - TIME: 8.0473603 s
+// REPEAT 4 - TIME: 8.5078454 s

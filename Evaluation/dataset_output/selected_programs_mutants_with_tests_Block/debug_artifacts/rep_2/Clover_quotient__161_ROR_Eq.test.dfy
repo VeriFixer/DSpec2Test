@@ -17,9 +17,9 @@ method {:testEntry} Quotient(x: nat, y: nat)
 }
 
 method {:test} Test1() {
-expect 7721 != 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0, r1 := Quotient(7721, 7721);
-expect r1 * 7721 + r0 == 7721 && 0 <= r0 < 7721 && 0 <= r1;
+expect 2 != 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0, r1 := Quotient(2, 2);
+expect r1 * 2 + r0 == 2 && 0 <= r0 < 2 && 0 <= r1;
 }
 
-// REPEAT 2 - TIME: 2.3114833 s
+// REPEAT 2 - TIME: 2.3392322 s

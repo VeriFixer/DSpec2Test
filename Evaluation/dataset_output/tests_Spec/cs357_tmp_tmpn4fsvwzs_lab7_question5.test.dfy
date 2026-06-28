@@ -47,7 +47,7 @@ var r0 := A1(0, 0);
 expect r0 == 0 + 0;
 }
 
-// REPEAT 1 - TIME: 2.9316952 s
+// REPEAT 1 - TIME: 3.5677452 s
 
 method {:test} Test2() {
 var r0 := M1(7720, 1);
@@ -58,7 +58,7 @@ var r0 := A1(1, 1);
 expect r0 == 1 + 1;
 }
 
-// REPEAT 2 - TIME: 4.221734 s
+// REPEAT 2 - TIME: 4.9270004 s
 
 method {:test} Test4() {
 var r0 := M1(7721, 7721);
@@ -69,7 +69,7 @@ var r0 := A1(2, 2);
 expect r0 == 2 + 2;
 }
 
-// REPEAT 3 - TIME: 5.7225926 s
+// REPEAT 3 - TIME: 6.2287413 s
 
 method {:test} Test6() {
 var r0 := M1(7722, 7722);
@@ -80,7 +80,7 @@ var r0 := A1(3, 3);
 expect r0 == 3 + 3;
 }
 
-// REPEAT 4 - TIME: 6.9899449 s
+// REPEAT 4 - TIME: 7.4628105 s
 
 method {:test} Test8() {
 var r0 := M1(7723, 7723);
@@ -91,7 +91,7 @@ var r0 := A1(4, 4);
 expect r0 == 4 + 4;
 }
 
-// REPEAT 5 - TIME: 8.1506587 s
+// REPEAT 5 - TIME: 8.5323524 s
 
 method {:test} Test10() {
 var r0 := M1(7724, 7724);
@@ -102,7 +102,7 @@ var r0 := A1(5, 5);
 expect r0 == 5 + 5;
 }
 
-// REPEAT 6 - TIME: 9.2218619 s
+// REPEAT 6 - TIME: 9.5012809 s
 
 method {:test} Test12() {
 var r0 := M1(7725, 7725);
@@ -113,7 +113,7 @@ var r0 := A1(6, 6);
 expect r0 == 6 + 6;
 }
 
-// REPEAT 7 - TIME: 10.1990064 s
+// REPEAT 7 - TIME: 10.810067 s
 
 method {:test} Test14() {
 var r0 := M1(7726, 7726);
@@ -124,7 +124,7 @@ var r0 := A1(7, 7);
 expect r0 == 7 + 7;
 }
 
-// REPEAT 8 - TIME: 11.0858098 s
+// REPEAT 8 - TIME: 11.771159 s
 
 method {:test} Test16() {
 var r0 := M1(7727, 7727);
@@ -135,7 +135,7 @@ var r0 := A1(8, 8);
 expect r0 == 8 + 8;
 }
 
-// REPEAT 9 - TIME: 11.9079802 s
+// REPEAT 9 - TIME: 12.8067 s
 
 method {:test} Test18() {
 var r0 := M1(7728, 7728);
@@ -146,4 +146,4 @@ var r0 := A1(9, 9);
 expect r0 == 9 + 9;
 }
 
-// REPEAT 10 - TIME: 13.1209576 s
+// REPEAT 10 - TIME: 13.966037 s

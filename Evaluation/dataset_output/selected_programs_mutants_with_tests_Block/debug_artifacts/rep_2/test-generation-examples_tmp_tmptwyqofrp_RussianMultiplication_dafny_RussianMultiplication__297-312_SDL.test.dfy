@@ -30,8 +30,8 @@ var r0 := RussianMultiplication.mult(-2, 32396);
 expect r0 == -2 * 32396;
 }
 method {:test} Test3() {
-var r0 := RussianMultiplication.mult(377, 16198);
-expect r0 == 377 * 16198;
+var r0 := RussianMultiplication.mult(280, 16198);
+expect r0 == 280 * 16198;
 }
 
-// REPEAT 2 - TIME: 3.3354513 s
+// REPEAT 2 - TIME: 3.4921955 s

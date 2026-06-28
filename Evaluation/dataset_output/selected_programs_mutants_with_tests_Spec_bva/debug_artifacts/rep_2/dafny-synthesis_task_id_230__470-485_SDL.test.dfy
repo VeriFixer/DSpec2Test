@@ -19,9 +19,9 @@ method {:testEntry} ReplaceBlanksWithChar(s: string, ch: char) returns (v: strin
 }
 
 method {:test} Test10() {
-var r0 := ReplaceBlanksWithChar(" \0", '\0');
-expect |r0| == |" \0"|;
-expect forall i :: 0 <= i < |" \0"| ==> (" \0"[i] == ' ' ==> r0[i] == '\0') && (" \0"[i] != ' ' ==> r0[i] == " \0"[i]);
+var r0 := ReplaceBlanksWithChar("aaa", '\0');
+expect |r0| == |"aaa"|;
+expect forall i :: 0 <= i < |"aaa"| ==> ("aaa"[i] == ' ' ==> r0[i] == '\0') && ("aaa"[i] != ' ' ==> r0[i] == "aaa"[i]);
 }
 
-// REPEAT 2 - TIME: 8.1984024 s
+// REPEAT 2 - TIME: 9.7790648 s

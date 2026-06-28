@@ -25,4 +25,4 @@ var r0 := sum(1);
 expect r0 == calcSum(1 + 1);
 }
 
-// REPEAT 2 - TIME: 3.8269891 s
+// REPEAT 2 - TIME: 4.1754809 s

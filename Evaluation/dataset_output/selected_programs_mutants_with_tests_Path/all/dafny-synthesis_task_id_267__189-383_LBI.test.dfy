@@ -24,7 +24,7 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(0);
 expect r0 == 0 * (2 * 0 - 1) * (2 * 0 + 1) / 3;
 }
 
-// REPEAT 1 - TIME: 5.3412077 s
+// REPEAT 1 - TIME: 4.05402 s
 
 method {:test} Test1() {
 expect 1 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -32,68 +32,68 @@ var r0 := SumOfSquaresOfFirstNOddNumbers(1);
 expect r0 == 1 * (2 * 1 - 1) * (2 * 1 + 1) / 3;
 }
 
-// REPEAT 2 - TIME: 8.8756341 s
+// REPEAT 2 - TIME: 6.9109788 s
 
 method {:test} Test2() {
-expect 3 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := SumOfSquaresOfFirstNOddNumbers(3);
-expect r0 == 3 * (2 * 3 - 1) * (2 * 3 + 1) / 3;
+expect 2 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := SumOfSquaresOfFirstNOddNumbers(2);
+expect r0 == 2 * (2 * 2 - 1) * (2 * 2 + 1) / 3;
 }
 
-// REPEAT 3 - TIME: 11.5103931 s
+// REPEAT 3 - TIME: 9.2619658 s
 
 method {:test} Test3() {
-expect 6 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := SumOfSquaresOfFirstNOddNumbers(6);
-expect r0 == 6 * (2 * 6 - 1) * (2 * 6 + 1) / 3;
+expect 9 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := SumOfSquaresOfFirstNOddNumbers(9);
+expect r0 == 9 * (2 * 9 - 1) * (2 * 9 + 1) / 3;
 }
 
-// REPEAT 4 - TIME: 14.366261 s
+// REPEAT 4 - TIME: 11.8821262 s
 
 method {:test} Test4() {
-expect 7 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := SumOfSquaresOfFirstNOddNumbers(7);
-expect r0 == 7 * (2 * 7 - 1) * (2 * 7 + 1) / 3;
-}
-
-// REPEAT 5 - TIME: 16.9198703 s
-
-method {:test} Test5() {
-expect 8 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := SumOfSquaresOfFirstNOddNumbers(8);
-expect r0 == 8 * (2 * 8 - 1) * (2 * 8 + 1) / 3;
-}
-
-// REPEAT 6 - TIME: 19.8680915 s
-
-method {:test} Test6() {
-expect 11 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := SumOfSquaresOfFirstNOddNumbers(11);
-expect r0 == 11 * (2 * 11 - 1) * (2 * 11 + 1) / 3;
-}
-
-// REPEAT 7 - TIME: 22.4888387 s
-
-method {:test} Test7() {
 expect 12 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := SumOfSquaresOfFirstNOddNumbers(12);
 expect r0 == 12 * (2 * 12 - 1) * (2 * 12 + 1) / 3;
 }
 
-// REPEAT 8 - TIME: 25.2869099 s
+// REPEAT 5 - TIME: 14.5541352 s
 
-method {:test} Test8() {
+method {:test} Test5() {
 expect 13 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := SumOfSquaresOfFirstNOddNumbers(13);
 expect r0 == 13 * (2 * 13 - 1) * (2 * 13 + 1) / 3;
 }
 
-// REPEAT 9 - TIME: 28.1826116 s
+// REPEAT 6 - TIME: 16.7538871 s
 
-method {:test} Test9() {
-expect 14 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := SumOfSquaresOfFirstNOddNumbers(14);
-expect r0 == 14 * (2 * 14 - 1) * (2 * 14 + 1) / 3;
+method {:test} Test6() {
+expect 18 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := SumOfSquaresOfFirstNOddNumbers(18);
+expect r0 == 18 * (2 * 18 - 1) * (2 * 18 + 1) / 3;
 }
 
-// REPEAT 10 - TIME: 31.0805215 s
+// REPEAT 7 - TIME: 18.6999682 s
+
+method {:test} Test7() {
+expect 21 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := SumOfSquaresOfFirstNOddNumbers(21);
+expect r0 == 21 * (2 * 21 - 1) * (2 * 21 + 1) / 3;
+}
+
+// REPEAT 8 - TIME: 21.0188865 s
+
+method {:test} Test8() {
+expect 22 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := SumOfSquaresOfFirstNOddNumbers(22);
+expect r0 == 22 * (2 * 22 - 1) * (2 * 22 + 1) / 3;
+}
+
+// REPEAT 9 - TIME: 23.6020526 s
+
+method {:test} Test9() {
+expect 23 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := SumOfSquaresOfFirstNOddNumbers(23);
+expect r0 == 23 * (2 * 23 - 1) * (2 * 23 + 1) / 3;
+}
+
+// REPEAT 10 - TIME: 26.4378204 s

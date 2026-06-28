@@ -11,4 +11,4 @@ var r0 := IsLengthOdd("aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 expect r0 <==> |"aaaaaaaaaaaaaaaaaaaaaaaaaaaa"| % 2 == 1;
 }
 
-// REPEAT 1 - TIME: 2.2942099 s
+// REPEAT 1 - TIME: 2.4626645 s

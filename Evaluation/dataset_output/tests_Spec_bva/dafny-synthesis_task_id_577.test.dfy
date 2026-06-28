@@ -40,7 +40,7 @@ var r0 := FactorialOfLastDigit(62834);
 expect r0 == Factorial(62834 % 10);
 }
 
-// REPEAT 1 - TIME: 6.2846786 s
+// REPEAT 1 - TIME: 7.8251345 s
 
 method {:test} Test7() {
 expect 62835 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -48,7 +48,7 @@ var r0 := FactorialOfLastDigit(62835);
 expect r0 == Factorial(62835 % 10);
 }
 
-// REPEAT 2 - TIME: 7.1290431 s
+// REPEAT 2 - TIME: 8.9952792 s
 
 method {:test} Test8() {
 expect 62836 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -56,7 +56,7 @@ var r0 := FactorialOfLastDigit(62836);
 expect r0 == Factorial(62836 % 10);
 }
 
-// REPEAT 3 - TIME: 8.046895 s
+// REPEAT 3 - TIME: 10.0654359 s
 
 method {:test} Test9() {
 expect 62837 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -64,7 +64,7 @@ var r0 := FactorialOfLastDigit(62837);
 expect r0 == Factorial(62837 % 10);
 }
 
-// REPEAT 4 - TIME: 8.9665015 s
+// REPEAT 4 - TIME: 11.109845 s
 
 method {:test} Test10() {
 expect 62838 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -72,7 +72,7 @@ var r0 := FactorialOfLastDigit(62838);
 expect r0 == Factorial(62838 % 10);
 }
 
-// REPEAT 5 - TIME: 9.9813817 s
+// REPEAT 5 - TIME: 11.9805026 s
 
 method {:test} Test11() {
 expect 62839 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -80,7 +80,7 @@ var r0 := FactorialOfLastDigit(62839);
 expect r0 == Factorial(62839 % 10);
 }
 
-// REPEAT 6 - TIME: 10.6584744 s
+// REPEAT 6 - TIME: 12.701757 s
 
 method {:test} Test12() {
 expect 62842 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -88,7 +88,7 @@ var r0 := FactorialOfLastDigit(62842);
 expect r0 == Factorial(62842 % 10);
 }
 
-// REPEAT 7 - TIME: 11.4966524 s
+// REPEAT 7 - TIME: 13.5293327 s
 
 method {:test} Test13() {
 expect 62843 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -96,7 +96,7 @@ var r0 := FactorialOfLastDigit(62843);
 expect r0 == Factorial(62843 % 10);
 }
 
-// REPEAT 8 - TIME: 12.262268 s
+// REPEAT 8 - TIME: 14.2423514 s
 
 method {:test} Test14() {
 expect 62845 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -104,7 +104,7 @@ var r0 := FactorialOfLastDigit(62845);
 expect r0 == Factorial(62845 % 10);
 }
 
-// REPEAT 9 - TIME: 12.9713185 s
+// REPEAT 9 - TIME: 15.0100691 s
 
 method {:test} Test15() {
 expect 62846 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -112,4 +112,4 @@ var r0 := FactorialOfLastDigit(62846);
 expect r0 == Factorial(62846 % 10);
 }
 
-// REPEAT 10 - TIME: 13.6340061 s
+// REPEAT 10 - TIME: 15.761126 s

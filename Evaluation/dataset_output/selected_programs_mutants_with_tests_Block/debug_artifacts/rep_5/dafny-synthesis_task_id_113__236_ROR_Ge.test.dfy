@@ -25,12 +25,12 @@ method {:testEntry} IsInteger(s: string) returns (result: bool)
 }
 
 method {:test} Test8() {
-var r0 := IsInteger("\ta\0\U{0002}aa\U{0004}\U{0006}");
-expect r0 <==> |"\ta\0\U{0002}aa\U{0004}\U{0006}"| > 0 && forall i :: 0 <= i < |"\ta\0\U{0002}aa\U{0004}\U{0006}"| ==> IsDigit("\ta\0\U{0002}aa\U{0004}\U{0006}"[i]);
+var r0 := IsInteger("\U{0008}a\0a");
+expect r0 <==> |"\U{0008}a\0a"| > 0 && forall i :: 0 <= i < |"\U{0008}a\0a"| ==> IsDigit("\U{0008}a\0a"[i]);
 }
 method {:test} Test9() {
-var r0 := IsInteger("\U{0019}a\0\U{0001}aaaaa\U{0002}");
-expect r0 <==> |"\U{0019}a\0\U{0001}aaaaa\U{0002}"| > 0 && forall i :: 0 <= i < |"\U{0019}a\0\U{0001}aaaaa\U{0002}"| ==> IsDigit("\U{0019}a\0\U{0001}aaaaa\U{0002}"[i]);
+var r0 := IsInteger("\n\0");
+expect r0 <==> |"\n\0"| > 0 && forall i :: 0 <= i < |"\n\0"| ==> IsDigit("\n\0"[i]);
 }
 
-// REPEAT 5 - TIME: 7.9753463 s
+// REPEAT 5 - TIME: 8.0855908 s

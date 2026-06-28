@@ -36,4 +36,4 @@ var r0 := FibonacciIterative(5);
 expect r0 == Fibonacci(5);
 }
 
-// REPEAT 3 - TIME: 5.9205153 s
+// REPEAT 3 - TIME: 5.7879184 s

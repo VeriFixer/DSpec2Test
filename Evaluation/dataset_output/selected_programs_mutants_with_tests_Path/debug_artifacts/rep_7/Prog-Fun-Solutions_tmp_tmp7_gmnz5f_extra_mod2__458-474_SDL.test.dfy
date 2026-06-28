@@ -36,7 +36,7 @@ method {:testEntry} mod2(n: nat) returns (a: nat)
 }
 
 method {:test} Test6() {
-var r0 := mod2(247668);
+var r0 := mod2(296016);
 }
 
-// REPEAT 7 - TIME: 22.8130363 s
+// REPEAT 7 - TIME: 30.0946707 s

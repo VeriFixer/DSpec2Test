@@ -146,7 +146,7 @@ var r0 := ComputeFusc(100);
 expect r0 == fusc(100);
 }
 
-// REPEAT 1 - TIME: 7.6781571 s
+// REPEAT 1 - TIME: 8.5518384 s
 
 method {:test} Test7() {
 expect 101 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -154,7 +154,7 @@ var r0 := ComputeFusc(101);
 expect r0 == fusc(101);
 }
 
-// REPEAT 2 - TIME: 8.6706406 s
+// REPEAT 2 - TIME: 9.6637317 s
 
 method {:test} Test8() {
 expect 102 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -162,7 +162,7 @@ var r0 := ComputeFusc(102);
 expect r0 == fusc(102);
 }
 
-// REPEAT 3 - TIME: 9.5680792 s
+// REPEAT 3 - TIME: 11.0093833 s
 
 method {:test} Test9() {
 expect 103 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -170,7 +170,7 @@ var r0 := ComputeFusc(103);
 expect r0 == fusc(103);
 }
 
-// REPEAT 4 - TIME: 10.468171 s
+// REPEAT 4 - TIME: 11.9971787 s
 
 method {:test} Test10() {
 expect 104 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -178,7 +178,7 @@ var r0 := ComputeFusc(104);
 expect r0 == fusc(104);
 }
 
-// REPEAT 5 - TIME: 11.2075677 s
+// REPEAT 5 - TIME: 12.9288075 s
 
 method {:test} Test11() {
 expect 105 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -186,7 +186,7 @@ var r0 := ComputeFusc(105);
 expect r0 == fusc(105);
 }
 
-// REPEAT 6 - TIME: 12.0011137 s
+// REPEAT 6 - TIME: 13.7944231 s
 
 method {:test} Test12() {
 expect 106 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -194,7 +194,7 @@ var r0 := ComputeFusc(106);
 expect r0 == fusc(106);
 }
 
-// REPEAT 7 - TIME: 12.7195813 s
+// REPEAT 7 - TIME: 14.6236567 s
 
 method {:test} Test13() {
 expect 107 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -202,7 +202,7 @@ var r0 := ComputeFusc(107);
 expect r0 == fusc(107);
 }
 
-// REPEAT 8 - TIME: 13.4039322 s
+// REPEAT 8 - TIME: 15.5302779 s
 
 method {:test} Test14() {
 expect 108 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -210,7 +210,7 @@ var r0 := ComputeFusc(108);
 expect r0 == fusc(108);
 }
 
-// REPEAT 9 - TIME: 14.042196 s
+// REPEAT 9 - TIME: 16.3505616 s
 
 method {:test} Test15() {
 expect 109 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -218,4 +218,4 @@ var r0 := ComputeFusc(109);
 expect r0 == fusc(109);
 }
 
-// REPEAT 10 - TIME: 14.846289 s
+// REPEAT 10 - TIME: 17.0727355 s

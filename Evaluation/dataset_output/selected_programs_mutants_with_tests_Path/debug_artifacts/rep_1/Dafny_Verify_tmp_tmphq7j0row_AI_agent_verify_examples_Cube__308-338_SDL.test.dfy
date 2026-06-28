@@ -22,4 +22,4 @@ var r0 := Cube(0);
 expect r0 == 0 * 0 * 0;
 }
 
-// REPEAT 1 - TIME: 9.1778327 s
+// REPEAT 1 - TIME: 12.3159894 s

@@ -25,4 +25,4 @@ var r0 := square(6);
 expect r0 == 6 * 6;
 }
 
-// REPEAT 6 - TIME: 5.8113969 s
+// REPEAT 6 - TIME: 5.6038846 s

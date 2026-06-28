@@ -61,4 +61,4 @@ var r0 := A1(-1, 1);
 expect r0 == -1 + 1;
 }
 
-// REPEAT 1 - TIME: 8.4421487 s
+// REPEAT 1 - TIME: 7.886683 s

@@ -16,4 +16,4 @@ var r0 := Triple(43);
 expect r0 == 3 * 43;
 }
 
-// REPEAT 5 - TIME: 6.9491795 s
+// REPEAT 5 - TIME: 5.7140832 s

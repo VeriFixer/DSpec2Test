@@ -46,7 +46,7 @@ expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0
 expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 2.0;
 }
 
-// REPEAT 1 - TIME: 3.1969642 s
+// REPEAT 1 - TIME: 3.5441233 s
 
 method {:test} Test2() {
 var seqreal0 : seq<real> := [7719.0];
@@ -63,7 +63,7 @@ expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0
 expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 3.0;
 }
 
-// REPEAT 2 - TIME: 4.2617444 s
+// REPEAT 2 - TIME: 4.8347435 s
 
 method {:test} Test4() {
 var seqreal0 : seq<real> := [10095.0, 0.0, 1236.0];
@@ -80,7 +80,7 @@ expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0
 expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 2441.0;
 }
 
-// REPEAT 3 - TIME: 5.3091006 s
+// REPEAT 3 - TIME: 6.202793 s
 
 method {:test} Test6() {
 var seqreal0 : seq<real> := [1236.0, -7624.0, 0.0, 0.0];
@@ -97,7 +97,7 @@ expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0
 expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 8860.0;
 }
 
-// REPEAT 4 - TIME: 6.3769558 s
+// REPEAT 4 - TIME: 7.5136823 s
 
 method {:test} Test8() {
 var seqreal0 : seq<real> := [1796.0, 0.0];
@@ -114,7 +114,7 @@ expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0
 expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 8861.0;
 }
 
-// REPEAT 5 - TIME: 7.3733223 s
+// REPEAT 5 - TIME: 8.9400323 s
 
 method {:test} Test10() {
 var seqreal0 : seq<real> := [210657374081.0 / 7500000.0, 273394874081.0 / 15000000.0, 8365.0, -(22444874081.0 / 15000000.0), -(176042295919.0 / 15000000.0)];
@@ -131,7 +131,7 @@ expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0
 expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 22597.0/2.0;
 }
 
-// REPEAT 6 - TIME: 8.2560715 s
+// REPEAT 6 - TIME: 10.5956919 s
 
 method {:test} Test12() {
 var seqreal0 : seq<real> := [44215717.0 / 2500.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2997.0];
@@ -148,7 +148,7 @@ expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0
 expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 11299.0;
 }
 
-// REPEAT 7 - TIME: 9.1708106 s
+// REPEAT 7 - TIME: 11.6766377 s
 
 method {:test} Test14() {
 var seqreal0 : seq<real> := [50161.0 / 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 8879.0];
@@ -165,7 +165,7 @@ expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0
 expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 27511.0/2.0;
 }
 
-// REPEAT 8 - TIME: 9.9038658 s
+// REPEAT 8 - TIME: 12.8204497 s
 
 method {:test} Test16() {
 var seqreal0 : seq<real> := [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2282.0];
@@ -182,7 +182,7 @@ expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0
 expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 16202.0;
 }
 
-// REPEAT 9 - TIME: 10.6601942 s
+// REPEAT 9 - TIME: 13.8264565 s
 
 method {:test} Test18() {
 var seqreal0 : seq<real> := [67077.0 / 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 8456.0, 0.0];
@@ -199,4 +199,4 @@ expect r0 ==> exists i: int, j: int :: 0 <= i < |seqreal0| && 0 <= j < |seqreal0
 expect !r0 ==> forall i: int, j: int :: 1 <= i < |seqreal0| && 0 <= j < i ==> (if seqreal0[i] - seqreal0[j] < 0.0 then seqreal0[j] - seqreal0[i] else seqreal0[i] - seqreal0[j]) >= 64811.0/4.0;
 }
 
-// REPEAT 10 - TIME: 11.4147013 s
+// REPEAT 10 - TIME: 14.8849476 s

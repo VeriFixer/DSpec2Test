@@ -28,11 +28,11 @@ lemma MaximumIsUnique(values: seq<int>, m1: int, m2: int)
 }
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [1797, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1796, 0, 0, 4, 0, 0, 0, 0, 8, 0, 6];
+var seqint0 : seq<int> := [-5928, -5929, 0];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Maximum(seqint0);
 expect r0 in seqint0;
 expect forall i | 0 <= i < |seqint0| :: seqint0[i] <= r0;
 }
 
-// REPEAT 4 - TIME: 5.3548175 s
+// REPEAT 4 - TIME: 5.6330233 s

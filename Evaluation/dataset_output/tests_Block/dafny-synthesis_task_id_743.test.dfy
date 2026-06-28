@@ -22,94 +22,94 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i - 0 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 1 - TIME: 2.8076214 s
+// REPEAT 1 - TIME: 2.7654379 s
 
 method {:test} Test1() {
-var seqint0 : seq<int> := [0, 0];
+var seqint0 : seq<int> := [1];
 expect 1 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := RotateRight(seqint0, 1);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i - 1 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 2 - TIME: 3.8589307 s
+// REPEAT 2 - TIME: 3.915906 s
 
 method {:test} Test2() {
-var seqint0 : seq<int> := [1, 0, 3];
+var seqint0 : seq<int> := [0, 0];
 expect 2 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := RotateRight(seqint0, 2);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i - 2 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 3 - TIME: 5.0465609 s
+// REPEAT 3 - TIME: 5.1264034 s
 
 method {:test} Test3() {
-var seqint0 : seq<int> := [2, 0, 0];
+var seqint0 : seq<int> := [];
 expect 3 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := RotateRight(seqint0, 3);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i - 3 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 4 - TIME: 6.152099 s
+// REPEAT 4 - TIME: 6.2905125 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [4];
+var seqint0 : seq<int> := [2];
 expect 4 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := RotateRight(seqint0, 4);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i - 4 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 5 - TIME: 7.366905 s
+// REPEAT 5 - TIME: 7.3925861 s
 
 method {:test} Test5() {
-var seqint0 : seq<int> := [];
+var seqint0 : seq<int> := [3];
 expect 5 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := RotateRight(seqint0, 5);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i - 5 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 6 - TIME: 8.1942545 s
+// REPEAT 6 - TIME: 8.6113337 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [5];
+var seqint0 : seq<int> := [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6];
 expect 6 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := RotateRight(seqint0, 6);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i - 6 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 7 - TIME: 9.0201793 s
+// REPEAT 7 - TIME: 9.5885517 s
 
 method {:test} Test7() {
-var seqint0 : seq<int> := [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6];
+var seqint0 : seq<int> := [5];
 expect 7 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := RotateRight(seqint0, 7);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i - 7 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 8 - TIME: 9.6867589 s
+// REPEAT 8 - TIME: 10.6287828 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [7, 0, 0, 10];
+var seqint0 : seq<int> := [7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9];
 expect 8 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := RotateRight(seqint0, 8);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i - 8 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 9 - TIME: 10.5391968 s
+// REPEAT 9 - TIME: 11.2850854 s
 
 method {:test} Test9() {
-var seqint0 : seq<int> := [9, 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 12, 0, 0, 16];
+var seqint0 : seq<int> := [8, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 13];
 expect 9 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := RotateRight(seqint0, 9);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[(i - 9 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 10 - TIME: 11.3492023 s
+// REPEAT 10 - TIME: 12.0447914 s

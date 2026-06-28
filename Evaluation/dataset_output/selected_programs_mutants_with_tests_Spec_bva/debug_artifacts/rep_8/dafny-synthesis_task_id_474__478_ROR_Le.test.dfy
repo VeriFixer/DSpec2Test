@@ -21,9 +21,9 @@ method {:testEntry} ReplaceChars(s: string, oldChar: char, newChar: char)
 }
 
 method {:test} Test16() {
-var r0 := ReplaceChars("\U{0001}a\U{0001}", '\U{0001}', '\0');
-expect |r0| == |"\U{0001}a\U{0001}"|;
-expect forall i :: 0 <= i < |"\U{0001}a\U{0001}"| ==> ("\U{0001}a\U{0001}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}a\U{0001}"[i] != '\U{0001}' ==> r0[i] == "\U{0001}a\U{0001}"[i]);
+var r0 := ReplaceChars("\U{0001}aaaaaaaaa\U{0001}aaaaaaaaa\U{0001}\U{0001}a\U{0001}\U{0001}", '\U{0001}', '\0');
+expect |r0| == |"\U{0001}aaaaaaaaa\U{0001}aaaaaaaaa\U{0001}\U{0001}a\U{0001}\U{0001}"|;
+expect forall i :: 0 <= i < |"\U{0001}aaaaaaaaa\U{0001}aaaaaaaaa\U{0001}\U{0001}a\U{0001}\U{0001}"| ==> ("\U{0001}aaaaaaaaa\U{0001}aaaaaaaaa\U{0001}\U{0001}a\U{0001}\U{0001}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}aaaaaaaaa\U{0001}aaaaaaaaa\U{0001}\U{0001}a\U{0001}\U{0001}"[i] != '\U{0001}' ==> r0[i] == "\U{0001}aaaaaaaaa\U{0001}aaaaaaaaa\U{0001}\U{0001}a\U{0001}\U{0001}"[i]);
 }
 
-// REPEAT 8 - TIME: 12.9272726 s
+// REPEAT 8 - TIME: 16.3764306 s

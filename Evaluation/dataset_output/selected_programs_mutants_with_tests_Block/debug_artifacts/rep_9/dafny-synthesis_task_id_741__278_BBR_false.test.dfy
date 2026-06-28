@@ -21,9 +21,9 @@ method {:testEntry} AllCharactersSame(s: string) returns (result: bool)
 }
 
 method {:test} Test16() {
-var r0 := AllCharactersSame("\U{0001}aaaaaa\U{0001}aaaaaa\U{0001}\U{0001}aa\U{0001}\U{0001}aaaaaaa\U{0002}\U{0001}");
-expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}aaaaaa\U{0001}aaaaaa\U{0001}\U{0001}aa\U{0001}\U{0001}aaaaaaa\U{0002}\U{0001}"| && 0 <= j < |"\U{0001}aaaaaa\U{0001}aaaaaa\U{0001}\U{0001}aa\U{0001}\U{0001}aaaaaaa\U{0002}\U{0001}"| ==> "\U{0001}aaaaaa\U{0001}aaaaaa\U{0001}\U{0001}aa\U{0001}\U{0001}aaaaaaa\U{0002}\U{0001}"[i] == "\U{0001}aaaaaa\U{0001}aaaaaa\U{0001}\U{0001}aa\U{0001}\U{0001}aaaaaaa\U{0002}\U{0001}"[j];
-expect !r0 ==> |"\U{0001}aaaaaa\U{0001}aaaaaa\U{0001}\U{0001}aa\U{0001}\U{0001}aaaaaaa\U{0002}\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}aaaaaa\U{0001}aaaaaa\U{0001}\U{0001}aa\U{0001}\U{0001}aaaaaaa\U{0002}\U{0001}"| && 0 <= j < |"\U{0001}aaaaaa\U{0001}aaaaaa\U{0001}\U{0001}aa\U{0001}\U{0001}aaaaaaa\U{0002}\U{0001}"| && i != j && "\U{0001}aaaaaa\U{0001}aaaaaa\U{0001}\U{0001}aa\U{0001}\U{0001}aaaaaaa\U{0002}\U{0001}"[i] != "\U{0001}aaaaaa\U{0001}aaaaaa\U{0001}\U{0001}aa\U{0001}\U{0001}aaaaaaa\U{0002}\U{0001}"[j];
+var r0 := AllCharactersSame("\U{0001}\U{0001}\U{0001}\U{0002}");
+expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}\U{0001}\U{0001}\U{0002}"| && 0 <= j < |"\U{0001}\U{0001}\U{0001}\U{0002}"| ==> "\U{0001}\U{0001}\U{0001}\U{0002}"[i] == "\U{0001}\U{0001}\U{0001}\U{0002}"[j];
+expect !r0 ==> |"\U{0001}\U{0001}\U{0001}\U{0002}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}\U{0001}\U{0001}\U{0002}"| && 0 <= j < |"\U{0001}\U{0001}\U{0001}\U{0002}"| && i != j && "\U{0001}\U{0001}\U{0001}\U{0002}"[i] != "\U{0001}\U{0001}\U{0001}\U{0002}"[j];
 }
 method {:test} Test17() {
 var r0 := AllCharactersSame("\U{0001}");
@@ -31,4 +31,4 @@ expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}"| && 0 <= j < |"\U{0001}"| ==> 
 expect !r0 ==> |"\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}"| && 0 <= j < |"\U{0001}"| && i != j && "\U{0001}"[i] != "\U{0001}"[j];
 }
 
-// REPEAT 9 - TIME: 13.7255962 s
+// REPEAT 9 - TIME: 14.0928255 s

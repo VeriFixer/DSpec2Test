@@ -36,4 +36,4 @@ var r0 := FibonacciIterative(11);
 expect r0 == Fibonacci(11);
 }
 
-// REPEAT 9 - TIME: 12.8755437 s
+// REPEAT 9 - TIME: 13.0086061 s

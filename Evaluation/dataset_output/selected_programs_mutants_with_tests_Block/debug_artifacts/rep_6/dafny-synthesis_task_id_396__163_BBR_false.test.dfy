@@ -8,9 +8,9 @@ method {:testEntry} StartAndEndWithSameChar(s: string) returns (result: bool)
 }
 
 method {:test} Test5() {
-expect |"\U{0002}aaaaaaaa\0aaaaaaaaaaaaaaaaaa\U{0004}"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := StartAndEndWithSameChar("\U{0002}aaaaaaaa\0aaaaaaaaaaaaaaaaaa\U{0004}");
-expect r0 <==> "\U{0002}aaaaaaaa\0aaaaaaaaaaaaaaaaaa\U{0004}"[0] == "\U{0002}aaaaaaaa\0aaaaaaaaaaaaaaaaaa\U{0004}"[|"\U{0002}aaaaaaaa\0aaaaaaaaaaaaaaaaaa\U{0004}"| - 1];
+expect |"\U{0002}aaaaaaaa\0"| > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := StartAndEndWithSameChar("\U{0002}aaaaaaaa\0");
+expect r0 <==> "\U{0002}aaaaaaaa\0"[0] == "\U{0002}aaaaaaaa\0"[|"\U{0002}aaaaaaaa\0"| - 1];
 }
 
-// REPEAT 6 - TIME: 5.8157036 s
+// REPEAT 6 - TIME: 6.1695373 s

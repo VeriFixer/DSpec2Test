@@ -16,4 +16,4 @@ var r0 := CountDigits("a");
 expect r0 >= 0;
 }
 
-// REPEAT 1 - TIME: 3.0310647 s
+// REPEAT 1 - TIME: 2.8767483 s

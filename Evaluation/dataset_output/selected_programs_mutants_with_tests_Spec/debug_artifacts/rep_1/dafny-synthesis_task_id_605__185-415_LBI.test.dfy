@@ -30,4 +30,4 @@ var r0 := IsPrime(4);
 expect r0 <==> forall k :: 2 <= k < 4 ==> 4 % k != 0;
 }
 
-// REPEAT 1 - TIME: 3.8459512 s
+// REPEAT 1 - TIME: 3.5013023 s

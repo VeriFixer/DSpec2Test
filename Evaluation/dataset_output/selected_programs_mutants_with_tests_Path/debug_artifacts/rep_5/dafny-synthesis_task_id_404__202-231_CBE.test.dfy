@@ -18,4 +18,4 @@ expect r0 == 7 || r0 == 6;
 expect r0 <= 7 && r0 <= 6;
 }
 
-// REPEAT 5 - TIME: 7.225189 s
+// REPEAT 5 - TIME: 9.4495714 s

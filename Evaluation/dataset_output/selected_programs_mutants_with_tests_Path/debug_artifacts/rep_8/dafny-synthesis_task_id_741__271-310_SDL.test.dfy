@@ -23,14 +23,14 @@ expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}"| && 0 <= j < |"\U{0001}"| ==> 
 expect !r0 ==> |"\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}"| && 0 <= j < |"\U{0001}"| && i != j && "\U{0001}"[i] != "\U{0001}"[j];
 }
 method {:test} Test22() {
-var r0 := AllCharactersSame("\U{0001}aaaaaaaaaa\U{0001}aa\U{0001}aa\U{0001}\U{0001}\U{0001}\U{0001}");
-expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}aaaaaaaaaa\U{0001}aa\U{0001}aa\U{0001}\U{0001}\U{0001}\U{0001}"| && 0 <= j < |"\U{0001}aaaaaaaaaa\U{0001}aa\U{0001}aa\U{0001}\U{0001}\U{0001}\U{0001}"| ==> "\U{0001}aaaaaaaaaa\U{0001}aa\U{0001}aa\U{0001}\U{0001}\U{0001}\U{0001}"[i] == "\U{0001}aaaaaaaaaa\U{0001}aa\U{0001}aa\U{0001}\U{0001}\U{0001}\U{0001}"[j];
-expect !r0 ==> |"\U{0001}aaaaaaaaaa\U{0001}aa\U{0001}aa\U{0001}\U{0001}\U{0001}\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}aaaaaaaaaa\U{0001}aa\U{0001}aa\U{0001}\U{0001}\U{0001}\U{0001}"| && 0 <= j < |"\U{0001}aaaaaaaaaa\U{0001}aa\U{0001}aa\U{0001}\U{0001}\U{0001}\U{0001}"| && i != j && "\U{0001}aaaaaaaaaa\U{0001}aa\U{0001}aa\U{0001}\U{0001}\U{0001}\U{0001}"[i] != "\U{0001}aaaaaaaaaa\U{0001}aa\U{0001}aa\U{0001}\U{0001}\U{0001}\U{0001}"[j];
+var r0 := AllCharactersSame("\U{0001}aaaaa\U{0001}aaa\U{0001}aaaaaaaaaaaaa\U{0001}a\U{0001}a\U{0001}");
+expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}aaaaa\U{0001}aaa\U{0001}aaaaaaaaaaaaa\U{0001}a\U{0001}a\U{0001}"| && 0 <= j < |"\U{0001}aaaaa\U{0001}aaa\U{0001}aaaaaaaaaaaaa\U{0001}a\U{0001}a\U{0001}"| ==> "\U{0001}aaaaa\U{0001}aaa\U{0001}aaaaaaaaaaaaa\U{0001}a\U{0001}a\U{0001}"[i] == "\U{0001}aaaaa\U{0001}aaa\U{0001}aaaaaaaaaaaaa\U{0001}a\U{0001}a\U{0001}"[j];
+expect !r0 ==> |"\U{0001}aaaaa\U{0001}aaa\U{0001}aaaaaaaaaaaaa\U{0001}a\U{0001}a\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}aaaaa\U{0001}aaa\U{0001}aaaaaaaaaaaaa\U{0001}a\U{0001}a\U{0001}"| && 0 <= j < |"\U{0001}aaaaa\U{0001}aaa\U{0001}aaaaaaaaaaaaa\U{0001}a\U{0001}a\U{0001}"| && i != j && "\U{0001}aaaaa\U{0001}aaa\U{0001}aaaaaaaaaaaaa\U{0001}a\U{0001}a\U{0001}"[i] != "\U{0001}aaaaa\U{0001}aaa\U{0001}aaaaaaaaaaaaa\U{0001}a\U{0001}a\U{0001}"[j];
 }
 method {:test} Test23() {
-var r0 := AllCharactersSame("\U{0001}\U{0001}\U{0003}aaa\U{0001}aa\U{0001}\U{0001}");
-expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}\U{0001}\U{0003}aaa\U{0001}aa\U{0001}\U{0001}"| && 0 <= j < |"\U{0001}\U{0001}\U{0003}aaa\U{0001}aa\U{0001}\U{0001}"| ==> "\U{0001}\U{0001}\U{0003}aaa\U{0001}aa\U{0001}\U{0001}"[i] == "\U{0001}\U{0001}\U{0003}aaa\U{0001}aa\U{0001}\U{0001}"[j];
-expect !r0 ==> |"\U{0001}\U{0001}\U{0003}aaa\U{0001}aa\U{0001}\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}\U{0001}\U{0003}aaa\U{0001}aa\U{0001}\U{0001}"| && 0 <= j < |"\U{0001}\U{0001}\U{0003}aaa\U{0001}aa\U{0001}\U{0001}"| && i != j && "\U{0001}\U{0001}\U{0003}aaa\U{0001}aa\U{0001}\U{0001}"[i] != "\U{0001}\U{0001}\U{0003}aaa\U{0001}aa\U{0001}\U{0001}"[j];
+var r0 := AllCharactersSame("\U{0001}\U{0001}aaa\U{0002}\U{0001}\U{0001}aaaaaa\U{0001}aaaa\U{0001}aaaa\U{0001}\U{0001}");
+expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}\U{0001}aaa\U{0002}\U{0001}\U{0001}aaaaaa\U{0001}aaaa\U{0001}aaaa\U{0001}\U{0001}"| && 0 <= j < |"\U{0001}\U{0001}aaa\U{0002}\U{0001}\U{0001}aaaaaa\U{0001}aaaa\U{0001}aaaa\U{0001}\U{0001}"| ==> "\U{0001}\U{0001}aaa\U{0002}\U{0001}\U{0001}aaaaaa\U{0001}aaaa\U{0001}aaaa\U{0001}\U{0001}"[i] == "\U{0001}\U{0001}aaa\U{0002}\U{0001}\U{0001}aaaaaa\U{0001}aaaa\U{0001}aaaa\U{0001}\U{0001}"[j];
+expect !r0 ==> |"\U{0001}\U{0001}aaa\U{0002}\U{0001}\U{0001}aaaaaa\U{0001}aaaa\U{0001}aaaa\U{0001}\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}\U{0001}aaa\U{0002}\U{0001}\U{0001}aaaaaa\U{0001}aaaa\U{0001}aaaa\U{0001}\U{0001}"| && 0 <= j < |"\U{0001}\U{0001}aaa\U{0002}\U{0001}\U{0001}aaaaaa\U{0001}aaaa\U{0001}aaaa\U{0001}\U{0001}"| && i != j && "\U{0001}\U{0001}aaa\U{0002}\U{0001}\U{0001}aaaaaa\U{0001}aaaa\U{0001}aaaa\U{0001}\U{0001}"[i] != "\U{0001}\U{0001}aaa\U{0002}\U{0001}\U{0001}aaaaaa\U{0001}aaaa\U{0001}aaaa\U{0001}\U{0001}"[j];
 }
 
-// REPEAT 8 - TIME: 105.7262676 s
+// REPEAT 8 - TIME: 89.0519809 s

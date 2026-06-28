@@ -33,4 +33,4 @@ var r0 := IsInteger("\U{0008}");
 expect r0 <==> |"\U{0008}"| > 0 && forall i :: 0 <= i < |"\U{0008}"| ==> IsDigit("\U{0008}"[i]);
 }
 
-// REPEAT 2 - TIME: 4.0205401 s
+// REPEAT 2 - TIME: 4.071369 s

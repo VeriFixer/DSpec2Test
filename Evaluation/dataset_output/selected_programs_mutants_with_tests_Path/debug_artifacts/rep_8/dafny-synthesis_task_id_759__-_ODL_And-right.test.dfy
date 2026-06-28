@@ -17,19 +17,14 @@ method {:testEntry} IsDecimalWithTwoPrecision(s: string) returns (result: bool)
 }
 
 method {:test} Test21() {
-var r0 := IsDecimalWithTwoPrecision("\U{0006}\U{0004}a\U{0002}\0");
-expect r0 ==> exists i :: 0 <= i < |"\U{0006}\U{0004}a\U{0002}\0"| && "\U{0006}\U{0004}a\U{0002}\0"[i] == '.' && |"\U{0006}\U{0004}a\U{0002}\0"| - i - 1 == 2;
-expect !r0 ==> !exists i :: 0 <= i < |"\U{0006}\U{0004}a\U{0002}\0"| && "\U{0006}\U{0004}a\U{0002}\0"[i] == '.' && |"\U{0006}\U{0004}a\U{0002}\0"| - i - 1 == 2;
+var r0 := IsDecimalWithTwoPrecision("\U{0002}aaaaa\0");
+expect r0 ==> exists i :: 0 <= i < |"\U{0002}aaaaa\0"| && "\U{0002}aaaaa\0"[i] == '.' && |"\U{0002}aaaaa\0"| - i - 1 == 2;
+expect !r0 ==> !exists i :: 0 <= i < |"\U{0002}aaaaa\0"| && "\U{0002}aaaaa\0"[i] == '.' && |"\U{0002}aaaaa\0"| - i - 1 == 2;
 }
 method {:test} Test22() {
-var r0 := IsDecimalWithTwoPrecision("aaaaaaaaaaaaaaaaa.aa");
-expect r0 ==> exists i :: 0 <= i < |"aaaaaaaaaaaaaaaaa.aa"| && "aaaaaaaaaaaaaaaaa.aa"[i] == '.' && |"aaaaaaaaaaaaaaaaa.aa"| - i - 1 == 2;
-expect !r0 ==> !exists i :: 0 <= i < |"aaaaaaaaaaaaaaaaa.aa"| && "aaaaaaaaaaaaaaaaa.aa"[i] == '.' && |"aaaaaaaaaaaaaaaaa.aa"| - i - 1 == 2;
-}
-method {:test} Test23() {
-var r0 := IsDecimalWithTwoPrecision("aaaaaaaaaaaaaaaaaaaaaaa\U{0003}.\U{0001}\U{0005}");
-expect r0 ==> exists i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaaa\U{0003}.\U{0001}\U{0005}"| && "aaaaaaaaaaaaaaaaaaaaaaa\U{0003}.\U{0001}\U{0005}"[i] == '.' && |"aaaaaaaaaaaaaaaaaaaaaaa\U{0003}.\U{0001}\U{0005}"| - i - 1 == 2;
-expect !r0 ==> !exists i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaaa\U{0003}.\U{0001}\U{0005}"| && "aaaaaaaaaaaaaaaaaaaaaaa\U{0003}.\U{0001}\U{0005}"[i] == '.' && |"aaaaaaaaaaaaaaaaaaaaaaa\U{0003}.\U{0001}\U{0005}"| - i - 1 == 2;
+var r0 := IsDecimalWithTwoPrecision("aaaaaaaaaaaaaaaa\U{0002}aa.\U{0004}\0");
+expect r0 ==> exists i :: 0 <= i < |"aaaaaaaaaaaaaaaa\U{0002}aa.\U{0004}\0"| && "aaaaaaaaaaaaaaaa\U{0002}aa.\U{0004}\0"[i] == '.' && |"aaaaaaaaaaaaaaaa\U{0002}aa.\U{0004}\0"| - i - 1 == 2;
+expect !r0 ==> !exists i :: 0 <= i < |"aaaaaaaaaaaaaaaa\U{0002}aa.\U{0004}\0"| && "aaaaaaaaaaaaaaaa\U{0002}aa.\U{0004}\0"[i] == '.' && |"aaaaaaaaaaaaaaaa\U{0002}aa.\U{0004}\0"| - i - 1 == 2;
 }
 
-// REPEAT 8 - TIME: 586.804121 s
+// REPEAT 8 - TIME: 296.0114154 s

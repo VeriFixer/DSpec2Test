@@ -85,9 +85,9 @@ method {:testEntry} gcdI(m: int, n: int) returns (g: int)
 // # sum: 9 pts
 
 method {:test} Test9() {
-expect 539 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := fibIter(539);
-expect r0 == fib(539);
+expect 978 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := fibIter(978);
+expect r0 == fib(978);
 }
 method {:test} Test10() {
 expect 5 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -100,4 +100,4 @@ var r0 := gcdI(7947, 15894);
 expect r0 == gcd(7947, 15894);
 }
 
-// REPEAT 4 - TIME: 30.178425 s
+// REPEAT 4 - TIME: 36.4228348 s

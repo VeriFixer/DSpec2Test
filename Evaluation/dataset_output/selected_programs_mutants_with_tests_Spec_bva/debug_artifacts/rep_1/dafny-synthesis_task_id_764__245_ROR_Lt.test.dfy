@@ -26,4 +26,4 @@ var r0 := CountDigits("aaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 1 - TIME: 6.0984021 s
+// REPEAT 1 - TIME: 9.2435671 s

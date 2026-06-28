@@ -27,4 +27,4 @@ expect r0 in seqseqint0;
 expect forall sublist :: sublist in seqseqint0 ==> |r0| <= |sublist|;
 }
 
-// REPEAT 2 - TIME: 3.56113 s
+// REPEAT 2 - TIME: 4.3657495 s

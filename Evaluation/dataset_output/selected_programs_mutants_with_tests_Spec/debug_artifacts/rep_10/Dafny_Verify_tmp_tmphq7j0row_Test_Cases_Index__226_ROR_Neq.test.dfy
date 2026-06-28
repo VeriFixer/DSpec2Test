@@ -102,4 +102,4 @@ method {:test} Test80() {
 TestMaxSum(41, 40);
 }
 
-// REPEAT 10 - TIME: 33.126585 s
+// REPEAT 10 - TIME: 36.1168041 s

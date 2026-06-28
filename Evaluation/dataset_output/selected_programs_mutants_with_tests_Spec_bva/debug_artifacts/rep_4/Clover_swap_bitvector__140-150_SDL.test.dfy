@@ -16,4 +16,4 @@ expect r0 == (192 as bv8);
 expect r1 == (192 as bv8);
 }
 
-// REPEAT 4 - TIME: 11.4792747 s
+// REPEAT 4 - TIME: 14.7452576 s

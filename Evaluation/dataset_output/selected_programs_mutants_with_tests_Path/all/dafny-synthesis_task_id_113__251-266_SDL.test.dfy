@@ -37,103 +37,103 @@ var r0 := IsInteger("aaaaaaaa/");
 expect r0 <==> |"aaaaaaaa/"| > 0 && forall i :: 0 <= i < |"aaaaaaaa/"| ==> IsDigit("aaaaaaaa/"[i]);
 }
 
-// REPEAT 1 - TIME: 17.6930018 s
+// REPEAT 1 - TIME: 19.1288197 s
 
 method {:test} Test3() {
-var r0 := IsInteger("a1");
-expect r0 <==> |"a1"| > 0 && forall i :: 0 <= i < |"a1"| ==> IsDigit("a1"[i]);
+var r0 := IsInteger("01");
+expect r0 <==> |"01"| > 0 && forall i :: 0 <= i < |"01"| ==> IsDigit("01"[i]);
 }
 method {:test} Test4() {
-var r0 := IsInteger("\U{0019}\U{0001}aaaaaaaa\U{0003}");
-expect r0 <==> |"\U{0019}\U{0001}aaaaaaaa\U{0003}"| > 0 && forall i :: 0 <= i < |"\U{0019}\U{0001}aaaaaaaa\U{0003}"| ==> IsDigit("\U{0019}\U{0001}aaaaaaaa\U{0003}"[i]);
+var r0 := IsInteger("\U{0019}\U{0001}aaaaaaaaaaaaaaaaaaaaa\U{0003}");
+expect r0 <==> |"\U{0019}\U{0001}aaaaaaaaaaaaaaaaaaaaa\U{0003}"| > 0 && forall i :: 0 <= i < |"\U{0019}\U{0001}aaaaaaaaaaaaaaaaaaaaa\U{0003}"| ==> IsDigit("\U{0019}\U{0001}aaaaaaaaaaaaaaaaaaaaa\U{0003}"[i]);
 }
 
-// REPEAT 2 - TIME: 33.7389947 s
+// REPEAT 2 - TIME: 35.861901 s
 
 method {:test} Test5() {
-var r0 := IsInteger("4a4a");
-expect r0 <==> |"4a4a"| > 0 && forall i :: 0 <= i < |"4a4a"| ==> IsDigit("4a4a"[i]);
+var r0 := IsInteger("aa2aa4aaa4aaaaaaaaaaaaa");
+expect r0 <==> |"aa2aa4aaa4aaaaaaaaaaaaa"| > 0 && forall i :: 0 <= i < |"aa2aa4aaa4aaaaaaaaaaaaa"| ==> IsDigit("aa2aa4aaa4aaaaaaaaaaaaa"[i]);
 }
 method {:test} Test6() {
-var r0 := IsInteger("aa\U{0008}");
-expect r0 <==> |"aa\U{0008}"| > 0 && forall i :: 0 <= i < |"aa\U{0008}"| ==> IsDigit("aa\U{0008}"[i]);
+var r0 := IsInteger("\U{0008}a\U{0001}aaaaaaaaaaaaaaaaaaaaa\U{0003}");
+expect r0 <==> |"\U{0008}a\U{0001}aaaaaaaaaaaaaaaaaaaaa\U{0003}"| > 0 && forall i :: 0 <= i < |"\U{0008}a\U{0001}aaaaaaaaaaaaaaaaaaaaa\U{0003}"| ==> IsDigit("\U{0008}a\U{0001}aaaaaaaaaaaaaaaaaaaaa\U{0003}"[i]);
 }
 
-// REPEAT 3 - TIME: 50.2921467 s
+// REPEAT 3 - TIME: 54.5134192 s
 
 method {:test} Test7() {
-var r0 := IsInteger("5aaaa4");
-expect r0 <==> |"5aaaa4"| > 0 && forall i :: 0 <= i < |"5aaaa4"| ==> IsDigit("5aaaa4"[i]);
+var r0 := IsInteger("aa7aaaaaaaaaaaaaaaaaaaa6aa8a");
+expect r0 <==> |"aa7aaaaaaaaaaaaaaaaaaaa6aa8a"| > 0 && forall i :: 0 <= i < |"aa7aaaaaaaaaaaaaaaaaaaa6aa8a"| ==> IsDigit("aa7aaaaaaaaaaaaaaaaaaaa6aa8a"[i]);
 }
 method {:test} Test8() {
-var r0 := IsInteger("aaaaaaaaa\U{0008}aa");
-expect r0 <==> |"aaaaaaaaa\U{0008}aa"| > 0 && forall i :: 0 <= i < |"aaaaaaaaa\U{0008}aa"| ==> IsDigit("aaaaaaaaa\U{0008}aa"[i]);
+var r0 := IsInteger("aaaaaaaaaaaaa\U{0008}aaaaaaaaaaaa");
+expect r0 <==> |"aaaaaaaaaaaaa\U{0008}aaaaaaaaaaaa"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaa\U{0008}aaaaaaaaaaaa"| ==> IsDigit("aaaaaaaaaaaaa\U{0008}aaaaaaaaaaaa"[i]);
 }
 
-// REPEAT 4 - TIME: 68.088361 s
+// REPEAT 4 - TIME: 75.4019431 s
 
 method {:test} Test9() {
-var r0 := IsInteger("9aaa9");
-expect r0 <==> |"9aaa9"| > 0 && forall i :: 0 <= i < |"9aaa9"| ==> IsDigit("9aaa9"[i]);
+var r0 := IsInteger("aaaaaaaaaaaaaaaaaaaaaaa4aaa24");
+expect r0 <==> |"aaaaaaaaaaaaaaaaaaaaaaa4aaa24"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaaa4aaa24"| ==> IsDigit("aaaaaaaaaaaaaaaaaaaaaaa4aaa24"[i]);
 }
 method {:test} Test10() {
-var r0 := IsInteger("aaaaaaaa\U{0019}aa\0a");
-expect r0 <==> |"aaaaaaaa\U{0019}aa\0a"| > 0 && forall i :: 0 <= i < |"aaaaaaaa\U{0019}aa\0a"| ==> IsDigit("aaaaaaaa\U{0019}aa\0a"[i]);
+var r0 := IsInteger("aaaaaaaaaaaaaaaaaaa\U{0008}aaaaaaaaa");
+expect r0 <==> |"aaaaaaaaaaaaaaaaaaa\U{0008}aaaaaaaaa"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaa\U{0008}aaaaaaaaa"| ==> IsDigit("aaaaaaaaaaaaaaaaaaa\U{0008}aaaaaaaaa"[i]);
 }
 
-// REPEAT 5 - TIME: 85.6279796 s
+// REPEAT 5 - TIME: 95.9987475 s
 
 method {:test} Test11() {
-var r0 := IsInteger("9a9a7a4");
-expect r0 <==> |"9a9a7a4"| > 0 && forall i :: 0 <= i < |"9a9a7a4"| ==> IsDigit("9a9a7a4"[i]);
+var r0 := IsInteger("aaaaaaaaaaaaaaaaaaaaaaa1aaaaaa");
+expect r0 <==> |"aaaaaaaaaaaaaaaaaaaaaaa1aaaaaa"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaaa1aaaaaa"| ==> IsDigit("aaaaaaaaaaaaaaaaaaaaaaa1aaaaaa"[i]);
 }
 method {:test} Test12() {
-var r0 := IsInteger("aaaaaaaaaaaaa\t");
-expect r0 <==> |"aaaaaaaaaaaaa\t"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaa\t"| ==> IsDigit("aaaaaaaaaaaaa\t"[i]);
+var r0 := IsInteger("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa\t");
+expect r0 <==> |"aaaaaaaaaaaaaaaaaaaaaaaaaaaaa\t"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaaaaaaaaa\t"| ==> IsDigit("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa\t"[i]);
 }
 
-// REPEAT 6 - TIME: 105.5319915 s
+// REPEAT 6 - TIME: 116.1856586 s
 
 method {:test} Test13() {
-var r0 := IsInteger("aa1a0aaaaaaaaaa");
-expect r0 <==> |"aa1a0aaaaaaaaaa"| > 0 && forall i :: 0 <= i < |"aa1a0aaaaaaaaaa"| ==> IsDigit("aa1a0aaaaaaaaaa"[i]);
+var r0 := IsInteger("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
+expect r0 <==> |"aaaaaaaaaaaaaaaaaaaaaaaaaaa"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaaaaaaa"| ==> IsDigit("aaaaaaaaaaaaaaaaaaaaaaaaaaa"[i]);
 }
 method {:test} Test14() {
-var r0 := IsInteger("aaaaaaaaaaaaaa\t");
-expect r0 <==> |"aaaaaaaaaaaaaa\t"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaa\t"| ==> IsDigit("aaaaaaaaaaaaaa\t"[i]);
+var r0 := IsInteger("aaaaaaaaaaaaaaa\U{0008}aaaaaaaaaaa");
+expect r0 <==> |"aaaaaaaaaaaaaaa\U{0008}aaaaaaaaaaa"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaa\U{0008}aaaaaaaaaaa"| ==> IsDigit("aaaaaaaaaaaaaaa\U{0008}aaaaaaaaaaa"[i]);
 }
 
-// REPEAT 7 - TIME: 128.8954258 s
+// REPEAT 7 - TIME: 139.9188732 s
 
 method {:test} Test15() {
-var r0 := IsInteger("aaaaaaaaaaaaaaaa");
-expect r0 <==> |"aaaaaaaaaaaaaaaa"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaa"| ==> IsDigit("aaaaaaaaaaaaaaaa"[i]);
+var r0 := IsInteger("aaaaaaaaaaaaaaaaaaaaaa");
+expect r0 <==> |"aaaaaaaaaaaaaaaaaaaaaa"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaaa"| ==> IsDigit("aaaaaaaaaaaaaaaaaaaaaa"[i]);
 }
 method {:test} Test16() {
-var r0 := IsInteger("aaaaaaaaaaaaaaa\t");
-expect r0 <==> |"aaaaaaaaaaaaaaa\t"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaa\t"| ==> IsDigit("aaaaaaaaaaaaaaa\t"[i]);
+var r0 := IsInteger("aaaaaaaaaaaaaaaaaaaaa\U{0008}");
+expect r0 <==> |"aaaaaaaaaaaaaaaaaaaaa\U{0008}"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaa\U{0008}"| ==> IsDigit("aaaaaaaaaaaaaaaaaaaaa\U{0008}"[i]);
 }
 
-// REPEAT 8 - TIME: 162.780375 s
+// REPEAT 8 - TIME: 167.4315721 s
 
 method {:test} Test17() {
-var r0 := IsInteger("aaaaaaaaaaaaaaaaa");
-expect r0 <==> |"aaaaaaaaaaaaaaaaa"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaa"| ==> IsDigit("aaaaaaaaaaaaaaaaa"[i]);
+var r0 := IsInteger("aaaaaaaaaaaaaaaaaaaaa");
+expect r0 <==> |"aaaaaaaaaaaaaaaaaaaaa"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaaaa"| ==> IsDigit("aaaaaaaaaaaaaaaaaaaaa"[i]);
 }
 method {:test} Test18() {
-var r0 := IsInteger("aaaaaaaaaaaaaaaa\t");
-expect r0 <==> |"aaaaaaaaaaaaaaaa\t"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaa\t"| ==> IsDigit("aaaaaaaaaaaaaaaa\t"[i]);
+var r0 := IsInteger("aaaaaaaaaaaa\U{0019}aaaaaaaa");
+expect r0 <==> |"aaaaaaaaaaaa\U{0019}aaaaaaaa"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaa\U{0019}aaaaaaaa"| ==> IsDigit("aaaaaaaaaaaa\U{0019}aaaaaaaa"[i]);
 }
 
-// REPEAT 9 - TIME: 191.6121132 s
+// REPEAT 9 - TIME: 204.0682035 s
 
 method {:test} Test19() {
-var r0 := IsInteger("aaaaaaa1aaaaaa01aa");
-expect r0 <==> |"aaaaaaa1aaaaaa01aa"| > 0 && forall i :: 0 <= i < |"aaaaaaa1aaaaaa01aa"| ==> IsDigit("aaaaaaa1aaaaaa01aa"[i]);
+var r0 := IsInteger("0aaaaaaaaaaaaaaaaaaa");
+expect r0 <==> |"0aaaaaaaaaaaaaaaaaaa"| > 0 && forall i :: 0 <= i < |"0aaaaaaaaaaaaaaaaaaa"| ==> IsDigit("0aaaaaaaaaaaaaaaaaaa"[i]);
 }
 method {:test} Test20() {
-var r0 := IsInteger("aaaaaaaaaaaaaaaaa\t");
-expect r0 <==> |"aaaaaaaaaaaaaaaaa\t"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaa\t"| ==> IsDigit("aaaaaaaaaaaaaaaaa\t"[i]);
+var r0 := IsInteger("aaaaaaaaaaaaaaaaaaa\U{0019}");
+expect r0 <==> |"aaaaaaaaaaaaaaaaaaa\U{0019}"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaaa\U{0019}"| ==> IsDigit("aaaaaaaaaaaaaaaaaaa\U{0019}"[i]);
 }
 
-// REPEAT 10 - TIME: 216.7199755 s
+// REPEAT 10 - TIME: 243.6164352 s

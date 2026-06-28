@@ -178,17 +178,12 @@ var r0 := Sqare2(2);
 expect r0 == 2 * 2;
 }
 
-// REPEAT 1 - TIME: 6.1484517 s
+// REPEAT 1 - TIME: 6.138241 s
 
 method {:test} Test7() {
 expect 5 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := ComputeFact(5);
 expect r0 == factorial(5);
-}
-method {:test} Test8() {
-expect 5541 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ComputeFact(5541);
-expect r0 == factorial(5541);
 }
 method {:test} Test9() {
 expect 3 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -206,12 +201,12 @@ var r0 := Sqare2(40);
 expect r0 == 40 * 40;
 }
 
-// REPEAT 2 - TIME: 9.7354912 s
+// REPEAT 2 - TIME: 9.5840761 s
 
 method {:test} Test14() {
-expect 5542 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ComputeFact(5542);
-expect r0 == factorial(5542);
+expect 6 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ComputeFact(6);
+expect r0 == factorial(6);
 }
 method {:test} Test16() {
 expect 4 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -229,12 +224,12 @@ var r0 := Sqare2(41);
 expect r0 == 41 * 41;
 }
 
-// REPEAT 3 - TIME: 12.6441495 s
+// REPEAT 3 - TIME: 12.8341956 s
 
 method {:test} Test21() {
-expect 5543 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ComputeFact(5543);
-expect r0 == factorial(5543);
+expect 7 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ComputeFact(7);
+expect r0 == factorial(7);
 }
 method {:test} Test23() {
 expect 5 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -252,12 +247,17 @@ var r0 := Sqare2(42);
 expect r0 == 42 * 42;
 }
 
-// REPEAT 4 - TIME: 15.9579611 s
+// REPEAT 4 - TIME: 15.8522834 s
 
 method {:test} Test28() {
-expect 5544 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ComputeFact(5544);
-expect r0 == factorial(5544);
+expect 8 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ComputeFact(8);
+expect r0 == factorial(8);
+}
+method {:test} Test29() {
+expect 2006 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ComputeFact(2006);
+expect r0 == factorial(2006);
 }
 method {:test} Test30() {
 expect 6 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -275,12 +275,12 @@ var r0 := Sqare2(43);
 expect r0 == 43 * 43;
 }
 
-// REPEAT 5 - TIME: 18.6962135 s
+// REPEAT 5 - TIME: 18.4773481 s
 
 method {:test} Test35() {
-expect 5545 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ComputeFact(5545);
-expect r0 == factorial(5545);
+expect 2007 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ComputeFact(2007);
+expect r0 == factorial(2007);
 }
 method {:test} Test37() {
 expect 7 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -298,12 +298,12 @@ var r0 := Sqare2(44);
 expect r0 == 44 * 44;
 }
 
-// REPEAT 6 - TIME: 21.4052674 s
+// REPEAT 6 - TIME: 21.1738675 s
 
 method {:test} Test42() {
-expect 5546 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ComputeFact(5546);
-expect r0 == factorial(5546);
+expect 2008 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ComputeFact(2008);
+expect r0 == factorial(2008);
 }
 method {:test} Test44() {
 expect 8 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -321,12 +321,12 @@ var r0 := Sqare2(45);
 expect r0 == 45 * 45;
 }
 
-// REPEAT 7 - TIME: 24.6239704 s
+// REPEAT 7 - TIME: 24.4939913 s
 
 method {:test} Test49() {
-expect 5547 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ComputeFact(5547);
-expect r0 == factorial(5547);
+expect 2009 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ComputeFact(2009);
+expect r0 == factorial(2009);
 }
 method {:test} Test51() {
 expect 9 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -344,12 +344,12 @@ var r0 := Sqare2(46);
 expect r0 == 46 * 46;
 }
 
-// REPEAT 8 - TIME: 27.9847187 s
+// REPEAT 8 - TIME: 28.2073118 s
 
 method {:test} Test56() {
-expect 5548 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ComputeFact(5548);
-expect r0 == factorial(5548);
+expect 2010 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ComputeFact(2010);
+expect r0 == factorial(2010);
 }
 method {:test} Test58() {
 expect 10 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -367,12 +367,12 @@ var r0 := Sqare2(47);
 expect r0 == 47 * 47;
 }
 
-// REPEAT 9 - TIME: 30.7671289 s
+// REPEAT 9 - TIME: 30.9404965 s
 
 method {:test} Test63() {
-expect 5549 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ComputeFact(5549);
-expect r0 == factorial(5549);
+expect 2011 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := ComputeFact(2011);
+expect r0 == factorial(2011);
 }
 method {:test} Test65() {
 expect 11 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -390,4 +390,4 @@ var r0 := Sqare2(48);
 expect r0 == 48 * 48;
 }
 
-// REPEAT 10 - TIME: 33.587365 s
+// REPEAT 10 - TIME: 33.51944 s

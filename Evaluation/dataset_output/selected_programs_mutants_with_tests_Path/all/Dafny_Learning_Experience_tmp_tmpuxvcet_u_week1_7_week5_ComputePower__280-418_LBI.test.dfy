@@ -39,7 +39,7 @@ var r0 := ComputePower(5922);
 expect r0 == Power(5922);
 }
 
-// REPEAT 1 - TIME: 9.4841523 s
+// REPEAT 1 - TIME: 11.5723944 s
 
 method {:test} Test2() {
 var r0 := CalcPower(2438);
@@ -50,7 +50,7 @@ var r0 := ComputePower(5961);
 expect r0 == Power(5961);
 }
 
-// REPEAT 2 - TIME: 14.792571 s
+// REPEAT 2 - TIME: 19.0625545 s
 
 method {:test} Test4() {
 var r0 := CalcPower(2439);
@@ -61,7 +61,7 @@ var r0 := ComputePower(6000);
 expect r0 == Power(6000);
 }
 
-// REPEAT 3 - TIME: 19.8963448 s
+// REPEAT 3 - TIME: 25.810771 s
 
 method {:test} Test6() {
 var r0 := CalcPower(2440);
@@ -72,7 +72,7 @@ var r0 := ComputePower(13720);
 expect r0 == Power(13720);
 }
 
-// REPEAT 4 - TIME: 24.8534967 s
+// REPEAT 4 - TIME: 32.924239 s
 
 method {:test} Test8() {
 var r0 := CalcPower(2441);
@@ -83,7 +83,7 @@ var r0 := ComputePower(13759);
 expect r0 == Power(13759);
 }
 
-// REPEAT 5 - TIME: 29.7839874 s
+// REPEAT 5 - TIME: 40.4035252 s
 
 method {:test} Test10() {
 var r0 := CalcPower(2442);
@@ -94,48 +94,48 @@ var r0 := ComputePower(13798);
 expect r0 == Power(13798);
 }
 
-// REPEAT 6 - TIME: 35.0358637 s
+// REPEAT 6 - TIME: 48.5552508 s
 
 method {:test} Test12() {
 var r0 := CalcPower(2443);
 expect r0 == 2 * 2443;
 }
 method {:test} Test13() {
-var r0 := ComputePower(21518);
-expect r0 == Power(21518);
+var r0 := ComputePower(13837);
+expect r0 == Power(13837);
 }
 
-// REPEAT 7 - TIME: 40.0366854 s
+// REPEAT 7 - TIME: 56.3547809 s
 
 method {:test} Test14() {
 var r0 := CalcPower(2444);
 expect r0 == 2 * 2444;
 }
 method {:test} Test15() {
-var r0 := ComputePower(22755);
-expect r0 == Power(22755);
+var r0 := ComputePower(15074);
+expect r0 == Power(15074);
 }
 
-// REPEAT 8 - TIME: 45.2558122 s
+// REPEAT 8 - TIME: 64.2852111 s
 
 method {:test} Test16() {
 var r0 := CalcPower(2445);
 expect r0 == 2 * 2445;
 }
 method {:test} Test17() {
-var r0 := ComputePower(30475);
-expect r0 == Power(30475);
+var r0 := ComputePower(16311);
+expect r0 == Power(16311);
 }
 
-// REPEAT 9 - TIME: 50.4908897 s
+// REPEAT 9 - TIME: 73.233862 s
 
 method {:test} Test18() {
 var r0 := CalcPower(2446);
 expect r0 == 2 * 2446;
 }
 method {:test} Test19() {
-var r0 := ComputePower(30514);
-expect r0 == Power(30514);
+var r0 := ComputePower(24031);
+expect r0 == Power(24031);
 }
 
-// REPEAT 10 - TIME: 55.9598618 s
+// REPEAT 10 - TIME: 82.175972 s

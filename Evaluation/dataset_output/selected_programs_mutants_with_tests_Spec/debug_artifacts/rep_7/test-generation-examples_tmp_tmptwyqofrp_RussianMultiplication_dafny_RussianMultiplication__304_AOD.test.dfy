@@ -31,4 +31,4 @@ var r0 := RussianMultiplication.mult(7725, 7725);
 expect r0 == 7725 * 7725;
 }
 
-// REPEAT 7 - TIME: 8.4618352 s
+// REPEAT 7 - TIME: 7.9364787 s

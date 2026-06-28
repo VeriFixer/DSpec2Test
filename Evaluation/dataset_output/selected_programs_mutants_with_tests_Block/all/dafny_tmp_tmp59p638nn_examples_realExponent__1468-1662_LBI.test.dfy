@@ -74,7 +74,7 @@ expect 1.0/2.0 > 0.0, "If this check fails at runtime, the test does not meet th
 var r0 := pow(8366, 1.0/2.0);
 }
 
-// REPEAT 1 - TIME: 3.2154124 s
+// REPEAT 1 - TIME: 3.4344662 s
 
 method {:test} Test1() {
 expect 8367 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -82,7 +82,7 @@ expect 3.0/2.0 > 0.0, "If this check fails at runtime, the test does not meet th
 var r0 := pow(8367, 3.0/2.0);
 }
 
-// REPEAT 2 - TIME: 4.6386271 s
+// REPEAT 2 - TIME: 4.9976508 s
 
 method {:test} Test2() {
 expect 8368 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -90,7 +90,7 @@ expect 5.0/2.0 > 0.0, "If this check fails at runtime, the test does not meet th
 var r0 := pow(8368, 5.0/2.0);
 }
 
-// REPEAT 3 - TIME: 5.9055312 s
+// REPEAT 3 - TIME: 6.4470249 s
 
 method {:test} Test3() {
 expect 8369 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -98,7 +98,7 @@ expect 7.0/2.0 > 0.0, "If this check fails at runtime, the test does not meet th
 var r0 := pow(8369, 7.0/2.0);
 }
 
-// REPEAT 4 - TIME: 7.1888767 s
+// REPEAT 4 - TIME: 8.0216737 s
 
 method {:test} Test4() {
 expect 8370 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -106,7 +106,7 @@ expect 9.0/2.0 > 0.0, "If this check fails at runtime, the test does not meet th
 var r0 := pow(8370, 9.0/2.0);
 }
 
-// REPEAT 5 - TIME: 8.4361102 s
+// REPEAT 5 - TIME: 9.3004569 s
 
 method {:test} Test5() {
 expect 8371 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -114,7 +114,7 @@ expect 11.0/2.0 > 0.0, "If this check fails at runtime, the test does not meet t
 var r0 := pow(8371, 11.0/2.0);
 }
 
-// REPEAT 6 - TIME: 9.4539695 s
+// REPEAT 6 - TIME: 10.4412962 s
 
 method {:test} Test6() {
 expect 8372 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -122,7 +122,7 @@ expect 13.0/2.0 > 0.0, "If this check fails at runtime, the test does not meet t
 var r0 := pow(8372, 13.0/2.0);
 }
 
-// REPEAT 7 - TIME: 10.7053991 s
+// REPEAT 7 - TIME: 11.5110224 s
 
 method {:test} Test7() {
 expect 8373 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -130,7 +130,7 @@ expect 15.0/2.0 > 0.0, "If this check fails at runtime, the test does not meet t
 var r0 := pow(8373, 15.0/2.0);
 }
 
-// REPEAT 8 - TIME: 11.6523602 s
+// REPEAT 8 - TIME: 12.4549791 s
 
 method {:test} Test8() {
 expect 8374 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -138,7 +138,7 @@ expect 17.0/2.0 > 0.0, "If this check fails at runtime, the test does not meet t
 var r0 := pow(8374, 17.0/2.0);
 }
 
-// REPEAT 9 - TIME: 12.533347 s
+// REPEAT 9 - TIME: 13.3753555 s
 
 method {:test} Test9() {
 expect 8375 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -146,4 +146,4 @@ expect 19.0/2.0 > 0.0, "If this check fails at runtime, the test does not meet t
 var r0 := pow(8375, 19.0/2.0);
 }
 
-// REPEAT 10 - TIME: 13.5106978 s
+// REPEAT 10 - TIME: 14.2584758 s

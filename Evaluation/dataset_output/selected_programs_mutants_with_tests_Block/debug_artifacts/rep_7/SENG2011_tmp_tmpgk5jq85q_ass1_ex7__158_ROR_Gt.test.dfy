@@ -14,8 +14,8 @@ method {:testEntry} BigFoot(step: nat)
 }
 
 method {:test} Test6() {
-expect 0 < 21 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
-BigFoot(21);
+expect 0 < 7 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
+BigFoot(7);
 }
 
-// REPEAT 7 - TIME: 9.0495634 s
+// REPEAT 7 - TIME: 9.0531242 s

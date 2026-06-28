@@ -52,163 +52,187 @@ expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 1 - TIME: 4.4502148 s
+// REPEAT 1 - TIME: 4.7575555 s
 
 method {:test} Test3() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 1236, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test4() {
-var seqint0 : seq<int> := [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6618, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test5() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 535];
+var seqint0 : seq<int> := [2];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 2 - TIME: 7.0949081 s
+// REPEAT 2 - TIME: 7.1969023 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test7() {
-var seqint0 : seq<int> := [5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [-7017];
+var r0 := InsertionSort(seqint0);
+expect multiset(r0) == multiset(seqint0);
+expect IsSorted(r0);
+}
+method {:test} Test8() {
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 3 - TIME: 9.1948575 s
+// REPEAT 3 - TIME: 9.949542 s
 
 method {:test} Test9() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8870, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 4771, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test10() {
-var seqint0 : seq<int> := [7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test11() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 2754, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 4 - TIME: 11.8246563 s
+// REPEAT 4 - TIME: 12.8894998 s
 
 method {:test} Test12() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4168, 0];
+var seqint0 : seq<int> := [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2332, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test13() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [7, 0, 0, 0, 0, 0, 0];
+var r0 := InsertionSort(seqint0);
+expect multiset(r0) == multiset(seqint0);
+expect IsSorted(r0);
+}
+method {:test} Test14() {
+var seqint0 : seq<int> := [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 5 - TIME: 14.3383577 s
+// REPEAT 5 - TIME: 15.7774325 s
 
 method {:test} Test15() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var r0 := InsertionSort(seqint0);
+expect multiset(r0) == multiset(seqint0);
+expect IsSorted(r0);
+}
+method {:test} Test16() {
+var seqint0 : seq<int> := [9, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 6 - TIME: 16.8925517 s
+// REPEAT 6 - TIME: 18.1347892 s
 
 method {:test} Test18() {
-var seqint0 : seq<int> := [8938, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2437, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test19() {
-var seqint0 : seq<int> := [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7722, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test20() {
-var seqint0 : seq<int> := [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6];
+var seqint0 : seq<int> := [11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5725, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 7 - TIME: 20.8340683 s
+// REPEAT 7 - TIME: 21.0693284 s
 
 method {:test} Test21() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 4684, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 1796, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test22() {
-var seqint0 : seq<int> := [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -705, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test23() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [16, 0, 0, 0, 0, 0, 0, 0, 2487, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 8 - TIME: 24.1265571 s
+// REPEAT 8 - TIME: 24.6920056 s
 
 method {:test} Test24() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2437, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2328];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test25() {
-var seqint0 : seq<int> := [13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test26() {
-var seqint0 : seq<int> := [10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [14];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 9 - TIME: 27.1926322 s
+// REPEAT 9 - TIME: 29.3020065 s
 
 method {:test} Test27() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2748, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 method {:test} Test28() {
-var seqint0 : seq<int> := [18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 16, 14, 0, 2487, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var r0 := InsertionSort(seqint0);
+expect multiset(r0) == multiset(seqint0);
+expect IsSorted(r0);
+}
+method {:test} Test29() {
+var seqint0 : seq<int> := [20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9910, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var r0 := InsertionSort(seqint0);
 expect multiset(r0) == multiset(seqint0);
 expect IsSorted(r0);
 }
 
-// REPEAT 10 - TIME: 32.0583349 s
+// REPEAT 10 - TIME: 33.7319425 s

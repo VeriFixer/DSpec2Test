@@ -30,7 +30,7 @@ var r0 := IsNonPrime(40);
 expect r0 <==> exists k :: 2 <= k < 40 && 40 % k == 0;
 }
 
-// REPEAT 1 - TIME: 3.3328537 s
+// REPEAT 1 - TIME: 3.7850432 s
 
 method {:test} Test2() {
 expect 42 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -43,7 +43,7 @@ var r0 := IsNonPrime(41);
 expect r0 <==> exists k :: 2 <= k < 41 && 41 % k == 0;
 }
 
-// REPEAT 2 - TIME: 4.8367027 s
+// REPEAT 2 - TIME: 5.3936242 s
 
 method {:test} Test4() {
 expect 44 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -56,7 +56,7 @@ var r0 := IsNonPrime(43);
 expect r0 <==> exists k :: 2 <= k < 43 && 43 % k == 0;
 }
 
-// REPEAT 3 - TIME: 6.2403117 s
+// REPEAT 3 - TIME: 6.720796 s
 
 method {:test} Test6() {
 expect 46 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -69,7 +69,7 @@ var r0 := IsNonPrime(45);
 expect r0 <==> exists k :: 2 <= k < 45 && 45 % k == 0;
 }
 
-// REPEAT 4 - TIME: 7.7141835 s
+// REPEAT 4 - TIME: 8.0228024 s
 
 method {:test} Test8() {
 expect 48 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -82,7 +82,7 @@ var r0 := IsNonPrime(47);
 expect r0 <==> exists k :: 2 <= k < 47 && 47 % k == 0;
 }
 
-// REPEAT 5 - TIME: 9.0101977 s
+// REPEAT 5 - TIME: 9.1331785 s
 
 method {:test} Test10() {
 expect 50 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -95,7 +95,7 @@ var r0 := IsNonPrime(49);
 expect r0 <==> exists k :: 2 <= k < 49 && 49 % k == 0;
 }
 
-// REPEAT 6 - TIME: 10.17224 s
+// REPEAT 6 - TIME: 10.2177349 s
 
 method {:test} Test12() {
 expect 52 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -108,7 +108,7 @@ var r0 := IsNonPrime(51);
 expect r0 <==> exists k :: 2 <= k < 51 && 51 % k == 0;
 }
 
-// REPEAT 7 - TIME: 11.1952933 s
+// REPEAT 7 - TIME: 11.5058488 s
 
 method {:test} Test14() {
 expect 54 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -121,7 +121,7 @@ var r0 := IsNonPrime(53);
 expect r0 <==> exists k :: 2 <= k < 53 && 53 % k == 0;
 }
 
-// REPEAT 8 - TIME: 12.237411 s
+// REPEAT 8 - TIME: 12.6504852 s
 
 method {:test} Test16() {
 expect 56 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -134,7 +134,7 @@ var r0 := IsNonPrime(55);
 expect r0 <==> exists k :: 2 <= k < 55 && 55 % k == 0;
 }
 
-// REPEAT 9 - TIME: 13.0470296 s
+// REPEAT 9 - TIME: 13.7951808 s
 
 method {:test} Test18() {
 expect 58 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -147,4 +147,4 @@ var r0 := IsNonPrime(57);
 expect r0 <==> exists k :: 2 <= k < 57 && 57 % k == 0;
 }
 
-// REPEAT 10 - TIME: 14.0826257 s
+// REPEAT 10 - TIME: 15.0604033 s

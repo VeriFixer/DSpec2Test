@@ -18,4 +18,4 @@ var r0 := CountToAndReturnN(1);
 expect r0 == 1;
 }
 
-// REPEAT 2 - TIME: 3.4070184 s
+// REPEAT 2 - TIME: 3.5981856 s

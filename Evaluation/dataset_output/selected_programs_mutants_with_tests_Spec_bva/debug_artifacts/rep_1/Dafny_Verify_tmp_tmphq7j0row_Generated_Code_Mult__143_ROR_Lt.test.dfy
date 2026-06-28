@@ -45,4 +45,4 @@ var r0 := mult(100, 1);
 expect r0 == 100 * 1;
 }
 
-// REPEAT 1 - TIME: 7.4256838 s
+// REPEAT 1 - TIME: 9.4718489 s

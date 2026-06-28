@@ -18,12 +18,12 @@ method {:testEntry} BitwiseXOR(a: seq<bv32>, b: seq<bv32>) returns (result: seq<
 }
 
 method {:test} Test1() {
-var seqbv0 : seq<bv32> := [4294967295, 0];
-var seqbv1 : seq<bv32> := [0, 0];
+var seqbv0 : seq<bv32> := [4294967295, (0 as bv32)];
+var seqbv1 : seq<bv32> := [0, 3];
 expect |seqbv0| == |seqbv1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := BitwiseXOR(seqbv0, seqbv1);
 expect |r0| == |seqbv0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqbv0[i] ^ seqbv1[i];
 }
 
-// REPEAT 2 - TIME: 3.1345801 s
+// REPEAT 2 - TIME: 3.414434 s

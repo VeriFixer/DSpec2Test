@@ -22,4 +22,4 @@ var r0 := CalculateLoss(4, 3);
 expect (4 > 3 ==> r0 == 4 - 3) && (4 <= 3 ==> r0 == 0);
 }
 
-// REPEAT 3 - TIME: 5.4912118 s
+// REPEAT 3 - TIME: 5.0142612 s

@@ -26,4 +26,4 @@ var r0 := CountUppercase("aaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 1 - TIME: 7.0875333 s
+// REPEAT 1 - TIME: 9.3312292 s

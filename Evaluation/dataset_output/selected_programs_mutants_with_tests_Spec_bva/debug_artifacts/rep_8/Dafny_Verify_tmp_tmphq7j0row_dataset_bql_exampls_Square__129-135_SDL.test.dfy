@@ -25,4 +25,4 @@ var r0 := square(107);
 expect r0 == 107 * 107;
 }
 
-// REPEAT 8 - TIME: 11.5069595 s
+// REPEAT 8 - TIME: 16.053987 s

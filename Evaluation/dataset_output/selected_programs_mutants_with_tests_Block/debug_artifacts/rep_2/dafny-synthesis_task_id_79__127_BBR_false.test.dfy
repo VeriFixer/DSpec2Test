@@ -7,8 +7,8 @@ method {:testEntry} IsLengthOdd(s: string) returns (result: bool)
 }
 
 method {:test} Test1() {
-var r0 := IsLengthOdd("aaaaaaaaaaaaaaaaaaaaaaaaaaaa\0a");
-expect r0 <==> |"aaaaaaaaaaaaaaaaaaaaaaaaaaaa\0a"| % 2 == 1;
+var r0 := IsLengthOdd("\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+expect r0 <==> |"\0aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"| % 2 == 1;
 }
 
-// REPEAT 2 - TIME: 3.4314656 s
+// REPEAT 2 - TIME: 3.1037643 s

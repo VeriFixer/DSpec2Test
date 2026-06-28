@@ -45,4 +45,4 @@ var r0 := IsInteger("/a");
 expect r0 <==> |"/a"| > 0 && forall i :: 0 <= i < |"/a"| ==> IsDigit("/a"[i]);
 }
 
-// REPEAT 1 - TIME: 13.6637284 s
+// REPEAT 1 - TIME: 17.7723403 s

@@ -14,20 +14,20 @@ method {:testEntry} CountDigits(s: string) returns (count: int)
 }
 
 method {:test} Test4() {
-var r0 := CountDigits("1\0a");
+var r0 := CountDigits("1\0aaaaaaaaaaaaaaaaaaaaaaa");
 expect r0 >= 0;
 }
 method {:test} Test5() {
-var r0 := CountDigits("\U{0019}\0aaaaaaaaaaaaaaaaaaaaaaa");
+var r0 := CountDigits("\U{0019}\0a");
 expect r0 >= 0;
 }
 method {:test} Test6() {
-var r0 := CountDigits("\U{0001}\0aaaaa");
+var r0 := CountDigits("\U{0001}\0a");
 expect r0 >= 0;
 }
 method {:test} Test7() {
-var r0 := CountDigits("a\0aaaaaaaaaaaa2aaaaaaaaa\U{0001}aaa");
+var r0 := CountDigits("\U{0001}\0aaa");
 expect r0 >= 0;
 }
 
-// REPEAT 2 - TIME: 8.1706287 s
+// REPEAT 2 - TIME: 6.8901447 s

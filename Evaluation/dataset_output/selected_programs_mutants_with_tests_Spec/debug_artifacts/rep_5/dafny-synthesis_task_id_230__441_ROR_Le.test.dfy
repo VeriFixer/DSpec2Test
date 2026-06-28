@@ -20,9 +20,9 @@ method {:testEntry} ReplaceBlanksWithChar(s: string, ch: char) returns (v: strin
 }
 
 method {:test} Test4() {
-var r0 := ReplaceBlanksWithChar("\0\U{0001}a", '\0');
-expect |r0| == |"\0\U{0001}a"|;
-expect forall i :: 0 <= i < |"\0\U{0001}a"| ==> ("\0\U{0001}a"[i] == ' ' ==> r0[i] == '\0') && ("\0\U{0001}a"[i] != ' ' ==> r0[i] == "\0\U{0001}a"[i]);
+var r0 := ReplaceBlanksWithChar("\0\0", '\0');
+expect |r0| == |"\0\0"|;
+expect forall i :: 0 <= i < |"\0\0"| ==> ("\0\0"[i] == ' ' ==> r0[i] == '\0') && ("\0\0"[i] != ' ' ==> r0[i] == "\0\0"[i]);
 }
 
-// REPEAT 5 - TIME: 6.6699822 s
+// REPEAT 5 - TIME: 7.0373561 s

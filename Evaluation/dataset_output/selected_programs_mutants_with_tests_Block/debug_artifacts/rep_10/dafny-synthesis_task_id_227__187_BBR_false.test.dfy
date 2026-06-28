@@ -15,24 +15,19 @@ method {:testEntry} MinOfThree(a: int, b: int, c: int)
 }
 
 method {:test} Test34() {
-var r0 := MinOfThree(18, 19, 17);
-expect r0 <= 18 && r0 <= 19 && r0 <= 17;
-expect r0 == 18 || r0 == 19 || r0 == 17;
-}
-method {:test} Test35() {
-var r0 := MinOfThree(18, 18, 17);
-expect r0 <= 18 && r0 <= 18 && r0 <= 17;
-expect r0 == 18 || r0 == 18 || r0 == 17;
-}
-method {:test} Test36() {
-var r0 := MinOfThree(18, 19, 18);
-expect r0 <= 18 && r0 <= 19 && r0 <= 18;
-expect r0 == 18 || r0 == 19 || r0 == 18;
-}
-method {:test} Test37() {
 var r0 := MinOfThree(19, 18, 17);
 expect r0 <= 19 && r0 <= 18 && r0 <= 17;
 expect r0 == 19 || r0 == 18 || r0 == 17;
 }
+method {:test} Test35() {
+var r0 := MinOfThree(18, 19, 17);
+expect r0 <= 18 && r0 <= 19 && r0 <= 17;
+expect r0 == 18 || r0 == 19 || r0 == 17;
+}
+method {:test} Test36() {
+var r0 := MinOfThree(18, 18, 18);
+expect r0 <= 18 && r0 <= 18 && r0 <= 18;
+expect r0 == 18 || r0 == 18 || r0 == 18;
+}
 
-// REPEAT 10 - TIME: 20.0527985 s
+// REPEAT 10 - TIME: 19.8201035 s

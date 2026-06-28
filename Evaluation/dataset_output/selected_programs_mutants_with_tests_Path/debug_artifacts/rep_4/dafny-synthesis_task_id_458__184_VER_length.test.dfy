@@ -15,4 +15,4 @@ var r0 := RectangleArea(4, 4);
 expect r0 == 4 * 4;
 }
 
-// REPEAT 4 - TIME: 3.3682282 s
+// REPEAT 4 - TIME: 6.9191622 s

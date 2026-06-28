@@ -44,12 +44,16 @@ ghost function gcd'(x: int, y: int): int
 }
 
 method {:test} Test24() {
-expect 22170 > 0 && 44340 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := gcdI(22170, 44340);
+expect 23368 > 0 && 54456 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := gcdI(23368, 54456);
 }
 method {:test} Test25() {
-expect 23368 > 0 && 46736 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := gcdI(23368, 46736);
+expect 23368 > 0 && 49174 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := gcdI(23368, 49174);
+}
+method {:test} Test26() {
+expect 23368 > 0 && 55592 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := gcdI(23368, 55592);
 }
 
-// REPEAT 9 - TIME: 15.5756238 s
+// REPEAT 9 - TIME: 15.8377362 s

@@ -15,7 +15,7 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 1 - TIME: 1.7693052 s
+// REPEAT 1 - TIME: 2.0107841 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [];
@@ -25,7 +25,7 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 2 - TIME: 2.3979102 s
+// REPEAT 2 - TIME: 2.7538044 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [0];
@@ -35,10 +35,31 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 3 - TIME: 3.0370691 s
+// REPEAT 3 - TIME: 3.5893697 s
 
 method {:test} Test3() {
 var seqint0 : seq<int> := [0, 0];
+var seqseqint0 : seq<seq<int>> := [seqint0];
+var r0 := CountLists(seqseqint0);
+expect r0 >= 0;
+expect r0 == |seqseqint0|;
+}
+
+// REPEAT 4 - TIME: 4.4317965 s
+
+method {:test} Test4() {
+var seqint0 : seq<int> := [0, 0, 0];
+var seqint1 : seq<int> := [];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1];
+var r0 := CountLists(seqseqint0);
+expect r0 >= 0;
+expect r0 == |seqseqint0|;
+}
+
+// REPEAT 5 - TIME: 5.2351115 s
+
+method {:test} Test5() {
+var seqint0 : seq<int> := [0, 0, 0, 0];
 var seqint1 : seq<int> := [0];
 var seqseqint0 : seq<seq<int>> := [seqint0, seqint1];
 var r0 := CountLists(seqseqint0);
@@ -46,11 +67,22 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 4 - TIME: 3.6842304 s
+// REPEAT 6 - TIME: 6.0695338 s
 
-method {:test} Test4() {
-var seqint0 : seq<int> := [0, 0, 0];
+method {:test} Test6() {
+var seqint0 : seq<int> := [0, 0, 0, 0, 0];
 var seqint1 : seq<int> := [0, 0];
+var seqseqint0 : seq<seq<int>> := [seqint0, seqint1];
+var r0 := CountLists(seqseqint0);
+expect r0 >= 0;
+expect r0 == |seqseqint0|;
+}
+
+// REPEAT 7 - TIME: 6.75539 s
+
+method {:test} Test7() {
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [0, 0, 0];
 var seqint2 : seq<int> := [];
 var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2];
 var r0 := CountLists(seqseqint0);
@@ -58,24 +90,12 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 5 - TIME: 4.2612164 s
+// REPEAT 8 - TIME: 7.4587746 s
 
-method {:test} Test5() {
-var seqint0 : seq<int> := [0, 0, 0, 0];
-var seqint1 : seq<int> := [0, 0, 0];
-var seqint2 : seq<int> := [0];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2];
-var r0 := CountLists(seqseqint0);
-expect r0 >= 0;
-expect r0 == |seqseqint0|;
-}
-
-// REPEAT 6 - TIME: 4.97368 s
-
-method {:test} Test6() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0];
+method {:test} Test8() {
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
 var seqint1 : seq<int> := [0, 0, 0, 0];
-var seqint2 : seq<int> := [0, 0];
+var seqint2 : seq<int> := [0];
 var seqint3 : seq<int> := [];
 var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3];
 var r0 := CountLists(seqseqint0);
@@ -83,12 +103,12 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 7 - TIME: 5.6643392 s
+// REPEAT 9 - TIME: 8.1985749 s
 
-method {:test} Test7() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0];
+method {:test} Test9() {
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0];
 var seqint1 : seq<int> := [0, 0, 0, 0, 0];
-var seqint2 : seq<int> := [0, 0, 0];
+var seqint2 : seq<int> := [0, 0];
 var seqint3 : seq<int> := [0];
 var seqint4 : seq<int> := [];
 var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4];
@@ -97,35 +117,4 @@ expect r0 >= 0;
 expect r0 == |seqseqint0|;
 }
 
-// REPEAT 8 - TIME: 6.3300969 s
-
-method {:test} Test8() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [0, 0, 0, 0, 0, 0];
-var seqint2 : seq<int> := [0, 0, 0, 0];
-var seqint3 : seq<int> := [0, 0];
-var seqint4 : seq<int> := [0];
-var seqint5 : seq<int> := [];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5];
-var r0 := CountLists(seqseqint0);
-expect r0 >= 0;
-expect r0 == |seqseqint0|;
-}
-
-// REPEAT 9 - TIME: 7.0008803 s
-
-method {:test} Test9() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [];
-var seqint2 : seq<int> := [0, 0, 0, 0, 0];
-var seqint3 : seq<int> := [0, 0, 0];
-var seqint4 : seq<int> := [0, 0];
-var seqint5 : seq<int> := [0];
-var seqint6 : seq<int> := [];
-var seqseqint0 : seq<seq<int>> := [seqint0, seqint1, seqint2, seqint3, seqint4, seqint5, seqint6];
-var r0 := CountLists(seqseqint0);
-expect r0 >= 0;
-expect r0 == |seqseqint0|;
-}
-
-// REPEAT 10 - TIME: 7.5660902 s
+// REPEAT 10 - TIME: 9.124646 s

@@ -25,12 +25,12 @@ method {:testEntry} IsInteger(s: string) returns (result: bool)
 }
 
 method {:test} Test10() {
-var r0 := IsInteger("\U{0018}a\0\U{0003}aaaaaa\U{0005}a\U{0007}");
-expect r0 <==> |"\U{0018}a\0\U{0003}aaaaaa\U{0005}a\U{0007}"| > 0 && forall i :: 0 <= i < |"\U{0018}a\0\U{0003}aaaaaa\U{0005}a\U{0007}"| ==> IsDigit("\U{0018}a\0\U{0003}aaaaaa\U{0005}a\U{0007}"[i]);
+var r0 := IsInteger("\U{0008}aa\U{0001}\U{0003}");
+expect r0 <==> |"\U{0008}aa\U{0001}\U{0003}"| > 0 && forall i :: 0 <= i < |"\U{0008}aa\U{0001}\U{0003}"| ==> IsDigit("\U{0008}aa\U{0001}\U{0003}"[i]);
 }
 method {:test} Test11() {
-var r0 := IsInteger("4\U{0019}a4");
-expect r0 <==> |"4\U{0019}a4"| > 0 && forall i :: 0 <= i < |"4\U{0019}a4"| ==> IsDigit("4\U{0019}a4"[i]);
+var r0 := IsInteger("\n\U{0001}a\U{0003}aaaa\U{0007}\U{0005}");
+expect r0 <==> |"\n\U{0001}a\U{0003}aaaa\U{0007}\U{0005}"| > 0 && forall i :: 0 <= i < |"\n\U{0001}a\U{0003}aaaa\U{0007}\U{0005}"| ==> IsDigit("\n\U{0001}a\U{0003}aaaa\U{0007}\U{0005}"[i]);
 }
 
-// REPEAT 6 - TIME: 9.5548049 s
+// REPEAT 6 - TIME: 9.6493108 s

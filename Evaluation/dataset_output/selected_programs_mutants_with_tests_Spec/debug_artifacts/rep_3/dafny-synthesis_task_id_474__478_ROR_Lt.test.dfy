@@ -21,9 +21,9 @@ method {:testEntry} ReplaceChars(s: string, oldChar: char, newChar: char)
 }
 
 method {:test} Test2() {
-var r0 := ReplaceChars("aaaa\0aaaaaaaaaaaaaaaa\U{0001}", '\U{0001}', '\0');
-expect |r0| == |"aaaa\0aaaaaaaaaaaaaaaa\U{0001}"|;
-expect forall i :: 0 <= i < |"aaaa\0aaaaaaaaaaaaaaaa\U{0001}"| ==> ("aaaa\0aaaaaaaaaaaaaaaa\U{0001}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("aaaa\0aaaaaaaaaaaaaaaa\U{0001}"[i] != '\U{0001}' ==> r0[i] == "aaaa\0aaaaaaaaaaaaaaaa\U{0001}"[i]);
+var r0 := ReplaceChars("aaaaaaaaaaaaaaaaaa\U{0001}a", '\U{0001}', '\0');
+expect |r0| == |"aaaaaaaaaaaaaaaaaa\U{0001}a"|;
+expect forall i :: 0 <= i < |"aaaaaaaaaaaaaaaaaa\U{0001}a"| ==> ("aaaaaaaaaaaaaaaaaa\U{0001}a"[i] == '\U{0001}' ==> r0[i] == '\0') && ("aaaaaaaaaaaaaaaaaa\U{0001}a"[i] != '\U{0001}' ==> r0[i] == "aaaaaaaaaaaaaaaaaa\U{0001}a"[i]);
 }
 
-// REPEAT 3 - TIME: 5.817624 s
+// REPEAT 3 - TIME: 5.4274702 s

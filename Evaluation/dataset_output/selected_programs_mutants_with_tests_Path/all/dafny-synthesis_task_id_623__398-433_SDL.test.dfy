@@ -32,94 +32,94 @@ expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 0);
 }
 
-// REPEAT 1 - TIME: 12.0785785 s
+// REPEAT 1 - TIME: 14.2404578 s
 
 method {:test} Test1() {
-var seqint0 : seq<int> := [8855];
-expect 1 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := PowerOfListElements(seqint0, 1);
+var seqint0 : seq<int> := [2276];
+expect 2448 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := PowerOfListElements(seqint0, 2448);
 expect |r0| == |seqint0|;
-expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 1);
+expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 2448);
 }
 
-// REPEAT 2 - TIME: 21.2822113 s
+// REPEAT 2 - TIME: 24.9012355 s
 
 method {:test} Test2() {
-var seqint0 : seq<int> := [0, 0];
-expect 2 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := PowerOfListElements(seqint0, 2);
+var seqint0 : seq<int> := [1];
+expect 2449 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := PowerOfListElements(seqint0, 2449);
 expect |r0| == |seqint0|;
-expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 2);
+expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 2449);
 }
 
-// REPEAT 3 - TIME: 28.9821895 s
+// REPEAT 3 - TIME: 35.9067993 s
 
 method {:test} Test3() {
-var seqint0 : seq<int> := [];
-expect 3 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := PowerOfListElements(seqint0, 3);
+var seqint0 : seq<int> := [0, 0];
+expect 2450 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := PowerOfListElements(seqint0, 2450);
 expect |r0| == |seqint0|;
-expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 3);
+expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 2450);
 }
 
-// REPEAT 4 - TIME: 37.3595115 s
+// REPEAT 4 - TIME: 48.2247689 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [1, 0, 2331];
-expect 1577 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := PowerOfListElements(seqint0, 1577);
+var seqint0 : seq<int> := [3213];
+expect 2451 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := PowerOfListElements(seqint0, 2451);
 expect |r0| == |seqint0|;
-expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 1577);
+expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 2451);
 }
 
-// REPEAT 5 - TIME: 47.3443569 s
+// REPEAT 5 - TIME: 62.9611551 s
 
 method {:test} Test5() {
-var seqint0 : seq<int> := [977, 0, 1888];
-expect 1578 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := PowerOfListElements(seqint0, 1578);
+var seqint0 : seq<int> := [0, 0, 38];
+expect 2452 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := PowerOfListElements(seqint0, 2452);
 expect |r0| == |seqint0|;
-expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 1578);
+expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 2452);
 }
 
-// REPEAT 6 - TIME: 57.5228338 s
+// REPEAT 6 - TIME: 79.508474 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [1888, 0, 0, 0, 0, 0, 0];
-expect 1579 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := PowerOfListElements(seqint0, 1579);
+var seqint0 : seq<int> := [1769, 0, 0, 0, 0, 0, 0, 0, 3504];
+expect 2453 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := PowerOfListElements(seqint0, 2453);
 expect |r0| == |seqint0|;
-expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 1579);
+expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 2453);
 }
 
-// REPEAT 7 - TIME: 67.77084 s
+// REPEAT 7 - TIME: 95.9437835 s
 
 method {:test} Test7() {
-var seqint0 : seq<int> := [1888, 0, 0, 0];
-expect 1580 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := PowerOfListElements(seqint0, 1580);
+var seqint0 : seq<int> := [4135, 0, 6878];
+expect 2454 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := PowerOfListElements(seqint0, 2454);
 expect |r0| == |seqint0|;
-expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 1580);
+expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 2454);
 }
 
-// REPEAT 8 - TIME: 77.1677188 s
+// REPEAT 8 - TIME: 113.0710982 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [8221, 0, 0, 0];
-expect 1581 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := PowerOfListElements(seqint0, 1581);
+var seqint0 : seq<int> := [0, 0, 0, 0];
+expect 2455 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := PowerOfListElements(seqint0, 2455);
 expect |r0| == |seqint0|;
-expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 1581);
+expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 2455);
 }
 
-// REPEAT 9 - TIME: 87.0962805 s
+// REPEAT 9 - TIME: 130.3187859 s
 
 method {:test} Test9() {
-var seqint0 : seq<int> := [0, 0, 0, 1888, 0];
-expect 1582 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := PowerOfListElements(seqint0, 1582);
+var seqint0 : seq<int> := [2655, 0, 5045];
+expect 2456 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := PowerOfListElements(seqint0, 2456);
 expect |r0| == |seqint0|;
-expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 1582);
+expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 2456);
 }
 
-// REPEAT 10 - TIME: 98.099727 s
+// REPEAT 10 - TIME: 152.0027595 s

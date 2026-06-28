@@ -36,9 +36,14 @@ method {:testEntry} mySqrt(x: int) returns (res: int)
 }
 
 method {:test} Test2() {
+expect 0 <= 1, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := mySqrt(1);
+expect sqrt(1, r0);
+}
+method {:test} Test3() {
 expect 0 <= 2, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := mySqrt(2);
 expect sqrt(2, r0);
 }
 
-// REPEAT 2 - TIME: 8.811557 s
+// REPEAT 2 - TIME: 14.0380055 s

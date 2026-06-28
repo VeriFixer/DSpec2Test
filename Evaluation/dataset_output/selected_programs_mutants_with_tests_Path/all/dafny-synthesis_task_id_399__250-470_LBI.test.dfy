@@ -28,103 +28,103 @@ expect |r0| == |seqbv0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqbv0[i] ^ seqbv1[i];
 }
 
-// REPEAT 1 - TIME: 10.5816088 s
+// REPEAT 1 - TIME: 11.4493759 s
 
 method {:test} Test1() {
-var seqbv0 : seq<bv32> := [2147483647, (0 as bv32)];
-var seqbv1 : seq<bv32> := [2147483648, (0 as bv32)];
+var seqbv0 : seq<bv32> := [2147483647];
+var seqbv1 : seq<bv32> := [2147483648];
 expect |seqbv0| == |seqbv1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := BitwiseXOR(seqbv0, seqbv1);
 expect |r0| == |seqbv0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqbv0[i] ^ seqbv1[i];
 }
 
-// REPEAT 2 - TIME: 18.5569651 s
+// REPEAT 2 - TIME: 22.0616866 s
 
 method {:test} Test2() {
-var seqbv0 : seq<bv32> := [2147483647, (0 as bv32), 4294967295];
-var seqbv1 : seq<bv32> := [2147483648, (0 as bv32), 0];
+var seqbv0 : seq<bv32> := [4294967295, (0 as bv32)];
+var seqbv1 : seq<bv32> := [0, (0 as bv32)];
 expect |seqbv0| == |seqbv1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := BitwiseXOR(seqbv0, seqbv1);
 expect |r0| == |seqbv0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqbv0[i] ^ seqbv1[i];
 }
 
-// REPEAT 3 - TIME: 26.1887206 s
+// REPEAT 3 - TIME: 32.2427452 s
 
 method {:test} Test3() {
-var seqbv0 : seq<bv32> := [4294967295, (0 as bv32), (0 as bv32)];
-var seqbv1 : seq<bv32> := [0, (0 as bv32), (0 as bv32)];
+var seqbv0 : seq<bv32> := [2147483647, (0 as bv32), 4294967295, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 4294967295];
+var seqbv1 : seq<bv32> := [2147483648, (0 as bv32), 0, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 0];
 expect |seqbv0| == |seqbv1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := BitwiseXOR(seqbv0, seqbv1);
 expect |r0| == |seqbv0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqbv0[i] ^ seqbv1[i];
 }
 
-// REPEAT 4 - TIME: 33.2637494 s
+// REPEAT 4 - TIME: 43.4034718 s
 
 method {:test} Test4() {
-var seqbv0 : seq<bv32> := [3221225471];
-var seqbv1 : seq<bv32> := [1073741824];
+var seqbv0 : seq<bv32> := [2147483647, 2147483647, 4294967295, 4294967295];
+var seqbv1 : seq<bv32> := [2147483648, 2147483648, 0, 0];
 expect |seqbv0| == |seqbv1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := BitwiseXOR(seqbv0, seqbv1);
 expect |r0| == |seqbv0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqbv0[i] ^ seqbv1[i];
 }
 
-// REPEAT 5 - TIME: 42.1143739 s
+// REPEAT 5 - TIME: 53.875155 s
 
 method {:test} Test5() {
-var seqbv0 : seq<bv32> := [2147483647, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 4294967295, (0 as bv32), 4294967295];
-var seqbv1 : seq<bv32> := [2147483648, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 0, (0 as bv32), 0];
+var seqbv0 : seq<bv32> := [3221225471, (0 as bv32), (0 as bv32)];
+var seqbv1 : seq<bv32> := [1073741824, (0 as bv32), (0 as bv32)];
 expect |seqbv0| == |seqbv1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := BitwiseXOR(seqbv0, seqbv1);
 expect |r0| == |seqbv0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqbv0[i] ^ seqbv1[i];
 }
 
-// REPEAT 6 - TIME: 50.907055 s
+// REPEAT 6 - TIME: 66.5024506 s
 
 method {:test} Test6() {
-var seqbv0 : seq<bv32> := [2147483647, (0 as bv32), 4294967295, (0 as bv32)];
-var seqbv1 : seq<bv32> := [2147483648, (0 as bv32), 0, (0 as bv32)];
+var seqbv0 : seq<bv32> := [(0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 4294967295, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 4294967295, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 4294967295, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 4294967295, 4294967295];
+var seqbv1 : seq<bv32> := [(0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 0, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 0, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 0, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 0, 0];
 expect |seqbv0| == |seqbv1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := BitwiseXOR(seqbv0, seqbv1);
 expect |r0| == |seqbv0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqbv0[i] ^ seqbv1[i];
 }
 
-// REPEAT 7 - TIME: 59.559306 s
+// REPEAT 7 - TIME: 80.6004256 s
 
 method {:test} Test7() {
-var seqbv0 : seq<bv32> := [1073741823];
-var seqbv1 : seq<bv32> := [3221225472];
+var seqbv0 : seq<bv32> := [2147483647, 4294967295, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 4294967295, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 4294967295];
+var seqbv1 : seq<bv32> := [2147483648, 0, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 0, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 0];
 expect |seqbv0| == |seqbv1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := BitwiseXOR(seqbv0, seqbv1);
 expect |r0| == |seqbv0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqbv0[i] ^ seqbv1[i];
 }
 
-// REPEAT 8 - TIME: 69.0441425 s
+// REPEAT 8 - TIME: 95.1964966 s
 
 method {:test} Test8() {
-var seqbv0 : seq<bv32> := [3221225471, (0 as bv32), 4294967295, (0 as bv32), (0 as bv32)];
-var seqbv1 : seq<bv32> := [1073741824, (0 as bv32), 0, (0 as bv32), (0 as bv32)];
+var seqbv0 : seq<bv32> := [4294967295, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 4294967295, (0 as bv32), 4294967295];
+var seqbv1 : seq<bv32> := [0, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 0, (0 as bv32), 0];
 expect |seqbv0| == |seqbv1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := BitwiseXOR(seqbv0, seqbv1);
 expect |r0| == |seqbv0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqbv0[i] ^ seqbv1[i];
 }
 
-// REPEAT 9 - TIME: 79.2922336 s
+// REPEAT 9 - TIME: 110.5889681 s
 
 method {:test} Test9() {
-var seqbv0 : seq<bv32> := [1073741823, (0 as bv32), (0 as bv32), 4294967295, (0 as bv32)];
-var seqbv1 : seq<bv32> := [3221225472, (0 as bv32), (0 as bv32), 0, (0 as bv32)];
+var seqbv0 : seq<bv32> := [2147483647, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 4294967295, 4294967295, (0 as bv32), (0 as bv32), (0 as bv32), 4294967295];
+var seqbv1 : seq<bv32> := [2147483648, (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), (0 as bv32), 0, 0, (0 as bv32), (0 as bv32), (0 as bv32), 0];
 expect |seqbv0| == |seqbv1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := BitwiseXOR(seqbv0, seqbv1);
 expect |r0| == |seqbv0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqbv0[i] ^ seqbv1[i];
 }
 
-// REPEAT 10 - TIME: 91.2191885 s
+// REPEAT 10 - TIME: 130.36851 s

@@ -27,7 +27,7 @@ var r0, r1 := problem2(4868, 2437, 2434, 0);
 expect r0 == 2434 && r1 == 0;
 }
 
-// REPEAT 1 - TIME: 23.4073667 s
+// REPEAT 1 - TIME: 27.9615589 s
 
 method {:test} Test1() {
 expect 4871 == 2 * 2435 + 1 && 2438 == 2435 + 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -35,7 +35,7 @@ var r0, r1 := problem2(4871, 2438, 2435, 1);
 expect r0 == 2435 && r1 == 1;
 }
 
-// REPEAT 2 - TIME: 44.3613343 s
+// REPEAT 2 - TIME: 50.4495821 s
 
 method {:test} Test2() {
 expect 4874 == 2 * 2436 + 2 && 2439 == 2436 + 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -43,7 +43,7 @@ var r0, r1 := problem2(4874, 2439, 2436, 2);
 expect r0 == 2436 && r1 == 2;
 }
 
-// REPEAT 3 - TIME: 67.5057133 s
+// REPEAT 3 - TIME: 74.9914647 s
 
 method {:test} Test3() {
 expect 4877 == 2 * 2437 + 3 && 2440 == 2437 + 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -51,7 +51,7 @@ var r0, r1 := problem2(4877, 2440, 2437, 3);
 expect r0 == 2437 && r1 == 3;
 }
 
-// REPEAT 4 - TIME: 89.5654725 s
+// REPEAT 4 - TIME: 97.9020642 s
 
 method {:test} Test4() {
 expect 4880 == 2 * 2438 + 4 && 2441 == 2438 + 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -59,7 +59,7 @@ var r0, r1 := problem2(4880, 2441, 2438, 4);
 expect r0 == 2438 && r1 == 4;
 }
 
-// REPEAT 5 - TIME: 114.5103752 s
+// REPEAT 5 - TIME: 118.6725367 s
 
 method {:test} Test5() {
 expect 4883 == 2 * 2439 + 5 && 2442 == 2439 + 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -67,7 +67,7 @@ var r0, r1 := problem2(4883, 2442, 2439, 5);
 expect r0 == 2439 && r1 == 5;
 }
 
-// REPEAT 6 - TIME: 142.313692 s
+// REPEAT 6 - TIME: 143.0936972 s
 
 method {:test} Test6() {
 expect 4886 == 2 * 2440 + 6 && 2443 == 2440 + 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -75,7 +75,7 @@ var r0, r1 := problem2(4886, 2443, 2440, 6);
 expect r0 == 2440 && r1 == 6;
 }
 
-// REPEAT 7 - TIME: 168.7650633 s
+// REPEAT 7 - TIME: 167.8755713 s
 
 method {:test} Test7() {
 expect 4889 == 2 * 2441 + 7 && 2444 == 2441 + 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -83,7 +83,7 @@ var r0, r1 := problem2(4889, 2444, 2441, 7);
 expect r0 == 2441 && r1 == 7;
 }
 
-// REPEAT 8 - TIME: 196.9402664 s
+// REPEAT 8 - TIME: 196.4615611 s
 
 method {:test} Test8() {
 expect 4892 == 2 * 2442 + 8 && 2445 == 2442 + 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -91,7 +91,7 @@ var r0, r1 := problem2(4892, 2445, 2442, 8);
 expect r0 == 2442 && r1 == 8;
 }
 
-// REPEAT 9 - TIME: 234.1270348 s
+// REPEAT 9 - TIME: 230.3207523 s
 
 method {:test} Test9() {
 expect 4895 == 2 * 2443 + 9 && 2446 == 2443 + 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -99,4 +99,4 @@ var r0, r1 := problem2(4895, 2446, 2443, 9);
 expect r0 == 2443 && r1 == 9;
 }
 
-// REPEAT 10 - TIME: 294.9815996 s
+// REPEAT 10 - TIME: 270.2695852 s

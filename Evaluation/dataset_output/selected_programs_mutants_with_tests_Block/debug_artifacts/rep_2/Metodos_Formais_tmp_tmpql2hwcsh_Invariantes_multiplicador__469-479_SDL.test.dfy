@@ -20,4 +20,4 @@ var r0 := Mult(1, 1);
 expect r0 == 1 * 1;
 }
 
-// REPEAT 2 - TIME: 3.5283885 s
+// REPEAT 2 - TIME: 3.4504247 s

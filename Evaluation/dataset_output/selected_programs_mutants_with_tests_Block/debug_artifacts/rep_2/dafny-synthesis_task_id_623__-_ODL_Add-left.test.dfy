@@ -25,11 +25,11 @@ function Power(base: int, exponent: int): int
 }
 
 method {:test} Test1() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2];
-expect 5854 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := PowerOfListElements(seqint0, 5854);
+var seqint0 : seq<int> := [2437, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2];
+expect 450 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := PowerOfListElements(seqint0, 450);
 expect |r0| == |seqint0|;
-expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 5854);
+expect forall i :: 0 <= i < |seqint0| ==> r0[i] == Power(seqint0[i], 450);
 }
 
-// REPEAT 2 - TIME: 3.6401894 s
+// REPEAT 2 - TIME: 4.0505539 s

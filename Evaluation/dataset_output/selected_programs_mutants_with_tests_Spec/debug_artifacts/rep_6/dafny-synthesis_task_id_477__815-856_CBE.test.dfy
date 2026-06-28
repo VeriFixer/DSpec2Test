@@ -32,9 +32,9 @@ method {:testEntry} ToLowercase(s: string) returns (v: string)
 }
 
 method {:test} Test5() {
-var r0 := ToLowercase(" \U{000F}aaa0");
-expect |r0| == |" \U{000F}aaa0"|;
-expect forall i :: 0 <= i < |" \U{000F}aaa0"| ==> if IsUpperCase(" \U{000F}aaa0"[i]) then IsUpperLowerPair(" \U{000F}aaa0"[i], r0[i]) else r0[i] == " \U{000F}aaa0"[i];
+var r0 := ToLowercase("\U{000F}aaa");
+expect |r0| == |"\U{000F}aaa"|;
+expect forall i :: 0 <= i < |"\U{000F}aaa"| ==> if IsUpperCase("\U{000F}aaa"[i]) then IsUpperLowerPair("\U{000F}aaa"[i], r0[i]) else r0[i] == "\U{000F}aaa"[i];
 }
 
-// REPEAT 6 - TIME: 8.6861018 s
+// REPEAT 6 - TIME: 9.116624 s

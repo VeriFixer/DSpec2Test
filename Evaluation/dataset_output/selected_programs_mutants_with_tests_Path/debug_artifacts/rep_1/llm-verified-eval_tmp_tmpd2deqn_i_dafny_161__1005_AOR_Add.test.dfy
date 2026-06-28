@@ -93,4 +93,4 @@ expect !NoLetters("aaaaaaaaaaaaaaaaaaaaY", |"aaaaaaaaaaaaaaaaaaaaY"|) ==> forall
 expect NoLetters("aaaaaaaaaaaaaaaaaaaaY", |"aaaaaaaaaaaaaaaaaaaaY"|) ==> isReverse(r0, "aaaaaaaaaaaaaaaaaaaaY");
 }
 
-// REPEAT 1 - TIME: 20.610118 s
+// REPEAT 1 - TIME: 25.6081078 s

@@ -48,9 +48,9 @@ var r0 := test_prime(59);
 expect r0 == IsPrime(59);
 }
 method {:test} Test14() {
-expect 1 < 60, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := test_prime(60);
-expect r0 == IsPrime(60);
+expect 1 < 76, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := test_prime(76);
+expect r0 == IsPrime(76);
 }
 
-// REPEAT 7 - TIME: 12.664575 s
+// REPEAT 7 - TIME: 12.480514 s

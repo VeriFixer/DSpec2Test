@@ -6,17 +6,17 @@ method {:testEntry} HasOppositeSign(a: int, b: int) returns (result: bool)
   result := a < 0 && b > 0;
 }
 
-method {:test} Test13() {
+method {:test} Test14() {
 var r0 := HasOppositeSign(-5, -4);
 expect r0 <==> (-5 < 0 && -4 > 0) || (-5 > 0 && -4 < 0);
 }
-method {:test} Test14() {
+method {:test} Test15() {
 var r0 := HasOppositeSign(-5, 5);
 expect r0 <==> (-5 < 0 && 5 > 0) || (-5 > 0 && 5 < 0);
 }
-method {:test} Test16() {
+method {:test} Test17() {
 var r0 := HasOppositeSign(5, 5);
 expect r0 <==> (5 < 0 && 5 > 0) || (5 > 0 && 5 < 0);
 }
 
-// REPEAT 5 - TIME: 10.7020084 s
+// REPEAT 5 - TIME: 11.2031738 s

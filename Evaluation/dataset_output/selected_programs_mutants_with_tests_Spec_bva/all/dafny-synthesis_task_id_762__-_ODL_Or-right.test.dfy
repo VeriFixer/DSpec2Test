@@ -39,7 +39,7 @@ var r0 := IsMonthWith30Days(1);
 expect r0 <==> 1 == 4 || 1 == 6 || 1 == 9 || 1 == 11;
 }
 
-// REPEAT 1 - TIME: 14.1170067 s
+// REPEAT 1 - TIME: 19.8981702 s
 
 method {:test} Test27() {
 expect 1 <= 10 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
@@ -47,7 +47,7 @@ var r0 := IsMonthWith30Days(10);
 expect r0 <==> 10 == 4 || 10 == 6 || 10 == 9 || 10 == 11;
 }
 
-// REPEAT 2 - TIME: 15.8984246 s
+// REPEAT 2 - TIME: 22.4808014 s
 
 method {:test} Test28() {
 expect 1 <= 7 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
@@ -55,7 +55,7 @@ var r0 := IsMonthWith30Days(7);
 expect r0 <==> 7 == 4 || 7 == 6 || 7 == 9 || 7 == 11;
 }
 
-// REPEAT 3 - TIME: 17.4905717 s
+// REPEAT 3 - TIME: 24.5196993 s
 
 method {:test} Test29() {
 expect 1 <= 8 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
@@ -63,7 +63,7 @@ var r0 := IsMonthWith30Days(8);
 expect r0 <==> 8 == 4 || 8 == 6 || 8 == 9 || 8 == 11;
 }
 
-// REPEAT 4 - TIME: 18.9674463 s
+// REPEAT 4 - TIME: 26.5359599 s
 
 method {:test} Test30() {
 expect 1 <= 5 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
@@ -71,7 +71,7 @@ var r0 := IsMonthWith30Days(5);
 expect r0 <==> 5 == 4 || 5 == 6 || 5 == 9 || 5 == 11;
 }
 
-// REPEAT 5 - TIME: 20.2762025 s
+// REPEAT 5 - TIME: 28.5825733 s
 
 method {:test} Test31() {
 expect 1 <= 2 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
@@ -79,7 +79,7 @@ var r0 := IsMonthWith30Days(2);
 expect r0 <==> 2 == 4 || 2 == 6 || 2 == 9 || 2 == 11;
 }
 
-// REPEAT 6 - TIME: 21.9011794 s
+// REPEAT 6 - TIME: 30.5364177 s
 
 method {:test} Test32() {
 expect 1 <= 3 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
@@ -87,4 +87,4 @@ var r0 := IsMonthWith30Days(3);
 expect r0 <==> 3 == 4 || 3 == 6 || 3 == 9 || 3 == 11;
 }
 
-// REPEAT 7 - TIME: 23.5637671 s
+// REPEAT 7 - TIME: 32.6009145 s

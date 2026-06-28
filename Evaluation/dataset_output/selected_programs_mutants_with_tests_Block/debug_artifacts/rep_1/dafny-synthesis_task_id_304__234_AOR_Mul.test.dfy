@@ -17,4 +17,4 @@ var r0 := ElementAtIndexAfterRotation(seqint0, 8365, 0);
 expect r0 == seqint0[(0 - 8365 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 1 - TIME: 2.1379703 s
+// REPEAT 1 - TIME: 2.4137195 s

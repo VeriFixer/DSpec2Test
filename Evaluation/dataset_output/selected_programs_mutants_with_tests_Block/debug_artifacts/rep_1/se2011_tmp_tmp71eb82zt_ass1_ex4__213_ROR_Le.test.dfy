@@ -22,4 +22,4 @@ var r0 := Eval(0);
 expect r0 == 0 * 0;
 }
 
-// REPEAT 1 - TIME: 2.7494157 s
+// REPEAT 1 - TIME: 2.5034356 s

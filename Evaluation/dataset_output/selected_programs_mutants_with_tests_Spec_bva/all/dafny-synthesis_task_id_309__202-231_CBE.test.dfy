@@ -59,7 +59,7 @@ expect r0 == 0 || r0 == 100;
 expect r0 >= 0 && r0 >= 100;
 }
 
-// REPEAT 1 - TIME: 10.9546087 s
+// REPEAT 1 - TIME: 13.7927373 s
 
 method {:test} Test20() {
 var r0 := Max(102, 102);
@@ -72,7 +72,7 @@ expect r0 == 101 || r0 == 102;
 expect r0 >= 101 && r0 >= 102;
 }
 
-// REPEAT 2 - TIME: 12.0822582 s
+// REPEAT 2 - TIME: 15.1174153 s
 
 method {:test} Test22() {
 var r0 := Max(103, 103);
@@ -85,7 +85,7 @@ expect r0 == 103 || r0 == 104;
 expect r0 >= 103 && r0 >= 104;
 }
 
-// REPEAT 3 - TIME: 13.1116259 s
+// REPEAT 3 - TIME: 16.4242568 s
 
 method {:test} Test24() {
 var r0 := Max(105, 105);
@@ -98,7 +98,7 @@ expect r0 == 104 || r0 == 105;
 expect r0 >= 104 && r0 >= 105;
 }
 
-// REPEAT 4 - TIME: 14.000458 s
+// REPEAT 4 - TIME: 17.9132811 s
 
 method {:test} Test26() {
 var r0 := Max(106, 106);
@@ -111,7 +111,7 @@ expect r0 == 106 || r0 == 107;
 expect r0 >= 106 && r0 >= 107;
 }
 
-// REPEAT 5 - TIME: 14.8321759 s
+// REPEAT 5 - TIME: 19.220851 s
 
 method {:test} Test28() {
 var r0 := Max(108, 108);
@@ -124,7 +124,7 @@ expect r0 == 107 || r0 == 108;
 expect r0 >= 107 && r0 >= 108;
 }
 
-// REPEAT 6 - TIME: 15.6865656 s
+// REPEAT 6 - TIME: 20.4855062 s
 
 method {:test} Test30() {
 var r0 := Max(109, 109);
@@ -137,7 +137,7 @@ expect r0 == 109 || r0 == 110;
 expect r0 >= 109 && r0 >= 110;
 }
 
-// REPEAT 7 - TIME: 16.7155381 s
+// REPEAT 7 - TIME: 22.017946 s
 
 method {:test} Test32() {
 var r0 := Max(111, 111);
@@ -150,7 +150,7 @@ expect r0 == 110 || r0 == 111;
 expect r0 >= 110 && r0 >= 111;
 }
 
-// REPEAT 8 - TIME: 17.493916 s
+// REPEAT 8 - TIME: 23.1607664 s
 
 method {:test} Test34() {
 var r0 := Max(112, 112);
@@ -163,7 +163,7 @@ expect r0 == 112 || r0 == 113;
 expect r0 >= 112 && r0 >= 113;
 }
 
-// REPEAT 9 - TIME: 18.4025262 s
+// REPEAT 9 - TIME: 24.2616251 s
 
 method {:test} Test36() {
 var r0 := Max(114, 114);
@@ -176,4 +176,4 @@ expect r0 == 113 || r0 == 114;
 expect r0 >= 113 && r0 >= 114;
 }
 
-// REPEAT 10 - TIME: 19.4553741 s
+// REPEAT 10 - TIME: 25.3190323 s

@@ -43,7 +43,7 @@ expect 0 <= r0 < 10;
 expect 12369 % 10 == r0;
 }
 
-// REPEAT 1 - TIME: 6.0639101 s
+// REPEAT 1 - TIME: 8.2314402 s
 
 method {:test} Test8() {
 expect 12370 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -52,7 +52,7 @@ expect 0 <= r0 < 10;
 expect 12370 % 10 == r0;
 }
 
-// REPEAT 2 - TIME: 7.0397667 s
+// REPEAT 2 - TIME: 9.5481872 s
 
 method {:test} Test9() {
 expect 12380 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -61,7 +61,7 @@ expect 0 <= r0 < 10;
 expect 12380 % 10 == r0;
 }
 
-// REPEAT 3 - TIME: 7.7769055 s
+// REPEAT 3 - TIME: 10.4992025 s
 
 method {:test} Test10() {
 expect 12390 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -70,7 +70,7 @@ expect 0 <= r0 < 10;
 expect 12390 % 10 == r0;
 }
 
-// REPEAT 4 - TIME: 8.7917792 s
+// REPEAT 4 - TIME: 11.284304 s
 
 method {:test} Test11() {
 expect 12400 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -79,7 +79,7 @@ expect 0 <= r0 < 10;
 expect 12400 % 10 == r0;
 }
 
-// REPEAT 5 - TIME: 9.6233691 s
+// REPEAT 5 - TIME: 12.3005046 s
 
 method {:test} Test12() {
 expect 12410 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -88,7 +88,7 @@ expect 0 <= r0 < 10;
 expect 12410 % 10 == r0;
 }
 
-// REPEAT 6 - TIME: 10.5171167 s
+// REPEAT 6 - TIME: 13.195458 s
 
 method {:test} Test13() {
 expect 12420 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -97,7 +97,7 @@ expect 0 <= r0 < 10;
 expect 12420 % 10 == r0;
 }
 
-// REPEAT 7 - TIME: 11.359525 s
+// REPEAT 7 - TIME: 14.151145 s
 
 method {:test} Test14() {
 expect 12430 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -106,7 +106,7 @@ expect 0 <= r0 < 10;
 expect 12430 % 10 == r0;
 }
 
-// REPEAT 8 - TIME: 12.0828535 s
+// REPEAT 8 - TIME: 15.1276069 s
 
 method {:test} Test15() {
 expect 12440 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -115,7 +115,7 @@ expect 0 <= r0 < 10;
 expect 12440 % 10 == r0;
 }
 
-// REPEAT 9 - TIME: 12.8429645 s
+// REPEAT 9 - TIME: 16.2983676 s
 
 method {:test} Test16() {
 expect 12450 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -124,4 +124,4 @@ expect 0 <= r0 < 10;
 expect 12450 % 10 == r0;
 }
 
-// REPEAT 10 - TIME: 13.4852265 s
+// REPEAT 10 - TIME: 17.0532004 s

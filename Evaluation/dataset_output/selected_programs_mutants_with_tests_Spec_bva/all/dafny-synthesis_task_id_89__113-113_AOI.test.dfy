@@ -24,7 +24,7 @@ var r0 := ClosestSmaller(101);
 expect r0 + 1 == 101;
 }
 
-// REPEAT 1 - TIME: 5.3320159 s
+// REPEAT 1 - TIME: 7.6222413 s
 
 method {:test} Test7() {
 expect 102 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -32,7 +32,7 @@ var r0 := ClosestSmaller(102);
 expect r0 + 1 == 102;
 }
 
-// REPEAT 2 - TIME: 6.2190903 s
+// REPEAT 2 - TIME: 8.7253886 s
 
 method {:test} Test8() {
 expect 103 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -40,7 +40,7 @@ var r0 := ClosestSmaller(103);
 expect r0 + 1 == 103;
 }
 
-// REPEAT 3 - TIME: 7.054591 s
+// REPEAT 3 - TIME: 9.6544307 s
 
 method {:test} Test9() {
 expect 104 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -48,7 +48,7 @@ var r0 := ClosestSmaller(104);
 expect r0 + 1 == 104;
 }
 
-// REPEAT 4 - TIME: 7.952597 s
+// REPEAT 4 - TIME: 10.5977139 s
 
 method {:test} Test10() {
 expect 105 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -56,7 +56,7 @@ var r0 := ClosestSmaller(105);
 expect r0 + 1 == 105;
 }
 
-// REPEAT 5 - TIME: 8.765134 s
+// REPEAT 5 - TIME: 11.5274757 s
 
 method {:test} Test11() {
 expect 106 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -64,7 +64,7 @@ var r0 := ClosestSmaller(106);
 expect r0 + 1 == 106;
 }
 
-// REPEAT 6 - TIME: 9.3757042 s
+// REPEAT 6 - TIME: 12.5353711 s
 
 method {:test} Test12() {
 expect 107 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -72,7 +72,7 @@ var r0 := ClosestSmaller(107);
 expect r0 + 1 == 107;
 }
 
-// REPEAT 7 - TIME: 9.9814535 s
+// REPEAT 7 - TIME: 13.4582859 s
 
 method {:test} Test13() {
 expect 108 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -80,7 +80,7 @@ var r0 := ClosestSmaller(108);
 expect r0 + 1 == 108;
 }
 
-// REPEAT 8 - TIME: 10.4937154 s
+// REPEAT 8 - TIME: 14.2531677 s
 
 method {:test} Test14() {
 expect 109 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -88,7 +88,7 @@ var r0 := ClosestSmaller(109);
 expect r0 + 1 == 109;
 }
 
-// REPEAT 9 - TIME: 11.0932812 s
+// REPEAT 9 - TIME: 15.0873668 s
 
 method {:test} Test15() {
 expect 110 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -96,4 +96,4 @@ var r0 := ClosestSmaller(110);
 expect r0 + 1 == 110;
 }
 
-// REPEAT 10 - TIME: 11.6147492 s
+// REPEAT 10 - TIME: 15.8856512 s

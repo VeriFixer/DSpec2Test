@@ -40,17 +40,24 @@ method {:testEntry} RollingMax(numbers: seq<int>) returns (result: seq<int>)
 }
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [700, 0, 0, 1235, 1235, 1235, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1236, 0, 6, 0, 0, 4, 0, 0, 0, 0, 0, 8];
+var seqint0 : seq<int> := [5921, 7719];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := max(seqint0);
 expect isMax(r0, seqint0);
 }
 method {:test} Test9() {
-var seqint0 : seq<int> := [4267, 0, 0, 0, 5694, 5694, 5694, 8416];
+var seqint0 : seq<int> := [8279, 6483];
+expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := RollingMax(seqint0);
+expect |r0| == |seqint0|;
+expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
+}
+method {:test} Test10() {
+var seqint0 : seq<int> := [7018, 7019, 0];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := RollingMax(seqint0);
 expect |r0| == |seqint0|;
 expect forall i :: 0 < i < |r0| ==> isMax(r0[i], seqint0[0 .. i + 1]);
 }
 
-// REPEAT 5 - TIME: 9.0261736 s
+// REPEAT 5 - TIME: 9.6761756 s

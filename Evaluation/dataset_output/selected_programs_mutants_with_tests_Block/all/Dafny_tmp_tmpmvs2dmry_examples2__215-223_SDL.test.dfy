@@ -165,7 +165,7 @@ var r0 := exp_by_sqr(0.0, 0);
 expect r0 == exp(0.0, 0);
 }
 
-// REPEAT 1 - TIME: 6.5950097 s
+// REPEAT 1 - TIME: 6.7671733 s
 
 method {:test} Test11() {
 var r0 := add_by_inc(1, 1);
@@ -186,7 +186,7 @@ var r0 := exp_by_sqr(39.0, 1239);
 expect r0 == exp(39.0, 1239);
 }
 
-// REPEAT 2 - TIME: 11.1347156 s
+// REPEAT 2 - TIME: 11.4237016 s
 
 method {:test} Test20() {
 var r0 := add_by_inc(2, 2);
@@ -207,7 +207,7 @@ var r0 := exp_by_sqr(79.0/2.0, 1240);
 expect r0 == exp(79.0/2.0, 1240);
 }
 
-// REPEAT 3 - TIME: 14.7613891 s
+// REPEAT 3 - TIME: 15.3190775 s
 
 method {:test} Test29() {
 var r0 := add_by_inc(3, 3);
@@ -228,7 +228,7 @@ var r0 := exp_by_sqr(40.0, 1241);
 expect r0 == exp(40.0, 1241);
 }
 
-// REPEAT 4 - TIME: 18.1609001 s
+// REPEAT 4 - TIME: 19.3503112 s
 
 method {:test} Test38() {
 var r0 := add_by_inc(4, 4);
@@ -249,15 +249,15 @@ var r0 := exp_by_sqr(81.0/2.0, 1242);
 expect r0 == exp(81.0/2.0, 1242);
 }
 
-// REPEAT 5 - TIME: 21.7675253 s
+// REPEAT 5 - TIME: 23.0654721 s
 
 method {:test} Test47() {
 var r0 := add_by_inc(5, 5);
 expect r0 == 5 + 5;
 }
 method {:test} Test48() {
-var r0 := Product(6, 5);
-expect r0 == 6 * 5;
+var r0 := Product(27, 5);
+expect r0 == 27 * 5;
 }
 method {:test} Test50() {
 expect 18761 > 0 && 4955 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -270,15 +270,15 @@ var r0 := exp_by_sqr(41.0, 1243);
 expect r0 == exp(41.0, 1243);
 }
 
-// REPEAT 6 - TIME: 24.9359201 s
+// REPEAT 6 - TIME: 26.6702229 s
 
 method {:test} Test56() {
 var r0 := add_by_inc(6, 6);
 expect r0 == 6 + 6;
 }
 method {:test} Test57() {
-var r0 := Product(7, 6);
-expect r0 == 7 * 6;
+var r0 := Product(28, 6);
+expect r0 == 28 * 6;
 }
 method {:test} Test59() {
 expect 18762 > 0 && 4956 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -291,15 +291,19 @@ var r0 := exp_by_sqr(83.0/2.0, 1244);
 expect r0 == exp(83.0/2.0, 1244);
 }
 
-// REPEAT 7 - TIME: 28.8046127 s
+// REPEAT 7 - TIME: 31.1840217 s
 
 method {:test} Test65() {
 var r0 := add_by_inc(7, 7);
 expect r0 == 7 + 7;
 }
 method {:test} Test66() {
-var r0 := Product(8, 7);
-expect r0 == 8 * 7;
+var r0 := Product(29, 8952);
+expect r0 == 29 * 8952;
+}
+method {:test} Test67() {
+var r0 := Product(29, 7);
+expect r0 == 29 * 7;
 }
 method {:test} Test68() {
 expect 18763 > 0 && 4957 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -312,15 +316,15 @@ var r0 := exp_by_sqr(42.0, 1245);
 expect r0 == exp(42.0, 1245);
 }
 
-// REPEAT 8 - TIME: 32.5016921 s
+// REPEAT 8 - TIME: 34.9024887 s
 
 method {:test} Test74() {
 var r0 := add_by_inc(8, 8);
 expect r0 == 8 + 8;
 }
 method {:test} Test75() {
-var r0 := Product(9, 8);
-expect r0 == 9 * 8;
+var r0 := Product(30, 8953);
+expect r0 == 30 * 8953;
 }
 method {:test} Test77() {
 expect 18764 > 0 && 4958 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -333,15 +337,15 @@ var r0 := exp_by_sqr(85.0/2.0, 1246);
 expect r0 == exp(85.0/2.0, 1246);
 }
 
-// REPEAT 9 - TIME: 35.9279692 s
+// REPEAT 9 - TIME: 39.0903614 s
 
 method {:test} Test83() {
 var r0 := add_by_inc(9, 9);
 expect r0 == 9 + 9;
 }
 method {:test} Test84() {
-var r0 := Product(10, 9);
-expect r0 == 10 * 9;
+var r0 := Product(31, 8954);
+expect r0 == 31 * 8954;
 }
 method {:test} Test86() {
 expect 18765 > 0 && 4959 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -354,4 +358,4 @@ var r0 := exp_by_sqr(43.0, 1247);
 expect r0 == exp(43.0, 1247);
 }
 
-// REPEAT 10 - TIME: 39.8189871 s
+// REPEAT 10 - TIME: 43.42588 s

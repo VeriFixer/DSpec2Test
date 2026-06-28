@@ -22,7 +22,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(27);
 expect r0 == 27 * (2 * 27 + 1) * (24 * 27 * 27 * 27 - 12 * 27 * 27 - 14 * 27 + 7) / 15;
 }
 
-// REPEAT 1 - TIME: 5.8290416 s
+// REPEAT 1 - TIME: 5.9160946 s
 
 method {:test} Test1() {
 expect 28 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -30,7 +30,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(28);
 expect r0 == 28 * (2 * 28 + 1) * (24 * 28 * 28 * 28 - 12 * 28 * 28 - 14 * 28 + 7) / 15;
 }
 
-// REPEAT 2 - TIME: 6.884168 s
+// REPEAT 2 - TIME: 6.9704487 s
 
 method {:test} Test2() {
 expect 48 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -38,7 +38,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(48);
 expect r0 == 48 * (2 * 48 + 1) * (24 * 48 * 48 * 48 - 12 * 48 * 48 - 14 * 48 + 7) / 15;
 }
 
-// REPEAT 3 - TIME: 8.1948068 s
+// REPEAT 3 - TIME: 8.397766 s
 
 method {:test} Test3() {
 expect 49 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -46,7 +46,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(49);
 expect r0 == 49 * (2 * 49 + 1) * (24 * 49 * 49 * 49 - 12 * 49 * 49 - 14 * 49 + 7) / 15;
 }
 
-// REPEAT 4 - TIME: 9.171204 s
+// REPEAT 4 - TIME: 9.4358962 s
 
 method {:test} Test4() {
 expect 50 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -54,7 +54,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(50);
 expect r0 == 50 * (2 * 50 + 1) * (24 * 50 * 50 * 50 - 12 * 50 * 50 - 14 * 50 + 7) / 15;
 }
 
-// REPEAT 5 - TIME: 10.135229 s
+// REPEAT 5 - TIME: 10.7222935 s
 
 method {:test} Test5() {
 expect 51 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -62,7 +62,7 @@ var r0 := SumOfFourthPowerOfOddNumbers(51);
 expect r0 == 51 * (2 * 51 + 1) * (24 * 51 * 51 * 51 - 12 * 51 * 51 - 14 * 51 + 7) / 15;
 }
 
-// REPEAT 6 - TIME: 10.8971499 s
+// REPEAT 6 - TIME: 11.6714408 s
 
 method {:test} Test6() {
 expect 52 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -70,4 +70,4 @@ var r0 := SumOfFourthPowerOfOddNumbers(52);
 expect r0 == 52 * (2 * 52 + 1) * (24 * 52 * 52 * 52 - 12 * 52 * 52 - 14 * 52 + 7) / 15;
 }
 
-// REPEAT 7 - TIME: 11.5454033 s
+// REPEAT 7 - TIME: 12.5156942 s

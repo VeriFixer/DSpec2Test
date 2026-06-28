@@ -24,4 +24,4 @@ var r0 := DifferenceSumCubesAndSumNumbers(63);
 expect r0 == 63 * 63 * (63 + 1) * (63 + 1) / 4 - 63 * (63 + 1) / 2;
 }
 
-// REPEAT 1 - TIME: 5.9122467 s
+// REPEAT 1 - TIME: 7.2280387 s

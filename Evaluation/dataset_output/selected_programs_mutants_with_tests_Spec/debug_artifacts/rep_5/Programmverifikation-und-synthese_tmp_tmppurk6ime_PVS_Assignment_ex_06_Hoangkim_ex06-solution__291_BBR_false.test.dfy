@@ -48,4 +48,4 @@ expect 16758 > 0 && 8379 > 0, "If this check fails at runtime, the test does not
 var r0 := gcdI(16758, 8379);
 }
 
-// REPEAT 5 - TIME: 7.5883529 s
+// REPEAT 5 - TIME: 6.9745611 s

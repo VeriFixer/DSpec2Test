@@ -49,7 +49,7 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 1 - TIME: 3.9664717 s
+// REPEAT 1 - TIME: 4.0117692 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [0, 0];
@@ -61,7 +61,7 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 2 - TIME: 5.4674712 s
+// REPEAT 2 - TIME: 5.9977816 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, -75, 0, 0, -75];
@@ -73,7 +73,7 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 3 - TIME: 7.1727765 s
+// REPEAT 3 - TIME: 8.0332754 s
 
 method {:test} Test3() {
 var seqint0 : seq<int> := [-30, 0, 0, 0, 0, 0, 43];
@@ -85,7 +85,7 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 4 - TIME: 8.7130609 s
+// REPEAT 4 - TIME: 9.5957833 s
 
 method {:test} Test4() {
 var seqint0 : seq<int> := [-62, -1];
@@ -97,7 +97,7 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 5 - TIME: 10.0990719 s
+// REPEAT 5 - TIME: 10.8135495 s
 
 method {:test} Test5() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 33];
@@ -109,7 +109,7 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 6 - TIME: 11.371887 s
+// REPEAT 6 - TIME: 11.8789508 s
 
 method {:test} Test6() {
 var seqint0 : seq<int> := [33, 0, 0];
@@ -121,7 +121,7 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 7 - TIME: 12.6878931 s
+// REPEAT 7 - TIME: 13.0229009 s
 
 method {:test} Test7() {
 var seqint0 : seq<int> := [-19, 0, 0, 0, 0, 0, 0, 0];
@@ -133,7 +133,7 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 8 - TIME: 13.8781995 s
+// REPEAT 8 - TIME: 14.2057078 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [25, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25];
@@ -145,7 +145,7 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 9 - TIME: 15.1329708 s
+// REPEAT 9 - TIME: 15.4869896 s
 
 method {:test} Test9() {
 var seqint0 : seq<int> := [-17, 33, 62, 0, 0, 0, 0, 0, 68, 0, 0];
@@ -157,4 +157,4 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 10 - TIME: 16.3367368 s
+// REPEAT 10 - TIME: 17.0152458 s

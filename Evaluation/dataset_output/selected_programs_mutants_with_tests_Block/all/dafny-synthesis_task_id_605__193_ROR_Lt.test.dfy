@@ -30,7 +30,7 @@ var r0 := IsPrime(4);
 expect r0 <==> forall k :: 2 <= k < 4 ==> 4 % k != 0;
 }
 
-// REPEAT 1 - TIME: 3.2978644 s
+// REPEAT 1 - TIME: 2.9955555 s
 
 method {:test} Test2() {
 expect 7 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -43,7 +43,7 @@ var r0 := IsPrime(6);
 expect r0 <==> forall k :: 2 <= k < 6 ==> 6 % k != 0;
 }
 
-// REPEAT 2 - TIME: 4.5815051 s
+// REPEAT 2 - TIME: 4.0158033 s
 
 method {:test} Test4() {
 expect 2293 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -56,7 +56,7 @@ var r0 := IsPrime(8);
 expect r0 <==> forall k :: 2 <= k < 8 ==> 8 % k != 0;
 }
 
-// REPEAT 3 - TIME: 5.8264041 s
+// REPEAT 3 - TIME: 5.0691196 s
 
 method {:test} Test6() {
 expect 2295 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -69,7 +69,7 @@ var r0 := IsPrime(2294);
 expect r0 <==> forall k :: 2 <= k < 2294 ==> 2294 % k != 0;
 }
 
-// REPEAT 4 - TIME: 7.0388603 s
+// REPEAT 4 - TIME: 6.4102274 s
 
 method {:test} Test8() {
 expect 2297 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -82,7 +82,7 @@ var r0 := IsPrime(2296);
 expect r0 <==> forall k :: 2 <= k < 2296 ==> 2296 % k != 0;
 }
 
-// REPEAT 5 - TIME: 8.1911081 s
+// REPEAT 5 - TIME: 7.8068477 s
 
 method {:test} Test10() {
 expect 2299 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -95,7 +95,7 @@ var r0 := IsPrime(2298);
 expect r0 <==> forall k :: 2 <= k < 2298 ==> 2298 % k != 0;
 }
 
-// REPEAT 6 - TIME: 9.2151936 s
+// REPEAT 6 - TIME: 9.1681744 s
 
 method {:test} Test12() {
 expect 2301 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -108,7 +108,7 @@ var r0 := IsPrime(2300);
 expect r0 <==> forall k :: 2 <= k < 2300 ==> 2300 % k != 0;
 }
 
-// REPEAT 7 - TIME: 10.1784504 s
+// REPEAT 7 - TIME: 10.4173337 s
 
 method {:test} Test14() {
 expect 2303 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -121,7 +121,7 @@ var r0 := IsPrime(2302);
 expect r0 <==> forall k :: 2 <= k < 2302 ==> 2302 % k != 0;
 }
 
-// REPEAT 8 - TIME: 11.1528529 s
+// REPEAT 8 - TIME: 11.514101 s
 
 method {:test} Test16() {
 expect 2305 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -134,7 +134,7 @@ var r0 := IsPrime(2304);
 expect r0 <==> forall k :: 2 <= k < 2304 ==> 2304 % k != 0;
 }
 
-// REPEAT 9 - TIME: 12.2752318 s
+// REPEAT 9 - TIME: 12.5409437 s
 
 method {:test} Test18() {
 expect 2307 >= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -147,4 +147,4 @@ var r0 := IsPrime(2306);
 expect r0 <==> forall k :: 2 <= k < 2306 ==> 2306 % k != 0;
 }
 
-// REPEAT 10 - TIME: 13.2666586 s
+// REPEAT 10 - TIME: 13.5486631 s

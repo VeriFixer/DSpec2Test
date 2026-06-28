@@ -44,4 +44,4 @@ var r0 := IsPrime(6);
 expect r0 <==> forall k :: 2 <= k < 6 ==> 6 % k != 0;
 }
 
-// REPEAT 1 - TIME: 9.28745 s
+// REPEAT 1 - TIME: 12.6577253 s

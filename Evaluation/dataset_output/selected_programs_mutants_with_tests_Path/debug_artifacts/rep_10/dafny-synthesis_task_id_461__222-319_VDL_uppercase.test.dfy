@@ -12,20 +12,20 @@ method {:testEntry} CountUppercase(s: string) returns (count: int)
 }
 
 method {:test} Test36() {
-var r0 := CountUppercase("aaaaaBaaaaaaa\U{0001}K\0\U{0002}\U{0003}aaaa\U{0004}\U{0005}");
+var r0 := CountUppercase("aaaaaaaaaaaBaaaaGaaa\0a");
 expect r0 >= 0;
 }
 method {:test} Test37() {
-var r0 := CountUppercase("aaaaaaaaaaaaaG aa\0aaa\U{0001}aa");
+var r0 := CountUppercase("\U{0002}aaaaaaaaaaa\0aa aaaa\U{0001}aa");
 expect r0 >= 0;
 }
 method {:test} Test38() {
-var r0 := CountUppercase("aPaaaaaaaaaaaaaaaaa\0a\U{0001}a\U{0004}\U{0003}\U{0002}a");
+var r0 := CountUppercase("aaaaaGaaaaaaaaaa\0aaaa\U{0001}");
 expect r0 >= 0;
 }
 method {:test} Test39() {
-var r0 := CountUppercase("aBaaaaaaaaaaaaaaaaaaa\U{0001}a\U{0003}aa\0\U{0002}");
+var r0 := CountUppercase("aaaaaaaaaaaaaaaaaaC\0");
 expect r0 >= 0;
 }
 
-// REPEAT 10 - TIME: 43.0114999 s
+// REPEAT 10 - TIME: 54.1049633 s

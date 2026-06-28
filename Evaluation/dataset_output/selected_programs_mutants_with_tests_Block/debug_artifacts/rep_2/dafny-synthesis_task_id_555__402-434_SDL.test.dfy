@@ -22,4 +22,4 @@ var r0 := DifferenceSumCubesAndSumNumbers(1);
 expect r0 == 1 * 1 * (1 + 1) * (1 + 1) / 4 - 1 * (1 + 1) / 2;
 }
 
-// REPEAT 2 - TIME: 3.4528047 s
+// REPEAT 2 - TIME: 3.4971201 s

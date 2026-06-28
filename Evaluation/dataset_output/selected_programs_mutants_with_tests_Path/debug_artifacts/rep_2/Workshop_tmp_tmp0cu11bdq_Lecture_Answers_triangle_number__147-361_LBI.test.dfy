@@ -23,4 +23,4 @@ var r0 := TriangleNumber(1);
 expect r0 == 1 * (1 + 1) / 2;
 }
 
-// REPEAT 2 - TIME: 8.1602675 s
+// REPEAT 2 - TIME: 7.5049806 s

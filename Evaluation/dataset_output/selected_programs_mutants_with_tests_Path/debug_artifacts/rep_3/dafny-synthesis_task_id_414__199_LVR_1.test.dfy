@@ -16,16 +16,16 @@ method {:testEntry} AnyValueExists(seq1: seq<int>, seq2: seq<int>) returns (resu
 }
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [0, 6, 0, 0];
-var seqint1 : seq<int> := [8, 2];
+var seqint0 : seq<int> := [0, 0, 8];
+var seqint1 : seq<int> := [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10];
 var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 method {:test} Test5() {
-var seqint0 : seq<int> := [8, 10, 6, 2];
-var seqint1 : seq<int> := [12, 2];
+var seqint0 : seq<int> := [14, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2];
+var seqint1 : seq<int> := [0, 0, 0, 6, 0, 0, 0, 10, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12];
 var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 3 - TIME: 34.4510762 s
+// REPEAT 3 - TIME: 45.9242579 s

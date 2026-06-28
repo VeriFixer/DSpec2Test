@@ -44,58 +44,58 @@ method {:test} Test5() {
 var r0 := Pow(5853, 1144);
 }
 
-// REPEAT 1 - TIME: 7.1472893 s
+// REPEAT 1 - TIME: 10.0694172 s
 
 method {:test} Test7() {
 var r0 := Pow(5854, 8101);
 }
 
-// REPEAT 2 - TIME: 8.1102068 s
+// REPEAT 2 - TIME: 11.1187289 s
 
 method {:test} Test8() {
 var r0 := Pow(5855, 8102);
 }
 
-// REPEAT 3 - TIME: 8.8556351 s
+// REPEAT 3 - TIME: 12.269264 s
 
 method {:test} Test9() {
 var r0 := Pow(5856, 8103);
 }
 
-// REPEAT 4 - TIME: 9.7803165 s
+// REPEAT 4 - TIME: 13.3867288 s
 
 method {:test} Test10() {
 var r0 := Pow(5857, 8104);
 }
 
-// REPEAT 5 - TIME: 10.6331197 s
+// REPEAT 5 - TIME: 14.6652286 s
 
 method {:test} Test11() {
 var r0 := Pow(5858, 8105);
 }
 
-// REPEAT 6 - TIME: 11.5138483 s
+// REPEAT 6 - TIME: 15.7940346 s
 
 method {:test} Test12() {
 var r0 := Pow(5859, 8106);
 }
 
-// REPEAT 7 - TIME: 12.3414705 s
+// REPEAT 7 - TIME: 16.9443971 s
 
 method {:test} Test13() {
 var r0 := Pow(5860, 8107);
 }
 
-// REPEAT 8 - TIME: 13.1064201 s
+// REPEAT 8 - TIME: 17.8427189 s
 
 method {:test} Test14() {
 var r0 := Pow(5861, 8108);
 }
 
-// REPEAT 9 - TIME: 13.861369 s
+// REPEAT 9 - TIME: 18.7918556 s
 
 method {:test} Test15() {
 var r0 := Pow(5862, 8109);
 }
 
-// REPEAT 10 - TIME: 14.4832339 s
+// REPEAT 10 - TIME: 19.6923654 s

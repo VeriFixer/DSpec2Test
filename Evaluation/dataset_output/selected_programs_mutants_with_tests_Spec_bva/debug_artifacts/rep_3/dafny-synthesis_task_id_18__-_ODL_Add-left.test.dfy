@@ -20,10 +20,10 @@ method {:testEntry} RemoveChars(s1: string, s2: string) returns (v: string)
 }
 
 method {:test} Test14() {
-var r0 := RemoveChars("a\0a\U{0002}aaaa\U{0002}aaaaaaaaaaaaaaaaaaa\U{0002}", "a\0a");
-expect |r0| <= |"a\0a\U{0002}aaaa\U{0002}aaaaaaaaaaaaaaaaaaa\U{0002}"|;
-expect forall i :: 0 <= i < |r0| ==> r0[i] in "a\0a\U{0002}aaaa\U{0002}aaaaaaaaaaaaaaaaaaa\U{0002}" && !(r0[i] in "a\0a");
-expect forall i :: 0 <= i < |"a\0a\U{0002}aaaa\U{0002}aaaaaaaaaaaaaaaaaaa\U{0002}"| ==> "a\0a\U{0002}aaaa\U{0002}aaaaaaaaaaaaaaaaaaa\U{0002}"[i] in "a\0a" || "a\0a\U{0002}aaaa\U{0002}aaaaaaaaaaaaaaaaaaa\U{0002}"[i] in r0;
+var r0 := RemoveChars("\U{0004}\0a\0", "\U{0002}\0\U{0004}");
+expect |r0| <= |"\U{0004}\0a\0"|;
+expect forall i :: 0 <= i < |r0| ==> r0[i] in "\U{0004}\0a\0" && !(r0[i] in "\U{0002}\0\U{0004}");
+expect forall i :: 0 <= i < |"\U{0004}\0a\0"| ==> "\U{0004}\0a\0"[i] in "\U{0002}\0\U{0004}" || "\U{0004}\0a\0"[i] in r0;
 }
 
-// REPEAT 3 - TIME: 9.9057154 s
+// REPEAT 3 - TIME: 12.8657095 s

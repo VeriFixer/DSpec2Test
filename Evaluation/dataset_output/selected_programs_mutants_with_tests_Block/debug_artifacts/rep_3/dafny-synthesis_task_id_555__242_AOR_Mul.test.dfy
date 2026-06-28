@@ -18,9 +18,9 @@ method {:testEntry} DifferenceSumCubesAndSumNumbers(n: int) returns (diff: int)
 }
 
 method {:test} Test2() {
-expect 18 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(18);
-expect r0 == 18 * 18 * (18 + 1) * (18 + 1) / 4 - 18 * (18 + 1) / 2;
+expect 2 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(2);
+expect r0 == 2 * 2 * (2 + 1) * (2 + 1) / 4 - 2 * (2 + 1) / 2;
 }
 
-// REPEAT 3 - TIME: 5.4778457 s
+// REPEAT 3 - TIME: 4.6737897 s

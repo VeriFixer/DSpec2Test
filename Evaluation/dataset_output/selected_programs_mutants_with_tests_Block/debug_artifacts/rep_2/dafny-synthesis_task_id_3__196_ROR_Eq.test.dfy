@@ -29,4 +29,4 @@ var r0 := IsNonPrime(6);
 expect r0 <==> exists k :: 2 <= k < 6 && 6 % k == 0;
 }
 
-// REPEAT 2 - TIME: 3.9920525 s
+// REPEAT 2 - TIME: 4.1569271 s

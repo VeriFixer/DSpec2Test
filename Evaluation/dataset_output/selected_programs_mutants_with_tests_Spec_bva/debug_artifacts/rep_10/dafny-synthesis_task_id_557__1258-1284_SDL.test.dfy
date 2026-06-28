@@ -58,4 +58,4 @@ expect |r0| == |"\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"|;
 expect forall i :: 0 <= i < |"\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"| ==> if IsLowerCase("\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"[i]) then IsLowerUpperPair("\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"[i], r0[i]) else if IsUpperCase("\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"[i]) then IsUpperLowerPair("\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"[i], r0[i]) else r0[i] == "\U{0014}?aaa\U{0003}a(a\U{0019}aaa\U{0007}"[i];
 }
 
-// REPEAT 10 - TIME: 16.153638 s
+// REPEAT 10 - TIME: 20.4225817 s

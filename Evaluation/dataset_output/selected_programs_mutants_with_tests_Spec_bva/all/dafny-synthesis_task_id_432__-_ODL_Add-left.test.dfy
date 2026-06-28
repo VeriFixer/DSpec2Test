@@ -34,7 +34,7 @@ var r0 := MedianLength(1, 199);
 expect r0 == (1 + 199) / 2;
 }
 
-// REPEAT 1 - TIME: 7.0652622 s
+// REPEAT 1 - TIME: 9.0324875 s
 
 method {:test} Test9() {
 expect 2476 > 0 && 200 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -42,7 +42,7 @@ var r0 := MedianLength(2476, 200);
 expect r0 == (2476 + 200) / 2;
 }
 
-// REPEAT 2 - TIME: 7.967834 s
+// REPEAT 2 - TIME: 9.970628 s
 
 method {:test} Test10() {
 expect 2478 > 0 && 202 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -50,7 +50,7 @@ var r0 := MedianLength(2478, 202);
 expect r0 == (2478 + 202) / 2;
 }
 
-// REPEAT 3 - TIME: 8.687861 s
+// REPEAT 3 - TIME: 10.8487784 s
 
 method {:test} Test11() {
 expect 2480 > 0 && 204 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -58,7 +58,7 @@ var r0 := MedianLength(2480, 204);
 expect r0 == (2480 + 204) / 2;
 }
 
-// REPEAT 4 - TIME: 9.574265 s
+// REPEAT 4 - TIME: 11.7147043 s
 
 method {:test} Test12() {
 expect 2482 > 0 && 206 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -66,7 +66,7 @@ var r0 := MedianLength(2482, 206);
 expect r0 == (2482 + 206) / 2;
 }
 
-// REPEAT 5 - TIME: 10.2996851 s
+// REPEAT 5 - TIME: 12.4979042 s
 
 method {:test} Test13() {
 expect 2484 > 0 && 208 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -74,7 +74,7 @@ var r0 := MedianLength(2484, 208);
 expect r0 == (2484 + 208) / 2;
 }
 
-// REPEAT 6 - TIME: 10.9843439 s
+// REPEAT 6 - TIME: 13.5621442 s
 
 method {:test} Test14() {
 expect 2486 > 0 && 210 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -82,7 +82,7 @@ var r0 := MedianLength(2486, 210);
 expect r0 == (2486 + 210) / 2;
 }
 
-// REPEAT 7 - TIME: 11.790689 s
+// REPEAT 7 - TIME: 14.4981027 s
 
 method {:test} Test15() {
 expect 2488 > 0 && 212 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -90,7 +90,7 @@ var r0 := MedianLength(2488, 212);
 expect r0 == (2488 + 212) / 2;
 }
 
-// REPEAT 8 - TIME: 12.4875416 s
+// REPEAT 8 - TIME: 15.4578447 s
 
 method {:test} Test16() {
 expect 2490 > 0 && 214 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -98,7 +98,7 @@ var r0 := MedianLength(2490, 214);
 expect r0 == (2490 + 214) / 2;
 }
 
-// REPEAT 9 - TIME: 13.2447671 s
+// REPEAT 9 - TIME: 16.5571953 s
 
 method {:test} Test17() {
 expect 2491 > 0 && 215 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -106,4 +106,4 @@ var r0 := MedianLength(2491, 215);
 expect r0 == (2491 + 215) / 2;
 }
 
-// REPEAT 10 - TIME: 13.9638517 s
+// REPEAT 10 - TIME: 17.5407263 s

@@ -23,67 +23,67 @@ var r0 := Cube(1797);
 expect r0 == 1797 * 1797 * 1797;
 }
 
-// REPEAT 1 - TIME: 1.8158191 s
+// REPEAT 1 - TIME: 2.0296107 s
 
 method {:test} Test1() {
 var r0 := Cube(9517);
 expect r0 == 9517 * 9517 * 9517;
 }
 
-// REPEAT 2 - TIME: 2.5111695 s
+// REPEAT 2 - TIME: 2.87859 s
 
 method {:test} Test2() {
 var r0 := Cube(17237);
 expect r0 == 17237 * 17237 * 17237;
 }
 
-// REPEAT 3 - TIME: 3.213311 s
+// REPEAT 3 - TIME: 3.5317855 s
 
 method {:test} Test3() {
-var r0 := Cube(24957);
-expect r0 == 24957 * 24957 * 24957;
+var r0 := Cube(17238);
+expect r0 == 17238 * 17238 * 17238;
 }
 
-// REPEAT 4 - TIME: 3.7826962 s
+// REPEAT 4 - TIME: 4.2207319 s
 
 method {:test} Test4() {
-var r0 := Cube(32677);
-expect r0 == 32677 * 32677 * 32677;
+var r0 := Cube(24958);
+expect r0 == 24958 * 24958 * 24958;
 }
 
-// REPEAT 5 - TIME: 4.4008444 s
+// REPEAT 5 - TIME: 4.8140572 s
 
 method {:test} Test5() {
-var r0 := Cube(40397);
-expect r0 == 40397 * 40397 * 40397;
+var r0 := Cube(32678);
+expect r0 == 32678 * 32678 * 32678;
 }
 
-// REPEAT 6 - TIME: 5.0852267 s
+// REPEAT 6 - TIME: 5.3859274 s
 
 method {:test} Test6() {
-var r0 := Cube(40398);
-expect r0 == 40398 * 40398 * 40398;
+var r0 := Cube(32679);
+expect r0 == 32679 * 32679 * 32679;
 }
 
-// REPEAT 7 - TIME: 5.6368373 s
+// REPEAT 7 - TIME: 6.0300236 s
 
 method {:test} Test7() {
-var r0 := Cube(40399);
-expect r0 == 40399 * 40399 * 40399;
+var r0 := Cube(32680);
+expect r0 == 32680 * 32680 * 32680;
 }
 
-// REPEAT 8 - TIME: 6.1381587 s
+// REPEAT 8 - TIME: 6.5579961 s
 
 method {:test} Test8() {
-var r0 := Cube(40400);
-expect r0 == 40400 * 40400 * 40400;
+var r0 := Cube(32681);
+expect r0 == 32681 * 32681 * 32681;
 }
 
-// REPEAT 9 - TIME: 6.6629957 s
+// REPEAT 9 - TIME: 7.0870541 s
 
 method {:test} Test9() {
-var r0 := Cube(48120);
-expect r0 == 48120 * 48120 * 48120;
+var r0 := Cube(40401);
+expect r0 == 40401 * 40401 * 40401;
 }
 
-// REPEAT 10 - TIME: 7.2080508 s
+// REPEAT 10 - TIME: 7.8325091 s

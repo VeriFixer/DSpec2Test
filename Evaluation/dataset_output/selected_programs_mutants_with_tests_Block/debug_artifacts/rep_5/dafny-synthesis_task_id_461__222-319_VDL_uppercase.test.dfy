@@ -12,8 +12,8 @@ method {:testEntry} CountUppercase(s: string) returns (count: int)
 }
 
 method {:test} Test4() {
-var r0 := CountUppercase("aaaaaaaaaaaaaaaaaaaD");
+var r0 := CountUppercase("a\0aGa");
 expect r0 >= 0;
 }
 
-// REPEAT 5 - TIME: 6.2836194 s
+// REPEAT 5 - TIME: 6.2903567 s

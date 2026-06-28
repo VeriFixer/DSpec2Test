@@ -8,9 +8,9 @@ method {:testEntry} MonthHas31Days(month: int) returns (result: bool)
 }
 
 method {:test} Test2() {
-expect 1 <= 6 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := MonthHas31Days(6);
-expect r0 <==> 6 in {1, 3, 5, 7, 8, 10, 12};
+expect 1 <= 12 <= 12, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := MonthHas31Days(12);
+expect r0 <==> 12 in {1, 3, 5, 7, 8, 10, 12};
 }
 
-// REPEAT 3 - TIME: 3.6301735 s
+// REPEAT 3 - TIME: 3.7965269 s

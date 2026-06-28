@@ -20,4 +20,4 @@ var r0, r1 := DoubleQuadruple(100);
 expect r0 == 2 * 100 && r1 == 4 * 100;
 }
 
-// REPEAT 1 - TIME: 6.481193 s
+// REPEAT 1 - TIME: 7.4070885 s

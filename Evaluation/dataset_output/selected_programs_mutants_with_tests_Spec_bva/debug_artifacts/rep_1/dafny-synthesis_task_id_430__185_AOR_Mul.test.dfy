@@ -54,4 +54,4 @@ var r0 := ParabolaDirectrix(1.0, 0.0, 101.0);
 expect r0 == 101.0 - 1.0 / (4.0 * 1.0);
 }
 
-// REPEAT 1 - TIME: 8.1841969 s
+// REPEAT 1 - TIME: 9.6681208 s

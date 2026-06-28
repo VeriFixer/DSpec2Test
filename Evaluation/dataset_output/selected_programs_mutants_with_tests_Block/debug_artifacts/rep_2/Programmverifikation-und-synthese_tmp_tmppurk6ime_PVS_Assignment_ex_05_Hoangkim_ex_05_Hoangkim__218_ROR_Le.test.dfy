@@ -97,9 +97,9 @@ var r0 := gcdI(38011, 18387);
 expect r0 == gcd(38011, 18387);
 }
 method {:test} Test7() {
-expect 42628 > 0 && 18387 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := gcdI(42628, 18387);
-expect r0 == gcd(42628, 18387);
+expect 39212 > 0 && 18387 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := gcdI(39212, 18387);
+expect r0 == gcd(39212, 18387);
 }
 
-// REPEAT 2 - TIME: 7.987973 s
+// REPEAT 2 - TIME: 8.5160551 s

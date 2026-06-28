@@ -57,4 +57,4 @@ expect r0 ==> exists i, j :: 0 <= i < j < |"aaaaa\0\0"| && "aaaaa\0\0"[i] == "aa
 expect !r0 ==> forall i, j :: 0 <= i < j < |"aaaaa\0\0"| ==> "aaaaa\0\0"[i] != "aaaaa\0\0"[j];
 }
 
-// REPEAT 1 - TIME: 11.1925149 s
+// REPEAT 1 - TIME: 14.7928272 s

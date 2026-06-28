@@ -23,14 +23,14 @@ expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}"| && 0 <= j < |"\U{0001}"| ==> 
 expect !r0 ==> |"\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}"| && 0 <= j < |"\U{0001}"| && i != j && "\U{0001}"[i] != "\U{0001}"[j];
 }
 method {:test} Test10() {
-var r0 := AllCharactersSame("\U{0001}aaaaaaaaa");
-expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}aaaaaaaaa"| && 0 <= j < |"\U{0001}aaaaaaaaa"| ==> "\U{0001}aaaaaaaaa"[i] == "\U{0001}aaaaaaaaa"[j];
-expect !r0 ==> |"\U{0001}aaaaaaaaa"| > 1 && exists i, j :: 0 <= i < |"\U{0001}aaaaaaaaa"| && 0 <= j < |"\U{0001}aaaaaaaaa"| && i != j && "\U{0001}aaaaaaaaa"[i] != "\U{0001}aaaaaaaaa"[j];
+var r0 := AllCharactersSame("\U{0001}a\U{0001}");
+expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}a\U{0001}"| && 0 <= j < |"\U{0001}a\U{0001}"| ==> "\U{0001}a\U{0001}"[i] == "\U{0001}a\U{0001}"[j];
+expect !r0 ==> |"\U{0001}a\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}a\U{0001}"| && 0 <= j < |"\U{0001}a\U{0001}"| && i != j && "\U{0001}a\U{0001}"[i] != "\U{0001}a\U{0001}"[j];
 }
 method {:test} Test11() {
-var r0 := AllCharactersSame("\U{0001}aaaa\U{0003}aaaaaaaaa\U{0001}a\U{0001}");
-expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}aaaa\U{0003}aaaaaaaaa\U{0001}a\U{0001}"| && 0 <= j < |"\U{0001}aaaa\U{0003}aaaaaaaaa\U{0001}a\U{0001}"| ==> "\U{0001}aaaa\U{0003}aaaaaaaaa\U{0001}a\U{0001}"[i] == "\U{0001}aaaa\U{0003}aaaaaaaaa\U{0001}a\U{0001}"[j];
-expect !r0 ==> |"\U{0001}aaaa\U{0003}aaaaaaaaa\U{0001}a\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}aaaa\U{0003}aaaaaaaaa\U{0001}a\U{0001}"| && 0 <= j < |"\U{0001}aaaa\U{0003}aaaaaaaaa\U{0001}a\U{0001}"| && i != j && "\U{0001}aaaa\U{0003}aaaaaaaaa\U{0001}a\U{0001}"[i] != "\U{0001}aaaa\U{0003}aaaaaaaaa\U{0001}a\U{0001}"[j];
+var r0 := AllCharactersSame("\U{0001}\U{0001}\U{0002}a\U{0001}");
+expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}\U{0001}\U{0002}a\U{0001}"| && 0 <= j < |"\U{0001}\U{0001}\U{0002}a\U{0001}"| ==> "\U{0001}\U{0001}\U{0002}a\U{0001}"[i] == "\U{0001}\U{0001}\U{0002}a\U{0001}"[j];
+expect !r0 ==> |"\U{0001}\U{0001}\U{0002}a\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}\U{0001}\U{0002}a\U{0001}"| && 0 <= j < |"\U{0001}\U{0001}\U{0002}a\U{0001}"| && i != j && "\U{0001}\U{0001}\U{0002}a\U{0001}"[i] != "\U{0001}\U{0001}\U{0002}a\U{0001}"[j];
 }
 
-// REPEAT 4 - TIME: 41.82432 s
+// REPEAT 4 - TIME: 33.3709669 s

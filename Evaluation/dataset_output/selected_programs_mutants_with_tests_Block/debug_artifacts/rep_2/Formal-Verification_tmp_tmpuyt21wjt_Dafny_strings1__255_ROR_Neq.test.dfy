@@ -117,64 +117,69 @@ method {:testEntry} maxCommonSubstringLength(str1: string, str2: string) returns
 }
 
 method {:test} Test14() {
-var r0 := isPrefix("aaa", "aaa");
-expect |"aaa"| > |"aaa"| ==> !r0;
-expect r0 == isPrefixPredicate("aaa", "aaa");
+var r0 := isPrefix("a\0aaaaa\U{0004}aaaaaaa\U{0002}", "a\0aaaaa\U{0004}aaaaaaa\U{0002}a");
+expect |"a\0aaaaa\U{0004}aaaaaaa\U{0002}"| > |"a\0aaaaa\U{0004}aaaaaaa\U{0002}a"| ==> !r0;
+expect r0 == isPrefixPredicate("a\0aaaaa\U{0004}aaaaaaa\U{0002}", "a\0aaaaa\U{0004}aaaaaaa\U{0002}a");
 }
 method {:test} Test15() {
-var r0 := isPrefix("\U{0006}\0\U{0004}", "\U{0006}\U{0002}\U{0004}");
-expect |"\U{0006}\0\U{0004}"| > |"\U{0006}\U{0002}\U{0004}"| ==> !r0;
-expect r0 == isPrefixPredicate("\U{0006}\0\U{0004}", "\U{0006}\U{0002}\U{0004}");
+var r0 := isPrefix("\U{0004}\U{0006}a\U{0002}", "\U{0004}\U{0006}a\0");
+expect |"\U{0004}\U{0006}a\U{0002}"| > |"\U{0004}\U{0006}a\0"| ==> !r0;
+expect r0 == isPrefixPredicate("\U{0004}\U{0006}a\U{0002}", "\U{0004}\U{0006}a\0");
 }
 method {:test} Test16() {
-var r0 := isPrefix("\U{0006}\U{0002}\U{0004}", "\U{0008}\0");
-expect |"\U{0006}\U{0002}\U{0004}"| > |"\U{0008}\0"| ==> !r0;
-expect r0 == isPrefixPredicate("\U{0006}\U{0002}\U{0004}", "\U{0008}\0");
+var r0 := isPrefix("a\0aaaaaaa\U{0002}\U{0004}", "aaaaaaaaa\U{0006}");
+expect |"a\0aaaaaaa\U{0002}\U{0004}"| > |"aaaaaaaaa\U{0006}"| ==> !r0;
+expect r0 == isPrefixPredicate("a\0aaaaaaa\U{0002}\U{0004}", "aaaaaaaaa\U{0006}");
 }
 method {:test} Test17() {
 var r0 := isSubstring("aa\U{0002}", "\U{0004}\0a");
 expect r0 == isSubstringPredicate("aa\U{0002}", "\U{0004}\0a");
 }
 method {:test} Test18() {
-var r0 := isSubstring("", "\U{0002}\0");
-expect r0 == isSubstringPredicate("", "\U{0002}\0");
+var r0 := isSubstring("", "aaaaaaaaaaaa");
+expect r0 == isSubstringPredicate("", "aaaaaaaaaaaa");
 }
 method {:test} Test19() {
-var r0 := isSubstring("\U{0002}aaaaaaaaa\0aa", "aaaaaaaaaaaa");
-expect r0 == isSubstringPredicate("\U{0002}aaaaaaaaa\0aa", "aaaaaaaaaaaa");
+var r0 := isSubstring("a\0a", "\U{0002}a");
+expect r0 == isSubstringPredicate("a\0a", "\U{0002}a");
 }
 method {:test} Test20() {
-var r0 := haveCommonKSubstring(3, "\U{0006}\0\U{0004}", "a\U{0002}a");
-expect |"\U{0006}\0\U{0004}"| < 3 || |"a\U{0002}a"| < 3 ==> !r0;
-expect haveCommonKSubstringPredicate(3, "\U{0006}\0\U{0004}", "a\U{0002}a") == r0;
+var r0 := haveCommonKSubstring(3, "aaaaaaaaaaaaaaaaaaaa\U{0002}aaaaa\U{0006}", "a\0aaaaa\U{0004}");
+expect |"aaaaaaaaaaaaaaaaaaaa\U{0002}aaaaa\U{0006}"| < 3 || |"a\0aaaaa\U{0004}"| < 3 ==> !r0;
+expect haveCommonKSubstringPredicate(3, "aaaaaaaaaaaaaaaaaaaa\U{0002}aaaaa\U{0006}", "a\0aaaaa\U{0004}") == r0;
 }
 method {:test} Test21() {
-var r0 := haveCommonKSubstring(5, "aaaaaaaaaaaa", "aaaaaaaa");
-expect |"aaaaaaaaaaaa"| < 5 || |"aaaaaaaa"| < 5 ==> !r0;
-expect haveCommonKSubstringPredicate(5, "aaaaaaaaaaaa", "aaaaaaaa") == r0;
+var r0 := haveCommonKSubstring(6, "aaaaaaaaaaaa", "aaaaaaaa");
+expect |"aaaaaaaaaaaa"| < 6 || |"aaaaaaaa"| < 6 ==> !r0;
+expect haveCommonKSubstringPredicate(6, "aaaaaaaaaaaa", "aaaaaaaa") == r0;
 }
 method {:test} Test22() {
-var r0 := haveCommonKSubstring(3, "\U{0004}\U{0002}", "\U{0006}\0");
-expect |"\U{0004}\U{0002}"| < 3 || |"\U{0006}\0"| < 3 ==> !r0;
-expect haveCommonKSubstringPredicate(3, "\U{0004}\U{0002}", "\U{0006}\0") == r0;
+var r0 := haveCommonKSubstring(9, "\U{0004}\U{0002}aaaaaaa", "aaaaaaa\0");
+expect |"\U{0004}\U{0002}aaaaaaa"| < 9 || |"aaaaaaa\0"| < 9 ==> !r0;
+expect haveCommonKSubstringPredicate(9, "\U{0004}\U{0002}aaaaaaa", "aaaaaaa\0") == r0;
 }
 method {:test} Test23() {
-var r0 := maxCommonSubstringLength("aaa", "a\0");
-expect r0 <= |"aaa"| && r0 <= |"a\0"|;
-expect r0 >= 0;
-expect maxCommonSubstringPredicate("aaa", "a\0", r0);
+var r0 := haveCommonKSubstring(4, "a\0\U{0002}", "\U{0004}a");
+expect |"a\0\U{0002}"| < 4 || |"\U{0004}a"| < 4 ==> !r0;
+expect haveCommonKSubstringPredicate(4, "a\0\U{0002}", "\U{0004}a") == r0;
 }
-method {:test} Test25() {
-var r0 := maxCommonSubstringLength("a\U{0002}a\U{0006}", "a\0aaaaaaaaaaaaaaaaa\U{0004}");
-expect r0 <= |"a\U{0002}a\U{0006}"| && r0 <= |"a\0aaaaaaaaaaaaaaaaa\U{0004}"|;
-expect r0 >= 0;
-expect maxCommonSubstringPredicate("a\U{0002}a\U{0006}", "a\0aaaaaaaaaaaaaaaaa\U{0004}", r0);
-}
-method {:test} Test26() {
+method {:test} Test24() {
 var r0 := maxCommonSubstringLength("aa\0", "a\U{0002}");
 expect r0 <= |"aa\0"| && r0 <= |"a\U{0002}"|;
 expect r0 >= 0;
 expect maxCommonSubstringPredicate("aa\0", "a\U{0002}", r0);
 }
+method {:test} Test26() {
+var r0 := maxCommonSubstringLength("aaaaaaaaaaaa\0", "a\U{0002}");
+expect r0 <= |"aaaaaaaaaaaa\0"| && r0 <= |"a\U{0002}"|;
+expect r0 >= 0;
+expect maxCommonSubstringPredicate("aaaaaaaaaaaa\0", "a\U{0002}", r0);
+}
+method {:test} Test27() {
+var r0 := maxCommonSubstringLength("aaa", "a\0");
+expect r0 <= |"aaa"| && r0 <= |"a\0"|;
+expect r0 >= 0;
+expect maxCommonSubstringPredicate("aaa", "a\0", r0);
+}
 
-// REPEAT 2 - TIME: 14.4958209 s
+// REPEAT 2 - TIME: 15.2707325 s

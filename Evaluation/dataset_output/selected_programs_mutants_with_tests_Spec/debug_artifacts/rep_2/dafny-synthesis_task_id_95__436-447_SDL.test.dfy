@@ -26,4 +26,4 @@ expect forall i :: 0 <= i < |seqseqint0| ==> r0 <= |seqseqint0[i]|;
 expect exists i :: 0 <= i < |seqseqint0| && r0 == |seqseqint0[i]|;
 }
 
-// REPEAT 2 - TIME: 3.4603959 s
+// REPEAT 2 - TIME: 3.789068 s

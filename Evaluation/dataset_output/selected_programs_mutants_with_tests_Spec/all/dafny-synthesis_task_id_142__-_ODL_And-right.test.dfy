@@ -20,7 +20,7 @@ var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 1 - TIME: 2.9644944 s
+// REPEAT 1 - TIME: 2.8327292 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [0];
@@ -31,7 +31,7 @@ var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 2 - TIME: 3.933548 s
+// REPEAT 2 - TIME: 3.747056 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0];
@@ -42,7 +42,7 @@ var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 3 - TIME: 5.0424948 s
+// REPEAT 3 - TIME: 4.6809703 s
 
 method {:test} Test3() {
 var seqint0 : seq<int> := [0, 0, 0];
@@ -53,7 +53,7 @@ var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 4 - TIME: 6.1852127 s
+// REPEAT 4 - TIME: 5.6854287 s
 
 method {:test} Test4() {
 var seqint0 : seq<int> := [13, 9];
@@ -64,7 +64,7 @@ var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 5 - TIME: 7.2026402 s
+// REPEAT 5 - TIME: 6.5980145 s
 
 method {:test} Test5() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6];
@@ -75,7 +75,7 @@ var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 6 - TIME: 8.1688657 s
+// REPEAT 6 - TIME: 7.4298165 s
 
 method {:test} Test6() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 25];
@@ -86,7 +86,7 @@ var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 7 - TIME: 9.0662488 s
+// REPEAT 7 - TIME: 8.3780269 s
 
 method {:test} Test7() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 0, 26, 0, 32];
@@ -97,7 +97,7 @@ var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 8 - TIME: 9.9855904 s
+// REPEAT 8 - TIME: 9.3278861 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -108,7 +108,7 @@ var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 9 - TIME: 10.8113573 s
+// REPEAT 9 - TIME: 10.4189616 s
 
 method {:test} Test9() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 38, 33];
@@ -119,4 +119,4 @@ var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 10 - TIME: 11.6332847 s
+// REPEAT 10 - TIME: 11.2134567 s

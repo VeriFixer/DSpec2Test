@@ -28,7 +28,7 @@ var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 1 - TIME: 3.2221882 s
+// REPEAT 1 - TIME: 3.3623818 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
@@ -43,7 +43,7 @@ var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 2 - TIME: 4.7371283 s
+// REPEAT 2 - TIME: 4.8589054 s
 
 method {:test} Test4() {
 var seqint0 : seq<int> := [7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2];
@@ -58,7 +58,7 @@ var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 3 - TIME: 6.567446 s
+// REPEAT 3 - TIME: 6.438209 s
 
 method {:test} Test6() {
 var seqint0 : seq<int> := [15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 4];
@@ -73,7 +73,7 @@ var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 4 - TIME: 8.3854492 s
+// REPEAT 4 - TIME: 8.0472957 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6];
@@ -88,7 +88,7 @@ var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 5 - TIME: 9.7247446 s
+// REPEAT 5 - TIME: 9.5960862 s
 
 method {:test} Test10() {
 var seqint0 : seq<int> := [32, 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 17, 0, 0, 0, 25, 0];
@@ -103,7 +103,7 @@ var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 6 - TIME: 11.1224227 s
+// REPEAT 6 - TIME: 11.2691802 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29, 33, 0, 14, 38, 0];
@@ -118,7 +118,7 @@ var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 7 - TIME: 12.5856857 s
+// REPEAT 7 - TIME: 12.856558 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [50, 0, 0, 45, 19];
@@ -133,7 +133,7 @@ var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 8 - TIME: 13.982056 s
+// REPEAT 8 - TIME: 14.2692449 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 55, 0, 0, 0, 0, 27, 0, 0, 0, 0, 0, 61, 59, 63];
@@ -148,7 +148,7 @@ var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 9 - TIME: 15.4435188 s
+// REPEAT 9 - TIME: 15.5420632 s
 
 method {:test} Test18() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 54];
@@ -163,4 +163,4 @@ var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 10 - TIME: 17.2704052 s
+// REPEAT 10 - TIME: 16.966793 s

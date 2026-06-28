@@ -53,9 +53,9 @@ method {:testEntry} ToggleCase(s: string) returns (v: string)
 }
 
 method {:test} Test2() {
-var r0 := ToggleCase("a@");
-expect |r0| == |"a@"|;
-expect forall i :: 0 <= i < |"a@"| ==> if IsLowerCase("a@"[i]) then IsLowerUpperPair("a@"[i], r0[i]) else if IsUpperCase("a@"[i]) then IsUpperLowerPair("a@"[i], r0[i]) else r0[i] == "a@"[i];
+var r0 := ToggleCase("an");
+expect |r0| == |"an"|;
+expect forall i :: 0 <= i < |"an"| ==> if IsLowerCase("an"[i]) then IsLowerUpperPair("an"[i], r0[i]) else if IsUpperCase("an"[i]) then IsUpperLowerPair("an"[i], r0[i]) else r0[i] == "an"[i];
 }
 
-// REPEAT 3 - TIME: 5.6862847 s
+// REPEAT 3 - TIME: 5.6388717 s

@@ -147,47 +147,47 @@ method {:testEntry} maxCommonSubstringLength(str1: string, str2: string) returns
 }
 
 method {:test} Test14() {
-var r0 := isPrefix("aaaaa\U{0002}", "aaaaa\U{0002}\0");
-expect !r0 <==> isNotPrefixPred("aaaaa\U{0002}", "aaaaa\U{0002}\0");
-expect r0 <==> isPrefixPred("aaaaa\U{0002}", "aaaaa\U{0002}\0");
+var r0 := isPrefix("\U{0006}\U{0002}\U{0004}", "\U{0006}\U{0002}\U{0004}\0");
+expect !r0 <==> isNotPrefixPred("\U{0006}\U{0002}\U{0004}", "\U{0006}\U{0002}\U{0004}\0");
+expect r0 <==> isPrefixPred("\U{0006}\U{0002}\U{0004}", "\U{0006}\U{0002}\U{0004}\0");
 }
 method {:test} Test15() {
-var r0 := isPrefix("\0\U{0002}\U{0004}aa\U{0006}", "\U{0008}\U{0002}aaa\U{0006}");
-expect !r0 <==> isNotPrefixPred("\0\U{0002}\U{0004}aa\U{0006}", "\U{0008}\U{0002}aaa\U{0006}");
-expect r0 <==> isPrefixPred("\0\U{0002}\U{0004}aa\U{0006}", "\U{0008}\U{0002}aaa\U{0006}");
+var r0 := isPrefix("\0\U{0002}\U{0004}", "\U{0006}\U{0002}\U{0004}");
+expect !r0 <==> isNotPrefixPred("\0\U{0002}\U{0004}", "\U{0006}\U{0002}\U{0004}");
+expect r0 <==> isPrefixPred("\0\U{0002}\U{0004}", "\U{0006}\U{0002}\U{0004}");
 }
 method {:test} Test16() {
-var r0 := isPrefix("aa\U{0002}", "\U{0004}\0");
-expect !r0 <==> isNotPrefixPred("aa\U{0002}", "\U{0004}\0");
-expect r0 <==> isPrefixPred("aa\U{0002}", "\U{0004}\0");
+var r0 := isPrefix("\U{0002}aaaaaaaaa\U{0004}", "a\0aaaaaaa\U{0006}");
+expect !r0 <==> isNotPrefixPred("\U{0002}aaaaaaaaa\U{0004}", "a\0aaaaaaa\U{0006}");
+expect r0 <==> isPrefixPred("\U{0002}aaaaaaaaa\U{0004}", "a\0aaaaaaa\U{0006}");
 }
 method {:test} Test17() {
-var r0 := isSubstring("aa\U{0004}\U{0002}aaaaaaaaaaaaaaaaaaaaaa\U{0006}", "\U{0008}\0aaaaaaaaaaaaaaaaaaaaaaaaa");
-expect r0 <==> isSubstringPred("aa\U{0004}\U{0002}aaaaaaaaaaaaaaaaaaaaaa\U{0006}", "\U{0008}\0aaaaaaaaaaaaaaaaaaaaaaaaa");
+var r0 := isSubstring("aa\U{0004}aaaaaaa\U{0002}aaaaaaaaaaaaaa", "a\0aaaaaaaaaaaaaaaaaaaaaaa\U{0006}");
+expect r0 <==> isSubstringPred("aa\U{0004}aaaaaaa\U{0002}aaaaaaaaaaaaaa", "a\0aaaaaaaaaaaaaaaaaaaaaaa\U{0006}");
 }
 method {:test} Test18() {
 var r0 := isSubstring("aaa\U{0004}aaaaaaaaaaaaaaa\U{0002}", "a\0aaa\U{0004}aaaaaaaaaaaaaaa\U{0002}");
 expect r0 <==> isSubstringPred("aaa\U{0004}aaaaaaaaaaaaaaa\U{0002}", "a\0aaa\U{0004}aaaaaaaaaaaaaaa\U{0002}");
 }
 method {:test} Test19() {
-var r0 := isSubstring("\U{0004}\U{0002}a", "a\0");
-expect r0 <==> isSubstringPred("\U{0004}\U{0002}a", "a\0");
+var r0 := isSubstring("\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaa", "a\0aaaaaaaaaaaaaaaaaaaaaaa\U{0004}");
+expect r0 <==> isSubstringPred("\U{0002}aaaaaaaaaaaaaaaaaaaaaaaaaa", "a\0aaaaaaaaaaaaaaaaaaaaaaa\U{0004}");
 }
 method {:test} Test20() {
-var r0 := haveCommonKSubstring(3, "\U{0004}a\U{0002}", "a\0aa");
-expect r0 <==> haveCommonKSubstringPred(3, "\U{0004}a\U{0002}", "a\0aa");
+var r0 := haveCommonKSubstring(3, "aa\0aaaaaaaaaaaaa\U{0004}", "\U{0002}aa");
+expect r0 <==> haveCommonKSubstringPred(3, "aa\0aaaaaaaaaaaaa\U{0004}", "\U{0002}aa");
 }
 method {:test} Test21() {
-var r0 := haveCommonKSubstring(10, "aaaaaaaaaaaa", "aaaaaaaaaaa");
-expect r0 <==> haveCommonKSubstringPred(10, "aaaaaaaaaaaa", "aaaaaaaaaaa");
+var r0 := haveCommonKSubstring(6, "a\U{0002}aaaaaaaaaa", "aaaaaaaaaaaaaa\0aaaaaaaaaaaa");
+expect r0 <==> haveCommonKSubstringPred(6, "a\U{0002}aaaaaaaaaa", "aaaaaaaaaaaaaa\0aaaaaaaaaaaa");
 }
 method {:test} Test22() {
-var r0 := haveCommonKSubstring(5, "aaaaa", "aaa\0");
-expect r0 <==> haveCommonKSubstringPred(5, "aaaaa", "aaa\0");
+var r0 := haveCommonKSubstring(3, "a\0aaaaaaaaa\U{0002}", "\U{0004}a");
+expect r0 <==> haveCommonKSubstringPred(3, "a\0aaaaaaaaa\U{0002}", "\U{0004}a");
 }
 method {:test} Test23() {
-var r0 := haveCommonKSubstring(13, "\U{0004}\U{0002}aaaaaaaaaa", "a\0");
-expect r0 <==> haveCommonKSubstringPred(13, "\U{0004}\U{0002}aaaaaaaaaa", "a\0");
+var r0 := haveCommonKSubstring(4, "\U{0006}a\U{0002}", "a\0a\U{0004}");
+expect r0 <==> haveCommonKSubstringPred(4, "\U{0006}a\U{0002}", "a\0a\U{0004}");
 }
 method {:test} Test24() {
 expect |"\U{0002}a"| <= |"\U{0004}\0"|, "If this check fails at runtime, the test does not meet the preconditions";
@@ -196,10 +196,10 @@ expect forall k :: r0 < k <= |"\U{0002}a"| ==> !haveCommonKSubstringPred(k, "\U{
 expect haveCommonKSubstringPred(r0, "\U{0002}a", "\U{0004}\0");
 }
 method {:test} Test26() {
-expect |"aa"| <= |"\0a"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := maxCommonSubstringLength("aa", "\0a");
-expect forall k :: r0 < k <= |"aa"| ==> !haveCommonKSubstringPred(k, "aa", "\0a");
-expect haveCommonKSubstringPred(r0, "aa", "\0a");
+expect |"\0a"| <= |"aaaaaaaaaaaaaaaa"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := maxCommonSubstringLength("\0a", "aaaaaaaaaaaaaaaa");
+expect forall k :: r0 < k <= |"\0a"| ==> !haveCommonKSubstringPred(k, "\0a", "aaaaaaaaaaaaaaaa");
+expect haveCommonKSubstringPred(r0, "\0a", "aaaaaaaaaaaaaaaa");
 }
 method {:test} Test27() {
 expect |"aaaaaaaaaaaa\0"| <= |"aaaaaaaaaaaaaaa\U{0002}"|, "If this check fails at runtime, the test does not meet the preconditions";
@@ -208,4 +208,4 @@ expect forall k :: r0 < k <= |"aaaaaaaaaaaa\0"| ==> !haveCommonKSubstringPred(k,
 expect haveCommonKSubstringPred(r0, "aaaaaaaaaaaa\0", "aaaaaaaaaaaaaaa\U{0002}");
 }
 
-// REPEAT 2 - TIME: 15.3595593 s
+// REPEAT 2 - TIME: 16.2087891 s

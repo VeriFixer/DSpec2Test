@@ -95,4 +95,4 @@ var r0 := DownWhileGreater(1);
 expect r0 == 0;
 }
 
-// REPEAT 2 - TIME: 7.9485388 s
+// REPEAT 2 - TIME: 7.9324097 s

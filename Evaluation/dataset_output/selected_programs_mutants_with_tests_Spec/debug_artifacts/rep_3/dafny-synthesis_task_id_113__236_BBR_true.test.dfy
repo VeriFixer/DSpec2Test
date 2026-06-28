@@ -25,12 +25,12 @@ method {:testEntry} IsInteger(s: string) returns (result: bool)
 }
 
 method {:test} Test5() {
-var r0 := IsInteger("a01");
-expect r0 <==> |"a01"| > 0 && forall i :: 0 <= i < |"a01"| ==> IsDigit("a01"[i]);
+var r0 := IsInteger("aaaaaaaaaa7a1");
+expect r0 <==> |"aaaaaaaaaa7a1"| > 0 && forall i :: 0 <= i < |"aaaaaaaaaa7a1"| ==> IsDigit("aaaaaaaaaa7a1"[i]);
 }
 method {:test} Test6() {
-var r0 := IsInteger("\U{0002}\0\U{0008}aaaaaaaaaaaaa\U{0001}");
-expect r0 <==> |"\U{0002}\0\U{0008}aaaaaaaaaaaaa\U{0001}"| > 0 && forall i :: 0 <= i < |"\U{0002}\0\U{0008}aaaaaaaaaaaaa\U{0001}"| ==> IsDigit("\U{0002}\0\U{0008}aaaaaaaaaaaaa\U{0001}"[i]);
+var r0 := IsInteger("\U{0001}\0\U{0019}");
+expect r0 <==> |"\U{0001}\0\U{0019}"| > 0 && forall i :: 0 <= i < |"\U{0001}\0\U{0019}"| ==> IsDigit("\U{0001}\0\U{0019}"[i]);
 }
 
-// REPEAT 3 - TIME: 8.4210734 s
+// REPEAT 3 - TIME: 8.6611614 s

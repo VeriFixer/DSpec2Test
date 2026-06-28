@@ -21,12 +21,12 @@ method {:testEntry} IsPalindrome(x: seq<char>) returns (result: bool)
 }
 
 method {:test} Test4() {
-var r0 := IsPalindrome("\0aaaa\0a");
-expect r0 <==> forall i :: 0 <= i < |"\0aaaa\0a"| ==> "\0aaaa\0a"[i] == "\0aaaa\0a"[|"\0aaaa\0a"| - i - 1];
+var r0 := IsPalindrome("\0");
+expect r0 <==> forall i :: 0 <= i < |"\0"| ==> "\0"[i] == "\0"[|"\0"| - i - 1];
 }
 method {:test} Test5() {
-var r0 := IsPalindrome("\0aaaaaaa\U{0002}");
-expect r0 <==> forall i :: 0 <= i < |"\0aaaaaaa\U{0002}"| ==> "\0aaaaaaa\U{0002}"[i] == "\0aaaaaaa\U{0002}"[|"\0aaaaaaa\U{0002}"| - i - 1];
+var r0 := IsPalindrome("\U{0002}aaaaaaaa\U{0004}aaaaaa\0");
+expect r0 <==> forall i :: 0 <= i < |"\U{0002}aaaaaaaa\U{0004}aaaaaa\0"| ==> "\U{0002}aaaaaaaa\U{0004}aaaaaa\0"[i] == "\U{0002}aaaaaaaa\U{0004}aaaaaa\0"[|"\U{0002}aaaaaaaa\U{0004}aaaaaa\0"| - i - 1];
 }
 
-// REPEAT 3 - TIME: 6.29407 s
+// REPEAT 3 - TIME: 6.6677215 s

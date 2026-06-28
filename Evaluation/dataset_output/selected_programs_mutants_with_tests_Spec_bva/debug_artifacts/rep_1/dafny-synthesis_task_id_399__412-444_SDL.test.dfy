@@ -41,4 +41,4 @@ expect |r0| == |seqbv0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqbv0[i] ^ seqbv1[i];
 }
 
-// REPEAT 1 - TIME: 8.7080121 s
+// REPEAT 1 - TIME: 10.680466 s

@@ -10,11 +10,11 @@ method {:testEntry} ElementAtIndexAfterRotation(l: seq<int>, n: int, index: int)
 }
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [4, 30, 0, 0, 0, 0];
-expect 8380 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var seqint0 : seq<int> := [7, 5, 0, 30, 0, 0];
+expect 8372 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
 expect 0 <= 5 < |seqint0|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := ElementAtIndexAfterRotation(seqint0, 8380, 5);
-expect r0 == seqint0[(5 - 8380 + |seqint0|) % |seqint0|];
+var r0 := ElementAtIndexAfterRotation(seqint0, 8372, 5);
+expect r0 == seqint0[(5 - 8372 + |seqint0|) % |seqint0|];
 }
 
-// REPEAT 5 - TIME: 5.8135173 s
+// REPEAT 5 - TIME: 6.9345949 s

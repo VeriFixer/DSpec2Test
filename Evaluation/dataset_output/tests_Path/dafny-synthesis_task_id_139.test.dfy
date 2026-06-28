@@ -11,7 +11,7 @@ var r0 := CircleCircumference(1.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 1.0;
 }
 
-// REPEAT 1 - TIME: 2.7314076 s
+// REPEAT 1 - TIME: 3.2981662 s
 
 method {:test} Test1() {
 expect 2.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -19,7 +19,7 @@ var r0 := CircleCircumference(2.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 2.0;
 }
 
-// REPEAT 2 - TIME: 3.8512311 s
+// REPEAT 2 - TIME: 4.5313133 s
 
 method {:test} Test2() {
 expect 3.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -27,7 +27,7 @@ var r0 := CircleCircumference(3.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 3.0;
 }
 
-// REPEAT 3 - TIME: 4.9253468 s
+// REPEAT 3 - TIME: 5.6686388 s
 
 method {:test} Test3() {
 expect 4.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -35,7 +35,7 @@ var r0 := CircleCircumference(4.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 4.0;
 }
 
-// REPEAT 4 - TIME: 5.9606987 s
+// REPEAT 4 - TIME: 6.7816458 s
 
 method {:test} Test4() {
 expect 5.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -43,7 +43,7 @@ var r0 := CircleCircumference(5.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 5.0;
 }
 
-// REPEAT 5 - TIME: 6.9862784 s
+// REPEAT 5 - TIME: 7.9730824 s
 
 method {:test} Test5() {
 expect 6.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -51,7 +51,7 @@ var r0 := CircleCircumference(6.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 6.0;
 }
 
-// REPEAT 6 - TIME: 7.8873792 s
+// REPEAT 6 - TIME: 8.856263 s
 
 method {:test} Test6() {
 expect 7.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -59,7 +59,7 @@ var r0 := CircleCircumference(7.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 7.0;
 }
 
-// REPEAT 7 - TIME: 8.8272335 s
+// REPEAT 7 - TIME: 9.7439797 s
 
 method {:test} Test7() {
 expect 8.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -67,7 +67,7 @@ var r0 := CircleCircumference(8.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 8.0;
 }
 
-// REPEAT 8 - TIME: 9.6678211 s
+// REPEAT 8 - TIME: 10.4917774 s
 
 method {:test} Test8() {
 expect 9.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -75,7 +75,7 @@ var r0 := CircleCircumference(9.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 9.0;
 }
 
-// REPEAT 9 - TIME: 10.4695625 s
+// REPEAT 9 - TIME: 11.3445422 s
 
 method {:test} Test9() {
 expect 10.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -83,4 +83,4 @@ var r0 := CircleCircumference(10.0);
 expect r0 == 2.0 * 3.14159265358979323846 * 10.0;
 }
 
-// REPEAT 10 - TIME: 11.2196292 s
+// REPEAT 10 - TIME: 12.2119553 s

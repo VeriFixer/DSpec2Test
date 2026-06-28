@@ -35,17 +35,17 @@ expect r0 in seqint0;
 expect forall i | 0 <= i < |seqint0| :: seqint0[i] <= r0;
 }
 
-// REPEAT 1 - TIME: 11.7709241 s
+// REPEAT 1 - TIME: 9.4873277 s
 
 method {:test} Test1() {
-var seqint0 : seq<int> := [2437, -6418];
+var seqint0 : seq<int> := [-7719, 1136];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Maximum(seqint0);
 expect r0 in seqint0;
 expect forall i | 0 <= i < |seqint0| :: seqint0[i] <= r0;
 }
 
-// REPEAT 2 - TIME: 21.660602 s
+// REPEAT 2 - TIME: 15.8427435 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [-7719, 1136, 0];
@@ -55,74 +55,74 @@ expect r0 in seqint0;
 expect forall i | 0 <= i < |seqint0| :: seqint0[i] <= r0;
 }
 
-// REPEAT 3 - TIME: 30.5984533 s
+// REPEAT 3 - TIME: 22.1430171 s
 
 method {:test} Test3() {
-var seqint0 : seq<int> := [-7719, -6418, 2437, 0];
+var seqint0 : seq<int> := [-1236, 0, 7059, 8855];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Maximum(seqint0);
 expect r0 in seqint0;
 expect forall i | 0 <= i < |seqint0| :: seqint0[i] <= r0;
 }
 
-// REPEAT 4 - TIME: 41.4309938 s
+// REPEAT 4 - TIME: 29.3046349 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [-7719, -6418, 0, 2437, 641];
+var seqint0 : seq<int> := [641, -6418, 0, 2437, 0];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Maximum(seqint0);
 expect r0 in seqint0;
 expect forall i | 0 <= i < |seqint0| :: seqint0[i] <= r0;
 }
 
-// REPEAT 5 - TIME: 52.4378757 s
+// REPEAT 5 - TIME: 36.0682013 s
 
 method {:test} Test5() {
-var seqint0 : seq<int> := [6573, 490, 0, 8855, 8406];
+var seqint0 : seq<int> := [-6343, -490];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Maximum(seqint0);
 expect r0 in seqint0;
 expect forall i | 0 <= i < |seqint0| :: seqint0[i] <= r0;
 }
 
-// REPEAT 6 - TIME: 63.814469 s
+// REPEAT 6 - TIME: 43.799598 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [8246, 8855, 0, 0, 0, 3002];
+var seqint0 : seq<int> := [1988, 2437, -6418];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Maximum(seqint0);
 expect r0 in seqint0;
 expect forall i | 0 <= i < |seqint0| :: seqint0[i] <= r0;
 }
 
-// REPEAT 7 - TIME: 74.0467199 s
+// REPEAT 7 - TIME: 53.1669779 s
 
 method {:test} Test7() {
-var seqint0 : seq<int> := [8246, 8855, 8406];
+var seqint0 : seq<int> := [155, -6418, 2437, 0];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Maximum(seqint0);
 expect r0 in seqint0;
 expect forall i | 0 <= i < |seqint0| :: seqint0[i] <= r0;
 }
 
-// REPEAT 8 - TIME: 84.2984077 s
+// REPEAT 8 - TIME: 62.5536112 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [3002, 6573, 7059, 0, 8246, 8855];
+var seqint0 : seq<int> := [-5661, 155, -5928, 0, 2437, 0];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Maximum(seqint0);
 expect r0 in seqint0;
 expect forall i | 0 <= i < |seqint0| :: seqint0[i] <= r0;
 }
 
-// REPEAT 9 - TIME: 94.7766637 s
+// REPEAT 9 - TIME: 73.1540042 s
 
 method {:test} Test9() {
-var seqint0 : seq<int> := [2437, 641, -6418, 0, 0, 0, 0];
+var seqint0 : seq<int> := [1988, 2437, -5928, -6418, 155, 0, 0];
 expect seqint0 != [], "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := Maximum(seqint0);
 expect r0 in seqint0;
 expect forall i | 0 <= i < |seqint0| :: seqint0[i] <= r0;
 }
 
-// REPEAT 10 - TIME: 105.8911053 s
+// REPEAT 10 - TIME: 83.0812818 s

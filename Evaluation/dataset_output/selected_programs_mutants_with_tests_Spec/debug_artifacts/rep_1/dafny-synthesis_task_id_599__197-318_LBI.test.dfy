@@ -23,4 +23,4 @@ expect r0 == 1 * (1 + 1) / 2;
 expect r1 == r0 as real / 1 as real;
 }
 
-// REPEAT 1 - TIME: 2.9415847 s
+// REPEAT 1 - TIME: 2.5287992 s

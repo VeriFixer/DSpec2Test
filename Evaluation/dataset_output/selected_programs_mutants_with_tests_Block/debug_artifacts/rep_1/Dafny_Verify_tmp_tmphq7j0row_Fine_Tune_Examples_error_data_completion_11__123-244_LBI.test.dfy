@@ -22,4 +22,4 @@ var r0, r1 := main(1);
 expect r0 == 2 * 1;
 }
 
-// REPEAT 1 - TIME: 1.9094397 s
+// REPEAT 1 - TIME: 1.9280615 s

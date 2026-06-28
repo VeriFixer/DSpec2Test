@@ -28,8 +28,8 @@ var r0 := IsPalindrome("\0a");
 expect r0 <==> forall i :: 0 <= i < |"\0a"| ==> "\0a"[i] == "\0a"[|"\0a"| - i - 1];
 }
 method {:test} Test3() {
-var r0 := IsPalindrome("aa\U{0002}aaaaaaaaaaa\0a\U{0004}");
-expect r0 <==> forall i :: 0 <= i < |"aa\U{0002}aaaaaaaaaaa\0a\U{0004}"| ==> "aa\U{0002}aaaaaaaaaaa\0a\U{0004}"[i] == "aa\U{0002}aaaaaaaaaaa\0a\U{0004}"[|"aa\U{0002}aaaaaaaaaaa\0a\U{0004}"| - i - 1];
+var r0 := IsPalindrome("\0\U{0002}");
+expect r0 <==> forall i :: 0 <= i < |"\0\U{0002}"| ==> "\0\U{0002}"[i] == "\0\U{0002}"[|"\0\U{0002}"| - i - 1];
 }
 
-// REPEAT 2 - TIME: 4.9196574 s
+// REPEAT 2 - TIME: 5.0252417 s

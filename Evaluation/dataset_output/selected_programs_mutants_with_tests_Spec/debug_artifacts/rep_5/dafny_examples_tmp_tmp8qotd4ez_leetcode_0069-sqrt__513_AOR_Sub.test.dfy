@@ -41,4 +41,4 @@ var r0 := mySqrt(16);
 expect sqrt(16, r0);
 }
 
-// REPEAT 5 - TIME: 17.1863627 s
+// REPEAT 5 - TIME: 17.8226565 s

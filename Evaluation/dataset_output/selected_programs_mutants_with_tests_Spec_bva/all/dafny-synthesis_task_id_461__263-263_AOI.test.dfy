@@ -27,67 +27,67 @@ var r0 := CountUppercase("aaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 1 - TIME: 7.0875333 s
+// REPEAT 1 - TIME: 9.3312292 s
 
 method {:test} Test9() {
+var r0 := CountUppercase("\U{0001}\0aaaaa");
+expect r0 >= 0;
+}
+
+// REPEAT 2 - TIME: 10.4896765 s
+
+method {:test} Test10() {
 var r0 := CountUppercase("\U{0001}\0aaaaaaaaaaaaaaaaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 2 - TIME: 8.0611078 s
-
-method {:test} Test10() {
-var r0 := CountUppercase("\0aaaaaaa");
-expect r0 >= 0;
-}
-
-// REPEAT 3 - TIME: 8.8952325 s
+// REPEAT 3 - TIME: 11.4743644 s
 
 method {:test} Test11() {
-var r0 := CountUppercase("\U{0001}aa\0aaaaaa");
+var r0 := CountUppercase("\U{0001}a\0a");
 expect r0 >= 0;
 }
 
-// REPEAT 4 - TIME: 9.6765518 s
+// REPEAT 4 - TIME: 12.4752502 s
 
 method {:test} Test12() {
-var r0 := CountUppercase("\U{0001}\0aaa");
+var r0 := CountUppercase("\U{0001}a\0aaaaa");
 expect r0 >= 0;
 }
 
-// REPEAT 5 - TIME: 10.3641129 s
+// REPEAT 5 - TIME: 13.3120746 s
 
 method {:test} Test13() {
-var r0 := CountUppercase("\0aaaaaaa");
+var r0 := CountUppercase("\U{0002}aaa\0aaa\U{0001}");
 expect r0 >= 0;
 }
 
-// REPEAT 6 - TIME: 11.1934505 s
+// REPEAT 6 - TIME: 14.3876595 s
 
 method {:test} Test14() {
-var r0 := CountUppercase("\U{0001}\0");
+var r0 := CountUppercase("\0a");
 expect r0 >= 0;
 }
 
-// REPEAT 7 - TIME: 11.852136 s
+// REPEAT 7 - TIME: 15.5549346 s
 
 method {:test} Test15() {
-var r0 := CountUppercase("\U{0001}a\0aa\U{0002}");
-expect r0 >= 0;
-}
-
-// REPEAT 8 - TIME: 12.4217854 s
-
-method {:test} Test16() {
 var r0 := CountUppercase("\U{0001}\0a");
 expect r0 >= 0;
 }
 
-// REPEAT 9 - TIME: 13.0377854 s
+// REPEAT 8 - TIME: 16.6911522 s
 
-method {:test} Test17() {
-var r0 := CountUppercase("\0aaaaaaaaaa");
+method {:test} Test16() {
+var r0 := CountUppercase("\0aa");
 expect r0 >= 0;
 }
 
-// REPEAT 10 - TIME: 13.7264203 s
+// REPEAT 9 - TIME: 17.6773385 s
+
+method {:test} Test17() {
+var r0 := CountUppercase("\0aaa\U{0001}aa\U{0002}\U{0003}");
+expect r0 >= 0;
+}
+
+// REPEAT 10 - TIME: 18.4645368 s

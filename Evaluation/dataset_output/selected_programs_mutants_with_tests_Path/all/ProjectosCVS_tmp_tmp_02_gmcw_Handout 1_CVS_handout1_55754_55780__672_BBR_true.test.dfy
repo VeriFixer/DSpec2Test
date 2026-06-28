@@ -67,7 +67,7 @@ var r0, r1 := euclidianDiv(0, 1);
 expect 0 == 1 * r0 + r1;
 }
 
-// REPEAT 1 - TIME: 6.9147964 s
+// REPEAT 1 - TIME: 10.2585769 s
 
 method {:test} Test2() {
 expect 2 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -81,7 +81,7 @@ var r0, r1 := euclidianDiv(1, 2);
 expect 1 == 2 * r0 + r1;
 }
 
-// REPEAT 2 - TIME: 12.0526945 s
+// REPEAT 2 - TIME: 17.7994194 s
 
 method {:test} Test4() {
 expect 3 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -95,7 +95,7 @@ var r0, r1 := euclidianDiv(2, 3);
 expect 2 == 3 * r0 + r1;
 }
 
-// REPEAT 3 - TIME: 17.9281205 s
+// REPEAT 3 - TIME: 26.2751518 s
 
 method {:test} Test6() {
 expect 4 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -109,7 +109,7 @@ var r0, r1 := euclidianDiv(3, 4);
 expect 3 == 4 * r0 + r1;
 }
 
-// REPEAT 4 - TIME: 24.1365365 s
+// REPEAT 4 - TIME: 34.0864296 s
 
 method {:test} Test8() {
 expect 5 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -123,7 +123,7 @@ var r0, r1 := euclidianDiv(4, 5);
 expect 4 == 5 * r0 + r1;
 }
 
-// REPEAT 5 - TIME: 30.4366502 s
+// REPEAT 5 - TIME: 41.6925122 s
 
 method {:test} Test10() {
 expect 6 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -137,7 +137,7 @@ var r0, r1 := euclidianDiv(5, 6);
 expect 5 == 6 * r0 + r1;
 }
 
-// REPEAT 6 - TIME: 36.9484263 s
+// REPEAT 6 - TIME: 48.9483159 s
 
 method {:test} Test12() {
 expect 7 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -151,7 +151,7 @@ var r0, r1 := euclidianDiv(6, 7);
 expect 6 == 7 * r0 + r1;
 }
 
-// REPEAT 7 - TIME: 44.203174 s
+// REPEAT 7 - TIME: 56.81619 s
 
 method {:test} Test14() {
 expect 8 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -165,7 +165,7 @@ var r0, r1 := euclidianDiv(7, 8);
 expect 7 == 8 * r0 + r1;
 }
 
-// REPEAT 8 - TIME: 52.5930081 s
+// REPEAT 8 - TIME: 66.2852557 s
 
 method {:test} Test16() {
 expect 9 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -179,7 +179,7 @@ var r0, r1 := euclidianDiv(8, 9);
 expect 8 == 9 * r0 + r1;
 }
 
-// REPEAT 9 - TIME: 60.1897081 s
+// REPEAT 9 - TIME: 75.2238991 s
 
 method {:test} Test18() {
 expect 10 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -193,4 +193,4 @@ var r0, r1 := euclidianDiv(9, 10);
 expect 9 == 10 * r0 + r1;
 }
 
-// REPEAT 10 - TIME: 68.195041 s
+// REPEAT 10 - TIME: 85.3170327 s

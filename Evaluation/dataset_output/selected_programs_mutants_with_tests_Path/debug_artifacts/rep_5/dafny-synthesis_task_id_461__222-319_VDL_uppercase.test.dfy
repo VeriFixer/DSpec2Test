@@ -12,20 +12,20 @@ method {:testEntry} CountUppercase(s: string) returns (count: int)
 }
 
 method {:test} Test16() {
-var r0 := CountUppercase("\U{0004}aBa\U{0003}\U{0005}\U{0002}\U{0001}P\0aaa\U{0006}aaaa");
+var r0 := CountUppercase("\U{0003}aaa\0aa\U{0001}G\U{0002}");
 expect r0 >= 0;
 }
 method {:test} Test17() {
-var r0 := CountUppercase("\U{0003}aa,a\0\U{0001}\U{0002}");
+var r0 := CountUppercase("aaaaaaaaaaa\U{000E}aaaaaa\U{0004}\U{0003}C\0aa\U{0005}\U{0001}\U{0002}a\U{0006}");
 expect r0 >= 0;
 }
 method {:test} Test18() {
-var r0 := CountUppercase("\U{0003}aa\0aa\U{0001}\U{0002}");
+var r0 := CountUppercase("aaaaaaaa\U{0003}aaaaaaa\U{0001}\U{0002}\U{0005}aBaaa\U{0006}\0\U{0008}a\U{0007}\U{0004}");
 expect r0 >= 0;
 }
 method {:test} Test19() {
-var r0 := CountUppercase("\U{0003}a\U{0001}\U{0002}aa\U{0005}\0Caa\U{0004}a");
+var r0 := CountUppercase("aaaaaa\U{0002}aaaaaa\U{0001}a\0aa\U{0004}aB\U{0003}aa\U{0005}a\U{0006}");
 expect r0 >= 0;
 }
 
-// REPEAT 5 - TIME: 20.7858273 s
+// REPEAT 5 - TIME: 24.061755 s

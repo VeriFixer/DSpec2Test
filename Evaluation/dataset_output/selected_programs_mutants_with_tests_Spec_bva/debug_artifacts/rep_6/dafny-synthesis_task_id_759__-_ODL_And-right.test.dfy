@@ -17,14 +17,14 @@ method {:testEntry} IsDecimalWithTwoPrecision(s: string) returns (result: bool)
 }
 
 method {:test} Test22() {
-var r0 := IsDecimalWithTwoPrecision("\0aaaaaaaaaaaa\U{0004}\U{0002}");
-expect r0 ==> exists i :: 0 <= i < |"\0aaaaaaaaaaaa\U{0004}\U{0002}"| && "\0aaaaaaaaaaaa\U{0004}\U{0002}"[i] == '.' && |"\0aaaaaaaaaaaa\U{0004}\U{0002}"| - i - 1 == 2;
-expect !r0 ==> !exists i :: 0 <= i < |"\0aaaaaaaaaaaa\U{0004}\U{0002}"| && "\0aaaaaaaaaaaa\U{0004}\U{0002}"[i] == '.' && |"\0aaaaaaaaaaaa\U{0004}\U{0002}"| - i - 1 == 2;
+var r0 := IsDecimalWithTwoPrecision("\U{0004}aa\U{0002}\U{0008}a\U{0006}\0");
+expect r0 ==> exists i :: 0 <= i < |"\U{0004}aa\U{0002}\U{0008}a\U{0006}\0"| && "\U{0004}aa\U{0002}\U{0008}a\U{0006}\0"[i] == '.' && |"\U{0004}aa\U{0002}\U{0008}a\U{0006}\0"| - i - 1 == 2;
+expect !r0 ==> !exists i :: 0 <= i < |"\U{0004}aa\U{0002}\U{0008}a\U{0006}\0"| && "\U{0004}aa\U{0002}\U{0008}a\U{0006}\0"[i] == '.' && |"\U{0004}aa\U{0002}\U{0008}a\U{0006}\0"| - i - 1 == 2;
 }
 method {:test} Test23() {
-var r0 := IsDecimalWithTwoPrecision("\taaaaaaaa\U{0001}a\U{0003}.\U{0005}\U{0007}");
-expect r0 ==> exists i :: 0 <= i < |"\taaaaaaaa\U{0001}a\U{0003}.\U{0005}\U{0007}"| && "\taaaaaaaa\U{0001}a\U{0003}.\U{0005}\U{0007}"[i] == '.' && |"\taaaaaaaa\U{0001}a\U{0003}.\U{0005}\U{0007}"| - i - 1 == 2;
-expect !r0 ==> !exists i :: 0 <= i < |"\taaaaaaaa\U{0001}a\U{0003}.\U{0005}\U{0007}"| && "\taaaaaaaa\U{0001}a\U{0003}.\U{0005}\U{0007}"[i] == '.' && |"\taaaaaaaa\U{0001}a\U{0003}.\U{0005}\U{0007}"| - i - 1 == 2;
+var r0 := IsDecimalWithTwoPrecision("\U{0005}aa\U{0001}aaaaa.\U{0003}a");
+expect r0 ==> exists i :: 0 <= i < |"\U{0005}aa\U{0001}aaaaa.\U{0003}a"| && "\U{0005}aa\U{0001}aaaaa.\U{0003}a"[i] == '.' && |"\U{0005}aa\U{0001}aaaaa.\U{0003}a"| - i - 1 == 2;
+expect !r0 ==> !exists i :: 0 <= i < |"\U{0005}aa\U{0001}aaaaa.\U{0003}a"| && "\U{0005}aa\U{0001}aaaaa.\U{0003}a"[i] == '.' && |"\U{0005}aa\U{0001}aaaaa.\U{0003}a"| - i - 1 == 2;
 }
 
-// REPEAT 6 - TIME: 15.2865135 s
+// REPEAT 6 - TIME: 21.1223855 s

@@ -26,4 +26,4 @@ var r0 := square(0);
 expect r0 == 0 * 0;
 }
 
-// REPEAT 1 - TIME: 5.4431889 s
+// REPEAT 1 - TIME: 6.4459935 s

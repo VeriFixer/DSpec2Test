@@ -20,19 +20,19 @@ expect r0 <= 16 && r0 <= 16 && r0 <= 15;
 expect r0 == 16 || r0 == 16 || r0 == 15;
 }
 method {:test} Test31() {
+var r0 := MinOfThree(17, 16, 16);
+expect r0 <= 17 && r0 <= 16 && r0 <= 16;
+expect r0 == 17 || r0 == 16 || r0 == 16;
+}
+method {:test} Test32() {
 var r0 := MinOfThree(16, 17, 15);
 expect r0 <= 16 && r0 <= 17 && r0 <= 15;
 expect r0 == 16 || r0 == 17 || r0 == 15;
 }
-method {:test} Test32() {
-var r0 := MinOfThree(16, 16, 16);
-expect r0 <= 16 && r0 <= 16 && r0 <= 16;
-expect r0 == 16 || r0 == 16 || r0 == 16;
-}
 method {:test} Test33() {
-var r0 := MinOfThree(17, 16, 15);
-expect r0 <= 17 && r0 <= 16 && r0 <= 15;
-expect r0 == 17 || r0 == 16 || r0 == 15;
+var r0 := MinOfThree(16, 17, 16);
+expect r0 <= 16 && r0 <= 17 && r0 <= 16;
+expect r0 == 16 || r0 == 17 || r0 == 16;
 }
 
-// REPEAT 9 - TIME: 18.3155877 s
+// REPEAT 9 - TIME: 18.593266 s

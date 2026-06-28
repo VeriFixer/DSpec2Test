@@ -27,67 +27,67 @@ var r0 := expt(25, 0);
 expect r0 == Expt(25, 0);
 }
 
-// REPEAT 1 - TIME: 9.0838652 s
+// REPEAT 1 - TIME: 7.5434982 s
 
 method {:test} Test1() {
 var r0 := expt(26, 283);
 expect r0 == Expt(26, 283);
 }
 
-// REPEAT 2 - TIME: 14.0555489 s
+// REPEAT 2 - TIME: 11.6023701 s
 
 method {:test} Test2() {
 var r0 := expt(27, 284);
 expect r0 == Expt(27, 284);
 }
 
-// REPEAT 3 - TIME: 18.4469002 s
+// REPEAT 3 - TIME: 15.4860995 s
 
 method {:test} Test3() {
 var r0 := expt(28, 285);
 expect r0 == Expt(28, 285);
 }
 
-// REPEAT 4 - TIME: 22.6027547 s
+// REPEAT 4 - TIME: 19.6077566 s
 
 method {:test} Test4() {
 var r0 := expt(29, 286);
 expect r0 == Expt(29, 286);
 }
 
-// REPEAT 5 - TIME: 27.3401837 s
+// REPEAT 5 - TIME: 23.4225109 s
 
 method {:test} Test5() {
 var r0 := expt(30, 287);
 expect r0 == Expt(30, 287);
 }
 
-// REPEAT 6 - TIME: 32.1015255 s
+// REPEAT 6 - TIME: 27.0970291 s
 
 method {:test} Test6() {
 var r0 := expt(31, 288);
 expect r0 == Expt(31, 288);
 }
 
-// REPEAT 7 - TIME: 37.1044217 s
+// REPEAT 7 - TIME: 30.8848655 s
 
 method {:test} Test7() {
 var r0 := expt(32, 289);
 expect r0 == Expt(32, 289);
 }
 
-// REPEAT 8 - TIME: 41.868882 s
+// REPEAT 8 - TIME: 35.1345964 s
 
 method {:test} Test8() {
 var r0 := expt(33, 290);
 expect r0 == Expt(33, 290);
 }
 
-// REPEAT 9 - TIME: 47.0485412 s
+// REPEAT 9 - TIME: 39.3436479 s
 
 method {:test} Test9() {
 var r0 := expt(34, 291);
 expect r0 == Expt(34, 291);
 }
 
-// REPEAT 10 - TIME: 52.5226754 s
+// REPEAT 10 - TIME: 43.2228205 s

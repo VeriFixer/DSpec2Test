@@ -41,4 +41,4 @@ method {:test} Test1() {
 Teste();
 }
 
-// REPEAT 1 - TIME: 2.8625284 s
+// REPEAT 1 - TIME: 2.6530726 s

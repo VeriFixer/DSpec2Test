@@ -22,8 +22,8 @@ method {:testEntry} sum(n: nat) returns (s: nat)
 }
 
 method {:test} Test1() {
-var r0 := sum(2);
-expect r0 == calcSum(2 + 1);
+var r0 := sum(1);
+expect r0 == calcSum(1 + 1);
 }
 
-// REPEAT 2 - TIME: 6.1094186 s
+// REPEAT 2 - TIME: 9.6887431 s

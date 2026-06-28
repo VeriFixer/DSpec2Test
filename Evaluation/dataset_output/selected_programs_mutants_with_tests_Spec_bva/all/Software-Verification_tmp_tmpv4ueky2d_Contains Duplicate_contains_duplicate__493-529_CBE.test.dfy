@@ -57,7 +57,7 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 1 - TIME: 9.06764 s
+// REPEAT 1 - TIME: 13.3679655 s
 
 method {:test} Test13() {
 var seqint0 : seq<int> := [-999998763, 0, -999998762, 0, 0, 0, 0, 0, 0, 0, 0, 0, -999998764];
@@ -74,7 +74,7 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 2 - TIME: 10.4247945 s
+// REPEAT 2 - TIME: 14.9952734 s
 
 method {:test} Test15() {
 var seqint0 : seq<int> := [0, 0, 0, -2, 1236, -1, 0];
@@ -91,7 +91,7 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 3 - TIME: 11.5006149 s
+// REPEAT 3 - TIME: 16.483288 s
 
 method {:test} Test17() {
 var seqint0 : seq<int> := [1236, 0, 0, 1235, 1198, -3, 0, 0];
@@ -108,7 +108,7 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 4 - TIME: 12.8550074 s
+// REPEAT 4 - TIME: 18.0602591 s
 
 method {:test} Test19() {
 var seqint0 : seq<int> := [1831, 0, 1832, -4, 33, 1830];
@@ -125,7 +125,7 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 5 - TIME: 13.9809227 s
+// REPEAT 5 - TIME: 19.321814 s
 
 method {:test} Test21() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, -999996478, -999997715, 0, -999997716, 0, 0, 0, -999999067, 0, 0, 0, 0, 0, 0, 0, -999997717];
@@ -142,7 +142,7 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 6 - TIME: 14.977937 s
+// REPEAT 6 - TIME: 20.7035612 s
 
 method {:test} Test23() {
 var seqint0 : seq<int> := [143, 5997];
@@ -159,7 +159,7 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 7 - TIME: 16.1582895 s
+// REPEAT 7 - TIME: 22.5320316 s
 
 method {:test} Test25() {
 var seqint0 : seq<int> := [-999994142, -999994147, -999994145, -999994146, -999994144, -999994141, -999994143];
@@ -176,7 +176,7 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 8 - TIME: 17.4490527 s
+// REPEAT 8 - TIME: 24.6381202 s
 
 method {:test} Test27() {
 var seqint0 : seq<int> := [0, 0, 0, 0, -999997650, 0, 0, -999997653, -999997935, -999997652, -999997651];
@@ -193,7 +193,7 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 9 - TIME: 18.5450552 s
+// REPEAT 9 - TIME: 26.2866074 s
 
 method {:test} Test29() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -210,4 +210,4 @@ var r0 := contains_duplicate(seqint0);
 expect r0 <==> distinct(seqint0);
 }
 
-// REPEAT 10 - TIME: 19.8605016 s
+// REPEAT 10 - TIME: 27.8540185 s

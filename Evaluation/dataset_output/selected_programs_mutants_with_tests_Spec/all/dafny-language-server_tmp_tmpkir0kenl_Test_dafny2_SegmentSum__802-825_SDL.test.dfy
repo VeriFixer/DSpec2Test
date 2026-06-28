@@ -39,7 +39,7 @@ expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 1 - TIME: 3.451612 s
+// REPEAT 1 - TIME: 3.2510002 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [0, 0];
@@ -48,7 +48,7 @@ expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 2 - TIME: 4.528944 s
+// REPEAT 2 - TIME: 4.3826668 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [1, 0];
@@ -57,7 +57,7 @@ expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 3 - TIME: 5.5482451 s
+// REPEAT 3 - TIME: 5.7975 s
 
 method {:test} Test3() {
 var seqint0 : seq<int> := [4, 0, 2];
@@ -66,7 +66,7 @@ expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 4 - TIME: 6.8393401 s
+// REPEAT 4 - TIME: 7.112879 s
 
 method {:test} Test4() {
 var seqint0 : seq<int> := [6, 0, 3];
@@ -75,7 +75,7 @@ expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 5 - TIME: 7.9401554 s
+// REPEAT 5 - TIME: 8.2209329 s
 
 method {:test} Test5() {
 var seqint0 : seq<int> := [12, 0, 10, 0, 0, 0, 0, 0, 0, 5, 0, 0, 8];
@@ -84,7 +84,7 @@ expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 6 - TIME: 9.0030763 s
+// REPEAT 6 - TIME: 9.4364026 s
 
 method {:test} Test6() {
 var seqint0 : seq<int> := [11, 7, 0, 0, 0, 14];
@@ -93,7 +93,7 @@ expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 7 - TIME: 10.0054102 s
+// REPEAT 7 - TIME: 10.2657764 s
 
 method {:test} Test7() {
 var seqint0 : seq<int> := [15, 9, 0, 0, 17];
@@ -102,7 +102,7 @@ expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 8 - TIME: 10.9216645 s
+// REPEAT 8 - TIME: 11.1135927 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [20, 0, 13, 0, 0, 0, 0, 18, 22];
@@ -111,7 +111,7 @@ expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 9 - TIME: 11.7799944 s
+// REPEAT 9 - TIME: 11.9622152 s
 
 method {:test} Test9() {
 var seqint0 : seq<int> := [21, 16, 0, 0];
@@ -120,4 +120,4 @@ expect 0 <= r0 <= r1 <= |seqint0|;
 expect forall p, q :: 0 <= p <= q <= |seqint0| ==> Sum(seqint0, p, q) <= Sum(seqint0, r0, r1);
 }
 
-// REPEAT 10 - TIME: 12.5590395 s
+// REPEAT 10 - TIME: 12.6722583 s

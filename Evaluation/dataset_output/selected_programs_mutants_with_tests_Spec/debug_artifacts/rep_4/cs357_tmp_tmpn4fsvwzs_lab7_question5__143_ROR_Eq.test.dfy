@@ -49,4 +49,4 @@ var r0 := A1(3, 3);
 expect r0 == 3 + 3;
 }
 
-// REPEAT 4 - TIME: 6.9899449 s
+// REPEAT 4 - TIME: 7.4628105 s

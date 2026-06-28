@@ -137,7 +137,7 @@ var r0 := exp_by_sqr(1.0, 7721);
 expect r0 == exp(1.0, 7721);
 }
 
-// REPEAT 1 - TIME: 4.8414421 s
+// REPEAT 1 - TIME: 5.2307301 s
 
 method {:test} Test4() {
 var r0 := add_by_inc(1, 1);
@@ -158,7 +158,7 @@ var r0 := exp_by_sqr(2.0, 7722);
 expect r0 == exp(2.0, 7722);
 }
 
-// REPEAT 2 - TIME: 7.5102187 s
+// REPEAT 2 - TIME: 8.0238023 s
 
 method {:test} Test8() {
 var r0 := add_by_inc(2, 2);
@@ -179,7 +179,7 @@ var r0 := exp_by_sqr(3.0, 7723);
 expect r0 == exp(3.0, 7723);
 }
 
-// REPEAT 3 - TIME: 10.102615 s
+// REPEAT 3 - TIME: 10.8806123 s
 
 method {:test} Test12() {
 var r0 := add_by_inc(3, 3);
@@ -200,7 +200,7 @@ var r0 := exp_by_sqr(4.0, 7724);
 expect r0 == exp(4.0, 7724);
 }
 
-// REPEAT 4 - TIME: 12.0499054 s
+// REPEAT 4 - TIME: 12.9149549 s
 
 method {:test} Test16() {
 var r0 := add_by_inc(4, 4);
@@ -221,7 +221,7 @@ var r0 := exp_by_sqr(5.0, 7725);
 expect r0 == exp(5.0, 7725);
 }
 
-// REPEAT 5 - TIME: 13.8441673 s
+// REPEAT 5 - TIME: 14.7626433 s
 
 method {:test} Test20() {
 var r0 := add_by_inc(5, 5);
@@ -242,7 +242,7 @@ var r0 := exp_by_sqr(6.0, 7726);
 expect r0 == exp(6.0, 7726);
 }
 
-// REPEAT 6 - TIME: 15.4831679 s
+// REPEAT 6 - TIME: 16.5476074 s
 
 method {:test} Test24() {
 var r0 := add_by_inc(6, 6);
@@ -263,7 +263,7 @@ var r0 := exp_by_sqr(7.0, 7727);
 expect r0 == exp(7.0, 7727);
 }
 
-// REPEAT 7 - TIME: 17.2639277 s
+// REPEAT 7 - TIME: 18.2891918 s
 
 method {:test} Test28() {
 var r0 := add_by_inc(7, 7);
@@ -284,7 +284,7 @@ var r0 := exp_by_sqr(8.0, 7728);
 expect r0 == exp(8.0, 7728);
 }
 
-// REPEAT 8 - TIME: 18.9415951 s
+// REPEAT 8 - TIME: 20.3537542 s
 
 method {:test} Test32() {
 var r0 := add_by_inc(8, 8);
@@ -305,7 +305,7 @@ var r0 := exp_by_sqr(9.0, 7729);
 expect r0 == exp(9.0, 7729);
 }
 
-// REPEAT 9 - TIME: 20.900373 s
+// REPEAT 9 - TIME: 22.2710182 s
 
 method {:test} Test36() {
 var r0 := add_by_inc(9, 9);
@@ -326,4 +326,4 @@ var r0 := exp_by_sqr(10.0, 7730);
 expect r0 == exp(10.0, 7730);
 }
 
-// REPEAT 10 - TIME: 22.9586779 s
+// REPEAT 10 - TIME: 24.1361336 s

@@ -15,19 +15,19 @@ method {:testEntry} MinOfThree(a: int, b: int, c: int)
 }
 
 method {:test} Test4() {
-var r0 := MinOfThree(3, 2, 1);
-expect r0 <= 3 && r0 <= 2 && r0 <= 1;
-expect r0 == 3 || r0 == 2 || r0 == 1;
-}
-method {:test} Test5() {
 var r0 := MinOfThree(2, 3, 1);
 expect r0 <= 2 && r0 <= 3 && r0 <= 1;
 expect r0 == 2 || r0 == 3 || r0 == 1;
 }
+method {:test} Test5() {
+var r0 := MinOfThree(2, 1, 1);
+expect r0 <= 2 && r0 <= 1 && r0 <= 1;
+expect r0 == 2 || r0 == 1 || r0 == 1;
+}
 method {:test} Test6() {
-var r0 := MinOfThree(2, 2, 2);
-expect r0 <= 2 && r0 <= 2 && r0 <= 2;
-expect r0 == 2 || r0 == 2 || r0 == 2;
+var r0 := MinOfThree(2, 3, 2);
+expect r0 <= 2 && r0 <= 3 && r0 <= 2;
+expect r0 == 2 || r0 == 3 || r0 == 2;
 }
 
-// REPEAT 2 - TIME: 5.255459 s
+// REPEAT 2 - TIME: 5.5297896 s

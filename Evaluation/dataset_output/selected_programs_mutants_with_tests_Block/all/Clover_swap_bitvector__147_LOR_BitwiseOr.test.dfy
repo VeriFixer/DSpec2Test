@@ -18,7 +18,7 @@ expect r0 == (0 as bv8);
 expect r1 == (255 as bv8);
 }
 
-// REPEAT 1 - TIME: 3.1233572 s
+// REPEAT 1 - TIME: 1.7197557 s
 
 method {:test} Test1() {
 var r0, r1 := SwapBitvectors((0 as bv8), (128 as bv8));
@@ -26,7 +26,7 @@ expect r0 == (128 as bv8);
 expect r1 == (0 as bv8);
 }
 
-// REPEAT 2 - TIME: 4.1305654 s
+// REPEAT 2 - TIME: 2.2602172 s
 
 method {:test} Test2() {
 var r0, r1 := SwapBitvectors((128 as bv8), (64 as bv8));
@@ -34,7 +34,7 @@ expect r0 == (64 as bv8);
 expect r1 == (128 as bv8);
 }
 
-// REPEAT 3 - TIME: 4.8817617 s
+// REPEAT 3 - TIME: 2.8039363 s
 
 method {:test} Test3() {
 var r0, r1 := SwapBitvectors((64 as bv8), (192 as bv8));
@@ -42,7 +42,7 @@ expect r0 == (192 as bv8);
 expect r1 == (64 as bv8);
 }
 
-// REPEAT 4 - TIME: 5.683276 s
+// REPEAT 4 - TIME: 3.5317378 s
 
 method {:test} Test4() {
 var r0, r1 := SwapBitvectors((192 as bv8), (32 as bv8));
@@ -50,7 +50,7 @@ expect r0 == (32 as bv8);
 expect r1 == (192 as bv8);
 }
 
-// REPEAT 5 - TIME: 6.4700512 s
+// REPEAT 5 - TIME: 4.296036 s
 
 method {:test} Test5() {
 var r0, r1 := SwapBitvectors((32 as bv8), (160 as bv8));
@@ -58,7 +58,7 @@ expect r0 == (160 as bv8);
 expect r1 == (32 as bv8);
 }
 
-// REPEAT 6 - TIME: 7.4470137 s
+// REPEAT 6 - TIME: 4.976412 s
 
 method {:test} Test6() {
 var r0, r1 := SwapBitvectors((160 as bv8), (96 as bv8));
@@ -66,7 +66,7 @@ expect r0 == (96 as bv8);
 expect r1 == (160 as bv8);
 }
 
-// REPEAT 7 - TIME: 8.0461219 s
+// REPEAT 7 - TIME: 5.8974063 s
 
 method {:test} Test7() {
 var r0, r1 := SwapBitvectors((96 as bv8), (224 as bv8));
@@ -74,7 +74,7 @@ expect r0 == (224 as bv8);
 expect r1 == (96 as bv8);
 }
 
-// REPEAT 8 - TIME: 8.8486945 s
+// REPEAT 8 - TIME: 6.678316 s
 
 method {:test} Test8() {
 var r0, r1 := SwapBitvectors((224 as bv8), (16 as bv8));
@@ -82,7 +82,7 @@ expect r0 == (16 as bv8);
 expect r1 == (224 as bv8);
 }
 
-// REPEAT 9 - TIME: 9.4578506 s
+// REPEAT 9 - TIME: 7.2833128 s
 
 method {:test} Test9() {
 var r0, r1 := SwapBitvectors((16 as bv8), (144 as bv8));
@@ -90,4 +90,4 @@ expect r0 == (144 as bv8);
 expect r1 == (16 as bv8);
 }
 
-// REPEAT 10 - TIME: 10.1124045 s
+// REPEAT 10 - TIME: 8.0780165 s

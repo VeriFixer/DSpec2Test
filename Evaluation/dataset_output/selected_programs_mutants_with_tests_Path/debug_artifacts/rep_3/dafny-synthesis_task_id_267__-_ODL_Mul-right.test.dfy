@@ -17,9 +17,9 @@ method {:testEntry} SumOfSquaresOfFirstNOddNumbers(n: int) returns (sum: int)
 }
 
 method {:test} Test2() {
-expect 3 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := SumOfSquaresOfFirstNOddNumbers(3);
-expect r0 == 3 * (2 * 3 - 1) * (2 * 3 + 1) / 3;
+expect 2 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := SumOfSquaresOfFirstNOddNumbers(2);
+expect r0 == 2 * (2 * 2 - 1) * (2 * 2 + 1) / 3;
 }
 
-// REPEAT 3 - TIME: 11.5103931 s
+// REPEAT 3 - TIME: 9.2619658 s

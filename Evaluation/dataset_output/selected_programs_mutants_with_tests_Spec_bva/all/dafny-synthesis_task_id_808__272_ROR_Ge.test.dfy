@@ -67,7 +67,7 @@ var r0 := ContainsK(seqint0, 100);
 expect r0 <==> 100 in seqint0;
 }
 
-// REPEAT 1 - TIME: 10.838119 s
+// REPEAT 1 - TIME: 14.4939929 s
 
 method {:test} Test19() {
 var seqint0 : seq<int> := [4, 25, 2];
@@ -80,7 +80,7 @@ var r0 := ContainsK(seqint0, 25);
 expect r0 <==> 25 in seqint0;
 }
 
-// REPEAT 2 - TIME: 11.7946968 s
+// REPEAT 2 - TIME: 15.8751075 s
 
 method {:test} Test21() {
 var seqint0 : seq<int> := [9, 0, 7, 26];
@@ -93,7 +93,7 @@ var r0 := ContainsK(seqint0, 26);
 expect r0 <==> 26 in seqint0;
 }
 
-// REPEAT 3 - TIME: 12.9104732 s
+// REPEAT 3 - TIME: 17.2403055 s
 
 method {:test} Test23() {
 var seqint0 : seq<int> := [15, 13, 27, 0, 0];
@@ -106,7 +106,7 @@ var r0 := ContainsK(seqint0, 27);
 expect r0 <==> 27 in seqint0;
 }
 
-// REPEAT 4 - TIME: 13.9913606 s
+// REPEAT 4 - TIME: 18.6326649 s
 
 method {:test} Test25() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 28, 0, 21, 0, 23, 30, 19, 0, 0, 32];
@@ -119,7 +119,7 @@ var r0 := ContainsK(seqint0, 28);
 expect r0 <==> 28 in seqint0;
 }
 
-// REPEAT 5 - TIME: 15.0662522 s
+// REPEAT 5 - TIME: 19.9445483 s
 
 method {:test} Test27() {
 var seqint0 : seq<int> := [34, 31, 0, 0, 36, 38];
@@ -132,7 +132,7 @@ var r0 := ContainsK(seqint0, 31);
 expect r0 <==> 31 in seqint0;
 }
 
-// REPEAT 6 - TIME: 16.2095394 s
+// REPEAT 6 - TIME: 21.2935797 s
 
 method {:test} Test29() {
 var seqint0 : seq<int> := [46, 0, 0, 0, 0, 0, 0, 0, 42, 54, 44, 52, 0, 48, 56, 50, 0, 0, 40];
@@ -145,7 +145,7 @@ var r0 := ContainsK(seqint0, 40);
 expect r0 <==> 40 in seqint0;
 }
 
-// REPEAT 7 - TIME: 17.2839528 s
+// REPEAT 7 - TIME: 22.6082602 s
 
 method {:test} Test31() {
 var seqint0 : seq<int> := [62, 0, 55, 58, 0, 0, 60];
@@ -158,7 +158,7 @@ var r0 := ContainsK(seqint0, 55);
 expect r0 <==> 55 in seqint0;
 }
 
-// REPEAT 8 - TIME: 18.3572231 s
+// REPEAT 8 - TIME: 23.9184978 s
 
 method {:test} Test33() {
 var seqint0 : seq<int> := [68, 0, 0, 0, 0, 0, 0, 0, 64, 0, 71, 73, 0, 0, 75, 0, 0, 0, 77, 0, 0];
@@ -171,7 +171,7 @@ var r0 := ContainsK(seqint0, 64);
 expect r0 <==> 64 in seqint0;
 }
 
-// REPEAT 9 - TIME: 19.4529797 s
+// REPEAT 9 - TIME: 25.5563541 s
 
 method {:test} Test35() {
 var seqint0 : seq<int> := [91, 0, 79, 0, 0, 0, 0, 0, 0, 0, 83, 0, 0, 85, 89, 87];
@@ -184,4 +184,4 @@ var r0 := ContainsK(seqint0, 79);
 expect r0 <==> 79 in seqint0;
 }
 
-// REPEAT 10 - TIME: 20.6580245 s
+// REPEAT 10 - TIME: 27.2147932 s

@@ -16,9 +16,9 @@ method {:testEntry} ContainsK(s: seq<int>, k: int) returns (result: bool)
 }
 
 method {:test} Test2() {
-var seqint0 : seq<int> := [40, 27];
-var r0 := ContainsK(seqint0, 27);
-expect r0 <==> 27 in seqint0;
+var seqint0 : seq<int> := [28, 39];
+var r0 := ContainsK(seqint0, 28);
+expect r0 <==> 28 in seqint0;
 }
 
-// REPEAT 3 - TIME: 4.8330551 s
+// REPEAT 3 - TIME: 4.7730253 s

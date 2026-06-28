@@ -25,4 +25,4 @@ var r0 := A8Q1(8, 8, 8);
 expect r0 <= 8 && r0 <= 8 && r0 <= 8;
 }
 
-// REPEAT 9 - TIME: 10.1275722 s
+// REPEAT 9 - TIME: 9.8748503 s

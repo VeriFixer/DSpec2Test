@@ -22,4 +22,4 @@ var r0 := TriangleNumber(0);
 expect r0 == 0 * (0 + 1) / 2;
 }
 
-// REPEAT 1 - TIME: 5.0570483 s
+// REPEAT 1 - TIME: 4.5035425 s

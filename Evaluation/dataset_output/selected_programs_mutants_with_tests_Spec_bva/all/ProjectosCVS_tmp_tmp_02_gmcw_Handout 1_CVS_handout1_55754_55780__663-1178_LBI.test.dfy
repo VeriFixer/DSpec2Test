@@ -111,7 +111,7 @@ var r0, r1 := euclidianDiv(3800, 100);
 expect 3800 == 100 * r0 + r1;
 }
 
-// REPEAT 1 - TIME: 12.0375359 s
+// REPEAT 1 - TIME: 16.136029 s
 
 method {:test} Test23() {
 expect 101 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -125,7 +125,7 @@ var r0, r1 := euclidianDiv(7720, 101);
 expect 7720 == 101 * r0 + r1;
 }
 
-// REPEAT 2 - TIME: 13.1155282 s
+// REPEAT 2 - TIME: 17.6303264 s
 
 method {:test} Test25() {
 expect 102 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -139,7 +139,7 @@ var r0, r1 := euclidianDiv(7721, 102);
 expect 7721 == 102 * r0 + r1;
 }
 
-// REPEAT 3 - TIME: 14.402571 s
+// REPEAT 3 - TIME: 18.9874307 s
 
 method {:test} Test27() {
 expect 103 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -153,7 +153,7 @@ var r0, r1 := euclidianDiv(7722, 103);
 expect 7722 == 103 * r0 + r1;
 }
 
-// REPEAT 4 - TIME: 15.2778091 s
+// REPEAT 4 - TIME: 20.2306841 s
 
 method {:test} Test29() {
 expect 104 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -167,7 +167,7 @@ var r0, r1 := euclidianDiv(7723, 104);
 expect 7723 == 104 * r0 + r1;
 }
 
-// REPEAT 5 - TIME: 16.1724915 s
+// REPEAT 5 - TIME: 21.5698357 s
 
 method {:test} Test31() {
 expect 105 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -181,7 +181,7 @@ var r0, r1 := euclidianDiv(7724, 105);
 expect 7724 == 105 * r0 + r1;
 }
 
-// REPEAT 6 - TIME: 17.0437308 s
+// REPEAT 6 - TIME: 23.0325824 s
 
 method {:test} Test33() {
 expect 106 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -195,7 +195,7 @@ var r0, r1 := euclidianDiv(7725, 106);
 expect 7725 == 106 * r0 + r1;
 }
 
-// REPEAT 7 - TIME: 17.9993858 s
+// REPEAT 7 - TIME: 24.2859215 s
 
 method {:test} Test35() {
 expect 107 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -209,7 +209,7 @@ var r0, r1 := euclidianDiv(7726, 107);
 expect 7726 == 107 * r0 + r1;
 }
 
-// REPEAT 8 - TIME: 18.8167123 s
+// REPEAT 8 - TIME: 25.4687578 s
 
 method {:test} Test37() {
 expect 108 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -223,7 +223,7 @@ var r0, r1 := euclidianDiv(7727, 108);
 expect 7727 == 108 * r0 + r1;
 }
 
-// REPEAT 9 - TIME: 19.7419839 s
+// REPEAT 9 - TIME: 26.8228554 s
 
 method {:test} Test39() {
 expect 109 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -237,4 +237,4 @@ var r0, r1 := euclidianDiv(7728, 109);
 expect 7728 == 109 * r0 + r1;
 }
 
-// REPEAT 10 - TIME: 20.5798971 s
+// REPEAT 10 - TIME: 28.0659588 s

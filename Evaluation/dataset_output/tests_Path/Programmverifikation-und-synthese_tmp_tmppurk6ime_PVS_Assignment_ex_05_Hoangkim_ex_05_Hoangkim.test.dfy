@@ -100,7 +100,7 @@ var r0 := gcdI(1, 452);
 expect r0 == gcd(1, 452);
 }
 
-// REPEAT 1 - TIME: 9.1961463 s
+// REPEAT 1 - TIME: 11.019924 s
 
 method {:test} Test3() {
 expect 2 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -118,7 +118,7 @@ var r0 := gcdI(2, 453);
 expect r0 == gcd(2, 453);
 }
 
-// REPEAT 2 - TIME: 16.6028874 s
+// REPEAT 2 - TIME: 18.8963595 s
 
 method {:test} Test6() {
 expect 3 > 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -136,12 +136,12 @@ var r0 := gcdI(3, 454);
 expect r0 == gcd(3, 454);
 }
 
-// REPEAT 3 - TIME: 23.5505442 s
+// REPEAT 3 - TIME: 28.0078249 s
 
 method {:test} Test9() {
-expect 539 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := fibIter(539);
-expect r0 == fib(539);
+expect 978 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := fibIter(978);
+expect r0 == fib(978);
 }
 method {:test} Test10() {
 expect 5 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -154,12 +154,12 @@ var r0 := gcdI(7947, 15894);
 expect r0 == gcd(7947, 15894);
 }
 
-// REPEAT 4 - TIME: 30.178425 s
+// REPEAT 4 - TIME: 36.4228348 s
 
 method {:test} Test12() {
-expect 540 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := fibIter(540);
-expect r0 == fib(540);
+expect 979 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := fibIter(979);
+expect r0 == fib(979);
 }
 method {:test} Test13() {
 expect 6 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -167,17 +167,17 @@ var r0 := factIter(6);
 expect r0 == fact(6);
 }
 method {:test} Test14() {
-expect 7948 > 0 && 15896 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := gcdI(7948, 15896);
-expect r0 == gcd(7948, 15896);
+expect 7948 > 0 && 23616 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := gcdI(7948, 23616);
+expect r0 == gcd(7948, 23616);
 }
 
-// REPEAT 5 - TIME: 37.1188332 s
+// REPEAT 5 - TIME: 45.2666838 s
 
 method {:test} Test15() {
-expect 541 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := fibIter(541);
-expect r0 == fib(541);
+expect 980 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := fibIter(980);
+expect r0 == fib(980);
 }
 method {:test} Test16() {
 expect 7 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -185,17 +185,17 @@ var r0 := factIter(7);
 expect r0 == fact(7);
 }
 method {:test} Test17() {
-expect 7949 > 0 && 15898 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := gcdI(7949, 15898);
-expect r0 == gcd(7949, 15898);
+expect 19528 > 0 && 39056 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := gcdI(19528, 39056);
+expect r0 == gcd(19528, 39056);
 }
 
-// REPEAT 6 - TIME: 45.795796 s
+// REPEAT 6 - TIME: 55.6032368 s
 
 method {:test} Test18() {
-expect 542 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := fibIter(542);
-expect r0 == fib(542);
+expect 981 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := fibIter(981);
+expect r0 == fib(981);
 }
 method {:test} Test19() {
 expect 8 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -203,17 +203,17 @@ var r0 := factIter(8);
 expect r0 == fact(8);
 }
 method {:test} Test20() {
-expect 7950 > 0 && 15900 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := gcdI(7950, 15900);
-expect r0 == gcd(7950, 15900);
+expect 19529 > 0 && 39058 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := gcdI(19529, 39058);
+expect r0 == gcd(19529, 39058);
 }
 
-// REPEAT 7 - TIME: 53.4423349 s
+// REPEAT 7 - TIME: 67.0657738 s
 
 method {:test} Test21() {
-expect 543 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := fibIter(543);
-expect r0 == fib(543);
+expect 982 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := fibIter(982);
+expect r0 == fib(982);
 }
 method {:test} Test22() {
 expect 9 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -221,17 +221,17 @@ var r0 := factIter(9);
 expect r0 == fact(9);
 }
 method {:test} Test23() {
-expect 7951 > 0 && 23622 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := gcdI(7951, 23622);
-expect r0 == gcd(7951, 23622);
+expect 19530 > 0 && 46780 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := gcdI(19530, 46780);
+expect r0 == gcd(19530, 46780);
 }
 
-// REPEAT 8 - TIME: 60.918139 s
+// REPEAT 8 - TIME: 80.0218125 s
 
 method {:test} Test24() {
-expect 544 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := fibIter(544);
-expect r0 == fib(544);
+expect 983 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := fibIter(983);
+expect r0 == fib(983);
 }
 method {:test} Test25() {
 expect 10 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -239,17 +239,17 @@ var r0 := factIter(10);
 expect r0 == fact(10);
 }
 method {:test} Test26() {
-expect 7952 > 0 && 23623 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := gcdI(7952, 23623);
-expect r0 == gcd(7952, 23623);
+expect 19531 > 0 && 46781 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := gcdI(19531, 46781);
+expect r0 == gcd(19531, 46781);
 }
 
-// REPEAT 9 - TIME: 71.2278757 s
+// REPEAT 9 - TIME: 93.1559401 s
 
 method {:test} Test27() {
-expect 545 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := fibIter(545);
-expect r0 == fib(545);
+expect 984 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := fibIter(984);
+expect r0 == fib(984);
 }
 method {:test} Test28() {
 expect 11 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -257,9 +257,9 @@ var r0 := factIter(11);
 expect r0 == fact(11);
 }
 method {:test} Test29() {
-expect 19531 > 0 && 39062 > 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := gcdI(19531, 39062);
-expect r0 == gcd(19531, 39062);
+expect 31110 > 0 && 62220 > 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := gcdI(31110, 62220);
+expect r0 == gcd(31110, 62220);
 }
 
-// REPEAT 10 - TIME: 79.6882033 s
+// REPEAT 10 - TIME: 105.1133104 s

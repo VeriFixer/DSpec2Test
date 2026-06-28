@@ -57,7 +57,7 @@ method {:test} Test2() {
 Main();
 }
 
-// REPEAT 1 - TIME: 3.9685884 s
+// REPEAT 1 - TIME: 4.0155887 s
 
 method {:test} Test3() {
 expect 1 < 43, "If this check fails at runtime, the test does not meet the preconditions";
@@ -70,7 +70,7 @@ var r0 := test_prime(6);
 expect r0 == IsPrime(6);
 }
 
-// REPEAT 2 - TIME: 5.7206562 s
+// REPEAT 2 - TIME: 5.9399323 s
 
 method {:test} Test5() {
 expect 1 < 44, "If this check fails at runtime, the test does not meet the preconditions";
@@ -78,7 +78,7 @@ var r0 := test_prime(44);
 expect r0 == IsPrime(44);
 }
 
-// REPEAT 3 - TIME: 7.5606032 s
+// REPEAT 3 - TIME: 7.6335681 s
 
 method {:test} Test7() {
 expect 1 < 45, "If this check fails at runtime, the test does not meet the preconditions";
@@ -91,7 +91,7 @@ var r0 := test_prime(46);
 expect r0 == IsPrime(46);
 }
 
-// REPEAT 4 - TIME: 9.2467577 s
+// REPEAT 4 - TIME: 9.0294712 s
 
 method {:test} Test9() {
 expect 1 < 47, "If this check fails at runtime, the test does not meet the preconditions";
@@ -104,7 +104,7 @@ var r0 := test_prime(57);
 expect r0 == IsPrime(57);
 }
 
-// REPEAT 5 - TIME: 10.6133976 s
+// REPEAT 5 - TIME: 10.3777503 s
 
 method {:test} Test11() {
 expect 1 < 58, "If this check fails at runtime, the test does not meet the preconditions";
@@ -112,7 +112,7 @@ var r0 := test_prime(58);
 expect r0 == IsPrime(58);
 }
 
-// REPEAT 6 - TIME: 11.8005502 s
+// REPEAT 6 - TIME: 11.4820357 s
 
 method {:test} Test13() {
 expect 1 < 59, "If this check fails at runtime, the test does not meet the preconditions";
@@ -120,48 +120,48 @@ var r0 := test_prime(59);
 expect r0 == IsPrime(59);
 }
 method {:test} Test14() {
-expect 1 < 60, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := test_prime(60);
-expect r0 == IsPrime(60);
+expect 1 < 76, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := test_prime(76);
+expect r0 == IsPrime(76);
 }
 
-// REPEAT 7 - TIME: 12.664575 s
+// REPEAT 7 - TIME: 12.480514 s
 
 method {:test} Test15() {
-expect 1 < 61, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := test_prime(61);
-expect r0 == IsPrime(61);
+expect 1 < 77, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := test_prime(77);
+expect r0 == IsPrime(77);
 }
 method {:test} Test16() {
-expect 1 < 62, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := test_prime(62);
-expect r0 == IsPrime(62);
+expect 1 < 78, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := test_prime(78);
+expect r0 == IsPrime(78);
 }
 
-// REPEAT 8 - TIME: 13.5452205 s
+// REPEAT 8 - TIME: 13.5526857 s
 
 method {:test} Test17() {
-expect 1 < 63, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := test_prime(63);
-expect r0 == IsPrime(63);
+expect 1 < 79, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := test_prime(79);
+expect r0 == IsPrime(79);
 }
 method {:test} Test18() {
-expect 1 < 70, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := test_prime(70);
-expect r0 == IsPrime(70);
+expect 1 < 80, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := test_prime(80);
+expect r0 == IsPrime(80);
 }
 
-// REPEAT 9 - TIME: 14.316778 s
+// REPEAT 9 - TIME: 14.4612649 s
 
 method {:test} Test19() {
-expect 1 < 71, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := test_prime(71);
-expect r0 == IsPrime(71);
+expect 1 < 81, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := test_prime(81);
+expect r0 == IsPrime(81);
 }
 method {:test} Test20() {
-expect 1 < 72, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := test_prime(72);
-expect r0 == IsPrime(72);
+expect 1 < 82, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := test_prime(82);
+expect r0 == IsPrime(82);
 }
 
-// REPEAT 10 - TIME: 15.122337 s
+// REPEAT 10 - TIME: 15.2451788 s

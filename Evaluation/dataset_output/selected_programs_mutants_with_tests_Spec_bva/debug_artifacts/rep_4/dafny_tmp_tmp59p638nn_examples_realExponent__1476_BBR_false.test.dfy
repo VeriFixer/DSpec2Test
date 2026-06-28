@@ -72,4 +72,4 @@ expect 205.0/2.0 > 0.0, "If this check fails at runtime, the test does not meet 
 var r0 := pow(103, 205.0/2.0);
 }
 
-// REPEAT 4 - TIME: 10.4006205 s
+// REPEAT 4 - TIME: 13.9372815 s

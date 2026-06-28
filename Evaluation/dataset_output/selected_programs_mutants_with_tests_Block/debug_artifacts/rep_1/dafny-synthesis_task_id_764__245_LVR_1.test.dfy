@@ -18,4 +18,4 @@ var r0 := CountDigits("1");
 expect r0 >= 0;
 }
 
-// REPEAT 1 - TIME: 2.6501357 s
+// REPEAT 1 - TIME: 2.4888062 s

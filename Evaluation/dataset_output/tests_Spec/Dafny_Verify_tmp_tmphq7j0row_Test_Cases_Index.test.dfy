@@ -109,7 +109,7 @@ method {:test} Test8() {
 TestMaxSum(0, 0);
 }
 
-// REPEAT 1 - TIME: 7.0654536 s
+// REPEAT 1 - TIME: 6.46346 s
 
 method {:test} Test9() {
 expect 1 <= 2, "If this check fails at runtime, the test does not meet the preconditions";
@@ -150,7 +150,7 @@ method {:test} Test16() {
 TestMaxSum(25, 24);
 }
 
-// REPEAT 2 - TIME: 10.7665264 s
+// REPEAT 2 - TIME: 10.3395738 s
 
 method {:test} Test17() {
 expect 1 <= 3, "If this check fails at runtime, the test does not meet the preconditions";
@@ -191,7 +191,7 @@ method {:test} Test24() {
 TestMaxSum(27, 26);
 }
 
-// REPEAT 3 - TIME: 14.1611192 s
+// REPEAT 3 - TIME: 13.9234754 s
 
 method {:test} Test25() {
 expect 1 <= 4, "If this check fails at runtime, the test does not meet the preconditions";
@@ -232,7 +232,7 @@ method {:test} Test32() {
 TestMaxSum(29, 28);
 }
 
-// REPEAT 4 - TIME: 17.2065398 s
+// REPEAT 4 - TIME: 17.2603734 s
 
 method {:test} Test33() {
 expect 1 <= 5, "If this check fails at runtime, the test does not meet the preconditions";
@@ -273,7 +273,7 @@ method {:test} Test40() {
 TestMaxSum(31, 30);
 }
 
-// REPEAT 5 - TIME: 19.772242 s
+// REPEAT 5 - TIME: 20.7342375 s
 
 method {:test} Test41() {
 expect 1 <= 6, "If this check fails at runtime, the test does not meet the preconditions";
@@ -314,7 +314,7 @@ method {:test} Test48() {
 TestMaxSum(33, 32);
 }
 
-// REPEAT 6 - TIME: 22.54204 s
+// REPEAT 6 - TIME: 24.2166908 s
 
 method {:test} Test49() {
 expect 1 <= 7, "If this check fails at runtime, the test does not meet the preconditions";
@@ -355,7 +355,7 @@ method {:test} Test56() {
 TestMaxSum(35, 34);
 }
 
-// REPEAT 7 - TIME: 25.7575246 s
+// REPEAT 7 - TIME: 27.2081652 s
 
 method {:test} Test57() {
 expect 1 <= 8, "If this check fails at runtime, the test does not meet the preconditions";
@@ -396,7 +396,7 @@ method {:test} Test64() {
 TestMaxSum(37, 36);
 }
 
-// REPEAT 8 - TIME: 28.3154388 s
+// REPEAT 8 - TIME: 30.4295117 s
 
 method {:test} Test65() {
 expect 1 <= 9, "If this check fails at runtime, the test does not meet the preconditions";
@@ -437,7 +437,7 @@ method {:test} Test72() {
 TestMaxSum(39, 38);
 }
 
-// REPEAT 9 - TIME: 30.6418507 s
+// REPEAT 9 - TIME: 33.4337825 s
 
 method {:test} Test73() {
 expect 1 <= 10, "If this check fails at runtime, the test does not meet the preconditions";
@@ -472,4 +472,4 @@ method {:test} Test80() {
 TestMaxSum(41, 40);
 }
 
-// REPEAT 10 - TIME: 33.126585 s
+// REPEAT 10 - TIME: 36.1168041 s

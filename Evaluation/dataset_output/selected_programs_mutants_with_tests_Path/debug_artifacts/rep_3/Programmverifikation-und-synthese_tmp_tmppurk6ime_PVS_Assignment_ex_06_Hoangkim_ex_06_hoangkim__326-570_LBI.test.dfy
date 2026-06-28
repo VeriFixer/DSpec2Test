@@ -50,4 +50,4 @@ expect 7725 > 0 && 3 > 0, "If this check fails at runtime, the test does not mee
 var r0 := gcdI(7725, 3);
 }
 
-// REPEAT 3 - TIME: 8.953987 s
+// REPEAT 3 - TIME: 13.1656716 s

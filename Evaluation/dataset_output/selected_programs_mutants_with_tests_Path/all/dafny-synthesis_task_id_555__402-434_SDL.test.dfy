@@ -23,76 +23,76 @@ var r0 := DifferenceSumCubesAndSumNumbers(63);
 expect r0 == 63 * 63 * (63 + 1) * (63 + 1) / 4 - 63 * (63 + 1) / 2;
 }
 
-// REPEAT 1 - TIME: 5.9122467 s
+// REPEAT 1 - TIME: 7.2280387 s
 
 method {:test} Test1() {
-expect 12665432492634448545274086 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(12665432492634448545274086);
-expect r0 == 12665432492634448545274086 * 12665432492634448545274086 * (12665432492634448545274086 + 1) * (12665432492634448545274086 + 1) / 4 - 12665432492634448545274086 * (12665432492634448545274086 + 1) / 2;
+expect 64 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(64);
+expect r0 == 64 * 64 * (64 + 1) * (64 + 1) / 4 - 64 * (64 + 1) / 2;
 }
 
-// REPEAT 2 - TIME: 11.5598187 s
+// REPEAT 2 - TIME: 10.4003365 s
 
 method {:test} Test2() {
-expect 12665432492634448545274087 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(12665432492634448545274087);
-expect r0 == 12665432492634448545274087 * 12665432492634448545274087 * (12665432492634448545274087 + 1) * (12665432492634448545274087 + 1) / 4 - 12665432492634448545274087 * (12665432492634448545274087 + 1) / 2;
+expect 65 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(65);
+expect r0 == 65 * 65 * (65 + 1) * (65 + 1) / 4 - 65 * (65 + 1) / 2;
 }
 
-// REPEAT 3 - TIME: 13.9434217 s
+// REPEAT 3 - TIME: 13.3873599 s
 
 method {:test} Test3() {
-expect 12665432492634448545274088 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(12665432492634448545274088);
-expect r0 == 12665432492634448545274088 * 12665432492634448545274088 * (12665432492634448545274088 + 1) * (12665432492634448545274088 + 1) / 4 - 12665432492634448545274088 * (12665432492634448545274088 + 1) / 2;
+expect 66 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(66);
+expect r0 == 66 * 66 * (66 + 1) * (66 + 1) / 4 - 66 * (66 + 1) / 2;
 }
 
-// REPEAT 4 - TIME: 16.3981789 s
+// REPEAT 4 - TIME: 16.6688584 s
 
 method {:test} Test4() {
-expect 12665432492634448545274097 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(12665432492634448545274097);
-expect r0 == 12665432492634448545274097 * 12665432492634448545274097 * (12665432492634448545274097 + 1) * (12665432492634448545274097 + 1) / 4 - 12665432492634448545274097 * (12665432492634448545274097 + 1) / 2;
+expect 67 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(67);
+expect r0 == 67 * 67 * (67 + 1) * (67 + 1) / 4 - 67 * (67 + 1) / 2;
 }
 
-// REPEAT 5 - TIME: 21.1108028 s
+// REPEAT 5 - TIME: 19.8407524 s
 
 method {:test} Test5() {
-expect 12665432492634448545274098 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(12665432492634448545274098);
-expect r0 == 12665432492634448545274098 * 12665432492634448545274098 * (12665432492634448545274098 + 1) * (12665432492634448545274098 + 1) / 4 - 12665432492634448545274098 * (12665432492634448545274098 + 1) / 2;
+expect 68 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(68);
+expect r0 == 68 * 68 * (68 + 1) * (68 + 1) / 4 - 68 * (68 + 1) / 2;
 }
 
-// REPEAT 6 - TIME: 24.1778563 s
+// REPEAT 6 - TIME: 22.8835005 s
 
 method {:test} Test6() {
-expect 12665432492634448545274101 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(12665432492634448545274101);
-expect r0 == 12665432492634448545274101 * 12665432492634448545274101 * (12665432492634448545274101 + 1) * (12665432492634448545274101 + 1) / 4 - 12665432492634448545274101 * (12665432492634448545274101 + 1) / 2;
+expect 73 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(73);
+expect r0 == 73 * 73 * (73 + 1) * (73 + 1) / 4 - 73 * (73 + 1) / 2;
 }
 
-// REPEAT 7 - TIME: 30.5384116 s
+// REPEAT 7 - TIME: 28.0224045 s
 
 method {:test} Test7() {
-expect 12665432492634448545274103 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(12665432492634448545274103);
-expect r0 == 12665432492634448545274103 * 12665432492634448545274103 * (12665432492634448545274103 + 1) * (12665432492634448545274103 + 1) / 4 - 12665432492634448545274103 * (12665432492634448545274103 + 1) / 2;
+expect 74 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(74);
+expect r0 == 74 * 74 * (74 + 1) * (74 + 1) / 4 - 74 * (74 + 1) / 2;
 }
 
-// REPEAT 8 - TIME: 33.6596228 s
+// REPEAT 8 - TIME: 31.0852761 s
 
 method {:test} Test8() {
-expect 12665432492634448545274104 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(12665432492634448545274104);
-expect r0 == 12665432492634448545274104 * 12665432492634448545274104 * (12665432492634448545274104 + 1) * (12665432492634448545274104 + 1) / 4 - 12665432492634448545274104 * (12665432492634448545274104 + 1) / 2;
+expect 75 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(75);
+expect r0 == 75 * 75 * (75 + 1) * (75 + 1) / 4 - 75 * (75 + 1) / 2;
 }
 
-// REPEAT 9 - TIME: 39.3753537 s
+// REPEAT 9 - TIME: 34.7223834 s
 
 method {:test} Test9() {
-expect 12665432492634448545274105 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(12665432492634448545274105);
-expect r0 == 12665432492634448545274105 * 12665432492634448545274105 * (12665432492634448545274105 + 1) * (12665432492634448545274105 + 1) / 4 - 12665432492634448545274105 * (12665432492634448545274105 + 1) / 2;
+expect 76 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(76);
+expect r0 == 76 * 76 * (76 + 1) * (76 + 1) / 4 - 76 * (76 + 1) / 2;
 }
 
-// REPEAT 10 - TIME: 42.048394 s
+// REPEAT 10 - TIME: 37.8535152 s

@@ -19,9 +19,9 @@ method {:testEntry} FactorialOfLastDigit(n: int) returns (fact: int)
 }
 
 method {:test} Test5() {
-expect 8 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := FactorialOfLastDigit(8);
-expect r0 == Factorial(8 % 10);
+expect 7 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := FactorialOfLastDigit(7);
+expect r0 == Factorial(7 % 10);
 }
 
-// REPEAT 6 - TIME: 6.4571017 s
+// REPEAT 6 - TIME: 6.3204607 s

@@ -74,4 +74,4 @@ var r0 := Total(seqnat0);
 expect r0 == total(seqnat0[0 .. |seqnat0|]);
 }
 
-// REPEAT 1 - TIME: 3.6520262 s
+// REPEAT 1 - TIME: 3.8314789 s

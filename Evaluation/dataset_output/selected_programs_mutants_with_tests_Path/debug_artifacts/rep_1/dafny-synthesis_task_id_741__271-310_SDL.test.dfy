@@ -33,4 +33,4 @@ expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}aaaaaaaaa\U{0003}"| && 0 <= j < 
 expect !r0 ==> |"\U{0001}aaaaaaaaa\U{0003}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}aaaaaaaaa\U{0003}"| && 0 <= j < |"\U{0001}aaaaaaaaa\U{0003}"| && i != j && "\U{0001}aaaaaaaaa\U{0003}"[i] != "\U{0001}aaaaaaaaa\U{0003}"[j];
 }
 
-// REPEAT 1 - TIME: 12.2259435 s
+// REPEAT 1 - TIME: 9.2788477 s

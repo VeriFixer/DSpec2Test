@@ -32,67 +32,67 @@ var r0 := ClimbStairs(3);
 expect r0 == Stairs(3);
 }
 
-// REPEAT 1 - TIME: 5.8953527 s
+// REPEAT 1 - TIME: 7.9371637 s
 
 method {:test} Test6() {
 var r0 := ClimbStairs(101);
 expect r0 == Stairs(101);
 }
 
-// REPEAT 2 - TIME: 6.8912258 s
+// REPEAT 2 - TIME: 9.2614244 s
 
 method {:test} Test7() {
 var r0 := ClimbStairs(102);
 expect r0 == Stairs(102);
 }
 
-// REPEAT 3 - TIME: 7.857063 s
+// REPEAT 3 - TIME: 10.3828577 s
 
 method {:test} Test8() {
 var r0 := ClimbStairs(103);
 expect r0 == Stairs(103);
 }
 
-// REPEAT 4 - TIME: 8.5791737 s
+// REPEAT 4 - TIME: 11.6251862 s
 
 method {:test} Test9() {
 var r0 := ClimbStairs(104);
 expect r0 == Stairs(104);
 }
 
-// REPEAT 5 - TIME: 9.3501738 s
+// REPEAT 5 - TIME: 12.5651609 s
 
 method {:test} Test10() {
 var r0 := ClimbStairs(105);
 expect r0 == Stairs(105);
 }
 
-// REPEAT 6 - TIME: 10.1380909 s
+// REPEAT 6 - TIME: 13.4304041 s
 
 method {:test} Test11() {
 var r0 := ClimbStairs(106);
 expect r0 == Stairs(106);
 }
 
-// REPEAT 7 - TIME: 10.831256 s
+// REPEAT 7 - TIME: 14.1700703 s
 
 method {:test} Test12() {
 var r0 := ClimbStairs(107);
 expect r0 == Stairs(107);
 }
 
-// REPEAT 8 - TIME: 11.5238815 s
+// REPEAT 8 - TIME: 14.9122256 s
 
 method {:test} Test13() {
 var r0 := ClimbStairs(108);
 expect r0 == Stairs(108);
 }
 
-// REPEAT 9 - TIME: 12.1352023 s
+// REPEAT 9 - TIME: 15.6517615 s
 
 method {:test} Test14() {
 var r0 := ClimbStairs(109);
 expect r0 == Stairs(109);
 }
 
-// REPEAT 10 - TIME: 12.7000653 s
+// REPEAT 10 - TIME: 16.3656769 s

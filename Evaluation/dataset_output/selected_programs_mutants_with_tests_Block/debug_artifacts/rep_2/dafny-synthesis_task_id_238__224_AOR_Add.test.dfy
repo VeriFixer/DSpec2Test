@@ -8,9 +8,9 @@ method {:testEntry} CountNonEmptySubstrings(s: string) returns (count: int)
 }
 
 method {:test} Test1() {
-var r0 := CountNonEmptySubstrings("aa\0");
+var r0 := CountNonEmptySubstrings("aa");
 expect r0 >= 0;
-expect r0 == |"aa\0"| * (|"aa\0"| + 1) / 2;
+expect r0 == |"aa"| * (|"aa"| + 1) / 2;
 }
 
-// REPEAT 2 - TIME: 3.1554755 s
+// REPEAT 2 - TIME: 3.1946244 s

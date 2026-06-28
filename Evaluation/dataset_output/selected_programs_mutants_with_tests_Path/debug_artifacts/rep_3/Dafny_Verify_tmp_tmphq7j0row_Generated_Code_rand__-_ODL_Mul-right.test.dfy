@@ -24,4 +24,4 @@ var r0 := Main(2, 2);
 expect r0 == 0;
 }
 
-// REPEAT 3 - TIME: 12.6015767 s
+// REPEAT 3 - TIME: 14.9743901 s

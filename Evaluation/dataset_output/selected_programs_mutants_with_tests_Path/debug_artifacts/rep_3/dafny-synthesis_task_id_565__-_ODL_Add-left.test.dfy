@@ -15,9 +15,9 @@ method {:testEntry} SplitStringIntoChars(s: string) returns (v: seq<char>)
 }
 
 method {:test} Test2() {
-var r0 := SplitStringIntoChars("");
-expect |r0| == |""|;
-expect forall i :: 0 <= i < |""| ==> r0[i] == ""[i];
+var r0 := SplitStringIntoChars("\0");
+expect |r0| == |"\0"|;
+expect forall i :: 0 <= i < |"\0"| ==> r0[i] == "\0"[i];
 }
 
-// REPEAT 3 - TIME: 25.2711568 s
+// REPEAT 3 - TIME: 26.3585144 s

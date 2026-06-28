@@ -49,7 +49,7 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 1 - TIME: 2.8854351 s
+// REPEAT 1 - TIME: 2.6633498 s
 
 method {:test} Test1() {
 var seqint0 : seq<int> := [-76, -76];
@@ -70,10 +70,10 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 2 - TIME: 4.3100008 s
+// REPEAT 2 - TIME: 3.9919007 s
 
 method {:test} Test3() {
-var seqint0 : seq<int> := [-88, -87, 0];
+var seqint0 : seq<int> := [-1, 96, 0];
 expect is_sorted(seqint0), "If this check fails at runtime, the test does not meet the preconditions";
 expect 1 <= |seqint0| <= 30000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -100 <= seqint0[i] <= 100, "If this check fails at runtime, the test does not meet the preconditions";
@@ -82,10 +82,10 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 3 - TIME: 5.3313927 s
+// REPEAT 3 - TIME: 5.2094006 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [61, 62, 0, 0];
+var seqint0 : seq<int> := [-20, -20, 0, 0];
 expect is_sorted(seqint0), "If this check fails at runtime, the test does not meet the preconditions";
 expect 1 <= |seqint0| <= 30000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -100 <= seqint0[i] <= 100, "If this check fails at runtime, the test does not meet the preconditions";
@@ -93,11 +93,8 @@ var r0 := remove_duplicates_from_sorted_array(seqint0);
 expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
-
-// REPEAT 4 - TIME: 6.4005536 s
-
 method {:test} Test5() {
-var seqint0 : seq<int> := [65, 81, 0];
+var seqint0 : seq<int> := [-52, -51, 0, 0];
 expect is_sorted(seqint0), "If this check fails at runtime, the test does not meet the preconditions";
 expect 1 <= |seqint0| <= 30000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -100 <= seqint0[i] <= 100, "If this check fails at runtime, the test does not meet the preconditions";
@@ -106,19 +103,10 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 5 - TIME: 7.4706787 s
+// REPEAT 4 - TIME: 7.0232332 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [-77, -77, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2];
-expect is_sorted(seqint0), "If this check fails at runtime, the test does not meet the preconditions";
-expect 1 <= |seqint0| <= 30000, "If this check fails at runtime, the test does not meet the preconditions";
-expect forall i :: 0 <= i < |seqint0| ==> -100 <= seqint0[i] <= 100, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := remove_duplicates_from_sorted_array(seqint0);
-expect is_sorted_and_distinct(r0);
-expect forall i :: i in seqint0 <==> i in r0;
-}
-method {:test} Test7() {
-var seqint0 : seq<int> := [-60, -59, 0];
+var seqint0 : seq<int> := [-28, -22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -22];
 expect is_sorted(seqint0), "If this check fails at runtime, the test does not meet the preconditions";
 expect 1 <= |seqint0| <= 30000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -100 <= seqint0[i] <= 100, "If this check fails at runtime, the test does not meet the preconditions";
@@ -127,10 +115,22 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 6 - TIME: 8.8011406 s
+// REPEAT 5 - TIME: 7.80583 s
+
+method {:test} Test7() {
+var seqint0 : seq<int> := [-87, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+expect is_sorted(seqint0), "If this check fails at runtime, the test does not meet the preconditions";
+expect 1 <= |seqint0| <= 30000, "If this check fails at runtime, the test does not meet the preconditions";
+expect forall i :: 0 <= i < |seqint0| ==> -100 <= seqint0[i] <= 100, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := remove_duplicates_from_sorted_array(seqint0);
+expect is_sorted_and_distinct(r0);
+expect forall i :: i in seqint0 <==> i in r0;
+}
+
+// REPEAT 6 - TIME: 8.5436752 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [66, 67];
+var seqint0 : seq<int> := [-69, 7, 0];
 expect is_sorted(seqint0), "If this check fails at runtime, the test does not meet the preconditions";
 expect 1 <= |seqint0| <= 30000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -100 <= seqint0[i] <= 100, "If this check fails at runtime, the test does not meet the preconditions";
@@ -139,10 +139,10 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 7 - TIME: 9.5797066 s
+// REPEAT 7 - TIME: 9.2332837 s
 
 method {:test} Test9() {
-var seqint0 : seq<int> := [-35, -22, 0, 0, 55];
+var seqint0 : seq<int> := [-13, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 expect is_sorted(seqint0), "If this check fails at runtime, the test does not meet the preconditions";
 expect 1 <= |seqint0| <= 30000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -100 <= seqint0[i] <= 100, "If this check fails at runtime, the test does not meet the preconditions";
@@ -151,10 +151,10 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 8 - TIME: 10.2510547 s
+// REPEAT 8 - TIME: 9.9955798 s
 
 method {:test} Test10() {
-var seqint0 : seq<int> := [-48, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15];
+var seqint0 : seq<int> := [-86, -71, 0, -71, 0];
 expect is_sorted(seqint0), "If this check fails at runtime, the test does not meet the preconditions";
 expect 1 <= |seqint0| <= 30000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -100 <= seqint0[i] <= 100, "If this check fails at runtime, the test does not meet the preconditions";
@@ -163,10 +163,10 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 9 - TIME: 10.9092438 s
+// REPEAT 9 - TIME: 10.5686674 s
 
 method {:test} Test11() {
-var seqint0 : seq<int> := [-100, -93, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -82];
+var seqint0 : seq<int> := [17, 57, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 65];
 expect is_sorted(seqint0), "If this check fails at runtime, the test does not meet the preconditions";
 expect 1 <= |seqint0| <= 30000, "If this check fails at runtime, the test does not meet the preconditions";
 expect forall i :: 0 <= i < |seqint0| ==> -100 <= seqint0[i] <= 100, "If this check fails at runtime, the test does not meet the preconditions";
@@ -175,4 +175,4 @@ expect is_sorted_and_distinct(r0);
 expect forall i :: i in seqint0 <==> i in r0;
 }
 
-// REPEAT 10 - TIME: 11.615886 s
+// REPEAT 10 - TIME: 11.247482 s

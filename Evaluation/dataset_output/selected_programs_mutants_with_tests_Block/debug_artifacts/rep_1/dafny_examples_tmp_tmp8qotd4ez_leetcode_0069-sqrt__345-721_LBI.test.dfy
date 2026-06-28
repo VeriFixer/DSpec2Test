@@ -52,4 +52,4 @@ var r0 := mySqrt(0);
 expect sqrt(0, r0);
 }
 
-// REPEAT 1 - TIME: 4.8956418 s
+// REPEAT 1 - TIME: 4.1095748 s

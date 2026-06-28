@@ -29,4 +29,4 @@ expect r0 ==> forall i, j :: 0 <= i < |""| && 0 <= j < |""| ==> ""[i] == ""[j];
 expect !r0 ==> |""| > 1 && exists i, j :: 0 <= i < |""| && 0 <= j < |""| && i != j && ""[i] != ""[j];
 }
 
-// REPEAT 1 - TIME: 3.7404116 s
+// REPEAT 1 - TIME: 3.1965636 s

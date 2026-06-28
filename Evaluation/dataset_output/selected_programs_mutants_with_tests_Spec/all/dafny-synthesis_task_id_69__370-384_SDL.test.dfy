@@ -37,7 +37,7 @@ var r0 := ContainsSequence(seqseqint0, seqint0);
 expect r0 <==> exists i :: 0 <= i < |seqseqint0| && seqint0 == seqseqint0[i];
 }
 
-// REPEAT 1 - TIME: 3.1759161 s
+// REPEAT 1 - TIME: 3.5684672 s
 
 method {:test} Test2() {
 var seqint0 : seq<int> := [0];
@@ -71,7 +71,7 @@ var r0 := ContainsSequence(seqseqint0, seqint10);
 expect r0 <==> exists i :: 0 <= i < |seqseqint0| && seqint10 == seqseqint0[i];
 }
 
-// REPEAT 2 - TIME: 4.6281651 s
+// REPEAT 2 - TIME: 5.1745674 s
 
 method {:test} Test4() {
 var seqint0 : seq<int> := [0, 0];
@@ -108,7 +108,7 @@ var r0 := ContainsSequence(seqseqint0, seqint11);
 expect r0 <==> exists i :: 0 <= i < |seqseqint0| && seqint11 == seqseqint0[i];
 }
 
-// REPEAT 3 - TIME: 6.5190468 s
+// REPEAT 3 - TIME: 6.9988456 s
 
 method {:test} Test6() {
 var seqint0 : seq<int> := [0, 0, 0];
@@ -147,7 +147,7 @@ var r0 := ContainsSequence(seqseqint0, seqint12);
 expect r0 <==> exists i :: 0 <= i < |seqseqint0| && seqint12 == seqseqint0[i];
 }
 
-// REPEAT 4 - TIME: 8.7038194 s
+// REPEAT 4 - TIME: 9.4304753 s
 
 method {:test} Test8() {
 var seqint0 : seq<int> := [0, 0, 0, 0];
@@ -188,7 +188,7 @@ var r0 := ContainsSequence(seqseqint0, seqint13);
 expect r0 <==> exists i :: 0 <= i < |seqseqint0| && seqint13 == seqseqint0[i];
 }
 
-// REPEAT 5 - TIME: 11.1511365 s
+// REPEAT 5 - TIME: 11.8009641 s
 
 method {:test} Test10() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -231,7 +231,7 @@ var r0 := ContainsSequence(seqseqint0, seqint14);
 expect r0 <==> exists i :: 0 <= i < |seqseqint0| && seqint14 == seqseqint0[i];
 }
 
-// REPEAT 6 - TIME: 13.2742033 s
+// REPEAT 6 - TIME: 14.2801454 s
 
 method {:test} Test12() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -276,7 +276,7 @@ var r0 := ContainsSequence(seqseqint0, seqint15);
 expect r0 <==> exists i :: 0 <= i < |seqseqint0| && seqint15 == seqseqint0[i];
 }
 
-// REPEAT 7 - TIME: 15.7907506 s
+// REPEAT 7 - TIME: 16.9472424 s
 
 method {:test} Test14() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -323,7 +323,7 @@ var r0 := ContainsSequence(seqseqint0, seqint16);
 expect r0 <==> exists i :: 0 <= i < |seqseqint0| && seqint16 == seqseqint0[i];
 }
 
-// REPEAT 8 - TIME: 18.941499 s
+// REPEAT 8 - TIME: 20.1135174 s
 
 method {:test} Test16() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -372,7 +372,7 @@ var r0 := ContainsSequence(seqseqint0, seqint17);
 expect r0 <==> exists i :: 0 <= i < |seqseqint0| && seqint17 == seqseqint0[i];
 }
 
-// REPEAT 9 - TIME: 22.4982241 s
+// REPEAT 9 - TIME: 23.9885365 s
 
 method {:test} Test18() {
 var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -423,4 +423,4 @@ var r0 := ContainsSequence(seqseqint0, seqint18);
 expect r0 <==> exists i :: 0 <= i < |seqseqint0| && seqint18 == seqseqint0[i];
 }
 
-// REPEAT 10 - TIME: 27.3138171 s
+// REPEAT 10 - TIME: 29.0284667 s

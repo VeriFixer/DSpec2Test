@@ -68,7 +68,7 @@ method {:testEntry} ProductEvenOdd(lst: seq<int>) returns (product: int)
 }
 
 method {:test} Test2() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16731, 0, 1219, 11840, 2284];
+var seqint0 : seq<int> := [562, 17711, 11706, 4565];
 expect |seqint0| >= 2, "If this check fails at runtime, the test does not meet the preconditions";
 expect exists i :: 0 <= i < |seqint0| && IsEven(seqint0[i]), "If this check fails at runtime, the test does not meet the preconditions";
 expect exists i :: 0 <= i < |seqint0| && IsOdd(seqint0[i]), "If this check fails at runtime, the test does not meet the preconditions";
@@ -79,7 +79,7 @@ expect IsEven(seqint0[r0]) && IsFirstEven(r0, seqint0);
 expect IsOdd(seqint0[r1]) && IsFirstOdd(r1, seqint0);
 }
 method {:test} Test3() {
-var seqint0 : seq<int> := [1, 0, 11840, 12567, 11706];
+var seqint0 : seq<int> := [0, 3297, 898, 16731];
 expect |seqint0| >= 2, "If this check fails at runtime, the test does not meet the preconditions";
 expect exists i :: 0 <= i < |seqint0| && IsEven(seqint0[i]), "If this check fails at runtime, the test does not meet the preconditions";
 expect exists i :: 0 <= i < |seqint0| && IsOdd(seqint0[i]), "If this check fails at runtime, the test does not meet the preconditions";
@@ -87,4 +87,4 @@ var r0 := ProductEvenOdd(seqint0);
 expect exists i, j :: 0 <= i < |seqint0| && IsEven(seqint0[i]) && IsFirstEven(i, seqint0) && 0 <= j < |seqint0| && IsOdd(seqint0[j]) && IsFirstOdd(j, seqint0) && r0 == seqint0[i] * seqint0[j];
 }
 
-// REPEAT 2 - TIME: 5.4259855 s
+// REPEAT 2 - TIME: 5.402832 s

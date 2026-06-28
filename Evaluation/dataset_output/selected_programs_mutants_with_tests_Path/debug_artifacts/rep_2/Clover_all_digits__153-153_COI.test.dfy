@@ -14,12 +14,12 @@ method {:testEntry} allDigits(s: string) returns (result: bool)
 }
 
 method {:test} Test2() {
-var r0 := allDigits("10");
-expect r0 <==> forall i :: 0 <= i < |"10"| ==> "10"[i] in "0123456789";
+var r0 := allDigits("a9aaaaaaaaaaaaaa0");
+expect r0 <==> forall i :: 0 <= i < |"a9aaaaaaaaaaaaaa0"| ==> "a9aaaaaaaaaaaaaa0"[i] in "0123456789";
 }
 method {:test} Test3() {
-var r0 := allDigits("\U{0002}\0");
-expect r0 <==> forall i :: 0 <= i < |"\U{0002}\0"| ==> "\U{0002}\0"[i] in "0123456789";
+var r0 := allDigits("aaaaaaaaaaaaaaa\0\U{0002}");
+expect r0 <==> forall i :: 0 <= i < |"aaaaaaaaaaaaaaa\0\U{0002}"| ==> "aaaaaaaaaaaaaaa\0\U{0002}"[i] in "0123456789";
 }
 
-// REPEAT 2 - TIME: 20.2362678 s
+// REPEAT 2 - TIME: 27.6805252 s

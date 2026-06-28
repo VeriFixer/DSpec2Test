@@ -19,4 +19,4 @@ var r0 := HasOppositeSign(1, 0);
 expect r0 <==> (1 < 0 && 0 > 0) || (1 > 0 && 0 < 0);
 }
 
-// REPEAT 1 - TIME: 3.2989692 s
+// REPEAT 1 - TIME: 3.3259983 s

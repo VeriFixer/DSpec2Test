@@ -26,8 +26,8 @@ method {:testEntry} calcF(n: nat) returns (res: nat)
 }
 
 method {:test} Test1() {
-var r0 := calcF(2);
-expect r0 == F(2);
+var r0 := calcF(1);
+expect r0 == F(1);
 }
 
-// REPEAT 2 - TIME: 12.6653037 s
+// REPEAT 2 - TIME: 18.1469061 s

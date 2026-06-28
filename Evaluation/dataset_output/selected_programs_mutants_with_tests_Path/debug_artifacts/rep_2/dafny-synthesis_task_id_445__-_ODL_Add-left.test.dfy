@@ -18,12 +18,12 @@ method {:testEntry} MultiplyElements(a: seq<int>, b: seq<int>) returns (result: 
 }
 
 method {:test} Test1() {
-var seqint0 : seq<int> := [1];
-var seqint1 : seq<int> := [2437];
+var seqint0 : seq<int> := [2437];
+var seqint1 : seq<int> := [1];
 expect |seqint0| == |seqint1|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := MultiplyElements(seqint0, seqint1);
 expect |r0| == |seqint0|;
 expect forall i :: 0 <= i < |r0| ==> r0[i] == seqint0[i] * seqint1[i];
 }
 
-// REPEAT 2 - TIME: 14.0129607 s
+// REPEAT 2 - TIME: 22.2752015 s

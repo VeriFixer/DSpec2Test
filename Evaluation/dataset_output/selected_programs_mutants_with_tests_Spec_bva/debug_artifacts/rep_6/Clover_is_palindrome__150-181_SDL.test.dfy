@@ -21,12 +21,12 @@ method {:testEntry} IsPalindrome(x: seq<char>) returns (result: bool)
 }
 
 method {:test} Test22() {
-var r0 := IsPalindrome("\0aaaaaaaaaa\0\0aaaaaa\0aaaa\0\0a\0\0a");
-expect r0 <==> forall i :: 0 <= i < |"\0aaaaaaaaaa\0\0aaaaaa\0aaaa\0\0a\0\0a"| ==> "\0aaaaaaaaaa\0\0aaaaaa\0aaaa\0\0a\0\0a"[i] == "\0aaaaaaaaaa\0\0aaaaaa\0aaaa\0\0a\0\0a"[|"\0aaaaaaaaaa\0\0aaaaaa\0aaaa\0\0a\0\0a"| - i - 1];
+var r0 := IsPalindrome("\0\0\0aaaa\0a\0a\0a\0a\0aa\0aaaaaaa\0a\0a");
+expect r0 <==> forall i :: 0 <= i < |"\0\0\0aaaa\0a\0a\0a\0a\0aa\0aaaaaaa\0a\0a"| ==> "\0\0\0aaaa\0a\0a\0a\0a\0aa\0aaaaaaa\0a\0a"[i] == "\0\0\0aaaa\0a\0a\0a\0a\0aa\0aaaaaaa\0a\0a"[|"\0\0\0aaaa\0a\0a\0a\0a\0aa\0aaaaaaa\0a\0a"| - i - 1];
 }
 method {:test} Test23() {
-var r0 := IsPalindrome("\naa\U{0002}aaaa\0\U{0006}\U{0004}\U{0008}");
-expect r0 <==> forall i :: 0 <= i < |"\naa\U{0002}aaaa\0\U{0006}\U{0004}\U{0008}"| ==> "\naa\U{0002}aaaa\0\U{0006}\U{0004}\U{0008}"[i] == "\naa\U{0002}aaaa\0\U{0006}\U{0004}\U{0008}"[|"\naa\U{0002}aaaa\0\U{0006}\U{0004}\U{0008}"| - i - 1];
+var r0 := IsPalindrome("\U{000C}aa\0aaa\U{0002}a\U{0004}\U{0006}aaaaaaa\U{0008}\n");
+expect r0 <==> forall i :: 0 <= i < |"\U{000C}aa\0aaa\U{0002}a\U{0004}\U{0006}aaaaaaa\U{0008}\n"| ==> "\U{000C}aa\0aaa\U{0002}a\U{0004}\U{0006}aaaaaaa\U{0008}\n"[i] == "\U{000C}aa\0aaa\U{0002}a\U{0004}\U{0006}aaaaaaa\U{0008}\n"[|"\U{000C}aa\0aaa\U{0002}a\U{0004}\U{0006}aaaaaaa\U{0008}\n"| - i - 1];
 }
 
-// REPEAT 6 - TIME: 13.9068567 s
+// REPEAT 6 - TIME: 23.5892715 s

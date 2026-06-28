@@ -195,7 +195,7 @@ var r0 := exp_by_sqr(1.0, 2);
 expect r0 == exp(1.0, 2);
 }
 
-// REPEAT 1 - TIME: 17.3111713 s
+// REPEAT 1 - TIME: 27.6822492 s
 
 method {:test} Test32() {
 var r0 := add_by_inc(101, 101);
@@ -216,7 +216,7 @@ var r0 := exp_by_sqr(101.0, 7722);
 expect r0 == exp(101.0, 7722);
 }
 
-// REPEAT 2 - TIME: 18.9881283 s
+// REPEAT 2 - TIME: 30.4062332 s
 
 method {:test} Test36() {
 var r0 := add_by_inc(102, 102);
@@ -237,7 +237,7 @@ var r0 := exp_by_sqr(102.0, 7723);
 expect r0 == exp(102.0, 7723);
 }
 
-// REPEAT 3 - TIME: 20.8490997 s
+// REPEAT 3 - TIME: 32.784912 s
 
 method {:test} Test40() {
 var r0 := add_by_inc(103, 103);
@@ -258,7 +258,7 @@ var r0 := exp_by_sqr(103.0, 7724);
 expect r0 == exp(103.0, 7724);
 }
 
-// REPEAT 4 - TIME: 22.5488858 s
+// REPEAT 4 - TIME: 35.3470788 s
 
 method {:test} Test44() {
 var r0 := add_by_inc(104, 104);
@@ -279,7 +279,7 @@ var r0 := exp_by_sqr(104.0, 7725);
 expect r0 == exp(104.0, 7725);
 }
 
-// REPEAT 5 - TIME: 24.2284238 s
+// REPEAT 5 - TIME: 37.9876014 s
 
 method {:test} Test48() {
 var r0 := add_by_inc(105, 105);
@@ -300,7 +300,7 @@ var r0 := exp_by_sqr(105.0, 7726);
 expect r0 == exp(105.0, 7726);
 }
 
-// REPEAT 6 - TIME: 25.8431203 s
+// REPEAT 6 - TIME: 40.3641566 s
 
 method {:test} Test52() {
 var r0 := add_by_inc(106, 106);
@@ -321,7 +321,7 @@ var r0 := exp_by_sqr(106.0, 7727);
 expect r0 == exp(106.0, 7727);
 }
 
-// REPEAT 7 - TIME: 27.2511327 s
+// REPEAT 7 - TIME: 42.7089506 s
 
 method {:test} Test56() {
 var r0 := add_by_inc(107, 107);
@@ -342,7 +342,7 @@ var r0 := exp_by_sqr(107.0, 7728);
 expect r0 == exp(107.0, 7728);
 }
 
-// REPEAT 8 - TIME: 28.6196009 s
+// REPEAT 8 - TIME: 44.9911956 s
 
 method {:test} Test60() {
 var r0 := add_by_inc(108, 108);
@@ -363,7 +363,7 @@ var r0 := exp_by_sqr(108.0, 7729);
 expect r0 == exp(108.0, 7729);
 }
 
-// REPEAT 9 - TIME: 30.1679175 s
+// REPEAT 9 - TIME: 47.7355587 s
 
 method {:test} Test64() {
 var r0 := add_by_inc(109, 109);
@@ -384,4 +384,4 @@ var r0 := exp_by_sqr(109.0, 7730);
 expect r0 == exp(109.0, 7730);
 }
 
-// REPEAT 10 - TIME: 31.8478704 s
+// REPEAT 10 - TIME: 50.4595444 s

@@ -18,67 +18,67 @@ expect 0 < 1 <= 42, "If this check fails at runtime, the test does not meet the 
 BigFoot(1);
 }
 
-// REPEAT 1 - TIME: 2.5653747 s
+// REPEAT 1 - TIME: 2.6836784 s
 
 method {:test} Test1() {
 expect 0 < 2 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(2);
 }
 
-// REPEAT 2 - TIME: 3.6738484 s
+// REPEAT 2 - TIME: 3.9171368 s
 
 method {:test} Test2() {
-expect 0 < 42 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
-BigFoot(42);
-}
-
-// REPEAT 3 - TIME: 4.851815 s
-
-method {:test} Test3() {
 expect 0 < 3 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(3);
 }
 
-// REPEAT 4 - TIME: 5.9766914 s
+// REPEAT 3 - TIME: 4.9728697 s
 
-method {:test} Test4() {
+method {:test} Test3() {
 expect 0 < 4 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(4);
 }
 
-// REPEAT 5 - TIME: 7.0857252 s
+// REPEAT 4 - TIME: 6.1106942 s
 
-method {:test} Test5() {
+method {:test} Test4() {
 expect 0 < 5 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(5);
 }
 
-// REPEAT 6 - TIME: 8.1021597 s
+// REPEAT 5 - TIME: 7.1281879 s
+
+method {:test} Test5() {
+expect 0 < 6 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
+BigFoot(6);
+}
+
+// REPEAT 6 - TIME: 8.142652 s
 
 method {:test} Test6() {
-expect 0 < 21 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
-BigFoot(21);
+expect 0 < 7 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
+BigFoot(7);
 }
 
-// REPEAT 7 - TIME: 9.0495634 s
+// REPEAT 7 - TIME: 9.0531242 s
 
 method {:test} Test7() {
-expect 0 < 22 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
-BigFoot(22);
+expect 0 < 8 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
+BigFoot(8);
 }
 
-// REPEAT 8 - TIME: 9.9715315 s
+// REPEAT 8 - TIME: 9.8555207 s
 
 method {:test} Test8() {
-expect 0 < 23 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
-BigFoot(23);
+expect 0 < 9 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
+BigFoot(9);
 }
 
-// REPEAT 9 - TIME: 10.8512017 s
+// REPEAT 9 - TIME: 10.6663087 s
 
 method {:test} Test9() {
-expect 0 < 24 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
-BigFoot(24);
+expect 0 < 10 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
+BigFoot(10);
 }
 
-// REPEAT 10 - TIME: 11.6304303 s
+// REPEAT 10 - TIME: 11.5940812 s

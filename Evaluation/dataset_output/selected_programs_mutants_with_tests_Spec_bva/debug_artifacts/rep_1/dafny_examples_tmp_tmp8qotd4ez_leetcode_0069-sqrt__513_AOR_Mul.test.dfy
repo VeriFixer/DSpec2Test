@@ -56,4 +56,4 @@ var r0 := mySqrt(10000);
 expect sqrt(10000, r0);
 }
 
-// REPEAT 1 - TIME: 22.8987966 s
+// REPEAT 1 - TIME: 31.7453683 s

@@ -11,4 +11,4 @@ var r0 := Multiply(1, 7720);
 expect r0 == 1 * 7720;
 }
 
-// REPEAT 2 - TIME: 4.1891177 s
+// REPEAT 2 - TIME: 4.5102505 s

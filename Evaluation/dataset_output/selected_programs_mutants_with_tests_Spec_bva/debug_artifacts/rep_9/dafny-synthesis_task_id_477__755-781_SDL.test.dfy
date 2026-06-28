@@ -35,9 +35,9 @@ method {:testEntry} ToLowercase(s: string) returns (v: string)
 }
 
 method {:test} Test17() {
-var r0 := ToLowercase("!aaaaaaaaaa");
-expect |r0| == |"!aaaaaaaaaa"|;
-expect forall i :: 0 <= i < |"!aaaaaaaaaa"| ==> if IsUpperCase("!aaaaaaaaaa"[i]) then IsUpperLowerPair("!aaaaaaaaaa"[i], r0[i]) else r0[i] == "!aaaaaaaaaa"[i];
+var r0 := ToLowercase("2- a ");
+expect |r0| == |"2- a "|;
+expect forall i :: 0 <= i < |"2- a "| ==> if IsUpperCase("2- a "[i]) then IsUpperLowerPair("2- a "[i], r0[i]) else r0[i] == "2- a "[i];
 }
 
-// REPEAT 9 - TIME: 14.0831604 s
+// REPEAT 9 - TIME: 18.6854507 s

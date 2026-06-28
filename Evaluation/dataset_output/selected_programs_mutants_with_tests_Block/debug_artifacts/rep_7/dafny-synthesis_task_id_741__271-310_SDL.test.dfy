@@ -18,9 +18,9 @@ method {:testEntry} AllCharactersSame(s: string) returns (result: bool)
 }
 
 method {:test} Test12() {
-var r0 := AllCharactersSame("\U{0001}\U{0004}a\U{0002}aaaaa\U{0006}");
-expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}\U{0004}a\U{0002}aaaaa\U{0006}"| && 0 <= j < |"\U{0001}\U{0004}a\U{0002}aaaaa\U{0006}"| ==> "\U{0001}\U{0004}a\U{0002}aaaaa\U{0006}"[i] == "\U{0001}\U{0004}a\U{0002}aaaaa\U{0006}"[j];
-expect !r0 ==> |"\U{0001}\U{0004}a\U{0002}aaaaa\U{0006}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}\U{0004}a\U{0002}aaaaa\U{0006}"| && 0 <= j < |"\U{0001}\U{0004}a\U{0002}aaaaa\U{0006}"| && i != j && "\U{0001}\U{0004}a\U{0002}aaaaa\U{0006}"[i] != "\U{0001}\U{0004}a\U{0002}aaaaa\U{0006}"[j];
+var r0 := AllCharactersSame("\U{0001}\U{0003}aaa");
+expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}\U{0003}aaa"| && 0 <= j < |"\U{0001}\U{0003}aaa"| ==> "\U{0001}\U{0003}aaa"[i] == "\U{0001}\U{0003}aaa"[j];
+expect !r0 ==> |"\U{0001}\U{0003}aaa"| > 1 && exists i, j :: 0 <= i < |"\U{0001}\U{0003}aaa"| && 0 <= j < |"\U{0001}\U{0003}aaa"| && i != j && "\U{0001}\U{0003}aaa"[i] != "\U{0001}\U{0003}aaa"[j];
 }
 method {:test} Test13() {
 var r0 := AllCharactersSame("\U{0001}");
@@ -28,4 +28,4 @@ expect r0 ==> forall i, j :: 0 <= i < |"\U{0001}"| && 0 <= j < |"\U{0001}"| ==> 
 expect !r0 ==> |"\U{0001}"| > 1 && exists i, j :: 0 <= i < |"\U{0001}"| && 0 <= j < |"\U{0001}"| && i != j && "\U{0001}"[i] != "\U{0001}"[j];
 }
 
-// REPEAT 7 - TIME: 11.0550949 s
+// REPEAT 7 - TIME: 11.6554389 s

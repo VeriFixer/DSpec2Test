@@ -18,19 +18,19 @@ method {:testEntry} Match(s: string, p: string) returns (b: bool)
 }
 
 method {:test} Test9() {
-expect |"aaaaaaa\0a\U{0004}\U{0002}\U{0006}"| == |"aaaaaaa\0a\U{0004}\U{0002}\U{0006}"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Match("aaaaaaa\0a\U{0004}\U{0002}\U{0006}", "aaaaaaa\0a\U{0004}\U{0002}\U{0006}");
-expect r0 <==> forall n :: 0 <= n < |"aaaaaaa\0a\U{0004}\U{0002}\U{0006}"| ==> "aaaaaaa\0a\U{0004}\U{0002}\U{0006}"[n] == "aaaaaaa\0a\U{0004}\U{0002}\U{0006}"[n] || "aaaaaaa\0a\U{0004}\U{0002}\U{0006}"[n] == '?';
+expect |"a\U{0004}a\U{0002}a\0aaa\U{0006}\n\U{0008}"| == |"a\U{0004}a\U{0002}a\0aaa\U{0006}\n\U{0008}"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := Match("a\U{0004}a\U{0002}a\0aaa\U{0006}\n\U{0008}", "a\U{0004}a\U{0002}a\0aaa\U{0006}\n\U{0008}");
+expect r0 <==> forall n :: 0 <= n < |"a\U{0004}a\U{0002}a\0aaa\U{0006}\n\U{0008}"| ==> "a\U{0004}a\U{0002}a\0aaa\U{0006}\n\U{0008}"[n] == "a\U{0004}a\U{0002}a\0aaa\U{0006}\n\U{0008}"[n] || "a\U{0004}a\U{0002}a\0aaa\U{0006}\n\U{0008}"[n] == '?';
 }
 method {:test} Test10() {
-expect |"a\0\U{0006}aa\U{0004}\U{0002}"| == |"a\0\U{0008}aa\U{0004}\U{0002}"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Match("a\0\U{0006}aa\U{0004}\U{0002}", "a\0\U{0008}aa\U{0004}\U{0002}");
-expect r0 <==> forall n :: 0 <= n < |"a\0\U{0006}aa\U{0004}\U{0002}"| ==> "a\0\U{0006}aa\U{0004}\U{0002}"[n] == "a\0\U{0008}aa\U{0004}\U{0002}"[n] || "a\0\U{0008}aa\U{0004}\U{0002}"[n] == '?';
+expect |"\n\0aaa\U{0002}aaa\U{0004}\U{0006}"| == |"\U{0008}\0aaa\U{0002}aaa\U{0004}\U{0006}"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := Match("\n\0aaa\U{0002}aaa\U{0004}\U{0006}", "\U{0008}\0aaa\U{0002}aaa\U{0004}\U{0006}");
+expect r0 <==> forall n :: 0 <= n < |"\n\0aaa\U{0002}aaa\U{0004}\U{0006}"| ==> "\n\0aaa\U{0002}aaa\U{0004}\U{0006}"[n] == "\U{0008}\0aaa\U{0002}aaa\U{0004}\U{0006}"[n] || "\U{0008}\0aaa\U{0002}aaa\U{0004}\U{0006}"[n] == '?';
 }
 method {:test} Test11() {
-expect |"aaaaaaaaa\U{0004}\U{0006}\0aa\U{0002}a\U{0008}a\n"| == |"aaaaaaaaa\U{0004}\U{0006}\0aa\U{0002}a\U{0008}a\n"|, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := Match("aaaaaaaaa\U{0004}\U{0006}\0aa\U{0002}a\U{0008}a\n", "aaaaaaaaa\U{0004}\U{0006}\0aa\U{0002}a\U{0008}a\n");
-expect r0 <==> forall n :: 0 <= n < |"aaaaaaaaa\U{0004}\U{0006}\0aa\U{0002}a\U{0008}a\n"| ==> "aaaaaaaaa\U{0004}\U{0006}\0aa\U{0002}a\U{0008}a\n"[n] == "aaaaaaaaa\U{0004}\U{0006}\0aa\U{0002}a\U{0008}a\n"[n] || "aaaaaaaaa\U{0004}\U{0006}\0aa\U{0002}a\U{0008}a\n"[n] == '?';
+expect |"\0aa\U{0008}aaaaa\U{0004}aaaaaaaa\U{0002}aaaaaaa\U{0006}\na"| == |"\0aa\U{0008}aaaaa\U{0004}aaaaaaaa\U{0002}aaaaaaa\U{0006}\na"|, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := Match("\0aa\U{0008}aaaaa\U{0004}aaaaaaaa\U{0002}aaaaaaa\U{0006}\na", "\0aa\U{0008}aaaaa\U{0004}aaaaaaaa\U{0002}aaaaaaa\U{0006}\na");
+expect r0 <==> forall n :: 0 <= n < |"\0aa\U{0008}aaaaa\U{0004}aaaaaaaa\U{0002}aaaaaaa\U{0006}\na"| ==> "\0aa\U{0008}aaaaa\U{0004}aaaaaaaa\U{0002}aaaaaaa\U{0006}\na"[n] == "\0aa\U{0008}aaaaa\U{0004}aaaaaaaa\U{0002}aaaaaaa\U{0006}\na"[n] || "\0aa\U{0008}aaaaa\U{0004}aaaaaaaa\U{0002}aaaaaaa\U{0006}\na"[n] == '?';
 }
 
-// REPEAT 4 - TIME: 8.7515543 s
+// REPEAT 4 - TIME: 7.8522038 s

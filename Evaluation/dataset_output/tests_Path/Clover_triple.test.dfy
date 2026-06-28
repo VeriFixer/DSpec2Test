@@ -9,67 +9,67 @@ var r0 := Triple(38);
 expect r0 == 3 * 38;
 }
 
-// REPEAT 1 - TIME: 2.880512 s
+// REPEAT 1 - TIME: 3.987761 s
 
 method {:test} Test1() {
 var r0 := Triple(39);
 expect r0 == 3 * 39;
 }
 
-// REPEAT 2 - TIME: 4.2736243 s
+// REPEAT 2 - TIME: 5.4302575 s
 
 method {:test} Test2() {
 var r0 := Triple(40);
 expect r0 == 3 * 40;
 }
 
-// REPEAT 3 - TIME: 5.4388262 s
+// REPEAT 3 - TIME: 6.9424649 s
 
 method {:test} Test3() {
 var r0 := Triple(41);
 expect r0 == 3 * 41;
 }
 
-// REPEAT 4 - TIME: 6.6129382 s
+// REPEAT 4 - TIME: 8.4351063 s
 
 method {:test} Test4() {
 var r0 := Triple(42);
 expect r0 == 3 * 42;
 }
 
-// REPEAT 5 - TIME: 7.8608626 s
+// REPEAT 5 - TIME: 10.1493592 s
 
 method {:test} Test5() {
 var r0 := Triple(43);
 expect r0 == 3 * 43;
 }
 
-// REPEAT 6 - TIME: 8.859646 s
+// REPEAT 6 - TIME: 11.4262242 s
 
 method {:test} Test6() {
 var r0 := Triple(44);
 expect r0 == 3 * 44;
 }
 
-// REPEAT 7 - TIME: 9.829858 s
+// REPEAT 7 - TIME: 12.6579113 s
 
 method {:test} Test7() {
 var r0 := Triple(45);
 expect r0 == 3 * 45;
 }
 
-// REPEAT 8 - TIME: 10.7805524 s
+// REPEAT 8 - TIME: 13.6348304 s
 
 method {:test} Test8() {
 var r0 := Triple(46);
 expect r0 == 3 * 46;
 }
 
-// REPEAT 9 - TIME: 11.8178689 s
+// REPEAT 9 - TIME: 14.8977114 s
 
 method {:test} Test9() {
 var r0 := Triple(47);
 expect r0 == 3 * 47;
 }
 
-// REPEAT 10 - TIME: 12.9170167 s
+// REPEAT 10 - TIME: 15.82636 s

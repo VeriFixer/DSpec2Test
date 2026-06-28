@@ -105,85 +105,85 @@ var r0, r1 := FindAddends(seqint0, 26950);
 expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 26950;
 }
 
-// REPEAT 1 - TIME: 13.1239075 s
+// REPEAT 1 - TIME: 9.5520784 s
 
 method {:test} Test2() {
-var seqint0 : seq<int> := [15716, 15716, 15716, 0, 15716, 0, 15716, 15716, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15716, 0, 0, 0, 0, 0, 0, 0, 15716];
-expect Sorted(seqint0) && HasAddends(seqint0, 31432), "If this check fails at runtime, the test does not meet the preconditions";
-var r0, r1 := FindAddends(seqint0, 31432);
-expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 31432;
+var seqint0 : seq<int> := [15687, 15687, 15687, 15687, 15687, 0, 0, 0, 15687, 0, 0, 0, 15687, 0, 15687, 0, 0, 15687];
+expect Sorted(seqint0) && HasAddends(seqint0, 31374), "If this check fails at runtime, the test does not meet the preconditions";
+var r0, r1 := FindAddends(seqint0, 31374);
+expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 31374;
 }
 
-// REPEAT 2 - TIME: 18.7555884 s
+// REPEAT 2 - TIME: 13.6472159 s
 
 method {:test} Test3() {
-var seqint0 : seq<int> := [7307, 16952, 16952, 16952, 16952, 16952, 16952, 16952, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16952];
-expect Sorted(seqint0) && HasAddends(seqint0, 33904), "If this check fails at runtime, the test does not meet the preconditions";
-var r0, r1 := FindAddends(seqint0, 33904);
-expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 33904;
+var seqint0 : seq<int> := [24667, 26907, 0, 0, 0, 0, 0, 26907, 26907, 26907, 26907, 26907, 0, 0, 26907, 26907];
+expect Sorted(seqint0) && HasAddends(seqint0, 53814), "If this check fails at runtime, the test does not meet the preconditions";
+var r0, r1 := FindAddends(seqint0, 53814);
+expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 53814;
 }
 
-// REPEAT 3 - TIME: 24.4340562 s
+// REPEAT 3 - TIME: 17.7706542 s
 
 method {:test} Test4() {
-var seqint0 : seq<int> := [23879, 23879, 23879, 23879, 23879, 23879, 23879, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23879, 23879];
-expect Sorted(seqint0) && HasAddends(seqint0, 47758), "If this check fails at runtime, the test does not meet the preconditions";
-var r0, r1 := FindAddends(seqint0, 47758);
-expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 47758;
+var seqint0 : seq<int> := [27143, 29589, 29589, 29589, 0, 29589, 29589, 0, 29589, 29589, 0, 0, 0, 0, 29589];
+expect Sorted(seqint0) && HasAddends(seqint0, 59178), "If this check fails at runtime, the test does not meet the preconditions";
+var r0, r1 := FindAddends(seqint0, 59178);
+expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 59178;
 }
 
-// REPEAT 4 - TIME: 31.1351471 s
+// REPEAT 4 - TIME: 22.5659142 s
 
 method {:test} Test5() {
-var seqint0 : seq<int> := [31734, 31734, 31734, 31734, 31734, 31734, 31734, 0, 31734, 0, 0, 0, 0, 0, 31734];
-expect Sorted(seqint0) && HasAddends(seqint0, 63468), "If this check fails at runtime, the test does not meet the preconditions";
-var r0, r1 := FindAddends(seqint0, 63468);
-expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 63468;
+var seqint0 : seq<int> := [31651, 31651, 31651, 31651, 31651, 31651, 31651, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31651];
+expect Sorted(seqint0) && HasAddends(seqint0, 63302), "If this check fails at runtime, the test does not meet the preconditions";
+var r0, r1 := FindAddends(seqint0, 63302);
+expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 63302;
 }
 
-// REPEAT 5 - TIME: 36.9216239 s
+// REPEAT 5 - TIME: 27.6595571 s
 
 method {:test} Test6() {
-var seqint0 : seq<int> := [33058, 33058, 33058, 33058, 33058, 33058, 33058, 33058, 33058, 0, 0, 0, 0, 33058];
-expect Sorted(seqint0) && HasAddends(seqint0, 66116), "If this check fails at runtime, the test does not meet the preconditions";
-var r0, r1 := FindAddends(seqint0, 66116);
-expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 66116;
+var seqint0 : seq<int> := [39873, 39873, 39873, 39873, 39873, 39873, 39873, 39873, 39873, 39873, 0, 0, 39873];
+expect Sorted(seqint0) && HasAddends(seqint0, 79746), "If this check fails at runtime, the test does not meet the preconditions";
+var r0, r1 := FindAddends(seqint0, 79746);
+expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 79746;
 }
 
-// REPEAT 6 - TIME: 41.9831219 s
+// REPEAT 6 - TIME: 32.9957204 s
 
 method {:test} Test7() {
-var seqint0 : seq<int> := [35982, 45513, 45513, 45513, 45513, 45513, 45513, 45513, 45513, 45513, 45513];
-expect Sorted(seqint0) && HasAddends(seqint0, 91026), "If this check fails at runtime, the test does not meet the preconditions";
-var r0, r1 := FindAddends(seqint0, 91026);
-expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 91026;
+var seqint0 : seq<int> := [47452, 47452, 47452, 47452, 47452, 0, 47452, 0, 0, 0, 47452, 47452];
+expect Sorted(seqint0) && HasAddends(seqint0, 94904), "If this check fails at runtime, the test does not meet the preconditions";
+var r0, r1 := FindAddends(seqint0, 94904);
+expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 94904;
 }
 
-// REPEAT 7 - TIME: 49.2689812 s
+// REPEAT 7 - TIME: 38.2899731 s
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [54100, 54100, 54100, 54100, 0, 0, 54100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 54100, 54100, 0, 0, 54100, 0, 54100, 54100, 54100];
-expect Sorted(seqint0) && HasAddends(seqint0, 108200), "If this check fails at runtime, the test does not meet the preconditions";
-var r0, r1 := FindAddends(seqint0, 108200);
-expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 108200;
+var seqint0 : seq<int> := [57178, 57178, 57178, 57178, 57178, 57178, 57178, 57178, 57178, 0, 57178];
+expect Sorted(seqint0) && HasAddends(seqint0, 114356), "If this check fails at runtime, the test does not meet the preconditions";
+var r0, r1 := FindAddends(seqint0, 114356);
+expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 114356;
 }
 
-// REPEAT 8 - TIME: 56.9686371 s
+// REPEAT 8 - TIME: 43.5127951 s
 
 method {:test} Test9() {
-var seqint0 : seq<int> := [55754, 55754, 55754, 55754, 55754, 55754, 55754, 0, 0, 55754];
-expect Sorted(seqint0) && HasAddends(seqint0, 111508), "If this check fails at runtime, the test does not meet the preconditions";
-var r0, r1 := FindAddends(seqint0, 111508);
-expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 111508;
+var seqint0 : seq<int> := [66058, 66058, 66058, 66058, 66058, 66058, 66058, 66058, 0, 0, 66058, 66058];
+expect Sorted(seqint0) && HasAddends(seqint0, 132116), "If this check fails at runtime, the test does not meet the preconditions";
+var r0, r1 := FindAddends(seqint0, 132116);
+expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 132116;
 }
 
-// REPEAT 9 - TIME: 63.5701682 s
+// REPEAT 9 - TIME: 48.7029739 s
 
 method {:test} Test10() {
-var seqint0 : seq<int> := [59890, 59890, 59890, 59890, 59890, 59890, 59890, 0, 0, 0, 0, 59890, 0, 0, 59890, 59890, 59890, 59890, 59890, 59890, 59890, 59890];
-expect Sorted(seqint0) && HasAddends(seqint0, 119780), "If this check fails at runtime, the test does not meet the preconditions";
-var r0, r1 := FindAddends(seqint0, 119780);
-expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 119780;
+var seqint0 : seq<int> := [67035, 67035, 67035, 67035, 67035, 67035, 0, 0, 0, 0, 0, 67035, 67035];
+expect Sorted(seqint0) && HasAddends(seqint0, 134070), "If this check fails at runtime, the test does not meet the preconditions";
+var r0, r1 := FindAddends(seqint0, 134070);
+expect r0 < r1 < |seqint0| && seqint0[r0] + seqint0[r1] == 134070;
 }
 
-// REPEAT 10 - TIME: 72.5139356 s
+// REPEAT 10 - TIME: 54.829662 s

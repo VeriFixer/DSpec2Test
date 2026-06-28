@@ -30,67 +30,67 @@ var r0 := calcF(0);
 expect r0 == F(0);
 }
 
-// REPEAT 1 - TIME: 2.3269199 s
+// REPEAT 1 - TIME: 2.3444576 s
 
 method {:test} Test1() {
-var r0 := calcF(1);
-expect r0 == F(1);
+var r0 := calcF(8951);
+expect r0 == F(8951);
 }
 
-// REPEAT 2 - TIME: 3.385787 s
+// REPEAT 2 - TIME: 3.3818267 s
 
 method {:test} Test2() {
-var r0 := calcF(5);
-expect r0 == F(5);
+var r0 := calcF(8952);
+expect r0 == F(8952);
 }
 
-// REPEAT 3 - TIME: 4.3745881 s
+// REPEAT 3 - TIME: 4.3387687 s
 
 method {:test} Test3() {
-var r0 := calcF(4685);
-expect r0 == F(4685);
+var r0 := calcF(8953);
+expect r0 == F(8953);
 }
 
-// REPEAT 4 - TIME: 5.1896439 s
+// REPEAT 4 - TIME: 5.3484481 s
 
 method {:test} Test4() {
-var r0 := calcF(4686);
-expect r0 == F(4686);
+var r0 := calcF(8954);
+expect r0 == F(8954);
 }
 
-// REPEAT 5 - TIME: 6.0362952 s
+// REPEAT 5 - TIME: 6.3938129 s
 
 method {:test} Test5() {
-var r0 := calcF(4687);
-expect r0 == F(4687);
+var r0 := calcF(8955);
+expect r0 == F(8955);
 }
 
-// REPEAT 6 - TIME: 6.8353782 s
+// REPEAT 6 - TIME: 7.3185802 s
 
 method {:test} Test6() {
-var r0 := calcF(4688);
-expect r0 == F(4688);
+var r0 := calcF(8956);
+expect r0 == F(8956);
 }
 
-// REPEAT 7 - TIME: 7.6059539 s
+// REPEAT 7 - TIME: 8.2296946 s
 
 method {:test} Test7() {
-var r0 := calcF(4689);
-expect r0 == F(4689);
+var r0 := calcF(8957);
+expect r0 == F(8957);
 }
 
-// REPEAT 8 - TIME: 8.2922848 s
+// REPEAT 8 - TIME: 9.1930677 s
 
 method {:test} Test8() {
-var r0 := calcF(4690);
-expect r0 == F(4690);
+var r0 := calcF(8958);
+expect r0 == F(8958);
 }
 
-// REPEAT 9 - TIME: 9.086689 s
+// REPEAT 9 - TIME: 10.0345182 s
 
 method {:test} Test9() {
-var r0 := calcF(4691);
-expect r0 == F(4691);
+var r0 := calcF(8959);
+expect r0 == F(8959);
 }
 
-// REPEAT 10 - TIME: 9.9405268 s
+// REPEAT 10 - TIME: 10.771825 s

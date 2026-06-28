@@ -12,8 +12,8 @@ method {:testEntry} CountUppercase(s: string) returns (count: int)
 }
 
 method {:test} Test11() {
-var r0 := CountUppercase("\U{0001}aa\0aaaaaa");
+var r0 := CountUppercase("\U{0001}a\0a");
 expect r0 >= 0;
 }
 
-// REPEAT 4 - TIME: 9.6765518 s
+// REPEAT 4 - TIME: 12.4752502 s

@@ -48,4 +48,4 @@ expect exists i: nat, j: nat :: i < j < |seqint0| && summingPair(i, j, seqint0, 
 var r0 := twoSum(seqint0, 1796);
 }
 
-// REPEAT 1 - TIME: 14.9605675 s
+// REPEAT 1 - TIME: 14.8376088 s

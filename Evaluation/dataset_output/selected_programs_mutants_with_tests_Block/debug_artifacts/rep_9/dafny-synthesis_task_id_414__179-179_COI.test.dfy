@@ -16,10 +16,10 @@ method {:testEntry} AnyValueExists(seq1: seq<int>, seq2: seq<int>) returns (resu
 }
 
 method {:test} Test8() {
-var seqint0 : seq<int> := [41];
-var seqint1 : seq<int> := [41, 0, 0, 0, 0, 24, 0, 0, 0, 37];
+var seqint0 : seq<int> := [22, 49, 0, 42, 0, 38];
+var seqint1 : seq<int> := [47, 22, 32, 45];
 var r0 := AnyValueExists(seqint0, seqint1);
 expect r0 <==> exists i :: 0 <= i < |seqint0| && seqint0[i] in seqint1;
 }
 
-// REPEAT 9 - TIME: 10.7610351 s
+// REPEAT 9 - TIME: 10.0816073 s

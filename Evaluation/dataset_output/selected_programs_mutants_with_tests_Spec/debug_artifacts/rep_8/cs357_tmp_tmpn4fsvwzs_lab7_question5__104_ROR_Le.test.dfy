@@ -49,4 +49,4 @@ var r0 := A1(7, 7);
 expect r0 == 7 + 7;
 }
 
-// REPEAT 8 - TIME: 11.0858098 s
+// REPEAT 8 - TIME: 11.771159 s

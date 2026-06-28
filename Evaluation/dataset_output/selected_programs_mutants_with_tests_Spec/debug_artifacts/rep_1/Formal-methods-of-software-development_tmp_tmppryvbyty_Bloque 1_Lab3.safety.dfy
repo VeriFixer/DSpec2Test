@@ -163,4 +163,4 @@ var r0 := Sqare2(1);
 expect r0 == 1 * 1;
 }
 
-// REPEAT 1 - TIME: 5.2133415 s
+// REPEAT 1 - TIME: 4.9758574 s

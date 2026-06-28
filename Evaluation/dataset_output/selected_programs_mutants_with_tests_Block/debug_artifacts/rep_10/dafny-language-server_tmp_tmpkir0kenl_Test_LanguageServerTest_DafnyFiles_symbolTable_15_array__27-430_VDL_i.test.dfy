@@ -18,9 +18,9 @@ method {:testEntry} foo(s: seq<int>)
 }
 
 method {:test} Test10() {
-var seqint0 : seq<int> := [17, 0, 0, 0, 13];
+var seqint0 : seq<int> := [9, 0, 12, 14];
 expect |seqint0| > 1, "If this check fails at runtime, the test does not meet the preconditions";
 foo(seqint0);
 }
 
-// REPEAT 10 - TIME: 9.1103498 s
+// REPEAT 10 - TIME: 9.2030099 s

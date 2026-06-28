@@ -11,44 +11,44 @@ method {:testEntry} CountIdenticalPositions(a: seq<int>, b: seq<int>, c: seq<int
 }
 
 method {:test} Test45() {
-var seqint0 : seq<int> := [879, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [879, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0];
-var seqint2 : seq<int> := [879, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 833, 0, 0, 0, 0, 49, 0, 0, 0];
+var seqint1 : seq<int> := [0, 0, 0, 0, 0, 833, 0, 0, 0, 0, 49, 0, 0, 0];
+var seqint2 : seq<int> := [0, 0, 0, 0, 0, 833, 0, 0, 0, 0, 49, 0, 0, 0];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 method {:test} Test46() {
-var seqint0 : seq<int> := [880, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [880, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0];
-var seqint2 : seq<int> := [880, 0, 0, 0, 0, 49, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 834, 0, 0, 0, 0, 49, 0, 0, 0];
+var seqint1 : seq<int> := [0, 0, 0, 0, 0, 834, 0, 0, 0, 0, 49, 0, 0, 0];
+var seqint2 : seq<int> := [0, 0, 0, 0, 0, 834, 0, 0, 0, 0, 50, 0, 0, 0];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 method {:test} Test47() {
-var seqint0 : seq<int> := [880, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [880, 0, 0, 0, 0, 49, 0, 0, 0, 0, 0];
-var seqint2 : seq<int> := [880, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 834, 0, 0, 0, 0, 49, 0, 0, 0];
+var seqint1 : seq<int> := [0, 0, 0, 0, 0, 834, 0, 0, 0, 0, 50, 0, 0, 0];
+var seqint2 : seq<int> := [0, 0, 0, 0, 0, 834, 0, 0, 0, 0, 0, 0, 0, 0];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 method {:test} Test48() {
-var seqint0 : seq<int> := [879, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint1 : seq<int> := [879, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var seqint2 : seq<int> := [879, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 833, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint1 : seq<int> := [0, 0, 0, 0, 0, 833, 0, 0, 0, 0, 0, 0, 0, 0];
+var seqint2 : seq<int> := [0, 0, 0, 0, 0, 833, 0, 0, 0, 0, 0, 0, 0, 0];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 method {:test} Test49() {
-var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 878, 0, 0];
-var seqint1 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 878, 0, 0];
-var seqint2 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 878, 0, 0];
+var seqint0 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 832, 0, 0, 0];
+var seqint1 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 832, 0, 0, 0];
+var seqint2 : seq<int> := [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 832, 0, 0, 0];
 expect |seqint0| == |seqint1| && |seqint1| == |seqint2|, "If this check fails at runtime, the test does not meet the preconditions";
 var r0 := CountIdenticalPositions(seqint0, seqint1, seqint2);
 expect r0 >= 0;
 }
 
-// REPEAT 10 - TIME: 232.850088 s
+// REPEAT 10 - TIME: 213.2538853 s

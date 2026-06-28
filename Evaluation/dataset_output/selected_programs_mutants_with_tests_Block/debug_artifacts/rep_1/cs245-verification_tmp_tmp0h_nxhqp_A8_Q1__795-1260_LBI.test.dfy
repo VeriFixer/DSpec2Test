@@ -32,4 +32,4 @@ var r0 := A8Q1(1, 7719);
 expect r0 == power(7719, 1);
 }
 
-// REPEAT 1 - TIME: 2.6600811 s
+// REPEAT 1 - TIME: 2.5789126 s

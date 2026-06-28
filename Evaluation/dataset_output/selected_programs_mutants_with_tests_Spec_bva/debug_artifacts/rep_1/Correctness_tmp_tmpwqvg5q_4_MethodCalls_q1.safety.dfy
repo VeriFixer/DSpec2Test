@@ -146,4 +146,4 @@ var r0 := ComputeFusc(100);
 expect r0 == fusc(100);
 }
 
-// REPEAT 1 - TIME: 7.6781571 s
+// REPEAT 1 - TIME: 8.5518384 s

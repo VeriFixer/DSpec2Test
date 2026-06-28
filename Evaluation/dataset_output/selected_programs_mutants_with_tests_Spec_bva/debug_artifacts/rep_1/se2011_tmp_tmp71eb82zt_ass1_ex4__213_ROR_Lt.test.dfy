@@ -32,4 +32,4 @@ var r0 := Eval(10);
 expect r0 == 10 * 10;
 }
 
-// REPEAT 1 - TIME: 6.2168648 s
+// REPEAT 1 - TIME: 7.8810965 s

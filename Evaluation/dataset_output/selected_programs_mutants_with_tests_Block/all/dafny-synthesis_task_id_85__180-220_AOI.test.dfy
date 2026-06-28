@@ -14,7 +14,7 @@ var r0 := SphereSurfaceArea(1.0);
 expect r0 == 4.0 * 3.14159265358979323846 * 1.0 * 1.0;
 }
 
-// REPEAT 1 - TIME: 2.4353764 s
+// REPEAT 1 - TIME: 2.3133321 s
 
 method {:test} Test1() {
 expect 2.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -22,7 +22,7 @@ var r0 := SphereSurfaceArea(2.0);
 expect r0 == 4.0 * 3.14159265358979323846 * 2.0 * 2.0;
 }
 
-// REPEAT 2 - TIME: 3.21019 s
+// REPEAT 2 - TIME: 3.1317862 s
 
 method {:test} Test2() {
 expect 3.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -30,7 +30,7 @@ var r0 := SphereSurfaceArea(3.0);
 expect r0 == 4.0 * 3.14159265358979323846 * 3.0 * 3.0;
 }
 
-// REPEAT 3 - TIME: 3.9516001 s
+// REPEAT 3 - TIME: 3.8755769 s
 
 method {:test} Test3() {
 expect 4.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -38,7 +38,7 @@ var r0 := SphereSurfaceArea(4.0);
 expect r0 == 4.0 * 3.14159265358979323846 * 4.0 * 4.0;
 }
 
-// REPEAT 4 - TIME: 4.7473396 s
+// REPEAT 4 - TIME: 4.7477455 s
 
 method {:test} Test4() {
 expect 5.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -46,7 +46,7 @@ var r0 := SphereSurfaceArea(5.0);
 expect r0 == 4.0 * 3.14159265358979323846 * 5.0 * 5.0;
 }
 
-// REPEAT 5 - TIME: 5.494447 s
+// REPEAT 5 - TIME: 5.4774732 s
 
 method {:test} Test5() {
 expect 6.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -54,7 +54,7 @@ var r0 := SphereSurfaceArea(6.0);
 expect r0 == 4.0 * 3.14159265358979323846 * 6.0 * 6.0;
 }
 
-// REPEAT 6 - TIME: 6.2568005 s
+// REPEAT 6 - TIME: 6.2896129 s
 
 method {:test} Test6() {
 expect 7.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -62,7 +62,7 @@ var r0 := SphereSurfaceArea(7.0);
 expect r0 == 4.0 * 3.14159265358979323846 * 7.0 * 7.0;
 }
 
-// REPEAT 7 - TIME: 6.9523424 s
+// REPEAT 7 - TIME: 7.0287551 s
 
 method {:test} Test7() {
 expect 8.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -70,7 +70,7 @@ var r0 := SphereSurfaceArea(8.0);
 expect r0 == 4.0 * 3.14159265358979323846 * 8.0 * 8.0;
 }
 
-// REPEAT 8 - TIME: 7.5337742 s
+// REPEAT 8 - TIME: 7.8296097 s
 
 method {:test} Test8() {
 expect 9.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -78,7 +78,7 @@ var r0 := SphereSurfaceArea(9.0);
 expect r0 == 4.0 * 3.14159265358979323846 * 9.0 * 9.0;
 }
 
-// REPEAT 9 - TIME: 8.2430119 s
+// REPEAT 9 - TIME: 8.8187546 s
 
 method {:test} Test9() {
 expect 10.0 > 0.0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -86,4 +86,4 @@ var r0 := SphereSurfaceArea(10.0);
 expect r0 == 4.0 * 3.14159265358979323846 * 10.0 * 10.0;
 }
 
-// REPEAT 10 - TIME: 8.962093 s
+// REPEAT 10 - TIME: 9.4934352 s

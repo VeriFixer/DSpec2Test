@@ -40,4 +40,4 @@ method {:test} Test2() {
 var r0 := Sum(7723);
 }
 
-// REPEAT 3 - TIME: 4.8384684 s
+// REPEAT 3 - TIME: 4.9787716 s

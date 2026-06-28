@@ -101,4 +101,4 @@ method {:test} Test5() {
 Quotient1();
 }
 
-// REPEAT 1 - TIME: 4.597213 s
+// REPEAT 1 - TIME: 4.7867007 s

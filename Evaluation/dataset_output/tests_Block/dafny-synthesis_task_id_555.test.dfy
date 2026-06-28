@@ -21,7 +21,7 @@ var r0 := DifferenceSumCubesAndSumNumbers(0);
 expect r0 == 0 * 0 * (0 + 1) * (0 + 1) / 4 - 0 * (0 + 1) / 2;
 }
 
-// REPEAT 1 - TIME: 2.5047601 s
+// REPEAT 1 - TIME: 2.4783789 s
 
 method {:test} Test1() {
 expect 1 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
@@ -29,68 +29,68 @@ var r0 := DifferenceSumCubesAndSumNumbers(1);
 expect r0 == 1 * 1 * (1 + 1) * (1 + 1) / 4 - 1 * (1 + 1) / 2;
 }
 
-// REPEAT 2 - TIME: 3.4528047 s
+// REPEAT 2 - TIME: 3.4971201 s
 
 method {:test} Test2() {
-expect 18 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(18);
-expect r0 == 18 * 18 * (18 + 1) * (18 + 1) / 4 - 18 * (18 + 1) / 2;
+expect 2 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(2);
+expect r0 == 2 * 2 * (2 + 1) * (2 + 1) / 4 - 2 * (2 + 1) / 2;
 }
 
-// REPEAT 3 - TIME: 5.4778457 s
+// REPEAT 3 - TIME: 4.6737897 s
 
 method {:test} Test3() {
-expect 19 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(19);
-expect r0 == 19 * 19 * (19 + 1) * (19 + 1) / 4 - 19 * (19 + 1) / 2;
+expect 3 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(3);
+expect r0 == 3 * 3 * (3 + 1) * (3 + 1) / 4 - 3 * (3 + 1) / 2;
 }
 
-// REPEAT 4 - TIME: 6.3955986 s
+// REPEAT 4 - TIME: 5.9284862 s
 
 method {:test} Test4() {
-expect 20 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(20);
-expect r0 == 20 * 20 * (20 + 1) * (20 + 1) / 4 - 20 * (20 + 1) / 2;
+expect 6 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(6);
+expect r0 == 6 * 6 * (6 + 1) * (6 + 1) / 4 - 6 * (6 + 1) / 2;
 }
 
-// REPEAT 5 - TIME: 7.3587615 s
+// REPEAT 5 - TIME: 7.1202586 s
 
 method {:test} Test5() {
-expect 21 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(21);
-expect r0 == 21 * 21 * (21 + 1) * (21 + 1) / 4 - 21 * (21 + 1) / 2;
+expect 7 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(7);
+expect r0 == 7 * 7 * (7 + 1) * (7 + 1) / 4 - 7 * (7 + 1) / 2;
 }
 
-// REPEAT 6 - TIME: 8.1781704 s
+// REPEAT 6 - TIME: 8.3085253 s
 
 method {:test} Test6() {
-expect 22 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(22);
-expect r0 == 22 * 22 * (22 + 1) * (22 + 1) / 4 - 22 * (22 + 1) / 2;
+expect 17 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(17);
+expect r0 == 17 * 17 * (17 + 1) * (17 + 1) / 4 - 17 * (17 + 1) / 2;
 }
 
-// REPEAT 7 - TIME: 9.185678 s
+// REPEAT 7 - TIME: 9.2146297 s
 
 method {:test} Test7() {
-expect 23 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(23);
-expect r0 == 23 * 23 * (23 + 1) * (23 + 1) / 4 - 23 * (23 + 1) / 2;
+expect 25 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(25);
+expect r0 == 25 * 25 * (25 + 1) * (25 + 1) / 4 - 25 * (25 + 1) / 2;
 }
 
-// REPEAT 8 - TIME: 9.9703058 s
+// REPEAT 8 - TIME: 12.623766 s
 
 method {:test} Test8() {
-expect 24 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(24);
-expect r0 == 24 * 24 * (24 + 1) * (24 + 1) / 4 - 24 * (24 + 1) / 2;
+expect 26 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(26);
+expect r0 == 26 * 26 * (26 + 1) * (26 + 1) / 4 - 26 * (26 + 1) / 2;
 }
 
-// REPEAT 9 - TIME: 10.7358619 s
+// REPEAT 9 - TIME: 13.4227631 s
 
 method {:test} Test9() {
-expect 29 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
-var r0 := DifferenceSumCubesAndSumNumbers(29);
-expect r0 == 29 * 29 * (29 + 1) * (29 + 1) / 4 - 29 * (29 + 1) / 2;
+expect 32 >= 0, "If this check fails at runtime, the test does not meet the preconditions";
+var r0 := DifferenceSumCubesAndSumNumbers(32);
+expect r0 == 32 * 32 * (32 + 1) * (32 + 1) / 4 - 32 * (32 + 1) / 2;
 }
 
-// REPEAT 10 - TIME: 14.1108976 s
+// REPEAT 10 - TIME: 17.01144 s

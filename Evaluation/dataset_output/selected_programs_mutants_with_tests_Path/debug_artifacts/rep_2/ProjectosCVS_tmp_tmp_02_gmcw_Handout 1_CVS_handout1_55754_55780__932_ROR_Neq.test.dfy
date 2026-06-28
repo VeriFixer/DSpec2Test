@@ -66,4 +66,4 @@ var r0, r1 := euclidianDiv(1, 2);
 expect 1 == 2 * r0 + r1;
 }
 
-// REPEAT 2 - TIME: 12.0526945 s
+// REPEAT 2 - TIME: 17.7994194 s

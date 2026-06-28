@@ -17,4 +17,4 @@ expect r0[|r0| - 1] == int0;
 expect forall i :: 0 <= i < |seqint0| ==> r0[i] == seqint0[i];
 }
 
-// REPEAT 1 - TIME: 2.1993275 s
+// REPEAT 1 - TIME: 2.4183976 s

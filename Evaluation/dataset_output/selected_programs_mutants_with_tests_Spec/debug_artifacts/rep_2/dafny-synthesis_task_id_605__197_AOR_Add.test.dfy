@@ -29,4 +29,4 @@ var r0 := IsPrime(42);
 expect r0 <==> forall k :: 2 <= k < 42 ==> 42 % k != 0;
 }
 
-// REPEAT 2 - TIME: 5.1301222 s
+// REPEAT 2 - TIME: 4.8473933 s

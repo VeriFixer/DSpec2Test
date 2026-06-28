@@ -19,67 +19,67 @@ expect 0 < 42 <= 42, "If this check fails at runtime, the test does not meet the
 BigFoot(42);
 }
 
-// REPEAT 1 - TIME: 4.8328169 s
+// REPEAT 1 - TIME: 6.5957588 s
 
 method {:test} Test5() {
 expect 0 < 2 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(2);
 }
 
-// REPEAT 2 - TIME: 5.9874994 s
+// REPEAT 2 - TIME: 7.7429194 s
 
 method {:test} Test6() {
 expect 0 < 3 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(3);
 }
 
-// REPEAT 3 - TIME: 7.0013109 s
+// REPEAT 3 - TIME: 8.9026871 s
 
 method {:test} Test7() {
 expect 0 < 4 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(4);
 }
 
-// REPEAT 4 - TIME: 7.8889193 s
+// REPEAT 4 - TIME: 9.7990498 s
 
 method {:test} Test8() {
 expect 0 < 5 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(5);
 }
 
-// REPEAT 5 - TIME: 8.723375 s
+// REPEAT 5 - TIME: 10.7781001 s
 
 method {:test} Test9() {
 expect 0 < 6 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(6);
 }
 
-// REPEAT 6 - TIME: 9.4152831 s
+// REPEAT 6 - TIME: 11.7484698 s
 
 method {:test} Test10() {
 expect 0 < 7 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(7);
 }
 
-// REPEAT 7 - TIME: 10.0212011 s
+// REPEAT 7 - TIME: 12.6117116 s
 
 method {:test} Test11() {
 expect 0 < 8 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(8);
 }
 
-// REPEAT 8 - TIME: 10.653512 s
+// REPEAT 8 - TIME: 13.5130787 s
 
 method {:test} Test12() {
 expect 0 < 9 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(9);
 }
 
-// REPEAT 9 - TIME: 11.2934731 s
+// REPEAT 9 - TIME: 14.3418416 s
 
 method {:test} Test13() {
 expect 0 < 10 <= 42, "If this check fails at runtime, the test does not meet the preconditions";
 BigFoot(10);
 }
 
-// REPEAT 10 - TIME: 11.8241017 s
+// REPEAT 10 - TIME: 15.1781793 s

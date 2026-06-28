@@ -21,9 +21,9 @@ method {:testEntry} ReplaceChars(s: string, oldChar: char, newChar: char)
 }
 
 method {:test} Test18() {
-var r0 := ReplaceChars("\U{0001}aa\U{0001}", '\U{0001}', '\0');
-expect |r0| == |"\U{0001}aa\U{0001}"|;
-expect forall i :: 0 <= i < |"\U{0001}aa\U{0001}"| ==> ("\U{0001}aa\U{0001}"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0001}aa\U{0001}"[i] != '\U{0001}' ==> r0[i] == "\U{0001}aa\U{0001}"[i]);
+var r0 := ReplaceChars("\U{0002}aaaaaaaaaaaaaaaaaaa\U{0006}\U{0004}a", '\U{0001}', '\0');
+expect |r0| == |"\U{0002}aaaaaaaaaaaaaaaaaaa\U{0006}\U{0004}a"|;
+expect forall i :: 0 <= i < |"\U{0002}aaaaaaaaaaaaaaaaaaa\U{0006}\U{0004}a"| ==> ("\U{0002}aaaaaaaaaaaaaaaaaaa\U{0006}\U{0004}a"[i] == '\U{0001}' ==> r0[i] == '\0') && ("\U{0002}aaaaaaaaaaaaaaaaaaa\U{0006}\U{0004}a"[i] != '\U{0001}' ==> r0[i] == "\U{0002}aaaaaaaaaaaaaaaaaaa\U{0006}\U{0004}a"[i]);
 }
 
-// REPEAT 10 - TIME: 14.3638955 s
+// REPEAT 10 - TIME: 18.7232164 s

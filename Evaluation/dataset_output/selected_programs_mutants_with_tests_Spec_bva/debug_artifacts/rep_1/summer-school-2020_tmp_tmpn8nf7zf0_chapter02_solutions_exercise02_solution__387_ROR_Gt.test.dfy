@@ -66,4 +66,4 @@ method {:test} Test13() {
 Main();
 }
 
-// REPEAT 1 - TIME: 11.6477094 s
+// REPEAT 1 - TIME: 13.9342685 s

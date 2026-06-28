@@ -26,8 +26,8 @@ method {:testEntry} ClimbStairs(n: nat) returns (r: nat)
 }
 
 method {:test} Test1() {
-var r0 := ClimbStairs(4);
-expect r0 == Stairs(4);
+var r0 := ClimbStairs(2);
+expect r0 == Stairs(2);
 }
 
-// REPEAT 2 - TIME: 4.428064 s
+// REPEAT 2 - TIME: 4.1617602 s
