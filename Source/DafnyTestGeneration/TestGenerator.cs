@@ -491,7 +491,7 @@ namespace DafnyTestGeneration {
         bool isFailedMember = failedMembers.Any(f => 
           f == member.Name || f.EndsWith("." + member.Name));
         
-        if (member is Method or Function) {
+        if (member is Method { IsGhost: false } or Function { IsGhost: false }) {
           if (isFailedMember && !member.HasUserAttribute(TestGenerationOptions.TestEntryAttribute, out _)) {
             member.Attributes = new Attributes(
               TestGenerationOptions.TestEntryAttribute,

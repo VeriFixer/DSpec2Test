@@ -2,9 +2,73 @@ import os
 import argparse
 import json
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 from src.config import (
     RESULTS_DIR
 )
+
+# ==========================================
+# Configurations
+# ==========================================
+sns.set_theme(style="whitegrid", context="paper")
+plt.rcParams.update({
+    'font.size': 12,
+    'axes.labelsize': 14,
+    'axes.titlesize': 14,
+    'legend.fontsize': 11,
+    'xtick.labelsize': 11,
+    'ytick.labelsize': 11,
+    'figure.dpi': 300,
+    'savefig.bbox': 'tight',
+    'font.family': 'serif'
+})
+
+STRATEGY_COLORS = {
+    "Block": "#1f77b4",
+    "Path": "#ff7f0e",
+    "Spec": "#2ca02c",
+    "Spec_bva": "#d62728", # Adjusted to match script's naming
+    "Combined": "#9467bd"  # Purple for Combined
+}
+
+STRATEGY_MARKERS = {
+    "Block": "o",
+    "Path": "s",
+    "Spec": "^",
+    "Spec_bva": "D",       # Adjusted to match script's naming
+    "Combined": "*"        # Star for Combined
+}
+
+def plot_kill_rate_vs_rep(df, out_dir, strat_a, strat_b):
+    """Plots the kill rate vs. Rep for the two strategies and their combination."""
+    max_rep = int(df["Rep"].max())
+    plt.figure(figsize=(7, 5))
+    
+    # Filter colors and markers for only the active strategies
+    current_strats = [strat_a, strat_b, "Combined"]
+    palette = {s: STRATEGY_COLORS.get(s, "#333333") for s in current_strats}
+    markers = {s: STRATEGY_MARKERS.get(s, "o") for s in current_strats}
+
+    ax = sns.lineplot(
+        data=df, x="Rep", y="Kill Rate", hue="Strategy", 
+        style="Strategy", palette=palette, markers=markers, 
+        dashes=False, linewidth=2, markersize=8
+    )
+    plt.title(r"Mutant Kill Rate by $\mathtt{--repeat}$ Flag Value")
+    plt.xlabel(r"$\mathtt{--repeat}$ Flag Value")
+    plt.ylabel("Kill Rate")
+    plt.xticks(range(1, max_rep + 1))
+    
+    vals = ax.get_yticks()
+    ax.set_yticks(vals)
+    ax.set_yticklabels(['{:,.1%}'.format(x) for x in vals])
+    plt.legend(title="Strategy")
+    
+    # Dynamically name the file based on the strategies compared
+    filename = f"plot_0_combo_{strat_a}_vs_{strat_b}.png"
+    plt.savefig(os.path.join(out_dir, filename))
+    plt.close()
 
 def get_max_repetition(base_dir):
     """Dynamically detects the maximum X by scanning the folder structure."""
@@ -113,18 +177,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--strat-a",
         type=str,
-        default="Path",
-        help="First strategie to evaluate combination on",
+        default="Block",
+        help="First strategy to evaluate combination on",
     )
     parser.add_argument(
         "--strat-b",
         type=str,
         default="Spec_bva",
-        help="Second strategie to evaluate combination on",
+        help="Second strategy to evaluate combination on",
     )
     return parser.parse_args(argv)
-
-
 
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
@@ -145,16 +207,21 @@ def main(argv: list[str] | None = None) -> None:
     if len(valid_programs) > 0:
         df_combo = evaluate_combination(output_dir, valid_programs, args.strat_a, args.strat_b, max_x)
         
+        # --- Export Table ---
         table_path = os.path.join(output_dir, "tables", "table_0_combination.csv")
         os.makedirs(os.path.dirname(table_path), exist_ok=True)
         df_pivot = df_combo.pivot(index="Rep", columns="Strategy", values="Kill Rate")
         df_pivot = df_pivot[[args.strat_a, "Combined", args.strat_b]]
-        df_pivot = (df_pivot * 100).round(2)
-        df_pivot.to_csv(table_path)
+        df_pivot_percent = (df_pivot * 100).round(2)
+        df_pivot_percent.to_csv(table_path)
         with open(os.path.join(output_dir, "tables", "table_0_combination.tex"), "w") as f:
-            f.write(df_pivot.to_latex(float_format="%.2f", escape=True))
-        print(f"\Combination Table saved to {table_path}")
-        print(df_pivot)
+            f.write(df_pivot_percent.to_latex(float_format="%.2f", escape=True))
+        print(f"\nCombination Table saved to {table_path}")
+        print(df_pivot_percent)
         
+        # --- Plot Graph ---
+        plot_kill_rate_vs_rep(df_combo, graphs_dir, args.strat_a, args.strat_b)
+        print(f"Combination Graph saved to {graphs_dir}")
+
 if __name__ == "__main__":
     main()

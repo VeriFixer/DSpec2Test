@@ -100,12 +100,6 @@ expect forall i :: 0 <= i < |r0| ==> i % 2 == 1 ==> r0[i] == 30;
 
 // REPEAT 8 - TIME: 2741.2508519 s
 
-Prover error: ; #$R@@26 line: 3021 position: 14
-
-Prover error: ; bx@@40 line: 3021 position: 27
-
-Prover error: ; ! line: 3025 position: 0
-
 method {:test} Test8() {
 var seqint0 : seq<int> := [13, 0, 0, 0, 0, 0, 0, 0, 17];
 var r0 := intersperse(seqint0, 31);
