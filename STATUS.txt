@@ -1,0 +1,16 @@
+DSpec2Test Artifact Status
+
+Badges requested:
+* Functional
+* Available
+* Reusable
+
+Justification:
+* Functional: The artifact is documented, consistent, complete, and exercisable, and it includes appropriate evidence of verification and validation through the smoke test, demo workflow, benchmark workflow, and extended (post-acceptance) evaluation which satisfies the Functional badge.
+* Available: The artifact is packaged for archival distribution through Zenodo and can be made publicly available with a DOI, which supports the Available badge.
+* Reusable: The repository includes the executable toolchain, benchmark scripts, demo inputs, and documentation needed for reuse, which supports the Reusable badge.
+
+Review notes:
+* Docker is the recommended path for artifact evaluation.
+* The smoke test should complete in a short session.
+* The benchmark workflow is available through the `Evaluation/paper_evaluation/` scripts, the demo workflow is available through `Evaluation/demo_evaluation/`, and an extended (post-acceptance) evaluation is present in `Evaluation/extended_evaluation/`

@@ -1,6 +1,7 @@
 Dafny
 
 Copyright (c) Microsoft Corporation
+Copyright (c) 2026 DSpec2Test
 
 All rights reserved.
 

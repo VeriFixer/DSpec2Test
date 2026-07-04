@@ -1,0 +1,18 @@
+DSpec2Test Artifact Package in Docker:
+FROM codercom/code-server:latest (the full Dockerfile is available for inspection in Dockerfile.ci)
+
+Tested on Architecture:
+* ARM (Apple Silicon)
+
+Operating system:
+* MacOS is the primary supported platform (that was tested)
+* The Docker-based review path is recommended for the most reliable evaluation (and should work on other platformns)
+
+Software requirements:
+* Docker 24 or newer for the recommended review workflow
+* All other dependencies are listed under the DockerFile
+
+Hardware requirements:
+* No GPU required
+* At least 8 GB RAM recommended (to run the extended post-acceptance version, 16GB RAM is recommended to improve parallelism)
+* At least 10 GB free disk space recommended (For the docker image)
