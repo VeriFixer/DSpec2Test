@@ -1,18 +1,20 @@
 DSpec2Test Artifact Package in Docker:
-FROM codercom/code-server:latest (the full Dockerfile is available for inspection in Dockerfile.ci)
+
+The artifact is packaged as a Linux Docker image. It has been successfully tested and confirmed to run flawlessly on both **x86_64 (Linux)** and **ARM64 (Apple Silicon / M1+ Macs)** architectures. 
 
 Tested on Architecture:
+* x86_64 (Linux)
 * ARM (Apple Silicon)
 
 Operating system:
-* MacOS is the primary supported platform (that was tested)
+* Works, at least, in Linux and MacOS
 * The Docker-based review path is recommended for the most reliable evaluation (and should work on other platformns)
 
 Software requirements:
-* Docker 24 or newer for the recommended review workflow
+* Docker 24 or newer
 * All other dependencies are listed under the DockerFile
 
 Hardware requirements:
-* No GPU required
-* At least 8 GB RAM recommended (to run the extended post-acceptance version, 16GB RAM is recommended to improve parallelism)
-* At least 10 GB free disk space recommended (For the docker image)
+* Minimum RAM: 8 GB (Required for Z3 solver and mutant generation compilation).
+* Storage: ~10 GB of free disk space to load the Docker image and save generated tests.
+* CPU: Any modern multi-core processor.

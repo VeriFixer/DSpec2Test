@@ -8,10 +8,20 @@ This README is divided into two parts as per the ASE Artifact Evaluation guideli
 
 ---
 
+**Note on Extended Evaluation:**
+
+> Since the paper's acceptance, we have expanded our evaluation dataset from 20 programs to over 200 programs and released a new version of the tool. To ensure strict reproducibility of the accepted paper, this README.md and the `dspec2test.tar.gz` image are strictly dedicated to reproducing the **original claims**. 
+>
+> Reviewers interested in the expanded evaluation can refer to [README_EXTENDED.md](https://github.com/VeriFixer/DSpec2Test/blob/generate-tests/spec/README_EXTENDED.md) and the `dspec2test-extended.tar.gz` image.
+
+Both `.tar` files are present in the latest release of the [repository](https://github.com/VeriFixer/DSpec2Test).
+
+---
+
 ## Part I: Getting Started Guide
 
 ### 1. Artifact Description
-**DSpec2Test** is a Dafny fork that adds a `Spec` mode to `dafny generate-tests`, generating tests from method/function specifications. The `Spec` mode generates tests for each method/function that fails to verify. Additionally, methods/functions tagged with `{:testEntry}` are always tested regardless of verification status. The `--bva` flag enables Boundary Value Analysis. 
+**DSpec2Test** is a Dafny fork that adds a `Spec` mode to `dafny generate-tests`, generating tests purely from method/function specifications. The `Spec` mode generates tests for each method/function that fails to verify, or that is flagged with the `{:testEntry}` attribute. It supports Equivalence Class Partitioning (ECP) through Disjunctive Normal Form (DNF) and, optionally Boundary Value Analysis (BVA).
 
 ### 2. Installation Instructions
 
@@ -25,10 +35,20 @@ We have provided a ready-to-use Docker archive built exactly from the paper's co
 docker load -i dspec2test.tar.gz
 ```
 
-(Optional) If you wish to build the image from scratch, it takes ~15–25 mins (Z3 compiles from source) and requires ≥ 8GB RAM:
+**[Optional]** If you wish to build the image from scratch, it takes ~15–25 mins (Z3 compiles from source) and requires ≥ 8GB RAM:
 
 ```bash
+# 1. Clone the repository
+git clone git@github.com:VeriFixer/DSpec2Test.git dspec2test
+cd dspec2test
+
+# 2. Checkout the paper's exact commit
+git checkout 9f910cf907ef7ab252a0f957e253f9b23d5b9e53
+
+# 3. Pull submodules for this specific commit
 git submodule update --init --recursive
+
+# 4. Build the image (Takes ~15–25 mins, requires ≥8GB RAM)
 DOCKER_BUILDKIT=1 docker build -t dspec2test .
 ```
 
@@ -221,7 +241,7 @@ expect r0 == (|seqint0| == 0 || |seqint1| == 0 || seqint0[0] == seqint1[0]);
 
 ### 1. Paper Claims Supported by this Artifact
 
-- **Claim 1** (Table 1 - Top): DSpec2Test (Spec_bva) achieves a higher mutation kill rate (93.9%) compared to the Block strategy (82.4%) on realistically killable mutants.
+- **Claim 1** (Table 1 - Top): DSpec2Test (`Spec_bva`) achieves a higher mutation kill rate (93.9%) compared to the Block strategy (82.4%) on realistically killable mutants.
 
 - **Claim 2** (Table 1 - Bottom): DSpec2Test covers unique mutants that the Block strategy fails to kill, showing a union kill rate of 95.4%.
 
@@ -240,7 +260,7 @@ python -m src.runners.run_evaluation --strategies=all
 
 This runs the pipeline across all strategies (`Spec`, `Block`, `Spec_bva`) using cached data and outputs the raw metrics to the terminal and to results/comparison.json.
 
-- **Expected output**
+**Expected output:**
 ```
 [run_evaluation] Cache hit for DafnyTestGenerator_Spec_bva, loading from results/results_DafnyTestGenerator_Spec_bva.json
 Strategy                    | Kill Rate | Killed | Survived | Not-Supported Programs | Not-Supported Mutants
@@ -263,13 +283,12 @@ Results are written to:
 After running the regular evaluation pipeline, a **manual analysis** is required to produce
 the final corrected results used in the paper. The raw kill rates include noise from:
 
-1. **Incompetent mutants** — don't compile (resolution/type errors). Both tools spuriously
-   report these as "killed" (non-zero exit from build failure).
+1. **Incompetent mutants** — don't compile (resolution/type errors). Both tools report these as "killed" (non-zero exit from build failure).
 2. **Equivalent mutants** — semantically identical to the original. No test can distinguish them.
 3. **Timeouts** — all confirmed to be runtime infinite loops (loop-guard mutations on monotonic
    counters). These are reclassified as kills.
 
-The manual classification for each of the 170 common mutants (`Block` a∩d `SpecBva` scope) is stored in:
+The manual classification for each of the 170 common mutants (`Block` a∩d `Spec_bva` scope) is stored in:
 
 ```
 results/manually_analysis.json
@@ -282,7 +301,8 @@ cd Evaluation
 python results_after_manual_analysis.py
 ```
 
-Expected output
+**Expected output:**
+
 ```
 ========================================================================
 Table 1: Mutation kill rates (top) and kill overlap (bottom)
@@ -299,7 +319,7 @@ Union                      —     —     125      6   95.4%
 
 Killed by both             —     —     106      —   80.9%
 Killed by Block only       —     —       2      —    1.5%
-Killed by Spec_bva only     —     —      17      —   13.0%
+Killed by Spec_bva only    —     —      17      —   13.0%
 Killed by neither          —     —       6      —    4.6%
 
 Denominator (realistically-killable): 131
@@ -326,7 +346,7 @@ python -m src.runners.run_evaluation --strategies=all --clean-cache
 
 **Step C: Apply Manual Analysis for Final Results**
 
-````bash
+```bash
 python results_after_manual_analysis.py
 ```
 
@@ -341,13 +361,13 @@ dafny generate-tests Spec <file.dfy> --bva > OutputTests.dfy
 
 **Available Flags:**
 
-- `--bva`: Adds Boundary Value Analysis to test generation.
+- `--bva`: Adds Boundary Value Analysis to test generation. Only works in `Spec` mode. Not compatible with the `--repeat` flag.
 
 - `--simplify`: Simplifies test output by removing 'expect' statements related to pre/post conditions where possible, and instantiating the output with its actual value.
 
 - `--fdnf`: Calculates the full DNF instead of safe DNF. Generates more clauses but drops short-circuit-safety guarantees.
 
-- `--repeat N`: Repeats the pipeline N times to generate ~N times more tests. Default is 1.
+- `--repeat N`: Repeats the pipeline N times to generate ~N times more tests. Default is 1.  Not compatible with the `--bva` flag.
 
 - `--passing-failing`: Splits generated tests into passing and failing groups.
 

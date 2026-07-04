@@ -1,15 +1,15 @@
 # syntax=docker/dockerfile:1.7
 # ─────────────────────────────────────────────────────────────────────────────
-# DSpec2Test — Artifact Reviewer Image
+# DSpec2Test — Artifact Reviewer Image (State-of-the-Art)
 #
-# Builds the full DSpec2Test tool (Dafny fork with Spec mode) and the
+# Builds the full up-to-date DSpec2Test tool (Dafny fork with Spec mode) and the
 # mutation testing evaluation pipeline in a single self-contained image.
 #
 # Build:
-#   DOCKER_BUILDKIT=1 docker build -t dspec2test .
+#   DOCKER_BUILDKIT=1 docker build -t dspec2test-extended .
 #
 # Run interactive:
-#   docker run --rm -it dspec2test
+#   docker run --rm -it dspec2test-extended
 # ─────────────────────────────────────────────────────────────────────────────
 FROM ubuntu:22.04
 
@@ -96,7 +96,6 @@ RUN --mount=type=cache,target=/root/.nuget/packages \
 COPY Evaluation/src/ /app/Evaluation/src/
 COPY Evaluation/dataset/ /app/Evaluation/dataset/
 COPY Evaluation/results/ /app/Evaluation/results/
-COPY Evaluation/results_after_manual_analysis.py /app/Evaluation/results_after_manual_analysis.py
 
 # ─── Marker file for config.find_repo_root() ──────────────────────────────────
 RUN touch /app/Evaluation/.repo_mutation_testing_marker
