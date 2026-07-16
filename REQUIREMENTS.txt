@@ -1,13 +1,13 @@
 DSpec2Test Artifact Package in Docker:
 
-The artifact is packaged as a Linux Docker image. It has been successfully tested and confirmed to run flawlessly on both **x86_64 (Linux)** and **ARM64 (Apple Silicon / M1+ Macs)** architectures. 
+The artifact is packaged as a Linux Docker image. It has been successfully tested and confirmed to run flawlessly on both **x86_64 (Linux/Windows)** and **ARM64 (Apple Silicon / M1+ Macs)** architectures. 
 
 Tested on Architecture:
-* x86_64 (Linux)
+* x86_64 (Linux/Windows)
 * ARM (Apple Silicon)
 
 Operating system:
-* Works, at least, in Linux and MacOS
+* Works, at least, in Linux, Windows and MacOS
 * The Docker-based review path is recommended for the most reliable evaluation (and should work on other platformns)
 
 Software requirements:
