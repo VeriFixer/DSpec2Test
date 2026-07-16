@@ -17,25 +17,50 @@ To run this extended evaluation, you must use the latest codebase.
 
 **Step A: Load the pre-built image:**
 
-Ensure Docker is installed and running, then load the provided archive:
+Ensure Docker is installed and running, then load the archive that matches your system's architecture:
 
 ```bash
-docker load -i dspec2test-extended.tar.gz
+# For x86_64 / AMD64 systems (Most Intel/AMD PCs):
+docker load -i dspec2test-amd64-extended.tar.gz
+
+# For ARM64 systems (Apple Silicon M-series, ARM-based Linux):
+docker load -i dspec2test-arm64-extended.tar.gz
 ```
 
-**[Optional]** If you wish to build the image from scratch, it takes ~10–20 mins (Z3 compiles from source) and requires ≥ 8GB RAM:
+**[Optional]** If you wish to build the image from scratch, it takes ~15–30 mins (Z3 compiles from source) and requires ≥ 8GB RAM:
+
+1. Clone the repository:
 
 ```bash
-# 1. Clone the repository
 git clone git@github.com:VeriFixer/DSpec2Test.git dspec2test-extended
 cd dspec2test-extended
-
-# 2. Pull submodules
-git submodule update --init --recursive
-
-# 3. Build the image (Takes ~10–20 mins, requires ≥8GB RAM)
-DOCKER_BUILDKIT=1 docker build -t dspec2test-extended .
 ```
+
+2. Pull submodules:
+
+```bash
+git submodule update --init --recursive
+```
+
+3. Build the image according to your OS:
+
+ - On Linux / macOS (Bash/Zsh):
+
+    ```bash
+    DOCKER_BUILDKIT=1 docker build -t dspec2test-extended .
+    ```
+
+ - On Windows (PowerShell):
+
+    ```bash
+    $env:DOCKER_BUILDKIT=1; docker build -t dspec2test-extended .
+    ```
+
+ - On Windows (Command Prompt / cmd.exe):
+
+    ```bash
+    set DOCKER_BUILDKIT=1 && docker build -t dspec2test-extended .
+    ```
 
 **Step B: Start the environment:**
 

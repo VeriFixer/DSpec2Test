@@ -10,11 +10,11 @@ This README is divided into two parts as per the ASE Artifact Evaluation guideli
 
 **Note on Extended Evaluation:**
 
-> Since the paper's acceptance, we have expanded our evaluation dataset from 20 programs to over 200 programs and released a new version of the tool. To ensure strict reproducibility of the accepted paper, this README.md and the `dspec2test.tar.gz` image are strictly dedicated to reproducing the **original claims**. 
+> Since the paper's acceptance, we have expanded our evaluation dataset from 20 programs to over 200 programs and released a new version of the tool. To ensure strict reproducibility of the accepted paper, this README.md, the architecture-specific images (`dspec2test-amd64.tar.gz` and `dspec2test-arm64.tar.gz`), and the source code archive (`dspec2test.zip`) are strictly dedicated to reproducing the **original claims**.
 >
-> Reviewers interested in the expanded evaluation can refer to [README_EXTENDED.md](https://github.com/VeriFixer/DSpec2Test/blob/generate-tests/spec/README_EXTENDED.md) and the `dspec2test-extended.tar.gz` image.
+> Reviewers interested in the expanded evaluation can refer to [README_EXTENDED.md](https://github.com/VeriFixer/DSpec2Test/blob/generate-tests/spec/README_EXTENDED.md) and the corresponding architecture-specific (`dspec2test-amd64-extended.tar.gz` and `dspec2test-arm64-extended.tar.gz`) images.
 
-Both `.tar` files are present in the latest release of the [repository](https://github.com/VeriFixer/DSpec2Test).
+All `.tar.gz` files are present in the latest release of the [repository](https://github.com/VeriFixer/DSpec2Test).
 
 ---
 
@@ -29,28 +29,45 @@ Both `.tar` files are present in the latest release of the [repository](https://
 
 **Step A: Load the pre-built image:**
 
-We have provided a ready-to-use Docker archive built exactly from the paper's commit (`9f910cf907ef7ab252a0f957e253f9b23d5b9e53`). Ensure Docker is installed and running, then load the provided archive:
+We have provided a ready-to-use Docker archive built exactly from the paper's commit (`9f910cf907ef7ab252a0f957e253f9b23d5b9e53`). Ensure Docker is installed and running, then load the archive that matches your system's architecture:
 
 ```bash
-docker load -i dspec2test.tar.gz
+# For x86_64 / AMD64 systems (Most Intel/AMD PCs):
+docker load -i dspec2test-amd64.tar.gz
+
+# For ARM64 systems (Apple Silicon M-series, ARM-based Linux):
+docker load -i dspec2test-arm64.tar.gz
 ```
 
-**[Optional]** If you wish to build the image from scratch, it takes ~15–25 mins (Z3 compiles from source) and requires ≥ 8GB RAM:
+**[Optional]** If you wish to build the image from scratch, we have provided `dspec2test.zip`. This archive contains the exact source code from the paper's commit (`9f910cf907ef7ab252a0f957e253f9b23d5b9e53`), alongside a slightly modified `Dockerfile` and a new `.dockerignore` to ensure smooth cross-platform builds.
+Building takes ~15–25 mins (Z3 compiles from source) and requires ≥ 8GB RAM:
+
+1. Extract the archive and navigate into it:
 
 ```bash
-# 1. Clone the repository
-git clone git@github.com:VeriFixer/DSpec2Test.git dspec2test
+unzip dspec2test.zip
 cd dspec2test
-
-# 2. Checkout the paper's exact commit
-git checkout 9f910cf907ef7ab252a0f957e253f9b23d5b9e53
-
-# 3. Pull submodules for this specific commit
-git submodule update --init --recursive
-
-# 4. Build the image (Takes ~15–25 mins, requires ≥8GB RAM)
-DOCKER_BUILDKIT=1 docker build -t dspec2test .
 ```
+
+2. Build the image according to your OS:
+
+ - On Linux / macOS (Bash/Zsh):
+
+    ```bash
+    DOCKER_BUILDKIT=1 docker build -t dspec2test .
+    ```
+
+ - On Windows (PowerShell):
+
+    ```bash
+    $env:DOCKER_BUILDKIT=1; docker build -t dspec2test .
+    ```
+
+ - On Windows (Command Prompt / cmd.exe):
+
+    ```bash
+    set DOCKER_BUILDKIT=1 && docker build -t dspec2test .
+    ```
 
 **Step B: Start the environment:**
 
@@ -66,9 +83,18 @@ To verify the artifact is functional, we will run the tool's core command on a s
 
 **Step A: Verify binary path**
 
+- Run: 
+
 ```bash
 dafny --version
 ```
+
+- **Expected output**:
+
+```bash
+4.11.0
+```
+
 
 **Step B: Correct Program Demo**
 
@@ -375,7 +401,7 @@ dafny generate-tests Spec <file.dfy> --bva > OutputTests.dfy
 ## 6. Artifact Layout
 
 | Path | Contents |
-|------|----------|
+| :--- | :--- |
 | `/app/Binaries/Dafny` | DSpec2Test binary |
 | `/app/Example/` | Demo programs (Example1.dfy, Example2.dfy) |
 | `/app/Evaluation/dataset/selected_programs/` | 20 benchmark Dafny programs |

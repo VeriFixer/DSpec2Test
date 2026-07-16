@@ -20,9 +20,12 @@
 *.bat eol=crlf
 *.transcript eol=crlf
 
-#Needs to be lr
+#Needs to be lf
 Binaries/dafny text eol=lf
 Binaries/dafny-server text eol=lf
+*gradlew text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
 
 #Never convert these
 *.dll binary

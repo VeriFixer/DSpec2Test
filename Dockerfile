@@ -1,17 +1,17 @@
 # syntax=docker/dockerfile:1.7
 # ─────────────────────────────────────────────────────────────────────────────
-# DSpec2Test — Artifact Reviewer Image (State-of-the-Art)
+# DSpec2Test — Artifact Reviewer Image
 #
-# Builds the full up-to-date DSpec2Test tool (Dafny fork with Spec mode) and the
+# Builds the full DSpec2Test tool (Dafny fork with Spec mode) and the
 # mutation testing evaluation pipeline in a single self-contained image.
 #
 # Build:
-#   DOCKER_BUILDKIT=1 docker build -t dspec2test-extended .
+#   DOCKER_BUILDKIT=1 docker build -t dspec2test .
 #
 # Run interactive:
-#   docker run --rm -it dspec2test-extended
+#   docker run --rm -it dspec2test
 # ─────────────────────────────────────────────────────────────────────────────
-FROM ubuntu:22.04
+FROM mcr.microsoft.com/dotnet/sdk:8.0-jammy
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -30,7 +30,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
     apt-get update && apt-get install -y --no-install-recommends \
       ca-certificates curl wget sudo make build-essential unzip zip \
       python3 python3-pip python3-venv libicu-dev tzdata \
-      git openssh-client openjdk-17-jdk \
+      git openssh-client openjdk-17-jdk-headless dos2unix \
     && rm -rf /var/lib/apt/lists/*
 
 # ─── .NET SDK 8 ───────────────────────────────────────────────────────────────
@@ -47,9 +47,9 @@ ENV JAVA_HOME=/usr/lib/jvm/default-java
 # ─── Python dependencies ──────────────────────────────────────────────────────
 COPY Evaluation/requirements.txt /tmp/requirements.txt
 RUN python3 -m venv /opt/venv && \
-    /opt/venv/bin/pip install --upgrade pip && \
-    /opt/venv/bin/pip install -r /tmp/requirements.txt && \
-    /opt/venv/bin/pip install pytest && \
+    /opt/venv/bin/pip install --upgrade pip --no-cache-dir && \
+    /opt/venv/bin/pip install -r /tmp/requirements.txt --no-cache-dir && \
+    /opt/venv/bin/pip install pytest --no-cache-dir && \
     rm /tmp/requirements.txt
 ENV PATH="/opt/venv/bin:${PATH}"
 
@@ -70,6 +70,10 @@ ENV LD_LIBRARY_PATH="/usr/local/lib:${LD_LIBRARY_PATH}"
 COPY Source/ /app/Source/
 COPY Makefile /app/Makefile
 COPY dotnet-tools.json /app/.config/dotnet-tools.json
+
+RUN find Source -name "gradlew" -exec dos2unix {} + && \
+    find Source -name "gradlew" -exec chmod +x {} +
+
 RUN --mount=type=cache,target=/root/.nuget/packages \
     dotnet build Source/Dafny.sln -c Release && \
     ln -sf /app/Binaries/net8.0/Dafny /app/Binaries/Dafny && \
@@ -82,13 +86,8 @@ RUN --mount=type=cache,target=/root/.nuget/packages \
     cd /app/Evaluation/external/mutation/mutdafny && \
     make -C dafny exe -j"$(nproc)" && \
     mkdir -p dafny/Binaries/z3/bin && \
-    cd dafny/Binaries && \
-    wget -q https://github.com/dafny-lang/solver-builds/releases/download/snapshot-2023-08-02/z3-4.12.1-x64-ubuntu-20.04-bin.zip && \
-    unzip -q z3-4.12.1-x64-ubuntu-20.04-bin.zip && \
-    mv z3-4.12.1 z3/bin/z3-4.12.1 && \
-    chmod 755 z3/bin/z3-4.12.1 && \
-    rm -f z3-4.12.1-x64-ubuntu-20.04-bin.zip && \
-    cd /app/Evaluation/external/mutation/mutdafny && \
+    ln -s /usr/local/bin/z3 dafny/Binaries/z3/bin/z3-4.12.1 && \
+    chmod 755 dafny/Binaries/z3/bin/z3-4.12.1 && \
     dotnet build mutdafny/mutdafny.csproj -c Release && \
     chmod -R a+rwX /app/Evaluation/external/mutation/mutdafny
 
