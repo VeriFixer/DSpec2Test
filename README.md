@@ -34,9 +34,11 @@ We have provided a ready-to-use Docker archive built exactly from the paper's co
 ```bash
 # For x86_64 / AMD64 systems (Most Intel/AMD PCs):
 docker load -i dspec2test-amd64.tar.gz
+docker tag dspec2test-amd64 dspec2test
 
 # For ARM64 systems (Apple Silicon M-series, ARM-based Linux):
 docker load -i dspec2test-arm64.tar.gz
+docker tag dspec2test-arm64 dspec2test
 ```
 
 **[Optional]** If you wish to build the image from scratch, we have provided `dspec2test.zip`. This archive contains the exact source code from the paper's commit (`9f910cf907ef7ab252a0f957e253f9b23d5b9e53`), alongside a slightly modified `Dockerfile` and a new `.dockerignore` to ensure smooth cross-platform builds.
